@@ -1,0 +1,26 @@
+How to compile and run having no IDE present
+
+Example for "tutorial" package:
+
+- compile proto file:
+
+protoc --java_out=. tutorial/protos.proto
+
+- compile java files:
+
+javac -cp protobuf-java-3.6.1.jar tutorial/*java
+
+-run:
+
+java -cp protobuf-java-3.6.1.jar:.  [class] [args]
+
+or use the "run" script:
+
+./run [class] [args]
+
+example:
+
+./run tutorial/Writer AAA
+./run tutorial/Reader AAA
+
+
