@@ -12,6 +12,7 @@
         <module>clients</module>
         <module>negotiators</module>
         <module>catalog</module>
+        <module>server</module>
     </modules>
 
     <build>
