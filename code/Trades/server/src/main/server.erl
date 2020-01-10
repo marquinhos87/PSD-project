@@ -12,4 +12,8 @@
 -author("nunorei").
 
 %% API
--export([]).
+-export([server/1]).
+
+server(Port) ->
+  Port
+.
