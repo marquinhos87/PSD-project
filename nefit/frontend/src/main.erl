@@ -1,5 +1,6 @@
 
--module(things).
--export([bla/0]).
+-module(main).
+-export([main/0]).
 
-bla() -> io:fwrite("hello, world\n").
+main() -> io:fwrite("hello, world\n").
+
