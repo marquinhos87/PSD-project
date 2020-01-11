@@ -8,6 +8,6 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="false">
-    <output url="file://out" />
+    <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
