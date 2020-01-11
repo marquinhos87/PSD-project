@@ -1,4 +1,6 @@
--module(main).
--export([main/0]).
 
-main() -> io:fwrite("hello, world\n").
+% -module(main).
+% -export([main/0]).
+
+% main() -> io:fwrite("hello, world\n").
+
