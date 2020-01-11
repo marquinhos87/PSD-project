@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+message MsgAuth {
+	required string nome = 1;
+	required string pass = 2;
+
+	enum MsgType {
+		LOGIN = 0;
+		REGISTER = 1;
+	}
+
+	optional MsgType type = 3 [default = LOGIN];
+}
