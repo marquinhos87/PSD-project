@@ -13,4 +13,7 @@
       <module name="client" target="11" />
     </bytecodeTargetLevel>
   </component>
+  <component name="ErlangCompilerOptions">
+    <useRebarCompiler>true</useRebarCompiler>
+  </component>
 </project>
