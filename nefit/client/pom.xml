@@ -20,6 +20,12 @@
             <artifactId>protobuf-java</artifactId>
             <version>3.10.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.zeromq/jeromq -->
+        <dependency>
+            <groupId>org.zeromq</groupId>
+            <artifactId>jeromq</artifactId>
+            <version>0.5.1</version>
+        </dependency>
     </dependencies>
 
 </project>
