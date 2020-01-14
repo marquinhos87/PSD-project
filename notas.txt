@@ -1,0 +1,21 @@
+--------------------------------------------------------------------------------
+
+  Cliente (xN)
+    - Java
+    - Fala unicamente com Servidor
+
+  Servidor (x1)
+    - Protocol Buffers: https://github.com/tomas-abrahamsson/gpb
+    - ZeroMQ: https://github.com/zeromq/chumak
+    - Fala com Negociadores ponto-a-ponto
+    - Informa os Catálogos de cenas através de ZeroMQ Pub-Sub
+
+  Negociador (xN)
+    - Fala com Servidor ponto-a-ponto
+    - Informa os Catálogos de cenas através de ZeroMQ Pub-Sub
+
+  Catálogo (xN)
+    - Subscrevem mensagens no ZeroMQ Pub-Sub
+    - Disponibiliza interface RESTful
+
+--------------------------------------------------------------------------------
