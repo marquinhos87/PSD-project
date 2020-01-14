@@ -17,10 +17,16 @@ message MsgAuth {
 	optional MsgType mtype = 4 [default = LOGIN];
 }
 
-message Article {
+message Disponibility {
     required string name = 1;
     required int32 minimun = 2;
     required int32 maximun = 3;
     required int32 value = 4;
     required string period = 5;
+}
+
+message Order {
+    required string name = 1;
+    required int32 quant = 2;
+    required int32 value = 3;
 }
