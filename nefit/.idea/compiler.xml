@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="client" />
+        <module name="proto" />
         <module name="arbiter" />
         <module name="catalog" />
       </profile>
@@ -15,6 +16,7 @@
       <module name="arbiter" target="11" />
       <module name="catalog" target="11" />
       <module name="client" target="11" />
+      <module name="proto" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
