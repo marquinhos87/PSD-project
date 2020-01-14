@@ -27,6 +27,7 @@ message MsgAuth {
 
 message MsgAck {
     required bool ok = 1;
+    optional string msg = 2;
 }
 
 message Disponibility {
