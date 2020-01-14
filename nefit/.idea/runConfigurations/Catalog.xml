@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Catalog" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="psd.catalog.Main" />
+    <option name="MAIN_CLASS_NAME" value="nefit.catalog.Main" />
     <module name="catalog" />
     <extension name="coverage">
       <pattern>
