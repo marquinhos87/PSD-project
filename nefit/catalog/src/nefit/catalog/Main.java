@@ -1,4 +1,4 @@
-package psd.catalog;
+package nefit.catalog;
 
 public class Main
 {

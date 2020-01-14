@@ -1,4 +1,4 @@
-package psd.arbiter;
+package nefit.arbiter;
 
 public class Main
 {
