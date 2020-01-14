@@ -20,3 +20,31 @@
     - Disponibiliza interface RESTful
 
 --------------------------------------------------------------------------------
+
+Comunicação entre as partes
+
+  Fabricante -> Servidor
+    MsgAuth
+    Disponibility
+
+  Servidor -> Fabricante
+    MsgAck
+    Production
+
+  Importador -> Servidor
+    MshAuth
+    Order
+
+  Servidor -> Importador
+    MsgAck
+    Result
+
+  Negociador -> Servidor
+    Production
+    Result
+
+  Servidor -> Negociador
+    Order
+    Disponibility
+
+--------------------------------------------------------------------------------
