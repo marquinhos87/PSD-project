@@ -27,7 +27,6 @@ message MsgAuth {
 
 message MsgAck {
     required bool ok = 1;
-    optional string 
 }
 
 message Disponibility {
@@ -46,5 +45,4 @@ message Order {
     required int32 value = 4;
 }
 
-message
 /* -------------------------------------------------------------------------- */

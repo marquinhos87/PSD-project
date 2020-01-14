@@ -1227,72 +1227,616 @@ public final class NefitProtos {
 
   }
 
+  public interface MsgAckOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.MsgAck)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required bool ok = 1;</code>
+     * @return Whether the ok field is set.
+     */
+    boolean hasOk();
+    /**
+     * <code>required bool ok = 1;</code>
+     * @return The ok.
+     */
+    boolean getOk();
+  }
+  /**
+   * Protobuf type {@code nefit.MsgAck}
+   */
+  public  static final class MsgAck extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:nefit.MsgAck)
+      MsgAckOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MsgAck.newBuilder() to construct.
+    private MsgAck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MsgAck() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MsgAck();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MsgAck(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              ok_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return nefit.proto.NefitProtos.internal_static_nefit_MsgAck_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return nefit.proto.NefitProtos.internal_static_nefit_MsgAck_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              nefit.proto.NefitProtos.MsgAck.class, nefit.proto.NefitProtos.MsgAck.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int OK_FIELD_NUMBER = 1;
+    private boolean ok_;
+    /**
+     * <code>required bool ok = 1;</code>
+     * @return Whether the ok field is set.
+     */
+    public boolean hasOk() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required bool ok = 1;</code>
+     * @return The ok.
+     */
+    public boolean getOk() {
+      return ok_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasOk()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeBool(1, ok_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, ok_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof nefit.proto.NefitProtos.MsgAck)) {
+        return super.equals(obj);
+      }
+      nefit.proto.NefitProtos.MsgAck other = (nefit.proto.NefitProtos.MsgAck) obj;
+
+      if (hasOk() != other.hasOk()) return false;
+      if (hasOk()) {
+        if (getOk()
+            != other.getOk()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasOk()) {
+        hash = (37 * hash) + OK_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getOk());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.MsgAck parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(nefit.proto.NefitProtos.MsgAck prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code nefit.MsgAck}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:nefit.MsgAck)
+        nefit.proto.NefitProtos.MsgAckOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return nefit.proto.NefitProtos.internal_static_nefit_MsgAck_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return nefit.proto.NefitProtos.internal_static_nefit_MsgAck_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                nefit.proto.NefitProtos.MsgAck.class, nefit.proto.NefitProtos.MsgAck.Builder.class);
+      }
+
+      // Construct using nefit.proto.NefitProtos.MsgAck.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ok_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return nefit.proto.NefitProtos.internal_static_nefit_MsgAck_descriptor;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.MsgAck getDefaultInstanceForType() {
+        return nefit.proto.NefitProtos.MsgAck.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.MsgAck build() {
+        nefit.proto.NefitProtos.MsgAck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.MsgAck buildPartial() {
+        nefit.proto.NefitProtos.MsgAck result = new nefit.proto.NefitProtos.MsgAck(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.ok_ = ok_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof nefit.proto.NefitProtos.MsgAck) {
+          return mergeFrom((nefit.proto.NefitProtos.MsgAck)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(nefit.proto.NefitProtos.MsgAck other) {
+        if (other == nefit.proto.NefitProtos.MsgAck.getDefaultInstance()) return this;
+        if (other.hasOk()) {
+          setOk(other.getOk());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasOk()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        nefit.proto.NefitProtos.MsgAck parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (nefit.proto.NefitProtos.MsgAck) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean ok_ ;
+      /**
+       * <code>required bool ok = 1;</code>
+       * @return Whether the ok field is set.
+       */
+      public boolean hasOk() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required bool ok = 1;</code>
+       * @return The ok.
+       */
+      public boolean getOk() {
+        return ok_;
+      }
+      /**
+       * <code>required bool ok = 1;</code>
+       * @param value The ok to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOk(boolean value) {
+        bitField0_ |= 0x00000001;
+        ok_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool ok = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOk() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        ok_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:nefit.MsgAck)
+    }
+
+    // @@protoc_insertion_point(class_scope:nefit.MsgAck)
+    private static final nefit.proto.NefitProtos.MsgAck DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.MsgAck();
+    }
+
+    public static nefit.proto.NefitProtos.MsgAck getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<MsgAck>
+        PARSER = new com.google.protobuf.AbstractParser<MsgAck>() {
+      @java.lang.Override
+      public MsgAck parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MsgAck(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MsgAck> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MsgAck> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public nefit.proto.NefitProtos.MsgAck getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface DisponibilityOrBuilder extends
       // @@protoc_insertion_point(interface_extends:nefit.Disponibility)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string name = 1;</code>
-     * @return Whether the name field is set.
+     * <code>required string nameM = 1;</code>
+     * @return Whether the nameM field is set.
      */
-    boolean hasName();
+    boolean hasNameM();
     /**
-     * <code>required string name = 1;</code>
-     * @return The name.
+     * <code>required string nameM = 1;</code>
+     * @return The nameM.
      */
-    java.lang.String getName();
+    java.lang.String getNameM();
     /**
-     * <code>required string name = 1;</code>
-     * @return The bytes for name.
+     * <code>required string nameM = 1;</code>
+     * @return The bytes for nameM.
      */
     com.google.protobuf.ByteString
-        getNameBytes();
+        getNameMBytes();
 
     /**
-     * <code>required int32 minimun = 2;</code>
+     * <code>required string nameP = 2;</code>
+     * @return Whether the nameP field is set.
+     */
+    boolean hasNameP();
+    /**
+     * <code>required string nameP = 2;</code>
+     * @return The nameP.
+     */
+    java.lang.String getNameP();
+    /**
+     * <code>required string nameP = 2;</code>
+     * @return The bytes for nameP.
+     */
+    com.google.protobuf.ByteString
+        getNamePBytes();
+
+    /**
+     * <code>required int32 minimun = 3;</code>
      * @return Whether the minimun field is set.
      */
     boolean hasMinimun();
     /**
-     * <code>required int32 minimun = 2;</code>
+     * <code>required int32 minimun = 3;</code>
      * @return The minimun.
      */
     int getMinimun();
 
     /**
-     * <code>required int32 maximun = 3;</code>
+     * <code>required int32 maximun = 4;</code>
      * @return Whether the maximun field is set.
      */
     boolean hasMaximun();
     /**
-     * <code>required int32 maximun = 3;</code>
+     * <code>required int32 maximun = 4;</code>
      * @return The maximun.
      */
     int getMaximun();
 
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required int32 value = 5;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required int32 value = 5;</code>
      * @return The value.
      */
     int getValue();
 
     /**
-     * <code>required string period = 5;</code>
+     * <code>required string period = 6;</code>
      * @return Whether the period field is set.
      */
     boolean hasPeriod();
     /**
-     * <code>required string period = 5;</code>
+     * <code>required string period = 6;</code>
      * @return The period.
      */
     java.lang.String getPeriod();
     /**
-     * <code>required string period = 5;</code>
+     * <code>required string period = 6;</code>
      * @return The bytes for period.
      */
     com.google.protobuf.ByteString
@@ -1311,7 +1855,8 @@ public final class NefitProtos {
       super(builder);
     }
     private Disponibility() {
-      name_ = "";
+      nameM_ = "";
+      nameP_ = "";
       period_ = "";
     }
 
@@ -1349,27 +1894,33 @@ public final class NefitProtos {
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              name_ = bs;
+              nameM_ = bs;
               break;
             }
-            case 16: {
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
-              minimun_ = input.readInt32();
+              nameP_ = bs;
               break;
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              maximun_ = input.readInt32();
+              minimun_ = input.readInt32();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
+              maximun_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
               value_ = input.readInt32();
               break;
             }
-            case 42: {
+            case 50: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               period_ = bs;
               break;
             }
@@ -1406,21 +1957,21 @@ public final class NefitProtos {
     }
 
     private int bitField0_;
-    public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
+    public static final int NAMEM_FIELD_NUMBER = 1;
+    private volatile java.lang.Object nameM_;
     /**
-     * <code>required string name = 1;</code>
-     * @return Whether the name field is set.
+     * <code>required string nameM = 1;</code>
+     * @return Whether the nameM field is set.
      */
-    public boolean hasName() {
+    public boolean hasNameM() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>required string name = 1;</code>
-     * @return The name.
+     * <code>required string nameM = 1;</code>
+     * @return The nameM.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
+    public java.lang.String getNameM() {
+      java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -1428,91 +1979,136 @@ public final class NefitProtos {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          name_ = s;
+          nameM_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string name = 1;</code>
-     * @return The bytes for name.
+     * <code>required string nameM = 1;</code>
+     * @return The bytes for nameM.
      */
     public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
+        getNameMBytes() {
+      java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        name_ = b;
+        nameM_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int MINIMUN_FIELD_NUMBER = 2;
-    private int minimun_;
+    public static final int NAMEP_FIELD_NUMBER = 2;
+    private volatile java.lang.Object nameP_;
     /**
-     * <code>required int32 minimun = 2;</code>
-     * @return Whether the minimun field is set.
+     * <code>required string nameP = 2;</code>
+     * @return Whether the nameP field is set.
      */
-    public boolean hasMinimun() {
+    public boolean hasNameP() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>required int32 minimun = 2;</code>
+     * <code>required string nameP = 2;</code>
+     * @return The nameP.
+     */
+    public java.lang.String getNameP() {
+      java.lang.Object ref = nameP_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nameP_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nameP = 2;</code>
+     * @return The bytes for nameP.
+     */
+    public com.google.protobuf.ByteString
+        getNamePBytes() {
+      java.lang.Object ref = nameP_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nameP_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MINIMUN_FIELD_NUMBER = 3;
+    private int minimun_;
+    /**
+     * <code>required int32 minimun = 3;</code>
+     * @return Whether the minimun field is set.
+     */
+    public boolean hasMinimun() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required int32 minimun = 3;</code>
      * @return The minimun.
      */
     public int getMinimun() {
       return minimun_;
     }
 
-    public static final int MAXIMUN_FIELD_NUMBER = 3;
+    public static final int MAXIMUN_FIELD_NUMBER = 4;
     private int maximun_;
     /**
-     * <code>required int32 maximun = 3;</code>
+     * <code>required int32 maximun = 4;</code>
      * @return Whether the maximun field is set.
      */
     public boolean hasMaximun() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 maximun = 3;</code>
+     * <code>required int32 maximun = 4;</code>
      * @return The maximun.
      */
     public int getMaximun() {
       return maximun_;
     }
 
-    public static final int VALUE_FIELD_NUMBER = 4;
+    public static final int VALUE_FIELD_NUMBER = 5;
     private int value_;
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required int32 value = 5;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required int32 value = 5;</code>
      * @return The value.
      */
     public int getValue() {
       return value_;
     }
 
-    public static final int PERIOD_FIELD_NUMBER = 5;
+    public static final int PERIOD_FIELD_NUMBER = 6;
     private volatile java.lang.Object period_;
     /**
-     * <code>required string period = 5;</code>
+     * <code>required string period = 6;</code>
      * @return Whether the period field is set.
      */
     public boolean hasPeriod() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
-     * <code>required string period = 5;</code>
+     * <code>required string period = 6;</code>
      * @return The period.
      */
     public java.lang.String getPeriod() {
@@ -1530,7 +2126,7 @@ public final class NefitProtos {
       }
     }
     /**
-     * <code>required string period = 5;</code>
+     * <code>required string period = 6;</code>
      * @return The bytes for period.
      */
     public com.google.protobuf.ByteString
@@ -1554,7 +2150,11 @@ public final class NefitProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasName()) {
+      if (!hasNameM()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNameP()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1582,19 +2182,22 @@ public final class NefitProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nameM_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt32(2, minimun_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, maximun_);
+        output.writeInt32(3, minimun_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, value_);
+        output.writeInt32(4, maximun_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, period_);
+        output.writeInt32(5, value_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, period_);
       }
       unknownFields.writeTo(output);
     }
@@ -1606,22 +2209,25 @@ public final class NefitProtos {
 
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nameM_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, minimun_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, maximun_);
+          .computeInt32Size(3, minimun_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, value_);
+          .computeInt32Size(4, maximun_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, period_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, value_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, period_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1638,10 +2244,15 @@ public final class NefitProtos {
       }
       nefit.proto.NefitProtos.Disponibility other = (nefit.proto.NefitProtos.Disponibility) obj;
 
-      if (hasName() != other.hasName()) return false;
-      if (hasName()) {
-        if (!getName()
-            .equals(other.getName())) return false;
+      if (hasNameM() != other.hasNameM()) return false;
+      if (hasNameM()) {
+        if (!getNameM()
+            .equals(other.getNameM())) return false;
+      }
+      if (hasNameP() != other.hasNameP()) return false;
+      if (hasNameP()) {
+        if (!getNameP()
+            .equals(other.getNameP())) return false;
       }
       if (hasMinimun() != other.hasMinimun()) return false;
       if (hasMinimun()) {
@@ -1674,9 +2285,13 @@ public final class NefitProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasName()) {
-        hash = (37 * hash) + NAME_FIELD_NUMBER;
-        hash = (53 * hash) + getName().hashCode();
+      if (hasNameM()) {
+        hash = (37 * hash) + NAMEM_FIELD_NUMBER;
+        hash = (53 * hash) + getNameM().hashCode();
+      }
+      if (hasNameP()) {
+        hash = (37 * hash) + NAMEP_FIELD_NUMBER;
+        hash = (53 * hash) + getNameP().hashCode();
       }
       if (hasMinimun()) {
         hash = (37 * hash) + MINIMUN_FIELD_NUMBER;
@@ -1827,16 +2442,18 @@ public final class NefitProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        name_ = "";
+        nameM_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        minimun_ = 0;
+        nameP_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        maximun_ = 0;
+        minimun_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        value_ = 0;
+        maximun_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        period_ = "";
+        value_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        period_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -1868,21 +2485,25 @@ public final class NefitProtos {
         if (((from_bitField0_ & 0x00000001) != 0)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.name_ = name_;
+        result.nameM_ = nameM_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.minimun_ = minimun_;
           to_bitField0_ |= 0x00000002;
         }
+        result.nameP_ = nameP_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.maximun_ = maximun_;
+          result.minimun_ = minimun_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.value_ = value_;
+          result.maximun_ = maximun_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.value_ = value_;
           to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          to_bitField0_ |= 0x00000020;
         }
         result.period_ = period_;
         result.bitField0_ = to_bitField0_;
@@ -1934,9 +2555,14 @@ public final class NefitProtos {
 
       public Builder mergeFrom(nefit.proto.NefitProtos.Disponibility other) {
         if (other == nefit.proto.NefitProtos.Disponibility.getDefaultInstance()) return this;
-        if (other.hasName()) {
+        if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
-          name_ = other.name_;
+          nameM_ = other.nameM_;
+          onChanged();
+        }
+        if (other.hasNameP()) {
+          bitField0_ |= 0x00000002;
+          nameP_ = other.nameP_;
           onChanged();
         }
         if (other.hasMinimun()) {
@@ -1949,7 +2575,7 @@ public final class NefitProtos {
           setValue(other.getValue());
         }
         if (other.hasPeriod()) {
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
           period_ = other.period_;
           onChanged();
         }
@@ -1960,7 +2586,10 @@ public final class NefitProtos {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasName()) {
+        if (!hasNameM()) {
+          return false;
+        }
+        if (!hasNameP()) {
           return false;
         }
         if (!hasMinimun()) {
@@ -1998,26 +2627,26 @@ public final class NefitProtos {
       }
       private int bitField0_;
 
-      private java.lang.Object name_ = "";
+      private java.lang.Object nameM_ = "";
       /**
-       * <code>required string name = 1;</code>
-       * @return Whether the name field is set.
+       * <code>required string nameM = 1;</code>
+       * @return Whether the nameM field is set.
        */
-      public boolean hasName() {
+      public boolean hasNameM() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required string name = 1;</code>
-       * @return The name.
+       * <code>required string nameM = 1;</code>
+       * @return The nameM.
        */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
+      public java.lang.String getNameM() {
+        java.lang.Object ref = nameM_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            name_ = s;
+            nameM_ = s;
           }
           return s;
         } else {
@@ -2025,95 +2654,179 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>required string name = 1;</code>
-       * @return The bytes for name.
+       * <code>required string nameM = 1;</code>
+       * @return The bytes for nameM.
        */
       public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
+          getNameMBytes() {
+        java.lang.Object ref = nameM_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          name_ = b;
+          nameM_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string name = 1;</code>
-       * @param value The name to set.
+       * <code>required string nameM = 1;</code>
+       * @param value The nameM to set.
        * @return This builder for chaining.
        */
-      public Builder setName(
+      public Builder setNameM(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        name_ = value;
+        nameM_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 1;</code>
+       * <code>required string nameM = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearName() {
+      public Builder clearNameM() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = getDefaultInstance().getName();
+        nameM_ = getDefaultInstance().getNameM();
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 1;</code>
-       * @param value The bytes for name to set.
+       * <code>required string nameM = 1;</code>
+       * @param value The bytes for nameM to set.
        * @return This builder for chaining.
        */
-      public Builder setNameBytes(
+      public Builder setNameMBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        name_ = value;
+        nameM_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nameP_ = "";
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return Whether the nameP field is set.
+       */
+      public boolean hasNameP() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return The nameP.
+       */
+      public java.lang.String getNameP() {
+        java.lang.Object ref = nameP_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            nameP_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return The bytes for nameP.
+       */
+      public com.google.protobuf.ByteString
+          getNamePBytes() {
+        java.lang.Object ref = nameP_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nameP_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @param value The nameP to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameP(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nameP_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNameP() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nameP_ = getDefaultInstance().getNameP();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @param value The bytes for nameP to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNamePBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nameP_ = value;
         onChanged();
         return this;
       }
 
       private int minimun_ ;
       /**
-       * <code>required int32 minimun = 2;</code>
+       * <code>required int32 minimun = 3;</code>
        * @return Whether the minimun field is set.
        */
       public boolean hasMinimun() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>required int32 minimun = 2;</code>
+       * <code>required int32 minimun = 3;</code>
        * @return The minimun.
        */
       public int getMinimun() {
         return minimun_;
       }
       /**
-       * <code>required int32 minimun = 2;</code>
+       * <code>required int32 minimun = 3;</code>
        * @param value The minimun to set.
        * @return This builder for chaining.
        */
       public Builder setMinimun(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         minimun_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 minimun = 2;</code>
+       * <code>required int32 minimun = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearMinimun() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         minimun_ = 0;
         onChanged();
         return this;
@@ -2121,36 +2834,36 @@ public final class NefitProtos {
 
       private int maximun_ ;
       /**
-       * <code>required int32 maximun = 3;</code>
+       * <code>required int32 maximun = 4;</code>
        * @return Whether the maximun field is set.
        */
       public boolean hasMaximun() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 maximun = 3;</code>
+       * <code>required int32 maximun = 4;</code>
        * @return The maximun.
        */
       public int getMaximun() {
         return maximun_;
       }
       /**
-       * <code>required int32 maximun = 3;</code>
+       * <code>required int32 maximun = 4;</code>
        * @param value The maximun to set.
        * @return This builder for chaining.
        */
       public Builder setMaximun(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         maximun_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 maximun = 3;</code>
+       * <code>required int32 maximun = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearMaximun() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         maximun_ = 0;
         onChanged();
         return this;
@@ -2158,36 +2871,36 @@ public final class NefitProtos {
 
       private int value_ ;
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required int32 value = 5;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required int32 value = 5;</code>
        * @return The value.
        */
       public int getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required int32 value = 5;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
       public Builder setValue(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required int32 value = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         value_ = 0;
         onChanged();
         return this;
@@ -2195,14 +2908,14 @@ public final class NefitProtos {
 
       private java.lang.Object period_ = "";
       /**
-       * <code>required string period = 5;</code>
+       * <code>required string period = 6;</code>
        * @return Whether the period field is set.
        */
       public boolean hasPeriod() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
-       * <code>required string period = 5;</code>
+       * <code>required string period = 6;</code>
        * @return The period.
        */
       public java.lang.String getPeriod() {
@@ -2220,7 +2933,7 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>required string period = 5;</code>
+       * <code>required string period = 6;</code>
        * @return The bytes for period.
        */
       public com.google.protobuf.ByteString
@@ -2237,7 +2950,7 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>required string period = 5;</code>
+       * <code>required string period = 6;</code>
        * @param value The period to set.
        * @return This builder for chaining.
        */
@@ -2246,23 +2959,23 @@ public final class NefitProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
         period_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string period = 5;</code>
+       * <code>required string period = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearPeriod() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         period_ = getDefaultInstance().getPeriod();
         onChanged();
         return this;
       }
       /**
-       * <code>required string period = 5;</code>
+       * <code>required string period = 6;</code>
        * @param value The bytes for period to set.
        * @return This builder for chaining.
        */
@@ -2271,7 +2984,7 @@ public final class NefitProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
         period_ = value;
         onChanged();
         return this;
@@ -2334,40 +3047,57 @@ public final class NefitProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string name = 1;</code>
-     * @return Whether the name field is set.
+     * <code>required string nameM = 1;</code>
+     * @return Whether the nameM field is set.
      */
-    boolean hasName();
+    boolean hasNameM();
     /**
-     * <code>required string name = 1;</code>
-     * @return The name.
+     * <code>required string nameM = 1;</code>
+     * @return The nameM.
      */
-    java.lang.String getName();
+    java.lang.String getNameM();
     /**
-     * <code>required string name = 1;</code>
-     * @return The bytes for name.
+     * <code>required string nameM = 1;</code>
+     * @return The bytes for nameM.
      */
     com.google.protobuf.ByteString
-        getNameBytes();
+        getNameMBytes();
 
     /**
-     * <code>required int32 quant = 2;</code>
+     * <code>required string nameP = 2;</code>
+     * @return Whether the nameP field is set.
+     */
+    boolean hasNameP();
+    /**
+     * <code>required string nameP = 2;</code>
+     * @return The nameP.
+     */
+    java.lang.String getNameP();
+    /**
+     * <code>required string nameP = 2;</code>
+     * @return The bytes for nameP.
+     */
+    com.google.protobuf.ByteString
+        getNamePBytes();
+
+    /**
+     * <code>required int32 quant = 3;</code>
      * @return Whether the quant field is set.
      */
     boolean hasQuant();
     /**
-     * <code>required int32 quant = 2;</code>
+     * <code>required int32 quant = 3;</code>
      * @return The quant.
      */
     int getQuant();
 
     /**
-     * <code>required int32 value = 3;</code>
+     * <code>required int32 value = 4;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 3;</code>
+     * <code>required int32 value = 4;</code>
      * @return The value.
      */
     int getValue();
@@ -2385,7 +3115,8 @@ public final class NefitProtos {
       super(builder);
     }
     private Order() {
-      name_ = "";
+      nameM_ = "";
+      nameP_ = "";
     }
 
     @java.lang.Override
@@ -2422,16 +3153,22 @@ public final class NefitProtos {
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              name_ = bs;
+              nameM_ = bs;
               break;
             }
-            case 16: {
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
-              quant_ = input.readInt32();
+              nameP_ = bs;
               break;
             }
             case 24: {
               bitField0_ |= 0x00000004;
+              quant_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
               value_ = input.readInt32();
               break;
             }
@@ -2468,21 +3205,21 @@ public final class NefitProtos {
     }
 
     private int bitField0_;
-    public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
+    public static final int NAMEM_FIELD_NUMBER = 1;
+    private volatile java.lang.Object nameM_;
     /**
-     * <code>required string name = 1;</code>
-     * @return Whether the name field is set.
+     * <code>required string nameM = 1;</code>
+     * @return Whether the nameM field is set.
      */
-    public boolean hasName() {
+    public boolean hasNameM() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>required string name = 1;</code>
-     * @return The name.
+     * <code>required string nameM = 1;</code>
+     * @return The nameM.
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
+    public java.lang.String getNameM() {
+      java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -2490,57 +3227,102 @@ public final class NefitProtos {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          name_ = s;
+          nameM_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string name = 1;</code>
-     * @return The bytes for name.
+     * <code>required string nameM = 1;</code>
+     * @return The bytes for nameM.
      */
     public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
+        getNameMBytes() {
+      java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        name_ = b;
+        nameM_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int QUANT_FIELD_NUMBER = 2;
-    private int quant_;
+    public static final int NAMEP_FIELD_NUMBER = 2;
+    private volatile java.lang.Object nameP_;
     /**
-     * <code>required int32 quant = 2;</code>
-     * @return Whether the quant field is set.
+     * <code>required string nameP = 2;</code>
+     * @return Whether the nameP field is set.
      */
-    public boolean hasQuant() {
+    public boolean hasNameP() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>required int32 quant = 2;</code>
+     * <code>required string nameP = 2;</code>
+     * @return The nameP.
+     */
+    public java.lang.String getNameP() {
+      java.lang.Object ref = nameP_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nameP_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nameP = 2;</code>
+     * @return The bytes for nameP.
+     */
+    public com.google.protobuf.ByteString
+        getNamePBytes() {
+      java.lang.Object ref = nameP_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nameP_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int QUANT_FIELD_NUMBER = 3;
+    private int quant_;
+    /**
+     * <code>required int32 quant = 3;</code>
+     * @return Whether the quant field is set.
+     */
+    public boolean hasQuant() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required int32 quant = 3;</code>
      * @return The quant.
      */
     public int getQuant() {
       return quant_;
     }
 
-    public static final int VALUE_FIELD_NUMBER = 3;
+    public static final int VALUE_FIELD_NUMBER = 4;
     private int value_;
     /**
-     * <code>required int32 value = 3;</code>
+     * <code>required int32 value = 4;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 value = 3;</code>
+     * <code>required int32 value = 4;</code>
      * @return The value.
      */
     public int getValue() {
@@ -2554,7 +3336,11 @@ public final class NefitProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasName()) {
+      if (!hasNameM()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNameP()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2574,13 +3360,16 @@ public final class NefitProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nameM_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt32(2, quant_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, value_);
+        output.writeInt32(3, quant_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeInt32(4, value_);
       }
       unknownFields.writeTo(output);
     }
@@ -2592,15 +3381,18 @@ public final class NefitProtos {
 
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nameM_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, quant_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, value_);
+          .computeInt32Size(3, quant_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, value_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2617,10 +3409,15 @@ public final class NefitProtos {
       }
       nefit.proto.NefitProtos.Order other = (nefit.proto.NefitProtos.Order) obj;
 
-      if (hasName() != other.hasName()) return false;
-      if (hasName()) {
-        if (!getName()
-            .equals(other.getName())) return false;
+      if (hasNameM() != other.hasNameM()) return false;
+      if (hasNameM()) {
+        if (!getNameM()
+            .equals(other.getNameM())) return false;
+      }
+      if (hasNameP() != other.hasNameP()) return false;
+      if (hasNameP()) {
+        if (!getNameP()
+            .equals(other.getNameP())) return false;
       }
       if (hasQuant() != other.hasQuant()) return false;
       if (hasQuant()) {
@@ -2643,9 +3440,13 @@ public final class NefitProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasName()) {
-        hash = (37 * hash) + NAME_FIELD_NUMBER;
-        hash = (53 * hash) + getName().hashCode();
+      if (hasNameM()) {
+        hash = (37 * hash) + NAMEM_FIELD_NUMBER;
+        hash = (53 * hash) + getNameM().hashCode();
+      }
+      if (hasNameP()) {
+        hash = (37 * hash) + NAMEP_FIELD_NUMBER;
+        hash = (53 * hash) + getNameP().hashCode();
       }
       if (hasQuant()) {
         hash = (37 * hash) + QUANT_FIELD_NUMBER;
@@ -2788,12 +3589,14 @@ public final class NefitProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        name_ = "";
+        nameM_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        quant_ = 0;
+        nameP_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        value_ = 0;
+        quant_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        value_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -2825,14 +3628,18 @@ public final class NefitProtos {
         if (((from_bitField0_ & 0x00000001) != 0)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.name_ = name_;
+        result.nameM_ = nameM_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.quant_ = quant_;
           to_bitField0_ |= 0x00000002;
         }
+        result.nameP_ = nameP_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.value_ = value_;
+          result.quant_ = quant_;
           to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.value_ = value_;
+          to_bitField0_ |= 0x00000008;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2883,9 +3690,14 @@ public final class NefitProtos {
 
       public Builder mergeFrom(nefit.proto.NefitProtos.Order other) {
         if (other == nefit.proto.NefitProtos.Order.getDefaultInstance()) return this;
-        if (other.hasName()) {
+        if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
-          name_ = other.name_;
+          nameM_ = other.nameM_;
+          onChanged();
+        }
+        if (other.hasNameP()) {
+          bitField0_ |= 0x00000002;
+          nameP_ = other.nameP_;
           onChanged();
         }
         if (other.hasQuant()) {
@@ -2901,7 +3713,10 @@ public final class NefitProtos {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasName()) {
+        if (!hasNameM()) {
+          return false;
+        }
+        if (!hasNameP()) {
           return false;
         }
         if (!hasQuant()) {
@@ -2933,26 +3748,26 @@ public final class NefitProtos {
       }
       private int bitField0_;
 
-      private java.lang.Object name_ = "";
+      private java.lang.Object nameM_ = "";
       /**
-       * <code>required string name = 1;</code>
-       * @return Whether the name field is set.
+       * <code>required string nameM = 1;</code>
+       * @return Whether the nameM field is set.
        */
-      public boolean hasName() {
+      public boolean hasNameM() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required string name = 1;</code>
-       * @return The name.
+       * <code>required string nameM = 1;</code>
+       * @return The nameM.
        */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
+      public java.lang.String getNameM() {
+        java.lang.Object ref = nameM_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            name_ = s;
+            nameM_ = s;
           }
           return s;
         } else {
@@ -2960,95 +3775,179 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>required string name = 1;</code>
-       * @return The bytes for name.
+       * <code>required string nameM = 1;</code>
+       * @return The bytes for nameM.
        */
       public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
+          getNameMBytes() {
+        java.lang.Object ref = nameM_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          name_ = b;
+          nameM_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string name = 1;</code>
-       * @param value The name to set.
+       * <code>required string nameM = 1;</code>
+       * @param value The nameM to set.
        * @return This builder for chaining.
        */
-      public Builder setName(
+      public Builder setNameM(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        name_ = value;
+        nameM_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 1;</code>
+       * <code>required string nameM = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearName() {
+      public Builder clearNameM() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = getDefaultInstance().getName();
+        nameM_ = getDefaultInstance().getNameM();
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 1;</code>
-       * @param value The bytes for name to set.
+       * <code>required string nameM = 1;</code>
+       * @param value The bytes for nameM to set.
        * @return This builder for chaining.
        */
-      public Builder setNameBytes(
+      public Builder setNameMBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        name_ = value;
+        nameM_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nameP_ = "";
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return Whether the nameP field is set.
+       */
+      public boolean hasNameP() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return The nameP.
+       */
+      public java.lang.String getNameP() {
+        java.lang.Object ref = nameP_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            nameP_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return The bytes for nameP.
+       */
+      public com.google.protobuf.ByteString
+          getNamePBytes() {
+        java.lang.Object ref = nameP_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nameP_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @param value The nameP to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameP(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nameP_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNameP() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nameP_ = getDefaultInstance().getNameP();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameP = 2;</code>
+       * @param value The bytes for nameP to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNamePBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nameP_ = value;
         onChanged();
         return this;
       }
 
       private int quant_ ;
       /**
-       * <code>required int32 quant = 2;</code>
+       * <code>required int32 quant = 3;</code>
        * @return Whether the quant field is set.
        */
       public boolean hasQuant() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>required int32 quant = 2;</code>
+       * <code>required int32 quant = 3;</code>
        * @return The quant.
        */
       public int getQuant() {
         return quant_;
       }
       /**
-       * <code>required int32 quant = 2;</code>
+       * <code>required int32 quant = 3;</code>
        * @param value The quant to set.
        * @return This builder for chaining.
        */
       public Builder setQuant(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         quant_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 quant = 2;</code>
+       * <code>required int32 quant = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearQuant() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         quant_ = 0;
         onChanged();
         return this;
@@ -3056,36 +3955,36 @@ public final class NefitProtos {
 
       private int value_ ;
       /**
-       * <code>required int32 value = 3;</code>
+       * <code>required int32 value = 4;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 value = 3;</code>
+       * <code>required int32 value = 4;</code>
        * @return The value.
        */
       public int getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 3;</code>
+       * <code>required int32 value = 4;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
       public Builder setValue(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 3;</code>
+       * <code>required int32 value = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         value_ = 0;
         onChanged();
         return this;
@@ -3149,6 +4048,11 @@ public final class NefitProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_MsgAuth_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nefit_MsgAck_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nefit_MsgAck_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_Disponibility_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -3172,12 +4076,13 @@ public final class NefitProtos {
       "fit.MsgAuth.ClientType\022,\n\005mtype\030\004 \001(\0162\026." +
       "nefit.MsgAuth.MsgType:\005LOGIN\"*\n\nClientTy" +
       "pe\022\016\n\nMANUFACTOR\020\000\022\014\n\010IMPORTER\020\001\"\"\n\007MsgT" +
-      "ype\022\t\n\005LOGIN\020\000\022\014\n\010REGISTER\020\001\"^\n\rDisponib" +
-      "ility\022\014\n\004name\030\001 \002(\t\022\017\n\007minimun\030\002 \002(\005\022\017\n\007" +
-      "maximun\030\003 \002(\005\022\r\n\005value\030\004 \002(\005\022\016\n\006period\030\005" +
-      " \002(\t\"3\n\005Order\022\014\n\004name\030\001 \002(\t\022\r\n\005quant\030\002 \002" +
-      "(\005\022\r\n\005value\030\003 \002(\005B\032\n\013nefit.protoB\013NefitP" +
-      "rotos"
+      "ype\022\t\n\005LOGIN\020\000\022\014\n\010REGISTER\020\001\"\024\n\006MsgAck\022\n" +
+      "\n\002ok\030\001 \002(\010\"n\n\rDisponibility\022\r\n\005nameM\030\001 \002" +
+      "(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 \002(\005\022\017\n\007ma" +
+      "ximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\005\022\016\n\006period\030\006 \002" +
+      "(\t\"C\n\005Order\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(" +
+      "\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(\005B\032\n\013nefit" +
+      ".protoB\013NefitProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3189,18 +4094,24 @@ public final class NefitProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_MsgAuth_descriptor,
         new java.lang.String[] { "Name", "Pass", "Ctype", "Mtype", });
-    internal_static_nefit_Disponibility_descriptor =
+    internal_static_nefit_MsgAck_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_nefit_MsgAck_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nefit_MsgAck_descriptor,
+        new java.lang.String[] { "Ok", });
+    internal_static_nefit_Disponibility_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_nefit_Disponibility_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_Disponibility_descriptor,
-        new java.lang.String[] { "Name", "Minimun", "Maximun", "Value", "Period", });
+        new java.lang.String[] { "NameM", "NameP", "Minimun", "Maximun", "Value", "Period", });
     internal_static_nefit_Order_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_nefit_Order_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_Order_descriptor,
-        new java.lang.String[] { "Name", "Quant", "Value", });
+        new java.lang.String[] { "NameM", "NameP", "Quant", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
