@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Client" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="psd.client.Client" />
+    <option name="MAIN_CLASS_NAME" value="nefit.client.Client" />
     <module name="client" />
     <extension name="coverage">
       <pattern>

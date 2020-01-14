@@ -1,4 +1,4 @@
-package psd.client;
+package nefit.client;
 
 public class Manufactor implements Runnable
 {
