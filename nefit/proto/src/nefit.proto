@@ -25,18 +25,26 @@ message MsgAuth {
 	optional MsgType mtype = 4 [default = LOGIN];
 }
 
+message MsgAck {
+    required bool ok = 1;
+    optional string 
+}
+
 message Disponibility {
-    required string name = 1;
-    required int32 minimun = 2;
-    required int32 maximun = 3;
-    required int32 value = 4;
-    required string period = 5;
+    required string nameM = 1;
+    required string nameP = 2;
+    required int32 minimun = 3;
+    required int32 maximun = 4;
+    required int32 value = 5;
+    required string period = 6;
 }
 
 message Order {
-    required string name = 1;
-    required int32 quant = 2;
-    required int32 value = 3;
+    required string nameM = 1;
+    required string nameP = 2;
+    required int32 quant = 3;
+    required int32 value = 4;
 }
 
+message
 /* -------------------------------------------------------------------------- */
