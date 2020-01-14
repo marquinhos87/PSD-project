@@ -1,30 +1,5 @@
 --------------------------------------------------------------------------------
 
-  Client (xN)
-    - Java
-    - Fala unicamente com Servidor
-    - Pode ser um "Manufacturer" ou "Importer"
-
-  Server (x1)
-    - Protocol Buffers: https://github.com/tomas-abrahamsson/gpb
-    - ZeroMQ: https://github.com/zeromq/chumak
-    - Fala com Negociadores ponto-a-ponto
-    - Informa os Catálogos de cenas através de ZeroMQ Pub-Sub
-    - Ficheiro com credenciais de todos os fabricantes e importadores
-
-  Arbiter (xN)
-    - Fala com Servidor ponto-a-ponto
-    - Informa os Catálogos de cenas através de ZeroMQ Pub-Sub
-
-  Catalog (xN)
-    - Subscrevem mensagens no ZeroMQ Pub-Sub
-    - Disponibiliza interface RESTful
-
-NOTA: Uma negociação é atribuída ao negociador com menos negociações em
-progresso aquando do início da nova negociação.
-
---------------------------------------------------------------------------------
-
 Comunicação entre as partes
 
   Fabricante -> Servidor
