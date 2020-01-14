@@ -3,40 +3,66 @@
 -export([server/1]).
 
 server(Port) ->
-    Room = spawn(fun()-> room([]) end),
+    Authenticator = spawn(fun()-> authenticator(map:new()) end),
+    Orders = spawn(fun()-> receiveOrder([]) end),
+    Productions = spawn(fun()-> receiveProduction([]) end),
+    Arbiters = spawn(fun()-> arbiterResults(map:new()) end),
     {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, line}, {reuseaddr, true}]),
-    acceptor(LSock, Room).
+    acceptor(LSock).
 
-acceptor(LSock, Room) ->
+% Accepts connections
+acceptor(LSock) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> acceptor(LSock, Room) end),
-    Room ! {enter, self()},
-    user(Sock, Room).
+    spawn(fun() -> acceptor(LSock) end),
+    connectedClient(Sock).
 
-room(Pids) ->
-    receive
-        {enter, Pid} ->
-            io:format("user entered ̃n", []),
-            room([Pid | Pids]);
-        {line, Data} = Msg ->
-            io:format("received  ̃p ̃n", [Data]),
-            [Pid ! Msg || Pid <- Pids],
-            room(Pids);
-        {leave, Pid} ->
-            io:format("user left ̃n", []),
-            room(Pids -- [Pid])
-    end.
+% process responsible for article orders
+receiveOrder(Orders) ->
+    Orders.
 
-user(Sock, Room) ->
+% process responsible for article productions
+receiveProduction(Productions) ->
+    Productions.
+
+% process responsible for the results received by the arbiters
+arbiterResults(Arbiters) ->
+    Arbiters.
+
+% treats client logged as manufacturer
+manufacturer(Sock) ->
     receive
-        {line, Data} ->
-            gen_tcp:send(Sock, Data),
-            user(Sock, Room);
         {tcp, _, Data} ->
-            Room ! {line, Data},
-            user(Sock, Room);
+            decoder(Data),
+            manufacturer(Sock);
         {tcp_closed, _} ->
-            Room ! {leave, self()};
+            io:format("Closed.");
         {tcp_error, _, _} ->
-            Room ! {leave, self()}
+            io:format("Error.")
     end.
+
+% treats client logged as importer
+importer(Sock) ->
+    receive
+        {tcp, _, Data} ->
+            decoder(Data),
+            importer(Sock);
+        {tcp_closed, _} ->
+            io:format("Closed.");
+        {tcp_error, _, _} ->
+            io:format("Error.")
+    end.
+
+% registers or logs in the connected client
+connectedClient(Sock) ->
+    Sock.
+
+% process responsible for authenticating and maybe register users, might separate
+authenticator(RegisteredUsers) ->
+    RegisteredUsers.
+
+% serialize
+encoder(Msg) ->
+    Msg.
+% deserialize
+decoder(Msg) ->
+    Msg.
