@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+message MsgAuth {
+	required string name = 1;
+	required string pass = 2;
+
+	enum ClientType {
+        MANUFACTOR = 0;
+    	IMPORTER = 1;
+    }
+    required ClientType ctype = 3;
+
+	enum MsgType {
+		LOGIN = 0;
+		REGISTER = 1;
+	}
+	optional MsgType mtype = 4 [default = LOGIN];
+}
+
+message Article {
+    required string name = 1;
+    required int32 minimun = 2;
+    required int32 maximun = 3;
+    required int32 value = 4;
+    required string period = 5;
+}
