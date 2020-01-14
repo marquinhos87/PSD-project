@@ -19,6 +19,9 @@
     - Subscrevem mensagens no ZeroMQ Pub-Sub
     - Disponibiliza interface RESTful
 
+NOTA: Uma negociação é atribuída ao negociador com menos negociações em
+progresso aquando do início da nova negociação.
+
 --------------------------------------------------------------------------------
 
 Comunicação entre as partes
