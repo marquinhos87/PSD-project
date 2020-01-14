@@ -30,7 +30,7 @@ message MsgAck {
     optional string msg = 2;
 }
 
-message Disponibility {
+message DisponibilityS {
     required string nameM = 1;
     required string nameP = 2;
     required int32 minimun = 3;
@@ -39,11 +39,74 @@ message Disponibility {
     required string period = 6;
 }
 
-message Order {
+message DisponibilityN {
+    required string nameM = 1;
+    required string nameP = 2;
+    required int32 minimun = 3;
+    required int32 maximun = 4;
+    required int32 value = 5;
+    required string period = 6;
+}
+
+message OrderS {
     required string nameM = 1;
     required string nameP = 2;
     required int32 quant = 3;
     required int32 value = 4;
+}
+
+message OrderN {
+    required string nameM = 1;
+    required string nameP = 2;
+    required int32 quant = 3;
+    required int32 value = 4;
+}
+
+message OrderAckS {
+    required bool ack = 1;
+    optional string msg = 2;
+    required string nameI = 3;
+}
+
+message OrderAckI {
+    required bool ack = 1;
+    optional string msg = 2;
+}
+
+message SubS {
+    repeated string subs = 1;
+}
+
+message SubN {
+    repeated string subs = 1;
+}
+
+message ProductionS {
+    required string nameM = 1;
+    required string nameP = 2;
+    required int32 minimun = 3;
+    required int32 maximun = 4;
+    required int32 value = 5;
+    required string period = 6;
+}
+
+message ProductionM {
+    required string nameP = 1;
+    required int32 minimun = 2;
+    required int32 maximun = 3;
+    required int32 value = 4;
+    required string period = 5;
+}
+
+message ResultS {
+    required bool result = 1;
+    optional string msg = 2;
+    required string nameI = 3;
+}
+
+message ResultI {
+    required bool result = 1;
+    optional string msg = 2;
 }
 
 /* -------------------------------------------------------------------------- */

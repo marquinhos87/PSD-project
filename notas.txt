@@ -29,26 +29,32 @@ Comunicação entre as partes
 
   Fabricante -> Servidor
     MsgAuth
-    Disponibility
+    DisponibilityS
 
   Servidor -> Fabricante
     MsgAck
-    Production
+    ProductionM
 
   Importador -> Servidor
     MshAuth
-    Order
+    OrderS
+    SubS
 
   Servidor -> Importador
     MsgAck
-    Result
+    ResultI
+    OrderAckI
+    InfoI
 
   Negociador -> Servidor
-    Production
-    Result
+    ProductionS
+    ResultS
+    OrderAckS
+    InfoS
 
   Servidor -> Negociador
-    Order
-    Disponibility
+    OrderN
+    DisponibilityN
+    SubN
 
 --------------------------------------------------------------------------------
