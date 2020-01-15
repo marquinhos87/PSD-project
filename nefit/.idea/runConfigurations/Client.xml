@@ -2,6 +2,7 @@
   <configuration default="false" name="Client" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="nefit.client.Client" />
     <module name="client" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/client" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="client.*" />

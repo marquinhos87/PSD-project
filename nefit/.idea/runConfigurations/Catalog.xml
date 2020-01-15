@@ -2,6 +2,8 @@
   <configuration default="false" name="Catalog" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="nefit.catalog.Main" />
     <module name="catalog" />
+    <option name="PROGRAM_PARAMETERS" value="server" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/catalog" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="client.*" />

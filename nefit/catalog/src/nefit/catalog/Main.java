@@ -2,8 +2,8 @@ package nefit.catalog;
 
 public class Main
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
-        System.out.println("Hello from the Java catalog.");
+        new CatalogApplication().run(args);
     }
 }

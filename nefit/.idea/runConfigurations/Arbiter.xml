@@ -2,6 +2,7 @@
   <configuration default="false" name="Arbiter" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="nefit.arbiter.Main" />
     <module name="arbiter" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/arbiter" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="client.*" />
