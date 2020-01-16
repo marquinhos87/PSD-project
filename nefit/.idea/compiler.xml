@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="client" />
+        <module name="catalog" />
         <module name="proto" />
         <module name="arbiter" />
-        <module name="catalog" />
       </profile>
     </annotationProcessing>
   </component>
