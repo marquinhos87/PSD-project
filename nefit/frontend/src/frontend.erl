@@ -6,45 +6,106 @@
 
 run(Port) ->
     Authenticator = spawn(fun()-> authenticator(map:new()) end),
-    Orders = spawn(fun()-> receiveOrder([]) end),
-    Productions = spawn(fun()-> receiveProduction([],[]) end),
-    Arbiters = spawn(fun()-> arbiterResults(map:new()) end),
+    Negotiations = spawn(fun()-> treatNegotiation(map:new()) end),
+    Orders = spawn(fun()-> treatOrder([], Negotiations) end),
+    Productions = spawn(fun()-> treatProduction([],[],Negotiations) end),
     {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, line}, {reuseaddr, true}]),
-    acceptor(LSock, Authenticator).
+    acceptor(LSock, Authenticator, Orders, Productions).
 
 % accepts connections
-acceptor(LSock, Authenticator) ->
+acceptor(LSock, Authenticator, Orders, Productions) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> connectedClient(Sock, Authenticator) end),
+    spawn(fun() -> connectedClient(Sock, Authenticator, Orders, Productions) end),
     acceptor(LSock, Authenticator).
 
 % process responsible for article orders
-receiveOrder(Orders) ->
+treatOrder(Orders, Negotiations) ->
     receive
-        {Order, Details} ->
-            % send the order to the arbiter with the least amount of load
-            Details
+        {order, Pid, Manuf, Product, Quant, Value} ->
+            Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value},
+            nefitproto:encode_msg(Msg),
+            Negotiations ! {order, Pid, Msg},
+            treatOrder(Orders, Negotiations)
     end.
 
 % process responsible for article productions
-receiveProduction(Productions, Subs) ->
-    Productions.
+treatProduction(Productions, Subs, Negotiations) ->
+    receive
+        {production, Sock, Manuf, Product, Value, Min, Max, Period} ->
+            Msg = #'DisponibilityN'{nameP = Product, nameM = Manuf, value = Value, minimun = Min, maximun = Max,
+                period = Period},
+            nefitproto:encode_msg(Msg),
+            Negotiations ! {disponibility, Sock, Msg},
+            % percorrer os sockets guardados em Subs para mandar notificacao de nova producao de um fabricante
+            treatProduction(Productions, Subs, Negotiations)
+    end.
 
 % process responsible for the results received by the arbiters
-arbiterResults(Arbiters) ->
-    % initialize the number of arbiters
+treatNegotiation(Arbiters) ->
+    receive
+        {order, Importer, Msg} ->
+            % send the order to the arbiter with the least amount of load
+            treatNegotiation(Arbiters)
+    end.
+
+% treat data received from arbiters
+arbiter(Sock, Negotiations) ->
     receive
         {tcp, _, Data} ->
-            % received the result of a negotiation
-            decode(Data)
+            Msg = decode(Data),
+            Field = Msg#'Server'.msg,
+            case Field of
+                {m6, Production} ->
+                    Negotiations ! {Sock,
+                        Production#'ProductionS'.nameM,
+                        Production#'ProductionS'.nameP,
+                        Production#'ProductionS'.quant,
+                        Production#'ProductionS'.value},
+                    arbiter(Sock, Negotiations);
+                {m4, Result} ->
+                    Negotiations ! {Sock,
+                        Result#'ResultS'.result,
+                        Result#'ResultS'.msg,
+                        Result#'ResultS'.nameI},
+                    arbiter(Sock, Negotiations);
+                {m7, Ack} ->
+                    Negotiations ! {Sock,
+                        Ack#'OrderAckS'.ack,
+                        Ack#'OrderAckS'.msg,
+                        Ack#'OrderAckS'.nameI},
+                    arbiter(Sock, Negotiations);
+                {m5, Info} ->
+                    Negotiations ! {Sock,
+                        Info#'InfoS'.nameM,
+                        Info#'InfoS'.nameP,
+                        Info#'InfoS'.minimun,
+                        Info#'InfoS'.maximun,
+                        Info#'InfoS'.value,
+                        Info#'InfoS'.period,
+                        Info#'InfoS'.nameI},
+                    arbiter(Sock, Negotiations)
+            end;
+        {order, Msg} ->
+            gen_tcp:send(Sock, Msg),
+            arbiter(Sock, Negotiations)
     end.
 
 % treats client logged as manufacturer
-manufacturer(Sock) ->
+manufacturer(Sock, Productions) ->
     receive
         {tcp, _, Data} ->
-            decode(Data),
-            manufacturer(Sock);
+            Msg = decode(Data),
+            Field = Msg#'Server'.msg,
+            case Field of
+                {m1, ProductionOffer} ->
+                    Productions ! {production, Sock,
+                        ProductionOffer#'DisponibilityS'.nameM,
+                        ProductionOffer#'DisponibilityS'.nameP,
+                        ProductionOffer#'DisponibilityS'.value,
+                        ProductionOffer#'DisponibilityS'.minimun,
+                        ProductionOffer#'DisponibilityS'.maximun,
+                        ProductionOffer#'DisponibilityS'.period}
+        end;
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
@@ -52,11 +113,26 @@ manufacturer(Sock) ->
     end.
 
 % treats client logged as importer
-importer(Sock) ->
+importer(Sock, Orders, Productions) ->
     receive
         {tcp, _, Data} ->
-            decode(Data),
-            importer(Sock);
+            Msg = decode(Data),
+            Field = Msg#'Server'.msg,
+            case Field of
+                {m2,Order} ->
+                    Orders ! {order,Sock,
+                        Order#'OrderS'.nameM,
+                        Order#'OrderS'.nameP,
+                        Order#'OrderS'.quant,
+                        Order#'OrderS'.value},
+                    importer(Sock, Orders, Productions);
+                {m3,Sub} ->
+                    Productions ! {sub, Sock, Sub#'SubS'.subs},
+                    importer(Sock, Orders, Productions);
+                {m8, Get} ->
+                    % to do
+                    importer(Sock, Orders, Productions)
+            end;
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
@@ -64,16 +140,20 @@ importer(Sock) ->
     end.
 
 % registers or logs in the connected client
-connectedClient(Sock, Authenticator) ->
+connectedClient(Sock, Authenticator, Orders, Productions) ->
     receive
         {tcp, _, Data} ->
             Msg = decode(Data,'MsgAuth'),
-            Authenticator ! {Msg#'MsgAuth'.mtype, Msg#'MsgAuth'.name, Msg#'MsgAuth'.pass, Msg#'MsgAuth'.ctype,Sock},
-            connectedClient(Sock, Authenticator);
+            Authenticator ! {Sock,
+                Msg#'MsgAuth'.mtype,
+                Msg#'MsgAuth'.name,
+                Msg#'MsgAuth'.pass,
+                Msg#'MsgAuth'.ctype},
+            connectedClient(Sock, Authenticator, Orders, Productions);
         {success, Type} ->
             case Type of
-                'IMPORTER'-> importer(Sock);
-                'MANUFACTURER'-> manufacturer(Sock)
+                'IMPORTER'-> importer(Sock, Orders, Productions);
+                'MANUFACTURER'-> manufacturer(Sock, Productions)
             end;
         {tcp_closed, _} ->
             io:format("Closed.");
@@ -84,20 +164,22 @@ connectedClient(Sock, Authenticator) ->
 % process responsible for authenticating and maybe register users, might separate
 authenticator(RegisteredUsers) ->
     receive
-        {'LOGIN', Name, Pass, Type, Sock} ->
+        {Sock, 'LOGIN', Name, Pass, Type} ->
             Status = maps:find(Name,RegisteredUsers),
             case Status of
                 {ok, Value} ->
                     if
                         Value == Pass ->
-                            Sock ! {success, Type};
+                            Sock ! {success, Type},
+                            authenticator(RegisteredUsers);
                         true ->
-                            Sock ! {failure}
+                            Sock ! {failure},
+                            authenticator(RegisteredUsers)
                     end;
                 error ->
                     Sock ! {failure}
             end;
-        {'REGISTER', Name, Pass, Type, Sock} ->
+        {Sock, 'REGISTER', Name, Pass, _} ->
             Status = maps:find(Name,RegisteredUsers),
             case Status of
                 {ok, _} ->
