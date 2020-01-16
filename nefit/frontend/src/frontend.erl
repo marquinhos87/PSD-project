@@ -1,5 +1,5 @@
 
--module(main).
+-module(frontend).
 -export([run/1]).
 
 -include("nefit.hrl").
