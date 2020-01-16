@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="protoc (Erlang)" type="ShConfigurationType">
+    <option name="SCRIPT_PATH" value="escript" />
+    <option name="SCRIPT_OPTIONS" value="_build/default/plugins/gpb/bin/protoc-erl -o src/ ../proto/src/nefit.proto" />
+    <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/frontend" />
+    <option name="INTERPRETER_PATH" value="/usr/bin/env" />
+    <option name="INTERPRETER_OPTIONS" value="escript" />
+    <method v="2" />
+  </configuration>
+</component>
