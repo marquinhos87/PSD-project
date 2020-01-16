@@ -212,5 +212,6 @@
     <orderEntry type="library" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: org.zeromq:jeromq:0.5.1" level="project" />
     <orderEntry type="library" name="Maven: eu.neilalexander:jnacl:1.0.0" level="project" />
+    <orderEntry type="module" module-name="proto" />
   </component>
 </module>
