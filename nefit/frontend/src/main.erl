@@ -15,7 +15,7 @@ server(Port) ->
 % accepts connections
 acceptor(LSock, Authenticator) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> acceptor(LSock) end),
+    spawn(fun() -> acceptor(LSock, Authenticator) end),
     connectedClient(Sock, Authenticator).
 
 % process responsible for article orders
@@ -55,7 +55,7 @@ manufacturer(Sock) ->
 importer(Sock) ->
     receive
         {tcp, _, Data} ->
-            decode(Data),
+            decoder(Data),
             importer(Sock);
         {tcp_closed, _} ->
             io:format("Closed.");
@@ -67,7 +67,14 @@ importer(Sock) ->
 connectedClient(Sock, Authenticator) ->
     receive
         {tcp, _, Data} ->
-            decode(Data),
+            Msg = decoder(Data,'MsgAuth'),
+            Authenticator ! {Msg#'MsgAuth'.mtype, Msg#'MsgAuth'.name, Msg#'MsgAuth'.pass, Msg#'MsgAuth'.ctype,Sock},
+            connectedClient(Sock, Authenticator);
+        {success, Type} ->
+            case Type of
+                'IMPORTER'-> importer(Sock);
+                'MANUFACTURER'-> manufacturer(Sock)
+            end;
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
@@ -76,11 +83,40 @@ connectedClient(Sock, Authenticator) ->
 
 % process responsible for authenticating and maybe register users, might separate
 authenticator(RegisteredUsers) ->
-    RegisteredUsers.
+    receive
+        {'LOGIN', Name, Pass, Type, Sock} ->
+            Status = maps:find(Name,RegisteredUsers),
+            case Status of
+                {ok, Value} ->
+                    if
+                        Value == Pass ->
+                            Sock ! {success, Type};
+                        true ->
+                            Sock ! {failure}
+                    end;
+                error ->
+                    Sock ! {failure}
+            end;
+        {'REGISTER', Name, Pass, Type, Sock} ->
+            Status = maps:find(Name,RegisteredUsers),
+            case Status of
+                {ok, _} ->
+                    Sock ! {failure},
+                    authenticator(RegisteredUsers);
+                error ->
+                    Registered = maps:put(Name, Pass, RegisteredUsers),
+                    authenticator(Registered)
+            end
+    end.
 
 % serialize
+
 
 % deserialize
 decoder(Data) ->
     Details = nefit:decode_msg(Data, 'Server'),
+    Details.
+
+decoder(Data, Type) ->
+    Details = nefit:decode_msg(Data, Type),
     Details.
