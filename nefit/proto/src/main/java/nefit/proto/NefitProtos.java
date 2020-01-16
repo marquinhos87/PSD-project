@@ -22545,21 +22545,6 @@ public final class NefitProtos {
     nefit.proto.NefitProtos.OrderNOrBuilder getOrderOrBuilder();
 
     /**
-<<<<<<< HEAD
-     * <code>optional .nefit.DisponibilityN disp = 4;</code>
-     * @return Whether the disp field is set.
-     */
-    boolean hasDisp();
-    /**
-     * <code>optional .nefit.DisponibilityN disp = 4;</code>
-     * @return The disp.
-     */
-    nefit.proto.NefitProtos.DisponibilityN getDisp();
-    /**
-     * <code>optional .nefit.DisponibilityN disp = 4;</code>
-     */
-    nefit.proto.NefitProtos.DisponibilityNOrBuilder getDispOrBuilder();
-=======
      * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
      * @return Whether the disponibility field is set.
      */
@@ -22573,7 +22558,6 @@ public final class NefitProtos {
      * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
      */
     nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder();
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
 
     public nefit.proto.NefitProtos.Negotiator.MsgCase getMsgCase();
   }
@@ -22720,11 +22704,7 @@ public final class NefitProtos {
       GET(1),
       SUB(2),
       ORDER(3),
-<<<<<<< HEAD
-      DISP(4),
-=======
       DISPONIBILITY(4),
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
       MSG_NOT_SET(0);
       private final int value;
       private MsgCase(int value) {
@@ -22745,11 +22725,7 @@ public final class NefitProtos {
           case 1: return GET;
           case 2: return SUB;
           case 3: return ORDER;
-<<<<<<< HEAD
-          case 4: return DISP;
-=======
           case 4: return DISPONIBILITY;
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           case 0: return MSG_NOT_SET;
           default: return null;
         }
@@ -22849,21 +22825,6 @@ public final class NefitProtos {
       return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
     }
 
-<<<<<<< HEAD
-    public static final int DISP_FIELD_NUMBER = 4;
-    /**
-     * <code>optional .nefit.DisponibilityN disp = 4;</code>
-     * @return Whether the disp field is set.
-     */
-    public boolean hasDisp() {
-      return msgCase_ == 4;
-    }
-    /**
-     * <code>optional .nefit.DisponibilityN disp = 4;</code>
-     * @return The disp.
-     */
-    public nefit.proto.NefitProtos.DisponibilityN getDisp() {
-=======
     public static final int DISPONIBILITY_FIELD_NUMBER = 4;
     /**
      * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
@@ -22877,22 +22838,15 @@ public final class NefitProtos {
      * @return The disponibility.
      */
     public nefit.proto.NefitProtos.DisponibilityN getDisponibility() {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
       if (msgCase_ == 4) {
          return (nefit.proto.NefitProtos.DisponibilityN) msg_;
       }
       return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
     }
     /**
-<<<<<<< HEAD
-     * <code>optional .nefit.DisponibilityN disp = 4;</code>
-     */
-    public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDispOrBuilder() {
-=======
      * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
      */
     public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
       if (msgCase_ == 4) {
          return (nefit.proto.NefitProtos.DisponibilityN) msg_;
       }
@@ -22918,13 +22872,8 @@ public final class NefitProtos {
           return false;
         }
       }
-<<<<<<< HEAD
-      if (hasDisp()) {
-        if (!getDisp().isInitialized()) {
-=======
       if (hasDisponibility()) {
         if (!getDisponibility().isInitialized()) {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           memoizedIsInitialized = 0;
           return false;
         }
@@ -23003,13 +22952,8 @@ public final class NefitProtos {
               .equals(other.getOrder())) return false;
           break;
         case 4:
-<<<<<<< HEAD
-          if (!getDisp()
-              .equals(other.getDisp())) return false;
-=======
           if (!getDisponibility()
               .equals(other.getDisponibility())) return false;
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           break;
         case 0:
         default:
@@ -23039,13 +22983,8 @@ public final class NefitProtos {
           hash = (53 * hash) + getOrder().hashCode();
           break;
         case 4:
-<<<<<<< HEAD
-          hash = (37 * hash) + DISP_FIELD_NUMBER;
-          hash = (53 * hash) + getDisp().hashCode();
-=======
           hash = (37 * hash) + DISPONIBILITY_FIELD_NUMBER;
           hash = (53 * hash) + getDisponibility().hashCode();
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           break;
         case 0:
         default:
@@ -23235,17 +23174,10 @@ public final class NefitProtos {
           }
         }
         if (msgCase_ == 4) {
-<<<<<<< HEAD
-          if (dispBuilder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = dispBuilder_.build();
-=======
           if (disponibilityBuilder_ == null) {
             result.msg_ = msg_;
           } else {
             result.msg_ = disponibilityBuilder_.build();
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           }
         }
         result.bitField0_ = to_bitField0_;
@@ -23311,13 +23243,8 @@ public final class NefitProtos {
             mergeOrder(other.getOrder());
             break;
           }
-<<<<<<< HEAD
-          case DISP: {
-            mergeDisp(other.getDisp());
-=======
           case DISPONIBILITY: {
             mergeDisponibility(other.getDisponibility());
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
             break;
           }
           case MSG_NOT_SET: {
@@ -23341,13 +23268,8 @@ public final class NefitProtos {
             return false;
           }
         }
-<<<<<<< HEAD
-        if (hasDisp()) {
-          if (!getDisp().isInitialized()) {
-=======
         if (hasDisponibility()) {
           if (!getDisponibility().isInitialized()) {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
             return false;
           }
         }
@@ -23804,22 +23726,6 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-<<<<<<< HEAD
-          nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder> dispBuilder_;
-      /**
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       * @return Whether the disp field is set.
-       */
-      public boolean hasDisp() {
-        return msgCase_ == 4;
-      }
-      /**
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       * @return The disp.
-       */
-      public nefit.proto.NefitProtos.DisponibilityN getDisp() {
-        if (dispBuilder_ == null) {
-=======
           nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder> disponibilityBuilder_;
       /**
        * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
@@ -23834,61 +23740,34 @@ public final class NefitProtos {
        */
       public nefit.proto.NefitProtos.DisponibilityN getDisponibility() {
         if (disponibilityBuilder_ == null) {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           if (msgCase_ == 4) {
             return (nefit.proto.NefitProtos.DisponibilityN) msg_;
           }
           return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
         } else {
           if (msgCase_ == 4) {
-<<<<<<< HEAD
-            return dispBuilder_.getMessage();
-=======
             return disponibilityBuilder_.getMessage();
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           }
           return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
         }
       }
       /**
-<<<<<<< HEAD
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       */
-      public Builder setDisp(nefit.proto.NefitProtos.DisponibilityN value) {
-        if (dispBuilder_ == null) {
-=======
        * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
        */
       public Builder setDisponibility(nefit.proto.NefitProtos.DisponibilityN value) {
         if (disponibilityBuilder_ == null) {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           if (value == null) {
             throw new NullPointerException();
           }
           msg_ = value;
           onChanged();
         } else {
-<<<<<<< HEAD
-          dispBuilder_.setMessage(value);
-=======
           disponibilityBuilder_.setMessage(value);
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
         }
         msgCase_ = 4;
         return this;
       }
       /**
-<<<<<<< HEAD
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       */
-      public Builder setDisp(
-          nefit.proto.NefitProtos.DisponibilityN.Builder builderForValue) {
-        if (dispBuilder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          dispBuilder_.setMessage(builderForValue.build());
-=======
        * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
        */
       public Builder setDisponibility(
@@ -23898,23 +23777,15 @@ public final class NefitProtos {
           onChanged();
         } else {
           disponibilityBuilder_.setMessage(builderForValue.build());
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
         }
         msgCase_ = 4;
         return this;
       }
       /**
-<<<<<<< HEAD
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       */
-      public Builder mergeDisp(nefit.proto.NefitProtos.DisponibilityN value) {
-        if (dispBuilder_ == null) {
-=======
        * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
        */
       public Builder mergeDisponibility(nefit.proto.NefitProtos.DisponibilityN value) {
         if (disponibilityBuilder_ == null) {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           if (msgCase_ == 4 &&
               msg_ != nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance()) {
             msg_ = nefit.proto.NefitProtos.DisponibilityN.newBuilder((nefit.proto.NefitProtos.DisponibilityN) msg_)
@@ -23925,31 +23796,18 @@ public final class NefitProtos {
           onChanged();
         } else {
           if (msgCase_ == 4) {
-<<<<<<< HEAD
-            dispBuilder_.mergeFrom(value);
-          }
-          dispBuilder_.setMessage(value);
-=======
             disponibilityBuilder_.mergeFrom(value);
           }
           disponibilityBuilder_.setMessage(value);
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
         }
         msgCase_ = 4;
         return this;
       }
       /**
-<<<<<<< HEAD
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       */
-      public Builder clearDisp() {
-        if (dispBuilder_ == null) {
-=======
        * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
        */
       public Builder clearDisponibility() {
         if (disponibilityBuilder_ == null) {
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
           if (msgCase_ == 4) {
             msgCase_ = 0;
             msg_ = null;
@@ -23960,28 +23818,11 @@ public final class NefitProtos {
             msgCase_ = 0;
             msg_ = null;
           }
-<<<<<<< HEAD
-          dispBuilder_.clear();
-=======
           disponibilityBuilder_.clear();
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
         }
         return this;
       }
       /**
-<<<<<<< HEAD
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       */
-      public nefit.proto.NefitProtos.DisponibilityN.Builder getDispBuilder() {
-        return getDispFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       */
-      public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDispOrBuilder() {
-        if ((msgCase_ == 4) && (dispBuilder_ != null)) {
-          return dispBuilder_.getMessageOrBuilder();
-=======
        * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
        */
       public nefit.proto.NefitProtos.DisponibilityN.Builder getDisponibilityBuilder() {
@@ -23993,7 +23834,6 @@ public final class NefitProtos {
       public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
         if ((msgCase_ == 4) && (disponibilityBuilder_ != null)) {
           return disponibilityBuilder_.getMessageOrBuilder();
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
         } else {
           if (msgCase_ == 4) {
             return (nefit.proto.NefitProtos.DisponibilityN) msg_;
@@ -24002,18 +23842,6 @@ public final class NefitProtos {
         }
       }
       /**
-<<<<<<< HEAD
-       * <code>optional .nefit.DisponibilityN disp = 4;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder> 
-          getDispFieldBuilder() {
-        if (dispBuilder_ == null) {
-          if (!(msgCase_ == 4)) {
-            msg_ = nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
-          }
-          dispBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-=======
        * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -24024,7 +23852,6 @@ public final class NefitProtos {
             msg_ = nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
           }
           disponibilityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
               nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder>(
                   (nefit.proto.NefitProtos.DisponibilityN) msg_,
                   getParentForChildren(),
@@ -24033,11 +23860,7 @@ public final class NefitProtos {
         }
         msgCase_ = 4;
         onChanged();;
-<<<<<<< HEAD
-        return dispBuilder_;
-=======
         return disponibilityBuilder_;
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -24262,21 +24085,12 @@ public final class NefitProtos {
       "\n\010Importer\022\"\n\006ordack\030\001 \001(\0132\020.nefit.Order" +
       "AckIH\000\022$\n\004nego\030\002 \001(\0132\024.nefit.Negotiation" +
       "sIH\000\022 \n\006result\030\003 \001(\0132\016.nefit.ResultIH\000\022\034" +
-<<<<<<< HEAD
-      "\n\004info\030\004 \001(\0132\014.nefit.InfoIH\000B\005\n\003msg\"\222\001\n\n" +
-      "Negotiator\022\032\n\003get\030\001 \001(\0132\013.nefit.GetNH\000\022\032" +
-      "\n\003sub\030\002 \001(\0132\013.nefit.SubNH\000\022\036\n\005order\030\003 \001(" +
-      "\0132\r.nefit.OrderNH\000\022%\n\004disp\030\004 \001(\0132\025.nefit" +
-      ".DisponibilityNH\000B\005\n\003msgB\032\n\013nefit.protoB" +
-      "\013NefitProtos"
-=======
       "\n\004info\030\004 \001(\0132\014.nefit.InfoIH\000B\005\n\003msg\"\233\001\n\n" +
       "Negotiator\022\032\n\003get\030\001 \001(\0132\013.nefit.GetNH\000\022\032" +
       "\n\003sub\030\002 \001(\0132\013.nefit.SubNH\000\022\036\n\005order\030\003 \001(" +
       "\0132\r.nefit.OrderNH\000\022.\n\rdisponibility\030\004 \001(" +
       "\0132\025.nefit.DisponibilityNH\000B\005\n\003msgB\032\n\013nef" +
       "it.protoB\013NefitProtos"
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -24419,11 +24233,7 @@ public final class NefitProtos {
     internal_static_nefit_Negotiator_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_Negotiator_descriptor,
-<<<<<<< HEAD
-        new java.lang.String[] { "Get", "Sub", "Order", "Disp", "Msg", });
-=======
         new java.lang.String[] { "Get", "Sub", "Order", "Disponibility", "Msg", });
->>>>>>> 781c0ca1026236dc15ba6acfdbeea7865ac6a690
   }
 
   // @@protoc_insertion_point(outer_class_scope)
