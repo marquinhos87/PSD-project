@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
 
-public class Importer implements Runnable {
+public class Importer implements Runnable
+{
     private String name;
     private String pass;
     private BufferedReader in;
@@ -25,13 +26,19 @@ public class Importer implements Runnable {
     {
         Messages messages = new Messages();
         //Authentication
-        while(true) {
-            try {
+        while(true)
+        {
+            try
+            {
                 out.println("Login(l) or Register and Login(r)");
                 out.flush();
                 String auth = in.readLine();
-                if(auth.equals("l")) {
+                if(auth.equals("l"))
+                {
                     //TODO : MsgAuth Login
+                    //MsgAuth msgl = messages.createMsgAuth(true,false,this.name,this.pass);
+
+                    //Wait for MsgAck
 
                     //Replace true by MsgAck.getAck();
                     if(true) break;
@@ -41,13 +48,20 @@ public class Importer implements Runnable {
                         out.flush();
                     }
                 }
-                else {
+                else
+                {
                     //TODO : MsgAuth Register
+                    //MsgAuth msgl = messages.createMsgAuth(false,false,this.name,this.pass);
+
+                    //Wait for MsgAck
 
                     //Replace true by MsgAck.getAck();
                     if(true)
                     {
                         //TODO : MsgAuth Login
+                        //MsgAuth msgl = messages.createMsgAuth(true,false,this.name,this.pass);
+
+                        //Wait for MsgAck
 
                         //Replace true by MsgAck.getAck();
                         if(true) break;
@@ -59,12 +73,18 @@ public class Importer implements Runnable {
                     }
                 }
 
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
         }
 
         //Orders
         //TODO
+        while(true)
+        {
+
+        }
     }
 }

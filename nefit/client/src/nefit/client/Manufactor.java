@@ -26,13 +26,19 @@ public class Manufactor implements Runnable
     public void run()
     {
         //Authentication
-        while(true) {
-            try {
+        while(true)
+        {
+            try
+            {
                 out.println("Login(l) or Register and Login(r)");
                 out.flush();
                 String auth = in.readLine();
-                if(auth.equals("l")) {
+                if(auth.equals("l"))
+                {
                     //TODO : MsgAuth Login
+                    //MsgAuth msgl = messages.createMsgAuth(true,true,this.name,this.pass);
+
+                    //Wait for MsgAck
 
                     //Replace 'true' by MsgAck.getAck();
                     if(true) break;
@@ -42,13 +48,20 @@ public class Manufactor implements Runnable
                         out.flush();
                     }
                 }
-                else {
+                else
+                {
                     //TODO : MsgAuth Register
+                    //MsgAuth msgl = messages.createMsgAuth(false,true,this.name,this.pass);
+
+                    //Wait for MsgAck
 
                     //Replace 'true' by MsgAck.getAck();
                     if(true)
                     {
                         //TODO : MsgAuth Login
+                        //MsgAuth msgl = messages.createMsgAuth(true,true,this.name,this.pass);
+
+                        //Wait for MsgAck
 
                         //Replace 'true' by MsgAck.getAck();
                         if(true) break;
@@ -60,12 +73,18 @@ public class Manufactor implements Runnable
                     }
                 }
 
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
         }
 
         //Production
         //TODO
+        while(true)
+        {
+            
+        }
     }
 }

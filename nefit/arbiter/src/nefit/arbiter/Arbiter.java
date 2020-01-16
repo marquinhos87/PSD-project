@@ -1,6 +1,6 @@
 package nefit.arbiter;
 
-public class Main
+public class Arbiter
 {
     //List<Negociation> negociations;
 
