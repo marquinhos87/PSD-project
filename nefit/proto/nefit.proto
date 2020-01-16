@@ -35,7 +35,7 @@ message DisponibilityS {
     required string nameP = 2;
     required int32 minimun = 3;
     required int32 maximun = 4;
-    required int32 value = 5;
+    required float value = 5;
     required int32 period = 6;
 }
 
@@ -44,7 +44,7 @@ message DisponibilityN {
     required string nameP = 2;
     required int32 minimun = 3;
     required int32 maximun = 4;
-    required int32 value = 5;
+    required float value = 5;
     required int32 period = 6;
 }
 
@@ -52,14 +52,14 @@ message OrderS {
     required string nameM = 1;
     required string nameP = 2;
     required int32 quant = 3;
-    required int32 value = 4;
+    required float value = 4;
 }
 
 message OrderN {
     required string nameM = 1;
     required string nameP = 2;
     required int32 quant = 3;
-    required int32 value = 4;
+    required float value = 4;
 }
 
 message OrderAckS {
@@ -85,7 +85,7 @@ message ProductionS {
     required string nameM = 1;
     required string nameP = 2;
     required int32 quant = 3;
-    required int32 value = 4;
+    required float value = 4;
 }
 
 message ProductionM {
@@ -110,7 +110,7 @@ message InfoS {
     required string nameP = 2;
     required int32 minimun = 3;
     required int32 maximun = 4;
-    required int32 value = 5;
+    required float value = 5;
     required int32 period = 6;
     required string nameI = 7;
 }
@@ -119,7 +119,7 @@ message InfoI {
     required string nameP = 2;
     required int32 minimun = 3;
     required int32 maximun = 4;
-    required int32 value = 5;
+    required float value = 5;
     required int32 period = 6;
 }
 
