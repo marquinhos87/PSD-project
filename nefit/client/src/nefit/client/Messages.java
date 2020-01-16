@@ -1,5 +1,7 @@
 package nefit.client;
 
+import java.util.List;
+
 public class Messages
 {
     //Empty Constructor
@@ -57,5 +59,33 @@ public class Messages
             .setValue(value)
             .setPeriod(period)
             .build();
+    }
+
+    /**
+     *
+     * @param nameM Name of the Manufactor
+     * @param nameP Name of the Product
+     * @param quantity Quantity to purchase
+     * @param value Price per unit
+     * @return Message with the order to a product
+     */
+    public OrderS createOrderS(String nameM, String nameP, int quantity, int value)
+    {
+        return OrderS.newBuilder()
+            .setNameM(nameM)
+            .setNameP(nameP)
+            .setQuant(quantity)
+            .setValue(value)
+            .build();
+    }
+
+    /**
+     *
+     * @param subs List of the Names of Manufactors that Importer want to subscribe
+     * @return Message with the Names of MAnufactors
+     */
+    public SubS createSubS(List<String> subs)
+    {
+        return SubS.newBuilder().setSubs(subs).build();
     }
 }

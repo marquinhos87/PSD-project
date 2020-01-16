@@ -84,16 +84,14 @@ message SubN {
 message ProductionS {
     required string nameM = 1;
     required string nameP = 2;
-    required int32 minimun = 3;
-    required int32 maximun = 4;
-    required int32 value = 5;
+    required int32 quant = 3;
+    required int32 value = 4;
 }
 
 message ProductionM {
     required string nameP = 1;
-    required int32 minimun = 2;
-    required int32 maximun = 3;
-    required int32 value = 4;
+    required int32 quant = 2;
+    required int32 value = 3;
 }
 
 message ResultS {
