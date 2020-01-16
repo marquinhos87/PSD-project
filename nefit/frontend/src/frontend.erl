@@ -12,6 +12,7 @@ run(Port) ->
     {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, line}, {reuseaddr, true}]),
     acceptor(LSock, Authenticator).
 
+
 % accepts connections
 acceptor(LSock, Authenticator) ->
     {ok, Sock} = gen_tcp:accept(LSock),
