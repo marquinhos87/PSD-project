@@ -15,4 +15,7 @@
     <orderEntry type="jdk" jdkName="Erlang 22" jdkType="Erlang SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="ErlangCompilerOptions">
+    <useRebarCompiler>true</useRebarCompiler>
+  </component>
 </module>
