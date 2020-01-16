@@ -1,6 +1,7 @@
 package nefit.client;
 
 import javafx.util.Pair;
+import nefit.proto.NefitProtos;
 
 import java.io.*;
 
