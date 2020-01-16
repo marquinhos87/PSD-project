@@ -27,26 +27,25 @@ public class Client
 
         try {
             Messages messages = new Messages();
-            Socket socket = new Socket("localhost",5555);
+            Socket socket = new Socket("localhost",12345);
             InputStream is = socket.getInputStream();
             OutputStream os = socket.getOutputStream();
 
             //Authentication
             if(arg.getKey().getValue().equals("l"))
             {
-                if(Login(arg.getValue(),messages,is,os)) ;
-                else
+                if(!Login(arg.getValue(),messages,is,os))
                 {
-                    out.println("Invalid data");
+                    out.println("Invalid data, shutting down");
                     out.flush();
+                    System.exit(3);
                 }
             }
             else
             {
                 if(Register(arg.getValue(),messages,is,os))
                 {
-                    if(Login(arg.getValue(),messages,is,os)) ;
-                    else
+                    if(!Login(arg.getValue(),messages,is,os))
                     {
                         out.println("Something went wrong, shutting down");
                         out.flush();
@@ -57,8 +56,7 @@ public class Client
                 {
                     out.println("Manufactor/Importer yet registered, trying Login");
                     out.flush();
-                    if(Login(arg.getValue(),messages,is,os)) ;
-                    else
+                    if(!Login(arg.getValue(),messages,is,os))
                     {
                         out.println("Something went wrong, shutting down");
                         out.flush();
@@ -67,9 +65,9 @@ public class Client
                 }
             }
             if (arg.getKey().getValue().equals("m"))
-                new Manufacturer(arg.getValue(),in,out,is,os,messages).run();
+                new Manufacturer(arg.getValue().getKey(),in,out,is,os,messages).run();
             else
-                new Importer(arg.getValue(),in,out,is,os,messages).run();
+                new Importer(arg.getValue().getKey(),in,out,is,os,messages).run();
         }
         catch (IOException e)
         {
@@ -90,8 +88,7 @@ public class Client
     }
 
     private static Boolean Login(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
-        //TODO : MsgAuth Login
-        NefitProtos.MsgAuth msgl = null;
+        NefitProtos.MsgAuth msgl;
         if (arg.getKey().equals("m"))
             msgl = messages.createMsgAuth(true,true,arg.getKey(),arg.getValue());
         else
@@ -102,12 +99,11 @@ public class Client
         //Wait for MsgAck
         NefitProtos.MsgAck ack = NefitProtos.MsgAck.parseDelimitedFrom(is);
 
-        return ack.getAck();
+        return ack.getOk();
     }
 
     private static Boolean Register(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
-        //TODO : MsgAuth Register
-        NefitProtos.MsgAuth msgl = null;
+        NefitProtos.MsgAuth msgl;
         if (arg.getKey().equals("m"))
             msgl = messages.createMsgAuth(false,true,arg.getKey(),arg.getValue());
         else
@@ -118,6 +114,6 @@ public class Client
         //Wait for MsgAck
         NefitProtos.MsgAck ack = NefitProtos.MsgAck.parseDelimitedFrom(is);
 
-        return ack.getAck();
+        return ack.getOk();
     }
 }

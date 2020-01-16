@@ -1,6 +1,5 @@
 package nefit.client;
 
-import javafx.util.Pair;
 import nefit.proto.NefitProtos;
 
 import java.io.*;
@@ -8,17 +7,15 @@ import java.io.*;
 public class Manufacturer implements Runnable
 {
     private String name;
-    private String pass;
     private BufferedReader in;
     private PrintWriter out;
     private InputStream is;
     private OutputStream os;
     private Messages messages;
 
-    public Manufacturer(Pair<String,String> auth, BufferedReader in, PrintWriter out, InputStream is, OutputStream os, Messages messages)
+    public Manufacturer(String name, BufferedReader in, PrintWriter out, InputStream is, OutputStream os, Messages messages)
     {
-        this.name = auth.getKey();
-        this.pass = auth.getValue();
+        this.name = name;
         this.in = in;
         this.out = out;
         this.is = is;

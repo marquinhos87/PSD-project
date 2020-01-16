@@ -1,6 +1,5 @@
 package nefit.client;
 
-import javafx.util.Pair;
 import nefit.proto.NefitProtos;
 
 import java.io.*;
@@ -10,17 +9,15 @@ import java.util.List;
 public class Importer implements Runnable
 {
     private String name;
-    private String pass;
     private BufferedReader in;
     private PrintWriter out;
     private InputStream is;
     private OutputStream os;
     private Messages messages;
 
-    public Importer(Pair<String,String> auth, BufferedReader in, PrintWriter out, InputStream is, OutputStream os, Messages messages)
+    public Importer(String name, BufferedReader in, PrintWriter out, InputStream is, OutputStream os, Messages messages)
     {
-        this.name = auth.getKey();
-        this.pass = auth.getValue();
+        this.name = name;
         this.in = in;
         this.out = out;
         this.is = is;
@@ -34,7 +31,6 @@ public class Importer implements Runnable
         printCommands();
         out.flush();
         new Thread(this::receive).start();
-        //TODO
         while(true)
         {
             try {
@@ -102,7 +98,7 @@ public class Importer implements Runnable
         }
         else
         {
-            NefitProtos.GetS get = this.messages.createGetS();
+            NefitProtos.GetS get = this.messages.createGetS(this.name);
             get.writeDelimitedTo(this.os);
         }
     }

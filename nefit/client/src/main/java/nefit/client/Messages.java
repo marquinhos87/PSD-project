@@ -94,8 +94,13 @@ public class Messages
         return sub.build();
     }
 
-    public NefitProtos.GetS createGetS()
+    /**
+     *
+     * @param name Name of the Importer
+     * @return Message with the name of the Importer
+     */
+    public NefitProtos.GetS createGetS(String name)
     {
-        return NefitProtos.GetS.newBuilder().build();
+        return NefitProtos.GetS.newBuilder().setNameI(name).build();
     }
 }
