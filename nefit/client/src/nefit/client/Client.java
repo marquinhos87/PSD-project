@@ -14,12 +14,13 @@ public class Client
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
 
-        Pair<String,Pair<String,String>> arg = parseArgs(args);
+        Pair<Pair<String,String>,Pair<String,String>> arg = parseArgs(args);
 
         if(arg == null)
         {
-            out.println("Usage: <type> <name> <pass>");
+            out.println("Usage: <type> <auth> <name> <pass>");
             out.println("<type> is 'm' or 'i'");
+            out.println("<auth> is 'l' or 'r'");
             out.flush();
             System.exit(2);
         }
@@ -31,63 +32,56 @@ public class Client
         socket.connect("tcp://localhost:5555");
 
         //Authentication
-        try
+        if(arg.getKey().getValue().equals("l"))
         {
-            out.println("Login(l) or Register and Login(r)");
-            out.flush();
-            String auth = in.readLine();
-            if(auth.equals("l"))
+            if(Login(arg.getValue(),messages,socket)) ;
+            else
+            {
+                out.println("Invalid data");
+                out.flush();
+            }
+        }
+        else
+        {
+            if(Register(arg.getValue(),messages,socket))
             {
                 if(Login(arg.getValue(),messages,socket)) ;
                 else
                 {
-                    out.println("Invalid data");
+                    out.println("Something went wrong, shutting down");
                     out.flush();
+                    System.exit(3);
                 }
             }
             else
             {
-                if(Register(arg.getValue(),messages,socket))
-                {
-                    if(Login(arg.getValue(),messages,socket)) ;
-                    else
-                    {
-                        out.println("Something went wrong, shutting down");
-                        out.flush();
-                        System.exit(2);
-                    }
-                }
+                out.println("Manufactor/Importer yet registered, trying Login");
+                out.flush();
+                if(Login(arg.getValue(),messages,socket)) ;
                 else
                 {
-                    out.println("Manufactor/Importer yet registered, trying Login");
+                    out.println("Something went wrong, shutting down");
                     out.flush();
-                    if(Login(arg.getValue(),messages,socket)) ;
-                    else
-                    {
-                        out.println("Something went wrong, shutting down");
-                        out.flush();
-                        System.exit(2);
-                    }
+                    System.exit(3);
                 }
             }
-
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
         }
 
-        if (arg.getKey().equals("m"))
+        if (arg.getKey().getValue().equals("m"))
             new Manufactor(arg.getValue(),in,out,context,socket,messages).run();
         else
             new Importer(arg.getValue(),in,out,context,socket,messages).run();
     }
 
-    private static Pair<String,Pair<String,String>> parseArgs(String[] args)
+    private static Pair<Pair<String,String>,Pair<String,String>> parseArgs(String[] args)
     {
-        if(args.length != 3 && (!args[0].equals("m") || !args[0].equals("i")))
+        if(args.length != 4)
             return null;
-        Pair<String,Pair<String,String>> arg = new Pair<>(args[0],new Pair<>(args[1],args[2]));
+        if(!args[0].equals("m") && !args[0].equals("i"))
+            return null;
+        if(!args[1].equals("l") && !args[1].equals("r"))
+            return null;
+        Pair<Pair<String,String>,Pair<String,String>> arg = new Pair<>(new Pair<>(args[0],args[1]),new Pair<>(args[2],args[3]));
         return arg;
     }
 
