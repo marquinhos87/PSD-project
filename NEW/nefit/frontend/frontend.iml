@@ -6,8 +6,8 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/../home/alberto/repos/git-um-psd/NEW/nefit/frontend/_build/default/lib/frontend/ebin" />
-    <output-test url="file://$MODULE_DIR$/../home/alberto/repos/git-um-psd/NEW/nefit/frontend/_build/default/lib/frontend/ebin" />
+    <output url="file://$MODULE_DIR$/_build/default/lib/frontend/ebin" />
+    <output-test url="file://$MODULE_DIR$/_build/default/lib/frontend/ebin" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/_build" />
