@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="protoc (Java)" type="ShConfigurationType">
-    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/proto/src/gen.sh" />
+    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/proto/src/protoc.sh" />
     <option name="SCRIPT_OPTIONS" value="" />
     <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/proto/src" />
     <option name="INTERPRETER_PATH" value="/bin/sh" />
