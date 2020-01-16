@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Client" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="nefit.client.Client" />
+    <module name="client" />
+    <method v="2">
+      <option name="Sh.BeforeRunTask" RUN_CONFIG_NAME="protoc (Java)" RUN_CONFIG_TYPE="ShConfigurationType" />
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
