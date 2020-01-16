@@ -13,7 +13,7 @@ message MsgAuth {
 	required string pass = 2;
 
 	enum ClientType {
-        MANUFACTOR = 0;
+        MANUFACTURER = 0;
     	IMPORTER = 1;
     }
     required ClientType ctype = 3;
@@ -141,6 +141,15 @@ message GetS {
 
 message GetN {
     required string nameI = 1;
+}
+
+message NegotiationsS {
+    required string nameI = 1;
+    repeated InfoI negotiations = 2;
+}
+
+message NegotiationsI {
+    repeated InfoI negotiations = 1;
 }
 
 /* -------------------------------------------------------------------------- */

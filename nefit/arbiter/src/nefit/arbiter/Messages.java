@@ -29,11 +29,11 @@ public class Messages {
 
     /**
      *
-     * @param nameM Name of the Manufactor
+     * @param nameM Name of the Manufacturer
      * @param nameP Name of the Product
      * @param quantity Quantity to produce
      * @param value Value per unit
-     * @return Message with the Info to MAnufactor produce his Product
+     * @return Message with the Info to Manufacturer produce his Product
      */
     public ProductionS createProductionS(String nameM, String nameP, int quantity, int value)
     {

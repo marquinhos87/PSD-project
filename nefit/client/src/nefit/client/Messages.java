@@ -22,7 +22,7 @@ public class Messages
             .setPass(pass);
         if(typeAuth && client)
         {
-            return msg.setCtype(MsgAuth.ClientType.MANUFACTOR)
+            return msg.setCtype(MsgAuth.ClientType.MANUFACTURER)
                 .setMtype(MsgAuth.MsgType.LOGIN).build();
         }
         if(typeAuth)
@@ -32,7 +32,7 @@ public class Messages
         }
         if(client)
         {
-            return msg.setCtype(MsgAuth.ClientType.MANUFACTOR)
+            return msg.setCtype(MsgAuth.ClientType.MANUFACTURER)
                 .setMtype(MsgAuth.MsgType.REGISTER).build();
         }
         return msg.setCtype(MsgAuth.ClientType.IMPORTER)
@@ -42,7 +42,7 @@ public class Messages
     /**
      *
      * @param nameM Name of the Manufactor
-     * @param nameP Name of the Product that Manufator will produce
+     * @param nameP Name of the Product that Manufacturer will produce
      * @param minimun Minimun quantity to produce
      * @param maximun Maximun quantity to produce
      * @param value Minimun value to produce
@@ -63,7 +63,7 @@ public class Messages
 
     /**
      *
-     * @param nameM Name of the Manufactor
+     * @param nameM Name of the Manufacturer
      * @param nameP Name of the Product
      * @param quantity Quantity to purchase
      * @param value Price per unit
@@ -81,8 +81,8 @@ public class Messages
 
     /**
      *
-     * @param subs List of the Names of Manufactors that Importer want to subscribe
-     * @return Message with the Names of MAnufactors
+     * @param subs List of the Names of Manufacturers that Importer want to subscribe
+     * @return Message with the Names of Manufacturers
      */
     public SubS createSubS(List<String> subs)
     {
