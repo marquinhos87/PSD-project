@@ -52,12 +52,12 @@ public class Manufacturer implements Runnable
                      this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Integer.parseInt(fields[3]),Integer.parseInt(fields[4]),
                      );
                     //Enviar DisponibilityS
-                    disp.writeDelimitedTo(this.out);
+                    disp.writeDelimitedTo(this.os);
                 }
             }
             catch (IOException e) {
-                new Manufacturer(new Pair<>(this.name,this.pass),this.in,this.out,this.context,this.socket,this.messages).run();
-                break;
+                out.println("Something went wrong on read :(");
+                out.flush();
             }
             catch (NumberFormatException e)
             {
@@ -71,7 +71,7 @@ public class Manufacturer implements Runnable
     {
         while(true)
         {
-            ProductionM prod = ProductionM.parseDelimitedFrom(this.in);
+            ProductionM prod = ProductionM.parseDelimitedFrom(this.is);
             if(prod.getQuant() == 0)
                 out.println("No good offers to your product " + prod.getNameP());
             else out.println("Your product " + prod.getNameP() + " gives you " + (prod.getValue() * prod.getQuant()) + " M.U.");
