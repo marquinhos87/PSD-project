@@ -48,7 +48,7 @@ public class Manufacturer implements Runnable
                 }
                 else
                 {
-                    Disponibility disp = this.messages.createDisponibilityS(
+                    NefitProtos.Disponibility disp = this.messages.createDisponibilityS(
                      this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Integer.parseInt(fields[3]),Integer.parseInt(fields[4]),
                      );
                     disp.writeDelimitedTo(this.os);
@@ -70,7 +70,7 @@ public class Manufacturer implements Runnable
     {
         while(true)
         {
-            ProductionM prod = ProductionM.parseDelimitedFrom(this.is);
+            NefitProtos.ProductionM prod = NefitProtos.ProductionM.parseDelimitedFrom(this.is);
             if(prod.getQuant() == 0)
                 out.println("No good offers to your product " + prod.getNameP());
             else out.println("Your product " + prod.getNameP() + " gives you " + (prod.getValue() * prod.getQuant()) + " M.U.");

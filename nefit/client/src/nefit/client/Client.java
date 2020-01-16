@@ -24,10 +24,10 @@ public class Client
             System.exit(2);
         }
 
-        Messages messages = new Messages();
-        Socket socket = null;
+
         try {
-            socket = new Socket("localhost",5555);
+            Messages messages = new Messages();
+            Socket socket = new Socket("localhost",5555);
             InputStream is = socket.getInputStream();
             OutputStream os = socket.getOutputStream();
 
