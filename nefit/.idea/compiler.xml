@@ -16,6 +16,7 @@
       <module name="arbiter" target="11" />
       <module name="catalog" target="11" />
       <module name="client" target="11" />
+      <module name="proto" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="ErlangCompilerOptions">
