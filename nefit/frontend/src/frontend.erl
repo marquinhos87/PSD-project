@@ -15,8 +15,8 @@ run(Port) ->
 % accepts connections
 acceptor(LSock, Authenticator) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> acceptor(LSock, Authenticator) end),
-    connectedClient(Sock, Authenticator).
+    spawn(fun() -> connectedClient(Sock, Authenticator) end),
+    acceptor(LSock, Authenticator).
 
 % process responsible for article orders
 receiveOrder(Orders) ->
