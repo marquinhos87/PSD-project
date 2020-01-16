@@ -2,7 +2,7 @@
 -module(frontend).
 -export([run/1]).
 
--include("nefit.hrl").
+-include("nefitproto.hrl").
 
 run(Port) ->
     Authenticator = spawn(fun()-> authenticator(map:new()) end),
@@ -114,9 +114,9 @@ authenticator(RegisteredUsers) ->
 
 % deserialize
 decode(Data) ->
-    Details = nefit:decode_msg(Data, 'Server'),
+    Details = nefitproto:decode_msg(Data, 'Server'),
     Details.
 
 decode(Data, Type) ->
-    Details = nefit:decode_msg(Data, Type),
+    Details = nefitproto:decode_msg(Data, Type),
     Details.
