@@ -25,7 +25,7 @@ public class Manufactor implements Runnable
     @Override
     public void run()
     {
-        //TODO
+        //Authentication
         while(true) {
             try {
                 out.println("Login(l) or Register and Login(r)");
@@ -64,5 +64,8 @@ public class Manufactor implements Runnable
                 e.printStackTrace();
             }
         }
+
+        //Production
+        //TODO
     }
 }

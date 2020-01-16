@@ -23,7 +23,8 @@ public class Importer implements Runnable {
     @Override
     public void run()
     {
-        //TODO
+        Messages messages = new Messages();
+        //Authentication
         while(true) {
             try {
                 out.println("Login(l) or Register and Login(r)");
@@ -62,5 +63,8 @@ public class Importer implements Runnable {
                 e.printStackTrace();
             }
         }
+
+        //Orders
+        //TODO
     }
 }
