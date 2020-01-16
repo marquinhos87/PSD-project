@@ -1,11 +1,8 @@
 package nefit.client;
 
 import javafx.util.Pair;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintWriter;
-import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 

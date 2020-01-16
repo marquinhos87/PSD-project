@@ -23,6 +23,7 @@ public class Client
             out.flush();
             System.exit(2);
         }
+
         Messages messages = new Messages();
         ZContext context = new ZContext();
         ZMQ.Socket socket = context.createSocket(SocketType.REQ);
@@ -30,76 +31,50 @@ public class Client
         socket.connect("tcp://localhost:5555");
 
         //Authentication
-        while(true)
+        try
         {
-            try
+            out.println("Login(l) or Register and Login(r)");
+            out.flush();
+            String auth = in.readLine();
+            if(auth.equals("l"))
             {
-                out.println("Login(l) or Register and Login(r)");
-                out.flush();
-                String auth = in.readLine();
-                if(auth.equals("l"))
+                if(Login(arg.getValue(),messages,socket)) ;
+                else
                 {
-                    //TODO : MsgAuth Login
-                    //if (arg.getKey().equals("m"))
-                    //MsgAuth msgl = messages.createMsgAuth(true,true,this.name,this.pass);
-                    //else
-                    //MsgAuth msgl = messages.createMsgAuth(true,false,this.name,this.pass);
-
-                    //socket.send(msgl.getBytes(ZMQ.CHARSET), 0);
-
-                    //Wait for MsgAck
-                    //byte[] reply = socket.recv(0);
-
-                    //Replace 'true' by MsgAck.getAck();
-                    if(true) break;
+                    out.println("Invalid data");
+                    out.flush();
+                }
+            }
+            else
+            {
+                if(Register(arg.getValue(),messages,socket))
+                {
+                    if(Login(arg.getValue(),messages,socket)) ;
                     else
                     {
-                        out.println("Invalid data");
+                        out.println("Something went wrong, shutting down");
                         out.flush();
+                        System.exit(2);
                     }
                 }
                 else
                 {
-                    //TODO : MsgAuth Register
-                    //if (arg.getKey().equals("m"))
-                    //MsgAuth msgl = messages.createMsgAuth(false,true,this.name,this.pass);
-                    //else
-                    //MsgAuth msgl = messages.createMsgAuth(false,false,this.name,this.pass);
-
-                    //socket.send(msgl.getBytes(ZMQ.CHARSET), 0);
-
-                    //Wait for MsgAck
-                    //byte[] reply = socket.recv(0);
-
-                    //Replace 'true' by MsgAck.getAck();
-                    if(true)
-                    {
-                        //TODO : MsgAuth Login
-                        //if (arg.getKey().equals("m"))
-                        //MsgAuth msgl = messages.createMsgAuth(true,true,this.name,this.pass);
-                        //else
-                        //MsgAuth msgl = messages.createMsgAuth(true,false,this.name,this.pass);
-
-                        //socket.send(msgl.getBytes(ZMQ.CHARSET), 0);
-
-                        //Wait for MsgAck
-                        //byte[] reply = socket.recv(0);
-
-                        //Replace 'true' by MsgAck.getAck();
-                        if(true) break;
-                    }
+                    out.println("Manufactor/Importer yet registered, trying Login");
+                    out.flush();
+                    if(Login(arg.getValue(),messages,socket)) ;
                     else
                     {
-                        out.println("Manufactor/Importer yet registered");
+                        out.println("Something went wrong, shutting down");
                         out.flush();
+                        System.exit(2);
                     }
                 }
+            }
 
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
 
         if (arg.getKey().equals("m"))
@@ -114,5 +89,39 @@ public class Client
             return null;
         Pair<String,Pair<String,String>> arg = new Pair<>(args[0],new Pair<>(args[1],args[2]));
         return arg;
+    }
+
+    private static Boolean Login(Pair<String,String> arg, Messages messages, ZMQ.Socket socket)
+    {
+        //TODO : MsgAuth Login
+        //if (arg.getKey().equals("m"))
+        //MsgAuth msgl = messages.createMsgAuth(true,true,arg.getKey(),arg.getValue());
+        //else
+        //MsgAuth msgl = messages.createMsgAuth(true,false,arg.getKey(),arg.getValue());
+
+        //socket.send(msgl.getBytes(ZMQ.CHARSET), 0);
+
+        //Wait for MsgAck
+        byte[] reply = socket.recv(0);
+
+        //Replace 'true' by MsgAck.getAck();
+        return true;
+    }
+
+    private static Boolean Register(Pair<String,String> arg, Messages messages, ZMQ.Socket socket)
+    {
+        //TODO : MsgAuth Register
+        //if (arg.getKey().equals("m"))
+        //MsgAuth msgl = messages.createMsgAuth(false,true,this.name,this.pass);
+        //else
+        //MsgAuth msgl = messages.createMsgAuth(false,false,this.name,this.pass);
+
+        //socket.send(msgl.getBytes(ZMQ.CHARSET), 0);
+
+        //Wait for MsgAck
+        byte[] reply = socket.recv(0);
+
+        //Replace 'true' by MsgAck.getAck();
+        return true;
     }
 }
