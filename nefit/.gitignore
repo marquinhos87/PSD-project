@@ -1,3 +1,4 @@
+*.beam
 /*/target
 /.idea/dictionaries
 /.idea/libraries
@@ -6,5 +7,5 @@
 /.idea/uiDesigner.xml
 /.idea/usage.statistics.xml
 /.idea/workspace.xml
-erl_crash.dump
 /out
+erl_crash.dump

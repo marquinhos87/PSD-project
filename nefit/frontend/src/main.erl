@@ -15,7 +15,7 @@ server(Port) ->
 % accepts connections
 acceptor(LSock, Authenticator) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> acceptor(LSock) end),
+    spawn(fun() -> acceptor(LSock, Authenticator) end),
     connectedClient(Sock, Authenticator).
 
 % process responsible for article orders
@@ -36,14 +36,14 @@ arbiterResults(Arbiters) ->
     receive
         {tcp, _, Data} ->
             % received the result of a negotiation
-            decoder(Data)
+            decode(Data)
     end.
 
 % treats client logged as manufacturer
 manufacturer(Sock) ->
     receive
         {tcp, _, Data} ->
-            decoder(Data),
+            decode(Data),
             manufacturer(Sock);
         {tcp_closed, _} ->
             io:format("Closed.");
@@ -67,7 +67,7 @@ importer(Sock) ->
 connectedClient(Sock, Authenticator) ->
     receive
         {tcp, _, Data} ->
-            decode(Data),
+            decode(Data);
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
@@ -81,6 +81,4 @@ authenticator(RegisteredUsers) ->
 % serialize
 
 % deserialize
-decoder(Data) ->
-    Details = nefit:decode_msg(Data, 'Server'),
-    Details.
+decode(Data) -> nefit:decode_msg(Data, 'Server').

@@ -1,4 +1,4 @@
-package nefit.catalog.resources;
+package nefit.catalog.representations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
