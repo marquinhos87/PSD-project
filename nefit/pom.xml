@@ -16,10 +16,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>arbiter</module>
-        <module>catalog</module>
-        <module>client</module>
         <module>proto</module>
+        <module>client</module>
+        <module>catalog</module>
+        <module>arbiter</module>
     </modules>
 
     <dependencies>
