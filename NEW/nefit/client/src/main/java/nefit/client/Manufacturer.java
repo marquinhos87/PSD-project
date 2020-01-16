@@ -44,23 +44,24 @@ public class Manufacturer implements Runnable
                 if(fields.length != 5)
                 {
                     out.println("Maybe forgot one or more elements");
-                    out.flush();
                 }
                 else
                 {
                     NefitProtos.DisponibilityS disp = this.messages.createDisponibilityS(
-                     this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Integer.parseInt(fields[3]),Integer.parseInt(fields[4]),
+                     this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Integer.parseInt(fields[3]),Integer.parseInt(fields[4])
                      );
                     disp.writeDelimitedTo(this.os);
                 }
             }
             catch (IOException e) {
-                out.println("Something went wrong on read :(");
-                out.flush();
+                out.println("Something went wrong");
             }
             catch (NumberFormatException e)
             {
                 out.println("Maybe the order of the fields are incorrect");
+            }
+            finally
+            {
                 out.flush();
             }
         }
@@ -70,11 +71,21 @@ public class Manufacturer implements Runnable
     {
         while(true)
         {
-            NefitProtos.ProductionM prod = NefitProtos.ProductionM.parseDelimitedFrom(this.is);
-            if(prod.getQuant() == 0)
-                out.println("No good offers to your product " + prod.getNameP());
-            else out.println("Your product " + prod.getNameP() + " gives you " + (prod.getValue() * prod.getQuant()) + " M.U.");
-            out.flush();
+            try {
+                NefitProtos.ProductionM prod = NefitProtos.ProductionM.parseDelimitedFrom(this.is);
+                if (prod.getQuant() == 0)
+                    out.println("No good offers to your product " + prod.getNameP());
+                else
+                    out.println("Your product " + prod.getNameP() + " gives you " + (prod.getValue() * prod.getQuant()) + " M.U.");
+            }
+            catch (IOException e)
+            {
+                out.println("Something went wrong");
+            }
+            finally
+            {
+                out.flush();
+            }
         }
     }
 

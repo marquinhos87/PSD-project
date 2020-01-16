@@ -67,18 +67,6 @@ public class Importer implements Runnable
                             try {
                                 NefitProtos.GetS get = this.messages.createGetS();
                                 get.writeDelimitedTo(this.os);
-
-                                NefitProtos.NegotiationsI nego = NefitProtos.NegotiationsI.parseDelimitedFrom(this.is);
-                                for (NefitProtos.InfoI info : nego.getNegotiations()) {
-                                    out.println("Product available");
-                                    out.println("\tManufacturer: " + info.getNameM());
-                                    out.println("\tProduct: " + info.getNameP());
-                                    out.println("\tMin quantity: " + info.getMinimun());
-                                    out.println("\tMax quantity: " + info.getMaximun());
-                                    out.println("\tMin unit price: " + info.getValue());
-                                    out.println("\tTime Available: " + info.getPeriod() + " seconds");
-                                }
-                                out.flush();
                             }
                             catch (IOException e) {
                                 e.printStackTrace();
@@ -100,16 +88,6 @@ public class Importer implements Runnable
                                     fields[1],fields[2],Integer.parseInt(fields[3]),Integer.parseInt(fields[5])
                                 );
                                 order.writeDelimitedTo(this.os);
-
-                                NefitProtos.OrderAckI ack = NefitProtos.OrderAckI.parseDelimitedFrom(this.is);
-                                if(ack.getAck())
-                                {
-                                    out.println("Order accepted");
-                                }
-                                else
-                                {
-                                    out.println("Order decline, because: "+ack.getMsg());
-                                }
                             }
                             catch (IOException e)
                             {
@@ -142,28 +120,27 @@ public class Importer implements Runnable
             try {
                 NefitProtos.Importer importer = NefitProtos.Importer.parseDelimitedFrom(this.is);
 
-                //if InfoI
-                NefitProtos.InfoI info = NefitProtos.InfoI.parseDelimitedFrom(this.is);
-                out.println("New Product available");
-                out.println("\tManufacturer: " + info.getNameM());
-                out.println("\tProduct: " + info.getNameP());
-                out.println("\tMin quantity: " + info.getMinimun());
-                out.println("\tMax quantity: " + info.getMaximun());
-                out.println("\tMin unit price: " + info.getValue());
-                out.println("\tTime Available: " + info.getPeriod() + " seconds");
+                if(importer.hasInfo())
+                    printInfo(importer.getInfo());
 
-                //if ResultI
-                NefitProtos.ResultI result = NefitProtos.ResultI.parseDelimitedFrom(this.is);
-                if(result.getAck())
-                {
-                    out.println("You win the order " + result.getMsg());
-                }
-                else
-                {
-                    out.println("You lose the order " + result.getMsg());
-                }
+                if(importer.hasResult())
+                    printResult(importer.getResult());
 
-                //if
+                if(importer.hasOrdack())
+                    printOrderAck(importer.getOrdack());
+
+                //if NegotiationsI
+                NefitProtos.NegotiationsI nego = NefitProtos.NegotiationsI.parseDelimitedFrom(this.is);
+                for (NefitProtos.InfoI info : nego.getNegotiations()) {
+                    out.println("Product available");
+                    out.println("\tManufacturer: " + info.getNameM());
+                    out.println("\tProduct: " + info.getNameP());
+                    out.println("\tMin quantity: " + info.getMinimun());
+                    out.println("\tMax quantity: " + info.getMaximun());
+                    out.println("\tMin unit price: " + info.getValue());
+                    out.println("\tTime Available: " + info.getPeriod() + " seconds");
+                }
+                out.flush();
             }
             catch (IOException e)
             {
@@ -175,7 +152,42 @@ public class Importer implements Runnable
         }
     }
 
-    public void printCommands()
+    private void printInfo(NefitProtos.InfoI info)
+    {
+        out.println("New Product available");
+        out.println("\tManufacturer: " + info.getNameM());
+        out.println("\tProduct: " + info.getNameP());
+        out.println("\tMin quantity: " + info.getMinimun());
+        out.println("\tMax quantity: " + info.getMaximun());
+        out.println("\tMin unit price: " + info.getValue());
+        out.println("\tTime Available: " + info.getPeriod() + " seconds");
+    }
+
+    private void printResult(NefitProtos.ResultI result)
+    {
+        if(result.getResult())
+        {
+            out.println("You win the order " + result.getMsg());
+        }
+        else
+        {
+            out.println("You lose the order " + result.getMsg());
+        }
+    }
+
+    private void printOrderAck(NefitProtos.OrderAckI ack)
+    {
+        if(ack.getAck())
+        {
+            out.println("Order accepted");
+        }
+        else
+        {
+            out.println("Order decline, because: "+ack.getMsg());
+        }
+    }
+
+    private void printCommands()
     {
         out.println("You can use some commands like 'sub' 'get' 'order'");
         out.println("Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...");
