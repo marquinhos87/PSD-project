@@ -1,30 +1,27 @@
 package nefit.client;
 
 import javafx.util.Pair;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import org.zeromq.ZContext;
-import org.zeromq.ZMQ;
+
+import java.io.*;
 
 public class Manufacturer implements Runnable
 {
-    //List<Article> articles;
     private String name;
     private String pass;
     private BufferedReader in;
     private PrintWriter out;
-    private ZContext context;
-    private ZMQ.Socket socket;
+    private InputStream is;
+    private OutputStream os;
     private Messages messages;
 
-    public Manufacturer(Pair<String,String> auth, BufferedReader in, PrintWriter out, ZContext context, ZMQ.Socket socket, Messages messages)
+    public Manufacturer(Pair<String,String> auth, BufferedReader in, PrintWriter out, InputStream is, OutputStream os, Messages messages)
     {
         this.name = auth.getKey();
         this.pass = auth.getValue();
         this.in = in;
         this.out = out;
-        this.context = context;
-        this.socket = socket;
+        this.is = is;
+        this.os = os;
         this.messages = messages;
     }
 
@@ -32,9 +29,54 @@ public class Manufacturer implements Runnable
     public void run()
     {
         //TODO
+        out.println("Type: <Product Name> <Min Quantity> <Max Quantity> <Min Price> <Period>");
+        out.println("Period is the time in seconds that negotiation will be available");
+        out.flush();
+
+        new Thread(this::receive).start();
+
         while(true)
         {
-
+            try
+            {
+                String read = in.readLine();
+                String[] fields = read.split(" ");
+                if(fields.length != 5)
+                {
+                    out.println("Maybe forgot one or more elements");
+                    out.flush();
+                }
+                else
+                {
+                    Disponibility disp = this.messages.createDisponibilityS(
+                     this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Integer.parseInt(fields[3]),Integer.parseInt(fields[4]),
+                     );
+                    //Enviar DisponibilityS
+                    disp.writeDelimitedTo(this.out);
+                }
+            }
+            catch (IOException e) {
+                new Manufacturer(new Pair<>(this.name,this.pass),this.in,this.out,this.context,this.socket,this.messages).run();
+                break;
+            }
+            catch (NumberFormatException e)
+            {
+                out.println("Maybe the order of the fields are incorrect");
+                out.flush();
+            }
         }
     }
+
+    public void receive()
+    {
+        while(true)
+        {
+            ProductionM prod = ProductionM.parseDelimitedFrom(this.in);
+            if(prod.getQuant() == 0)
+                out.println("No good offers to your product " + prod.getNameP());
+            else out.println("Your product " + prod.getNameP() + " gives you " + (prod.getValue() * prod.getQuant()) + " M.U.");
+            out.flush();
+        }
+    }
+
 }
