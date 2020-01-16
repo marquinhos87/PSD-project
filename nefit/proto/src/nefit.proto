@@ -124,18 +124,23 @@ message InfoI {
 }
 
 message Server {
-    required int64 commonField = 1;
     oneof msg {
-        DisponibilityS m1 = 2;
-        OrderS m2 = 3;
-        SubS m3 = 4;
-        ResultS m4 = 5;
-        InfoS m5 = 6;
-        ProductionS m6 = 7;
-        OrderAckS m7 = 8;
+        DisponibilityS m1 = 1;
+        OrderS m2 = 2;
+        SubS m3 = 3;
+        ResultS m4 = 4;
+        InfoS m5 = 5;
+        ProductionS m6 = 6;
+        OrderAckS m7 = 7;
     }
 }
 
+message GetS {
+    required string nameI = 1;
+}
 
+message GetN {
+    required string nameI = 1;
+}
 
 /* -------------------------------------------------------------------------- */
