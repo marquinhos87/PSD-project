@@ -3,6 +3,7 @@ package nefit.client;
 import javafx.util.Pair;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Manufactor implements Runnable
@@ -25,5 +26,43 @@ public class Manufactor implements Runnable
     public void run()
     {
         //TODO
+        while(true) {
+            try {
+                out.println("Login(l) or Register and Login(r)");
+                out.flush();
+                String auth = in.readLine();
+                if(auth.equals("l")) {
+                    //TODO : MsgAuth Login
+
+                    //Replace 'true' by MsgAck.getAck();
+                    if(true) break;
+                    else
+                    {
+                        out.println("Invalid data");
+                        out.flush();
+                    }
+                }
+                else {
+                    //TODO : MsgAuth Register
+
+                    //Replace 'true' by MsgAck.getAck();
+                    if(true)
+                    {
+                        //TODO : MsgAuth Login
+
+                        //Replace 'true' by MsgAck.getAck();
+                        if(true) break;
+                    }
+                    else
+                    {
+                        out.println("Manufactor yet registered");
+                        out.flush();
+                    }
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
