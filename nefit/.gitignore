@@ -1,5 +1,6 @@
 *.beam
 /*/target
+/.idea/compiler.xml
 /.idea/dictionaries
 /.idea/libraries
 /.idea/shelf
