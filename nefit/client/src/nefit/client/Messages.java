@@ -86,8 +86,9 @@ public class Messages
      */
     public SubS createSubS(List<String> subs)
     {
-        return SubS.newBuilder()
-            .setSubs(subs)
-            .build();
+        SubS sub = SubS.newBuilder();
+        for(String aux: subs)
+            Subs.addSubs(aux);
+        return sub.build();
     }
 }
