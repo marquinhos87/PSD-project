@@ -55,7 +55,7 @@ manufacturer(Sock) ->
 importer(Sock) ->
     receive
         {tcp, _, Data} ->
-            decoder(Data),
+            decode(Data),
             importer(Sock);
         {tcp_closed, _} ->
             io:format("Closed.");
@@ -67,7 +67,7 @@ importer(Sock) ->
 connectedClient(Sock, Authenticator) ->
     receive
         {tcp, _, Data} ->
-            Msg = decoder(Data,'MsgAuth'),
+            Msg = decode(Data,'MsgAuth'),
             Authenticator ! {Msg#'MsgAuth'.mtype, Msg#'MsgAuth'.name, Msg#'MsgAuth'.pass, Msg#'MsgAuth'.ctype,Sock},
             connectedClient(Sock, Authenticator);
         {success, Type} ->
@@ -113,10 +113,10 @@ authenticator(RegisteredUsers) ->
 
 
 % deserialize
-decoder(Data) ->
+decode(Data) ->
     Details = nefit:decode_msg(Data, 'Server'),
     Details.
 
-decoder(Data, Type) ->
+decode(Data, Type) ->
     Details = nefit:decode_msg(Data, Type),
     Details.
