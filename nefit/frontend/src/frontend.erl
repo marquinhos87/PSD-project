@@ -113,9 +113,6 @@ authenticator(RegisteredUsers) ->
 
 
 % deserialize
-<<<<<<< HEAD:nefit/frontend/src/frontend.erl
-decode(Data) -> nefit:decode_msg(Data, 'Server').
-=======
 decoder(Data) ->
     Details = nefit:decode_msg(Data, 'Server'),
     Details.
@@ -123,4 +120,3 @@ decoder(Data) ->
 decoder(Data, Type) ->
     Details = nefit:decode_msg(Data, Type),
     Details.
->>>>>>> 547bf4c3923c3f267ddf9441162fb8d99b52294a:nefit/frontend/src/main.erl
