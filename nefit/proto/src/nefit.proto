@@ -123,4 +123,19 @@ message InfoI {
     required int32 period = 6;
 }
 
+message Server {
+    required int64 commonField = 1;
+    oneof msg {
+        DisponibilityS m1 = 2;
+        OrderS m2 = 3;
+        SubS m3 = 4;
+        ResultS m4 = 5;
+        InfoS m5 = 6;
+        ProductionS m6 = 7;
+        OrderAckS m7 = 8;
+    }
+}
+
+
+
 /* -------------------------------------------------------------------------- */

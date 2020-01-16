@@ -68,7 +68,7 @@ public class Client
         }
 
         if (arg.getKey().getValue().equals("m"))
-            new Manufactor(arg.getValue(),in,out,context,socket,messages).run();
+            new Manufacturer(arg.getValue(),in,out,context,socket,messages).run();
         else
             new Importer(arg.getValue(),in,out,context,socket,messages).run();
     }

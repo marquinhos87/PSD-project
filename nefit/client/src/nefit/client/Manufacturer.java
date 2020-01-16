@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
-public class Manufactor implements Runnable
+public class Manufacturer implements Runnable
 {
     //List<Article> articles;
     private String name;
@@ -17,7 +17,7 @@ public class Manufactor implements Runnable
     private ZMQ.Socket socket;
     private Messages messages;
 
-    public Manufactor(Pair<String,String> auth, BufferedReader in, PrintWriter out, ZContext context, ZMQ.Socket socket, Messages messages)
+    public Manufacturer(Pair<String,String> auth, BufferedReader in, PrintWriter out, ZContext context, ZMQ.Socket socket, Messages messages)
     {
         this.name = auth.getKey();
         this.pass = auth.getValue();
