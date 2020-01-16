@@ -14,6 +14,7 @@ Comunicação entre as partes
     MshAuth
     OrderS
     SubS
+    GetS
 
   Servidor -> Importador
     MsgAck
@@ -31,5 +32,6 @@ Comunicação entre as partes
     OrderN
     DisponibilityN
     SubN
+    GetN
 
 --------------------------------------------------------------------------------

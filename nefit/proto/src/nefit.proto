@@ -96,13 +96,13 @@ message ProductionM {
 
 message ResultS {
     required bool result = 1;
-    optional string msg = 2;
+    required string msg = 2;
     required string nameI = 3;
 }
 
 message ResultI {
     required bool result = 1;
-    optional string msg = 2;
+    required string msg = 2;
 }
 
 message InfoS {
