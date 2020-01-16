@@ -28,7 +28,6 @@ public class Manufacturer implements Runnable
     @Override
     public void run()
     {
-        //TODO
         out.println("Type: <Product Name> <Min Quantity> <Max Quantity> <Min Price> <Period>");
         out.println("Period is the time in seconds that negotiation will be available");
         out.flush();
@@ -48,7 +47,7 @@ public class Manufacturer implements Runnable
                 }
                 else
                 {
-                    NefitProtos.Disponibility disp = this.messages.createDisponibilityS(
+                    NefitProtos.DisponibilityS disp = this.messages.createDisponibilityS(
                      this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Integer.parseInt(fields[3]),Integer.parseInt(fields[4]),
                      );
                     disp.writeDelimitedTo(this.os);
