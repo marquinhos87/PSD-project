@@ -2,19 +2,21 @@
 -module(main).
 -export([server/1]).
 
+-include("nefit.hrl").
+
 server(Port) ->
     Authenticator = spawn(fun()-> authenticator(map:new()) end),
     Orders = spawn(fun()-> receiveOrder([]) end),
-    Productions = spawn(fun()-> receiveProduction([]) end),
+    Productions = spawn(fun()-> receiveProduction([],[]) end),
     Arbiters = spawn(fun()-> arbiterResults(map:new()) end),
     {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, line}, {reuseaddr, true}]),
-    acceptor(LSock).
+    acceptor(LSock, Authenticator).
 
 % accepts connections
-acceptor(LSock) ->
+acceptor(LSock, Authenticator) ->
     {ok, Sock} = gen_tcp:accept(LSock),
     spawn(fun() -> acceptor(LSock) end),
-    connectedClient(Sock).
+    connectedClient(Sock, Authenticator).
 
 % process responsible for article orders
 receiveOrder(Orders) ->
@@ -25,7 +27,7 @@ receiveOrder(Orders) ->
     end.
 
 % process responsible for article productions
-receiveProduction(Productions) ->
+receiveProduction(Productions, Subs) ->
     Productions.
 
 % process responsible for the results received by the arbiters
@@ -34,14 +36,14 @@ arbiterResults(Arbiters) ->
     receive
         {tcp, _, Data} ->
             % received the result of a negotiation
-            decode(Data)
+            decoder(Data)
     end.
 
 % treats client logged as manufacturer
 manufacturer(Sock) ->
     receive
         {tcp, _, Data} ->
-            decode(Data),
+            decoder(Data),
             manufacturer(Sock);
         {tcp_closed, _} ->
             io:format("Closed.");
@@ -62,16 +64,24 @@ importer(Sock) ->
     end.
 
 % registers or logs in the connected client
-connectedClient(Sock) ->
-    Sock.
+connectedClient(Sock, Authenticator) ->
+    receive
+        {tcp, _, Data} ->
+            decode(Data),
+            importer(Sock);
+        {tcp_closed, _} ->
+            io:format("Closed.");
+        {tcp_error, _, _} ->
+            io:format("Error.")
+    end.
 
 % process responsible for authenticating and maybe register users, might separate
 authenticator(RegisteredUsers) ->
     RegisteredUsers.
 
 % serialize
-encode(Data) ->
-    Data.
+
 % deserialize
-decode(Data) ->
-    Data.
+decoder(Data) ->
+    Details = nefit:decode_msg(Data, 'Server'),
+    Details.
