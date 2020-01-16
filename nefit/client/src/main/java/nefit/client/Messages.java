@@ -93,4 +93,9 @@ public class Messages
             sub.addSubs(aux);
         return sub.build();
     }
+
+    public NefitProtos.GetS createGetS()
+    {
+        return NefitProtos.GetS.newBuilder().build();
+    }
 }

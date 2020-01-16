@@ -4,6 +4,8 @@ import javafx.util.Pair;
 import nefit.proto.NefitProtos;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Importer implements Runnable
 {
@@ -30,98 +32,116 @@ public class Importer implements Runnable
     public void run()
     {
         printCommands();
+        out.flush();
         new Thread(this::receive).start();
         //TODO
         while(true)
         {
-            String command = in.readLine();
-            String[] fields = command.split(" ");
-            if(fields.length < 1)
-            {
-                out.println("You don't write anything");
-                out.flush();
-            }
-            else
-            {
-                switch (fields[0]) {
-                    case "sub":
-                        if (fields.length == 1)
-                        {
-                            out.println("Forgot Names of Manufacturers")
-                            out.flush();
-                        }
-                        else
-                        {
-                            NefitProtos.
-                        }
-                        break;
-
-                    case "get":
-                        if (fields.length != 1)
-                        {
-                            out.println("To 'get' type only 'get'");
-                            out.flush();
-                        }
-                        else
-                        {
-                            try {
-                                NefitProtos.GetS get = this.messages.createGetS();
-                                get.writeDelimitedTo(this.os);
-                            }
-                            catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        break;
-
-                    case "order":
-                        if(fields.length != 5)
-                        {
-                            out.println("Maybe forgot something");
-                            out.flush();
-                        }
-                        else
-                        {
-                            try
-                            {
-                                NefitProtos.OrderS order = this.messages.createOrderS(
-                                    fields[1],fields[2],Integer.parseInt(fields[3]),Integer.parseInt(fields[5])
-                                );
-                                order.writeDelimitedTo(this.os);
-                            }
-                            catch (IOException e)
-                            {
-                                out.println("Something went wrong, try again");
-                            }
-                            catch (NumberFormatException e)
-                            {
-                                out.println("Quantity and Price have to be a number");
-                            }
-                            finally
-                            {
-                                out.flush();
-                            }
-                        }
-                        break;
-
-                    default:
-                        out.println("Wrong command, try one of this:");
-                        printCommands();
-                        break;
+            try {
+                String command = in.readLine();
+                String[] fields = command.split(" ");
+                if (fields.length < 1)
+                {
+                    out.println("You don't write anything");
                 }
+                else
+                {
+                    switch (fields[0])
+                    {
+                        case "sub":
+                            sendSub(fields);
+                            break;
+
+                        case "get":
+                            sendGet(fields);
+                            break;
+
+                        case "order":
+                            sendOrder(fields);
+                            break;
+
+                        default:
+                            out.println("Wrong command, try one of this:");
+                            printCommands();
+                            break;
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                out.println("Something went wrong");
+            }
+            finally
+            {
+                out.flush();
             }
         }
     }
 
-    public void receive()
+    private void sendSub(String[] fields) throws IOException
+    {
+        if (fields.length == 1)
+        {
+            out.println("Forgot Names of Manufacturers");
+        }
+        else
+        {
+            List<String> topics = new ArrayList<>();
+            for(int i = 1 ; i < fields.length ; i++)
+                topics.add(fields[i]);
+            NefitProtos.SubS sub = this.messages.createSubS(topics);
+            sub.writeDelimitedTo(this.os);
+        }
+    }
+
+    private void sendGet(String[] fields) throws IOException
+    {
+        if (fields.length != 1)
+        {
+            out.println("To 'get' type only 'get'");
+        }
+        else
+        {
+            NefitProtos.GetS get = this.messages.createGetS();
+            get.writeDelimitedTo(this.os);
+        }
+    }
+
+    private void sendOrder(String[] fields) throws IOException
+    {
+        if (fields.length != 5)
+        {
+            out.println("Maybe forgot something");
+        }
+        else
+        {
+            try
+            {
+                NefitProtos.OrderS order = this.messages.createOrderS(
+                    fields[1], fields[2], Integer.parseInt(fields[3]), Integer.parseInt(fields[5])
+                );
+                order.writeDelimitedTo(this.os);
+            }
+            catch (NumberFormatException e)
+            {
+                out.println("Quantity and Price have to be a number");
+            }
+        }
+    }
+
+    private void receive()
     {
         while (true)
         {
-            try {
+            try
+            {
                 NefitProtos.Importer importer = NefitProtos.Importer.parseDelimitedFrom(this.is);
 
                 if(importer.hasInfo())
+                {
+                    out.println("New Product available:");
                     printInfo(importer.getInfo());
+                }
 
                 if(importer.hasResult())
                     printResult(importer.getResult());
@@ -129,24 +149,16 @@ public class Importer implements Runnable
                 if(importer.hasOrdack())
                     printOrderAck(importer.getOrdack());
 
-                //if NegotiationsI
-                NefitProtos.NegotiationsI nego = NefitProtos.NegotiationsI.parseDelimitedFrom(this.is);
-                for (NefitProtos.InfoI info : nego.getNegotiations()) {
-                    out.println("Product available");
-                    out.println("\tManufacturer: " + info.getNameM());
-                    out.println("\tProduct: " + info.getNameP());
-                    out.println("\tMin quantity: " + info.getMinimun());
-                    out.println("\tMax quantity: " + info.getMaximun());
-                    out.println("\tMin unit price: " + info.getValue());
-                    out.println("\tTime Available: " + info.getPeriod() + " seconds");
-                }
-                out.flush();
+                if (importer.hasNego())
+                    printNegotiations(importer.getNego());
+
             }
             catch (IOException e)
             {
                 out.println("");
             }
-            finally {
+            finally
+            {
                 out.flush();
             }
         }
@@ -154,7 +166,6 @@ public class Importer implements Runnable
 
     private void printInfo(NefitProtos.InfoI info)
     {
-        out.println("New Product available");
         out.println("\tManufacturer: " + info.getNameM());
         out.println("\tProduct: " + info.getNameP());
         out.println("\tMin quantity: " + info.getMinimun());
@@ -187,12 +198,19 @@ public class Importer implements Runnable
         }
     }
 
+    private void printNegotiations(NefitProtos.NegotiationsI nego)
+    {
+        for (NefitProtos.InfoI info : nego.getNegotiationsList()) {
+            out.println("Product available:");
+            printInfo(info);
+        }
+    }
+
     private void printCommands()
     {
         out.println("You can use some commands like 'sub' 'get' 'order'");
         out.println("Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...");
         out.println("Command get: <get>");
-        out.println("Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>")
-        out.flush();
+        out.println("Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>");
     }
 }
