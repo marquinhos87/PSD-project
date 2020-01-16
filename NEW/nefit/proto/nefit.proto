@@ -170,7 +170,7 @@ message Negotiator {
         GetN get = 1;
         SubN sub = 2;
         OrderN order = 3;
-        DisponibilityN = 4;
+        DisponibilityN disponibility = 4;
     }
 }
 

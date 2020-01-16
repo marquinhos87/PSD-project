@@ -11043,17 +11043,17 @@ public final class NefitProtos {
     boolean getResult();
 
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return Whether the msg field is set.
      */
     boolean hasMsg();
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The msg.
      */
     java.lang.String getMsg();
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The bytes for msg.
      */
     com.google.protobuf.ByteString
@@ -11194,14 +11194,14 @@ public final class NefitProtos {
     public static final int MSG_FIELD_NUMBER = 2;
     private volatile java.lang.Object msg_;
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return Whether the msg field is set.
      */
     public boolean hasMsg() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The msg.
      */
     public java.lang.String getMsg() {
@@ -11219,7 +11219,7 @@ public final class NefitProtos {
       }
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The bytes for msg.
      */
     public com.google.protobuf.ByteString
@@ -11289,6 +11289,10 @@ public final class NefitProtos {
       if (isInitialized == 0) return false;
 
       if (!hasResult()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMsg()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -11636,6 +11640,9 @@ public final class NefitProtos {
         if (!hasResult()) {
           return false;
         }
+        if (!hasMsg()) {
+          return false;
+        }
         if (!hasNameI()) {
           return false;
         }
@@ -11701,14 +11708,14 @@ public final class NefitProtos {
 
       private java.lang.Object msg_ = "";
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return Whether the msg field is set.
        */
       public boolean hasMsg() {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return The msg.
        */
       public java.lang.String getMsg() {
@@ -11726,7 +11733,7 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return The bytes for msg.
        */
       public com.google.protobuf.ByteString
@@ -11743,7 +11750,7 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @param value The msg to set.
        * @return This builder for chaining.
        */
@@ -11758,7 +11765,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMsg() {
@@ -11768,7 +11775,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @param value The bytes for msg to set.
        * @return This builder for chaining.
        */
@@ -11935,17 +11942,17 @@ public final class NefitProtos {
     boolean getResult();
 
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return Whether the msg field is set.
      */
     boolean hasMsg();
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The msg.
      */
     java.lang.String getMsg();
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The bytes for msg.
      */
     com.google.protobuf.ByteString
@@ -12062,14 +12069,14 @@ public final class NefitProtos {
     public static final int MSG_FIELD_NUMBER = 2;
     private volatile java.lang.Object msg_;
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return Whether the msg field is set.
      */
     public boolean hasMsg() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The msg.
      */
     public java.lang.String getMsg() {
@@ -12087,7 +12094,7 @@ public final class NefitProtos {
       }
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>required string msg = 2;</code>
      * @return The bytes for msg.
      */
     public com.google.protobuf.ByteString
@@ -12112,6 +12119,10 @@ public final class NefitProtos {
       if (isInitialized == 0) return false;
 
       if (!hasResult()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMsg()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -12429,6 +12440,9 @@ public final class NefitProtos {
         if (!hasResult()) {
           return false;
         }
+        if (!hasMsg()) {
+          return false;
+        }
         return true;
       }
 
@@ -12491,14 +12505,14 @@ public final class NefitProtos {
 
       private java.lang.Object msg_ = "";
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return Whether the msg field is set.
        */
       public boolean hasMsg() {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return The msg.
        */
       public java.lang.String getMsg() {
@@ -12516,7 +12530,7 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return The bytes for msg.
        */
       public com.google.protobuf.ByteString
@@ -12533,7 +12547,7 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @param value The msg to set.
        * @return This builder for chaining.
        */
@@ -12548,7 +12562,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMsg() {
@@ -12558,7 +12572,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional string msg = 2;</code>
+       * <code>required string msg = 2;</code>
        * @param value The bytes for msg to set.
        * @return This builder for chaining.
        */
@@ -15214,2128 +15228,6 @@ public final class NefitProtos {
 
     @java.lang.Override
     public nefit.proto.NefitProtos.InfoI getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ServerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.Server)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-     * @return Whether the m1 field is set.
-     */
-    boolean hasM1();
-    /**
-     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-     * @return The m1.
-     */
-    nefit.proto.NefitProtos.DisponibilityS getM1();
-    /**
-     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-     */
-    nefit.proto.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder();
-
-    /**
-     * <code>optional .nefit.OrderS m2 = 2;</code>
-     * @return Whether the m2 field is set.
-     */
-    boolean hasM2();
-    /**
-     * <code>optional .nefit.OrderS m2 = 2;</code>
-     * @return The m2.
-     */
-    nefit.proto.NefitProtos.OrderS getM2();
-    /**
-     * <code>optional .nefit.OrderS m2 = 2;</code>
-     */
-    nefit.proto.NefitProtos.OrderSOrBuilder getM2OrBuilder();
-
-    /**
-     * <code>optional .nefit.SubS m3 = 3;</code>
-     * @return Whether the m3 field is set.
-     */
-    boolean hasM3();
-    /**
-     * <code>optional .nefit.SubS m3 = 3;</code>
-     * @return The m3.
-     */
-    nefit.proto.NefitProtos.SubS getM3();
-    /**
-     * <code>optional .nefit.SubS m3 = 3;</code>
-     */
-    nefit.proto.NefitProtos.SubSOrBuilder getM3OrBuilder();
-
-    /**
-     * <code>optional .nefit.ResultS m4 = 4;</code>
-     * @return Whether the m4 field is set.
-     */
-    boolean hasM4();
-    /**
-     * <code>optional .nefit.ResultS m4 = 4;</code>
-     * @return The m4.
-     */
-    nefit.proto.NefitProtos.ResultS getM4();
-    /**
-     * <code>optional .nefit.ResultS m4 = 4;</code>
-     */
-    nefit.proto.NefitProtos.ResultSOrBuilder getM4OrBuilder();
-
-    /**
-     * <code>optional .nefit.InfoS m5 = 5;</code>
-     * @return Whether the m5 field is set.
-     */
-    boolean hasM5();
-    /**
-     * <code>optional .nefit.InfoS m5 = 5;</code>
-     * @return The m5.
-     */
-    nefit.proto.NefitProtos.InfoS getM5();
-    /**
-     * <code>optional .nefit.InfoS m5 = 5;</code>
-     */
-    nefit.proto.NefitProtos.InfoSOrBuilder getM5OrBuilder();
-
-    /**
-     * <code>optional .nefit.ProductionS m6 = 6;</code>
-     * @return Whether the m6 field is set.
-     */
-    boolean hasM6();
-    /**
-     * <code>optional .nefit.ProductionS m6 = 6;</code>
-     * @return The m6.
-     */
-    nefit.proto.NefitProtos.ProductionS getM6();
-    /**
-     * <code>optional .nefit.ProductionS m6 = 6;</code>
-     */
-    nefit.proto.NefitProtos.ProductionSOrBuilder getM6OrBuilder();
-
-    /**
-     * <code>optional .nefit.OrderAckS m7 = 7;</code>
-     * @return Whether the m7 field is set.
-     */
-    boolean hasM7();
-    /**
-     * <code>optional .nefit.OrderAckS m7 = 7;</code>
-     * @return The m7.
-     */
-    nefit.proto.NefitProtos.OrderAckS getM7();
-    /**
-     * <code>optional .nefit.OrderAckS m7 = 7;</code>
-     */
-    nefit.proto.NefitProtos.OrderAckSOrBuilder getM7OrBuilder();
-
-    public nefit.proto.NefitProtos.Server.MsgCase getMsgCase();
-  }
-  /**
-   * Protobuf type {@code nefit.Server}
-   */
-  public  static final class Server extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.Server)
-      ServerOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Server.newBuilder() to construct.
-    private Server(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Server() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Server();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Server(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              nefit.proto.NefitProtos.DisponibilityS.Builder subBuilder = null;
-              if (msgCase_ == 1) {
-                subBuilder = ((nefit.proto.NefitProtos.DisponibilityS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.DisponibilityS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.DisponibilityS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 1;
-              break;
-            }
-            case 18: {
-              nefit.proto.NefitProtos.OrderS.Builder subBuilder = null;
-              if (msgCase_ == 2) {
-                subBuilder = ((nefit.proto.NefitProtos.OrderS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.OrderS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.OrderS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 2;
-              break;
-            }
-            case 26: {
-              nefit.proto.NefitProtos.SubS.Builder subBuilder = null;
-              if (msgCase_ == 3) {
-                subBuilder = ((nefit.proto.NefitProtos.SubS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.SubS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.SubS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 3;
-              break;
-            }
-            case 34: {
-              nefit.proto.NefitProtos.ResultS.Builder subBuilder = null;
-              if (msgCase_ == 4) {
-                subBuilder = ((nefit.proto.NefitProtos.ResultS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.ResultS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.ResultS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 4;
-              break;
-            }
-            case 42: {
-              nefit.proto.NefitProtos.InfoS.Builder subBuilder = null;
-              if (msgCase_ == 5) {
-                subBuilder = ((nefit.proto.NefitProtos.InfoS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.InfoS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.InfoS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 5;
-              break;
-            }
-            case 50: {
-              nefit.proto.NefitProtos.ProductionS.Builder subBuilder = null;
-              if (msgCase_ == 6) {
-                subBuilder = ((nefit.proto.NefitProtos.ProductionS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.ProductionS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.ProductionS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 6;
-              break;
-            }
-            case 58: {
-              nefit.proto.NefitProtos.OrderAckS.Builder subBuilder = null;
-              if (msgCase_ == 7) {
-                subBuilder = ((nefit.proto.NefitProtos.OrderAckS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.OrderAckS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.OrderAckS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 7;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return nefit.proto.NefitProtos.internal_static_nefit_Server_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return nefit.proto.NefitProtos.internal_static_nefit_Server_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              nefit.proto.NefitProtos.Server.class, nefit.proto.NefitProtos.Server.Builder.class);
-    }
-
-    private int bitField0_;
-    private int msgCase_ = 0;
-    private java.lang.Object msg_;
-    public enum MsgCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      M1(1),
-      M2(2),
-      M3(3),
-      M4(4),
-      M5(5),
-      M6(6),
-      M7(7),
-      MSG_NOT_SET(0);
-      private final int value;
-      private MsgCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static MsgCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static MsgCase forNumber(int value) {
-        switch (value) {
-          case 1: return M1;
-          case 2: return M2;
-          case 3: return M3;
-          case 4: return M4;
-          case 5: return M5;
-          case 6: return M6;
-          case 7: return M7;
-          case 0: return MSG_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public MsgCase
-    getMsgCase() {
-      return MsgCase.forNumber(
-          msgCase_);
-    }
-
-    public static final int M1_FIELD_NUMBER = 1;
-    /**
-     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-     * @return Whether the m1 field is set.
-     */
-    public boolean hasM1() {
-      return msgCase_ == 1;
-    }
-    /**
-     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-     * @return The m1.
-     */
-    public nefit.proto.NefitProtos.DisponibilityS getM1() {
-      if (msgCase_ == 1) {
-         return (nefit.proto.NefitProtos.DisponibilityS) msg_;
-      }
-      return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-     */
-    public nefit.proto.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder() {
-      if (msgCase_ == 1) {
-         return (nefit.proto.NefitProtos.DisponibilityS) msg_;
-      }
-      return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
-    }
-
-    public static final int M2_FIELD_NUMBER = 2;
-    /**
-     * <code>optional .nefit.OrderS m2 = 2;</code>
-     * @return Whether the m2 field is set.
-     */
-    public boolean hasM2() {
-      return msgCase_ == 2;
-    }
-    /**
-     * <code>optional .nefit.OrderS m2 = 2;</code>
-     * @return The m2.
-     */
-    public nefit.proto.NefitProtos.OrderS getM2() {
-      if (msgCase_ == 2) {
-         return (nefit.proto.NefitProtos.OrderS) msg_;
-      }
-      return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.OrderS m2 = 2;</code>
-     */
-    public nefit.proto.NefitProtos.OrderSOrBuilder getM2OrBuilder() {
-      if (msgCase_ == 2) {
-         return (nefit.proto.NefitProtos.OrderS) msg_;
-      }
-      return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
-    }
-
-    public static final int M3_FIELD_NUMBER = 3;
-    /**
-     * <code>optional .nefit.SubS m3 = 3;</code>
-     * @return Whether the m3 field is set.
-     */
-    public boolean hasM3() {
-      return msgCase_ == 3;
-    }
-    /**
-     * <code>optional .nefit.SubS m3 = 3;</code>
-     * @return The m3.
-     */
-    public nefit.proto.NefitProtos.SubS getM3() {
-      if (msgCase_ == 3) {
-         return (nefit.proto.NefitProtos.SubS) msg_;
-      }
-      return nefit.proto.NefitProtos.SubS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.SubS m3 = 3;</code>
-     */
-    public nefit.proto.NefitProtos.SubSOrBuilder getM3OrBuilder() {
-      if (msgCase_ == 3) {
-         return (nefit.proto.NefitProtos.SubS) msg_;
-      }
-      return nefit.proto.NefitProtos.SubS.getDefaultInstance();
-    }
-
-    public static final int M4_FIELD_NUMBER = 4;
-    /**
-     * <code>optional .nefit.ResultS m4 = 4;</code>
-     * @return Whether the m4 field is set.
-     */
-    public boolean hasM4() {
-      return msgCase_ == 4;
-    }
-    /**
-     * <code>optional .nefit.ResultS m4 = 4;</code>
-     * @return The m4.
-     */
-    public nefit.proto.NefitProtos.ResultS getM4() {
-      if (msgCase_ == 4) {
-         return (nefit.proto.NefitProtos.ResultS) msg_;
-      }
-      return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.ResultS m4 = 4;</code>
-     */
-    public nefit.proto.NefitProtos.ResultSOrBuilder getM4OrBuilder() {
-      if (msgCase_ == 4) {
-         return (nefit.proto.NefitProtos.ResultS) msg_;
-      }
-      return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
-    }
-
-    public static final int M5_FIELD_NUMBER = 5;
-    /**
-     * <code>optional .nefit.InfoS m5 = 5;</code>
-     * @return Whether the m5 field is set.
-     */
-    public boolean hasM5() {
-      return msgCase_ == 5;
-    }
-    /**
-     * <code>optional .nefit.InfoS m5 = 5;</code>
-     * @return The m5.
-     */
-    public nefit.proto.NefitProtos.InfoS getM5() {
-      if (msgCase_ == 5) {
-         return (nefit.proto.NefitProtos.InfoS) msg_;
-      }
-      return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.InfoS m5 = 5;</code>
-     */
-    public nefit.proto.NefitProtos.InfoSOrBuilder getM5OrBuilder() {
-      if (msgCase_ == 5) {
-         return (nefit.proto.NefitProtos.InfoS) msg_;
-      }
-      return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
-    }
-
-    public static final int M6_FIELD_NUMBER = 6;
-    /**
-     * <code>optional .nefit.ProductionS m6 = 6;</code>
-     * @return Whether the m6 field is set.
-     */
-    public boolean hasM6() {
-      return msgCase_ == 6;
-    }
-    /**
-     * <code>optional .nefit.ProductionS m6 = 6;</code>
-     * @return The m6.
-     */
-    public nefit.proto.NefitProtos.ProductionS getM6() {
-      if (msgCase_ == 6) {
-         return (nefit.proto.NefitProtos.ProductionS) msg_;
-      }
-      return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.ProductionS m6 = 6;</code>
-     */
-    public nefit.proto.NefitProtos.ProductionSOrBuilder getM6OrBuilder() {
-      if (msgCase_ == 6) {
-         return (nefit.proto.NefitProtos.ProductionS) msg_;
-      }
-      return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
-    }
-
-    public static final int M7_FIELD_NUMBER = 7;
-    /**
-     * <code>optional .nefit.OrderAckS m7 = 7;</code>
-     * @return Whether the m7 field is set.
-     */
-    public boolean hasM7() {
-      return msgCase_ == 7;
-    }
-    /**
-     * <code>optional .nefit.OrderAckS m7 = 7;</code>
-     * @return The m7.
-     */
-    public nefit.proto.NefitProtos.OrderAckS getM7() {
-      if (msgCase_ == 7) {
-         return (nefit.proto.NefitProtos.OrderAckS) msg_;
-      }
-      return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.OrderAckS m7 = 7;</code>
-     */
-    public nefit.proto.NefitProtos.OrderAckSOrBuilder getM7OrBuilder() {
-      if (msgCase_ == 7) {
-         return (nefit.proto.NefitProtos.OrderAckS) msg_;
-      }
-      return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (hasM1()) {
-        if (!getM1().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasM2()) {
-        if (!getM2().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasM4()) {
-        if (!getM4().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasM5()) {
-        if (!getM5().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasM6()) {
-        if (!getM6().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasM7()) {
-        if (!getM7().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (msgCase_ == 1) {
-        output.writeMessage(1, (nefit.proto.NefitProtos.DisponibilityS) msg_);
-      }
-      if (msgCase_ == 2) {
-        output.writeMessage(2, (nefit.proto.NefitProtos.OrderS) msg_);
-      }
-      if (msgCase_ == 3) {
-        output.writeMessage(3, (nefit.proto.NefitProtos.SubS) msg_);
-      }
-      if (msgCase_ == 4) {
-        output.writeMessage(4, (nefit.proto.NefitProtos.ResultS) msg_);
-      }
-      if (msgCase_ == 5) {
-        output.writeMessage(5, (nefit.proto.NefitProtos.InfoS) msg_);
-      }
-      if (msgCase_ == 6) {
-        output.writeMessage(6, (nefit.proto.NefitProtos.ProductionS) msg_);
-      }
-      if (msgCase_ == 7) {
-        output.writeMessage(7, (nefit.proto.NefitProtos.OrderAckS) msg_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (msgCase_ == 1) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (nefit.proto.NefitProtos.DisponibilityS) msg_);
-      }
-      if (msgCase_ == 2) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (nefit.proto.NefitProtos.OrderS) msg_);
-      }
-      if (msgCase_ == 3) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (nefit.proto.NefitProtos.SubS) msg_);
-      }
-      if (msgCase_ == 4) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (nefit.proto.NefitProtos.ResultS) msg_);
-      }
-      if (msgCase_ == 5) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (nefit.proto.NefitProtos.InfoS) msg_);
-      }
-      if (msgCase_ == 6) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (nefit.proto.NefitProtos.ProductionS) msg_);
-      }
-      if (msgCase_ == 7) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (nefit.proto.NefitProtos.OrderAckS) msg_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof nefit.proto.NefitProtos.Server)) {
-        return super.equals(obj);
-      }
-      nefit.proto.NefitProtos.Server other = (nefit.proto.NefitProtos.Server) obj;
-
-      if (!getMsgCase().equals(other.getMsgCase())) return false;
-      switch (msgCase_) {
-        case 1:
-          if (!getM1()
-              .equals(other.getM1())) return false;
-          break;
-        case 2:
-          if (!getM2()
-              .equals(other.getM2())) return false;
-          break;
-        case 3:
-          if (!getM3()
-              .equals(other.getM3())) return false;
-          break;
-        case 4:
-          if (!getM4()
-              .equals(other.getM4())) return false;
-          break;
-        case 5:
-          if (!getM5()
-              .equals(other.getM5())) return false;
-          break;
-        case 6:
-          if (!getM6()
-              .equals(other.getM6())) return false;
-          break;
-        case 7:
-          if (!getM7()
-              .equals(other.getM7())) return false;
-          break;
-        case 0:
-        default:
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      switch (msgCase_) {
-        case 1:
-          hash = (37 * hash) + M1_FIELD_NUMBER;
-          hash = (53 * hash) + getM1().hashCode();
-          break;
-        case 2:
-          hash = (37 * hash) + M2_FIELD_NUMBER;
-          hash = (53 * hash) + getM2().hashCode();
-          break;
-        case 3:
-          hash = (37 * hash) + M3_FIELD_NUMBER;
-          hash = (53 * hash) + getM3().hashCode();
-          break;
-        case 4:
-          hash = (37 * hash) + M4_FIELD_NUMBER;
-          hash = (53 * hash) + getM4().hashCode();
-          break;
-        case 5:
-          hash = (37 * hash) + M5_FIELD_NUMBER;
-          hash = (53 * hash) + getM5().hashCode();
-          break;
-        case 6:
-          hash = (37 * hash) + M6_FIELD_NUMBER;
-          hash = (53 * hash) + getM6().hashCode();
-          break;
-        case 7:
-          hash = (37 * hash) + M7_FIELD_NUMBER;
-          hash = (53 * hash) + getM7().hashCode();
-          break;
-        case 0:
-        default:
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.Server parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.Server parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.Server parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(nefit.proto.NefitProtos.Server prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code nefit.Server}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.Server)
-        nefit.proto.NefitProtos.ServerOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return nefit.proto.NefitProtos.internal_static_nefit_Server_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return nefit.proto.NefitProtos.internal_static_nefit_Server_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                nefit.proto.NefitProtos.Server.class, nefit.proto.NefitProtos.Server.Builder.class);
-      }
-
-      // Construct using nefit.proto.NefitProtos.Server.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        msgCase_ = 0;
-        msg_ = null;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return nefit.proto.NefitProtos.internal_static_nefit_Server_descriptor;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.Server getDefaultInstanceForType() {
-        return nefit.proto.NefitProtos.Server.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.Server build() {
-        nefit.proto.NefitProtos.Server result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.Server buildPartial() {
-        nefit.proto.NefitProtos.Server result = new nefit.proto.NefitProtos.Server(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (msgCase_ == 1) {
-          if (m1Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m1Builder_.build();
-          }
-        }
-        if (msgCase_ == 2) {
-          if (m2Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m2Builder_.build();
-          }
-        }
-        if (msgCase_ == 3) {
-          if (m3Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m3Builder_.build();
-          }
-        }
-        if (msgCase_ == 4) {
-          if (m4Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m4Builder_.build();
-          }
-        }
-        if (msgCase_ == 5) {
-          if (m5Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m5Builder_.build();
-          }
-        }
-        if (msgCase_ == 6) {
-          if (m6Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m6Builder_.build();
-          }
-        }
-        if (msgCase_ == 7) {
-          if (m7Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m7Builder_.build();
-          }
-        }
-        result.bitField0_ = to_bitField0_;
-        result.msgCase_ = msgCase_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.proto.NefitProtos.Server) {
-          return mergeFrom((nefit.proto.NefitProtos.Server)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(nefit.proto.NefitProtos.Server other) {
-        if (other == nefit.proto.NefitProtos.Server.getDefaultInstance()) return this;
-        switch (other.getMsgCase()) {
-          case M1: {
-            mergeM1(other.getM1());
-            break;
-          }
-          case M2: {
-            mergeM2(other.getM2());
-            break;
-          }
-          case M3: {
-            mergeM3(other.getM3());
-            break;
-          }
-          case M4: {
-            mergeM4(other.getM4());
-            break;
-          }
-          case M5: {
-            mergeM5(other.getM5());
-            break;
-          }
-          case M6: {
-            mergeM6(other.getM6());
-            break;
-          }
-          case M7: {
-            mergeM7(other.getM7());
-            break;
-          }
-          case MSG_NOT_SET: {
-            break;
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (hasM1()) {
-          if (!getM1().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM2()) {
-          if (!getM2().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM4()) {
-          if (!getM4().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM5()) {
-          if (!getM5().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM6()) {
-          if (!getM6().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM7()) {
-          if (!getM7().isInitialized()) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        nefit.proto.NefitProtos.Server parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.proto.NefitProtos.Server) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int msgCase_ = 0;
-      private java.lang.Object msg_;
-      public MsgCase
-          getMsgCase() {
-        return MsgCase.forNumber(
-            msgCase_);
-      }
-
-      public Builder clearMsg() {
-        msgCase_ = 0;
-        msg_ = null;
-        onChanged();
-        return this;
-      }
-
-      private int bitField0_;
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.DisponibilityS, nefit.proto.NefitProtos.DisponibilityS.Builder, nefit.proto.NefitProtos.DisponibilitySOrBuilder> m1Builder_;
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       * @return Whether the m1 field is set.
-       */
-      public boolean hasM1() {
-        return msgCase_ == 1;
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       * @return The m1.
-       */
-      public nefit.proto.NefitProtos.DisponibilityS getM1() {
-        if (m1Builder_ == null) {
-          if (msgCase_ == 1) {
-            return (nefit.proto.NefitProtos.DisponibilityS) msg_;
-          }
-          return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 1) {
-            return m1Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       */
-      public Builder setM1(nefit.proto.NefitProtos.DisponibilityS value) {
-        if (m1Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m1Builder_.setMessage(value);
-        }
-        msgCase_ = 1;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       */
-      public Builder setM1(
-          nefit.proto.NefitProtos.DisponibilityS.Builder builderForValue) {
-        if (m1Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m1Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 1;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       */
-      public Builder mergeM1(nefit.proto.NefitProtos.DisponibilityS value) {
-        if (m1Builder_ == null) {
-          if (msgCase_ == 1 &&
-              msg_ != nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.DisponibilityS.newBuilder((nefit.proto.NefitProtos.DisponibilityS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 1) {
-            m1Builder_.mergeFrom(value);
-          }
-          m1Builder_.setMessage(value);
-        }
-        msgCase_ = 1;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       */
-      public Builder clearM1() {
-        if (m1Builder_ == null) {
-          if (msgCase_ == 1) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 1) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m1Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       */
-      public nefit.proto.NefitProtos.DisponibilityS.Builder getM1Builder() {
-        return getM1FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       */
-      public nefit.proto.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder() {
-        if ((msgCase_ == 1) && (m1Builder_ != null)) {
-          return m1Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 1) {
-            return (nefit.proto.NefitProtos.DisponibilityS) msg_;
-          }
-          return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.DisponibilityS, nefit.proto.NefitProtos.DisponibilityS.Builder, nefit.proto.NefitProtos.DisponibilitySOrBuilder> 
-          getM1FieldBuilder() {
-        if (m1Builder_ == null) {
-          if (!(msgCase_ == 1)) {
-            msg_ = nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
-          }
-          m1Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.DisponibilityS, nefit.proto.NefitProtos.DisponibilityS.Builder, nefit.proto.NefitProtos.DisponibilitySOrBuilder>(
-                  (nefit.proto.NefitProtos.DisponibilityS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 1;
-        onChanged();;
-        return m1Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.OrderS, nefit.proto.NefitProtos.OrderS.Builder, nefit.proto.NefitProtos.OrderSOrBuilder> m2Builder_;
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       * @return Whether the m2 field is set.
-       */
-      public boolean hasM2() {
-        return msgCase_ == 2;
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       * @return The m2.
-       */
-      public nefit.proto.NefitProtos.OrderS getM2() {
-        if (m2Builder_ == null) {
-          if (msgCase_ == 2) {
-            return (nefit.proto.NefitProtos.OrderS) msg_;
-          }
-          return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 2) {
-            return m2Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       */
-      public Builder setM2(nefit.proto.NefitProtos.OrderS value) {
-        if (m2Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m2Builder_.setMessage(value);
-        }
-        msgCase_ = 2;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       */
-      public Builder setM2(
-          nefit.proto.NefitProtos.OrderS.Builder builderForValue) {
-        if (m2Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m2Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 2;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       */
-      public Builder mergeM2(nefit.proto.NefitProtos.OrderS value) {
-        if (m2Builder_ == null) {
-          if (msgCase_ == 2 &&
-              msg_ != nefit.proto.NefitProtos.OrderS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.OrderS.newBuilder((nefit.proto.NefitProtos.OrderS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 2) {
-            m2Builder_.mergeFrom(value);
-          }
-          m2Builder_.setMessage(value);
-        }
-        msgCase_ = 2;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       */
-      public Builder clearM2() {
-        if (m2Builder_ == null) {
-          if (msgCase_ == 2) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 2) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m2Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       */
-      public nefit.proto.NefitProtos.OrderS.Builder getM2Builder() {
-        return getM2FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       */
-      public nefit.proto.NefitProtos.OrderSOrBuilder getM2OrBuilder() {
-        if ((msgCase_ == 2) && (m2Builder_ != null)) {
-          return m2Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 2) {
-            return (nefit.proto.NefitProtos.OrderS) msg_;
-          }
-          return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.OrderS m2 = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.OrderS, nefit.proto.NefitProtos.OrderS.Builder, nefit.proto.NefitProtos.OrderSOrBuilder> 
-          getM2FieldBuilder() {
-        if (m2Builder_ == null) {
-          if (!(msgCase_ == 2)) {
-            msg_ = nefit.proto.NefitProtos.OrderS.getDefaultInstance();
-          }
-          m2Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.OrderS, nefit.proto.NefitProtos.OrderS.Builder, nefit.proto.NefitProtos.OrderSOrBuilder>(
-                  (nefit.proto.NefitProtos.OrderS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 2;
-        onChanged();;
-        return m2Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.SubS, nefit.proto.NefitProtos.SubS.Builder, nefit.proto.NefitProtos.SubSOrBuilder> m3Builder_;
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       * @return Whether the m3 field is set.
-       */
-      public boolean hasM3() {
-        return msgCase_ == 3;
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       * @return The m3.
-       */
-      public nefit.proto.NefitProtos.SubS getM3() {
-        if (m3Builder_ == null) {
-          if (msgCase_ == 3) {
-            return (nefit.proto.NefitProtos.SubS) msg_;
-          }
-          return nefit.proto.NefitProtos.SubS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 3) {
-            return m3Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.SubS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       */
-      public Builder setM3(nefit.proto.NefitProtos.SubS value) {
-        if (m3Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m3Builder_.setMessage(value);
-        }
-        msgCase_ = 3;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       */
-      public Builder setM3(
-          nefit.proto.NefitProtos.SubS.Builder builderForValue) {
-        if (m3Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m3Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 3;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       */
-      public Builder mergeM3(nefit.proto.NefitProtos.SubS value) {
-        if (m3Builder_ == null) {
-          if (msgCase_ == 3 &&
-              msg_ != nefit.proto.NefitProtos.SubS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.SubS.newBuilder((nefit.proto.NefitProtos.SubS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 3) {
-            m3Builder_.mergeFrom(value);
-          }
-          m3Builder_.setMessage(value);
-        }
-        msgCase_ = 3;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       */
-      public Builder clearM3() {
-        if (m3Builder_ == null) {
-          if (msgCase_ == 3) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 3) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m3Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       */
-      public nefit.proto.NefitProtos.SubS.Builder getM3Builder() {
-        return getM3FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       */
-      public nefit.proto.NefitProtos.SubSOrBuilder getM3OrBuilder() {
-        if ((msgCase_ == 3) && (m3Builder_ != null)) {
-          return m3Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 3) {
-            return (nefit.proto.NefitProtos.SubS) msg_;
-          }
-          return nefit.proto.NefitProtos.SubS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.SubS m3 = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.SubS, nefit.proto.NefitProtos.SubS.Builder, nefit.proto.NefitProtos.SubSOrBuilder> 
-          getM3FieldBuilder() {
-        if (m3Builder_ == null) {
-          if (!(msgCase_ == 3)) {
-            msg_ = nefit.proto.NefitProtos.SubS.getDefaultInstance();
-          }
-          m3Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.SubS, nefit.proto.NefitProtos.SubS.Builder, nefit.proto.NefitProtos.SubSOrBuilder>(
-                  (nefit.proto.NefitProtos.SubS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 3;
-        onChanged();;
-        return m3Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.ResultS, nefit.proto.NefitProtos.ResultS.Builder, nefit.proto.NefitProtos.ResultSOrBuilder> m4Builder_;
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       * @return Whether the m4 field is set.
-       */
-      public boolean hasM4() {
-        return msgCase_ == 4;
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       * @return The m4.
-       */
-      public nefit.proto.NefitProtos.ResultS getM4() {
-        if (m4Builder_ == null) {
-          if (msgCase_ == 4) {
-            return (nefit.proto.NefitProtos.ResultS) msg_;
-          }
-          return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 4) {
-            return m4Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       */
-      public Builder setM4(nefit.proto.NefitProtos.ResultS value) {
-        if (m4Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m4Builder_.setMessage(value);
-        }
-        msgCase_ = 4;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       */
-      public Builder setM4(
-          nefit.proto.NefitProtos.ResultS.Builder builderForValue) {
-        if (m4Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m4Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 4;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       */
-      public Builder mergeM4(nefit.proto.NefitProtos.ResultS value) {
-        if (m4Builder_ == null) {
-          if (msgCase_ == 4 &&
-              msg_ != nefit.proto.NefitProtos.ResultS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.ResultS.newBuilder((nefit.proto.NefitProtos.ResultS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 4) {
-            m4Builder_.mergeFrom(value);
-          }
-          m4Builder_.setMessage(value);
-        }
-        msgCase_ = 4;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       */
-      public Builder clearM4() {
-        if (m4Builder_ == null) {
-          if (msgCase_ == 4) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 4) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m4Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       */
-      public nefit.proto.NefitProtos.ResultS.Builder getM4Builder() {
-        return getM4FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       */
-      public nefit.proto.NefitProtos.ResultSOrBuilder getM4OrBuilder() {
-        if ((msgCase_ == 4) && (m4Builder_ != null)) {
-          return m4Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 4) {
-            return (nefit.proto.NefitProtos.ResultS) msg_;
-          }
-          return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.ResultS m4 = 4;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.ResultS, nefit.proto.NefitProtos.ResultS.Builder, nefit.proto.NefitProtos.ResultSOrBuilder> 
-          getM4FieldBuilder() {
-        if (m4Builder_ == null) {
-          if (!(msgCase_ == 4)) {
-            msg_ = nefit.proto.NefitProtos.ResultS.getDefaultInstance();
-          }
-          m4Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.ResultS, nefit.proto.NefitProtos.ResultS.Builder, nefit.proto.NefitProtos.ResultSOrBuilder>(
-                  (nefit.proto.NefitProtos.ResultS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 4;
-        onChanged();;
-        return m4Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> m5Builder_;
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       * @return Whether the m5 field is set.
-       */
-      public boolean hasM5() {
-        return msgCase_ == 5;
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       * @return The m5.
-       */
-      public nefit.proto.NefitProtos.InfoS getM5() {
-        if (m5Builder_ == null) {
-          if (msgCase_ == 5) {
-            return (nefit.proto.NefitProtos.InfoS) msg_;
-          }
-          return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 5) {
-            return m5Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       */
-      public Builder setM5(nefit.proto.NefitProtos.InfoS value) {
-        if (m5Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m5Builder_.setMessage(value);
-        }
-        msgCase_ = 5;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       */
-      public Builder setM5(
-          nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
-        if (m5Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m5Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 5;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       */
-      public Builder mergeM5(nefit.proto.NefitProtos.InfoS value) {
-        if (m5Builder_ == null) {
-          if (msgCase_ == 5 &&
-              msg_ != nefit.proto.NefitProtos.InfoS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.InfoS.newBuilder((nefit.proto.NefitProtos.InfoS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 5) {
-            m5Builder_.mergeFrom(value);
-          }
-          m5Builder_.setMessage(value);
-        }
-        msgCase_ = 5;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       */
-      public Builder clearM5() {
-        if (m5Builder_ == null) {
-          if (msgCase_ == 5) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 5) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m5Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       */
-      public nefit.proto.NefitProtos.InfoS.Builder getM5Builder() {
-        return getM5FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       */
-      public nefit.proto.NefitProtos.InfoSOrBuilder getM5OrBuilder() {
-        if ((msgCase_ == 5) && (m5Builder_ != null)) {
-          return m5Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 5) {
-            return (nefit.proto.NefitProtos.InfoS) msg_;
-          }
-          return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.InfoS m5 = 5;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> 
-          getM5FieldBuilder() {
-        if (m5Builder_ == null) {
-          if (!(msgCase_ == 5)) {
-            msg_ = nefit.proto.NefitProtos.InfoS.getDefaultInstance();
-          }
-          m5Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder>(
-                  (nefit.proto.NefitProtos.InfoS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 5;
-        onChanged();;
-        return m5Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.ProductionS, nefit.proto.NefitProtos.ProductionS.Builder, nefit.proto.NefitProtos.ProductionSOrBuilder> m6Builder_;
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       * @return Whether the m6 field is set.
-       */
-      public boolean hasM6() {
-        return msgCase_ == 6;
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       * @return The m6.
-       */
-      public nefit.proto.NefitProtos.ProductionS getM6() {
-        if (m6Builder_ == null) {
-          if (msgCase_ == 6) {
-            return (nefit.proto.NefitProtos.ProductionS) msg_;
-          }
-          return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 6) {
-            return m6Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       */
-      public Builder setM6(nefit.proto.NefitProtos.ProductionS value) {
-        if (m6Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m6Builder_.setMessage(value);
-        }
-        msgCase_ = 6;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       */
-      public Builder setM6(
-          nefit.proto.NefitProtos.ProductionS.Builder builderForValue) {
-        if (m6Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m6Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 6;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       */
-      public Builder mergeM6(nefit.proto.NefitProtos.ProductionS value) {
-        if (m6Builder_ == null) {
-          if (msgCase_ == 6 &&
-              msg_ != nefit.proto.NefitProtos.ProductionS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.ProductionS.newBuilder((nefit.proto.NefitProtos.ProductionS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 6) {
-            m6Builder_.mergeFrom(value);
-          }
-          m6Builder_.setMessage(value);
-        }
-        msgCase_ = 6;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       */
-      public Builder clearM6() {
-        if (m6Builder_ == null) {
-          if (msgCase_ == 6) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 6) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m6Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       */
-      public nefit.proto.NefitProtos.ProductionS.Builder getM6Builder() {
-        return getM6FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       */
-      public nefit.proto.NefitProtos.ProductionSOrBuilder getM6OrBuilder() {
-        if ((msgCase_ == 6) && (m6Builder_ != null)) {
-          return m6Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 6) {
-            return (nefit.proto.NefitProtos.ProductionS) msg_;
-          }
-          return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.ProductionS m6 = 6;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.ProductionS, nefit.proto.NefitProtos.ProductionS.Builder, nefit.proto.NefitProtos.ProductionSOrBuilder> 
-          getM6FieldBuilder() {
-        if (m6Builder_ == null) {
-          if (!(msgCase_ == 6)) {
-            msg_ = nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
-          }
-          m6Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.ProductionS, nefit.proto.NefitProtos.ProductionS.Builder, nefit.proto.NefitProtos.ProductionSOrBuilder>(
-                  (nefit.proto.NefitProtos.ProductionS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 6;
-        onChanged();;
-        return m6Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.OrderAckS, nefit.proto.NefitProtos.OrderAckS.Builder, nefit.proto.NefitProtos.OrderAckSOrBuilder> m7Builder_;
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       * @return Whether the m7 field is set.
-       */
-      public boolean hasM7() {
-        return msgCase_ == 7;
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       * @return The m7.
-       */
-      public nefit.proto.NefitProtos.OrderAckS getM7() {
-        if (m7Builder_ == null) {
-          if (msgCase_ == 7) {
-            return (nefit.proto.NefitProtos.OrderAckS) msg_;
-          }
-          return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 7) {
-            return m7Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       */
-      public Builder setM7(nefit.proto.NefitProtos.OrderAckS value) {
-        if (m7Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m7Builder_.setMessage(value);
-        }
-        msgCase_ = 7;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       */
-      public Builder setM7(
-          nefit.proto.NefitProtos.OrderAckS.Builder builderForValue) {
-        if (m7Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m7Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 7;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       */
-      public Builder mergeM7(nefit.proto.NefitProtos.OrderAckS value) {
-        if (m7Builder_ == null) {
-          if (msgCase_ == 7 &&
-              msg_ != nefit.proto.NefitProtos.OrderAckS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.OrderAckS.newBuilder((nefit.proto.NefitProtos.OrderAckS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 7) {
-            m7Builder_.mergeFrom(value);
-          }
-          m7Builder_.setMessage(value);
-        }
-        msgCase_ = 7;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       */
-      public Builder clearM7() {
-        if (m7Builder_ == null) {
-          if (msgCase_ == 7) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 7) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m7Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       */
-      public nefit.proto.NefitProtos.OrderAckS.Builder getM7Builder() {
-        return getM7FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       */
-      public nefit.proto.NefitProtos.OrderAckSOrBuilder getM7OrBuilder() {
-        if ((msgCase_ == 7) && (m7Builder_ != null)) {
-          return m7Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 7) {
-            return (nefit.proto.NefitProtos.OrderAckS) msg_;
-          }
-          return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.OrderAckS m7 = 7;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.OrderAckS, nefit.proto.NefitProtos.OrderAckS.Builder, nefit.proto.NefitProtos.OrderAckSOrBuilder> 
-          getM7FieldBuilder() {
-        if (m7Builder_ == null) {
-          if (!(msgCase_ == 7)) {
-            msg_ = nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
-          }
-          m7Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.OrderAckS, nefit.proto.NefitProtos.OrderAckS.Builder, nefit.proto.NefitProtos.OrderAckSOrBuilder>(
-                  (nefit.proto.NefitProtos.OrderAckS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 7;
-        onChanged();;
-        return m7Builder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:nefit.Server)
-    }
-
-    // @@protoc_insertion_point(class_scope:nefit.Server)
-    private static final nefit.proto.NefitProtos.Server DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.Server();
-    }
-
-    public static nefit.proto.NefitProtos.Server getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<Server>
-        PARSER = new com.google.protobuf.AbstractParser<Server>() {
-      @java.lang.Override
-      public Server parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Server(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Server> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Server> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public nefit.proto.NefitProtos.Server getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -20348,6 +18240,5681 @@ public final class NefitProtos {
 
   }
 
+  public interface ServerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.Server)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+     * @return Whether the m1 field is set.
+     */
+    boolean hasM1();
+    /**
+     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+     * @return The m1.
+     */
+    nefit.proto.NefitProtos.DisponibilityS getM1();
+    /**
+     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+     */
+    nefit.proto.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder();
+
+    /**
+     * <code>optional .nefit.OrderS m2 = 2;</code>
+     * @return Whether the m2 field is set.
+     */
+    boolean hasM2();
+    /**
+     * <code>optional .nefit.OrderS m2 = 2;</code>
+     * @return The m2.
+     */
+    nefit.proto.NefitProtos.OrderS getM2();
+    /**
+     * <code>optional .nefit.OrderS m2 = 2;</code>
+     */
+    nefit.proto.NefitProtos.OrderSOrBuilder getM2OrBuilder();
+
+    /**
+     * <code>optional .nefit.SubS m3 = 3;</code>
+     * @return Whether the m3 field is set.
+     */
+    boolean hasM3();
+    /**
+     * <code>optional .nefit.SubS m3 = 3;</code>
+     * @return The m3.
+     */
+    nefit.proto.NefitProtos.SubS getM3();
+    /**
+     * <code>optional .nefit.SubS m3 = 3;</code>
+     */
+    nefit.proto.NefitProtos.SubSOrBuilder getM3OrBuilder();
+
+    /**
+     * <code>optional .nefit.ResultS m4 = 4;</code>
+     * @return Whether the m4 field is set.
+     */
+    boolean hasM4();
+    /**
+     * <code>optional .nefit.ResultS m4 = 4;</code>
+     * @return The m4.
+     */
+    nefit.proto.NefitProtos.ResultS getM4();
+    /**
+     * <code>optional .nefit.ResultS m4 = 4;</code>
+     */
+    nefit.proto.NefitProtos.ResultSOrBuilder getM4OrBuilder();
+
+    /**
+     * <code>optional .nefit.InfoS m5 = 5;</code>
+     * @return Whether the m5 field is set.
+     */
+    boolean hasM5();
+    /**
+     * <code>optional .nefit.InfoS m5 = 5;</code>
+     * @return The m5.
+     */
+    nefit.proto.NefitProtos.InfoS getM5();
+    /**
+     * <code>optional .nefit.InfoS m5 = 5;</code>
+     */
+    nefit.proto.NefitProtos.InfoSOrBuilder getM5OrBuilder();
+
+    /**
+     * <code>optional .nefit.ProductionS m6 = 6;</code>
+     * @return Whether the m6 field is set.
+     */
+    boolean hasM6();
+    /**
+     * <code>optional .nefit.ProductionS m6 = 6;</code>
+     * @return The m6.
+     */
+    nefit.proto.NefitProtos.ProductionS getM6();
+    /**
+     * <code>optional .nefit.ProductionS m6 = 6;</code>
+     */
+    nefit.proto.NefitProtos.ProductionSOrBuilder getM6OrBuilder();
+
+    /**
+     * <code>optional .nefit.OrderAckS m7 = 7;</code>
+     * @return Whether the m7 field is set.
+     */
+    boolean hasM7();
+    /**
+     * <code>optional .nefit.OrderAckS m7 = 7;</code>
+     * @return The m7.
+     */
+    nefit.proto.NefitProtos.OrderAckS getM7();
+    /**
+     * <code>optional .nefit.OrderAckS m7 = 7;</code>
+     */
+    nefit.proto.NefitProtos.OrderAckSOrBuilder getM7OrBuilder();
+
+    /**
+     * <code>optional .nefit.GetS m8 = 8;</code>
+     * @return Whether the m8 field is set.
+     */
+    boolean hasM8();
+    /**
+     * <code>optional .nefit.GetS m8 = 8;</code>
+     * @return The m8.
+     */
+    nefit.proto.NefitProtos.GetS getM8();
+    /**
+     * <code>optional .nefit.GetS m8 = 8;</code>
+     */
+    nefit.proto.NefitProtos.GetSOrBuilder getM8OrBuilder();
+
+    /**
+     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+     * @return Whether the m9 field is set.
+     */
+    boolean hasM9();
+    /**
+     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+     * @return The m9.
+     */
+    nefit.proto.NefitProtos.NegotiationsS getM9();
+    /**
+     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+     */
+    nefit.proto.NefitProtos.NegotiationsSOrBuilder getM9OrBuilder();
+
+    /**
+     * <code>optional .nefit.MsgAuth m10 = 10;</code>
+     * @return Whether the m10 field is set.
+     */
+    boolean hasM10();
+    /**
+     * <code>optional .nefit.MsgAuth m10 = 10;</code>
+     * @return The m10.
+     */
+    nefit.proto.NefitProtos.MsgAuth getM10();
+    /**
+     * <code>optional .nefit.MsgAuth m10 = 10;</code>
+     */
+    nefit.proto.NefitProtos.MsgAuthOrBuilder getM10OrBuilder();
+
+    public nefit.proto.NefitProtos.Server.MsgCase getMsgCase();
+  }
+  /**
+   * Protobuf type {@code nefit.Server}
+   */
+  public  static final class Server extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:nefit.Server)
+      ServerOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Server.newBuilder() to construct.
+    private Server(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Server() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Server();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Server(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              nefit.proto.NefitProtos.DisponibilityS.Builder subBuilder = null;
+              if (msgCase_ == 1) {
+                subBuilder = ((nefit.proto.NefitProtos.DisponibilityS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.DisponibilityS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.DisponibilityS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 1;
+              break;
+            }
+            case 18: {
+              nefit.proto.NefitProtos.OrderS.Builder subBuilder = null;
+              if (msgCase_ == 2) {
+                subBuilder = ((nefit.proto.NefitProtos.OrderS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.OrderS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.OrderS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 2;
+              break;
+            }
+            case 26: {
+              nefit.proto.NefitProtos.SubS.Builder subBuilder = null;
+              if (msgCase_ == 3) {
+                subBuilder = ((nefit.proto.NefitProtos.SubS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.SubS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.SubS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 3;
+              break;
+            }
+            case 34: {
+              nefit.proto.NefitProtos.ResultS.Builder subBuilder = null;
+              if (msgCase_ == 4) {
+                subBuilder = ((nefit.proto.NefitProtos.ResultS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.ResultS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.ResultS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 4;
+              break;
+            }
+            case 42: {
+              nefit.proto.NefitProtos.InfoS.Builder subBuilder = null;
+              if (msgCase_ == 5) {
+                subBuilder = ((nefit.proto.NefitProtos.InfoS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.InfoS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.InfoS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 5;
+              break;
+            }
+            case 50: {
+              nefit.proto.NefitProtos.ProductionS.Builder subBuilder = null;
+              if (msgCase_ == 6) {
+                subBuilder = ((nefit.proto.NefitProtos.ProductionS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.ProductionS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.ProductionS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 6;
+              break;
+            }
+            case 58: {
+              nefit.proto.NefitProtos.OrderAckS.Builder subBuilder = null;
+              if (msgCase_ == 7) {
+                subBuilder = ((nefit.proto.NefitProtos.OrderAckS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.OrderAckS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.OrderAckS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 7;
+              break;
+            }
+            case 66: {
+              nefit.proto.NefitProtos.GetS.Builder subBuilder = null;
+              if (msgCase_ == 8) {
+                subBuilder = ((nefit.proto.NefitProtos.GetS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.GetS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.GetS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 8;
+              break;
+            }
+            case 74: {
+              nefit.proto.NefitProtos.NegotiationsS.Builder subBuilder = null;
+              if (msgCase_ == 9) {
+                subBuilder = ((nefit.proto.NefitProtos.NegotiationsS) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.NegotiationsS.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.NegotiationsS) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 9;
+              break;
+            }
+            case 82: {
+              nefit.proto.NefitProtos.MsgAuth.Builder subBuilder = null;
+              if (msgCase_ == 10) {
+                subBuilder = ((nefit.proto.NefitProtos.MsgAuth) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.MsgAuth.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.MsgAuth) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 10;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return nefit.proto.NefitProtos.internal_static_nefit_Server_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return nefit.proto.NefitProtos.internal_static_nefit_Server_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              nefit.proto.NefitProtos.Server.class, nefit.proto.NefitProtos.Server.Builder.class);
+    }
+
+    private int bitField0_;
+    private int msgCase_ = 0;
+    private java.lang.Object msg_;
+    public enum MsgCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      M1(1),
+      M2(2),
+      M3(3),
+      M4(4),
+      M5(5),
+      M6(6),
+      M7(7),
+      M8(8),
+      M9(9),
+      M10(10),
+      MSG_NOT_SET(0);
+      private final int value;
+      private MsgCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static MsgCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static MsgCase forNumber(int value) {
+        switch (value) {
+          case 1: return M1;
+          case 2: return M2;
+          case 3: return M3;
+          case 4: return M4;
+          case 5: return M5;
+          case 6: return M6;
+          case 7: return M7;
+          case 8: return M8;
+          case 9: return M9;
+          case 10: return M10;
+          case 0: return MSG_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public MsgCase
+    getMsgCase() {
+      return MsgCase.forNumber(
+          msgCase_);
+    }
+
+    public static final int M1_FIELD_NUMBER = 1;
+    /**
+     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+     * @return Whether the m1 field is set.
+     */
+    public boolean hasM1() {
+      return msgCase_ == 1;
+    }
+    /**
+     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+     * @return The m1.
+     */
+    public nefit.proto.NefitProtos.DisponibilityS getM1() {
+      if (msgCase_ == 1) {
+         return (nefit.proto.NefitProtos.DisponibilityS) msg_;
+      }
+      return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+     */
+    public nefit.proto.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder() {
+      if (msgCase_ == 1) {
+         return (nefit.proto.NefitProtos.DisponibilityS) msg_;
+      }
+      return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
+    }
+
+    public static final int M2_FIELD_NUMBER = 2;
+    /**
+     * <code>optional .nefit.OrderS m2 = 2;</code>
+     * @return Whether the m2 field is set.
+     */
+    public boolean hasM2() {
+      return msgCase_ == 2;
+    }
+    /**
+     * <code>optional .nefit.OrderS m2 = 2;</code>
+     * @return The m2.
+     */
+    public nefit.proto.NefitProtos.OrderS getM2() {
+      if (msgCase_ == 2) {
+         return (nefit.proto.NefitProtos.OrderS) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.OrderS m2 = 2;</code>
+     */
+    public nefit.proto.NefitProtos.OrderSOrBuilder getM2OrBuilder() {
+      if (msgCase_ == 2) {
+         return (nefit.proto.NefitProtos.OrderS) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
+    }
+
+    public static final int M3_FIELD_NUMBER = 3;
+    /**
+     * <code>optional .nefit.SubS m3 = 3;</code>
+     * @return Whether the m3 field is set.
+     */
+    public boolean hasM3() {
+      return msgCase_ == 3;
+    }
+    /**
+     * <code>optional .nefit.SubS m3 = 3;</code>
+     * @return The m3.
+     */
+    public nefit.proto.NefitProtos.SubS getM3() {
+      if (msgCase_ == 3) {
+         return (nefit.proto.NefitProtos.SubS) msg_;
+      }
+      return nefit.proto.NefitProtos.SubS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.SubS m3 = 3;</code>
+     */
+    public nefit.proto.NefitProtos.SubSOrBuilder getM3OrBuilder() {
+      if (msgCase_ == 3) {
+         return (nefit.proto.NefitProtos.SubS) msg_;
+      }
+      return nefit.proto.NefitProtos.SubS.getDefaultInstance();
+    }
+
+    public static final int M4_FIELD_NUMBER = 4;
+    /**
+     * <code>optional .nefit.ResultS m4 = 4;</code>
+     * @return Whether the m4 field is set.
+     */
+    public boolean hasM4() {
+      return msgCase_ == 4;
+    }
+    /**
+     * <code>optional .nefit.ResultS m4 = 4;</code>
+     * @return The m4.
+     */
+    public nefit.proto.NefitProtos.ResultS getM4() {
+      if (msgCase_ == 4) {
+         return (nefit.proto.NefitProtos.ResultS) msg_;
+      }
+      return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.ResultS m4 = 4;</code>
+     */
+    public nefit.proto.NefitProtos.ResultSOrBuilder getM4OrBuilder() {
+      if (msgCase_ == 4) {
+         return (nefit.proto.NefitProtos.ResultS) msg_;
+      }
+      return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
+    }
+
+    public static final int M5_FIELD_NUMBER = 5;
+    /**
+     * <code>optional .nefit.InfoS m5 = 5;</code>
+     * @return Whether the m5 field is set.
+     */
+    public boolean hasM5() {
+      return msgCase_ == 5;
+    }
+    /**
+     * <code>optional .nefit.InfoS m5 = 5;</code>
+     * @return The m5.
+     */
+    public nefit.proto.NefitProtos.InfoS getM5() {
+      if (msgCase_ == 5) {
+         return (nefit.proto.NefitProtos.InfoS) msg_;
+      }
+      return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.InfoS m5 = 5;</code>
+     */
+    public nefit.proto.NefitProtos.InfoSOrBuilder getM5OrBuilder() {
+      if (msgCase_ == 5) {
+         return (nefit.proto.NefitProtos.InfoS) msg_;
+      }
+      return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
+    }
+
+    public static final int M6_FIELD_NUMBER = 6;
+    /**
+     * <code>optional .nefit.ProductionS m6 = 6;</code>
+     * @return Whether the m6 field is set.
+     */
+    public boolean hasM6() {
+      return msgCase_ == 6;
+    }
+    /**
+     * <code>optional .nefit.ProductionS m6 = 6;</code>
+     * @return The m6.
+     */
+    public nefit.proto.NefitProtos.ProductionS getM6() {
+      if (msgCase_ == 6) {
+         return (nefit.proto.NefitProtos.ProductionS) msg_;
+      }
+      return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.ProductionS m6 = 6;</code>
+     */
+    public nefit.proto.NefitProtos.ProductionSOrBuilder getM6OrBuilder() {
+      if (msgCase_ == 6) {
+         return (nefit.proto.NefitProtos.ProductionS) msg_;
+      }
+      return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
+    }
+
+    public static final int M7_FIELD_NUMBER = 7;
+    /**
+     * <code>optional .nefit.OrderAckS m7 = 7;</code>
+     * @return Whether the m7 field is set.
+     */
+    public boolean hasM7() {
+      return msgCase_ == 7;
+    }
+    /**
+     * <code>optional .nefit.OrderAckS m7 = 7;</code>
+     * @return The m7.
+     */
+    public nefit.proto.NefitProtos.OrderAckS getM7() {
+      if (msgCase_ == 7) {
+         return (nefit.proto.NefitProtos.OrderAckS) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.OrderAckS m7 = 7;</code>
+     */
+    public nefit.proto.NefitProtos.OrderAckSOrBuilder getM7OrBuilder() {
+      if (msgCase_ == 7) {
+         return (nefit.proto.NefitProtos.OrderAckS) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
+    }
+
+    public static final int M8_FIELD_NUMBER = 8;
+    /**
+     * <code>optional .nefit.GetS m8 = 8;</code>
+     * @return Whether the m8 field is set.
+     */
+    public boolean hasM8() {
+      return msgCase_ == 8;
+    }
+    /**
+     * <code>optional .nefit.GetS m8 = 8;</code>
+     * @return The m8.
+     */
+    public nefit.proto.NefitProtos.GetS getM8() {
+      if (msgCase_ == 8) {
+         return (nefit.proto.NefitProtos.GetS) msg_;
+      }
+      return nefit.proto.NefitProtos.GetS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.GetS m8 = 8;</code>
+     */
+    public nefit.proto.NefitProtos.GetSOrBuilder getM8OrBuilder() {
+      if (msgCase_ == 8) {
+         return (nefit.proto.NefitProtos.GetS) msg_;
+      }
+      return nefit.proto.NefitProtos.GetS.getDefaultInstance();
+    }
+
+    public static final int M9_FIELD_NUMBER = 9;
+    /**
+     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+     * @return Whether the m9 field is set.
+     */
+    public boolean hasM9() {
+      return msgCase_ == 9;
+    }
+    /**
+     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+     * @return The m9.
+     */
+    public nefit.proto.NefitProtos.NegotiationsS getM9() {
+      if (msgCase_ == 9) {
+         return (nefit.proto.NefitProtos.NegotiationsS) msg_;
+      }
+      return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+     */
+    public nefit.proto.NefitProtos.NegotiationsSOrBuilder getM9OrBuilder() {
+      if (msgCase_ == 9) {
+         return (nefit.proto.NefitProtos.NegotiationsS) msg_;
+      }
+      return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
+    }
+
+    public static final int M10_FIELD_NUMBER = 10;
+    /**
+     * <code>optional .nefit.MsgAuth m10 = 10;</code>
+     * @return Whether the m10 field is set.
+     */
+    public boolean hasM10() {
+      return msgCase_ == 10;
+    }
+    /**
+     * <code>optional .nefit.MsgAuth m10 = 10;</code>
+     * @return The m10.
+     */
+    public nefit.proto.NefitProtos.MsgAuth getM10() {
+      if (msgCase_ == 10) {
+         return (nefit.proto.NefitProtos.MsgAuth) msg_;
+      }
+      return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.MsgAuth m10 = 10;</code>
+     */
+    public nefit.proto.NefitProtos.MsgAuthOrBuilder getM10OrBuilder() {
+      if (msgCase_ == 10) {
+         return (nefit.proto.NefitProtos.MsgAuth) msg_;
+      }
+      return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasM1()) {
+        if (!getM1().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM2()) {
+        if (!getM2().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM4()) {
+        if (!getM4().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM5()) {
+        if (!getM5().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM6()) {
+        if (!getM6().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM7()) {
+        if (!getM7().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM8()) {
+        if (!getM8().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM9()) {
+        if (!getM9().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasM10()) {
+        if (!getM10().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (msgCase_ == 1) {
+        output.writeMessage(1, (nefit.proto.NefitProtos.DisponibilityS) msg_);
+      }
+      if (msgCase_ == 2) {
+        output.writeMessage(2, (nefit.proto.NefitProtos.OrderS) msg_);
+      }
+      if (msgCase_ == 3) {
+        output.writeMessage(3, (nefit.proto.NefitProtos.SubS) msg_);
+      }
+      if (msgCase_ == 4) {
+        output.writeMessage(4, (nefit.proto.NefitProtos.ResultS) msg_);
+      }
+      if (msgCase_ == 5) {
+        output.writeMessage(5, (nefit.proto.NefitProtos.InfoS) msg_);
+      }
+      if (msgCase_ == 6) {
+        output.writeMessage(6, (nefit.proto.NefitProtos.ProductionS) msg_);
+      }
+      if (msgCase_ == 7) {
+        output.writeMessage(7, (nefit.proto.NefitProtos.OrderAckS) msg_);
+      }
+      if (msgCase_ == 8) {
+        output.writeMessage(8, (nefit.proto.NefitProtos.GetS) msg_);
+      }
+      if (msgCase_ == 9) {
+        output.writeMessage(9, (nefit.proto.NefitProtos.NegotiationsS) msg_);
+      }
+      if (msgCase_ == 10) {
+        output.writeMessage(10, (nefit.proto.NefitProtos.MsgAuth) msg_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (msgCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, (nefit.proto.NefitProtos.DisponibilityS) msg_);
+      }
+      if (msgCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (nefit.proto.NefitProtos.OrderS) msg_);
+      }
+      if (msgCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (nefit.proto.NefitProtos.SubS) msg_);
+      }
+      if (msgCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (nefit.proto.NefitProtos.ResultS) msg_);
+      }
+      if (msgCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, (nefit.proto.NefitProtos.InfoS) msg_);
+      }
+      if (msgCase_ == 6) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, (nefit.proto.NefitProtos.ProductionS) msg_);
+      }
+      if (msgCase_ == 7) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, (nefit.proto.NefitProtos.OrderAckS) msg_);
+      }
+      if (msgCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, (nefit.proto.NefitProtos.GetS) msg_);
+      }
+      if (msgCase_ == 9) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, (nefit.proto.NefitProtos.NegotiationsS) msg_);
+      }
+      if (msgCase_ == 10) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, (nefit.proto.NefitProtos.MsgAuth) msg_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof nefit.proto.NefitProtos.Server)) {
+        return super.equals(obj);
+      }
+      nefit.proto.NefitProtos.Server other = (nefit.proto.NefitProtos.Server) obj;
+
+      if (!getMsgCase().equals(other.getMsgCase())) return false;
+      switch (msgCase_) {
+        case 1:
+          if (!getM1()
+              .equals(other.getM1())) return false;
+          break;
+        case 2:
+          if (!getM2()
+              .equals(other.getM2())) return false;
+          break;
+        case 3:
+          if (!getM3()
+              .equals(other.getM3())) return false;
+          break;
+        case 4:
+          if (!getM4()
+              .equals(other.getM4())) return false;
+          break;
+        case 5:
+          if (!getM5()
+              .equals(other.getM5())) return false;
+          break;
+        case 6:
+          if (!getM6()
+              .equals(other.getM6())) return false;
+          break;
+        case 7:
+          if (!getM7()
+              .equals(other.getM7())) return false;
+          break;
+        case 8:
+          if (!getM8()
+              .equals(other.getM8())) return false;
+          break;
+        case 9:
+          if (!getM9()
+              .equals(other.getM9())) return false;
+          break;
+        case 10:
+          if (!getM10()
+              .equals(other.getM10())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (msgCase_) {
+        case 1:
+          hash = (37 * hash) + M1_FIELD_NUMBER;
+          hash = (53 * hash) + getM1().hashCode();
+          break;
+        case 2:
+          hash = (37 * hash) + M2_FIELD_NUMBER;
+          hash = (53 * hash) + getM2().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + M3_FIELD_NUMBER;
+          hash = (53 * hash) + getM3().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + M4_FIELD_NUMBER;
+          hash = (53 * hash) + getM4().hashCode();
+          break;
+        case 5:
+          hash = (37 * hash) + M5_FIELD_NUMBER;
+          hash = (53 * hash) + getM5().hashCode();
+          break;
+        case 6:
+          hash = (37 * hash) + M6_FIELD_NUMBER;
+          hash = (53 * hash) + getM6().hashCode();
+          break;
+        case 7:
+          hash = (37 * hash) + M7_FIELD_NUMBER;
+          hash = (53 * hash) + getM7().hashCode();
+          break;
+        case 8:
+          hash = (37 * hash) + M8_FIELD_NUMBER;
+          hash = (53 * hash) + getM8().hashCode();
+          break;
+        case 9:
+          hash = (37 * hash) + M9_FIELD_NUMBER;
+          hash = (53 * hash) + getM9().hashCode();
+          break;
+        case 10:
+          hash = (37 * hash) + M10_FIELD_NUMBER;
+          hash = (53 * hash) + getM10().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Server parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Server parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Server parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(nefit.proto.NefitProtos.Server prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code nefit.Server}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:nefit.Server)
+        nefit.proto.NefitProtos.ServerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Server_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Server_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                nefit.proto.NefitProtos.Server.class, nefit.proto.NefitProtos.Server.Builder.class);
+      }
+
+      // Construct using nefit.proto.NefitProtos.Server.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        msgCase_ = 0;
+        msg_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Server_descriptor;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Server getDefaultInstanceForType() {
+        return nefit.proto.NefitProtos.Server.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Server build() {
+        nefit.proto.NefitProtos.Server result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Server buildPartial() {
+        nefit.proto.NefitProtos.Server result = new nefit.proto.NefitProtos.Server(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (msgCase_ == 1) {
+          if (m1Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m1Builder_.build();
+          }
+        }
+        if (msgCase_ == 2) {
+          if (m2Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m2Builder_.build();
+          }
+        }
+        if (msgCase_ == 3) {
+          if (m3Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m3Builder_.build();
+          }
+        }
+        if (msgCase_ == 4) {
+          if (m4Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m4Builder_.build();
+          }
+        }
+        if (msgCase_ == 5) {
+          if (m5Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m5Builder_.build();
+          }
+        }
+        if (msgCase_ == 6) {
+          if (m6Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m6Builder_.build();
+          }
+        }
+        if (msgCase_ == 7) {
+          if (m7Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m7Builder_.build();
+          }
+        }
+        if (msgCase_ == 8) {
+          if (m8Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m8Builder_.build();
+          }
+        }
+        if (msgCase_ == 9) {
+          if (m9Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m9Builder_.build();
+          }
+        }
+        if (msgCase_ == 10) {
+          if (m10Builder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = m10Builder_.build();
+          }
+        }
+        result.bitField0_ = to_bitField0_;
+        result.msgCase_ = msgCase_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof nefit.proto.NefitProtos.Server) {
+          return mergeFrom((nefit.proto.NefitProtos.Server)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(nefit.proto.NefitProtos.Server other) {
+        if (other == nefit.proto.NefitProtos.Server.getDefaultInstance()) return this;
+        switch (other.getMsgCase()) {
+          case M1: {
+            mergeM1(other.getM1());
+            break;
+          }
+          case M2: {
+            mergeM2(other.getM2());
+            break;
+          }
+          case M3: {
+            mergeM3(other.getM3());
+            break;
+          }
+          case M4: {
+            mergeM4(other.getM4());
+            break;
+          }
+          case M5: {
+            mergeM5(other.getM5());
+            break;
+          }
+          case M6: {
+            mergeM6(other.getM6());
+            break;
+          }
+          case M7: {
+            mergeM7(other.getM7());
+            break;
+          }
+          case M8: {
+            mergeM8(other.getM8());
+            break;
+          }
+          case M9: {
+            mergeM9(other.getM9());
+            break;
+          }
+          case M10: {
+            mergeM10(other.getM10());
+            break;
+          }
+          case MSG_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (hasM1()) {
+          if (!getM1().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM2()) {
+          if (!getM2().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM4()) {
+          if (!getM4().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM5()) {
+          if (!getM5().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM6()) {
+          if (!getM6().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM7()) {
+          if (!getM7().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM8()) {
+          if (!getM8().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM9()) {
+          if (!getM9().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM10()) {
+          if (!getM10().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        nefit.proto.NefitProtos.Server parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (nefit.proto.NefitProtos.Server) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int msgCase_ = 0;
+      private java.lang.Object msg_;
+      public MsgCase
+          getMsgCase() {
+        return MsgCase.forNumber(
+            msgCase_);
+      }
+
+      public Builder clearMsg() {
+        msgCase_ = 0;
+        msg_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.DisponibilityS, nefit.proto.NefitProtos.DisponibilityS.Builder, nefit.proto.NefitProtos.DisponibilitySOrBuilder> m1Builder_;
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       * @return Whether the m1 field is set.
+       */
+      public boolean hasM1() {
+        return msgCase_ == 1;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       * @return The m1.
+       */
+      public nefit.proto.NefitProtos.DisponibilityS getM1() {
+        if (m1Builder_ == null) {
+          if (msgCase_ == 1) {
+            return (nefit.proto.NefitProtos.DisponibilityS) msg_;
+          }
+          return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 1) {
+            return m1Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       */
+      public Builder setM1(nefit.proto.NefitProtos.DisponibilityS value) {
+        if (m1Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m1Builder_.setMessage(value);
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       */
+      public Builder setM1(
+          nefit.proto.NefitProtos.DisponibilityS.Builder builderForValue) {
+        if (m1Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m1Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       */
+      public Builder mergeM1(nefit.proto.NefitProtos.DisponibilityS value) {
+        if (m1Builder_ == null) {
+          if (msgCase_ == 1 &&
+              msg_ != nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.DisponibilityS.newBuilder((nefit.proto.NefitProtos.DisponibilityS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 1) {
+            m1Builder_.mergeFrom(value);
+          }
+          m1Builder_.setMessage(value);
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       */
+      public Builder clearM1() {
+        if (m1Builder_ == null) {
+          if (msgCase_ == 1) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 1) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m1Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       */
+      public nefit.proto.NefitProtos.DisponibilityS.Builder getM1Builder() {
+        return getM1FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       */
+      public nefit.proto.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder() {
+        if ((msgCase_ == 1) && (m1Builder_ != null)) {
+          return m1Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 1) {
+            return (nefit.proto.NefitProtos.DisponibilityS) msg_;
+          }
+          return nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.DisponibilityS m1 = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.DisponibilityS, nefit.proto.NefitProtos.DisponibilityS.Builder, nefit.proto.NefitProtos.DisponibilitySOrBuilder> 
+          getM1FieldBuilder() {
+        if (m1Builder_ == null) {
+          if (!(msgCase_ == 1)) {
+            msg_ = nefit.proto.NefitProtos.DisponibilityS.getDefaultInstance();
+          }
+          m1Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.DisponibilityS, nefit.proto.NefitProtos.DisponibilityS.Builder, nefit.proto.NefitProtos.DisponibilitySOrBuilder>(
+                  (nefit.proto.NefitProtos.DisponibilityS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 1;
+        onChanged();;
+        return m1Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderS, nefit.proto.NefitProtos.OrderS.Builder, nefit.proto.NefitProtos.OrderSOrBuilder> m2Builder_;
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       * @return Whether the m2 field is set.
+       */
+      public boolean hasM2() {
+        return msgCase_ == 2;
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       * @return The m2.
+       */
+      public nefit.proto.NefitProtos.OrderS getM2() {
+        if (m2Builder_ == null) {
+          if (msgCase_ == 2) {
+            return (nefit.proto.NefitProtos.OrderS) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 2) {
+            return m2Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       */
+      public Builder setM2(nefit.proto.NefitProtos.OrderS value) {
+        if (m2Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m2Builder_.setMessage(value);
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       */
+      public Builder setM2(
+          nefit.proto.NefitProtos.OrderS.Builder builderForValue) {
+        if (m2Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m2Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       */
+      public Builder mergeM2(nefit.proto.NefitProtos.OrderS value) {
+        if (m2Builder_ == null) {
+          if (msgCase_ == 2 &&
+              msg_ != nefit.proto.NefitProtos.OrderS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.OrderS.newBuilder((nefit.proto.NefitProtos.OrderS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 2) {
+            m2Builder_.mergeFrom(value);
+          }
+          m2Builder_.setMessage(value);
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       */
+      public Builder clearM2() {
+        if (m2Builder_ == null) {
+          if (msgCase_ == 2) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 2) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m2Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       */
+      public nefit.proto.NefitProtos.OrderS.Builder getM2Builder() {
+        return getM2FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       */
+      public nefit.proto.NefitProtos.OrderSOrBuilder getM2OrBuilder() {
+        if ((msgCase_ == 2) && (m2Builder_ != null)) {
+          return m2Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 2) {
+            return (nefit.proto.NefitProtos.OrderS) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderS m2 = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderS, nefit.proto.NefitProtos.OrderS.Builder, nefit.proto.NefitProtos.OrderSOrBuilder> 
+          getM2FieldBuilder() {
+        if (m2Builder_ == null) {
+          if (!(msgCase_ == 2)) {
+            msg_ = nefit.proto.NefitProtos.OrderS.getDefaultInstance();
+          }
+          m2Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.OrderS, nefit.proto.NefitProtos.OrderS.Builder, nefit.proto.NefitProtos.OrderSOrBuilder>(
+                  (nefit.proto.NefitProtos.OrderS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 2;
+        onChanged();;
+        return m2Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.SubS, nefit.proto.NefitProtos.SubS.Builder, nefit.proto.NefitProtos.SubSOrBuilder> m3Builder_;
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       * @return Whether the m3 field is set.
+       */
+      public boolean hasM3() {
+        return msgCase_ == 3;
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       * @return The m3.
+       */
+      public nefit.proto.NefitProtos.SubS getM3() {
+        if (m3Builder_ == null) {
+          if (msgCase_ == 3) {
+            return (nefit.proto.NefitProtos.SubS) msg_;
+          }
+          return nefit.proto.NefitProtos.SubS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 3) {
+            return m3Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.SubS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       */
+      public Builder setM3(nefit.proto.NefitProtos.SubS value) {
+        if (m3Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m3Builder_.setMessage(value);
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       */
+      public Builder setM3(
+          nefit.proto.NefitProtos.SubS.Builder builderForValue) {
+        if (m3Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m3Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       */
+      public Builder mergeM3(nefit.proto.NefitProtos.SubS value) {
+        if (m3Builder_ == null) {
+          if (msgCase_ == 3 &&
+              msg_ != nefit.proto.NefitProtos.SubS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.SubS.newBuilder((nefit.proto.NefitProtos.SubS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 3) {
+            m3Builder_.mergeFrom(value);
+          }
+          m3Builder_.setMessage(value);
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       */
+      public Builder clearM3() {
+        if (m3Builder_ == null) {
+          if (msgCase_ == 3) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 3) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m3Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       */
+      public nefit.proto.NefitProtos.SubS.Builder getM3Builder() {
+        return getM3FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       */
+      public nefit.proto.NefitProtos.SubSOrBuilder getM3OrBuilder() {
+        if ((msgCase_ == 3) && (m3Builder_ != null)) {
+          return m3Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 3) {
+            return (nefit.proto.NefitProtos.SubS) msg_;
+          }
+          return nefit.proto.NefitProtos.SubS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.SubS m3 = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.SubS, nefit.proto.NefitProtos.SubS.Builder, nefit.proto.NefitProtos.SubSOrBuilder> 
+          getM3FieldBuilder() {
+        if (m3Builder_ == null) {
+          if (!(msgCase_ == 3)) {
+            msg_ = nefit.proto.NefitProtos.SubS.getDefaultInstance();
+          }
+          m3Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.SubS, nefit.proto.NefitProtos.SubS.Builder, nefit.proto.NefitProtos.SubSOrBuilder>(
+                  (nefit.proto.NefitProtos.SubS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 3;
+        onChanged();;
+        return m3Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.ResultS, nefit.proto.NefitProtos.ResultS.Builder, nefit.proto.NefitProtos.ResultSOrBuilder> m4Builder_;
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       * @return Whether the m4 field is set.
+       */
+      public boolean hasM4() {
+        return msgCase_ == 4;
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       * @return The m4.
+       */
+      public nefit.proto.NefitProtos.ResultS getM4() {
+        if (m4Builder_ == null) {
+          if (msgCase_ == 4) {
+            return (nefit.proto.NefitProtos.ResultS) msg_;
+          }
+          return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 4) {
+            return m4Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       */
+      public Builder setM4(nefit.proto.NefitProtos.ResultS value) {
+        if (m4Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m4Builder_.setMessage(value);
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       */
+      public Builder setM4(
+          nefit.proto.NefitProtos.ResultS.Builder builderForValue) {
+        if (m4Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m4Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       */
+      public Builder mergeM4(nefit.proto.NefitProtos.ResultS value) {
+        if (m4Builder_ == null) {
+          if (msgCase_ == 4 &&
+              msg_ != nefit.proto.NefitProtos.ResultS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.ResultS.newBuilder((nefit.proto.NefitProtos.ResultS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 4) {
+            m4Builder_.mergeFrom(value);
+          }
+          m4Builder_.setMessage(value);
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       */
+      public Builder clearM4() {
+        if (m4Builder_ == null) {
+          if (msgCase_ == 4) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 4) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m4Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       */
+      public nefit.proto.NefitProtos.ResultS.Builder getM4Builder() {
+        return getM4FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       */
+      public nefit.proto.NefitProtos.ResultSOrBuilder getM4OrBuilder() {
+        if ((msgCase_ == 4) && (m4Builder_ != null)) {
+          return m4Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 4) {
+            return (nefit.proto.NefitProtos.ResultS) msg_;
+          }
+          return nefit.proto.NefitProtos.ResultS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ResultS m4 = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.ResultS, nefit.proto.NefitProtos.ResultS.Builder, nefit.proto.NefitProtos.ResultSOrBuilder> 
+          getM4FieldBuilder() {
+        if (m4Builder_ == null) {
+          if (!(msgCase_ == 4)) {
+            msg_ = nefit.proto.NefitProtos.ResultS.getDefaultInstance();
+          }
+          m4Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.ResultS, nefit.proto.NefitProtos.ResultS.Builder, nefit.proto.NefitProtos.ResultSOrBuilder>(
+                  (nefit.proto.NefitProtos.ResultS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 4;
+        onChanged();;
+        return m4Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> m5Builder_;
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       * @return Whether the m5 field is set.
+       */
+      public boolean hasM5() {
+        return msgCase_ == 5;
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       * @return The m5.
+       */
+      public nefit.proto.NefitProtos.InfoS getM5() {
+        if (m5Builder_ == null) {
+          if (msgCase_ == 5) {
+            return (nefit.proto.NefitProtos.InfoS) msg_;
+          }
+          return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 5) {
+            return m5Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       */
+      public Builder setM5(nefit.proto.NefitProtos.InfoS value) {
+        if (m5Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m5Builder_.setMessage(value);
+        }
+        msgCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       */
+      public Builder setM5(
+          nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
+        if (m5Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m5Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       */
+      public Builder mergeM5(nefit.proto.NefitProtos.InfoS value) {
+        if (m5Builder_ == null) {
+          if (msgCase_ == 5 &&
+              msg_ != nefit.proto.NefitProtos.InfoS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.InfoS.newBuilder((nefit.proto.NefitProtos.InfoS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 5) {
+            m5Builder_.mergeFrom(value);
+          }
+          m5Builder_.setMessage(value);
+        }
+        msgCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       */
+      public Builder clearM5() {
+        if (m5Builder_ == null) {
+          if (msgCase_ == 5) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 5) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m5Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       */
+      public nefit.proto.NefitProtos.InfoS.Builder getM5Builder() {
+        return getM5FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       */
+      public nefit.proto.NefitProtos.InfoSOrBuilder getM5OrBuilder() {
+        if ((msgCase_ == 5) && (m5Builder_ != null)) {
+          return m5Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 5) {
+            return (nefit.proto.NefitProtos.InfoS) msg_;
+          }
+          return nefit.proto.NefitProtos.InfoS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.InfoS m5 = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> 
+          getM5FieldBuilder() {
+        if (m5Builder_ == null) {
+          if (!(msgCase_ == 5)) {
+            msg_ = nefit.proto.NefitProtos.InfoS.getDefaultInstance();
+          }
+          m5Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder>(
+                  (nefit.proto.NefitProtos.InfoS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 5;
+        onChanged();;
+        return m5Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.ProductionS, nefit.proto.NefitProtos.ProductionS.Builder, nefit.proto.NefitProtos.ProductionSOrBuilder> m6Builder_;
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       * @return Whether the m6 field is set.
+       */
+      public boolean hasM6() {
+        return msgCase_ == 6;
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       * @return The m6.
+       */
+      public nefit.proto.NefitProtos.ProductionS getM6() {
+        if (m6Builder_ == null) {
+          if (msgCase_ == 6) {
+            return (nefit.proto.NefitProtos.ProductionS) msg_;
+          }
+          return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 6) {
+            return m6Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       */
+      public Builder setM6(nefit.proto.NefitProtos.ProductionS value) {
+        if (m6Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m6Builder_.setMessage(value);
+        }
+        msgCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       */
+      public Builder setM6(
+          nefit.proto.NefitProtos.ProductionS.Builder builderForValue) {
+        if (m6Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m6Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       */
+      public Builder mergeM6(nefit.proto.NefitProtos.ProductionS value) {
+        if (m6Builder_ == null) {
+          if (msgCase_ == 6 &&
+              msg_ != nefit.proto.NefitProtos.ProductionS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.ProductionS.newBuilder((nefit.proto.NefitProtos.ProductionS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 6) {
+            m6Builder_.mergeFrom(value);
+          }
+          m6Builder_.setMessage(value);
+        }
+        msgCase_ = 6;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       */
+      public Builder clearM6() {
+        if (m6Builder_ == null) {
+          if (msgCase_ == 6) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 6) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m6Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       */
+      public nefit.proto.NefitProtos.ProductionS.Builder getM6Builder() {
+        return getM6FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       */
+      public nefit.proto.NefitProtos.ProductionSOrBuilder getM6OrBuilder() {
+        if ((msgCase_ == 6) && (m6Builder_ != null)) {
+          return m6Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 6) {
+            return (nefit.proto.NefitProtos.ProductionS) msg_;
+          }
+          return nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ProductionS m6 = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.ProductionS, nefit.proto.NefitProtos.ProductionS.Builder, nefit.proto.NefitProtos.ProductionSOrBuilder> 
+          getM6FieldBuilder() {
+        if (m6Builder_ == null) {
+          if (!(msgCase_ == 6)) {
+            msg_ = nefit.proto.NefitProtos.ProductionS.getDefaultInstance();
+          }
+          m6Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.ProductionS, nefit.proto.NefitProtos.ProductionS.Builder, nefit.proto.NefitProtos.ProductionSOrBuilder>(
+                  (nefit.proto.NefitProtos.ProductionS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 6;
+        onChanged();;
+        return m6Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderAckS, nefit.proto.NefitProtos.OrderAckS.Builder, nefit.proto.NefitProtos.OrderAckSOrBuilder> m7Builder_;
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       * @return Whether the m7 field is set.
+       */
+      public boolean hasM7() {
+        return msgCase_ == 7;
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       * @return The m7.
+       */
+      public nefit.proto.NefitProtos.OrderAckS getM7() {
+        if (m7Builder_ == null) {
+          if (msgCase_ == 7) {
+            return (nefit.proto.NefitProtos.OrderAckS) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 7) {
+            return m7Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       */
+      public Builder setM7(nefit.proto.NefitProtos.OrderAckS value) {
+        if (m7Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m7Builder_.setMessage(value);
+        }
+        msgCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       */
+      public Builder setM7(
+          nefit.proto.NefitProtos.OrderAckS.Builder builderForValue) {
+        if (m7Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m7Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       */
+      public Builder mergeM7(nefit.proto.NefitProtos.OrderAckS value) {
+        if (m7Builder_ == null) {
+          if (msgCase_ == 7 &&
+              msg_ != nefit.proto.NefitProtos.OrderAckS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.OrderAckS.newBuilder((nefit.proto.NefitProtos.OrderAckS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 7) {
+            m7Builder_.mergeFrom(value);
+          }
+          m7Builder_.setMessage(value);
+        }
+        msgCase_ = 7;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       */
+      public Builder clearM7() {
+        if (m7Builder_ == null) {
+          if (msgCase_ == 7) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 7) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m7Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       */
+      public nefit.proto.NefitProtos.OrderAckS.Builder getM7Builder() {
+        return getM7FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       */
+      public nefit.proto.NefitProtos.OrderAckSOrBuilder getM7OrBuilder() {
+        if ((msgCase_ == 7) && (m7Builder_ != null)) {
+          return m7Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 7) {
+            return (nefit.proto.NefitProtos.OrderAckS) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderAckS m7 = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderAckS, nefit.proto.NefitProtos.OrderAckS.Builder, nefit.proto.NefitProtos.OrderAckSOrBuilder> 
+          getM7FieldBuilder() {
+        if (m7Builder_ == null) {
+          if (!(msgCase_ == 7)) {
+            msg_ = nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
+          }
+          m7Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.OrderAckS, nefit.proto.NefitProtos.OrderAckS.Builder, nefit.proto.NefitProtos.OrderAckSOrBuilder>(
+                  (nefit.proto.NefitProtos.OrderAckS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 7;
+        onChanged();;
+        return m7Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.GetS, nefit.proto.NefitProtos.GetS.Builder, nefit.proto.NefitProtos.GetSOrBuilder> m8Builder_;
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       * @return Whether the m8 field is set.
+       */
+      public boolean hasM8() {
+        return msgCase_ == 8;
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       * @return The m8.
+       */
+      public nefit.proto.NefitProtos.GetS getM8() {
+        if (m8Builder_ == null) {
+          if (msgCase_ == 8) {
+            return (nefit.proto.NefitProtos.GetS) msg_;
+          }
+          return nefit.proto.NefitProtos.GetS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 8) {
+            return m8Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.GetS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       */
+      public Builder setM8(nefit.proto.NefitProtos.GetS value) {
+        if (m8Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m8Builder_.setMessage(value);
+        }
+        msgCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       */
+      public Builder setM8(
+          nefit.proto.NefitProtos.GetS.Builder builderForValue) {
+        if (m8Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m8Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       */
+      public Builder mergeM8(nefit.proto.NefitProtos.GetS value) {
+        if (m8Builder_ == null) {
+          if (msgCase_ == 8 &&
+              msg_ != nefit.proto.NefitProtos.GetS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.GetS.newBuilder((nefit.proto.NefitProtos.GetS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 8) {
+            m8Builder_.mergeFrom(value);
+          }
+          m8Builder_.setMessage(value);
+        }
+        msgCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       */
+      public Builder clearM8() {
+        if (m8Builder_ == null) {
+          if (msgCase_ == 8) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 8) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m8Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       */
+      public nefit.proto.NefitProtos.GetS.Builder getM8Builder() {
+        return getM8FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       */
+      public nefit.proto.NefitProtos.GetSOrBuilder getM8OrBuilder() {
+        if ((msgCase_ == 8) && (m8Builder_ != null)) {
+          return m8Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 8) {
+            return (nefit.proto.NefitProtos.GetS) msg_;
+          }
+          return nefit.proto.NefitProtos.GetS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.GetS m8 = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.GetS, nefit.proto.NefitProtos.GetS.Builder, nefit.proto.NefitProtos.GetSOrBuilder> 
+          getM8FieldBuilder() {
+        if (m8Builder_ == null) {
+          if (!(msgCase_ == 8)) {
+            msg_ = nefit.proto.NefitProtos.GetS.getDefaultInstance();
+          }
+          m8Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.GetS, nefit.proto.NefitProtos.GetS.Builder, nefit.proto.NefitProtos.GetSOrBuilder>(
+                  (nefit.proto.NefitProtos.GetS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 8;
+        onChanged();;
+        return m8Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.NegotiationsS, nefit.proto.NefitProtos.NegotiationsS.Builder, nefit.proto.NefitProtos.NegotiationsSOrBuilder> m9Builder_;
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       * @return Whether the m9 field is set.
+       */
+      public boolean hasM9() {
+        return msgCase_ == 9;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       * @return The m9.
+       */
+      public nefit.proto.NefitProtos.NegotiationsS getM9() {
+        if (m9Builder_ == null) {
+          if (msgCase_ == 9) {
+            return (nefit.proto.NefitProtos.NegotiationsS) msg_;
+          }
+          return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
+        } else {
+          if (msgCase_ == 9) {
+            return m9Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       */
+      public Builder setM9(nefit.proto.NefitProtos.NegotiationsS value) {
+        if (m9Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m9Builder_.setMessage(value);
+        }
+        msgCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       */
+      public Builder setM9(
+          nefit.proto.NefitProtos.NegotiationsS.Builder builderForValue) {
+        if (m9Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m9Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       */
+      public Builder mergeM9(nefit.proto.NefitProtos.NegotiationsS value) {
+        if (m9Builder_ == null) {
+          if (msgCase_ == 9 &&
+              msg_ != nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.NegotiationsS.newBuilder((nefit.proto.NefitProtos.NegotiationsS) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 9) {
+            m9Builder_.mergeFrom(value);
+          }
+          m9Builder_.setMessage(value);
+        }
+        msgCase_ = 9;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       */
+      public Builder clearM9() {
+        if (m9Builder_ == null) {
+          if (msgCase_ == 9) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 9) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m9Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       */
+      public nefit.proto.NefitProtos.NegotiationsS.Builder getM9Builder() {
+        return getM9FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       */
+      public nefit.proto.NefitProtos.NegotiationsSOrBuilder getM9OrBuilder() {
+        if ((msgCase_ == 9) && (m9Builder_ != null)) {
+          return m9Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 9) {
+            return (nefit.proto.NefitProtos.NegotiationsS) msg_;
+          }
+          return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.NegotiationsS, nefit.proto.NefitProtos.NegotiationsS.Builder, nefit.proto.NefitProtos.NegotiationsSOrBuilder> 
+          getM9FieldBuilder() {
+        if (m9Builder_ == null) {
+          if (!(msgCase_ == 9)) {
+            msg_ = nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
+          }
+          m9Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.NegotiationsS, nefit.proto.NefitProtos.NegotiationsS.Builder, nefit.proto.NefitProtos.NegotiationsSOrBuilder>(
+                  (nefit.proto.NefitProtos.NegotiationsS) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 9;
+        onChanged();;
+        return m9Builder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.MsgAuth, nefit.proto.NefitProtos.MsgAuth.Builder, nefit.proto.NefitProtos.MsgAuthOrBuilder> m10Builder_;
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       * @return Whether the m10 field is set.
+       */
+      public boolean hasM10() {
+        return msgCase_ == 10;
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       * @return The m10.
+       */
+      public nefit.proto.NefitProtos.MsgAuth getM10() {
+        if (m10Builder_ == null) {
+          if (msgCase_ == 10) {
+            return (nefit.proto.NefitProtos.MsgAuth) msg_;
+          }
+          return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
+        } else {
+          if (msgCase_ == 10) {
+            return m10Builder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       */
+      public Builder setM10(nefit.proto.NefitProtos.MsgAuth value) {
+        if (m10Builder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          m10Builder_.setMessage(value);
+        }
+        msgCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       */
+      public Builder setM10(
+          nefit.proto.NefitProtos.MsgAuth.Builder builderForValue) {
+        if (m10Builder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          m10Builder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       */
+      public Builder mergeM10(nefit.proto.NefitProtos.MsgAuth value) {
+        if (m10Builder_ == null) {
+          if (msgCase_ == 10 &&
+              msg_ != nefit.proto.NefitProtos.MsgAuth.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.MsgAuth.newBuilder((nefit.proto.NefitProtos.MsgAuth) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 10) {
+            m10Builder_.mergeFrom(value);
+          }
+          m10Builder_.setMessage(value);
+        }
+        msgCase_ = 10;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       */
+      public Builder clearM10() {
+        if (m10Builder_ == null) {
+          if (msgCase_ == 10) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 10) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          m10Builder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       */
+      public nefit.proto.NefitProtos.MsgAuth.Builder getM10Builder() {
+        return getM10FieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       */
+      public nefit.proto.NefitProtos.MsgAuthOrBuilder getM10OrBuilder() {
+        if ((msgCase_ == 10) && (m10Builder_ != null)) {
+          return m10Builder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 10) {
+            return (nefit.proto.NefitProtos.MsgAuth) msg_;
+          }
+          return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.MsgAuth m10 = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.MsgAuth, nefit.proto.NefitProtos.MsgAuth.Builder, nefit.proto.NefitProtos.MsgAuthOrBuilder> 
+          getM10FieldBuilder() {
+        if (m10Builder_ == null) {
+          if (!(msgCase_ == 10)) {
+            msg_ = nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
+          }
+          m10Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.MsgAuth, nefit.proto.NefitProtos.MsgAuth.Builder, nefit.proto.NefitProtos.MsgAuthOrBuilder>(
+                  (nefit.proto.NefitProtos.MsgAuth) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 10;
+        onChanged();;
+        return m10Builder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:nefit.Server)
+    }
+
+    // @@protoc_insertion_point(class_scope:nefit.Server)
+    private static final nefit.proto.NefitProtos.Server DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.Server();
+    }
+
+    public static nefit.proto.NefitProtos.Server getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Server>
+        PARSER = new com.google.protobuf.AbstractParser<Server>() {
+      @java.lang.Override
+      public Server parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Server(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Server> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Server> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public nefit.proto.NefitProtos.Server getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ImporterOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.Importer)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .nefit.OrderAckI ordack = 1;</code>
+     * @return Whether the ordack field is set.
+     */
+    boolean hasOrdack();
+    /**
+     * <code>optional .nefit.OrderAckI ordack = 1;</code>
+     * @return The ordack.
+     */
+    nefit.proto.NefitProtos.OrderAckI getOrdack();
+    /**
+     * <code>optional .nefit.OrderAckI ordack = 1;</code>
+     */
+    nefit.proto.NefitProtos.OrderAckIOrBuilder getOrdackOrBuilder();
+
+    /**
+     * <code>optional .nefit.NegotiationsI nego = 2;</code>
+     * @return Whether the nego field is set.
+     */
+    boolean hasNego();
+    /**
+     * <code>optional .nefit.NegotiationsI nego = 2;</code>
+     * @return The nego.
+     */
+    nefit.proto.NefitProtos.NegotiationsI getNego();
+    /**
+     * <code>optional .nefit.NegotiationsI nego = 2;</code>
+     */
+    nefit.proto.NefitProtos.NegotiationsIOrBuilder getNegoOrBuilder();
+
+    /**
+     * <code>optional .nefit.ResultI result = 3;</code>
+     * @return Whether the result field is set.
+     */
+    boolean hasResult();
+    /**
+     * <code>optional .nefit.ResultI result = 3;</code>
+     * @return The result.
+     */
+    nefit.proto.NefitProtos.ResultI getResult();
+    /**
+     * <code>optional .nefit.ResultI result = 3;</code>
+     */
+    nefit.proto.NefitProtos.ResultIOrBuilder getResultOrBuilder();
+
+    /**
+     * <code>optional .nefit.InfoI info = 4;</code>
+     * @return Whether the info field is set.
+     */
+    boolean hasInfo();
+    /**
+     * <code>optional .nefit.InfoI info = 4;</code>
+     * @return The info.
+     */
+    nefit.proto.NefitProtos.InfoI getInfo();
+    /**
+     * <code>optional .nefit.InfoI info = 4;</code>
+     */
+    nefit.proto.NefitProtos.InfoIOrBuilder getInfoOrBuilder();
+
+    public nefit.proto.NefitProtos.Importer.MsgCase getMsgCase();
+  }
+  /**
+   * Protobuf type {@code nefit.Importer}
+   */
+  public  static final class Importer extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:nefit.Importer)
+      ImporterOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Importer.newBuilder() to construct.
+    private Importer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Importer() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Importer();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Importer(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              nefit.proto.NefitProtos.OrderAckI.Builder subBuilder = null;
+              if (msgCase_ == 1) {
+                subBuilder = ((nefit.proto.NefitProtos.OrderAckI) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.OrderAckI.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.OrderAckI) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 1;
+              break;
+            }
+            case 18: {
+              nefit.proto.NefitProtos.NegotiationsI.Builder subBuilder = null;
+              if (msgCase_ == 2) {
+                subBuilder = ((nefit.proto.NefitProtos.NegotiationsI) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.NegotiationsI.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.NegotiationsI) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 2;
+              break;
+            }
+            case 26: {
+              nefit.proto.NefitProtos.ResultI.Builder subBuilder = null;
+              if (msgCase_ == 3) {
+                subBuilder = ((nefit.proto.NefitProtos.ResultI) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.ResultI.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.ResultI) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 3;
+              break;
+            }
+            case 34: {
+              nefit.proto.NefitProtos.InfoI.Builder subBuilder = null;
+              if (msgCase_ == 4) {
+                subBuilder = ((nefit.proto.NefitProtos.InfoI) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.InfoI.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.InfoI) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 4;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return nefit.proto.NefitProtos.internal_static_nefit_Importer_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return nefit.proto.NefitProtos.internal_static_nefit_Importer_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              nefit.proto.NefitProtos.Importer.class, nefit.proto.NefitProtos.Importer.Builder.class);
+    }
+
+    private int bitField0_;
+    private int msgCase_ = 0;
+    private java.lang.Object msg_;
+    public enum MsgCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ORDACK(1),
+      NEGO(2),
+      RESULT(3),
+      INFO(4),
+      MSG_NOT_SET(0);
+      private final int value;
+      private MsgCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static MsgCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static MsgCase forNumber(int value) {
+        switch (value) {
+          case 1: return ORDACK;
+          case 2: return NEGO;
+          case 3: return RESULT;
+          case 4: return INFO;
+          case 0: return MSG_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public MsgCase
+    getMsgCase() {
+      return MsgCase.forNumber(
+          msgCase_);
+    }
+
+    public static final int ORDACK_FIELD_NUMBER = 1;
+    /**
+     * <code>optional .nefit.OrderAckI ordack = 1;</code>
+     * @return Whether the ordack field is set.
+     */
+    public boolean hasOrdack() {
+      return msgCase_ == 1;
+    }
+    /**
+     * <code>optional .nefit.OrderAckI ordack = 1;</code>
+     * @return The ordack.
+     */
+    public nefit.proto.NefitProtos.OrderAckI getOrdack() {
+      if (msgCase_ == 1) {
+         return (nefit.proto.NefitProtos.OrderAckI) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderAckI.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.OrderAckI ordack = 1;</code>
+     */
+    public nefit.proto.NefitProtos.OrderAckIOrBuilder getOrdackOrBuilder() {
+      if (msgCase_ == 1) {
+         return (nefit.proto.NefitProtos.OrderAckI) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderAckI.getDefaultInstance();
+    }
+
+    public static final int NEGO_FIELD_NUMBER = 2;
+    /**
+     * <code>optional .nefit.NegotiationsI nego = 2;</code>
+     * @return Whether the nego field is set.
+     */
+    public boolean hasNego() {
+      return msgCase_ == 2;
+    }
+    /**
+     * <code>optional .nefit.NegotiationsI nego = 2;</code>
+     * @return The nego.
+     */
+    public nefit.proto.NefitProtos.NegotiationsI getNego() {
+      if (msgCase_ == 2) {
+         return (nefit.proto.NefitProtos.NegotiationsI) msg_;
+      }
+      return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.NegotiationsI nego = 2;</code>
+     */
+    public nefit.proto.NefitProtos.NegotiationsIOrBuilder getNegoOrBuilder() {
+      if (msgCase_ == 2) {
+         return (nefit.proto.NefitProtos.NegotiationsI) msg_;
+      }
+      return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
+    }
+
+    public static final int RESULT_FIELD_NUMBER = 3;
+    /**
+     * <code>optional .nefit.ResultI result = 3;</code>
+     * @return Whether the result field is set.
+     */
+    public boolean hasResult() {
+      return msgCase_ == 3;
+    }
+    /**
+     * <code>optional .nefit.ResultI result = 3;</code>
+     * @return The result.
+     */
+    public nefit.proto.NefitProtos.ResultI getResult() {
+      if (msgCase_ == 3) {
+         return (nefit.proto.NefitProtos.ResultI) msg_;
+      }
+      return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.ResultI result = 3;</code>
+     */
+    public nefit.proto.NefitProtos.ResultIOrBuilder getResultOrBuilder() {
+      if (msgCase_ == 3) {
+         return (nefit.proto.NefitProtos.ResultI) msg_;
+      }
+      return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
+    }
+
+    public static final int INFO_FIELD_NUMBER = 4;
+    /**
+     * <code>optional .nefit.InfoI info = 4;</code>
+     * @return Whether the info field is set.
+     */
+    public boolean hasInfo() {
+      return msgCase_ == 4;
+    }
+    /**
+     * <code>optional .nefit.InfoI info = 4;</code>
+     * @return The info.
+     */
+    public nefit.proto.NefitProtos.InfoI getInfo() {
+      if (msgCase_ == 4) {
+         return (nefit.proto.NefitProtos.InfoI) msg_;
+      }
+      return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.InfoI info = 4;</code>
+     */
+    public nefit.proto.NefitProtos.InfoIOrBuilder getInfoOrBuilder() {
+      if (msgCase_ == 4) {
+         return (nefit.proto.NefitProtos.InfoI) msg_;
+      }
+      return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasOrdack()) {
+        if (!getOrdack().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasNego()) {
+        if (!getNego().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasResult()) {
+        if (!getResult().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasInfo()) {
+        if (!getInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (msgCase_ == 1) {
+        output.writeMessage(1, (nefit.proto.NefitProtos.OrderAckI) msg_);
+      }
+      if (msgCase_ == 2) {
+        output.writeMessage(2, (nefit.proto.NefitProtos.NegotiationsI) msg_);
+      }
+      if (msgCase_ == 3) {
+        output.writeMessage(3, (nefit.proto.NefitProtos.ResultI) msg_);
+      }
+      if (msgCase_ == 4) {
+        output.writeMessage(4, (nefit.proto.NefitProtos.InfoI) msg_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (msgCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, (nefit.proto.NefitProtos.OrderAckI) msg_);
+      }
+      if (msgCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (nefit.proto.NefitProtos.NegotiationsI) msg_);
+      }
+      if (msgCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (nefit.proto.NefitProtos.ResultI) msg_);
+      }
+      if (msgCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (nefit.proto.NefitProtos.InfoI) msg_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof nefit.proto.NefitProtos.Importer)) {
+        return super.equals(obj);
+      }
+      nefit.proto.NefitProtos.Importer other = (nefit.proto.NefitProtos.Importer) obj;
+
+      if (!getMsgCase().equals(other.getMsgCase())) return false;
+      switch (msgCase_) {
+        case 1:
+          if (!getOrdack()
+              .equals(other.getOrdack())) return false;
+          break;
+        case 2:
+          if (!getNego()
+              .equals(other.getNego())) return false;
+          break;
+        case 3:
+          if (!getResult()
+              .equals(other.getResult())) return false;
+          break;
+        case 4:
+          if (!getInfo()
+              .equals(other.getInfo())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (msgCase_) {
+        case 1:
+          hash = (37 * hash) + ORDACK_FIELD_NUMBER;
+          hash = (53 * hash) + getOrdack().hashCode();
+          break;
+        case 2:
+          hash = (37 * hash) + NEGO_FIELD_NUMBER;
+          hash = (53 * hash) + getNego().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + RESULT_FIELD_NUMBER;
+          hash = (53 * hash) + getResult().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + INFO_FIELD_NUMBER;
+          hash = (53 * hash) + getInfo().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Importer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Importer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Importer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(nefit.proto.NefitProtos.Importer prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code nefit.Importer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:nefit.Importer)
+        nefit.proto.NefitProtos.ImporterOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Importer_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Importer_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                nefit.proto.NefitProtos.Importer.class, nefit.proto.NefitProtos.Importer.Builder.class);
+      }
+
+      // Construct using nefit.proto.NefitProtos.Importer.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        msgCase_ = 0;
+        msg_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Importer_descriptor;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Importer getDefaultInstanceForType() {
+        return nefit.proto.NefitProtos.Importer.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Importer build() {
+        nefit.proto.NefitProtos.Importer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Importer buildPartial() {
+        nefit.proto.NefitProtos.Importer result = new nefit.proto.NefitProtos.Importer(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (msgCase_ == 1) {
+          if (ordackBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = ordackBuilder_.build();
+          }
+        }
+        if (msgCase_ == 2) {
+          if (negoBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = negoBuilder_.build();
+          }
+        }
+        if (msgCase_ == 3) {
+          if (resultBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = resultBuilder_.build();
+          }
+        }
+        if (msgCase_ == 4) {
+          if (infoBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = infoBuilder_.build();
+          }
+        }
+        result.bitField0_ = to_bitField0_;
+        result.msgCase_ = msgCase_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof nefit.proto.NefitProtos.Importer) {
+          return mergeFrom((nefit.proto.NefitProtos.Importer)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(nefit.proto.NefitProtos.Importer other) {
+        if (other == nefit.proto.NefitProtos.Importer.getDefaultInstance()) return this;
+        switch (other.getMsgCase()) {
+          case ORDACK: {
+            mergeOrdack(other.getOrdack());
+            break;
+          }
+          case NEGO: {
+            mergeNego(other.getNego());
+            break;
+          }
+          case RESULT: {
+            mergeResult(other.getResult());
+            break;
+          }
+          case INFO: {
+            mergeInfo(other.getInfo());
+            break;
+          }
+          case MSG_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (hasOrdack()) {
+          if (!getOrdack().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasNego()) {
+          if (!getNego().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasResult()) {
+          if (!getResult().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasInfo()) {
+          if (!getInfo().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        nefit.proto.NefitProtos.Importer parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (nefit.proto.NefitProtos.Importer) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int msgCase_ = 0;
+      private java.lang.Object msg_;
+      public MsgCase
+          getMsgCase() {
+        return MsgCase.forNumber(
+            msgCase_);
+      }
+
+      public Builder clearMsg() {
+        msgCase_ = 0;
+        msg_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderAckI, nefit.proto.NefitProtos.OrderAckI.Builder, nefit.proto.NefitProtos.OrderAckIOrBuilder> ordackBuilder_;
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       * @return Whether the ordack field is set.
+       */
+      public boolean hasOrdack() {
+        return msgCase_ == 1;
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       * @return The ordack.
+       */
+      public nefit.proto.NefitProtos.OrderAckI getOrdack() {
+        if (ordackBuilder_ == null) {
+          if (msgCase_ == 1) {
+            return (nefit.proto.NefitProtos.OrderAckI) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderAckI.getDefaultInstance();
+        } else {
+          if (msgCase_ == 1) {
+            return ordackBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.OrderAckI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       */
+      public Builder setOrdack(nefit.proto.NefitProtos.OrderAckI value) {
+        if (ordackBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          ordackBuilder_.setMessage(value);
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       */
+      public Builder setOrdack(
+          nefit.proto.NefitProtos.OrderAckI.Builder builderForValue) {
+        if (ordackBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          ordackBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       */
+      public Builder mergeOrdack(nefit.proto.NefitProtos.OrderAckI value) {
+        if (ordackBuilder_ == null) {
+          if (msgCase_ == 1 &&
+              msg_ != nefit.proto.NefitProtos.OrderAckI.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.OrderAckI.newBuilder((nefit.proto.NefitProtos.OrderAckI) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 1) {
+            ordackBuilder_.mergeFrom(value);
+          }
+          ordackBuilder_.setMessage(value);
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       */
+      public Builder clearOrdack() {
+        if (ordackBuilder_ == null) {
+          if (msgCase_ == 1) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 1) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          ordackBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       */
+      public nefit.proto.NefitProtos.OrderAckI.Builder getOrdackBuilder() {
+        return getOrdackFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       */
+      public nefit.proto.NefitProtos.OrderAckIOrBuilder getOrdackOrBuilder() {
+        if ((msgCase_ == 1) && (ordackBuilder_ != null)) {
+          return ordackBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 1) {
+            return (nefit.proto.NefitProtos.OrderAckI) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderAckI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderAckI ordack = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderAckI, nefit.proto.NefitProtos.OrderAckI.Builder, nefit.proto.NefitProtos.OrderAckIOrBuilder> 
+          getOrdackFieldBuilder() {
+        if (ordackBuilder_ == null) {
+          if (!(msgCase_ == 1)) {
+            msg_ = nefit.proto.NefitProtos.OrderAckI.getDefaultInstance();
+          }
+          ordackBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.OrderAckI, nefit.proto.NefitProtos.OrderAckI.Builder, nefit.proto.NefitProtos.OrderAckIOrBuilder>(
+                  (nefit.proto.NefitProtos.OrderAckI) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 1;
+        onChanged();;
+        return ordackBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.NegotiationsI, nefit.proto.NefitProtos.NegotiationsI.Builder, nefit.proto.NefitProtos.NegotiationsIOrBuilder> negoBuilder_;
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       * @return Whether the nego field is set.
+       */
+      public boolean hasNego() {
+        return msgCase_ == 2;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       * @return The nego.
+       */
+      public nefit.proto.NefitProtos.NegotiationsI getNego() {
+        if (negoBuilder_ == null) {
+          if (msgCase_ == 2) {
+            return (nefit.proto.NefitProtos.NegotiationsI) msg_;
+          }
+          return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
+        } else {
+          if (msgCase_ == 2) {
+            return negoBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       */
+      public Builder setNego(nefit.proto.NefitProtos.NegotiationsI value) {
+        if (negoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          negoBuilder_.setMessage(value);
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       */
+      public Builder setNego(
+          nefit.proto.NefitProtos.NegotiationsI.Builder builderForValue) {
+        if (negoBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          negoBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       */
+      public Builder mergeNego(nefit.proto.NefitProtos.NegotiationsI value) {
+        if (negoBuilder_ == null) {
+          if (msgCase_ == 2 &&
+              msg_ != nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.NegotiationsI.newBuilder((nefit.proto.NefitProtos.NegotiationsI) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 2) {
+            negoBuilder_.mergeFrom(value);
+          }
+          negoBuilder_.setMessage(value);
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       */
+      public Builder clearNego() {
+        if (negoBuilder_ == null) {
+          if (msgCase_ == 2) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 2) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          negoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       */
+      public nefit.proto.NefitProtos.NegotiationsI.Builder getNegoBuilder() {
+        return getNegoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       */
+      public nefit.proto.NefitProtos.NegotiationsIOrBuilder getNegoOrBuilder() {
+        if ((msgCase_ == 2) && (negoBuilder_ != null)) {
+          return negoBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 2) {
+            return (nefit.proto.NefitProtos.NegotiationsI) msg_;
+          }
+          return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.NegotiationsI nego = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.NegotiationsI, nefit.proto.NefitProtos.NegotiationsI.Builder, nefit.proto.NefitProtos.NegotiationsIOrBuilder> 
+          getNegoFieldBuilder() {
+        if (negoBuilder_ == null) {
+          if (!(msgCase_ == 2)) {
+            msg_ = nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
+          }
+          negoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.NegotiationsI, nefit.proto.NefitProtos.NegotiationsI.Builder, nefit.proto.NefitProtos.NegotiationsIOrBuilder>(
+                  (nefit.proto.NefitProtos.NegotiationsI) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 2;
+        onChanged();;
+        return negoBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.ResultI, nefit.proto.NefitProtos.ResultI.Builder, nefit.proto.NefitProtos.ResultIOrBuilder> resultBuilder_;
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       * @return Whether the result field is set.
+       */
+      public boolean hasResult() {
+        return msgCase_ == 3;
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       * @return The result.
+       */
+      public nefit.proto.NefitProtos.ResultI getResult() {
+        if (resultBuilder_ == null) {
+          if (msgCase_ == 3) {
+            return (nefit.proto.NefitProtos.ResultI) msg_;
+          }
+          return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
+        } else {
+          if (msgCase_ == 3) {
+            return resultBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       */
+      public Builder setResult(nefit.proto.NefitProtos.ResultI value) {
+        if (resultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          resultBuilder_.setMessage(value);
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       */
+      public Builder setResult(
+          nefit.proto.NefitProtos.ResultI.Builder builderForValue) {
+        if (resultBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          resultBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       */
+      public Builder mergeResult(nefit.proto.NefitProtos.ResultI value) {
+        if (resultBuilder_ == null) {
+          if (msgCase_ == 3 &&
+              msg_ != nefit.proto.NefitProtos.ResultI.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.ResultI.newBuilder((nefit.proto.NefitProtos.ResultI) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 3) {
+            resultBuilder_.mergeFrom(value);
+          }
+          resultBuilder_.setMessage(value);
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       */
+      public Builder clearResult() {
+        if (resultBuilder_ == null) {
+          if (msgCase_ == 3) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 3) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          resultBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       */
+      public nefit.proto.NefitProtos.ResultI.Builder getResultBuilder() {
+        return getResultFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       */
+      public nefit.proto.NefitProtos.ResultIOrBuilder getResultOrBuilder() {
+        if ((msgCase_ == 3) && (resultBuilder_ != null)) {
+          return resultBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 3) {
+            return (nefit.proto.NefitProtos.ResultI) msg_;
+          }
+          return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ResultI result = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.ResultI, nefit.proto.NefitProtos.ResultI.Builder, nefit.proto.NefitProtos.ResultIOrBuilder> 
+          getResultFieldBuilder() {
+        if (resultBuilder_ == null) {
+          if (!(msgCase_ == 3)) {
+            msg_ = nefit.proto.NefitProtos.ResultI.getDefaultInstance();
+          }
+          resultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.ResultI, nefit.proto.NefitProtos.ResultI.Builder, nefit.proto.NefitProtos.ResultIOrBuilder>(
+                  (nefit.proto.NefitProtos.ResultI) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 3;
+        onChanged();;
+        return resultBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> infoBuilder_;
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       * @return Whether the info field is set.
+       */
+      public boolean hasInfo() {
+        return msgCase_ == 4;
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       * @return The info.
+       */
+      public nefit.proto.NefitProtos.InfoI getInfo() {
+        if (infoBuilder_ == null) {
+          if (msgCase_ == 4) {
+            return (nefit.proto.NefitProtos.InfoI) msg_;
+          }
+          return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
+        } else {
+          if (msgCase_ == 4) {
+            return infoBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       */
+      public Builder setInfo(nefit.proto.NefitProtos.InfoI value) {
+        if (infoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          infoBuilder_.setMessage(value);
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       */
+      public Builder setInfo(
+          nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
+        if (infoBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          infoBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       */
+      public Builder mergeInfo(nefit.proto.NefitProtos.InfoI value) {
+        if (infoBuilder_ == null) {
+          if (msgCase_ == 4 &&
+              msg_ != nefit.proto.NefitProtos.InfoI.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.InfoI.newBuilder((nefit.proto.NefitProtos.InfoI) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 4) {
+            infoBuilder_.mergeFrom(value);
+          }
+          infoBuilder_.setMessage(value);
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       */
+      public Builder clearInfo() {
+        if (infoBuilder_ == null) {
+          if (msgCase_ == 4) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 4) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          infoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       */
+      public nefit.proto.NefitProtos.InfoI.Builder getInfoBuilder() {
+        return getInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       */
+      public nefit.proto.NefitProtos.InfoIOrBuilder getInfoOrBuilder() {
+        if ((msgCase_ == 4) && (infoBuilder_ != null)) {
+          return infoBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 4) {
+            return (nefit.proto.NefitProtos.InfoI) msg_;
+          }
+          return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.InfoI info = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> 
+          getInfoFieldBuilder() {
+        if (infoBuilder_ == null) {
+          if (!(msgCase_ == 4)) {
+            msg_ = nefit.proto.NefitProtos.InfoI.getDefaultInstance();
+          }
+          infoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder>(
+                  (nefit.proto.NefitProtos.InfoI) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 4;
+        onChanged();;
+        return infoBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:nefit.Importer)
+    }
+
+    // @@protoc_insertion_point(class_scope:nefit.Importer)
+    private static final nefit.proto.NefitProtos.Importer DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.Importer();
+    }
+
+    public static nefit.proto.NefitProtos.Importer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Importer>
+        PARSER = new com.google.protobuf.AbstractParser<Importer>() {
+      @java.lang.Override
+      public Importer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Importer(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Importer> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Importer> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public nefit.proto.NefitProtos.Importer getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NegotiatorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.Negotiator)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .nefit.GetN get = 1;</code>
+     * @return Whether the get field is set.
+     */
+    boolean hasGet();
+    /**
+     * <code>optional .nefit.GetN get = 1;</code>
+     * @return The get.
+     */
+    nefit.proto.NefitProtos.GetN getGet();
+    /**
+     * <code>optional .nefit.GetN get = 1;</code>
+     */
+    nefit.proto.NefitProtos.GetNOrBuilder getGetOrBuilder();
+
+    /**
+     * <code>optional .nefit.SubN sub = 2;</code>
+     * @return Whether the sub field is set.
+     */
+    boolean hasSub();
+    /**
+     * <code>optional .nefit.SubN sub = 2;</code>
+     * @return The sub.
+     */
+    nefit.proto.NefitProtos.SubN getSub();
+    /**
+     * <code>optional .nefit.SubN sub = 2;</code>
+     */
+    nefit.proto.NefitProtos.SubNOrBuilder getSubOrBuilder();
+
+    /**
+     * <code>optional .nefit.OrderN order = 3;</code>
+     * @return Whether the order field is set.
+     */
+    boolean hasOrder();
+    /**
+     * <code>optional .nefit.OrderN order = 3;</code>
+     * @return The order.
+     */
+    nefit.proto.NefitProtos.OrderN getOrder();
+    /**
+     * <code>optional .nefit.OrderN order = 3;</code>
+     */
+    nefit.proto.NefitProtos.OrderNOrBuilder getOrderOrBuilder();
+
+    /**
+     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * @return Whether the disponibility field is set.
+     */
+    boolean hasDisponibility();
+    /**
+     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * @return The disponibility.
+     */
+    nefit.proto.NefitProtos.DisponibilityN getDisponibility();
+    /**
+     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     */
+    nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder();
+
+    public nefit.proto.NefitProtos.Negotiator.MsgCase getMsgCase();
+  }
+  /**
+   * Protobuf type {@code nefit.Negotiator}
+   */
+  public  static final class Negotiator extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:nefit.Negotiator)
+      NegotiatorOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Negotiator.newBuilder() to construct.
+    private Negotiator(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Negotiator() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Negotiator();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Negotiator(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              nefit.proto.NefitProtos.GetN.Builder subBuilder = null;
+              if (msgCase_ == 1) {
+                subBuilder = ((nefit.proto.NefitProtos.GetN) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.GetN.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.GetN) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 1;
+              break;
+            }
+            case 18: {
+              nefit.proto.NefitProtos.SubN.Builder subBuilder = null;
+              if (msgCase_ == 2) {
+                subBuilder = ((nefit.proto.NefitProtos.SubN) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.SubN.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.SubN) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 2;
+              break;
+            }
+            case 26: {
+              nefit.proto.NefitProtos.OrderN.Builder subBuilder = null;
+              if (msgCase_ == 3) {
+                subBuilder = ((nefit.proto.NefitProtos.OrderN) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.OrderN.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.OrderN) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 3;
+              break;
+            }
+            case 34: {
+              nefit.proto.NefitProtos.DisponibilityN.Builder subBuilder = null;
+              if (msgCase_ == 4) {
+                subBuilder = ((nefit.proto.NefitProtos.DisponibilityN) msg_).toBuilder();
+              }
+              msg_ =
+                  input.readMessage(nefit.proto.NefitProtos.DisponibilityN.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.proto.NefitProtos.DisponibilityN) msg_);
+                msg_ = subBuilder.buildPartial();
+              }
+              msgCase_ = 4;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return nefit.proto.NefitProtos.internal_static_nefit_Negotiator_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return nefit.proto.NefitProtos.internal_static_nefit_Negotiator_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              nefit.proto.NefitProtos.Negotiator.class, nefit.proto.NefitProtos.Negotiator.Builder.class);
+    }
+
+    private int bitField0_;
+    private int msgCase_ = 0;
+    private java.lang.Object msg_;
+    public enum MsgCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      GET(1),
+      SUB(2),
+      ORDER(3),
+      DISPONIBILITY(4),
+      MSG_NOT_SET(0);
+      private final int value;
+      private MsgCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static MsgCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static MsgCase forNumber(int value) {
+        switch (value) {
+          case 1: return GET;
+          case 2: return SUB;
+          case 3: return ORDER;
+          case 4: return DISPONIBILITY;
+          case 0: return MSG_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public MsgCase
+    getMsgCase() {
+      return MsgCase.forNumber(
+          msgCase_);
+    }
+
+    public static final int GET_FIELD_NUMBER = 1;
+    /**
+     * <code>optional .nefit.GetN get = 1;</code>
+     * @return Whether the get field is set.
+     */
+    public boolean hasGet() {
+      return msgCase_ == 1;
+    }
+    /**
+     * <code>optional .nefit.GetN get = 1;</code>
+     * @return The get.
+     */
+    public nefit.proto.NefitProtos.GetN getGet() {
+      if (msgCase_ == 1) {
+         return (nefit.proto.NefitProtos.GetN) msg_;
+      }
+      return nefit.proto.NefitProtos.GetN.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.GetN get = 1;</code>
+     */
+    public nefit.proto.NefitProtos.GetNOrBuilder getGetOrBuilder() {
+      if (msgCase_ == 1) {
+         return (nefit.proto.NefitProtos.GetN) msg_;
+      }
+      return nefit.proto.NefitProtos.GetN.getDefaultInstance();
+    }
+
+    public static final int SUB_FIELD_NUMBER = 2;
+    /**
+     * <code>optional .nefit.SubN sub = 2;</code>
+     * @return Whether the sub field is set.
+     */
+    public boolean hasSub() {
+      return msgCase_ == 2;
+    }
+    /**
+     * <code>optional .nefit.SubN sub = 2;</code>
+     * @return The sub.
+     */
+    public nefit.proto.NefitProtos.SubN getSub() {
+      if (msgCase_ == 2) {
+         return (nefit.proto.NefitProtos.SubN) msg_;
+      }
+      return nefit.proto.NefitProtos.SubN.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.SubN sub = 2;</code>
+     */
+    public nefit.proto.NefitProtos.SubNOrBuilder getSubOrBuilder() {
+      if (msgCase_ == 2) {
+         return (nefit.proto.NefitProtos.SubN) msg_;
+      }
+      return nefit.proto.NefitProtos.SubN.getDefaultInstance();
+    }
+
+    public static final int ORDER_FIELD_NUMBER = 3;
+    /**
+     * <code>optional .nefit.OrderN order = 3;</code>
+     * @return Whether the order field is set.
+     */
+    public boolean hasOrder() {
+      return msgCase_ == 3;
+    }
+    /**
+     * <code>optional .nefit.OrderN order = 3;</code>
+     * @return The order.
+     */
+    public nefit.proto.NefitProtos.OrderN getOrder() {
+      if (msgCase_ == 3) {
+         return (nefit.proto.NefitProtos.OrderN) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.OrderN order = 3;</code>
+     */
+    public nefit.proto.NefitProtos.OrderNOrBuilder getOrderOrBuilder() {
+      if (msgCase_ == 3) {
+         return (nefit.proto.NefitProtos.OrderN) msg_;
+      }
+      return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
+    }
+
+    public static final int DISPONIBILITY_FIELD_NUMBER = 4;
+    /**
+     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * @return Whether the disponibility field is set.
+     */
+    public boolean hasDisponibility() {
+      return msgCase_ == 4;
+    }
+    /**
+     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * @return The disponibility.
+     */
+    public nefit.proto.NefitProtos.DisponibilityN getDisponibility() {
+      if (msgCase_ == 4) {
+         return (nefit.proto.NefitProtos.DisponibilityN) msg_;
+      }
+      return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     */
+    public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
+      if (msgCase_ == 4) {
+         return (nefit.proto.NefitProtos.DisponibilityN) msg_;
+      }
+      return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasGet()) {
+        if (!getGet().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasOrder()) {
+        if (!getOrder().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasDisponibility()) {
+        if (!getDisponibility().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (msgCase_ == 1) {
+        output.writeMessage(1, (nefit.proto.NefitProtos.GetN) msg_);
+      }
+      if (msgCase_ == 2) {
+        output.writeMessage(2, (nefit.proto.NefitProtos.SubN) msg_);
+      }
+      if (msgCase_ == 3) {
+        output.writeMessage(3, (nefit.proto.NefitProtos.OrderN) msg_);
+      }
+      if (msgCase_ == 4) {
+        output.writeMessage(4, (nefit.proto.NefitProtos.DisponibilityN) msg_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (msgCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, (nefit.proto.NefitProtos.GetN) msg_);
+      }
+      if (msgCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (nefit.proto.NefitProtos.SubN) msg_);
+      }
+      if (msgCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (nefit.proto.NefitProtos.OrderN) msg_);
+      }
+      if (msgCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (nefit.proto.NefitProtos.DisponibilityN) msg_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof nefit.proto.NefitProtos.Negotiator)) {
+        return super.equals(obj);
+      }
+      nefit.proto.NefitProtos.Negotiator other = (nefit.proto.NefitProtos.Negotiator) obj;
+
+      if (!getMsgCase().equals(other.getMsgCase())) return false;
+      switch (msgCase_) {
+        case 1:
+          if (!getGet()
+              .equals(other.getGet())) return false;
+          break;
+        case 2:
+          if (!getSub()
+              .equals(other.getSub())) return false;
+          break;
+        case 3:
+          if (!getOrder()
+              .equals(other.getOrder())) return false;
+          break;
+        case 4:
+          if (!getDisponibility()
+              .equals(other.getDisponibility())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (msgCase_) {
+        case 1:
+          hash = (37 * hash) + GET_FIELD_NUMBER;
+          hash = (53 * hash) + getGet().hashCode();
+          break;
+        case 2:
+          hash = (37 * hash) + SUB_FIELD_NUMBER;
+          hash = (53 * hash) + getSub().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + ORDER_FIELD_NUMBER;
+          hash = (53 * hash) + getOrder().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + DISPONIBILITY_FIELD_NUMBER;
+          hash = (53 * hash) + getDisponibility().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.proto.NefitProtos.Negotiator parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(nefit.proto.NefitProtos.Negotiator prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code nefit.Negotiator}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:nefit.Negotiator)
+        nefit.proto.NefitProtos.NegotiatorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Negotiator_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Negotiator_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                nefit.proto.NefitProtos.Negotiator.class, nefit.proto.NefitProtos.Negotiator.Builder.class);
+      }
+
+      // Construct using nefit.proto.NefitProtos.Negotiator.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        msgCase_ = 0;
+        msg_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return nefit.proto.NefitProtos.internal_static_nefit_Negotiator_descriptor;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Negotiator getDefaultInstanceForType() {
+        return nefit.proto.NefitProtos.Negotiator.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Negotiator build() {
+        nefit.proto.NefitProtos.Negotiator result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public nefit.proto.NefitProtos.Negotiator buildPartial() {
+        nefit.proto.NefitProtos.Negotiator result = new nefit.proto.NefitProtos.Negotiator(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (msgCase_ == 1) {
+          if (getBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = getBuilder_.build();
+          }
+        }
+        if (msgCase_ == 2) {
+          if (subBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = subBuilder_.build();
+          }
+        }
+        if (msgCase_ == 3) {
+          if (orderBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = orderBuilder_.build();
+          }
+        }
+        if (msgCase_ == 4) {
+          if (disponibilityBuilder_ == null) {
+            result.msg_ = msg_;
+          } else {
+            result.msg_ = disponibilityBuilder_.build();
+          }
+        }
+        result.bitField0_ = to_bitField0_;
+        result.msgCase_ = msgCase_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof nefit.proto.NefitProtos.Negotiator) {
+          return mergeFrom((nefit.proto.NefitProtos.Negotiator)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(nefit.proto.NefitProtos.Negotiator other) {
+        if (other == nefit.proto.NefitProtos.Negotiator.getDefaultInstance()) return this;
+        switch (other.getMsgCase()) {
+          case GET: {
+            mergeGet(other.getGet());
+            break;
+          }
+          case SUB: {
+            mergeSub(other.getSub());
+            break;
+          }
+          case ORDER: {
+            mergeOrder(other.getOrder());
+            break;
+          }
+          case DISPONIBILITY: {
+            mergeDisponibility(other.getDisponibility());
+            break;
+          }
+          case MSG_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (hasGet()) {
+          if (!getGet().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasOrder()) {
+          if (!getOrder().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasDisponibility()) {
+          if (!getDisponibility().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        nefit.proto.NefitProtos.Negotiator parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (nefit.proto.NefitProtos.Negotiator) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int msgCase_ = 0;
+      private java.lang.Object msg_;
+      public MsgCase
+          getMsgCase() {
+        return MsgCase.forNumber(
+            msgCase_);
+      }
+
+      public Builder clearMsg() {
+        msgCase_ = 0;
+        msg_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.GetN, nefit.proto.NefitProtos.GetN.Builder, nefit.proto.NefitProtos.GetNOrBuilder> getBuilder_;
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       * @return Whether the get field is set.
+       */
+      public boolean hasGet() {
+        return msgCase_ == 1;
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       * @return The get.
+       */
+      public nefit.proto.NefitProtos.GetN getGet() {
+        if (getBuilder_ == null) {
+          if (msgCase_ == 1) {
+            return (nefit.proto.NefitProtos.GetN) msg_;
+          }
+          return nefit.proto.NefitProtos.GetN.getDefaultInstance();
+        } else {
+          if (msgCase_ == 1) {
+            return getBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.GetN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       */
+      public Builder setGet(nefit.proto.NefitProtos.GetN value) {
+        if (getBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          getBuilder_.setMessage(value);
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       */
+      public Builder setGet(
+          nefit.proto.NefitProtos.GetN.Builder builderForValue) {
+        if (getBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          getBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       */
+      public Builder mergeGet(nefit.proto.NefitProtos.GetN value) {
+        if (getBuilder_ == null) {
+          if (msgCase_ == 1 &&
+              msg_ != nefit.proto.NefitProtos.GetN.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.GetN.newBuilder((nefit.proto.NefitProtos.GetN) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 1) {
+            getBuilder_.mergeFrom(value);
+          }
+          getBuilder_.setMessage(value);
+        }
+        msgCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       */
+      public Builder clearGet() {
+        if (getBuilder_ == null) {
+          if (msgCase_ == 1) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 1) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          getBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       */
+      public nefit.proto.NefitProtos.GetN.Builder getGetBuilder() {
+        return getGetFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       */
+      public nefit.proto.NefitProtos.GetNOrBuilder getGetOrBuilder() {
+        if ((msgCase_ == 1) && (getBuilder_ != null)) {
+          return getBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 1) {
+            return (nefit.proto.NefitProtos.GetN) msg_;
+          }
+          return nefit.proto.NefitProtos.GetN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.GetN get = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.GetN, nefit.proto.NefitProtos.GetN.Builder, nefit.proto.NefitProtos.GetNOrBuilder> 
+          getGetFieldBuilder() {
+        if (getBuilder_ == null) {
+          if (!(msgCase_ == 1)) {
+            msg_ = nefit.proto.NefitProtos.GetN.getDefaultInstance();
+          }
+          getBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.GetN, nefit.proto.NefitProtos.GetN.Builder, nefit.proto.NefitProtos.GetNOrBuilder>(
+                  (nefit.proto.NefitProtos.GetN) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 1;
+        onChanged();;
+        return getBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.SubN, nefit.proto.NefitProtos.SubN.Builder, nefit.proto.NefitProtos.SubNOrBuilder> subBuilder_;
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       * @return Whether the sub field is set.
+       */
+      public boolean hasSub() {
+        return msgCase_ == 2;
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       * @return The sub.
+       */
+      public nefit.proto.NefitProtos.SubN getSub() {
+        if (subBuilder_ == null) {
+          if (msgCase_ == 2) {
+            return (nefit.proto.NefitProtos.SubN) msg_;
+          }
+          return nefit.proto.NefitProtos.SubN.getDefaultInstance();
+        } else {
+          if (msgCase_ == 2) {
+            return subBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.SubN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       */
+      public Builder setSub(nefit.proto.NefitProtos.SubN value) {
+        if (subBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          subBuilder_.setMessage(value);
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       */
+      public Builder setSub(
+          nefit.proto.NefitProtos.SubN.Builder builderForValue) {
+        if (subBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          subBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       */
+      public Builder mergeSub(nefit.proto.NefitProtos.SubN value) {
+        if (subBuilder_ == null) {
+          if (msgCase_ == 2 &&
+              msg_ != nefit.proto.NefitProtos.SubN.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.SubN.newBuilder((nefit.proto.NefitProtos.SubN) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 2) {
+            subBuilder_.mergeFrom(value);
+          }
+          subBuilder_.setMessage(value);
+        }
+        msgCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       */
+      public Builder clearSub() {
+        if (subBuilder_ == null) {
+          if (msgCase_ == 2) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 2) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          subBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       */
+      public nefit.proto.NefitProtos.SubN.Builder getSubBuilder() {
+        return getSubFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       */
+      public nefit.proto.NefitProtos.SubNOrBuilder getSubOrBuilder() {
+        if ((msgCase_ == 2) && (subBuilder_ != null)) {
+          return subBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 2) {
+            return (nefit.proto.NefitProtos.SubN) msg_;
+          }
+          return nefit.proto.NefitProtos.SubN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.SubN sub = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.SubN, nefit.proto.NefitProtos.SubN.Builder, nefit.proto.NefitProtos.SubNOrBuilder> 
+          getSubFieldBuilder() {
+        if (subBuilder_ == null) {
+          if (!(msgCase_ == 2)) {
+            msg_ = nefit.proto.NefitProtos.SubN.getDefaultInstance();
+          }
+          subBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.SubN, nefit.proto.NefitProtos.SubN.Builder, nefit.proto.NefitProtos.SubNOrBuilder>(
+                  (nefit.proto.NefitProtos.SubN) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 2;
+        onChanged();;
+        return subBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderN, nefit.proto.NefitProtos.OrderN.Builder, nefit.proto.NefitProtos.OrderNOrBuilder> orderBuilder_;
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       * @return Whether the order field is set.
+       */
+      public boolean hasOrder() {
+        return msgCase_ == 3;
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       * @return The order.
+       */
+      public nefit.proto.NefitProtos.OrderN getOrder() {
+        if (orderBuilder_ == null) {
+          if (msgCase_ == 3) {
+            return (nefit.proto.NefitProtos.OrderN) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
+        } else {
+          if (msgCase_ == 3) {
+            return orderBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       */
+      public Builder setOrder(nefit.proto.NefitProtos.OrderN value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(value);
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       */
+      public Builder setOrder(
+          nefit.proto.NefitProtos.OrderN.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       */
+      public Builder mergeOrder(nefit.proto.NefitProtos.OrderN value) {
+        if (orderBuilder_ == null) {
+          if (msgCase_ == 3 &&
+              msg_ != nefit.proto.NefitProtos.OrderN.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.OrderN.newBuilder((nefit.proto.NefitProtos.OrderN) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 3) {
+            orderBuilder_.mergeFrom(value);
+          }
+          orderBuilder_.setMessage(value);
+        }
+        msgCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       */
+      public Builder clearOrder() {
+        if (orderBuilder_ == null) {
+          if (msgCase_ == 3) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 3) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          orderBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       */
+      public nefit.proto.NefitProtos.OrderN.Builder getOrderBuilder() {
+        return getOrderFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       */
+      public nefit.proto.NefitProtos.OrderNOrBuilder getOrderOrBuilder() {
+        if ((msgCase_ == 3) && (orderBuilder_ != null)) {
+          return orderBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 3) {
+            return (nefit.proto.NefitProtos.OrderN) msg_;
+          }
+          return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.OrderN order = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.OrderN, nefit.proto.NefitProtos.OrderN.Builder, nefit.proto.NefitProtos.OrderNOrBuilder> 
+          getOrderFieldBuilder() {
+        if (orderBuilder_ == null) {
+          if (!(msgCase_ == 3)) {
+            msg_ = nefit.proto.NefitProtos.OrderN.getDefaultInstance();
+          }
+          orderBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.OrderN, nefit.proto.NefitProtos.OrderN.Builder, nefit.proto.NefitProtos.OrderNOrBuilder>(
+                  (nefit.proto.NefitProtos.OrderN) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 3;
+        onChanged();;
+        return orderBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder> disponibilityBuilder_;
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * @return Whether the disponibility field is set.
+       */
+      public boolean hasDisponibility() {
+        return msgCase_ == 4;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * @return The disponibility.
+       */
+      public nefit.proto.NefitProtos.DisponibilityN getDisponibility() {
+        if (disponibilityBuilder_ == null) {
+          if (msgCase_ == 4) {
+            return (nefit.proto.NefitProtos.DisponibilityN) msg_;
+          }
+          return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
+        } else {
+          if (msgCase_ == 4) {
+            return disponibilityBuilder_.getMessage();
+          }
+          return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       */
+      public Builder setDisponibility(nefit.proto.NefitProtos.DisponibilityN value) {
+        if (disponibilityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msg_ = value;
+          onChanged();
+        } else {
+          disponibilityBuilder_.setMessage(value);
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       */
+      public Builder setDisponibility(
+          nefit.proto.NefitProtos.DisponibilityN.Builder builderForValue) {
+        if (disponibilityBuilder_ == null) {
+          msg_ = builderForValue.build();
+          onChanged();
+        } else {
+          disponibilityBuilder_.setMessage(builderForValue.build());
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       */
+      public Builder mergeDisponibility(nefit.proto.NefitProtos.DisponibilityN value) {
+        if (disponibilityBuilder_ == null) {
+          if (msgCase_ == 4 &&
+              msg_ != nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance()) {
+            msg_ = nefit.proto.NefitProtos.DisponibilityN.newBuilder((nefit.proto.NefitProtos.DisponibilityN) msg_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            msg_ = value;
+          }
+          onChanged();
+        } else {
+          if (msgCase_ == 4) {
+            disponibilityBuilder_.mergeFrom(value);
+          }
+          disponibilityBuilder_.setMessage(value);
+        }
+        msgCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       */
+      public Builder clearDisponibility() {
+        if (disponibilityBuilder_ == null) {
+          if (msgCase_ == 4) {
+            msgCase_ = 0;
+            msg_ = null;
+            onChanged();
+          }
+        } else {
+          if (msgCase_ == 4) {
+            msgCase_ = 0;
+            msg_ = null;
+          }
+          disponibilityBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       */
+      public nefit.proto.NefitProtos.DisponibilityN.Builder getDisponibilityBuilder() {
+        return getDisponibilityFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       */
+      public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
+        if ((msgCase_ == 4) && (disponibilityBuilder_ != null)) {
+          return disponibilityBuilder_.getMessageOrBuilder();
+        } else {
+          if (msgCase_ == 4) {
+            return (nefit.proto.NefitProtos.DisponibilityN) msg_;
+          }
+          return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder> 
+          getDisponibilityFieldBuilder() {
+        if (disponibilityBuilder_ == null) {
+          if (!(msgCase_ == 4)) {
+            msg_ = nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
+          }
+          disponibilityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder>(
+                  (nefit.proto.NefitProtos.DisponibilityN) msg_,
+                  getParentForChildren(),
+                  isClean());
+          msg_ = null;
+        }
+        msgCase_ = 4;
+        onChanged();;
+        return disponibilityBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:nefit.Negotiator)
+    }
+
+    // @@protoc_insertion_point(class_scope:nefit.Negotiator)
+    private static final nefit.proto.NefitProtos.Negotiator DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.Negotiator();
+    }
+
+    public static nefit.proto.NefitProtos.Negotiator getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Negotiator>
+        PARSER = new com.google.protobuf.AbstractParser<Negotiator>() {
+      @java.lang.Override
+      public Negotiator parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Negotiator(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Negotiator> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Negotiator> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public nefit.proto.NefitProtos.Negotiator getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_MsgAuth_descriptor;
   private static final 
@@ -20429,11 +23996,6 @@ public final class NefitProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_InfoI_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_nefit_Server_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_nefit_Server_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_GetS_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -20453,6 +24015,21 @@ public final class NefitProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_NegotiationsI_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nefit_Server_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nefit_Server_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nefit_Importer_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nefit_Importer_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nefit_Negotiator_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nefit_Negotiator_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -20485,25 +24062,35 @@ public final class NefitProtos {
       "\n\005nameP\030\002 \002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 " +
       "\002(\005\":\n\013ProductionM\022\r\n\005nameP\030\001 \002(\t\022\r\n\005qua" +
       "nt\030\002 \002(\005\022\r\n\005value\030\003 \002(\005\"5\n\007ResultS\022\016\n\006re" +
-      "sult\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\022\r\n\005nameI\030\003 \002(\t\"&" +
-      "\n\007ResultI\022\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\"u" +
+      "sult\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\022\r\n\005nameI\030\003 \002(\t\"&" +
+      "\n\007ResultI\022\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"u" +
       "\n\005InfoS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n" +
       "\007minimun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value" +
       "\030\005 \002(\005\022\016\n\006period\030\006 \002(\005\022\r\n\005nameI\030\007 \002(\t\"f\n" +
       "\005InfoI\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007" +
       "minimun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030" +
-      "\005 \002(\005\022\016\n\006period\030\006 \002(\005\"\350\001\n\006Server\022#\n\002m1\030\001" +
-      " \001(\0132\025.nefit.DisponibilitySH\000\022\033\n\002m2\030\002 \001(" +
-      "\0132\r.nefit.OrderSH\000\022\031\n\002m3\030\003 \001(\0132\013.nefit.S" +
-      "ubSH\000\022\034\n\002m4\030\004 \001(\0132\016.nefit.ResultSH\000\022\032\n\002m" +
-      "5\030\005 \001(\0132\014.nefit.InfoSH\000\022 \n\002m6\030\006 \001(\0132\022.ne" +
-      "fit.ProductionSH\000\022\036\n\002m7\030\007 \001(\0132\020.nefit.Or" +
-      "derAckSH\000B\005\n\003msg\"\025\n\004GetS\022\r\n\005nameI\030\001 \002(\t\"" +
-      "\025\n\004GetN\022\r\n\005nameI\030\001 \002(\t\"B\n\rNegotiationsS\022" +
-      "\r\n\005nameI\030\001 \002(\t\022\"\n\014negotiations\030\002 \003(\0132\014.n" +
-      "efit.InfoI\"3\n\rNegotiationsI\022\"\n\014negotiati" +
-      "ons\030\001 \003(\0132\014.nefit.InfoIB\032\n\013nefit.protoB\013" +
-      "NefitProtos"
+      "\005 \002(\005\022\016\n\006period\030\006 \002(\005\"\025\n\004GetS\022\r\n\005nameI\030\001" +
+      " \002(\t\"\025\n\004GetN\022\r\n\005nameI\030\001 \002(\t\"B\n\rNegotiati" +
+      "onsS\022\r\n\005nameI\030\001 \002(\t\022\"\n\014negotiations\030\002 \003(" +
+      "\0132\014.nefit.InfoI\"3\n\rNegotiationsI\022\"\n\014nego" +
+      "tiations\030\001 \003(\0132\014.nefit.InfoI\"\306\002\n\006Server\022" +
+      "#\n\002m1\030\001 \001(\0132\025.nefit.DisponibilitySH\000\022\033\n\002" +
+      "m2\030\002 \001(\0132\r.nefit.OrderSH\000\022\031\n\002m3\030\003 \001(\0132\013." +
+      "nefit.SubSH\000\022\034\n\002m4\030\004 \001(\0132\016.nefit.ResultS" +
+      "H\000\022\032\n\002m5\030\005 \001(\0132\014.nefit.InfoSH\000\022 \n\002m6\030\006 \001" +
+      "(\0132\022.nefit.ProductionSH\000\022\036\n\002m7\030\007 \001(\0132\020.n" +
+      "efit.OrderAckSH\000\022\031\n\002m8\030\010 \001(\0132\013.nefit.Get" +
+      "SH\000\022\"\n\002m9\030\t \001(\0132\024.nefit.NegotiationsSH\000\022" +
+      "\035\n\003m10\030\n \001(\0132\016.nefit.MsgAuthH\000B\005\n\003msg\"\233\001" +
+      "\n\010Importer\022\"\n\006ordack\030\001 \001(\0132\020.nefit.Order" +
+      "AckIH\000\022$\n\004nego\030\002 \001(\0132\024.nefit.Negotiation" +
+      "sIH\000\022 \n\006result\030\003 \001(\0132\016.nefit.ResultIH\000\022\034" +
+      "\n\004info\030\004 \001(\0132\014.nefit.InfoIH\000B\005\n\003msg\"\233\001\n\n" +
+      "Negotiator\022\032\n\003get\030\001 \001(\0132\013.nefit.GetNH\000\022\032" +
+      "\n\003sub\030\002 \001(\0132\013.nefit.SubNH\000\022\036\n\005order\030\003 \001(" +
+      "\0132\r.nefit.OrderNH\000\022.\n\rdisponibility\030\004 \001(" +
+      "\0132\025.nefit.DisponibilityNH\000B\005\n\003msgB\032\n\013nef" +
+      "it.protoB\013NefitProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -20605,36 +24192,48 @@ public final class NefitProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_InfoI_descriptor,
         new java.lang.String[] { "NameM", "NameP", "Minimun", "Maximun", "Value", "Period", });
-    internal_static_nefit_Server_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_nefit_Server_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_nefit_Server_descriptor,
-        new java.lang.String[] { "M1", "M2", "M3", "M4", "M5", "M6", "M7", "Msg", });
     internal_static_nefit_GetS_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_nefit_GetS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_GetS_descriptor,
         new java.lang.String[] { "NameI", });
     internal_static_nefit_GetN_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_nefit_GetN_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_GetN_descriptor,
         new java.lang.String[] { "NameI", });
     internal_static_nefit_NegotiationsS_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_nefit_NegotiationsS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_NegotiationsS_descriptor,
         new java.lang.String[] { "NameI", "Negotiations", });
     internal_static_nefit_NegotiationsI_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_nefit_NegotiationsI_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_NegotiationsI_descriptor,
         new java.lang.String[] { "Negotiations", });
+    internal_static_nefit_Server_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_nefit_Server_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nefit_Server_descriptor,
+        new java.lang.String[] { "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "Msg", });
+    internal_static_nefit_Importer_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_nefit_Importer_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nefit_Importer_descriptor,
+        new java.lang.String[] { "Ordack", "Nego", "Result", "Info", "Msg", });
+    internal_static_nefit_Negotiator_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_nefit_Negotiator_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nefit_Negotiator_descriptor,
+        new java.lang.String[] { "Get", "Sub", "Order", "Disponibility", "Msg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
