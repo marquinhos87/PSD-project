@@ -123,7 +123,7 @@
 -define('RESULTS_PB_H', true).
 -record('ResultS',
         {result                 :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata() | undefined, % = 2
+         msg                    :: iodata(),        % = 2
          nameI                  :: iodata()         % = 3
         }).
 -endif.
@@ -132,7 +132,7 @@
 -define('RESULTI_PB_H', true).
 -record('ResultI',
         {result                 :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata() | undefined % = 2
+         msg                    :: iodata()         % = 2
         }).
 -endif.
 
@@ -158,13 +158,6 @@
          maximun                :: integer(),       % = 4, 32 bits
          value                  :: integer(),       % = 5, 32 bits
          period                 :: integer()        % = 6, 32 bits
-        }).
--endif.
-
--ifndef('SERVER_PB_H').
--define('SERVER_PB_H', true).
--record('Server',
-        {msg                    :: {m1, nefitproto:'DisponibilityS'()} | {m2, nefitproto:'OrderS'()} | {m3, nefitproto:'SubS'()} | {m4, nefitproto:'ResultS'()} | {m5, nefitproto:'InfoS'()} | {m6, nefitproto:'ProductionS'()} | {m7, nefitproto:'OrderAckS'()} | undefined % oneof
         }).
 -endif.
 
@@ -194,6 +187,27 @@
 -define('NEGOTIATIONSI_PB_H', true).
 -record('NegotiationsI',
         {negotiations = []      :: [nefitproto:'InfoI'()] | undefined % = 1
+        }).
+-endif.
+
+-ifndef('SERVER_PB_H').
+-define('SERVER_PB_H', true).
+-record('Server',
+        {msg                    :: {m1, nefitproto:'DisponibilityS'()} | {m2, nefitproto:'OrderS'()} | {m3, nefitproto:'SubS'()} | {m4, nefitproto:'ResultS'()} | {m5, nefitproto:'InfoS'()} | {m6, nefitproto:'ProductionS'()} | {m7, nefitproto:'OrderAckS'()} | {m8, nefitproto:'GetS'()} | {m9, nefitproto:'NegotiationsS'()} | {m10, nefitproto:'MsgAuth'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('IMPORTER_PB_H').
+-define('IMPORTER_PB_H', true).
+-record('Importer',
+        {msg                    :: {ordack, nefitproto:'OrderAckI'()} | {nego, nefitproto:'NegotiationsI'()} | {result, nefitproto:'ResultI'()} | {info, nefitproto:'InfoI'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('NEGOTIATOR_PB_H').
+-define('NEGOTIATOR_PB_H', true).
+-record('Negotiator',
+        {msg                    :: {get, nefitproto:'GetN'()} | {sub, nefitproto:'SubN'()} | {order, nefitproto:'OrderN'()} | {disponibility, nefitproto:'DisponibilityN'()} | undefined % oneof
         }).
 -endif.
 
