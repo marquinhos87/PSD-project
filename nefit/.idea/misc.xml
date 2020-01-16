@@ -5,6 +5,9 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/proto/pom.xml" />
+        <option value="$PROJECT_DIR$/arbiter/pom.xml" />
+        <option value="$PROJECT_DIR$/catalog/pom.xml" />
+        <option value="$PROJECT_DIR$/client/pom.xml" />
       </list>
     </option>
   </component>
