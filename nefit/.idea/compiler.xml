@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="client" />
-        <module name="proto" />
-        <module name="arbiter" />
         <module name="catalog" />
+        <module name="client" />
+        <module name="arbiter" />
+        <module name="proto" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,5 +18,8 @@
       <module name="client" target="11" />
       <module name="proto" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="ErlangCompilerOptions">
+    <useRebarCompiler>true</useRebarCompiler>
   </component>
 </project>

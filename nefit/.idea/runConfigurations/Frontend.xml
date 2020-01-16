@@ -11,7 +11,7 @@
       </ErlangDebugOptions>
     </option>
     <option name="erlFlags" value="" />
-    <option name="moduleAndFunction" value="main server" />
+    <option name="moduleAndFunction" value="frontend run" />
     <option name="params" value="12345" />
     <option name="useTestCodePath" value="false" />
     <option name="workDirectory" value="$PROJECT_DIR$" />
