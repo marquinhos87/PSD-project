@@ -31,10 +31,26 @@ public class Importer implements Runnable
     @Override
     public void run()
     {
+        printCommands();
+        new Thread(this::receive).start();
         //TODO
         while(true)
         {
 
         }
+    }
+
+    public void receive()
+    {
+
+    }
+
+    public void printCommands()
+    {
+        out.println("You can use some commands like 'sub' 'get' 'order'");
+        out.println("Command sub:");
+        out.println("Command get:");
+        out.println("Command order:")
+        out.flush();
     }
 }
