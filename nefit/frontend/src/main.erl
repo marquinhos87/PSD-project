@@ -68,7 +68,6 @@ connectedClient(Sock, Authenticator) ->
     receive
         {tcp, _, Data} ->
             decode(Data),
-            importer(Sock);
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
