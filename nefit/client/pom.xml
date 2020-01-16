@@ -31,6 +31,10 @@
             <artifactId>jeromq</artifactId>
             <version>0.5.2-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>nefit</groupId>
+            <artifactId>proto</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

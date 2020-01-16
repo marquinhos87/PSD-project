@@ -1,6 +1,7 @@
 package nefit.client;
 
 import javafx.util.Pair;
+import nefit.proto.NefitProtos;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
@@ -111,7 +112,7 @@ public class Client
     {
         //TODO : MsgAuth Register
         if (arg.getKey().equals("m"))
-            MsgAuth msgl = messages.createMsgAuth(false,true,this.name,this.pass);
+            NefitProtos.MsgAuth msgl = messages.createMsgAuth(false,true,this.name,this.pass);
         else
             MsgAuth msgl = messages.createMsgAuth(false,false,this.name,this.pass);
 
