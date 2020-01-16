@@ -1,2 +1,2 @@
 #!/bin/sh
-protoc -I=. --java_out=main/java nefit.proto
+protoc -I=. --java_out=src/main/java nefit.proto
