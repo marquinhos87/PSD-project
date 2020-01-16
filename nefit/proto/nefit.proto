@@ -74,11 +74,13 @@ message OrderAckI {
 }
 
 message SubS {
-    repeated string subs = 1;
+    required string nameI = 1;
+    repeated string subs = 2;
 }
 
 message SubN {
-    repeated string subs = 1;
+    required string nameI = 1;
+    repeated string subs = 2;
 }
 
 message ProductionS {

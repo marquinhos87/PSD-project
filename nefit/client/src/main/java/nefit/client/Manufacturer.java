@@ -3,9 +3,12 @@ package nefit.client;
 import nefit.proto.NefitProtos;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Manufacturer implements Runnable
 {
+    private List<NefitProtos.DisponibilityN> itemsAvailable;
     private String name;
     private BufferedReader in;
     private PrintWriter out;
@@ -21,6 +24,7 @@ public class Manufacturer implements Runnable
         this.is = is;
         this.os = os;
         this.messages = messages;
+        this.itemsAvailable = new ArrayList<>();
     }
 
     @Override
@@ -44,6 +48,12 @@ public class Manufacturer implements Runnable
                 }
                 else
                 {
+                    for(NefitProtos.DisponibilityN aux: itemsAvailable)
+                        if(aux.getNameP().equals(fields[0]))
+                        {
+                            out.println("You already have this product available");
+                            continue;
+                        }
                     NefitProtos.DisponibilityS disp = this.messages.createDisponibilityS(
                      this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Float.parseFloat(fields[3]),Integer.parseInt(fields[4])
                      );
@@ -74,6 +84,12 @@ public class Manufacturer implements Runnable
                     out.println("No good offers to your product " + prod.getNameP());
                 else
                     out.println("Your product " + prod.getNameP() + " gives you " + (prod.getValue() * prod.getQuant()) + " M.U.");
+                for(NefitProtos.DisponibilityN aux: itemsAvailable)
+                    if(aux.getNameP().equals(prod.getNameP()))
+                    {
+                        itemsAvailable.remove(aux);
+                        break;
+                    }
             }
             catch (IOException e)
             {
