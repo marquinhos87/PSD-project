@@ -2,9 +2,6 @@ package nefit.client;
 
 import javafx.util.Pair;
 import nefit.proto.NefitProtos;
-import org.zeromq.SocketType;
-import org.zeromq.ZContext;
-import org.zeromq.ZMQ;
 
 import java.io.*;
 import java.net.Socket;
@@ -92,34 +89,34 @@ public class Client
         return arg;
     }
 
-    private static Boolean Login(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os)
-    {
+    private static Boolean Login(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
         //TODO : MsgAuth Login
+        NefitProtos.MsgAuth msgl = null;
         if (arg.getKey().equals("m"))
-            MsgAuth msgl = messages.createMsgAuth(true,true,arg.getKey(),arg.getValue());
+            msgl = messages.createMsgAuth(true,true,arg.getKey(),arg.getValue());
         else
-            MsgAuth msgl = messages.createMsgAuth(true,false,arg.getKey(),arg.getValue());
+            msgl = messages.createMsgAuth(true,false,arg.getKey(),arg.getValue());
 
         msgl.writeDelimitedTo(os);
 
         //Wait for MsgAck
-        MsgAck ack = MsgAck.parseDelimitedFrom(is);
+        NefitProtos.MsgAck ack = NefitProtos.MsgAck.parseDelimitedFrom(is);
 
         return ack.getAck();
     }
 
-    private static Boolean Register(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os)
-    {
+    private static Boolean Register(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
         //TODO : MsgAuth Register
+        NefitProtos.MsgAuth msgl = null;
         if (arg.getKey().equals("m"))
-            NefitProtos.MsgAuth msgl = messages.createMsgAuth(false,true,this.name,this.pass);
+            msgl = messages.createMsgAuth(false,true,arg.getKey(),arg.getValue());
         else
-            MsgAuth msgl = messages.createMsgAuth(false,false,this.name,this.pass);
+            msgl = messages.createMsgAuth(false,false,arg.getKey(),arg.getValue());
 
         msgl.writeDelimitedTo(os);
 
         //Wait for MsgAck
-        MsgAck ack = MsgAck.parseDelimitedFrom(is);
+        NefitProtos.MsgAck ack = NefitProtos.MsgAck.parseDelimitedFrom(is);
 
         return ack.getAck();
     }

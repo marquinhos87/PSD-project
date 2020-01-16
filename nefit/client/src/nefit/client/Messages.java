@@ -1,5 +1,7 @@
 package nefit.client;
 
+import nefit.proto.NefitProtos;
+
 import java.util.List;
 
 public class Messages
@@ -15,28 +17,28 @@ public class Messages
      * @param pass Pass of the Manufactor or Importer
      * @return Message with parameters to Authentication
      */
-    public MsgAuth createMsgAuth(Boolean typeAuth, Boolean client, String name, String pass)
+    public NefitProtos.MsgAuth createMsgAuth(Boolean typeAuth, Boolean client, String name, String pass)
     {
-        MsgAuth msg = MsgAuth.newBuilder()
+        NefitProtos.MsgAuth.Builder msg = NefitProtos.MsgAuth.newBuilder()
             .setName(name)
             .setPass(pass);
         if(typeAuth && client)
         {
-            return msg.setCtype(MsgAuth.ClientType.MANUFACTURER)
-                .setMtype(MsgAuth.MsgType.LOGIN).build();
+            return msg.setCtype(NefitProtos.MsgAuth.ClientType.MANUFACTURER)
+                .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN).build();
         }
         if(typeAuth)
         {
-            return msg.setCtype(MsgAuth.ClientType.IMPORTER)
-                .setMtype(MsgAuth.MsgType.LOGIN).build();
+            return msg.setCtype(NefitProtos.MsgAuth.ClientType.IMPORTER)
+                .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN).build();
         }
         if(client)
         {
-            return msg.setCtype(MsgAuth.ClientType.MANUFACTURER)
-                .setMtype(MsgAuth.MsgType.REGISTER).build();
+            return msg.setCtype(NefitProtos.MsgAuth.ClientType.MANUFACTURER)
+                .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER).build();
         }
-        return msg.setCtype(MsgAuth.ClientType.IMPORTER)
-            .setMtype(MsgAuth.MsgType.REGISTER).build();
+        return msg.setCtype(NefitProtos.MsgAuth.ClientType.IMPORTER)
+            .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER).build();
     }
 
     /**
@@ -49,9 +51,9 @@ public class Messages
      * @param period Time that negotiation will be available
      * @return Message with the product info
      */
-    public DisponibilityS createDisponibilityS(String nameM, String nameP, int minimun, int maximun, int value, int period)
+    public NefitProtos.DisponibilityS createDisponibilityS(String nameM, String nameP, int minimun, int maximun, int value, int period)
     {
-        return DisponibilityS.newBuilder()
+        return NefitProtos.DisponibilityS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
             .setMinimun(minimun)
@@ -69,9 +71,9 @@ public class Messages
      * @param value Price per unit
      * @return Message with the order to a product
      */
-    public OrderS createOrderS(String nameM, String nameP, int quantity, int value)
+    public NefitProtos.OrderS createOrderS(String nameM, String nameP, int quantity, int value)
     {
-        return OrderS.newBuilder()
+        return NefitProtos.OrderS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
             .setQuant(quantity)
@@ -84,11 +86,11 @@ public class Messages
      * @param subs List of the Names of Manufacturers that Importer want to subscribe
      * @return Message with the Names of Manufacturers
      */
-    public SubS createSubS(List<String> subs)
+    public NefitProtos.SubS createSubS(List<String> subs)
     {
-        SubS sub = SubS.newBuilder();
+        NefitProtos.SubS.Builder sub = NefitProtos.SubS.newBuilder();
         for(String aux: subs)
-            Subs.addSubs(aux);
+            sub.addSubs(aux);
         return sub.build();
     }
 }
