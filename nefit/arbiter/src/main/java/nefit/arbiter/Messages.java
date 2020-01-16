@@ -1,5 +1,9 @@
 package nefit.arbiter;
 
+import nefit.proto.NefitProtos;
+
+import java.util.List;
+
 public class Messages {
 
     public Messages() {}
@@ -11,16 +15,16 @@ public class Messages {
      * @param nameI Name of the Importer
      * @return Message with the Info of a proposed order
      */
-    public OrderAckS createOrderAckS(Boolean ack, String msg, String nameI)
+    public NefitProtos.OrderAckS createOrderAckS(Boolean ack, String msg, String nameI)
     {
         if(msg == null)
         {
-            return OrderAckS.newBuilder()
+            return NefitProtos.OrderAckS.newBuilder()
                 .setAck(ack)
                 .setNameI(nameI)
                 .build();
         }
-        return OrderAckS.newBuilder()
+        return NefitProtos.OrderAckS.newBuilder()
             .setAck(ack)
             .setMsg(msg)
             .setNameI(nameI)
@@ -35,9 +39,9 @@ public class Messages {
      * @param value Value per unit
      * @return Message with the Info to Manufacturer produce his Product
      */
-    public ProductionS createProductionS(String nameM, String nameP, int quantity, int value)
+    public NefitProtos.ProductionS createProductionS(String nameM, String nameP, int quantity, int value)
     {
-        return ProductionS.newBuilder()
+        return NefitProtos.ProductionS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
             .setQuant(quantity)
@@ -52,19 +56,32 @@ public class Messages {
      * @param nameI Name of the Importer
      * @return Message with the Result of one Negotiation
      */
-    public ResultS createResultS(Boolean ack, String msg, String nameI)
+    public NefitProtos.ResultS createResultS(Boolean ack, String msg, String nameI)
     {
         if(msg == null)
         {
-            return ResultS.newBuilder()
-                .setAck(ack)
+            return NefitProtos.ResultS.newBuilder()
+                .setResult(ack)
                 .setNameI(nameI)
                 .build();
         }
-        return ResultS.newBuilder()
-            .setAck(ack)
+        return NefitProtos.ResultS.newBuilder()
+            .setResult(ack)
             .setMsg(msg)
             .setNameI(nameI)
+            .build();
+    }
+
+    /**
+     * @param name Name of the Importer
+     * @param orders Orders of Manufacturers that Importer Subscribe or has Negotiations
+     * @return
+     */
+    public NefitProtos.NegotiationsS createNegotiationsS(String name, List<NefitProtos.InfoI> orders)
+    {
+        return NefitProtos.NegotiationsS.newBuilder()
+            .setNameI(name)
+            .addAllNegotiations(orders)
             .build();
     }
 }

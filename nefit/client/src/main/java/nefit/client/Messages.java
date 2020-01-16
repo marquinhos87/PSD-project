@@ -45,19 +45,19 @@ public class Messages
      *
      * @param nameM Name of the Manufactor
      * @param nameP Name of the Product that Manufacturer will produce
-     * @param minimun Minimun quantity to produce
-     * @param maximun Maximun quantity to produce
+     * @param minimum Minimun quantity to produce
+     * @param maximum Maximun quantity to produce
      * @param value Minimun value to produce
      * @param period Time that negotiation will be available
      * @return Message with the product info
      */
-    public NefitProtos.DisponibilityS createDisponibilityS(String nameM, String nameP, int minimun, int maximun, int value, int period)
+    public NefitProtos.DisponibilityS createDisponibilityS(String nameM, String nameP, int minimum, int maximum, float value, int period)
     {
         return NefitProtos.DisponibilityS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
-            .setMinimun(minimun)
-            .setMaximun(maximun)
+            .setMinimun(minimum)
+            .setMaximun(maximum)
             .setValue(value)
             .setPeriod(period)
             .build();
@@ -71,7 +71,7 @@ public class Messages
      * @param value Price per unit
      * @return Message with the order to a product
      */
-    public NefitProtos.OrderS createOrderS(String nameM, String nameP, int quantity, int value)
+    public NefitProtos.OrderS createOrderS(String nameM, String nameP, int quantity, float value)
     {
         return NefitProtos.OrderS.newBuilder()
             .setNameM(nameM)

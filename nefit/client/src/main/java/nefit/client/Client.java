@@ -24,8 +24,8 @@ public class Client
             System.exit(2);
         }
 
-
-        try {
+        try
+        {
             Messages messages = new Messages();
             Socket socket = new Socket("localhost",12345);
             InputStream is = socket.getInputStream();
@@ -71,7 +71,9 @@ public class Client
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            out.println("Something went wrong");
+            out.flush();
+            System.exit(4);
         }
     }
 

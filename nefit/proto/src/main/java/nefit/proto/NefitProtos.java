@@ -1994,15 +1994,15 @@ public final class NefitProtos {
     int getMaximun();
 
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    int getValue();
+    float getValue();
 
     /**
      * <code>required int32 period = 6;</code>
@@ -2085,9 +2085,9 @@ public final class NefitProtos {
               maximun_ = input.readInt32();
               break;
             }
-            case 40: {
+            case 45: {
               bitField0_ |= 0x00000010;
-              value_ = input.readInt32();
+              value_ = input.readFloat();
               break;
             }
             case 48: {
@@ -2253,19 +2253,19 @@ public final class NefitProtos {
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
-    private int value_;
+    private float value_;
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    public int getValue() {
+    public float getValue() {
       return value_;
     }
 
@@ -2337,7 +2337,7 @@ public final class NefitProtos {
         output.writeInt32(4, maximun_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeInt32(5, value_);
+        output.writeFloat(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         output.writeInt32(6, period_);
@@ -2367,7 +2367,7 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, value_);
+          .computeFloatSize(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2410,8 +2410,9 @@ public final class NefitProtos {
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
-        if (getValue()
-            != other.getValue()) return false;
+        if (java.lang.Float.floatToIntBits(getValue())
+            != java.lang.Float.floatToIntBits(
+                other.getValue())) return false;
       }
       if (hasPeriod() != other.hasPeriod()) return false;
       if (hasPeriod()) {
@@ -2447,7 +2448,8 @@ public final class NefitProtos {
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getValue();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getValue());
       }
       if (hasPeriod()) {
         hash = (37 * hash) + PERIOD_FIELD_NUMBER;
@@ -2594,7 +2596,7 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         maximun_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        value_ = 0;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
         period_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -3011,39 +3013,39 @@ public final class NefitProtos {
         return this;
       }
 
-      private int value_ ;
+      private float value_ ;
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return The value.
        */
-      public int getValue() {
+      public float getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
-      public Builder setValue(int value) {
+      public Builder setValue(float value) {
         bitField0_ |= 0x00000010;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        value_ = 0;
+        value_ = 0F;
         onChanged();
         return this;
       }
@@ -3198,15 +3200,15 @@ public final class NefitProtos {
     int getMaximun();
 
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    int getValue();
+    float getValue();
 
     /**
      * <code>required int32 period = 6;</code>
@@ -3289,9 +3291,9 @@ public final class NefitProtos {
               maximun_ = input.readInt32();
               break;
             }
-            case 40: {
+            case 45: {
               bitField0_ |= 0x00000010;
-              value_ = input.readInt32();
+              value_ = input.readFloat();
               break;
             }
             case 48: {
@@ -3457,19 +3459,19 @@ public final class NefitProtos {
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
-    private int value_;
+    private float value_;
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    public int getValue() {
+    public float getValue() {
       return value_;
     }
 
@@ -3541,7 +3543,7 @@ public final class NefitProtos {
         output.writeInt32(4, maximun_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeInt32(5, value_);
+        output.writeFloat(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         output.writeInt32(6, period_);
@@ -3571,7 +3573,7 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, value_);
+          .computeFloatSize(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3614,8 +3616,9 @@ public final class NefitProtos {
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
-        if (getValue()
-            != other.getValue()) return false;
+        if (java.lang.Float.floatToIntBits(getValue())
+            != java.lang.Float.floatToIntBits(
+                other.getValue())) return false;
       }
       if (hasPeriod() != other.hasPeriod()) return false;
       if (hasPeriod()) {
@@ -3651,7 +3654,8 @@ public final class NefitProtos {
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getValue();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getValue());
       }
       if (hasPeriod()) {
         hash = (37 * hash) + PERIOD_FIELD_NUMBER;
@@ -3798,7 +3802,7 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         maximun_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        value_ = 0;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
         period_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -4215,39 +4219,39 @@ public final class NefitProtos {
         return this;
       }
 
-      private int value_ ;
+      private float value_ ;
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return The value.
        */
-      public int getValue() {
+      public float getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
-      public Builder setValue(int value) {
+      public Builder setValue(float value) {
         bitField0_ |= 0x00000010;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        value_ = 0;
+        value_ = 0F;
         onChanged();
         return this;
       }
@@ -4391,15 +4395,15 @@ public final class NefitProtos {
     int getQuant();
 
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return The value.
      */
-    int getValue();
+    float getValue();
   }
   /**
    * Protobuf type {@code nefit.OrderS}
@@ -4466,9 +4470,9 @@ public final class NefitProtos {
               quant_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 37: {
               bitField0_ |= 0x00000008;
-              value_ = input.readInt32();
+              value_ = input.readFloat();
               break;
             }
             default: {
@@ -4612,19 +4616,19 @@ public final class NefitProtos {
     }
 
     public static final int VALUE_FIELD_NUMBER = 4;
-    private int value_;
+    private float value_;
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return The value.
      */
-    public int getValue() {
+    public float getValue() {
       return value_;
     }
 
@@ -4668,7 +4672,7 @@ public final class NefitProtos {
         output.writeInt32(3, quant_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, value_);
+        output.writeFloat(4, value_);
       }
       unknownFields.writeTo(output);
     }
@@ -4691,7 +4695,7 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, value_);
+          .computeFloatSize(4, value_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4725,8 +4729,9 @@ public final class NefitProtos {
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
-        if (getValue()
-            != other.getValue()) return false;
+        if (java.lang.Float.floatToIntBits(getValue())
+            != java.lang.Float.floatToIntBits(
+                other.getValue())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -4753,7 +4758,8 @@ public final class NefitProtos {
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getValue();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getValue());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4894,7 +4900,7 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000002);
         quant_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        value_ = 0;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -5252,39 +5258,39 @@ public final class NefitProtos {
         return this;
       }
 
-      private int value_ ;
+      private float value_ ;
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return The value.
        */
-      public int getValue() {
+      public float getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
-      public Builder setValue(int value) {
+      public Builder setValue(float value) {
         bitField0_ |= 0x00000008;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        value_ = 0;
+        value_ = 0F;
         onChanged();
         return this;
       }
@@ -5391,15 +5397,15 @@ public final class NefitProtos {
     int getQuant();
 
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return The value.
      */
-    int getValue();
+    float getValue();
   }
   /**
    * Protobuf type {@code nefit.OrderN}
@@ -5466,9 +5472,9 @@ public final class NefitProtos {
               quant_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 37: {
               bitField0_ |= 0x00000008;
-              value_ = input.readInt32();
+              value_ = input.readFloat();
               break;
             }
             default: {
@@ -5612,19 +5618,19 @@ public final class NefitProtos {
     }
 
     public static final int VALUE_FIELD_NUMBER = 4;
-    private int value_;
+    private float value_;
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return The value.
      */
-    public int getValue() {
+    public float getValue() {
       return value_;
     }
 
@@ -5668,7 +5674,7 @@ public final class NefitProtos {
         output.writeInt32(3, quant_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, value_);
+        output.writeFloat(4, value_);
       }
       unknownFields.writeTo(output);
     }
@@ -5691,7 +5697,7 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, value_);
+          .computeFloatSize(4, value_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5725,8 +5731,9 @@ public final class NefitProtos {
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
-        if (getValue()
-            != other.getValue()) return false;
+        if (java.lang.Float.floatToIntBits(getValue())
+            != java.lang.Float.floatToIntBits(
+                other.getValue())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -5753,7 +5760,8 @@ public final class NefitProtos {
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getValue();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getValue());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5894,7 +5902,7 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000002);
         quant_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        value_ = 0;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -6252,39 +6260,39 @@ public final class NefitProtos {
         return this;
       }
 
-      private int value_ ;
+      private float value_ ;
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return The value.
        */
-      public int getValue() {
+      public float getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
-      public Builder setValue(int value) {
+      public Builder setValue(float value) {
         bitField0_ |= 0x00000008;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        value_ = 0;
+        value_ = 0F;
         onChanged();
         return this;
       }
@@ -9263,15 +9271,15 @@ public final class NefitProtos {
     int getQuant();
 
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return The value.
      */
-    int getValue();
+    float getValue();
   }
   /**
    * Protobuf type {@code nefit.ProductionS}
@@ -9338,9 +9346,9 @@ public final class NefitProtos {
               quant_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 37: {
               bitField0_ |= 0x00000008;
-              value_ = input.readInt32();
+              value_ = input.readFloat();
               break;
             }
             default: {
@@ -9484,19 +9492,19 @@ public final class NefitProtos {
     }
 
     public static final int VALUE_FIELD_NUMBER = 4;
-    private int value_;
+    private float value_;
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 value = 4;</code>
+     * <code>required float value = 4;</code>
      * @return The value.
      */
-    public int getValue() {
+    public float getValue() {
       return value_;
     }
 
@@ -9540,7 +9548,7 @@ public final class NefitProtos {
         output.writeInt32(3, quant_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, value_);
+        output.writeFloat(4, value_);
       }
       unknownFields.writeTo(output);
     }
@@ -9563,7 +9571,7 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, value_);
+          .computeFloatSize(4, value_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9597,8 +9605,9 @@ public final class NefitProtos {
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
-        if (getValue()
-            != other.getValue()) return false;
+        if (java.lang.Float.floatToIntBits(getValue())
+            != java.lang.Float.floatToIntBits(
+                other.getValue())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -9625,7 +9634,8 @@ public final class NefitProtos {
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getValue();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getValue());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -9766,7 +9776,7 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000002);
         quant_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        value_ = 0;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -10124,39 +10134,39 @@ public final class NefitProtos {
         return this;
       }
 
-      private int value_ ;
+      private float value_ ;
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return The value.
        */
-      public int getValue() {
+      public float getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
-      public Builder setValue(int value) {
+      public Builder setValue(float value) {
         bitField0_ |= 0x00000008;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 4;</code>
+       * <code>required float value = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        value_ = 0;
+        value_ = 0F;
         onChanged();
         return this;
       }
@@ -12700,15 +12710,15 @@ public final class NefitProtos {
     int getMaximun();
 
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    int getValue();
+    float getValue();
 
     /**
      * <code>required int32 period = 6;</code>
@@ -12809,9 +12819,9 @@ public final class NefitProtos {
               maximun_ = input.readInt32();
               break;
             }
-            case 40: {
+            case 45: {
               bitField0_ |= 0x00000010;
-              value_ = input.readInt32();
+              value_ = input.readFloat();
               break;
             }
             case 48: {
@@ -12983,19 +12993,19 @@ public final class NefitProtos {
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
-    private int value_;
+    private float value_;
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    public int getValue() {
+    public float getValue() {
       return value_;
     }
 
@@ -13116,7 +13126,7 @@ public final class NefitProtos {
         output.writeInt32(4, maximun_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeInt32(5, value_);
+        output.writeFloat(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         output.writeInt32(6, period_);
@@ -13149,7 +13159,7 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, value_);
+          .computeFloatSize(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -13195,8 +13205,9 @@ public final class NefitProtos {
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
-        if (getValue()
-            != other.getValue()) return false;
+        if (java.lang.Float.floatToIntBits(getValue())
+            != java.lang.Float.floatToIntBits(
+                other.getValue())) return false;
       }
       if (hasPeriod() != other.hasPeriod()) return false;
       if (hasPeriod()) {
@@ -13237,7 +13248,8 @@ public final class NefitProtos {
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getValue();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getValue());
       }
       if (hasPeriod()) {
         hash = (37 * hash) + PERIOD_FIELD_NUMBER;
@@ -13388,7 +13400,7 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         maximun_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        value_ = 0;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
         period_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -13819,39 +13831,39 @@ public final class NefitProtos {
         return this;
       }
 
-      private int value_ ;
+      private float value_ ;
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return The value.
        */
-      public int getValue() {
+      public float getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
-      public Builder setValue(int value) {
+      public Builder setValue(float value) {
         bitField0_ |= 0x00000010;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        value_ = 0;
+        value_ = 0F;
         onChanged();
         return this;
       }
@@ -14090,15 +14102,15 @@ public final class NefitProtos {
     int getMaximun();
 
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    int getValue();
+    float getValue();
 
     /**
      * <code>required int32 period = 6;</code>
@@ -14181,9 +14193,9 @@ public final class NefitProtos {
               maximun_ = input.readInt32();
               break;
             }
-            case 40: {
+            case 45: {
               bitField0_ |= 0x00000010;
-              value_ = input.readInt32();
+              value_ = input.readFloat();
               break;
             }
             case 48: {
@@ -14349,19 +14361,19 @@ public final class NefitProtos {
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
-    private int value_;
+    private float value_;
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return Whether the value field is set.
      */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>required int32 value = 5;</code>
+     * <code>required float value = 5;</code>
      * @return The value.
      */
-    public int getValue() {
+    public float getValue() {
       return value_;
     }
 
@@ -14433,7 +14445,7 @@ public final class NefitProtos {
         output.writeInt32(4, maximun_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeInt32(5, value_);
+        output.writeFloat(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         output.writeInt32(6, period_);
@@ -14463,7 +14475,7 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, value_);
+          .computeFloatSize(5, value_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -14506,8 +14518,9 @@ public final class NefitProtos {
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
-        if (getValue()
-            != other.getValue()) return false;
+        if (java.lang.Float.floatToIntBits(getValue())
+            != java.lang.Float.floatToIntBits(
+                other.getValue())) return false;
       }
       if (hasPeriod() != other.hasPeriod()) return false;
       if (hasPeriod()) {
@@ -14543,7 +14556,8 @@ public final class NefitProtos {
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + getValue();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getValue());
       }
       if (hasPeriod()) {
         hash = (37 * hash) + PERIOD_FIELD_NUMBER;
@@ -14690,7 +14704,7 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         maximun_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        value_ = 0;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
         period_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -15107,39 +15121,39 @@ public final class NefitProtos {
         return this;
       }
 
-      private int value_ ;
+      private float value_ ;
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return Whether the value field is set.
        */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return The value.
        */
-      public int getValue() {
+      public float getValue() {
         return value_;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @param value The value to set.
        * @return This builder for chaining.
        */
-      public Builder setValue(int value) {
+      public Builder setValue(float value) {
         bitField0_ |= 0x00000010;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 value = 5;</code>
+       * <code>required float value = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        value_ = 0;
+        value_ = 0F;
         onChanged();
         return this;
       }
@@ -24048,28 +24062,28 @@ public final class NefitProtos {
       "\022\n\n\002ok\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\"o\n\016Disponibili" +
       "tyS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007min" +
       "imun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002" +
-      "(\005\022\016\n\006period\030\006 \002(\005\"o\n\016DisponibilityN\022\r\n\005" +
+      "(\002\022\016\n\006period\030\006 \002(\005\"o\n\016DisponibilityN\022\r\n\005" +
       "nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 " +
-      "\002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\005\022\016\n\006p" +
+      "\002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006p" +
       "eriod\030\006 \002(\005\"D\n\006OrderS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005" +
       "nameP\030\002 \002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(" +
-      "\005\"D\n\006OrderN\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(" +
-      "\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(\005\"4\n\tOrder" +
+      "\002\"D\n\006OrderN\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(" +
+      "\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(\002\"4\n\tOrder" +
       "AckS\022\013\n\003ack\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\022\r\n\005nameI\030" +
       "\003 \002(\t\"%\n\tOrderAckI\022\013\n\003ack\030\001 \002(\010\022\013\n\003msg\030\002" +
       " \001(\t\"\024\n\004SubS\022\014\n\004subs\030\001 \003(\t\"\024\n\004SubN\022\014\n\004su" +
       "bs\030\001 \003(\t\"I\n\013ProductionS\022\r\n\005nameM\030\001 \002(\t\022\r" +
       "\n\005nameP\030\002 \002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 " +
-      "\002(\005\":\n\013ProductionM\022\r\n\005nameP\030\001 \002(\t\022\r\n\005qua" +
+      "\002(\002\":\n\013ProductionM\022\r\n\005nameP\030\001 \002(\t\022\r\n\005qua" +
       "nt\030\002 \002(\005\022\r\n\005value\030\003 \002(\005\"5\n\007ResultS\022\016\n\006re" +
       "sult\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\022\r\n\005nameI\030\003 \002(\t\"&" +
       "\n\007ResultI\022\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"u" +
       "\n\005InfoS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n" +
       "\007minimun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value" +
-      "\030\005 \002(\005\022\016\n\006period\030\006 \002(\005\022\r\n\005nameI\030\007 \002(\t\"f\n" +
+      "\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\022\r\n\005nameI\030\007 \002(\t\"f\n" +
       "\005InfoI\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007" +
       "minimun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030" +
-      "\005 \002(\005\022\016\n\006period\030\006 \002(\005\"\025\n\004GetS\022\r\n\005nameI\030\001" +
+      "\005 \002(\002\022\016\n\006period\030\006 \002(\005\"\025\n\004GetS\022\r\n\005nameI\030\001" +
       " \002(\t\"\025\n\004GetN\022\r\n\005nameI\030\001 \002(\t\"B\n\rNegotiati" +
       "onsS\022\r\n\005nameI\030\001 \002(\t\022\"\n\014negotiations\030\002 \003(" +
       "\0132\014.nefit.InfoI\"3\n\rNegotiationsI\022\"\n\014nego" +

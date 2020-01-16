@@ -32,7 +32,7 @@
          nameP                  :: iodata(),        % = 2
          minimun                :: integer(),       % = 3, 32 bits
          maximun                :: integer(),       % = 4, 32 bits
-         value                  :: integer(),       % = 5, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).
 -endif.
@@ -44,7 +44,7 @@
          nameP                  :: iodata(),        % = 2
          minimun                :: integer(),       % = 3, 32 bits
          maximun                :: integer(),       % = 4, 32 bits
-         value                  :: integer(),       % = 5, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).
 -endif.
@@ -55,7 +55,7 @@
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
          quant                  :: integer(),       % = 3, 32 bits
-         value                  :: integer()        % = 4, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan % = 4
         }).
 -endif.
 
@@ -65,7 +65,7 @@
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
          quant                  :: integer(),       % = 3, 32 bits
-         value                  :: integer()        % = 4, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan % = 4
         }).
 -endif.
 
@@ -106,7 +106,7 @@
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
          quant                  :: integer(),       % = 3, 32 bits
-         value                  :: integer()        % = 4, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan % = 4
         }).
 -endif.
 
@@ -143,7 +143,7 @@
          nameP                  :: iodata(),        % = 2
          minimun                :: integer(),       % = 3, 32 bits
          maximun                :: integer(),       % = 4, 32 bits
-         value                  :: integer(),       % = 5, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer(),       % = 6, 32 bits
          nameI                  :: iodata()         % = 7
         }).
@@ -156,7 +156,7 @@
          nameP                  :: iodata(),        % = 2
          minimun                :: integer(),       % = 3, 32 bits
          maximun                :: integer(),       % = 4, 32 bits
-         value                  :: integer(),       % = 5, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).
 -endif.

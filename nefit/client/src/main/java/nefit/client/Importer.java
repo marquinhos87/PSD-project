@@ -114,7 +114,7 @@ public class Importer implements Runnable
             try
             {
                 NefitProtos.OrderS order = this.messages.createOrderS(
-                    fields[1], fields[2], Integer.parseInt(fields[3]), Integer.parseInt(fields[5])
+                    fields[1], fields[2], Integer.parseInt(fields[3]), Float.parseFloat(fields[4])
                 );
                 order.writeDelimitedTo(this.os);
             }
@@ -151,7 +151,7 @@ public class Importer implements Runnable
             }
             catch (IOException e)
             {
-                out.println("");
+                out.println("Something went wrong");
             }
             finally
             {
@@ -194,9 +194,9 @@ public class Importer implements Runnable
         }
     }
 
-    private void printNegotiations(NefitProtos.NegotiationsI nego)
+    private void printNegotiations(NefitProtos.NegotiationsI negotiation)
     {
-        for (NefitProtos.InfoI info : nego.getNegotiationsList()) {
+        for (NefitProtos.InfoI info : negotiation.getNegotiationsList()) {
             out.println("Product available:");
             printInfo(info);
         }

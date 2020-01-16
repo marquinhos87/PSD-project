@@ -45,7 +45,7 @@ public class Manufacturer implements Runnable
                 else
                 {
                     NefitProtos.DisponibilityS disp = this.messages.createDisponibilityS(
-                     this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Integer.parseInt(fields[3]),Integer.parseInt(fields[4])
+                     this.name,fields[0],Integer.parseInt(fields[1]),Integer.parseInt(fields[2]),Float.parseFloat(fields[3]),Integer.parseInt(fields[4])
                      );
                     disp.writeDelimitedTo(this.os);
                 }
