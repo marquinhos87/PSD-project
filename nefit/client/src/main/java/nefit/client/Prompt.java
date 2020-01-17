@@ -2,7 +2,8 @@ package nefit.client;
 
 import java.io.PrintWriter;
 
-public class Prompt {
+public class Prompt
+{
     private PrintWriter out;
 
     public Prompt(PrintWriter out)
