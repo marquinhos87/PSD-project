@@ -9,7 +9,7 @@ run(Port) ->
     Negotiations = spawn(fun()-> treatNegotiation(maps:new()) end),
     Orders = spawn(fun()-> treatOrder([], Negotiations) end),
     Productions = spawn(fun()-> treatProduction([],[],Negotiations) end),
-    {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, line}, {reuseaddr, true}]),
+    {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, 4}, {reuseaddr, true}]),
     acceptor(LSock, Authenticator, Orders, Productions).
 
 % accepts connections
@@ -146,11 +146,23 @@ connectedClient(Sock, Authenticator, Orders, Productions) ->
         {tcp, _, Data} ->
             io:format("Recebeu autenticacao~n"),
             Msg = nefitproto:decode_msg(Data,'MsgAuth'),
-            Authenticator ! {Sock,
-                Msg#'MsgAuth'.mtype,
-                Msg#'MsgAuth'.name,
-                Msg#'MsgAuth'.pass,
-                Msg#'MsgAuth'.ctype},
+            io:format("Bin -> ~w~n",[Data]),
+            io:format("Msg -> ~w~n",[Msg]),
+            io:format("MTYPE -> ~w~w~w~w~n", [Msg#'MsgAuth'.name,Msg#'MsgAuth'.pass,Msg#'MsgAuth'.ctype,Msg#'MsgAuth'.mtype]),
+            case Msg#'MsgAuth'.mtype of
+                'REGISTER' ->
+                    Authenticator ! {Sock,
+                        register,
+                        Msg#'MsgAuth'.name,
+                        Msg#'MsgAuth'.pass,
+                        Msg#'MsgAuth'.ctype};
+                'LOGIN' ->
+                    Authenticator ! {Sock,
+                        login,
+                        Msg#'MsgAuth'.name,
+                        Msg#'MsgAuth'.pass,
+                        Msg#'MsgAuth'.ctype}
+            end,
             connectedClient(Sock, Authenticator, Orders, Productions);
         {success, login, Type} ->
             Msg = #'MsgAck'{ok = true},
@@ -175,7 +187,7 @@ connectedClient(Sock, Authenticator, Orders, Productions) ->
 % process responsible for authenticating and maybe register users, might separate
 authenticator(RegisteredUsers) ->
     receive
-        {Sock, 'LOGIN', Name, Pass, Type} ->
+        {Sock, login, Name, Pass, Type} ->
             Status = maps:find(Name,RegisteredUsers),
             case Status of
                 {ok, Value} ->
@@ -190,8 +202,9 @@ authenticator(RegisteredUsers) ->
                 error ->
                     Sock ! {failure}
             end;
-        {Sock, 'REGISTER', Name, Pass, _} ->
+        {Sock, register, Name, Pass, _} ->
             Status = maps:find(Name,RegisteredUsers),
+            io:format("Recebeu registo~n"),
             case Status of
                 {ok, _} ->
                     Sock ! {failure},

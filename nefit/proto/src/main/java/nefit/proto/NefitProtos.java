@@ -64,12 +64,12 @@ public final class NefitProtos {
     nefit.proto.NefitProtos.MsgAuth.ClientType getCtype();
 
     /**
-     * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+     * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
      * @return Whether the mtype field is set.
      */
     boolean hasMtype();
     /**
-     * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+     * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
      * @return The mtype.
      */
     nefit.proto.NefitProtos.MsgAuth.MsgType getMtype();
@@ -497,14 +497,14 @@ public final class NefitProtos {
     public static final int MTYPE_FIELD_NUMBER = 4;
     private int mtype_;
     /**
-     * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+     * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
      * @return Whether the mtype field is set.
      */
     public boolean hasMtype() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+     * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
      * @return The mtype.
      */
     public nefit.proto.NefitProtos.MsgAuth.MsgType getMtype() {
@@ -529,6 +529,10 @@ public final class NefitProtos {
         return false;
       }
       if (!hasCtype()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMtype()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -900,6 +904,9 @@ public final class NefitProtos {
         if (!hasCtype()) {
           return false;
         }
+        if (!hasMtype()) {
+          return false;
+        }
         return true;
       }
 
@@ -1135,14 +1142,14 @@ public final class NefitProtos {
 
       private int mtype_ = 0;
       /**
-       * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+       * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
        * @return Whether the mtype field is set.
        */
       public boolean hasMtype() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+       * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
        * @return The mtype.
        */
       public nefit.proto.NefitProtos.MsgAuth.MsgType getMtype() {
@@ -1151,7 +1158,7 @@ public final class NefitProtos {
         return result == null ? nefit.proto.NefitProtos.MsgAuth.MsgType.LOGIN : result;
       }
       /**
-       * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+       * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
        * @param value The mtype to set.
        * @return This builder for chaining.
        */
@@ -1165,7 +1172,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
+       * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
        * @return This builder for chaining.
        */
       public Builder clearMtype() {
@@ -25033,7 +25040,7 @@ public final class NefitProtos {
     java.lang.String[] descriptorData = {
       "\n\013nefit.proto\022\005nefit\"\317\001\n\007MsgAuth\022\014\n\004name" +
       "\030\001 \002(\t\022\014\n\004pass\030\002 \002(\t\022(\n\005ctype\030\003 \002(\0162\031.ne" +
-      "fit.MsgAuth.ClientType\022,\n\005mtype\030\004 \001(\0162\026." +
+      "fit.MsgAuth.ClientType\022,\n\005mtype\030\004 \002(\0162\026." +
       "nefit.MsgAuth.MsgType:\005LOGIN\",\n\nClientTy" +
       "pe\022\020\n\014MANUFACTURER\020\000\022\014\n\010IMPORTER\020\001\"\"\n\007Ms" +
       "gType\022\t\n\005LOGIN\020\000\022\014\n\010REGISTER\020\001\"!\n\006MsgAck" +

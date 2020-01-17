@@ -67,6 +67,7 @@ public class Client
             {
                 if(Register(arg.getValue(),messages,is,os))
                 {
+                    prompt.printOthers("Fez o Registo com sucesso");
                     if(!Login(arg.getValue(),messages,is,os))
                     {
                         prompt.printError("Something went wrong, shutting down");
@@ -83,6 +84,7 @@ public class Client
                     }
                 }
             }
+            prompt.printOthers("Conseguiu fazer login");
             if (arg.getKey().getValue().equals("m"))
                 new Manufacturer(arg.getValue().getKey(),in,is,os,messages,prompt).run();
             else
@@ -117,7 +119,6 @@ public class Client
         writeDelimited(os, msgl);
 
         //Wait for MsgAck
-
         final var ack = parseDelimited(is, NefitProtos.MsgAck.parser());
 
         return ack.getOk();

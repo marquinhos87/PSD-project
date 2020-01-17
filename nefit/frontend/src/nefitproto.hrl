@@ -13,7 +13,7 @@
         {name                   :: iodata(),        % = 1
          pass                   :: iodata(),        % = 2
          ctype                  :: 'MANUFACTURER' | 'IMPORTER' | integer(), % = 3, enum MsgAuth.ClientType
-         mtype = 'LOGIN'        :: 'LOGIN' | 'REGISTER' | integer() | undefined % = 4, enum MsgAuth.MsgType
+         mtype = 'LOGIN'        :: 'LOGIN' | 'REGISTER' | integer() % = 4, enum MsgAuth.MsgType
         }).
 -endif.
 
