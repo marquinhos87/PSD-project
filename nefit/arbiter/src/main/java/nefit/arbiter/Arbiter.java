@@ -12,12 +12,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Arbiter implements Runnable
 {
     private ZMQ.Socket socket;
     private ZContext context;
     private Messages messages;
+    private Lock l = new ReentrantLock();
+
+    private NefitProtos.DisponibilityN disp;
 
     //Map<NameManufacturer,Pair<Product,Best Order>>
     private Map<Pair<String,String>,Pair<NefitProtos.DisponibilityN, NefitProtos.OrderN>> negotiations;
@@ -85,7 +90,8 @@ public class Arbiter implements Runnable
     {
         this.negotiations.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new Pair<>(disponibility, null));
         this.importerNego.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new ArrayList<>());
-        //TODO: make timeouts to send result
+        this.disp = disponibility;
+        new Thread(this::executeResult).start();
     }
 
     private void executeOrder(NefitProtos.OrderN order) {
@@ -150,6 +156,26 @@ public class Arbiter implements Runnable
 
     private void executeResult()
     {
-
+        NefitProtos.DisponibilityN disp = NefitProtos.DisponibilityN.newBuilder(this.disp).build();
+        try {
+            Thread.sleep(disp.getPeriod()*1000L);
+            l.lock();
+            Pair<String,String> prod = new Pair<>(disp.getNameM(),disp.getNameP());
+            if(!(this.negotiations.get(prod).getValue() == null))
+            {
+                NefitProtos.OrderN order = this.negotiations.get(prod).getValue();
+                this.socket.send(this.messages.createResultS(true,order.getNameM() + ":" + order.getNameP(),order.getNameI()).toByteArray(),0);
+                for(String str: this.importerNego.get(prod))
+                    if(!str.equals(order.getNameI()))
+                        this.socket.send(this.messages.createResultS(false,order.getNameM() + ":" + order.getNameP(),str).toByteArray(),0);
+            }
+            this.negotiations.remove(prod);
+            this.importerNego.remove(prod);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            l.unlock();
+        }
     }
 }
