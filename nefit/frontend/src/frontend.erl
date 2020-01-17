@@ -271,6 +271,7 @@ connectedClient(Sock, State) ->
             io:format("3~n"),
             connectedClient(Sock, State);
         {failure} ->
+            io:format("3~n"),
             Msg = #'MsgAck'{ok = false},
             M = nefitproto:encode_msg(Msg),
             gen_tcp:send(Sock, M),

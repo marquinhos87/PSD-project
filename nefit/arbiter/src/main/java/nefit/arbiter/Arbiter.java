@@ -83,24 +83,13 @@ public class Arbiter implements Runnable
                 NefitProtos.Negotiator negotiator = NefitProtos.Negotiator.parseFrom(reply);
 
                 if(negotiator.hasDisponibility())
-                {
                     executeDisponibility(negotiator.getDisponibility());
-                }
 
                 if(negotiator.hasOrder())
-                {
                     executeOrder(negotiator.getOrder());
-                }
-
-                /*if(negotiator.hasGet())
-                {
-                    executeGet(negotiator.getGet());
-                }*/
 
                 if(negotiator.hasSub())
-                {
                     executeSub(negotiator.getSub());
-                }
             }
             catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
