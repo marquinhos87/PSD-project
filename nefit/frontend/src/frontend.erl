@@ -31,7 +31,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
                     if
                         Value == Pass ->
                             Connected = maps:put(Name,Sock,ConnectedUsers),
-                            Sock ! {success, login, Type},
+                            Sock ! {success, Type},
                             globalState(RegisteredUsers, Connected, Arbiters);
                         true ->
                             Sock ! {failure},
@@ -51,7 +51,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
                 error ->
                     io:format("4"),
                     Registered = maps:put(Name, Pass, RegisteredUsers),
-                    Sock ! {success, register},
+                    Sock ! {successR},
                     globalState(Registered, ConnectedUsers, Arbiters)
             end;
 
@@ -73,21 +73,25 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             Map = maps:put(Sock,I+1),
             Sock ! {disponibility, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Map);
+
         {production, M,P,Q,V} ->
             Msg = #'ProductionM'{nameP = P,quant = Q, value = V},
             {Sock,_} = maps:get(M,ConnectedUsers),
             Sock ! {production, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+
         {result, R,M,I} ->
             Msg = #'ResultI'{result = R, msg = M},
             {Sock,_} = maps:get(I,ConnectedUsers),
             Sock ! {result, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+
         {ack,A,M,I} ->
             Msg = #'OrderAckI'{ack = A, msg = M},
             {Sock,_} = maps:get(I,ConnectedUsers),
             Sock ! {ack, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+        
         {info,M,P,Min,Max,V,Pe,I} ->
             Msg = #'InfoI'{nameM = M, nameP = P,maximun = Max, minimun = Min, value = V, period = Pe},
             {Sock,_} = maps:get(I,ConnectedUsers),
@@ -141,13 +145,19 @@ arbiter(Sock, State) ->
                     arbiter(Sock, State)
             end;
         {order, Msg} ->
-            gen_tcp:send(Sock, Msg),
+            MsgN = #'Negotiator'{msg = Msg},
+            M = nefitproto:encode_msg(MsgN),
+            gen_tcp:send(Sock, M),
             arbiter(Sock, State);
         {disponibility, Msg} ->
-            gen_tcp:send(Sock, Msg),
+            MsgN = #'Negotiator'{msg = Msg},
+            M = nefitproto:encode_msg(MsgN),
+            gen_tcp:send(Sock, M),
             arbiter(Sock, State);
         {sub, Msg} ->
-            gen_tcp:send(Sock, Msg),
+            MsgN = #'Negotiator'{msg = Msg},
+            M = nefitproto:encode_msg(MsgN),
+            gen_tcp:send(Sock, M),
             arbiter(Sock, State);
         {tcp_closed, _} ->
             io:format("Closed.");
@@ -201,15 +211,18 @@ importer(Sock, State) ->
                     importer(Sock, State)
             end;
         {ack, Msg} ->
-            M = nefitproto:encode_msg(Msg),
+            MsgI = #'Importer'{msg = Msg},
+            M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock,M),
             importer(Sock,State);
         {result, Msg} ->
-            M = nefitproto:encode_msg(Msg),
+            MsgI = #'Importer'{msg = Msg},
+            M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock,M),
             importer(Sock,State);
         {info, Msg} ->
-            M = nefitproto:encode_msg(Msg),
+            MsgI = #'Importer'{msg = Msg},
+            M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock,M),
             importer(Sock,State);
         {tcp_closed, _} ->
@@ -242,22 +255,25 @@ connectedClient(Sock, State) ->
             end,
             io:format("Chega aqui~n"),
             connectedClient(Sock, State);
-        {success, login, Type} ->
+        {success, Type} ->
             Msg = #'MsgAck'{ok = true},
-            gen_tcp:send(Sock, Msg),
+            M = nefitproto:encode_msg(Msg),
+            gen_tcp:send(Sock, M),
             case Type of
                 'IMPORTER'-> importer(Sock, State);
                 'MANUFACTURER'-> manufacturer(Sock, State)
             end;
-        {success, register} ->
+        {successR} ->
             io:format("3~n"),
             Msg = #'MsgAck'{ok = true},
-            gen_tcp:send(Sock, Msg),
+            M = nefitproto:encode_msg(Msg),
+            gen_tcp:send(Sock, M),
             io:format("3~n"),
             connectedClient(Sock, State);
         {failure} ->
             Msg = #'MsgAck'{ok = false},
-            gen_tcp:send(Sock, Msg),
+            M = nefitproto:encode_msg(Msg),
+            gen_tcp:send(Sock, M),
             io:format("3~n");
         {tcp_closed, _} ->
             io:format("Closed.");
