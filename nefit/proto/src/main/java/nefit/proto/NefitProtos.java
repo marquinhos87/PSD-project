@@ -4404,6 +4404,23 @@ public final class NefitProtos {
      * @return The value.
      */
     float getValue();
+
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return Whether the nameI field is set.
+     */
+    boolean hasNameI();
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The nameI.
+     */
+    java.lang.String getNameI();
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The bytes for nameI.
+     */
+    com.google.protobuf.ByteString
+        getNameIBytes();
   }
   /**
    * Protobuf type {@code nefit.OrderS}
@@ -4420,6 +4437,7 @@ public final class NefitProtos {
     private OrderS() {
       nameM_ = "";
       nameP_ = "";
+      nameI_ = "";
     }
 
     @java.lang.Override
@@ -4473,6 +4491,12 @@ public final class NefitProtos {
             case 37: {
               bitField0_ |= 0x00000008;
               value_ = input.readFloat();
+              break;
+            }
+            case 42: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              nameI_ = bs;
               break;
             }
             default: {
@@ -4632,6 +4656,51 @@ public final class NefitProtos {
       return value_;
     }
 
+    public static final int NAMEI_FIELD_NUMBER = 5;
+    private volatile java.lang.Object nameI_;
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return Whether the nameI field is set.
+     */
+    public boolean hasNameI() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The nameI.
+     */
+    public java.lang.String getNameI() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nameI_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The bytes for nameI.
+     */
+    public com.google.protobuf.ByteString
+        getNameIBytes() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nameI_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4655,6 +4724,10 @@ public final class NefitProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasNameI()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4673,6 +4746,9 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeFloat(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, nameI_);
       }
       unknownFields.writeTo(output);
     }
@@ -4696,6 +4772,9 @@ public final class NefitProtos {
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, nameI_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4733,6 +4812,11 @@ public final class NefitProtos {
             != java.lang.Float.floatToIntBits(
                 other.getValue())) return false;
       }
+      if (hasNameI() != other.hasNameI()) return false;
+      if (hasNameI()) {
+        if (!getNameI()
+            .equals(other.getNameI())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4760,6 +4844,10 @@ public final class NefitProtos {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getValue());
+      }
+      if (hasNameI()) {
+        hash = (37 * hash) + NAMEI_FIELD_NUMBER;
+        hash = (53 * hash) + getNameI().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4902,6 +4990,8 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
+        nameI_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -4946,6 +5036,10 @@ public final class NefitProtos {
           result.value_ = value_;
           to_bitField0_ |= 0x00000008;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.nameI_ = nameI_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5011,6 +5105,11 @@ public final class NefitProtos {
         if (other.hasValue()) {
           setValue(other.getValue());
         }
+        if (other.hasNameI()) {
+          bitField0_ |= 0x00000010;
+          nameI_ = other.nameI_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -5028,6 +5127,9 @@ public final class NefitProtos {
           return false;
         }
         if (!hasValue()) {
+          return false;
+        }
+        if (!hasNameI()) {
           return false;
         }
         return true;
@@ -5294,6 +5396,90 @@ public final class NefitProtos {
         onChanged();
         return this;
       }
+
+      private java.lang.Object nameI_ = "";
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return Whether the nameI field is set.
+       */
+      public boolean hasNameI() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return The nameI.
+       */
+      public java.lang.String getNameI() {
+        java.lang.Object ref = nameI_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            nameI_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return The bytes for nameI.
+       */
+      public com.google.protobuf.ByteString
+          getNameIBytes() {
+        java.lang.Object ref = nameI_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nameI_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @param value The nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameI(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNameI() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        nameI_ = getDefaultInstance().getNameI();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @param value The bytes for nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameIBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5406,6 +5592,23 @@ public final class NefitProtos {
      * @return The value.
      */
     float getValue();
+
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return Whether the nameI field is set.
+     */
+    boolean hasNameI();
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The nameI.
+     */
+    java.lang.String getNameI();
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The bytes for nameI.
+     */
+    com.google.protobuf.ByteString
+        getNameIBytes();
   }
   /**
    * Protobuf type {@code nefit.OrderN}
@@ -5422,6 +5625,7 @@ public final class NefitProtos {
     private OrderN() {
       nameM_ = "";
       nameP_ = "";
+      nameI_ = "";
     }
 
     @java.lang.Override
@@ -5475,6 +5679,12 @@ public final class NefitProtos {
             case 37: {
               bitField0_ |= 0x00000008;
               value_ = input.readFloat();
+              break;
+            }
+            case 42: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              nameI_ = bs;
               break;
             }
             default: {
@@ -5634,6 +5844,51 @@ public final class NefitProtos {
       return value_;
     }
 
+    public static final int NAMEI_FIELD_NUMBER = 5;
+    private volatile java.lang.Object nameI_;
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return Whether the nameI field is set.
+     */
+    public boolean hasNameI() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The nameI.
+     */
+    public java.lang.String getNameI() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nameI_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nameI = 5;</code>
+     * @return The bytes for nameI.
+     */
+    public com.google.protobuf.ByteString
+        getNameIBytes() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nameI_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5657,6 +5912,10 @@ public final class NefitProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasNameI()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5675,6 +5934,9 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeFloat(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, nameI_);
       }
       unknownFields.writeTo(output);
     }
@@ -5698,6 +5960,9 @@ public final class NefitProtos {
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, nameI_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5735,6 +6000,11 @@ public final class NefitProtos {
             != java.lang.Float.floatToIntBits(
                 other.getValue())) return false;
       }
+      if (hasNameI() != other.hasNameI()) return false;
+      if (hasNameI()) {
+        if (!getNameI()
+            .equals(other.getNameI())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5762,6 +6032,10 @@ public final class NefitProtos {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getValue());
+      }
+      if (hasNameI()) {
+        hash = (37 * hash) + NAMEI_FIELD_NUMBER;
+        hash = (53 * hash) + getNameI().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5904,6 +6178,8 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
+        nameI_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -5948,6 +6224,10 @@ public final class NefitProtos {
           result.value_ = value_;
           to_bitField0_ |= 0x00000008;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.nameI_ = nameI_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6013,6 +6293,11 @@ public final class NefitProtos {
         if (other.hasValue()) {
           setValue(other.getValue());
         }
+        if (other.hasNameI()) {
+          bitField0_ |= 0x00000010;
+          nameI_ = other.nameI_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6030,6 +6315,9 @@ public final class NefitProtos {
           return false;
         }
         if (!hasValue()) {
+          return false;
+        }
+        if (!hasNameI()) {
           return false;
         }
         return true;
@@ -6296,6 +6584,90 @@ public final class NefitProtos {
         onChanged();
         return this;
       }
+
+      private java.lang.Object nameI_ = "";
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return Whether the nameI field is set.
+       */
+      public boolean hasNameI() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return The nameI.
+       */
+      public java.lang.String getNameI() {
+        java.lang.Object ref = nameI_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            nameI_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return The bytes for nameI.
+       */
+      public com.google.protobuf.ByteString
+          getNameIBytes() {
+        java.lang.Object ref = nameI_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nameI_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @param value The nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameI(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNameI() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        nameI_ = getDefaultInstance().getNameI();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 5;</code>
+       * @param value The bytes for nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameIBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6397,6 +6769,17 @@ public final class NefitProtos {
      */
     com.google.protobuf.ByteString
         getNameIBytes();
+
+    /**
+     * <code>required bool outdated = 4;</code>
+     * @return Whether the outdated field is set.
+     */
+    boolean hasOutdated();
+    /**
+     * <code>required bool outdated = 4;</code>
+     * @return The outdated.
+     */
+    boolean getOutdated();
   }
   /**
    * Protobuf type {@code nefit.OrderAckS}
@@ -6461,6 +6844,11 @@ public final class NefitProtos {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000004;
               nameI_ = bs;
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              outdated_ = input.readBool();
               break;
             }
             default: {
@@ -6603,6 +6991,23 @@ public final class NefitProtos {
       }
     }
 
+    public static final int OUTDATED_FIELD_NUMBER = 4;
+    private boolean outdated_;
+    /**
+     * <code>required bool outdated = 4;</code>
+     * @return Whether the outdated field is set.
+     */
+    public boolean hasOutdated() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>required bool outdated = 4;</code>
+     * @return The outdated.
+     */
+    public boolean getOutdated() {
+      return outdated_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6615,6 +7020,10 @@ public final class NefitProtos {
         return false;
       }
       if (!hasNameI()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOutdated()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6634,6 +7043,9 @@ public final class NefitProtos {
       if (((bitField0_ & 0x00000004) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nameI_);
       }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeBool(4, outdated_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -6652,6 +7064,10 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nameI_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, outdated_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6683,6 +7099,11 @@ public final class NefitProtos {
         if (!getNameI()
             .equals(other.getNameI())) return false;
       }
+      if (hasOutdated() != other.hasOutdated()) return false;
+      if (hasOutdated()) {
+        if (getOutdated()
+            != other.getOutdated()) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6706,6 +7127,11 @@ public final class NefitProtos {
       if (hasNameI()) {
         hash = (37 * hash) + NAMEI_FIELD_NUMBER;
         hash = (53 * hash) + getNameI().hashCode();
+      }
+      if (hasOutdated()) {
+        hash = (37 * hash) + OUTDATED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getOutdated());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -6846,6 +7272,8 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000002);
         nameI_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
+        outdated_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -6886,6 +7314,10 @@ public final class NefitProtos {
           to_bitField0_ |= 0x00000004;
         }
         result.nameI_ = nameI_;
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.outdated_ = outdated_;
+          to_bitField0_ |= 0x00000008;
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6948,6 +7380,9 @@ public final class NefitProtos {
           nameI_ = other.nameI_;
           onChanged();
         }
+        if (other.hasOutdated()) {
+          setOutdated(other.getOutdated());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6959,6 +7394,9 @@ public final class NefitProtos {
           return false;
         }
         if (!hasNameI()) {
+          return false;
+        }
+        if (!hasOutdated()) {
           return false;
         }
         return true;
@@ -7188,6 +7626,43 @@ public final class NefitProtos {
         onChanged();
         return this;
       }
+
+      private boolean outdated_ ;
+      /**
+       * <code>required bool outdated = 4;</code>
+       * @return Whether the outdated field is set.
+       */
+      public boolean hasOutdated() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>required bool outdated = 4;</code>
+       * @return The outdated.
+       */
+      public boolean getOutdated() {
+        return outdated_;
+      }
+      /**
+       * <code>required bool outdated = 4;</code>
+       * @param value The outdated to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutdated(boolean value) {
+        bitField0_ |= 0x00000008;
+        outdated_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool outdated = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOutdated() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        outdated_ = false;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7272,6 +7747,17 @@ public final class NefitProtos {
      */
     com.google.protobuf.ByteString
         getMsgBytes();
+
+    /**
+     * <code>required bool outdated = 3;</code>
+     * @return Whether the outdated field is set.
+     */
+    boolean hasOutdated();
+    /**
+     * <code>required bool outdated = 3;</code>
+     * @return The outdated.
+     */
+    boolean getOutdated();
   }
   /**
    * Protobuf type {@code nefit.OrderAckI}
@@ -7329,6 +7815,11 @@ public final class NefitProtos {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
               msg_ = bs;
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              outdated_ = input.readBool();
               break;
             }
             default: {
@@ -7426,6 +7917,23 @@ public final class NefitProtos {
       }
     }
 
+    public static final int OUTDATED_FIELD_NUMBER = 3;
+    private boolean outdated_;
+    /**
+     * <code>required bool outdated = 3;</code>
+     * @return Whether the outdated field is set.
+     */
+    public boolean hasOutdated() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required bool outdated = 3;</code>
+     * @return The outdated.
+     */
+    public boolean getOutdated() {
+      return outdated_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7434,6 +7942,10 @@ public final class NefitProtos {
       if (isInitialized == 0) return false;
 
       if (!hasAck()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOutdated()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -7450,6 +7962,9 @@ public final class NefitProtos {
       if (((bitField0_ & 0x00000002) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msg_);
       }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeBool(3, outdated_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -7465,6 +7980,10 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msg_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, outdated_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7491,6 +8010,11 @@ public final class NefitProtos {
         if (!getMsg()
             .equals(other.getMsg())) return false;
       }
+      if (hasOutdated() != other.hasOutdated()) return false;
+      if (hasOutdated()) {
+        if (getOutdated()
+            != other.getOutdated()) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7510,6 +8034,11 @@ public final class NefitProtos {
       if (hasMsg()) {
         hash = (37 * hash) + MSG_FIELD_NUMBER;
         hash = (53 * hash) + getMsg().hashCode();
+      }
+      if (hasOutdated()) {
+        hash = (37 * hash) + OUTDATED_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getOutdated());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -7648,6 +8177,8 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         msg_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        outdated_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -7684,6 +8215,10 @@ public final class NefitProtos {
           to_bitField0_ |= 0x00000002;
         }
         result.msg_ = msg_;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.outdated_ = outdated_;
+          to_bitField0_ |= 0x00000004;
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7741,6 +8276,9 @@ public final class NefitProtos {
           msg_ = other.msg_;
           onChanged();
         }
+        if (other.hasOutdated()) {
+          setOutdated(other.getOutdated());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -7749,6 +8287,9 @@ public final class NefitProtos {
       @java.lang.Override
       public final boolean isInitialized() {
         if (!hasAck()) {
+          return false;
+        }
+        if (!hasOutdated()) {
           return false;
         }
         return true;
@@ -7891,6 +8432,43 @@ public final class NefitProtos {
   }
   bitField0_ |= 0x00000002;
         msg_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean outdated_ ;
+      /**
+       * <code>required bool outdated = 3;</code>
+       * @return Whether the outdated field is set.
+       */
+      public boolean hasOutdated() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>required bool outdated = 3;</code>
+       * @return The outdated.
+       */
+      public boolean getOutdated() {
+        return outdated_;
+      }
+      /**
+       * <code>required bool outdated = 3;</code>
+       * @param value The outdated to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutdated(boolean value) {
+        bitField0_ |= 0x00000004;
+        outdated_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool outdated = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOutdated() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        outdated_ = false;
         onChanged();
         return this;
       }
@@ -24465,47 +25043,48 @@ public final class NefitProtos {
       "(\002\022\016\n\006period\030\006 \002(\005\"o\n\016DisponibilityN\022\r\n\005" +
       "nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 " +
       "\002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006p" +
-      "eriod\030\006 \002(\005\"D\n\006OrderS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005" +
+      "eriod\030\006 \002(\005\"S\n\006OrderS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005" +
       "nameP\030\002 \002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(" +
-      "\002\"D\n\006OrderN\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(" +
-      "\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(\002\"4\n\tOrder" +
-      "AckS\022\013\n\003ack\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\022\r\n\005nameI\030" +
-      "\003 \002(\t\"%\n\tOrderAckI\022\013\n\003ack\030\001 \002(\010\022\013\n\003msg\030\002" +
-      " \001(\t\"#\n\004SubS\022\r\n\005nameI\030\001 \002(\t\022\014\n\004subs\030\002 \003(" +
-      "\t\"#\n\004SubN\022\r\n\005nameI\030\001 \002(\t\022\014\n\004subs\030\002 \003(\t\"I" +
-      "\n\013ProductionS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 " +
-      "\002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(\002\":\n\013Pro" +
-      "ductionM\022\r\n\005nameP\030\001 \002(\t\022\r\n\005quant\030\002 \002(\005\022\r" +
-      "\n\005value\030\003 \002(\005\"5\n\007ResultS\022\016\n\006result\030\001 \002(\010" +
-      "\022\013\n\003msg\030\002 \002(\t\022\r\n\005nameI\030\003 \002(\t\"&\n\007ResultI\022" +
-      "\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"u\n\005InfoS\022\r\n" +
-      "\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003" +
-      " \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006" +
-      "period\030\006 \002(\005\022\r\n\005nameI\030\007 \002(\t\"f\n\005InfoI\022\r\n\005" +
-      "nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 " +
-      "\002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006p" +
-      "eriod\030\006 \002(\005\"\025\n\004GetS\022\r\n\005nameI\030\001 \002(\t\"\025\n\004Ge" +
-      "tN\022\r\n\005nameI\030\001 \002(\t\"B\n\rNegotiationsS\022\r\n\005na" +
-      "meI\030\001 \002(\t\022\"\n\014negotiations\030\002 \003(\0132\014.nefit." +
-      "InfoS\"3\n\rNegotiationsI\022\"\n\014negotiations\030\001" +
-      " \003(\0132\014.nefit.InfoI\"\306\002\n\006Server\022#\n\002m1\030\001 \001(" +
-      "\0132\025.nefit.DisponibilitySH\000\022\033\n\002m2\030\002 \001(\0132\r" +
-      ".nefit.OrderSH\000\022\031\n\002m3\030\003 \001(\0132\013.nefit.SubS" +
-      "H\000\022\034\n\002m4\030\004 \001(\0132\016.nefit.ResultSH\000\022\032\n\002m5\030\005" +
-      " \001(\0132\014.nefit.InfoSH\000\022 \n\002m6\030\006 \001(\0132\022.nefit" +
-      ".ProductionSH\000\022\036\n\002m7\030\007 \001(\0132\020.nefit.Order" +
-      "AckSH\000\022\031\n\002m8\030\010 \001(\0132\013.nefit.GetSH\000\022\"\n\002m9\030" +
-      "\t \001(\0132\024.nefit.NegotiationsSH\000\022\035\n\003m10\030\n \001" +
-      "(\0132\016.nefit.MsgAuthH\000B\005\n\003msg\"\233\001\n\010Importer" +
-      "\022\"\n\006ordack\030\001 \001(\0132\020.nefit.OrderAckIH\000\022$\n\004" +
-      "nego\030\002 \001(\0132\024.nefit.NegotiationsIH\000\022 \n\006re" +
-      "sult\030\003 \001(\0132\016.nefit.ResultIH\000\022\034\n\004info\030\004 \001" +
-      "(\0132\014.nefit.InfoIH\000B\005\n\003msg\"\233\001\n\nNegotiator" +
-      "\022\032\n\003get\030\001 \001(\0132\013.nefit.GetNH\000\022\032\n\003sub\030\002 \001(" +
-      "\0132\013.nefit.SubNH\000\022\036\n\005order\030\003 \001(\0132\r.nefit." +
-      "OrderNH\000\022.\n\rdisponibility\030\004 \001(\0132\025.nefit." +
-      "DisponibilityNH\000B\005\n\003msgB\032\n\013nefit.protoB\013" +
-      "NefitProtos"
+      "\002\022\r\n\005nameI\030\005 \002(\t\"S\n\006OrderN\022\r\n\005nameM\030\001 \002(" +
+      "\t\022\r\n\005nameP\030\002 \002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value" +
+      "\030\004 \002(\002\022\r\n\005nameI\030\005 \002(\t\"F\n\tOrderAckS\022\013\n\003ac" +
+      "k\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\022\r\n\005nameI\030\003 \002(\t\022\020\n\010o" +
+      "utdated\030\004 \002(\010\"7\n\tOrderAckI\022\013\n\003ack\030\001 \002(\010\022" +
+      "\013\n\003msg\030\002 \001(\t\022\020\n\010outdated\030\003 \002(\010\"#\n\004SubS\022\r" +
+      "\n\005nameI\030\001 \002(\t\022\014\n\004subs\030\002 \003(\t\"#\n\004SubN\022\r\n\005n" +
+      "ameI\030\001 \002(\t\022\014\n\004subs\030\002 \003(\t\"I\n\013ProductionS\022" +
+      "\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\r\n\005quant\030\003" +
+      " \002(\005\022\r\n\005value\030\004 \002(\002\":\n\013ProductionM\022\r\n\005na" +
+      "meP\030\001 \002(\t\022\r\n\005quant\030\002 \002(\005\022\r\n\005value\030\003 \002(\005\"" +
+      "5\n\007ResultS\022\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\022" +
+      "\r\n\005nameI\030\003 \002(\t\"&\n\007ResultI\022\016\n\006result\030\001 \002(" +
+      "\010\022\013\n\003msg\030\002 \002(\t\"u\n\005InfoS\022\r\n\005nameM\030\001 \002(\t\022\r" +
+      "\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 \002(\005\022\017\n\007maximu" +
+      "n\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\022\r" +
+      "\n\005nameI\030\007 \002(\t\"f\n\005InfoI\022\r\n\005nameM\030\001 \002(\t\022\r\n" +
+      "\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 \002(\005\022\017\n\007maximun" +
+      "\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\"\025\n" +
+      "\004GetS\022\r\n\005nameI\030\001 \002(\t\"\025\n\004GetN\022\r\n\005nameI\030\001 " +
+      "\002(\t\"B\n\rNegotiationsS\022\r\n\005nameI\030\001 \002(\t\022\"\n\014n" +
+      "egotiations\030\002 \003(\0132\014.nefit.InfoS\"3\n\rNegot" +
+      "iationsI\022\"\n\014negotiations\030\001 \003(\0132\014.nefit.I" +
+      "nfoI\"\306\002\n\006Server\022#\n\002m1\030\001 \001(\0132\025.nefit.Disp" +
+      "onibilitySH\000\022\033\n\002m2\030\002 \001(\0132\r.nefit.OrderSH" +
+      "\000\022\031\n\002m3\030\003 \001(\0132\013.nefit.SubSH\000\022\034\n\002m4\030\004 \001(\013" +
+      "2\016.nefit.ResultSH\000\022\032\n\002m5\030\005 \001(\0132\014.nefit.I" +
+      "nfoSH\000\022 \n\002m6\030\006 \001(\0132\022.nefit.ProductionSH\000" +
+      "\022\036\n\002m7\030\007 \001(\0132\020.nefit.OrderAckSH\000\022\031\n\002m8\030\010" +
+      " \001(\0132\013.nefit.GetSH\000\022\"\n\002m9\030\t \001(\0132\024.nefit." +
+      "NegotiationsSH\000\022\035\n\003m10\030\n \001(\0132\016.nefit.Msg" +
+      "AuthH\000B\005\n\003msg\"\233\001\n\010Importer\022\"\n\006ordack\030\001 \001" +
+      "(\0132\020.nefit.OrderAckIH\000\022$\n\004nego\030\002 \001(\0132\024.n" +
+      "efit.NegotiationsIH\000\022 \n\006result\030\003 \001(\0132\016.n" +
+      "efit.ResultIH\000\022\034\n\004info\030\004 \001(\0132\014.nefit.Inf" +
+      "oIH\000B\005\n\003msg\"\233\001\n\nNegotiator\022\032\n\003get\030\001 \001(\0132" +
+      "\013.nefit.GetNH\000\022\032\n\003sub\030\002 \001(\0132\013.nefit.SubN" +
+      "H\000\022\036\n\005order\030\003 \001(\0132\r.nefit.OrderNH\000\022.\n\rdi" +
+      "sponibility\030\004 \001(\0132\025.nefit.DisponibilityN" +
+      "H\000B\005\n\003msgB\032\n\013nefit.protoB\013NefitProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -24540,25 +25119,25 @@ public final class NefitProtos {
     internal_static_nefit_OrderS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_OrderS_descriptor,
-        new java.lang.String[] { "NameM", "NameP", "Quant", "Value", });
+        new java.lang.String[] { "NameM", "NameP", "Quant", "Value", "NameI", });
     internal_static_nefit_OrderN_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_nefit_OrderN_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_OrderN_descriptor,
-        new java.lang.String[] { "NameM", "NameP", "Quant", "Value", });
+        new java.lang.String[] { "NameM", "NameP", "Quant", "Value", "NameI", });
     internal_static_nefit_OrderAckS_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_nefit_OrderAckS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_OrderAckS_descriptor,
-        new java.lang.String[] { "Ack", "Msg", "NameI", });
+        new java.lang.String[] { "Ack", "Msg", "NameI", "Outdated", });
     internal_static_nefit_OrderAckI_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_nefit_OrderAckI_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_OrderAckI_descriptor,
-        new java.lang.String[] { "Ack", "Msg", });
+        new java.lang.String[] { "Ack", "Msg", "Outdated", });
     internal_static_nefit_SubS_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_nefit_SubS_fieldAccessorTable = new

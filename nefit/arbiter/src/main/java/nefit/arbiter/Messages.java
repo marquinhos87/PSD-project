@@ -15,19 +15,21 @@ public class Messages {
      * @param nameI Name of the Importer
      * @return Message with the Info of a proposed order
      */
-    public NefitProtos.OrderAckS createOrderAckS(Boolean ack, String msg, String nameI)
+    public NefitProtos.OrderAckS createOrderAckS(Boolean ack, String msg, String nameI, Boolean outdated)
     {
         if(msg == null)
         {
             return NefitProtos.OrderAckS.newBuilder()
                 .setAck(ack)
                 .setNameI(nameI)
+                .setOutdated(outdated)
                 .build();
         }
         return NefitProtos.OrderAckS.newBuilder()
             .setAck(ack)
             .setMsg(msg)
             .setNameI(nameI)
+            .setOutdated(outdated)
             .build();
     }
 

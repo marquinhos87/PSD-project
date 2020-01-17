@@ -184,6 +184,10 @@ public class Importer implements Runnable
 
     private void printOrderAck(NefitProtos.OrderAckI ack)
     {
+        if(ack.getOutdated())
+        {
+            out.println(ack.getMsg());
+        }
         if(ack.getAck())
         {
             out.println("Order accepted");

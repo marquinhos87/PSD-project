@@ -53,6 +53,7 @@ message OrderS {
     required string nameP = 2;
     required int32 quant = 3;
     required float value = 4;
+    required string nameI = 5;
 }
 
 message OrderN {
@@ -60,17 +61,20 @@ message OrderN {
     required string nameP = 2;
     required int32 quant = 3;
     required float value = 4;
+    required string nameI = 5;
 }
 
 message OrderAckS {
     required bool ack = 1;
     optional string msg = 2;
     required string nameI = 3;
+    required bool outdated = 4;
 }
 
 message OrderAckI {
     required bool ack = 1;
     optional string msg = 2;
+    required bool outdated = 3;
 }
 
 message SubS {
