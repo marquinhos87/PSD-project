@@ -69,7 +69,7 @@ public class Manufacturer implements Runnable
                         NefitProtos.DisponibilityS disp = this.messages.createDisponibilityS(
                             this.name, fields[0], Integer.parseInt(fields[1]), Integer.parseInt(fields[2]), Float.parseFloat(fields[3]), Integer.parseInt(fields[4])
                         );
-                        disp.writeDelimitedTo(this.os);
+                        Client.writeDelimited(this.os, disp);
                     }
                 }
             }
@@ -88,7 +88,7 @@ public class Manufacturer implements Runnable
         while(true)
         {
             try {
-                NefitProtos.ProductionM prod = NefitProtos.ProductionM.parseDelimitedFrom(this.is);
+                final var prod = Client.parseDelimited(this.is, NefitProtos.ProductionM.parser());
                 if (prod.getQuant() == 0)
                     this.prompt.printMessages("No good offers to your product " + prod.getNameP());
                 else
