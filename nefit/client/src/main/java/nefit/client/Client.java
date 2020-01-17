@@ -55,9 +55,9 @@ public class Client
             OutputStream os = socket.getOutputStream();
 
             //Authentication
-            if(arg.getKey().getValue().equals("l"))
+            if(arg.getKey().getKey().equals("l"))
             {
-                if(!Login(arg.getValue(),messages,is,os))
+                if(!Login(arg.getKey().getKey(),arg.getValue(),messages,is,os))
                 {
                     prompt.printError("Invalid data, shutting down");
                     System.exit(3);
@@ -65,10 +65,10 @@ public class Client
             }
             else
             {
-                if(Register(arg.getValue(),messages,is,os))
+                if(Register(arg.getKey().getKey(),arg.getValue(),messages,is,os))
                 {
                     prompt.printOthers("Fez o Registo com sucesso");
-                    if(!Login(arg.getValue(),messages,is,os))
+                    if(!Login(arg.getKey().getKey(),arg.getValue(),messages,is,os))
                     {
                         prompt.printError("Something went wrong, shutting down");
                         System.exit(3);
@@ -77,7 +77,7 @@ public class Client
                 else
                 {
                     prompt.printError("Manufacturer/Importer yet registered, trying Login");
-                    if(!Login(arg.getValue(),messages,is,os))
+                    if(!Login(arg.getKey().getKey(),arg.getValue(),messages,is,os))
                     {
                         prompt.printError("Something went wrong, shutting down");
                         System.exit(3);
@@ -85,7 +85,7 @@ public class Client
                 }
             }
             prompt.printOthers("Conseguiu fazer login");
-            if (arg.getKey().getValue().equals("m"))
+            if (arg.getKey().getKey().equals("m"))
                 new Manufacturer(arg.getValue().getKey(),in,is,os,messages,prompt).run();
             else
                 new Importer(arg.getValue().getKey(),in,is,os,messages,prompt).run();
@@ -109,9 +109,9 @@ public class Client
         return arg;
     }
 
-    private static Boolean Login(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
+    private static Boolean Login(String type, Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
         NefitProtos.MsgAuth msgl;
-        if (arg.getKey().equals("m"))
+        if (type.equals("m"))
             msgl = messages.createMsgAuth(true,true,arg.getKey(),arg.getValue());
         else
             msgl = messages.createMsgAuth(true,false,arg.getKey(),arg.getValue());
@@ -124,13 +124,14 @@ public class Client
         return ack.getOk();
     }
 
-    private static Boolean Register(Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
+    private static Boolean Register(String type, Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
         NefitProtos.MsgAuth msgl;
-        if (arg.getKey().equals("m"))
+        System.out.println(type);
+        if (type.equals("m"))
             msgl = messages.createMsgAuth(false,true,arg.getKey(),arg.getValue());
         else
             msgl = messages.createMsgAuth(false,false,arg.getKey(),arg.getValue());
-
+        System.out.println(msgl.getCtype());
         writeDelimited(os, msgl);
 
         //Wait for MsgAck
