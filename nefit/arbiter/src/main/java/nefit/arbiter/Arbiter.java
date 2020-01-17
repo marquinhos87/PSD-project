@@ -60,6 +60,7 @@ public class Arbiter implements Runnable
     public static void main(String[] args)
     {
         new Arbiter().run();
+        new Arbiter().run();
     }
 
     @Override
