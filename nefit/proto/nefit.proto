@@ -22,7 +22,7 @@ message MsgAuth {
 		LOGIN = 0;
 		REGISTER = 1;
 	}
-	optional MsgType mtype = 4 [default = LOGIN];
+	required MsgType mtype = 4 [default = LOGIN];
 }
 
 message MsgAck {

@@ -43,6 +43,7 @@ public class Client
             {
                 if(Register(arg.getValue(),messages,is,os))
                 {
+                    prompt.printOthers("Fez o Registo com sucesso");
                     if(!Login(arg.getValue(),messages,is,os))
                     {
                         prompt.printError("Something went wrong, shutting down");
@@ -59,6 +60,7 @@ public class Client
                     }
                 }
             }
+            prompt.printOthers("Conseguiu fazer login");
             if (arg.getKey().getValue().equals("m"))
                 new Manufacturer(arg.getValue().getKey(),in,is,os,messages,prompt).run();
             else
@@ -91,6 +93,7 @@ public class Client
             msgl = messages.createMsgAuth(true,false,arg.getKey(),arg.getValue());
 
         msgl.writeDelimitedTo(os);
+        os.flush();
 
         //Wait for MsgAck
         NefitProtos.MsgAck ack = NefitProtos.MsgAck.parseDelimitedFrom(is);
@@ -105,7 +108,9 @@ public class Client
         else
             msgl = messages.createMsgAuth(false,false,arg.getKey(),arg.getValue());
 
+        byte[] aux = msgl.toByteArray();
         msgl.writeDelimitedTo(os);
+        os.flush();
 
         //Wait for MsgAck
         NefitProtos.MsgAck ack = NefitProtos.MsgAck.parseDelimitedFrom(is);

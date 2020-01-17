@@ -195,13 +195,10 @@ encode_msg_MsgAuth(#'MsgAuth'{name = F1, pass = F2,
 	   'e_enum_MsgAuth.ClientType'(TrF3, <<B2/binary, 24>>,
 				       TrUserData)
 	 end,
-    if F4 == undefined -> B3;
-       true ->
-	   begin
-	     TrF4 = id(F4, TrUserData),
-	     'e_enum_MsgAuth.MsgType'(TrF4, <<B3/binary, 32>>,
-				      TrUserData)
-	   end
+    begin
+      TrF4 = id(F4, TrUserData),
+      'e_enum_MsgAuth.MsgType'(TrF4, <<B3/binary, 32>>,
+			       TrUserData)
     end.
 
 encode_msg_MsgAck(Msg, TrUserData) ->
@@ -5418,16 +5415,12 @@ merge_msgs(Prev, New, MsgName, Opts) ->
     end.
 
 -compile({nowarn_unused_function,merge_msg_MsgAuth/3}).
-merge_msg_MsgAuth(#'MsgAuth'{mtype = PFmtype},
+merge_msg_MsgAuth(#'MsgAuth'{},
 		  #'MsgAuth'{name = NFname, pass = NFpass,
 			     ctype = NFctype, mtype = NFmtype},
 		  _) ->
     #'MsgAuth'{name = NFname, pass = NFpass,
-	       ctype = NFctype,
-	       mtype =
-		   if NFmtype =:= undefined -> PFmtype;
-		      true -> NFmtype
-		   end}.
+	       ctype = NFctype, mtype = NFmtype}.
 
 -compile({nowarn_unused_function,merge_msg_MsgAck/3}).
 merge_msg_MsgAck(#'MsgAck'{msg = PFmsg},
@@ -5744,10 +5737,8 @@ v_msg_MsgAuth(#'MsgAuth'{name = F1, pass = F2,
     v_type_string(F2, [pass | Path], TrUserData),
     'v_enum_MsgAuth.ClientType'(F3, [ctype | Path],
 				TrUserData),
-    if F4 == undefined -> ok;
-       true ->
-	   'v_enum_MsgAuth.MsgType'(F4, [mtype | Path], TrUserData)
-    end,
+    'v_enum_MsgAuth.MsgType'(F4, [mtype | Path],
+			     TrUserData),
     ok;
 v_msg_MsgAuth(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'MsgAuth'}, X, Path).
@@ -6236,7 +6227,7 @@ get_msg_defs() ->
 	      type = {enum, 'MsgAuth.ClientType'},
 	      occurrence = required, opts = []},
        #field{name = mtype, fnum = 4, rnum = 5,
-	      type = {enum, 'MsgAuth.MsgType'}, occurrence = optional,
+	      type = {enum, 'MsgAuth.MsgType'}, occurrence = required,
 	      opts = [{default, 'LOGIN'}]}]},
      {{msg, 'MsgAck'},
       [#field{name = ok, fnum = 1, rnum = 2, type = bool,
@@ -6502,7 +6493,7 @@ find_msg_def('MsgAuth') ->
 	    type = {enum, 'MsgAuth.ClientType'},
 	    occurrence = required, opts = []},
      #field{name = mtype, fnum = 4, rnum = 5,
-	    type = {enum, 'MsgAuth.MsgType'}, occurrence = optional,
+	    type = {enum, 'MsgAuth.MsgType'}, occurrence = required,
 	    opts = [{default, 'LOGIN'}]}];
 find_msg_def('MsgAck') ->
     [#field{name = ok, fnum = 1, rnum = 2, type = bool,
