@@ -5,14 +5,21 @@
 -include("nefitproto.hrl").
 
 run(Port) ->
-    Arbiters = maps:new(), % Inicializar os arbiters depois...
+    {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, 4}, {reuseaddr, true}]),
     State = spawn(fun()-> globalState(
         maps:new(),
         maps:new(),
-        Arbiters)
+        maps:new())
                   end),
-    {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, 4}, {reuseaddr, true}]),
+    acceptorA(2,LSock,State),
     acceptor(LSock, State).
+
+%accepts arbiters connections
+acceptorA(N,LSock,State) when N > 0 ->
+    {ok, Sock} = gen_tcp:accept(LSock),
+    spawn(fun() -> acceptorA(N-1,LSock,State) end),
+    State ! {arbiter, self()},
+    arbiter(Sock,State).
 
 % accepts connections
 acceptor(LSock, State) ->
@@ -92,7 +99,10 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             Msg = #'InfoI'{nameM = M, nameP = P,maximun = Max, minimun = Min, value = V, period = Pe},
             {Sock,_} = maps:get(I,ConnectedUsers),
             Sock ! {info, Msg},
-            globalState(RegisteredUsers,ConnectedUsers,Arbiters)
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+        {arbiter, Sock} ->
+            Map = maps:put(Sock,0,Arbiters),
+            globalState(RegisteredUsers,ConnectedUsers,Map)
     end.
 
 for(0,Sock,I,_) -> {Sock,I};
