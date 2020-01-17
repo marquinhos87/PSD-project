@@ -7952,24 +7952,41 @@ public final class NefitProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>required string nameI = 1;</code>
+     * @return Whether the nameI field is set.
+     */
+    boolean hasNameI();
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The nameI.
+     */
+    java.lang.String getNameI();
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The bytes for nameI.
+     */
+    com.google.protobuf.ByteString
+        getNameIBytes();
+
+    /**
+     * <code>repeated string subs = 2;</code>
      * @return A list containing the subs.
      */
     java.util.List<java.lang.String>
         getSubsList();
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @return The count of subs.
      */
     int getSubsCount();
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the element to return.
      * @return The subs at the given index.
      */
     java.lang.String getSubs(int index);
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the value to return.
      * @return The bytes of the subs at the given index.
      */
@@ -7989,6 +8006,7 @@ public final class NefitProtos {
       super(builder);
     }
     private SubS() {
+      nameI_ = "";
       subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
@@ -8025,9 +8043,15 @@ public final class NefitProtos {
               break;
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              bitField0_ |= 0x00000001;
+              nameI_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 subs_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000001;
+                mutable_bitField0_ |= 0x00000002;
               }
               subs_.add(bs);
               break;
@@ -8047,7 +8071,7 @@ public final class NefitProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           subs_ = subs_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
@@ -8067,10 +8091,56 @@ public final class NefitProtos {
               nefit.proto.NefitProtos.SubS.class, nefit.proto.NefitProtos.SubS.Builder.class);
     }
 
-    public static final int SUBS_FIELD_NUMBER = 1;
+    private int bitField0_;
+    public static final int NAMEI_FIELD_NUMBER = 1;
+    private volatile java.lang.Object nameI_;
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return Whether the nameI field is set.
+     */
+    public boolean hasNameI() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The nameI.
+     */
+    public java.lang.String getNameI() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nameI_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The bytes for nameI.
+     */
+    public com.google.protobuf.ByteString
+        getNameIBytes() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nameI_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUBS_FIELD_NUMBER = 2;
     private com.google.protobuf.LazyStringList subs_;
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @return A list containing the subs.
      */
     public com.google.protobuf.ProtocolStringList
@@ -8078,14 +8148,14 @@ public final class NefitProtos {
       return subs_;
     }
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @return The count of subs.
      */
     public int getSubsCount() {
       return subs_.size();
     }
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the element to return.
      * @return The subs at the given index.
      */
@@ -8093,7 +8163,7 @@ public final class NefitProtos {
       return subs_.get(index);
     }
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the value to return.
      * @return The bytes of the subs at the given index.
      */
@@ -8109,6 +8179,10 @@ public final class NefitProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasNameI()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -8116,8 +8190,11 @@ public final class NefitProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nameI_);
+      }
       for (int i = 0; i < subs_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, subs_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, subs_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -8128,6 +8205,9 @@ public final class NefitProtos {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nameI_);
+      }
       {
         int dataSize = 0;
         for (int i = 0; i < subs_.size(); i++) {
@@ -8151,6 +8231,11 @@ public final class NefitProtos {
       }
       nefit.proto.NefitProtos.SubS other = (nefit.proto.NefitProtos.SubS) obj;
 
+      if (hasNameI() != other.hasNameI()) return false;
+      if (hasNameI()) {
+        if (!getNameI()
+            .equals(other.getNameI())) return false;
+      }
       if (!getSubsList()
           .equals(other.getSubsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -8164,6 +8249,10 @@ public final class NefitProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasNameI()) {
+        hash = (37 * hash) + NAMEI_FIELD_NUMBER;
+        hash = (53 * hash) + getNameI().hashCode();
+      }
       if (getSubsCount() > 0) {
         hash = (37 * hash) + SUBS_FIELD_NUMBER;
         hash = (53 * hash) + getSubsList().hashCode();
@@ -8301,8 +8390,10 @@ public final class NefitProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        nameI_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -8330,11 +8421,17 @@ public final class NefitProtos {
       public nefit.proto.NefitProtos.SubS buildPartial() {
         nefit.proto.NefitProtos.SubS result = new nefit.proto.NefitProtos.SubS(this);
         int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) != 0)) {
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.nameI_ = nameI_;
+        if (((bitField0_ & 0x00000002) != 0)) {
           subs_ = subs_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.subs_ = subs_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -8383,10 +8480,15 @@ public final class NefitProtos {
 
       public Builder mergeFrom(nefit.proto.NefitProtos.SubS other) {
         if (other == nefit.proto.NefitProtos.SubS.getDefaultInstance()) return this;
+        if (other.hasNameI()) {
+          bitField0_ |= 0x00000001;
+          nameI_ = other.nameI_;
+          onChanged();
+        }
         if (!other.subs_.isEmpty()) {
           if (subs_.isEmpty()) {
             subs_ = other.subs_;
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000002);
           } else {
             ensureSubsIsMutable();
             subs_.addAll(other.subs_);
@@ -8400,6 +8502,9 @@ public final class NefitProtos {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasNameI()) {
+          return false;
+        }
         return true;
       }
 
@@ -8423,15 +8528,99 @@ public final class NefitProtos {
       }
       private int bitField0_;
 
+      private java.lang.Object nameI_ = "";
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return Whether the nameI field is set.
+       */
+      public boolean hasNameI() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return The nameI.
+       */
+      public java.lang.String getNameI() {
+        java.lang.Object ref = nameI_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            nameI_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return The bytes for nameI.
+       */
+      public com.google.protobuf.ByteString
+          getNameIBytes() {
+        java.lang.Object ref = nameI_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nameI_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @param value The nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameI(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNameI() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nameI_ = getDefaultInstance().getNameI();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @param value The bytes for nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameIBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.LazyStringList subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureSubsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           subs_ = new com.google.protobuf.LazyStringArrayList(subs_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
          }
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @return A list containing the subs.
        */
       public com.google.protobuf.ProtocolStringList
@@ -8439,14 +8628,14 @@ public final class NefitProtos {
         return subs_.getUnmodifiableView();
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @return The count of subs.
        */
       public int getSubsCount() {
         return subs_.size();
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param index The index of the element to return.
        * @return The subs at the given index.
        */
@@ -8454,7 +8643,7 @@ public final class NefitProtos {
         return subs_.get(index);
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param index The index of the value to return.
        * @return The bytes of the subs at the given index.
        */
@@ -8463,7 +8652,7 @@ public final class NefitProtos {
         return subs_.getByteString(index);
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param index The index to set the value at.
        * @param value The subs to set.
        * @return This builder for chaining.
@@ -8479,7 +8668,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param value The subs to add.
        * @return This builder for chaining.
        */
@@ -8494,7 +8683,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param values The subs to add.
        * @return This builder for chaining.
        */
@@ -8507,17 +8696,17 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearSubs() {
         subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param value The bytes of the subs to add.
        * @return This builder for chaining.
        */
@@ -8589,24 +8778,41 @@ public final class NefitProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>required string nameI = 1;</code>
+     * @return Whether the nameI field is set.
+     */
+    boolean hasNameI();
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The nameI.
+     */
+    java.lang.String getNameI();
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The bytes for nameI.
+     */
+    com.google.protobuf.ByteString
+        getNameIBytes();
+
+    /**
+     * <code>repeated string subs = 2;</code>
      * @return A list containing the subs.
      */
     java.util.List<java.lang.String>
         getSubsList();
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @return The count of subs.
      */
     int getSubsCount();
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the element to return.
      * @return The subs at the given index.
      */
     java.lang.String getSubs(int index);
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the value to return.
      * @return The bytes of the subs at the given index.
      */
@@ -8626,6 +8832,7 @@ public final class NefitProtos {
       super(builder);
     }
     private SubN() {
+      nameI_ = "";
       subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
@@ -8662,9 +8869,15 @@ public final class NefitProtos {
               break;
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              bitField0_ |= 0x00000001;
+              nameI_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 subs_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000001;
+                mutable_bitField0_ |= 0x00000002;
               }
               subs_.add(bs);
               break;
@@ -8684,7 +8897,7 @@ public final class NefitProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           subs_ = subs_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
@@ -8704,10 +8917,56 @@ public final class NefitProtos {
               nefit.proto.NefitProtos.SubN.class, nefit.proto.NefitProtos.SubN.Builder.class);
     }
 
-    public static final int SUBS_FIELD_NUMBER = 1;
+    private int bitField0_;
+    public static final int NAMEI_FIELD_NUMBER = 1;
+    private volatile java.lang.Object nameI_;
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return Whether the nameI field is set.
+     */
+    public boolean hasNameI() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The nameI.
+     */
+    public java.lang.String getNameI() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nameI_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string nameI = 1;</code>
+     * @return The bytes for nameI.
+     */
+    public com.google.protobuf.ByteString
+        getNameIBytes() {
+      java.lang.Object ref = nameI_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nameI_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUBS_FIELD_NUMBER = 2;
     private com.google.protobuf.LazyStringList subs_;
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @return A list containing the subs.
      */
     public com.google.protobuf.ProtocolStringList
@@ -8715,14 +8974,14 @@ public final class NefitProtos {
       return subs_;
     }
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @return The count of subs.
      */
     public int getSubsCount() {
       return subs_.size();
     }
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the element to return.
      * @return The subs at the given index.
      */
@@ -8730,7 +8989,7 @@ public final class NefitProtos {
       return subs_.get(index);
     }
     /**
-     * <code>repeated string subs = 1;</code>
+     * <code>repeated string subs = 2;</code>
      * @param index The index of the value to return.
      * @return The bytes of the subs at the given index.
      */
@@ -8746,6 +9005,10 @@ public final class NefitProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasNameI()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -8753,8 +9016,11 @@ public final class NefitProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nameI_);
+      }
       for (int i = 0; i < subs_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, subs_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, subs_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -8765,6 +9031,9 @@ public final class NefitProtos {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nameI_);
+      }
       {
         int dataSize = 0;
         for (int i = 0; i < subs_.size(); i++) {
@@ -8788,6 +9057,11 @@ public final class NefitProtos {
       }
       nefit.proto.NefitProtos.SubN other = (nefit.proto.NefitProtos.SubN) obj;
 
+      if (hasNameI() != other.hasNameI()) return false;
+      if (hasNameI()) {
+        if (!getNameI()
+            .equals(other.getNameI())) return false;
+      }
       if (!getSubsList()
           .equals(other.getSubsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -8801,6 +9075,10 @@ public final class NefitProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasNameI()) {
+        hash = (37 * hash) + NAMEI_FIELD_NUMBER;
+        hash = (53 * hash) + getNameI().hashCode();
+      }
       if (getSubsCount() > 0) {
         hash = (37 * hash) + SUBS_FIELD_NUMBER;
         hash = (53 * hash) + getSubsList().hashCode();
@@ -8938,8 +9216,10 @@ public final class NefitProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        nameI_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -8967,11 +9247,17 @@ public final class NefitProtos {
       public nefit.proto.NefitProtos.SubN buildPartial() {
         nefit.proto.NefitProtos.SubN result = new nefit.proto.NefitProtos.SubN(this);
         int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) != 0)) {
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.nameI_ = nameI_;
+        if (((bitField0_ & 0x00000002) != 0)) {
           subs_ = subs_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.subs_ = subs_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -9020,10 +9306,15 @@ public final class NefitProtos {
 
       public Builder mergeFrom(nefit.proto.NefitProtos.SubN other) {
         if (other == nefit.proto.NefitProtos.SubN.getDefaultInstance()) return this;
+        if (other.hasNameI()) {
+          bitField0_ |= 0x00000001;
+          nameI_ = other.nameI_;
+          onChanged();
+        }
         if (!other.subs_.isEmpty()) {
           if (subs_.isEmpty()) {
             subs_ = other.subs_;
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000002);
           } else {
             ensureSubsIsMutable();
             subs_.addAll(other.subs_);
@@ -9037,6 +9328,9 @@ public final class NefitProtos {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasNameI()) {
+          return false;
+        }
         return true;
       }
 
@@ -9060,15 +9354,99 @@ public final class NefitProtos {
       }
       private int bitField0_;
 
+      private java.lang.Object nameI_ = "";
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return Whether the nameI field is set.
+       */
+      public boolean hasNameI() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return The nameI.
+       */
+      public java.lang.String getNameI() {
+        java.lang.Object ref = nameI_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            nameI_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return The bytes for nameI.
+       */
+      public com.google.protobuf.ByteString
+          getNameIBytes() {
+        java.lang.Object ref = nameI_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nameI_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @param value The nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameI(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNameI() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nameI_ = getDefaultInstance().getNameI();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string nameI = 1;</code>
+       * @param value The bytes for nameI to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameIBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        nameI_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.LazyStringList subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureSubsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           subs_ = new com.google.protobuf.LazyStringArrayList(subs_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
          }
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @return A list containing the subs.
        */
       public com.google.protobuf.ProtocolStringList
@@ -9076,14 +9454,14 @@ public final class NefitProtos {
         return subs_.getUnmodifiableView();
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @return The count of subs.
        */
       public int getSubsCount() {
         return subs_.size();
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param index The index of the element to return.
        * @return The subs at the given index.
        */
@@ -9091,7 +9469,7 @@ public final class NefitProtos {
         return subs_.get(index);
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param index The index of the value to return.
        * @return The bytes of the subs at the given index.
        */
@@ -9100,7 +9478,7 @@ public final class NefitProtos {
         return subs_.getByteString(index);
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param index The index to set the value at.
        * @param value The subs to set.
        * @return This builder for chaining.
@@ -9116,7 +9494,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param value The subs to add.
        * @return This builder for chaining.
        */
@@ -9131,7 +9509,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param values The subs to add.
        * @return This builder for chaining.
        */
@@ -9144,17 +9522,17 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearSubs() {
         subs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string subs = 1;</code>
+       * <code>repeated string subs = 2;</code>
        * @param value The bytes of the subs to add.
        * @return This builder for chaining.
        */
@@ -16489,27 +16867,27 @@ public final class NefitProtos {
         getNameIBytes();
 
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    java.util.List<nefit.proto.NefitProtos.InfoI> 
+    java.util.List<nefit.proto.NefitProtos.InfoS> 
         getNegotiationsList();
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    nefit.proto.NefitProtos.InfoI getNegotiations(int index);
+    nefit.proto.NefitProtos.InfoS getNegotiations(int index);
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
     int getNegotiationsCount();
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    java.util.List<? extends nefit.proto.NefitProtos.InfoIOrBuilder> 
+    java.util.List<? extends nefit.proto.NefitProtos.InfoSOrBuilder> 
         getNegotiationsOrBuilderList();
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    nefit.proto.NefitProtos.InfoIOrBuilder getNegotiationsOrBuilder(
+    nefit.proto.NefitProtos.InfoSOrBuilder getNegotiationsOrBuilder(
         int index);
   }
   /**
@@ -16568,11 +16946,11 @@ public final class NefitProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoI>();
+                negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoS>();
                 mutable_bitField0_ |= 0x00000002;
               }
               negotiations_.add(
-                  input.readMessage(nefit.proto.NefitProtos.InfoI.PARSER, extensionRegistry));
+                  input.readMessage(nefit.proto.NefitProtos.InfoS.PARSER, extensionRegistry));
               break;
             }
             default: {
@@ -16657,36 +17035,36 @@ public final class NefitProtos {
     }
 
     public static final int NEGOTIATIONS_FIELD_NUMBER = 2;
-    private java.util.List<nefit.proto.NefitProtos.InfoI> negotiations_;
+    private java.util.List<nefit.proto.NefitProtos.InfoS> negotiations_;
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    public java.util.List<nefit.proto.NefitProtos.InfoI> getNegotiationsList() {
+    public java.util.List<nefit.proto.NefitProtos.InfoS> getNegotiationsList() {
       return negotiations_;
     }
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    public java.util.List<? extends nefit.proto.NefitProtos.InfoIOrBuilder> 
+    public java.util.List<? extends nefit.proto.NefitProtos.InfoSOrBuilder> 
         getNegotiationsOrBuilderList() {
       return negotiations_;
     }
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
     public int getNegotiationsCount() {
       return negotiations_.size();
     }
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    public nefit.proto.NefitProtos.InfoI getNegotiations(int index) {
+    public nefit.proto.NefitProtos.InfoS getNegotiations(int index) {
       return negotiations_.get(index);
     }
     /**
-     * <code>repeated .nefit.InfoI negotiations = 2;</code>
+     * <code>repeated .nefit.InfoS negotiations = 2;</code>
      */
-    public nefit.proto.NefitProtos.InfoIOrBuilder getNegotiationsOrBuilder(
+    public nefit.proto.NefitProtos.InfoSOrBuilder getNegotiationsOrBuilder(
         int index) {
       return negotiations_.get(index);
     }
@@ -17163,22 +17541,22 @@ public final class NefitProtos {
         return this;
       }
 
-      private java.util.List<nefit.proto.NefitProtos.InfoI> negotiations_ =
+      private java.util.List<nefit.proto.NefitProtos.InfoS> negotiations_ =
         java.util.Collections.emptyList();
       private void ensureNegotiationsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
-          negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoI>(negotiations_);
+          negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoS>(negotiations_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> negotiationsBuilder_;
+          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> negotiationsBuilder_;
 
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public java.util.List<nefit.proto.NefitProtos.InfoI> getNegotiationsList() {
+      public java.util.List<nefit.proto.NefitProtos.InfoS> getNegotiationsList() {
         if (negotiationsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(negotiations_);
         } else {
@@ -17186,7 +17564,7 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public int getNegotiationsCount() {
         if (negotiationsBuilder_ == null) {
@@ -17196,9 +17574,9 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public nefit.proto.NefitProtos.InfoI getNegotiations(int index) {
+      public nefit.proto.NefitProtos.InfoS getNegotiations(int index) {
         if (negotiationsBuilder_ == null) {
           return negotiations_.get(index);
         } else {
@@ -17206,10 +17584,10 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder setNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI value) {
+          int index, nefit.proto.NefitProtos.InfoS value) {
         if (negotiationsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -17223,10 +17601,10 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder setNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
+          int index, nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
         if (negotiationsBuilder_ == null) {
           ensureNegotiationsIsMutable();
           negotiations_.set(index, builderForValue.build());
@@ -17237,9 +17615,9 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public Builder addNegotiations(nefit.proto.NefitProtos.InfoI value) {
+      public Builder addNegotiations(nefit.proto.NefitProtos.InfoS value) {
         if (negotiationsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -17253,10 +17631,10 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder addNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI value) {
+          int index, nefit.proto.NefitProtos.InfoS value) {
         if (negotiationsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -17270,10 +17648,10 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder addNegotiations(
-          nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
+          nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
         if (negotiationsBuilder_ == null) {
           ensureNegotiationsIsMutable();
           negotiations_.add(builderForValue.build());
@@ -17284,10 +17662,10 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder addNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
+          int index, nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
         if (negotiationsBuilder_ == null) {
           ensureNegotiationsIsMutable();
           negotiations_.add(index, builderForValue.build());
@@ -17298,10 +17676,10 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder addAllNegotiations(
-          java.lang.Iterable<? extends nefit.proto.NefitProtos.InfoI> values) {
+          java.lang.Iterable<? extends nefit.proto.NefitProtos.InfoS> values) {
         if (negotiationsBuilder_ == null) {
           ensureNegotiationsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -17313,7 +17691,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder clearNegotiations() {
         if (negotiationsBuilder_ == null) {
@@ -17326,7 +17704,7 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
       public Builder removeNegotiations(int index) {
         if (negotiationsBuilder_ == null) {
@@ -17339,16 +17717,16 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public nefit.proto.NefitProtos.InfoI.Builder getNegotiationsBuilder(
+      public nefit.proto.NefitProtos.InfoS.Builder getNegotiationsBuilder(
           int index) {
         return getNegotiationsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public nefit.proto.NefitProtos.InfoIOrBuilder getNegotiationsOrBuilder(
+      public nefit.proto.NefitProtos.InfoSOrBuilder getNegotiationsOrBuilder(
           int index) {
         if (negotiationsBuilder_ == null) {
           return negotiations_.get(index);  } else {
@@ -17356,9 +17734,9 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public java.util.List<? extends nefit.proto.NefitProtos.InfoIOrBuilder> 
+      public java.util.List<? extends nefit.proto.NefitProtos.InfoSOrBuilder> 
            getNegotiationsOrBuilderList() {
         if (negotiationsBuilder_ != null) {
           return negotiationsBuilder_.getMessageOrBuilderList();
@@ -17367,33 +17745,33 @@ public final class NefitProtos {
         }
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public nefit.proto.NefitProtos.InfoI.Builder addNegotiationsBuilder() {
+      public nefit.proto.NefitProtos.InfoS.Builder addNegotiationsBuilder() {
         return getNegotiationsFieldBuilder().addBuilder(
-            nefit.proto.NefitProtos.InfoI.getDefaultInstance());
+            nefit.proto.NefitProtos.InfoS.getDefaultInstance());
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public nefit.proto.NefitProtos.InfoI.Builder addNegotiationsBuilder(
+      public nefit.proto.NefitProtos.InfoS.Builder addNegotiationsBuilder(
           int index) {
         return getNegotiationsFieldBuilder().addBuilder(
-            index, nefit.proto.NefitProtos.InfoI.getDefaultInstance());
+            index, nefit.proto.NefitProtos.InfoS.getDefaultInstance());
       }
       /**
-       * <code>repeated .nefit.InfoI negotiations = 2;</code>
+       * <code>repeated .nefit.InfoS negotiations = 2;</code>
        */
-      public java.util.List<nefit.proto.NefitProtos.InfoI.Builder> 
+      public java.util.List<nefit.proto.NefitProtos.InfoS.Builder> 
            getNegotiationsBuilderList() {
         return getNegotiationsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> 
+          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> 
           getNegotiationsFieldBuilder() {
         if (negotiationsBuilder_ == null) {
           negotiationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder>(
+              nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder>(
                   negotiations_,
                   ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
@@ -18985,6 +19363,12 @@ public final class NefitProtos {
           return false;
         }
       }
+      if (hasM3()) {
+        if (!getM3().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasM4()) {
         if (!getM4().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -19570,6 +19954,11 @@ public final class NefitProtos {
         }
         if (hasM2()) {
           if (!getM2().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasM3()) {
+          if (!getM3().isInitialized()) {
             return false;
           }
         }
@@ -22880,6 +23269,12 @@ public final class NefitProtos {
           return false;
         }
       }
+      if (hasSub()) {
+        if (!getSub().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasOrder()) {
         if (!getOrder().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -23274,6 +23669,11 @@ public final class NefitProtos {
       public final boolean isInitialized() {
         if (hasGet()) {
           if (!getGet().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasSub()) {
+          if (!getSub().isInitialized()) {
             return false;
           }
         }
@@ -24071,40 +24471,41 @@ public final class NefitProtos {
       "\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(\002\"4\n\tOrder" +
       "AckS\022\013\n\003ack\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\022\r\n\005nameI\030" +
       "\003 \002(\t\"%\n\tOrderAckI\022\013\n\003ack\030\001 \002(\010\022\013\n\003msg\030\002" +
-      " \001(\t\"\024\n\004SubS\022\014\n\004subs\030\001 \003(\t\"\024\n\004SubN\022\014\n\004su" +
-      "bs\030\001 \003(\t\"I\n\013ProductionS\022\r\n\005nameM\030\001 \002(\t\022\r" +
-      "\n\005nameP\030\002 \002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 " +
-      "\002(\002\":\n\013ProductionM\022\r\n\005nameP\030\001 \002(\t\022\r\n\005qua" +
-      "nt\030\002 \002(\005\022\r\n\005value\030\003 \002(\005\"5\n\007ResultS\022\016\n\006re" +
-      "sult\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\022\r\n\005nameI\030\003 \002(\t\"&" +
-      "\n\007ResultI\022\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"u" +
-      "\n\005InfoS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n" +
-      "\007minimun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value" +
-      "\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\022\r\n\005nameI\030\007 \002(\t\"f\n" +
-      "\005InfoI\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007" +
-      "minimun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030" +
-      "\005 \002(\002\022\016\n\006period\030\006 \002(\005\"\025\n\004GetS\022\r\n\005nameI\030\001" +
-      " \002(\t\"\025\n\004GetN\022\r\n\005nameI\030\001 \002(\t\"B\n\rNegotiati" +
-      "onsS\022\r\n\005nameI\030\001 \002(\t\022\"\n\014negotiations\030\002 \003(" +
-      "\0132\014.nefit.InfoI\"3\n\rNegotiationsI\022\"\n\014nego" +
-      "tiations\030\001 \003(\0132\014.nefit.InfoI\"\306\002\n\006Server\022" +
-      "#\n\002m1\030\001 \001(\0132\025.nefit.DisponibilitySH\000\022\033\n\002" +
-      "m2\030\002 \001(\0132\r.nefit.OrderSH\000\022\031\n\002m3\030\003 \001(\0132\013." +
-      "nefit.SubSH\000\022\034\n\002m4\030\004 \001(\0132\016.nefit.ResultS" +
-      "H\000\022\032\n\002m5\030\005 \001(\0132\014.nefit.InfoSH\000\022 \n\002m6\030\006 \001" +
-      "(\0132\022.nefit.ProductionSH\000\022\036\n\002m7\030\007 \001(\0132\020.n" +
-      "efit.OrderAckSH\000\022\031\n\002m8\030\010 \001(\0132\013.nefit.Get" +
-      "SH\000\022\"\n\002m9\030\t \001(\0132\024.nefit.NegotiationsSH\000\022" +
-      "\035\n\003m10\030\n \001(\0132\016.nefit.MsgAuthH\000B\005\n\003msg\"\233\001" +
-      "\n\010Importer\022\"\n\006ordack\030\001 \001(\0132\020.nefit.Order" +
-      "AckIH\000\022$\n\004nego\030\002 \001(\0132\024.nefit.Negotiation" +
-      "sIH\000\022 \n\006result\030\003 \001(\0132\016.nefit.ResultIH\000\022\034" +
-      "\n\004info\030\004 \001(\0132\014.nefit.InfoIH\000B\005\n\003msg\"\233\001\n\n" +
-      "Negotiator\022\032\n\003get\030\001 \001(\0132\013.nefit.GetNH\000\022\032" +
-      "\n\003sub\030\002 \001(\0132\013.nefit.SubNH\000\022\036\n\005order\030\003 \001(" +
-      "\0132\r.nefit.OrderNH\000\022.\n\rdisponibility\030\004 \001(" +
-      "\0132\025.nefit.DisponibilityNH\000B\005\n\003msgB\032\n\013nef" +
-      "it.protoB\013NefitProtos"
+      " \001(\t\"#\n\004SubS\022\r\n\005nameI\030\001 \002(\t\022\014\n\004subs\030\002 \003(" +
+      "\t\"#\n\004SubN\022\r\n\005nameI\030\001 \002(\t\022\014\n\004subs\030\002 \003(\t\"I" +
+      "\n\013ProductionS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 " +
+      "\002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(\002\":\n\013Pro" +
+      "ductionM\022\r\n\005nameP\030\001 \002(\t\022\r\n\005quant\030\002 \002(\005\022\r" +
+      "\n\005value\030\003 \002(\005\"5\n\007ResultS\022\016\n\006result\030\001 \002(\010" +
+      "\022\013\n\003msg\030\002 \002(\t\022\r\n\005nameI\030\003 \002(\t\"&\n\007ResultI\022" +
+      "\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"u\n\005InfoS\022\r\n" +
+      "\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003" +
+      " \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006" +
+      "period\030\006 \002(\005\022\r\n\005nameI\030\007 \002(\t\"f\n\005InfoI\022\r\n\005" +
+      "nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 " +
+      "\002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006p" +
+      "eriod\030\006 \002(\005\"\025\n\004GetS\022\r\n\005nameI\030\001 \002(\t\"\025\n\004Ge" +
+      "tN\022\r\n\005nameI\030\001 \002(\t\"B\n\rNegotiationsS\022\r\n\005na" +
+      "meI\030\001 \002(\t\022\"\n\014negotiations\030\002 \003(\0132\014.nefit." +
+      "InfoS\"3\n\rNegotiationsI\022\"\n\014negotiations\030\001" +
+      " \003(\0132\014.nefit.InfoI\"\306\002\n\006Server\022#\n\002m1\030\001 \001(" +
+      "\0132\025.nefit.DisponibilitySH\000\022\033\n\002m2\030\002 \001(\0132\r" +
+      ".nefit.OrderSH\000\022\031\n\002m3\030\003 \001(\0132\013.nefit.SubS" +
+      "H\000\022\034\n\002m4\030\004 \001(\0132\016.nefit.ResultSH\000\022\032\n\002m5\030\005" +
+      " \001(\0132\014.nefit.InfoSH\000\022 \n\002m6\030\006 \001(\0132\022.nefit" +
+      ".ProductionSH\000\022\036\n\002m7\030\007 \001(\0132\020.nefit.Order" +
+      "AckSH\000\022\031\n\002m8\030\010 \001(\0132\013.nefit.GetSH\000\022\"\n\002m9\030" +
+      "\t \001(\0132\024.nefit.NegotiationsSH\000\022\035\n\003m10\030\n \001" +
+      "(\0132\016.nefit.MsgAuthH\000B\005\n\003msg\"\233\001\n\010Importer" +
+      "\022\"\n\006ordack\030\001 \001(\0132\020.nefit.OrderAckIH\000\022$\n\004" +
+      "nego\030\002 \001(\0132\024.nefit.NegotiationsIH\000\022 \n\006re" +
+      "sult\030\003 \001(\0132\016.nefit.ResultIH\000\022\034\n\004info\030\004 \001" +
+      "(\0132\014.nefit.InfoIH\000B\005\n\003msg\"\233\001\n\nNegotiator" +
+      "\022\032\n\003get\030\001 \001(\0132\013.nefit.GetNH\000\022\032\n\003sub\030\002 \001(" +
+      "\0132\013.nefit.SubNH\000\022\036\n\005order\030\003 \001(\0132\r.nefit." +
+      "OrderNH\000\022.\n\rdisponibility\030\004 \001(\0132\025.nefit." +
+      "DisponibilityNH\000B\005\n\003msgB\032\n\013nefit.protoB\013" +
+      "NefitProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -24163,13 +24564,13 @@ public final class NefitProtos {
     internal_static_nefit_SubS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_SubS_descriptor,
-        new java.lang.String[] { "Subs", });
+        new java.lang.String[] { "NameI", "Subs", });
     internal_static_nefit_SubN_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_nefit_SubN_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_SubN_descriptor,
-        new java.lang.String[] { "Subs", });
+        new java.lang.String[] { "NameI", "Subs", });
     internal_static_nefit_ProductionS_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_nefit_ProductionS_fieldAccessorTable = new

@@ -136,7 +136,7 @@ message GetN {
 
 message NegotiationsS {
     required string nameI = 1;
-    repeated InfoI negotiations = 2;
+    repeated InfoS negotiations = 2;
 }
 
 message NegotiationsI {

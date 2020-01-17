@@ -77,11 +77,25 @@ public class Messages {
      * @param orders Orders of Manufacturers that Importer Subscribe or has Negotiations
      * @return
      */
-    public NefitProtos.NegotiationsS createNegotiationsS(String name, List<NefitProtos.InfoI> orders)
+    public NefitProtos.NegotiationsS createNegotiationsS(String name, List<NefitProtos.InfoS> orders)
     {
-        return NefitProtos.NegotiationsS.newBuilder()
-            .setNameI(name)
-            .addAllNegotiations(orders)
+        NefitProtos.NegotiationsS.Builder msg = NefitProtos.NegotiationsS.newBuilder()
+            .setNameI(name);
+        for(NefitProtos.InfoS aux: orders)
+            msg.addNegotiations(aux);
+        return msg.build();
+    }
+
+    public NefitProtos.InfoS createInfoS(String nameM, String nameP, int maximum, int minimum, float value, int period, String nameI)
+    {
+        return NefitProtos.InfoS.newBuilder()
+            .setNameM(nameM)
+            .setNameP(nameP)
+            .setMaximun(maximum)
+            .setMinimun(minimum)
+            .setValue(value)
+            .setPeriod(period)
+            .setNameI(nameI)
             .build();
     }
 }
