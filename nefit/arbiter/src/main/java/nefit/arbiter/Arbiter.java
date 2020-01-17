@@ -20,7 +20,7 @@ public class Arbiter implements Runnable
     private Messages messages;
 
     //Map<NameManufacturer,List<Pair<Product,Best Order>>>
-    private Map<String,List<Pair<NefitProtos.DisponibilityN, NefitProtos.OrderS>>> negotiations;
+    private Map<String,List<Pair<NefitProtos.DisponibilityN, NefitProtos.OrderN>>> negotiations;
 
     //Map<Pair<NameManufacturer,Product>,List<NameImporter>>
     private Map<Pair<String,String>,List<String>> importerNego;
@@ -85,7 +85,7 @@ public class Arbiter implements Runnable
     {
         if(!this.negotiations.containsKey(disponibility.getNameM()))
         {
-            List<Pair<NefitProtos.DisponibilityN, NefitProtos.OrderS>> aux = new ArrayList<>();
+            List<Pair<NefitProtos.DisponibilityN, NefitProtos.OrderN>> aux = new ArrayList<>();
             aux.add(new Pair<>(disponibility, null));
             this.negotiations.put(disponibility.getNameM(),aux);
         }
@@ -93,13 +93,14 @@ public class Arbiter implements Runnable
         {
             this.negotiations.get(disponibility.getNameM()).add(new Pair<>(disponibility,null));
         }
+        this.importerNego.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new ArrayList<>());
         //TODO: make timeouts to send result
     }
 
     private void executeOrder(NefitProtos.OrderN order) {
         NefitProtos.OrderAckS ack = NefitProtos.OrderAckS.newBuilder().build();
         if(this.negotiations.containsKey(order.getNameM())) {
-            for (Pair<NefitProtos.DisponibilityN, NefitProtos.OrderS> aux : this.negotiations.get(order.getNameM())) {
+            for (Pair<NefitProtos.DisponibilityN, NefitProtos.OrderN> aux : this.negotiations.get(order.getNameM())) {
                 if(aux.getKey().getNameP().equals(order.getNameP())) {
                     if (aux.getKey().getMaximun() >= order.getQuant() && aux.getKey().getMinimun() <= order.getQuant() && aux.getKey().getValue() <= order.getValue()) {
                         float old_v = aux.getValue().getValue() * aux.getValue().getQuant();
@@ -111,28 +112,33 @@ public class Arbiter implements Runnable
                                     false, "Your order to " + order.getNameM() + ":" + order.getNameP() + "is outdated", aux.getValue().getNameI(), true
                                 ).toByteArray(), 0);
                             ack = this.messages.createOrderAckS(true, null, order.getNameI(), false);
+                            //Replace Order
+                            this.negotiations.get(order.getNameM()).remove(aux);
+                            this.negotiations.get(order.getNameM()).add(new Pair<>(aux.getKey(),order));
                         }
                     } else {
                         ack = this.messages.createOrderAckS(false, "Don't have the minimums required or the quantity is very high", order.getNameI(), false);
                     }
+                    if(!this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).contains(order.getNameI()))
+                        this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).add(order.getNameI());
                 }
             }
             if(ack.hasNameI())
                 this.socket.send(ack.toByteArray(),0);
             else
-                this.socket.send(this.messages.createOrderAckS(false,"The Manufacturer don't has this product",order.getNameI(),false).toByteArray(),0);
+                this.socket.send(this.messages.createOrderAckS(false,"The Manufacturer doesn't had this product",order.getNameI(),false).toByteArray(),0);
         }
         else
-            this.socket.send(this.messages.createOrderAckS(false,"The Manufacturer don't exist",order.getNameI(),false).toByteArray(),0);
+            this.socket.send(this.messages.createOrderAckS(false,"The Manufacturer doesn't exist",order.getNameI(),false).toByteArray(),0);
     }
 
     private void executeGet(NefitProtos.GetN get)
     {
         List<NefitProtos.InfoS> res = new ArrayList<>();
-        for(Map.Entry<String,List<Pair<NefitProtos.DisponibilityN,NefitProtos.OrderS>>> entry: this.negotiations.entrySet()) {
+        for(Map.Entry<String,List<Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN>>> entry: this.negotiations.entrySet()) {
             for (String str : this.subscribers.get(get.getNameI()))
                 if (str.equals(entry.getKey()))
-                    for(Pair<NefitProtos.DisponibilityN,NefitProtos.OrderS> aux: entry.getValue())
+                    for(Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN> aux: entry.getValue())
                         res.add(
                             this.messages.createInfoS(
                                 str,
@@ -151,5 +157,10 @@ public class Arbiter implements Runnable
     private void executeSub(NefitProtos.SubN sub)
     {
         this.subscribers.put(sub.getNameI(),sub.getSubsList().subList(0,sub.getSubsCount()));
+    }
+
+    private void executeResult()
+    {
+
     }
 }
