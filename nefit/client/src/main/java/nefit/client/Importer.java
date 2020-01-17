@@ -81,7 +81,7 @@ public class Importer implements Runnable
             for(int i = 1 ; i < fields.length ; i++)
                 topics.add(fields[i]);
             NefitProtos.SubS sub = this.messages.createSubS(topics);
-            sub.writeDelimitedTo(this.os);
+            Client.writeDelimited(this.os, sub);
         }
     }
 
@@ -94,7 +94,7 @@ public class Importer implements Runnable
         else
         {
             NefitProtos.GetS get = this.messages.createGetS(this.name);
-            get.writeDelimitedTo(this.os);
+            Client.writeDelimited(this.os, get);
         }
     }
 
@@ -111,7 +111,7 @@ public class Importer implements Runnable
                 NefitProtos.OrderS order = this.messages.createOrderS(
                     fields[1], fields[2], Integer.parseInt(fields[3]), Float.parseFloat(fields[4])
                 );
-                order.writeDelimitedTo(this.os);
+                Client.writeDelimited(this.os, order);
             }
             catch (NumberFormatException e)
             {
@@ -126,7 +126,7 @@ public class Importer implements Runnable
         {
             try
             {
-                NefitProtos.Importer importer = NefitProtos.Importer.parseDelimitedFrom(this.is);
+                final var importer = Client.parseDelimited(this.is, NefitProtos.Importer.parser());
 
                 if(importer.hasInfo())
                 {

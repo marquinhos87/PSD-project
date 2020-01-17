@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 public class Client
 {
-    private static <T> T parseDelimited(InputStream in, Parser<T> msgParser) throws IOException {
+    public static <T> T parseDelimited(InputStream in, Parser<T> msgParser) throws IOException {
         final var header = in.readNBytes(4);
         assert header.length == 4;
 
@@ -24,7 +24,7 @@ public class Client
         return msgParser.parseFrom(bytes);
     }
 
-    private static void writeDelimited(OutputStream out, MessageLite msg) throws IOException {
+    public static void writeDelimited(OutputStream out, MessageLite msg) throws IOException {
         final var msgSize = msg.getSerializedSize();
         final var header = ByteBuffer.allocate(4).putInt(msgSize).array();
 
