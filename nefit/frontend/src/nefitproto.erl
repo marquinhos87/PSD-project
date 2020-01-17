@@ -87,34 +87,26 @@
 
 -type 'InfoI'() :: #'InfoI'{}.
 
--type 'GetS'() :: #'GetS'{}.
-
--type 'GetN'() :: #'GetN'{}.
-
--type 'NegotiationsS'() :: #'NegotiationsS'{}.
-
--type 'NegotiationsI'() :: #'NegotiationsI'{}.
-
 -type 'Server'() :: #'Server'{}.
 
 -type 'Importer'() :: #'Importer'{}.
 
 -type 'Negotiator'() :: #'Negotiator'{}.
 
--export_type(['MsgAuth'/0, 'MsgAck'/0, 'DisponibilityS'/0, 'DisponibilityN'/0, 'OrderS'/0, 'OrderN'/0, 'OrderAckS'/0, 'OrderAckI'/0, 'SubS'/0, 'SubN'/0, 'ProductionS'/0, 'ProductionM'/0, 'ResultS'/0, 'ResultI'/0, 'InfoS'/0, 'InfoI'/0, 'GetS'/0, 'GetN'/0, 'NegotiationsS'/0, 'NegotiationsI'/0, 'Server'/0, 'Importer'/0, 'Negotiator'/0]).
+-export_type(['MsgAuth'/0, 'MsgAck'/0, 'DisponibilityS'/0, 'DisponibilityN'/0, 'OrderS'/0, 'OrderN'/0, 'OrderAckS'/0, 'OrderAckI'/0, 'SubS'/0, 'SubN'/0, 'ProductionS'/0, 'ProductionM'/0, 'ResultS'/0, 'ResultI'/0, 'InfoS'/0, 'InfoI'/0, 'Server'/0, 'Importer'/0, 'Negotiator'/0]).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'GetS'{} | #'GetN'{} | #'NegotiationsS'{} | #'NegotiationsI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}) -> binary().
+-spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}) -> binary().
 encode_msg(Msg) when tuple_size(Msg) >= 1 ->
     encode_msg(Msg, element(1, Msg), []).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'GetS'{} | #'GetN'{} | #'NegotiationsS'{} | #'NegotiationsI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom() | list()) -> binary().
+-spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom() | list()) -> binary().
 encode_msg(Msg, MsgName) when is_atom(MsgName) ->
     encode_msg(Msg, MsgName, []);
 encode_msg(Msg, Opts)
     when tuple_size(Msg) >= 1, is_list(Opts) ->
     encode_msg(Msg, element(1, Msg), Opts).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'GetS'{} | #'GetN'{} | #'NegotiationsS'{} | #'NegotiationsI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom(), list()) -> binary().
+-spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom(), list()) -> binary().
 encode_msg(Msg, MsgName, Opts) ->
     case proplists:get_bool(verify, Opts) of
       true -> verify_msg(Msg, MsgName, Opts);
@@ -156,16 +148,6 @@ encode_msg(Msg, MsgName, Opts) ->
 	  encode_msg_InfoS(id(Msg, TrUserData), TrUserData);
       'InfoI' ->
 	  encode_msg_InfoI(id(Msg, TrUserData), TrUserData);
-      'GetS' ->
-	  encode_msg_GetS(id(Msg, TrUserData), TrUserData);
-      'GetN' ->
-	  encode_msg_GetN(id(Msg, TrUserData), TrUserData);
-      'NegotiationsS' ->
-	  encode_msg_NegotiationsS(id(Msg, TrUserData),
-				   TrUserData);
-      'NegotiationsI' ->
-	  encode_msg_NegotiationsI(id(Msg, TrUserData),
-				   TrUserData);
       'Server' ->
 	  encode_msg_Server(id(Msg, TrUserData), TrUserData);
       'Importer' ->
@@ -575,61 +557,6 @@ encode_msg_InfoI(#'InfoI'{nameM = F1, nameP = F2,
       e_type_int32(TrF6, <<B5/binary, 48>>, TrUserData)
     end.
 
-encode_msg_GetS(Msg, TrUserData) ->
-    encode_msg_GetS(Msg, <<>>, TrUserData).
-
-
-encode_msg_GetS(#'GetS'{nameI = F1}, Bin, TrUserData) ->
-    begin
-      TrF1 = id(F1, TrUserData),
-      e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-    end.
-
-encode_msg_GetN(Msg, TrUserData) ->
-    encode_msg_GetN(Msg, <<>>, TrUserData).
-
-
-encode_msg_GetN(#'GetN'{nameI = F1}, Bin, TrUserData) ->
-    begin
-      TrF1 = id(F1, TrUserData),
-      e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-    end.
-
-encode_msg_NegotiationsS(Msg, TrUserData) ->
-    encode_msg_NegotiationsS(Msg, <<>>, TrUserData).
-
-
-encode_msg_NegotiationsS(#'NegotiationsS'{nameI = F1,
-					  negotiations = F2},
-			 Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    begin
-      TrF2 = id(F2, TrUserData),
-      if TrF2 == [] -> B1;
-	 true ->
-	     e_field_NegotiationsS_negotiations(TrF2, B1, TrUserData)
-      end
-    end.
-
-encode_msg_NegotiationsI(Msg, TrUserData) ->
-    encode_msg_NegotiationsI(Msg, <<>>, TrUserData).
-
-
-encode_msg_NegotiationsI(#'NegotiationsI'{negotiations =
-					      F1},
-			 Bin, TrUserData) ->
-    begin
-      TrF1 = id(F1, TrUserData),
-      if TrF1 == [] -> Bin;
-	 true ->
-	     e_field_NegotiationsI_negotiations(TrF1, Bin,
-						TrUserData)
-      end
-    end.
-
 encode_msg_Server(Msg, TrUserData) ->
     encode_msg_Server(Msg, <<>>, TrUserData).
 
@@ -680,24 +607,6 @@ encode_msg_Server(#'Server'{msg = F1}, Bin,
 		   TrTF1 = id(TF1, TrUserData),
 		   e_mfield_Server_m7(TrTF1, <<Bin/binary, 58>>,
 				      TrUserData)
-		 end;
-	     {m8, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m8(TrTF1, <<Bin/binary, 66>>,
-				      TrUserData)
-		 end;
-	     {m9, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m9(TrTF1, <<Bin/binary, 74>>,
-				      TrUserData)
-		 end;
-	     {m10, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m10(TrTF1, <<Bin/binary, 82>>,
-				       TrUserData)
 		 end
 	   end
     end.
@@ -717,22 +626,16 @@ encode_msg_Importer(#'Importer'{msg = F1}, Bin,
 		   e_mfield_Importer_ordack(TrTF1, <<Bin/binary, 10>>,
 					    TrUserData)
 		 end;
-	     {nego, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Importer_nego(TrTF1, <<Bin/binary, 18>>,
-					  TrUserData)
-		 end;
 	     {result, TF1} ->
 		 begin
 		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Importer_result(TrTF1, <<Bin/binary, 26>>,
+		   e_mfield_Importer_result(TrTF1, <<Bin/binary, 18>>,
 					    TrUserData)
 		 end;
 	     {info, TF1} ->
 		 begin
 		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Importer_info(TrTF1, <<Bin/binary, 34>>,
+		   e_mfield_Importer_info(TrTF1, <<Bin/binary, 26>>,
 					  TrUserData)
 		 end
 	   end
@@ -747,29 +650,23 @@ encode_msg_Negotiator(#'Negotiator'{msg = F1}, Bin,
     if F1 =:= undefined -> Bin;
        true ->
 	   case id(F1, TrUserData) of
-	     {get, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Negotiator_get(TrTF1, <<Bin/binary, 10>>,
-					   TrUserData)
-		 end;
 	     {sub, TF1} ->
 		 begin
 		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Negotiator_sub(TrTF1, <<Bin/binary, 18>>,
+		   e_mfield_Negotiator_sub(TrTF1, <<Bin/binary, 10>>,
 					   TrUserData)
 		 end;
 	     {order, TF1} ->
 		 begin
 		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Negotiator_order(TrTF1, <<Bin/binary, 26>>,
+		   e_mfield_Negotiator_order(TrTF1, <<Bin/binary, 18>>,
 					     TrUserData)
 		 end;
 	     {disponibility, TF1} ->
 		 begin
 		   TrTF1 = id(TF1, TrUserData),
 		   e_mfield_Negotiator_disponibility(TrTF1,
-						     <<Bin/binary, 34>>,
+						     <<Bin/binary, 26>>,
 						     TrUserData)
 		 end
 	   end
@@ -788,42 +685,6 @@ e_field_SubN_subs([Elem | Rest], Bin, TrUserData) ->
 			 TrUserData),
     e_field_SubN_subs(Rest, Bin3, TrUserData);
 e_field_SubN_subs([], Bin, _TrUserData) -> Bin.
-
-e_mfield_NegotiationsS_negotiations(Msg, Bin,
-				    TrUserData) ->
-    SubBin = encode_msg_InfoS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
-
-e_field_NegotiationsS_negotiations([Elem | Rest], Bin,
-				   TrUserData) ->
-    Bin2 = <<Bin/binary, 18>>,
-    Bin3 = e_mfield_NegotiationsS_negotiations(id(Elem,
-						  TrUserData),
-					       Bin2, TrUserData),
-    e_field_NegotiationsS_negotiations(Rest, Bin3,
-				       TrUserData);
-e_field_NegotiationsS_negotiations([], Bin,
-				   _TrUserData) ->
-    Bin.
-
-e_mfield_NegotiationsI_negotiations(Msg, Bin,
-				    TrUserData) ->
-    SubBin = encode_msg_InfoI(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
-
-e_field_NegotiationsI_negotiations([Elem | Rest], Bin,
-				   TrUserData) ->
-    Bin2 = <<Bin/binary, 10>>,
-    Bin3 = e_mfield_NegotiationsI_negotiations(id(Elem,
-						  TrUserData),
-					       Bin2, TrUserData),
-    e_field_NegotiationsI_negotiations(Rest, Bin3,
-				       TrUserData);
-e_field_NegotiationsI_negotiations([], Bin,
-				   _TrUserData) ->
-    Bin.
 
 e_mfield_Server_m1(Msg, Bin, TrUserData) ->
     SubBin = encode_msg_DisponibilityS(Msg, <<>>,
@@ -861,30 +722,8 @@ e_mfield_Server_m7(Msg, Bin, TrUserData) ->
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_Server_m8(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_GetS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
-
-e_mfield_Server_m9(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_NegotiationsS(Msg, <<>>,
-				      TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
-
-e_mfield_Server_m10(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_MsgAuth(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
-
 e_mfield_Importer_ordack(Msg, Bin, TrUserData) ->
     SubBin = encode_msg_OrderAckI(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
-
-e_mfield_Importer_nego(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_NegotiationsI(Msg, <<>>,
-				      TrUserData),
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
@@ -895,11 +734,6 @@ e_mfield_Importer_result(Msg, Bin, TrUserData) ->
 
 e_mfield_Importer_info(Msg, Bin, TrUserData) ->
     SubBin = encode_msg_InfoI(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
-
-e_mfield_Negotiator_get(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_GetN(Msg, <<>>, TrUserData),
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
@@ -1085,16 +919,6 @@ decode_msg_2_doit('InfoS', Bin, TrUserData) ->
     id(decode_msg_InfoS(Bin, TrUserData), TrUserData);
 decode_msg_2_doit('InfoI', Bin, TrUserData) ->
     id(decode_msg_InfoI(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('GetS', Bin, TrUserData) ->
-    id(decode_msg_GetS(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('GetN', Bin, TrUserData) ->
-    id(decode_msg_GetN(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('NegotiationsS', Bin, TrUserData) ->
-    id(decode_msg_NegotiationsS(Bin, TrUserData),
-       TrUserData);
-decode_msg_2_doit('NegotiationsI', Bin, TrUserData) ->
-    id(decode_msg_NegotiationsI(Bin, TrUserData),
-       TrUserData);
 decode_msg_2_doit('Server', Bin, TrUserData) ->
     id(decode_msg_Server(Bin, TrUserData), TrUserData);
 decode_msg_2_doit('Importer', Bin, TrUserData) ->
@@ -4108,423 +3932,6 @@ skip_64_InfoI(<<_:64, Rest/binary>>, Z1, Z2, F@_1, F@_2,
     dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			     F@_4, F@_5, F@_6, TrUserData).
 
-decode_msg_GetS(Bin, TrUserData) ->
-    dfp_read_field_def_GetS(Bin, 0, 0,
-			    id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_GetS(<<10, Rest/binary>>, Z1, Z2,
-			F@_1, TrUserData) ->
-    d_field_GetS_nameI(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_GetS(<<>>, 0, 0, F@_1, _) ->
-    #'GetS'{nameI = F@_1};
-dfp_read_field_def_GetS(Other, Z1, Z2, F@_1,
-			TrUserData) ->
-    dg_read_field_def_GetS(Other, Z1, Z2, F@_1, TrUserData).
-
-dg_read_field_def_GetS(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_GetS(Rest, N + 7, X bsl N + Acc, F@_1,
-			   TrUserData);
-dg_read_field_def_GetS(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 -> d_field_GetS_nameI(Rest, 0, 0, F@_1, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 -> skip_varint_GetS(Rest, 0, 0, F@_1, TrUserData);
-	    1 -> skip_64_GetS(Rest, 0, 0, F@_1, TrUserData);
-	    2 ->
-		skip_length_delimited_GetS(Rest, 0, 0, F@_1,
-					   TrUserData);
-	    3 ->
-		skip_group_GetS(Rest, Key bsr 3, 0, F@_1, TrUserData);
-	    5 -> skip_32_GetS(Rest, 0, 0, F@_1, TrUserData)
-	  end
-    end;
-dg_read_field_def_GetS(<<>>, 0, 0, F@_1, _) ->
-    #'GetS'{nameI = F@_1}.
-
-d_field_GetS_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		   F@_1, TrUserData)
-    when N < 57 ->
-    d_field_GetS_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-		       TrUserData);
-d_field_GetS_nameI(<<0:1, X:7, Rest/binary>>, N, Acc, _,
-		   TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_GetS(RestF, 0, 0, NewFValue,
-			    TrUserData).
-
-skip_varint_GetS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    skip_varint_GetS(Rest, Z1, Z2, F@_1, TrUserData);
-skip_varint_GetS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    dfp_read_field_def_GetS(Rest, Z1, Z2, F@_1, TrUserData).
-
-skip_length_delimited_GetS(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_GetS(Rest, N + 7, X bsl N + Acc,
-			       F@_1, TrUserData);
-skip_length_delimited_GetS(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_GetS(Rest2, 0, 0, F@_1, TrUserData).
-
-skip_group_GetS(Bin, FNum, Z2, F@_1, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_GetS(Rest, 0, Z2, F@_1, TrUserData).
-
-skip_32_GetS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	     TrUserData) ->
-    dfp_read_field_def_GetS(Rest, Z1, Z2, F@_1, TrUserData).
-
-skip_64_GetS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	     TrUserData) ->
-    dfp_read_field_def_GetS(Rest, Z1, Z2, F@_1, TrUserData).
-
-decode_msg_GetN(Bin, TrUserData) ->
-    dfp_read_field_def_GetN(Bin, 0, 0,
-			    id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_GetN(<<10, Rest/binary>>, Z1, Z2,
-			F@_1, TrUserData) ->
-    d_field_GetN_nameI(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_GetN(<<>>, 0, 0, F@_1, _) ->
-    #'GetN'{nameI = F@_1};
-dfp_read_field_def_GetN(Other, Z1, Z2, F@_1,
-			TrUserData) ->
-    dg_read_field_def_GetN(Other, Z1, Z2, F@_1, TrUserData).
-
-dg_read_field_def_GetN(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_GetN(Rest, N + 7, X bsl N + Acc, F@_1,
-			   TrUserData);
-dg_read_field_def_GetN(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 -> d_field_GetN_nameI(Rest, 0, 0, F@_1, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 -> skip_varint_GetN(Rest, 0, 0, F@_1, TrUserData);
-	    1 -> skip_64_GetN(Rest, 0, 0, F@_1, TrUserData);
-	    2 ->
-		skip_length_delimited_GetN(Rest, 0, 0, F@_1,
-					   TrUserData);
-	    3 ->
-		skip_group_GetN(Rest, Key bsr 3, 0, F@_1, TrUserData);
-	    5 -> skip_32_GetN(Rest, 0, 0, F@_1, TrUserData)
-	  end
-    end;
-dg_read_field_def_GetN(<<>>, 0, 0, F@_1, _) ->
-    #'GetN'{nameI = F@_1}.
-
-d_field_GetN_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		   F@_1, TrUserData)
-    when N < 57 ->
-    d_field_GetN_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-		       TrUserData);
-d_field_GetN_nameI(<<0:1, X:7, Rest/binary>>, N, Acc, _,
-		   TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_GetN(RestF, 0, 0, NewFValue,
-			    TrUserData).
-
-skip_varint_GetN(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    skip_varint_GetN(Rest, Z1, Z2, F@_1, TrUserData);
-skip_varint_GetN(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    dfp_read_field_def_GetN(Rest, Z1, Z2, F@_1, TrUserData).
-
-skip_length_delimited_GetN(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_GetN(Rest, N + 7, X bsl N + Acc,
-			       F@_1, TrUserData);
-skip_length_delimited_GetN(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_GetN(Rest2, 0, 0, F@_1, TrUserData).
-
-skip_group_GetN(Bin, FNum, Z2, F@_1, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_GetN(Rest, 0, Z2, F@_1, TrUserData).
-
-skip_32_GetN(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	     TrUserData) ->
-    dfp_read_field_def_GetN(Rest, Z1, Z2, F@_1, TrUserData).
-
-skip_64_GetN(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	     TrUserData) ->
-    dfp_read_field_def_GetN(Rest, Z1, Z2, F@_1, TrUserData).
-
-decode_msg_NegotiationsS(Bin, TrUserData) ->
-    dfp_read_field_def_NegotiationsS(Bin, 0, 0,
-				     id(undefined, TrUserData),
-				     id([], TrUserData), TrUserData).
-
-dfp_read_field_def_NegotiationsS(<<10, Rest/binary>>,
-				 Z1, Z2, F@_1, F@_2, TrUserData) ->
-    d_field_NegotiationsS_nameI(Rest, Z1, Z2, F@_1, F@_2,
-				TrUserData);
-dfp_read_field_def_NegotiationsS(<<18, Rest/binary>>,
-				 Z1, Z2, F@_1, F@_2, TrUserData) ->
-    d_field_NegotiationsS_negotiations(Rest, Z1, Z2, F@_1,
-				       F@_2, TrUserData);
-dfp_read_field_def_NegotiationsS(<<>>, 0, 0, F@_1, R1,
-				 TrUserData) ->
-    #'NegotiationsS'{nameI = F@_1,
-		     negotiations = lists_reverse(R1, TrUserData)};
-dfp_read_field_def_NegotiationsS(Other, Z1, Z2, F@_1,
-				 F@_2, TrUserData) ->
-    dg_read_field_def_NegotiationsS(Other, Z1, Z2, F@_1,
-				    F@_2, TrUserData).
-
-dg_read_field_def_NegotiationsS(<<1:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_NegotiationsS(Rest, N + 7,
-				    X bsl N + Acc, F@_1, F@_2, TrUserData);
-dg_read_field_def_NegotiationsS(<<0:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_NegotiationsS_nameI(Rest, 0, 0, F@_1, F@_2,
-				      TrUserData);
-      18 ->
-	  d_field_NegotiationsS_negotiations(Rest, 0, 0, F@_1,
-					     F@_2, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_NegotiationsS(Rest, 0, 0, F@_1, F@_2,
-					  TrUserData);
-	    1 ->
-		skip_64_NegotiationsS(Rest, 0, 0, F@_1, F@_2,
-				      TrUserData);
-	    2 ->
-		skip_length_delimited_NegotiationsS(Rest, 0, 0, F@_1,
-						    F@_2, TrUserData);
-	    3 ->
-		skip_group_NegotiationsS(Rest, Key bsr 3, 0, F@_1, F@_2,
-					 TrUserData);
-	    5 ->
-		skip_32_NegotiationsS(Rest, 0, 0, F@_1, F@_2,
-				      TrUserData)
-	  end
-    end;
-dg_read_field_def_NegotiationsS(<<>>, 0, 0, F@_1, R1,
-				TrUserData) ->
-    #'NegotiationsS'{nameI = F@_1,
-		     negotiations = lists_reverse(R1, TrUserData)}.
-
-d_field_NegotiationsS_nameI(<<1:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_NegotiationsS_nameI(Rest, N + 7, X bsl N + Acc,
-				F@_1, F@_2, TrUserData);
-d_field_NegotiationsS_nameI(<<0:1, X:7, Rest/binary>>,
-			    N, Acc, _, F@_2, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_NegotiationsS(RestF, 0, 0, NewFValue,
-				     F@_2, TrUserData).
-
-d_field_NegotiationsS_negotiations(<<1:1, X:7,
-				     Rest/binary>>,
-				   N, Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_NegotiationsS_negotiations(Rest, N + 7,
-				       X bsl N + Acc, F@_1, F@_2, TrUserData);
-d_field_NegotiationsS_negotiations(<<0:1, X:7,
-				     Rest/binary>>,
-				   N, Acc, F@_1, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_InfoS(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_NegotiationsS(RestF, 0, 0, F@_1,
-				     cons(NewFValue, Prev, TrUserData),
-				     TrUserData).
-
-skip_varint_NegotiationsS(<<1:1, _:7, Rest/binary>>, Z1,
-			  Z2, F@_1, F@_2, TrUserData) ->
-    skip_varint_NegotiationsS(Rest, Z1, Z2, F@_1, F@_2,
-			      TrUserData);
-skip_varint_NegotiationsS(<<0:1, _:7, Rest/binary>>, Z1,
-			  Z2, F@_1, F@_2, TrUserData) ->
-    dfp_read_field_def_NegotiationsS(Rest, Z1, Z2, F@_1,
-				     F@_2, TrUserData).
-
-skip_length_delimited_NegotiationsS(<<1:1, X:7,
-				      Rest/binary>>,
-				    N, Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_NegotiationsS(Rest, N + 7,
-					X bsl N + Acc, F@_1, F@_2, TrUserData);
-skip_length_delimited_NegotiationsS(<<0:1, X:7,
-				      Rest/binary>>,
-				    N, Acc, F@_1, F@_2, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_NegotiationsS(Rest2, 0, 0, F@_1,
-				     F@_2, TrUserData).
-
-skip_group_NegotiationsS(Bin, FNum, Z2, F@_1, F@_2,
-			 TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_NegotiationsS(Rest, 0, Z2, F@_1,
-				     F@_2, TrUserData).
-
-skip_32_NegotiationsS(<<_:32, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, TrUserData) ->
-    dfp_read_field_def_NegotiationsS(Rest, Z1, Z2, F@_1,
-				     F@_2, TrUserData).
-
-skip_64_NegotiationsS(<<_:64, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, TrUserData) ->
-    dfp_read_field_def_NegotiationsS(Rest, Z1, Z2, F@_1,
-				     F@_2, TrUserData).
-
-decode_msg_NegotiationsI(Bin, TrUserData) ->
-    dfp_read_field_def_NegotiationsI(Bin, 0, 0,
-				     id([], TrUserData), TrUserData).
-
-dfp_read_field_def_NegotiationsI(<<10, Rest/binary>>,
-				 Z1, Z2, F@_1, TrUserData) ->
-    d_field_NegotiationsI_negotiations(Rest, Z1, Z2, F@_1,
-				       TrUserData);
-dfp_read_field_def_NegotiationsI(<<>>, 0, 0, R1,
-				 TrUserData) ->
-    #'NegotiationsI'{negotiations =
-			 lists_reverse(R1, TrUserData)};
-dfp_read_field_def_NegotiationsI(Other, Z1, Z2, F@_1,
-				 TrUserData) ->
-    dg_read_field_def_NegotiationsI(Other, Z1, Z2, F@_1,
-				    TrUserData).
-
-dg_read_field_def_NegotiationsI(<<1:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_NegotiationsI(Rest, N + 7,
-				    X bsl N + Acc, F@_1, TrUserData);
-dg_read_field_def_NegotiationsI(<<0:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_NegotiationsI_negotiations(Rest, 0, 0, F@_1,
-					     TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_NegotiationsI(Rest, 0, 0, F@_1, TrUserData);
-	    1 ->
-		skip_64_NegotiationsI(Rest, 0, 0, F@_1, TrUserData);
-	    2 ->
-		skip_length_delimited_NegotiationsI(Rest, 0, 0, F@_1,
-						    TrUserData);
-	    3 ->
-		skip_group_NegotiationsI(Rest, Key bsr 3, 0, F@_1,
-					 TrUserData);
-	    5 -> skip_32_NegotiationsI(Rest, 0, 0, F@_1, TrUserData)
-	  end
-    end;
-dg_read_field_def_NegotiationsI(<<>>, 0, 0, R1,
-				TrUserData) ->
-    #'NegotiationsI'{negotiations =
-			 lists_reverse(R1, TrUserData)}.
-
-d_field_NegotiationsI_negotiations(<<1:1, X:7,
-				     Rest/binary>>,
-				   N, Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_NegotiationsI_negotiations(Rest, N + 7,
-				       X bsl N + Acc, F@_1, TrUserData);
-d_field_NegotiationsI_negotiations(<<0:1, X:7,
-				     Rest/binary>>,
-				   N, Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_InfoI(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_NegotiationsI(RestF, 0, 0,
-				     cons(NewFValue, Prev, TrUserData),
-				     TrUserData).
-
-skip_varint_NegotiationsI(<<1:1, _:7, Rest/binary>>, Z1,
-			  Z2, F@_1, TrUserData) ->
-    skip_varint_NegotiationsI(Rest, Z1, Z2, F@_1,
-			      TrUserData);
-skip_varint_NegotiationsI(<<0:1, _:7, Rest/binary>>, Z1,
-			  Z2, F@_1, TrUserData) ->
-    dfp_read_field_def_NegotiationsI(Rest, Z1, Z2, F@_1,
-				     TrUserData).
-
-skip_length_delimited_NegotiationsI(<<1:1, X:7,
-				      Rest/binary>>,
-				    N, Acc, F@_1, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_NegotiationsI(Rest, N + 7,
-					X bsl N + Acc, F@_1, TrUserData);
-skip_length_delimited_NegotiationsI(<<0:1, X:7,
-				      Rest/binary>>,
-				    N, Acc, F@_1, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_NegotiationsI(Rest2, 0, 0, F@_1,
-				     TrUserData).
-
-skip_group_NegotiationsI(Bin, FNum, Z2, F@_1,
-			 TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_NegotiationsI(Rest, 0, Z2, F@_1,
-				     TrUserData).
-
-skip_32_NegotiationsI(<<_:32, Rest/binary>>, Z1, Z2,
-		      F@_1, TrUserData) ->
-    dfp_read_field_def_NegotiationsI(Rest, Z1, Z2, F@_1,
-				     TrUserData).
-
-skip_64_NegotiationsI(<<_:64, Rest/binary>>, Z1, Z2,
-		      F@_1, TrUserData) ->
-    dfp_read_field_def_NegotiationsI(Rest, Z1, Z2, F@_1,
-				     TrUserData).
-
 decode_msg_Server(Bin, TrUserData) ->
     dfp_read_field_def_Server(Bin, 0, 0,
 			      id(undefined, TrUserData), TrUserData).
@@ -4550,15 +3957,6 @@ dfp_read_field_def_Server(<<50, Rest/binary>>, Z1, Z2,
 dfp_read_field_def_Server(<<58, Rest/binary>>, Z1, Z2,
 			  F@_1, TrUserData) ->
     d_field_Server_m7(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<66, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m8(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<74, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m9(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<82, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m10(Rest, Z1, Z2, F@_1, TrUserData);
 dfp_read_field_def_Server(<<>>, 0, 0, F@_1, _) ->
     #'Server'{msg = F@_1};
 dfp_read_field_def_Server(Other, Z1, Z2, F@_1,
@@ -4582,9 +3980,6 @@ dg_read_field_def_Server(<<0:1, X:7, Rest/binary>>, N,
       42 -> d_field_Server_m5(Rest, 0, 0, F@_1, TrUserData);
       50 -> d_field_Server_m6(Rest, 0, 0, F@_1, TrUserData);
       58 -> d_field_Server_m7(Rest, 0, 0, F@_1, TrUserData);
-      66 -> d_field_Server_m8(Rest, 0, 0, F@_1, TrUserData);
-      74 -> d_field_Server_m9(Rest, 0, 0, F@_1, TrUserData);
-      82 -> d_field_Server_m10(Rest, 0, 0, F@_1, TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 -> skip_varint_Server(Rest, 0, 0, F@_1, TrUserData);
@@ -4779,83 +4174,6 @@ d_field_Server_m7(<<0:1, X:7, Rest/binary>>, N, Acc,
 			      end,
 			      TrUserData).
 
-d_field_Server_m8(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m8(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m8(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_GetS(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m8, NewFValue}, TrUserData);
-				{m8, MVPrev} ->
-				    id({m8,
-					merge_msg_GetS(MVPrev, NewFValue,
-						       TrUserData)},
-				       TrUserData);
-				_ -> id({m8, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m9(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m9(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m9(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_NegotiationsS(Bs, TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m9, NewFValue}, TrUserData);
-				{m9, MVPrev} ->
-				    id({m9,
-					merge_msg_NegotiationsS(MVPrev,
-								NewFValue,
-								TrUserData)},
-				       TrUserData);
-				_ -> id({m9, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m10(<<1:1, X:7, Rest/binary>>, N, Acc,
-		   F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m10(Rest, N + 7, X bsl N + Acc, F@_1,
-		       TrUserData);
-d_field_Server_m10(<<0:1, X:7, Rest/binary>>, N, Acc,
-		   Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_MsgAuth(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m10, NewFValue}, TrUserData);
-				{m10, MVPrev} ->
-				    id({m10,
-					merge_msg_MsgAuth(MVPrev, NewFValue,
-							  TrUserData)},
-				       TrUserData);
-				_ -> id({m10, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
 skip_varint_Server(<<1:1, _:7, Rest/binary>>, Z1, Z2,
 		   F@_1, TrUserData) ->
     skip_varint_Server(Rest, Z1, Z2, F@_1, TrUserData);
@@ -4900,11 +4218,8 @@ dfp_read_field_def_Importer(<<10, Rest/binary>>, Z1, Z2,
     d_field_Importer_ordack(Rest, Z1, Z2, F@_1, TrUserData);
 dfp_read_field_def_Importer(<<18, Rest/binary>>, Z1, Z2,
 			    F@_1, TrUserData) ->
-    d_field_Importer_nego(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Importer(<<26, Rest/binary>>, Z1, Z2,
-			    F@_1, TrUserData) ->
     d_field_Importer_result(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Importer(<<34, Rest/binary>>, Z1, Z2,
+dfp_read_field_def_Importer(<<26, Rest/binary>>, Z1, Z2,
 			    F@_1, TrUserData) ->
     d_field_Importer_info(Rest, Z1, Z2, F@_1, TrUserData);
 dfp_read_field_def_Importer(<<>>, 0, 0, F@_1, _) ->
@@ -4926,10 +4241,8 @@ dg_read_field_def_Importer(<<0:1, X:7, Rest/binary>>, N,
       10 ->
 	  d_field_Importer_ordack(Rest, 0, 0, F@_1, TrUserData);
       18 ->
-	  d_field_Importer_nego(Rest, 0, 0, F@_1, TrUserData);
-      26 ->
 	  d_field_Importer_result(Rest, 0, 0, F@_1, TrUserData);
-      34 ->
+      26 ->
 	  d_field_Importer_info(Rest, 0, 0, F@_1, TrUserData);
       _ ->
 	  case Key band 7 of
@@ -4971,34 +4284,6 @@ d_field_Importer_ordack(<<0:1, X:7, Rest/binary>>, N,
 							      TrUserData)},
 					 TrUserData);
 				  _ -> id({ordack, NewFValue}, TrUserData)
-				end,
-				TrUserData).
-
-d_field_Importer_nego(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Importer_nego(Rest, N + 7, X bsl N + Acc, F@_1,
-			  TrUserData);
-d_field_Importer_nego(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_NegotiationsI(Bs, TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Importer(RestF, 0, 0,
-				case Prev of
-				  undefined ->
-				      id({nego, NewFValue}, TrUserData);
-				  {nego, MVPrev} ->
-				      id({nego,
-					  merge_msg_NegotiationsI(MVPrev,
-								  NewFValue,
-								  TrUserData)},
-					 TrUserData);
-				  _ -> id({nego, NewFValue}, TrUserData)
 				end,
 				TrUserData).
 
@@ -5097,15 +4382,12 @@ decode_msg_Negotiator(Bin, TrUserData) ->
 
 dfp_read_field_def_Negotiator(<<10, Rest/binary>>, Z1,
 			      Z2, F@_1, TrUserData) ->
-    d_field_Negotiator_get(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Negotiator(<<18, Rest/binary>>, Z1,
-			      Z2, F@_1, TrUserData) ->
     d_field_Negotiator_sub(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Negotiator(<<26, Rest/binary>>, Z1,
+dfp_read_field_def_Negotiator(<<18, Rest/binary>>, Z1,
 			      Z2, F@_1, TrUserData) ->
     d_field_Negotiator_order(Rest, Z1, Z2, F@_1,
 			     TrUserData);
-dfp_read_field_def_Negotiator(<<34, Rest/binary>>, Z1,
+dfp_read_field_def_Negotiator(<<26, Rest/binary>>, Z1,
 			      Z2, F@_1, TrUserData) ->
     d_field_Negotiator_disponibility(Rest, Z1, Z2, F@_1,
 				     TrUserData);
@@ -5126,12 +4408,10 @@ dg_read_field_def_Negotiator(<<0:1, X:7, Rest/binary>>,
     Key = X bsl N + Acc,
     case Key of
       10 ->
-	  d_field_Negotiator_get(Rest, 0, 0, F@_1, TrUserData);
-      18 ->
 	  d_field_Negotiator_sub(Rest, 0, 0, F@_1, TrUserData);
-      26 ->
+      18 ->
 	  d_field_Negotiator_order(Rest, 0, 0, F@_1, TrUserData);
-      34 ->
+      26 ->
 	  d_field_Negotiator_disponibility(Rest, 0, 0, F@_1,
 					   TrUserData);
       _ ->
@@ -5150,32 +4430,6 @@ dg_read_field_def_Negotiator(<<0:1, X:7, Rest/binary>>,
     end;
 dg_read_field_def_Negotiator(<<>>, 0, 0, F@_1, _) ->
     #'Negotiator'{msg = F@_1}.
-
-d_field_Negotiator_get(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Negotiator_get(Rest, N + 7, X bsl N + Acc, F@_1,
-			   TrUserData);
-d_field_Negotiator_get(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_GetN(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Negotiator(RestF, 0, 0,
-				  case Prev of
-				    undefined ->
-					id({get, NewFValue}, TrUserData);
-				    {get, MVPrev} ->
-					id({get,
-					    merge_msg_GetN(MVPrev, NewFValue,
-							   TrUserData)},
-					   TrUserData);
-				    _ -> id({get, NewFValue}, TrUserData)
-				  end,
-				  TrUserData).
 
 d_field_Negotiator_sub(<<1:1, X:7, Rest/binary>>, N,
 		       Acc, F@_1, TrUserData)
@@ -5402,12 +4656,6 @@ merge_msgs(Prev, New, MsgName, Opts) ->
       'ResultI' -> merge_msg_ResultI(Prev, New, TrUserData);
       'InfoS' -> merge_msg_InfoS(Prev, New, TrUserData);
       'InfoI' -> merge_msg_InfoI(Prev, New, TrUserData);
-      'GetS' -> merge_msg_GetS(Prev, New, TrUserData);
-      'GetN' -> merge_msg_GetN(Prev, New, TrUserData);
-      'NegotiationsS' ->
-	  merge_msg_NegotiationsS(Prev, New, TrUserData);
-      'NegotiationsI' ->
-	  merge_msg_NegotiationsI(Prev, New, TrUserData);
       'Server' -> merge_msg_Server(Prev, New, TrUserData);
       'Importer' -> merge_msg_Importer(Prev, New, TrUserData);
       'Negotiator' ->
@@ -5564,46 +4812,6 @@ merge_msg_InfoI(#'InfoI'{},
 	     minimun = NFminimun, maximun = NFmaximun,
 	     value = NFvalue, period = NFperiod}.
 
--compile({nowarn_unused_function,merge_msg_GetS/3}).
-merge_msg_GetS(#'GetS'{}, #'GetS'{nameI = NFnameI},
-	       _) ->
-    #'GetS'{nameI = NFnameI}.
-
--compile({nowarn_unused_function,merge_msg_GetN/3}).
-merge_msg_GetN(#'GetN'{}, #'GetN'{nameI = NFnameI},
-	       _) ->
-    #'GetN'{nameI = NFnameI}.
-
--compile({nowarn_unused_function,merge_msg_NegotiationsS/3}).
-merge_msg_NegotiationsS(#'NegotiationsS'{negotiations =
-					     PFnegotiations},
-			#'NegotiationsS'{nameI = NFnameI,
-					 negotiations = NFnegotiations},
-			TrUserData) ->
-    #'NegotiationsS'{nameI = NFnameI,
-		     negotiations =
-			 if PFnegotiations /= undefined,
-			    NFnegotiations /= undefined ->
-				'erlang_++'(PFnegotiations, NFnegotiations,
-					    TrUserData);
-			    PFnegotiations == undefined -> NFnegotiations;
-			    NFnegotiations == undefined -> PFnegotiations
-			 end}.
-
--compile({nowarn_unused_function,merge_msg_NegotiationsI/3}).
-merge_msg_NegotiationsI(#'NegotiationsI'{negotiations =
-					     PFnegotiations},
-			#'NegotiationsI'{negotiations = NFnegotiations},
-			TrUserData) ->
-    #'NegotiationsI'{negotiations =
-			 if PFnegotiations /= undefined,
-			    NFnegotiations /= undefined ->
-				'erlang_++'(PFnegotiations, NFnegotiations,
-					    TrUserData);
-			    PFnegotiations == undefined -> NFnegotiations;
-			    NFnegotiations == undefined -> PFnegotiations
-			 end}.
-
 -compile({nowarn_unused_function,merge_msg_Server/3}).
 merge_msg_Server(#'Server'{msg = PFmsg},
 		 #'Server'{msg = NFmsg}, TrUserData) ->
@@ -5624,13 +4832,6 @@ merge_msg_Server(#'Server'{msg = PFmsg},
 			{m6, merge_msg_ProductionS(OPFmsg, ONFmsg, TrUserData)};
 		    {{m7, OPFmsg}, {m7, ONFmsg}} ->
 			{m7, merge_msg_OrderAckS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m8, OPFmsg}, {m8, ONFmsg}} ->
-			{m8, merge_msg_GetS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m9, OPFmsg}, {m9, ONFmsg}} ->
-			{m9,
-			 merge_msg_NegotiationsS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m10, OPFmsg}, {m10, ONFmsg}} ->
-			{m10, merge_msg_MsgAuth(OPFmsg, ONFmsg, TrUserData)};
 		    {_, undefined} -> PFmsg;
 		    _ -> NFmsg
 		  end}.
@@ -5643,9 +4844,6 @@ merge_msg_Importer(#'Importer'{msg = PFmsg},
 		      {{ordack, OPFmsg}, {ordack, ONFmsg}} ->
 			  {ordack,
 			   merge_msg_OrderAckI(OPFmsg, ONFmsg, TrUserData)};
-		      {{nego, OPFmsg}, {nego, ONFmsg}} ->
-			  {nego,
-			   merge_msg_NegotiationsI(OPFmsg, ONFmsg, TrUserData)};
 		      {{result, OPFmsg}, {result, ONFmsg}} ->
 			  {result,
 			   merge_msg_ResultI(OPFmsg, ONFmsg, TrUserData)};
@@ -5660,8 +4858,6 @@ merge_msg_Negotiator(#'Negotiator'{msg = PFmsg},
 		     #'Negotiator'{msg = NFmsg}, TrUserData) ->
     #'Negotiator'{msg =
 		      case {PFmsg, NFmsg} of
-			{{get, OPFmsg}, {get, ONFmsg}} ->
-			    {get, merge_msg_GetN(OPFmsg, ONFmsg, TrUserData)};
 			{{sub, OPFmsg}, {sub, ONFmsg}} ->
 			    {sub, merge_msg_SubN(OPFmsg, ONFmsg, TrUserData)};
 			{{order, OPFmsg}, {order, ONFmsg}} ->
@@ -5713,12 +4909,6 @@ verify_msg(Msg, MsgName, Opts) ->
       'ResultI' -> v_msg_ResultI(Msg, [MsgName], TrUserData);
       'InfoS' -> v_msg_InfoS(Msg, [MsgName], TrUserData);
       'InfoI' -> v_msg_InfoI(Msg, [MsgName], TrUserData);
-      'GetS' -> v_msg_GetS(Msg, [MsgName], TrUserData);
-      'GetN' -> v_msg_GetN(Msg, [MsgName], TrUserData);
-      'NegotiationsS' ->
-	  v_msg_NegotiationsS(Msg, [MsgName], TrUserData);
-      'NegotiationsI' ->
-	  v_msg_NegotiationsI(Msg, [MsgName], TrUserData);
       'Server' -> v_msg_Server(Msg, [MsgName], TrUserData);
       'Importer' ->
 	  v_msg_Importer(Msg, [MsgName], TrUserData);
@@ -5959,56 +5149,6 @@ v_msg_InfoI(#'InfoI'{nameM = F1, nameP = F2,
 v_msg_InfoI(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'InfoI'}, X, Path).
 
--compile({nowarn_unused_function,v_msg_GetS/3}).
--dialyzer({nowarn_function,v_msg_GetS/3}).
-v_msg_GetS(#'GetS'{nameI = F1}, Path, TrUserData) ->
-    v_type_string(F1, [nameI | Path], TrUserData), ok;
-v_msg_GetS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'GetS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_GetN/3}).
--dialyzer({nowarn_function,v_msg_GetN/3}).
-v_msg_GetN(#'GetN'{nameI = F1}, Path, TrUserData) ->
-    v_type_string(F1, [nameI | Path], TrUserData), ok;
-v_msg_GetN(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'GetN'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_NegotiationsS/3}).
--dialyzer({nowarn_function,v_msg_NegotiationsS/3}).
-v_msg_NegotiationsS(#'NegotiationsS'{nameI = F1,
-				     negotiations = F2},
-		    Path, TrUserData) ->
-    v_type_string(F1, [nameI | Path], TrUserData),
-    if is_list(F2) ->
-	   _ = [v_msg_InfoS(Elem, [negotiations | Path],
-			    TrUserData)
-		|| Elem <- F2],
-	   ok;
-       true ->
-	   mk_type_error({invalid_list_of, {msg, 'InfoS'}}, F2,
-			 [negotiations | Path])
-    end,
-    ok;
-v_msg_NegotiationsS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'NegotiationsS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_NegotiationsI/3}).
--dialyzer({nowarn_function,v_msg_NegotiationsI/3}).
-v_msg_NegotiationsI(#'NegotiationsI'{negotiations = F1},
-		    Path, TrUserData) ->
-    if is_list(F1) ->
-	   _ = [v_msg_InfoI(Elem, [negotiations | Path],
-			    TrUserData)
-		|| Elem <- F1],
-	   ok;
-       true ->
-	   mk_type_error({invalid_list_of, {msg, 'InfoI'}}, F1,
-			 [negotiations | Path])
-    end,
-    ok;
-v_msg_NegotiationsI(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'NegotiationsI'}, X, Path).
-
 -compile({nowarn_unused_function,v_msg_Server/3}).
 -dialyzer({nowarn_function,v_msg_Server/3}).
 v_msg_Server(#'Server'{msg = F1}, Path, TrUserData) ->
@@ -6028,12 +5168,6 @@ v_msg_Server(#'Server'{msg = F1}, Path, TrUserData) ->
 	  v_msg_ProductionS(OF1, [m6, msg | Path], TrUserData);
       {m7, OF1} ->
 	  v_msg_OrderAckS(OF1, [m7, msg | Path], TrUserData);
-      {m8, OF1} ->
-	  v_msg_GetS(OF1, [m8, msg | Path], TrUserData);
-      {m9, OF1} ->
-	  v_msg_NegotiationsS(OF1, [m9, msg | Path], TrUserData);
-      {m10, OF1} ->
-	  v_msg_MsgAuth(OF1, [m10, msg | Path], TrUserData);
       _ -> mk_type_error(invalid_oneof, F1, [msg | Path])
     end,
     ok;
@@ -6048,9 +5182,6 @@ v_msg_Importer(#'Importer'{msg = F1}, Path,
       undefined -> ok;
       {ordack, OF1} ->
 	  v_msg_OrderAckI(OF1, [ordack, msg | Path], TrUserData);
-      {nego, OF1} ->
-	  v_msg_NegotiationsI(OF1, [nego, msg | Path],
-			      TrUserData);
       {result, OF1} ->
 	  v_msg_ResultI(OF1, [result, msg | Path], TrUserData);
       {info, OF1} ->
@@ -6067,8 +5198,6 @@ v_msg_Negotiator(#'Negotiator'{msg = F1}, Path,
 		 TrUserData) ->
     case F1 of
       undefined -> ok;
-      {get, OF1} ->
-	  v_msg_GetN(OF1, [get, msg | Path], TrUserData);
       {sub, OF1} ->
 	  v_msg_SubN(OF1, [sub, msg | Path], TrUserData);
       {order, OF1} ->
@@ -6364,22 +5493,6 @@ get_msg_defs() ->
 	      occurrence = required, opts = []},
        #field{name = period, fnum = 6, rnum = 7, type = int32,
 	      occurrence = required, opts = []}]},
-     {{msg, 'GetS'},
-      [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []}]},
-     {{msg, 'GetN'},
-      [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []}]},
-     {{msg, 'NegotiationsS'},
-      [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = negotiations, fnum = 2, rnum = 3,
-	      type = {msg, 'InfoS'}, occurrence = repeated,
-	      opts = []}]},
-     {{msg, 'NegotiationsI'},
-      [#field{name = negotiations, fnum = 1, rnum = 2,
-	      type = {msg, 'InfoI'}, occurrence = repeated,
-	      opts = []}]},
      {{msg, 'Server'},
       [#gpb_oneof{name = msg, rnum = 2,
 		  fields =
@@ -6403,15 +5516,6 @@ get_msg_defs() ->
 			      occurrence = optional, opts = []},
 		       #field{name = m7, fnum = 7, rnum = 2,
 			      type = {msg, 'OrderAckS'}, occurrence = optional,
-			      opts = []},
-		       #field{name = m8, fnum = 8, rnum = 2,
-			      type = {msg, 'GetS'}, occurrence = optional,
-			      opts = []},
-		       #field{name = m9, fnum = 9, rnum = 2,
-			      type = {msg, 'NegotiationsS'},
-			      occurrence = optional, opts = []},
-		       #field{name = m10, fnum = 10, rnum = 2,
-			      type = {msg, 'MsgAuth'}, occurrence = optional,
 			      opts = []}]}]},
      {{msg, 'Importer'},
       [#gpb_oneof{name = msg, rnum = 2,
@@ -6419,28 +5523,22 @@ get_msg_defs() ->
 		      [#field{name = ordack, fnum = 1, rnum = 2,
 			      type = {msg, 'OrderAckI'}, occurrence = optional,
 			      opts = []},
-		       #field{name = nego, fnum = 2, rnum = 2,
-			      type = {msg, 'NegotiationsI'},
-			      occurrence = optional, opts = []},
-		       #field{name = result, fnum = 3, rnum = 2,
+		       #field{name = result, fnum = 2, rnum = 2,
 			      type = {msg, 'ResultI'}, occurrence = optional,
 			      opts = []},
-		       #field{name = info, fnum = 4, rnum = 2,
+		       #field{name = info, fnum = 3, rnum = 2,
 			      type = {msg, 'InfoI'}, occurrence = optional,
 			      opts = []}]}]},
      {{msg, 'Negotiator'},
       [#gpb_oneof{name = msg, rnum = 2,
 		  fields =
-		      [#field{name = get, fnum = 1, rnum = 2,
-			      type = {msg, 'GetN'}, occurrence = optional,
-			      opts = []},
-		       #field{name = sub, fnum = 2, rnum = 2,
+		      [#field{name = sub, fnum = 1, rnum = 2,
 			      type = {msg, 'SubN'}, occurrence = optional,
 			      opts = []},
-		       #field{name = order, fnum = 3, rnum = 2,
+		       #field{name = order, fnum = 2, rnum = 2,
 			      type = {msg, 'OrderN'}, occurrence = optional,
 			      opts = []},
-		       #field{name = disponibility, fnum = 4, rnum = 2,
+		       #field{name = disponibility, fnum = 3, rnum = 2,
 			      type = {msg, 'DisponibilityN'},
 			      occurrence = optional, opts = []}]}]}].
 
@@ -6450,7 +5548,6 @@ get_msg_names() ->
      'DisponibilityN', 'OrderS', 'OrderN', 'OrderAckS',
      'OrderAckI', 'SubS', 'SubN', 'ProductionS',
      'ProductionM', 'ResultS', 'ResultI', 'InfoS', 'InfoI',
-     'GetS', 'GetN', 'NegotiationsS', 'NegotiationsI',
      'Server', 'Importer', 'Negotiator'].
 
 
@@ -6462,7 +5559,6 @@ get_msg_or_group_names() ->
      'DisponibilityN', 'OrderS', 'OrderN', 'OrderAckS',
      'OrderAckI', 'SubS', 'SubN', 'ProductionS',
      'ProductionM', 'ResultS', 'ResultI', 'InfoS', 'InfoI',
-     'GetS', 'GetN', 'NegotiationsS', 'NegotiationsI',
      'Server', 'Importer', 'Negotiator'].
 
 
@@ -6630,22 +5726,6 @@ find_msg_def('InfoI') ->
 	    occurrence = required, opts = []},
      #field{name = period, fnum = 6, rnum = 7, type = int32,
 	    occurrence = required, opts = []}];
-find_msg_def('GetS') ->
-    [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []}];
-find_msg_def('GetN') ->
-    [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []}];
-find_msg_def('NegotiationsS') ->
-    [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = negotiations, fnum = 2, rnum = 3,
-	    type = {msg, 'InfoS'}, occurrence = repeated,
-	    opts = []}];
-find_msg_def('NegotiationsI') ->
-    [#field{name = negotiations, fnum = 1, rnum = 2,
-	    type = {msg, 'InfoI'}, occurrence = repeated,
-	    opts = []}];
 find_msg_def('Server') ->
     [#gpb_oneof{name = msg, rnum = 2,
 		fields =
@@ -6669,15 +5749,6 @@ find_msg_def('Server') ->
 			    opts = []},
 		     #field{name = m7, fnum = 7, rnum = 2,
 			    type = {msg, 'OrderAckS'}, occurrence = optional,
-			    opts = []},
-		     #field{name = m8, fnum = 8, rnum = 2,
-			    type = {msg, 'GetS'}, occurrence = optional,
-			    opts = []},
-		     #field{name = m9, fnum = 9, rnum = 2,
-			    type = {msg, 'NegotiationsS'},
-			    occurrence = optional, opts = []},
-		     #field{name = m10, fnum = 10, rnum = 2,
-			    type = {msg, 'MsgAuth'}, occurrence = optional,
 			    opts = []}]}];
 find_msg_def('Importer') ->
     [#gpb_oneof{name = msg, rnum = 2,
@@ -6685,28 +5756,22 @@ find_msg_def('Importer') ->
 		    [#field{name = ordack, fnum = 1, rnum = 2,
 			    type = {msg, 'OrderAckI'}, occurrence = optional,
 			    opts = []},
-		     #field{name = nego, fnum = 2, rnum = 2,
-			    type = {msg, 'NegotiationsI'},
-			    occurrence = optional, opts = []},
-		     #field{name = result, fnum = 3, rnum = 2,
+		     #field{name = result, fnum = 2, rnum = 2,
 			    type = {msg, 'ResultI'}, occurrence = optional,
 			    opts = []},
-		     #field{name = info, fnum = 4, rnum = 2,
+		     #field{name = info, fnum = 3, rnum = 2,
 			    type = {msg, 'InfoI'}, occurrence = optional,
 			    opts = []}]}];
 find_msg_def('Negotiator') ->
     [#gpb_oneof{name = msg, rnum = 2,
 		fields =
-		    [#field{name = get, fnum = 1, rnum = 2,
-			    type = {msg, 'GetN'}, occurrence = optional,
-			    opts = []},
-		     #field{name = sub, fnum = 2, rnum = 2,
+		    [#field{name = sub, fnum = 1, rnum = 2,
 			    type = {msg, 'SubN'}, occurrence = optional,
 			    opts = []},
-		     #field{name = order, fnum = 3, rnum = 2,
+		     #field{name = order, fnum = 2, rnum = 2,
 			    type = {msg, 'OrderN'}, occurrence = optional,
 			    opts = []},
-		     #field{name = disponibility, fnum = 4, rnum = 2,
+		     #field{name = disponibility, fnum = 3, rnum = 2,
 			    type = {msg, 'DisponibilityN'},
 			    occurrence = optional, opts = []}]}];
 find_msg_def(_) -> error.
@@ -6814,10 +5879,6 @@ fqbin_to_msg_name(<<"nefit.ResultS">>) -> 'ResultS';
 fqbin_to_msg_name(<<"nefit.ResultI">>) -> 'ResultI';
 fqbin_to_msg_name(<<"nefit.InfoS">>) -> 'InfoS';
 fqbin_to_msg_name(<<"nefit.InfoI">>) -> 'InfoI';
-fqbin_to_msg_name(<<"nefit.GetS">>) -> 'GetS';
-fqbin_to_msg_name(<<"nefit.GetN">>) -> 'GetN';
-fqbin_to_msg_name(<<"nefit.NegotiationsS">>) -> 'NegotiationsS';
-fqbin_to_msg_name(<<"nefit.NegotiationsI">>) -> 'NegotiationsI';
 fqbin_to_msg_name(<<"nefit.Server">>) -> 'Server';
 fqbin_to_msg_name(<<"nefit.Importer">>) -> 'Importer';
 fqbin_to_msg_name(<<"nefit.Negotiator">>) -> 'Negotiator';
@@ -6840,10 +5901,6 @@ msg_name_to_fqbin('ResultS') -> <<"nefit.ResultS">>;
 msg_name_to_fqbin('ResultI') -> <<"nefit.ResultI">>;
 msg_name_to_fqbin('InfoS') -> <<"nefit.InfoS">>;
 msg_name_to_fqbin('InfoI') -> <<"nefit.InfoI">>;
-msg_name_to_fqbin('GetS') -> <<"nefit.GetS">>;
-msg_name_to_fqbin('GetN') -> <<"nefit.GetN">>;
-msg_name_to_fqbin('NegotiationsS') -> <<"nefit.NegotiationsS">>;
-msg_name_to_fqbin('NegotiationsI') -> <<"nefit.NegotiationsI">>;
 msg_name_to_fqbin('Server') -> <<"nefit.Server">>;
 msg_name_to_fqbin('Importer') -> <<"nefit.Importer">>;
 msg_name_to_fqbin('Negotiator') -> <<"nefit.Negotiator">>;
@@ -6890,9 +5947,8 @@ get_all_proto_names() -> ["nefit"].
 
 
 get_msg_containment("nefit") ->
-    ['DisponibilityN', 'DisponibilityS', 'GetN', 'GetS',
-     'Importer', 'InfoI', 'InfoS', 'MsgAck', 'MsgAuth',
-     'NegotiationsI', 'NegotiationsS', 'Negotiator',
+    ['DisponibilityN', 'DisponibilityS', 'Importer',
+     'InfoI', 'InfoS', 'MsgAck', 'MsgAuth', 'Negotiator',
      'OrderAckI', 'OrderAckS', 'OrderN', 'OrderS',
      'ProductionM', 'ProductionS', 'ResultI', 'ResultS',
      'Server', 'SubN', 'SubS'];
@@ -6929,20 +5985,16 @@ get_proto_by_msg_name_as_fqbin(<<"nefit.ResultS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ProductionS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.OrderS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.OrderAckS">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.NegotiationsS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.InfoS">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.GetS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.DisponibilityS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.MsgAuth">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ResultI">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.OrderAckI">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.NegotiationsI">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.InfoI">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.MsgAck">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ProductionM">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.SubN">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.OrderN">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.GetN">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.DisponibilityN">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(E) ->
     error({gpb_error, {badmsg, E}}).

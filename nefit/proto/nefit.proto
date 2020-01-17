@@ -130,23 +130,6 @@ message InfoI {
     required int32 period = 6;
 }
 
-message GetS {
-    required string nameI = 1;
-}
-
-message GetN {
-    required string nameI = 1;
-}
-
-message NegotiationsS {
-    required string nameI = 1;
-    repeated InfoS negotiations = 2;
-}
-
-message NegotiationsI {
-    repeated InfoI negotiations = 1;
-}
-
 message Server {
     oneof msg {
         DisponibilityS m1 = 1;
@@ -156,27 +139,22 @@ message Server {
         InfoS m5 = 5;
         ProductionS m6 = 6;
         OrderAckS m7 = 7;
-        GetS m8 = 8;
-        NegotiationsS m9 = 9;
-        MsgAuth m10 = 10;
     }
 }
 
 message Importer {
     oneof msg {
         OrderAckI ordack = 1;
-        NegotiationsI nego = 2;
-        ResultI result = 3;
-        InfoI info = 4;
+        ResultI result = 2;
+        InfoI info = 3;
     }
 }
 
 message Negotiator {
     oneof msg {
-        GetN get = 1;
-        SubN sub = 2;
-        OrderN order = 3;
-        DisponibilityN disponibility = 4;
+        SubN sub = 1;
+        OrderN order = 2;
+        DisponibilityN disponibility = 3;
     }
 }
 

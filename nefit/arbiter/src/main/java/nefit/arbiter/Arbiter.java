@@ -92,10 +92,10 @@ public class Arbiter implements Runnable
                     executeOrder(negotiator.getOrder());
                 }
 
-                if(negotiator.hasGet())
+                /*if(negotiator.hasGet())
                 {
                     executeGet(negotiator.getGet());
-                }
+                }*/
 
                 if(negotiator.hasSub())
                 {
@@ -167,7 +167,7 @@ public class Arbiter implements Runnable
             this.socket.send(this.messages.createOrderAckS(false,"The Manufacturer doesn't exist or doesn't has this product",order.getNameI(),false).toByteArray(),0);
     }
 
-    private void executeGet(NefitProtos.GetN get)
+    /*private void executeGet(NefitProtos.GetN get)
     {
         List<NefitProtos.InfoS> res = new ArrayList<>();
         for(Map.Entry<Pair<String,String>,Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN>> entry: this.negotiations.entrySet()) {
@@ -186,7 +186,7 @@ public class Arbiter implements Runnable
                     );
         }
         this.socket.send(this.messages.createNegotiationsS(get.getNameI(),res).toByteArray(),0);
-    }
+    }*/
 
     private void executeSub(NefitProtos.SubN sub)
     {

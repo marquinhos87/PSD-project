@@ -76,7 +76,7 @@ public class Client
                 }
                 else
                 {
-                    prompt.printError("Manufactor/Importer yet registered, trying Login");
+                    prompt.printError("Manufacturer/Importer yet registered, trying Login");
                     if(!Login(arg.getValue(),messages,is,os))
                     {
                         prompt.printError("Something went wrong, shutting down");

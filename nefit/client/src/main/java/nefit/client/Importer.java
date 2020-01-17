@@ -47,9 +47,9 @@ public class Importer implements Runnable
                             sendSub(fields);
                             break;
 
-                        case "get":
+                        /*case "get":
                             sendGet(fields);
-                            break;
+                            break;*/
 
                         case "order":
                             sendOrder(fields);
@@ -85,7 +85,7 @@ public class Importer implements Runnable
         }
     }
 
-    private void sendGet(String[] fields) throws IOException
+    /*private void sendGet(String[] fields) throws IOException
     {
         if (fields.length != 1)
         {
@@ -96,7 +96,7 @@ public class Importer implements Runnable
             NefitProtos.GetS get = this.messages.createGetS(this.name);
             get.writeDelimitedTo(this.os);
         }
-    }
+    }*/
 
     private void sendOrder(String[] fields) throws IOException
     {
@@ -140,8 +140,8 @@ public class Importer implements Runnable
                 if(importer.hasOrdack())
                     printOrderAck(importer.getOrdack());
 
-                if (importer.hasNego())
-                    printNegotiations(importer.getNego());
+                //if (importer.hasNego())
+                    //printNegotiations(importer.getNego());
 
             }
             catch (IOException e)
@@ -191,13 +191,13 @@ public class Importer implements Runnable
         }
     }
 
-    private void printNegotiations(NefitProtos.NegotiationsI negotiation)
+    /*private void printNegotiations(NefitProtos.NegotiationsI negotiation)
     {
         for (NefitProtos.InfoI info : negotiation.getNegotiationsList()) {
             this.prompt.printMessages("Product available:");
             this.prompt.printMessages(printInfo(info));
         }
-    }
+    }*/
 
     private String printCommands()
     {

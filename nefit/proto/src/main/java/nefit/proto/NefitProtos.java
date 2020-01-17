@@ -16210,3013 +16210,6 @@ public final class NefitProtos {
 
   }
 
-  public interface GetSOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.GetS)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return Whether the nameI field is set.
-     */
-    boolean hasNameI();
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The nameI.
-     */
-    java.lang.String getNameI();
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The bytes for nameI.
-     */
-    com.google.protobuf.ByteString
-        getNameIBytes();
-  }
-  /**
-   * Protobuf type {@code nefit.GetS}
-   */
-  public  static final class GetS extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.GetS)
-      GetSOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GetS.newBuilder() to construct.
-    private GetS(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GetS() {
-      nameI_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GetS();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GetS(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              nameI_ = bs;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return nefit.proto.NefitProtos.internal_static_nefit_GetS_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return nefit.proto.NefitProtos.internal_static_nefit_GetS_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              nefit.proto.NefitProtos.GetS.class, nefit.proto.NefitProtos.GetS.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int NAMEI_FIELD_NUMBER = 1;
-    private volatile java.lang.Object nameI_;
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return Whether the nameI field is set.
-     */
-    public boolean hasNameI() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The nameI.
-     */
-    public java.lang.String getNameI() {
-      java.lang.Object ref = nameI_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          nameI_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The bytes for nameI.
-     */
-    public com.google.protobuf.ByteString
-        getNameIBytes() {
-      java.lang.Object ref = nameI_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        nameI_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasNameI()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nameI_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nameI_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof nefit.proto.NefitProtos.GetS)) {
-        return super.equals(obj);
-      }
-      nefit.proto.NefitProtos.GetS other = (nefit.proto.NefitProtos.GetS) obj;
-
-      if (hasNameI() != other.hasNameI()) return false;
-      if (hasNameI()) {
-        if (!getNameI()
-            .equals(other.getNameI())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasNameI()) {
-        hash = (37 * hash) + NAMEI_FIELD_NUMBER;
-        hash = (53 * hash) + getNameI().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetS parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.GetS parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.GetS parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(nefit.proto.NefitProtos.GetS prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code nefit.GetS}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.GetS)
-        nefit.proto.NefitProtos.GetSOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return nefit.proto.NefitProtos.internal_static_nefit_GetS_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return nefit.proto.NefitProtos.internal_static_nefit_GetS_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                nefit.proto.NefitProtos.GetS.class, nefit.proto.NefitProtos.GetS.Builder.class);
-      }
-
-      // Construct using nefit.proto.NefitProtos.GetS.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        nameI_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return nefit.proto.NefitProtos.internal_static_nefit_GetS_descriptor;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.GetS getDefaultInstanceForType() {
-        return nefit.proto.NefitProtos.GetS.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.GetS build() {
-        nefit.proto.NefitProtos.GetS result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.GetS buildPartial() {
-        nefit.proto.NefitProtos.GetS result = new nefit.proto.NefitProtos.GetS(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.nameI_ = nameI_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.proto.NefitProtos.GetS) {
-          return mergeFrom((nefit.proto.NefitProtos.GetS)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(nefit.proto.NefitProtos.GetS other) {
-        if (other == nefit.proto.NefitProtos.GetS.getDefaultInstance()) return this;
-        if (other.hasNameI()) {
-          bitField0_ |= 0x00000001;
-          nameI_ = other.nameI_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasNameI()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        nefit.proto.NefitProtos.GetS parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.proto.NefitProtos.GetS) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.lang.Object nameI_ = "";
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return Whether the nameI field is set.
-       */
-      public boolean hasNameI() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return The nameI.
-       */
-      public java.lang.String getNameI() {
-        java.lang.Object ref = nameI_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            nameI_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return The bytes for nameI.
-       */
-      public com.google.protobuf.ByteString
-          getNameIBytes() {
-        java.lang.Object ref = nameI_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          nameI_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @param value The nameI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameI(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        nameI_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNameI() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        nameI_ = getDefaultInstance().getNameI();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @param value The bytes for nameI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameIBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        nameI_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:nefit.GetS)
-    }
-
-    // @@protoc_insertion_point(class_scope:nefit.GetS)
-    private static final nefit.proto.NefitProtos.GetS DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.GetS();
-    }
-
-    public static nefit.proto.NefitProtos.GetS getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<GetS>
-        PARSER = new com.google.protobuf.AbstractParser<GetS>() {
-      @java.lang.Override
-      public GetS parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetS(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GetS> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GetS> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public nefit.proto.NefitProtos.GetS getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GetNOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.GetN)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return Whether the nameI field is set.
-     */
-    boolean hasNameI();
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The nameI.
-     */
-    java.lang.String getNameI();
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The bytes for nameI.
-     */
-    com.google.protobuf.ByteString
-        getNameIBytes();
-  }
-  /**
-   * Protobuf type {@code nefit.GetN}
-   */
-  public  static final class GetN extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.GetN)
-      GetNOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GetN.newBuilder() to construct.
-    private GetN(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GetN() {
-      nameI_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GetN();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GetN(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              nameI_ = bs;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return nefit.proto.NefitProtos.internal_static_nefit_GetN_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return nefit.proto.NefitProtos.internal_static_nefit_GetN_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              nefit.proto.NefitProtos.GetN.class, nefit.proto.NefitProtos.GetN.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int NAMEI_FIELD_NUMBER = 1;
-    private volatile java.lang.Object nameI_;
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return Whether the nameI field is set.
-     */
-    public boolean hasNameI() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The nameI.
-     */
-    public java.lang.String getNameI() {
-      java.lang.Object ref = nameI_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          nameI_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The bytes for nameI.
-     */
-    public com.google.protobuf.ByteString
-        getNameIBytes() {
-      java.lang.Object ref = nameI_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        nameI_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasNameI()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nameI_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nameI_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof nefit.proto.NefitProtos.GetN)) {
-        return super.equals(obj);
-      }
-      nefit.proto.NefitProtos.GetN other = (nefit.proto.NefitProtos.GetN) obj;
-
-      if (hasNameI() != other.hasNameI()) return false;
-      if (hasNameI()) {
-        if (!getNameI()
-            .equals(other.getNameI())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasNameI()) {
-        hash = (37 * hash) + NAMEI_FIELD_NUMBER;
-        hash = (53 * hash) + getNameI().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetN parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.GetN parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.GetN parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(nefit.proto.NefitProtos.GetN prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code nefit.GetN}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.GetN)
-        nefit.proto.NefitProtos.GetNOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return nefit.proto.NefitProtos.internal_static_nefit_GetN_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return nefit.proto.NefitProtos.internal_static_nefit_GetN_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                nefit.proto.NefitProtos.GetN.class, nefit.proto.NefitProtos.GetN.Builder.class);
-      }
-
-      // Construct using nefit.proto.NefitProtos.GetN.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        nameI_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return nefit.proto.NefitProtos.internal_static_nefit_GetN_descriptor;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.GetN getDefaultInstanceForType() {
-        return nefit.proto.NefitProtos.GetN.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.GetN build() {
-        nefit.proto.NefitProtos.GetN result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.GetN buildPartial() {
-        nefit.proto.NefitProtos.GetN result = new nefit.proto.NefitProtos.GetN(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.nameI_ = nameI_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.proto.NefitProtos.GetN) {
-          return mergeFrom((nefit.proto.NefitProtos.GetN)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(nefit.proto.NefitProtos.GetN other) {
-        if (other == nefit.proto.NefitProtos.GetN.getDefaultInstance()) return this;
-        if (other.hasNameI()) {
-          bitField0_ |= 0x00000001;
-          nameI_ = other.nameI_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasNameI()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        nefit.proto.NefitProtos.GetN parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.proto.NefitProtos.GetN) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.lang.Object nameI_ = "";
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return Whether the nameI field is set.
-       */
-      public boolean hasNameI() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return The nameI.
-       */
-      public java.lang.String getNameI() {
-        java.lang.Object ref = nameI_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            nameI_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return The bytes for nameI.
-       */
-      public com.google.protobuf.ByteString
-          getNameIBytes() {
-        java.lang.Object ref = nameI_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          nameI_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @param value The nameI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameI(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        nameI_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNameI() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        nameI_ = getDefaultInstance().getNameI();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @param value The bytes for nameI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameIBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        nameI_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:nefit.GetN)
-    }
-
-    // @@protoc_insertion_point(class_scope:nefit.GetN)
-    private static final nefit.proto.NefitProtos.GetN DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.GetN();
-    }
-
-    public static nefit.proto.NefitProtos.GetN getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<GetN>
-        PARSER = new com.google.protobuf.AbstractParser<GetN>() {
-      @java.lang.Override
-      public GetN parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetN(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GetN> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GetN> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public nefit.proto.NefitProtos.GetN getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NegotiationsSOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.NegotiationsS)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return Whether the nameI field is set.
-     */
-    boolean hasNameI();
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The nameI.
-     */
-    java.lang.String getNameI();
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The bytes for nameI.
-     */
-    com.google.protobuf.ByteString
-        getNameIBytes();
-
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    java.util.List<nefit.proto.NefitProtos.InfoS> 
-        getNegotiationsList();
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    nefit.proto.NefitProtos.InfoS getNegotiations(int index);
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    int getNegotiationsCount();
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    java.util.List<? extends nefit.proto.NefitProtos.InfoSOrBuilder> 
-        getNegotiationsOrBuilderList();
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    nefit.proto.NefitProtos.InfoSOrBuilder getNegotiationsOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code nefit.NegotiationsS}
-   */
-  public  static final class NegotiationsS extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.NegotiationsS)
-      NegotiationsSOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NegotiationsS.newBuilder() to construct.
-    private NegotiationsS(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NegotiationsS() {
-      nameI_ = "";
-      negotiations_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NegotiationsS();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private NegotiationsS(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              nameI_ = bs;
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoS>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              negotiations_.add(
-                  input.readMessage(nefit.proto.NefitProtos.InfoS.PARSER, extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          negotiations_ = java.util.Collections.unmodifiableList(negotiations_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsS_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsS_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              nefit.proto.NefitProtos.NegotiationsS.class, nefit.proto.NefitProtos.NegotiationsS.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int NAMEI_FIELD_NUMBER = 1;
-    private volatile java.lang.Object nameI_;
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return Whether the nameI field is set.
-     */
-    public boolean hasNameI() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The nameI.
-     */
-    public java.lang.String getNameI() {
-      java.lang.Object ref = nameI_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          nameI_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string nameI = 1;</code>
-     * @return The bytes for nameI.
-     */
-    public com.google.protobuf.ByteString
-        getNameIBytes() {
-      java.lang.Object ref = nameI_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        nameI_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int NEGOTIATIONS_FIELD_NUMBER = 2;
-    private java.util.List<nefit.proto.NefitProtos.InfoS> negotiations_;
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    public java.util.List<nefit.proto.NefitProtos.InfoS> getNegotiationsList() {
-      return negotiations_;
-    }
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    public java.util.List<? extends nefit.proto.NefitProtos.InfoSOrBuilder> 
-        getNegotiationsOrBuilderList() {
-      return negotiations_;
-    }
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    public int getNegotiationsCount() {
-      return negotiations_.size();
-    }
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    public nefit.proto.NefitProtos.InfoS getNegotiations(int index) {
-      return negotiations_.get(index);
-    }
-    /**
-     * <code>repeated .nefit.InfoS negotiations = 2;</code>
-     */
-    public nefit.proto.NefitProtos.InfoSOrBuilder getNegotiationsOrBuilder(
-        int index) {
-      return negotiations_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasNameI()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getNegotiationsCount(); i++) {
-        if (!getNegotiations(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nameI_);
-      }
-      for (int i = 0; i < negotiations_.size(); i++) {
-        output.writeMessage(2, negotiations_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nameI_);
-      }
-      for (int i = 0; i < negotiations_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, negotiations_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof nefit.proto.NefitProtos.NegotiationsS)) {
-        return super.equals(obj);
-      }
-      nefit.proto.NefitProtos.NegotiationsS other = (nefit.proto.NefitProtos.NegotiationsS) obj;
-
-      if (hasNameI() != other.hasNameI()) return false;
-      if (hasNameI()) {
-        if (!getNameI()
-            .equals(other.getNameI())) return false;
-      }
-      if (!getNegotiationsList()
-          .equals(other.getNegotiationsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasNameI()) {
-        hash = (37 * hash) + NAMEI_FIELD_NUMBER;
-        hash = (53 * hash) + getNameI().hashCode();
-      }
-      if (getNegotiationsCount() > 0) {
-        hash = (37 * hash) + NEGOTIATIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getNegotiationsList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsS parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(nefit.proto.NefitProtos.NegotiationsS prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code nefit.NegotiationsS}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.NegotiationsS)
-        nefit.proto.NefitProtos.NegotiationsSOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsS_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsS_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                nefit.proto.NefitProtos.NegotiationsS.class, nefit.proto.NefitProtos.NegotiationsS.Builder.class);
-      }
-
-      // Construct using nefit.proto.NefitProtos.NegotiationsS.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getNegotiationsFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        nameI_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (negotiationsBuilder_ == null) {
-          negotiations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          negotiationsBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsS_descriptor;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.NegotiationsS getDefaultInstanceForType() {
-        return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.NegotiationsS build() {
-        nefit.proto.NefitProtos.NegotiationsS result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.NegotiationsS buildPartial() {
-        nefit.proto.NefitProtos.NegotiationsS result = new nefit.proto.NefitProtos.NegotiationsS(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.nameI_ = nameI_;
-        if (negotiationsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
-            negotiations_ = java.util.Collections.unmodifiableList(negotiations_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.negotiations_ = negotiations_;
-        } else {
-          result.negotiations_ = negotiationsBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.proto.NefitProtos.NegotiationsS) {
-          return mergeFrom((nefit.proto.NefitProtos.NegotiationsS)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(nefit.proto.NefitProtos.NegotiationsS other) {
-        if (other == nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance()) return this;
-        if (other.hasNameI()) {
-          bitField0_ |= 0x00000001;
-          nameI_ = other.nameI_;
-          onChanged();
-        }
-        if (negotiationsBuilder_ == null) {
-          if (!other.negotiations_.isEmpty()) {
-            if (negotiations_.isEmpty()) {
-              negotiations_ = other.negotiations_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureNegotiationsIsMutable();
-              negotiations_.addAll(other.negotiations_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.negotiations_.isEmpty()) {
-            if (negotiationsBuilder_.isEmpty()) {
-              negotiationsBuilder_.dispose();
-              negotiationsBuilder_ = null;
-              negotiations_ = other.negotiations_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              negotiationsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getNegotiationsFieldBuilder() : null;
-            } else {
-              negotiationsBuilder_.addAllMessages(other.negotiations_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasNameI()) {
-          return false;
-        }
-        for (int i = 0; i < getNegotiationsCount(); i++) {
-          if (!getNegotiations(i).isInitialized()) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        nefit.proto.NefitProtos.NegotiationsS parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.proto.NefitProtos.NegotiationsS) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.lang.Object nameI_ = "";
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return Whether the nameI field is set.
-       */
-      public boolean hasNameI() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return The nameI.
-       */
-      public java.lang.String getNameI() {
-        java.lang.Object ref = nameI_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            nameI_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return The bytes for nameI.
-       */
-      public com.google.protobuf.ByteString
-          getNameIBytes() {
-        java.lang.Object ref = nameI_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          nameI_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @param value The nameI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameI(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        nameI_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNameI() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        nameI_ = getDefaultInstance().getNameI();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string nameI = 1;</code>
-       * @param value The bytes for nameI to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameIBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        nameI_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<nefit.proto.NefitProtos.InfoS> negotiations_ =
-        java.util.Collections.emptyList();
-      private void ensureNegotiationsIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoS>(negotiations_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> negotiationsBuilder_;
-
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public java.util.List<nefit.proto.NefitProtos.InfoS> getNegotiationsList() {
-        if (negotiationsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(negotiations_);
-        } else {
-          return negotiationsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public int getNegotiationsCount() {
-        if (negotiationsBuilder_ == null) {
-          return negotiations_.size();
-        } else {
-          return negotiationsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public nefit.proto.NefitProtos.InfoS getNegotiations(int index) {
-        if (negotiationsBuilder_ == null) {
-          return negotiations_.get(index);
-        } else {
-          return negotiationsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder setNegotiations(
-          int index, nefit.proto.NefitProtos.InfoS value) {
-        if (negotiationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNegotiationsIsMutable();
-          negotiations_.set(index, value);
-          onChanged();
-        } else {
-          negotiationsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder setNegotiations(
-          int index, nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          negotiationsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder addNegotiations(nefit.proto.NefitProtos.InfoS value) {
-        if (negotiationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNegotiationsIsMutable();
-          negotiations_.add(value);
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder addNegotiations(
-          int index, nefit.proto.NefitProtos.InfoS value) {
-        if (negotiationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNegotiationsIsMutable();
-          negotiations_.add(index, value);
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder addNegotiations(
-          nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.add(builderForValue.build());
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder addNegotiations(
-          int index, nefit.proto.NefitProtos.InfoS.Builder builderForValue) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder addAllNegotiations(
-          java.lang.Iterable<? extends nefit.proto.NefitProtos.InfoS> values) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, negotiations_);
-          onChanged();
-        } else {
-          negotiationsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder clearNegotiations() {
-        if (negotiationsBuilder_ == null) {
-          negotiations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          negotiationsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public Builder removeNegotiations(int index) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.remove(index);
-          onChanged();
-        } else {
-          negotiationsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public nefit.proto.NefitProtos.InfoS.Builder getNegotiationsBuilder(
-          int index) {
-        return getNegotiationsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public nefit.proto.NefitProtos.InfoSOrBuilder getNegotiationsOrBuilder(
-          int index) {
-        if (negotiationsBuilder_ == null) {
-          return negotiations_.get(index);  } else {
-          return negotiationsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public java.util.List<? extends nefit.proto.NefitProtos.InfoSOrBuilder> 
-           getNegotiationsOrBuilderList() {
-        if (negotiationsBuilder_ != null) {
-          return negotiationsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(negotiations_);
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public nefit.proto.NefitProtos.InfoS.Builder addNegotiationsBuilder() {
-        return getNegotiationsFieldBuilder().addBuilder(
-            nefit.proto.NefitProtos.InfoS.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public nefit.proto.NefitProtos.InfoS.Builder addNegotiationsBuilder(
-          int index) {
-        return getNegotiationsFieldBuilder().addBuilder(
-            index, nefit.proto.NefitProtos.InfoS.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .nefit.InfoS negotiations = 2;</code>
-       */
-      public java.util.List<nefit.proto.NefitProtos.InfoS.Builder> 
-           getNegotiationsBuilderList() {
-        return getNegotiationsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder> 
-          getNegotiationsFieldBuilder() {
-        if (negotiationsBuilder_ == null) {
-          negotiationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              nefit.proto.NefitProtos.InfoS, nefit.proto.NefitProtos.InfoS.Builder, nefit.proto.NefitProtos.InfoSOrBuilder>(
-                  negotiations_,
-                  ((bitField0_ & 0x00000002) != 0),
-                  getParentForChildren(),
-                  isClean());
-          negotiations_ = null;
-        }
-        return negotiationsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:nefit.NegotiationsS)
-    }
-
-    // @@protoc_insertion_point(class_scope:nefit.NegotiationsS)
-    private static final nefit.proto.NefitProtos.NegotiationsS DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.NegotiationsS();
-    }
-
-    public static nefit.proto.NefitProtos.NegotiationsS getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NegotiationsS>
-        PARSER = new com.google.protobuf.AbstractParser<NegotiationsS>() {
-      @java.lang.Override
-      public NegotiationsS parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new NegotiationsS(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<NegotiationsS> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NegotiationsS> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public nefit.proto.NefitProtos.NegotiationsS getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NegotiationsIOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.NegotiationsI)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    java.util.List<nefit.proto.NefitProtos.InfoI> 
-        getNegotiationsList();
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    nefit.proto.NefitProtos.InfoI getNegotiations(int index);
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    int getNegotiationsCount();
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    java.util.List<? extends nefit.proto.NefitProtos.InfoIOrBuilder> 
-        getNegotiationsOrBuilderList();
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    nefit.proto.NefitProtos.InfoIOrBuilder getNegotiationsOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code nefit.NegotiationsI}
-   */
-  public  static final class NegotiationsI extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.NegotiationsI)
-      NegotiationsIOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NegotiationsI.newBuilder() to construct.
-    private NegotiationsI(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NegotiationsI() {
-      negotiations_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NegotiationsI();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private NegotiationsI(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoI>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              negotiations_.add(
-                  input.readMessage(nefit.proto.NefitProtos.InfoI.PARSER, extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          negotiations_ = java.util.Collections.unmodifiableList(negotiations_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsI_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsI_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              nefit.proto.NefitProtos.NegotiationsI.class, nefit.proto.NefitProtos.NegotiationsI.Builder.class);
-    }
-
-    public static final int NEGOTIATIONS_FIELD_NUMBER = 1;
-    private java.util.List<nefit.proto.NefitProtos.InfoI> negotiations_;
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    public java.util.List<nefit.proto.NefitProtos.InfoI> getNegotiationsList() {
-      return negotiations_;
-    }
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    public java.util.List<? extends nefit.proto.NefitProtos.InfoIOrBuilder> 
-        getNegotiationsOrBuilderList() {
-      return negotiations_;
-    }
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    public int getNegotiationsCount() {
-      return negotiations_.size();
-    }
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    public nefit.proto.NefitProtos.InfoI getNegotiations(int index) {
-      return negotiations_.get(index);
-    }
-    /**
-     * <code>repeated .nefit.InfoI negotiations = 1;</code>
-     */
-    public nefit.proto.NefitProtos.InfoIOrBuilder getNegotiationsOrBuilder(
-        int index) {
-      return negotiations_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      for (int i = 0; i < getNegotiationsCount(); i++) {
-        if (!getNegotiations(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      for (int i = 0; i < negotiations_.size(); i++) {
-        output.writeMessage(1, negotiations_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < negotiations_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, negotiations_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof nefit.proto.NefitProtos.NegotiationsI)) {
-        return super.equals(obj);
-      }
-      nefit.proto.NefitProtos.NegotiationsI other = (nefit.proto.NefitProtos.NegotiationsI) obj;
-
-      if (!getNegotiationsList()
-          .equals(other.getNegotiationsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getNegotiationsCount() > 0) {
-        hash = (37 * hash) + NEGOTIATIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getNegotiationsList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.proto.NefitProtos.NegotiationsI parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(nefit.proto.NefitProtos.NegotiationsI prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code nefit.NegotiationsI}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.NegotiationsI)
-        nefit.proto.NefitProtos.NegotiationsIOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsI_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsI_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                nefit.proto.NefitProtos.NegotiationsI.class, nefit.proto.NefitProtos.NegotiationsI.Builder.class);
-      }
-
-      // Construct using nefit.proto.NefitProtos.NegotiationsI.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getNegotiationsFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (negotiationsBuilder_ == null) {
-          negotiations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          negotiationsBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return nefit.proto.NefitProtos.internal_static_nefit_NegotiationsI_descriptor;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.NegotiationsI getDefaultInstanceForType() {
-        return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.NegotiationsI build() {
-        nefit.proto.NefitProtos.NegotiationsI result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public nefit.proto.NefitProtos.NegotiationsI buildPartial() {
-        nefit.proto.NefitProtos.NegotiationsI result = new nefit.proto.NefitProtos.NegotiationsI(this);
-        int from_bitField0_ = bitField0_;
-        if (negotiationsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            negotiations_ = java.util.Collections.unmodifiableList(negotiations_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.negotiations_ = negotiations_;
-        } else {
-          result.negotiations_ = negotiationsBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.proto.NefitProtos.NegotiationsI) {
-          return mergeFrom((nefit.proto.NefitProtos.NegotiationsI)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(nefit.proto.NefitProtos.NegotiationsI other) {
-        if (other == nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance()) return this;
-        if (negotiationsBuilder_ == null) {
-          if (!other.negotiations_.isEmpty()) {
-            if (negotiations_.isEmpty()) {
-              negotiations_ = other.negotiations_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureNegotiationsIsMutable();
-              negotiations_.addAll(other.negotiations_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.negotiations_.isEmpty()) {
-            if (negotiationsBuilder_.isEmpty()) {
-              negotiationsBuilder_.dispose();
-              negotiationsBuilder_ = null;
-              negotiations_ = other.negotiations_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              negotiationsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getNegotiationsFieldBuilder() : null;
-            } else {
-              negotiationsBuilder_.addAllMessages(other.negotiations_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        for (int i = 0; i < getNegotiationsCount(); i++) {
-          if (!getNegotiations(i).isInitialized()) {
-            return false;
-          }
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        nefit.proto.NefitProtos.NegotiationsI parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.proto.NefitProtos.NegotiationsI) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.util.List<nefit.proto.NefitProtos.InfoI> negotiations_ =
-        java.util.Collections.emptyList();
-      private void ensureNegotiationsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          negotiations_ = new java.util.ArrayList<nefit.proto.NefitProtos.InfoI>(negotiations_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> negotiationsBuilder_;
-
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public java.util.List<nefit.proto.NefitProtos.InfoI> getNegotiationsList() {
-        if (negotiationsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(negotiations_);
-        } else {
-          return negotiationsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public int getNegotiationsCount() {
-        if (negotiationsBuilder_ == null) {
-          return negotiations_.size();
-        } else {
-          return negotiationsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public nefit.proto.NefitProtos.InfoI getNegotiations(int index) {
-        if (negotiationsBuilder_ == null) {
-          return negotiations_.get(index);
-        } else {
-          return negotiationsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder setNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI value) {
-        if (negotiationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNegotiationsIsMutable();
-          negotiations_.set(index, value);
-          onChanged();
-        } else {
-          negotiationsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder setNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          negotiationsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder addNegotiations(nefit.proto.NefitProtos.InfoI value) {
-        if (negotiationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNegotiationsIsMutable();
-          negotiations_.add(value);
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder addNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI value) {
-        if (negotiationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNegotiationsIsMutable();
-          negotiations_.add(index, value);
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder addNegotiations(
-          nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.add(builderForValue.build());
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder addNegotiations(
-          int index, nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          negotiationsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder addAllNegotiations(
-          java.lang.Iterable<? extends nefit.proto.NefitProtos.InfoI> values) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, negotiations_);
-          onChanged();
-        } else {
-          negotiationsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder clearNegotiations() {
-        if (negotiationsBuilder_ == null) {
-          negotiations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          negotiationsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public Builder removeNegotiations(int index) {
-        if (negotiationsBuilder_ == null) {
-          ensureNegotiationsIsMutable();
-          negotiations_.remove(index);
-          onChanged();
-        } else {
-          negotiationsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public nefit.proto.NefitProtos.InfoI.Builder getNegotiationsBuilder(
-          int index) {
-        return getNegotiationsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public nefit.proto.NefitProtos.InfoIOrBuilder getNegotiationsOrBuilder(
-          int index) {
-        if (negotiationsBuilder_ == null) {
-          return negotiations_.get(index);  } else {
-          return negotiationsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public java.util.List<? extends nefit.proto.NefitProtos.InfoIOrBuilder> 
-           getNegotiationsOrBuilderList() {
-        if (negotiationsBuilder_ != null) {
-          return negotiationsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(negotiations_);
-        }
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public nefit.proto.NefitProtos.InfoI.Builder addNegotiationsBuilder() {
-        return getNegotiationsFieldBuilder().addBuilder(
-            nefit.proto.NefitProtos.InfoI.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public nefit.proto.NefitProtos.InfoI.Builder addNegotiationsBuilder(
-          int index) {
-        return getNegotiationsFieldBuilder().addBuilder(
-            index, nefit.proto.NefitProtos.InfoI.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .nefit.InfoI negotiations = 1;</code>
-       */
-      public java.util.List<nefit.proto.NefitProtos.InfoI.Builder> 
-           getNegotiationsBuilderList() {
-        return getNegotiationsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> 
-          getNegotiationsFieldBuilder() {
-        if (negotiationsBuilder_ == null) {
-          negotiationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder>(
-                  negotiations_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          negotiations_ = null;
-        }
-        return negotiationsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:nefit.NegotiationsI)
-    }
-
-    // @@protoc_insertion_point(class_scope:nefit.NegotiationsI)
-    private static final nefit.proto.NefitProtos.NegotiationsI DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new nefit.proto.NefitProtos.NegotiationsI();
-    }
-
-    public static nefit.proto.NefitProtos.NegotiationsI getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NegotiationsI>
-        PARSER = new com.google.protobuf.AbstractParser<NegotiationsI>() {
-      @java.lang.Override
-      public NegotiationsI parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new NegotiationsI(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<NegotiationsI> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NegotiationsI> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public nefit.proto.NefitProtos.NegotiationsI getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface ServerOrBuilder extends
       // @@protoc_insertion_point(interface_extends:nefit.Server)
       com.google.protobuf.MessageOrBuilder {
@@ -19325,51 +16318,6 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderAckS m7 = 7;</code>
      */
     nefit.proto.NefitProtos.OrderAckSOrBuilder getM7OrBuilder();
-
-    /**
-     * <code>optional .nefit.GetS m8 = 8;</code>
-     * @return Whether the m8 field is set.
-     */
-    boolean hasM8();
-    /**
-     * <code>optional .nefit.GetS m8 = 8;</code>
-     * @return The m8.
-     */
-    nefit.proto.NefitProtos.GetS getM8();
-    /**
-     * <code>optional .nefit.GetS m8 = 8;</code>
-     */
-    nefit.proto.NefitProtos.GetSOrBuilder getM8OrBuilder();
-
-    /**
-     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-     * @return Whether the m9 field is set.
-     */
-    boolean hasM9();
-    /**
-     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-     * @return The m9.
-     */
-    nefit.proto.NefitProtos.NegotiationsS getM9();
-    /**
-     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-     */
-    nefit.proto.NefitProtos.NegotiationsSOrBuilder getM9OrBuilder();
-
-    /**
-     * <code>optional .nefit.MsgAuth m10 = 10;</code>
-     * @return Whether the m10 field is set.
-     */
-    boolean hasM10();
-    /**
-     * <code>optional .nefit.MsgAuth m10 = 10;</code>
-     * @return The m10.
-     */
-    nefit.proto.NefitProtos.MsgAuth getM10();
-    /**
-     * <code>optional .nefit.MsgAuth m10 = 10;</code>
-     */
-    nefit.proto.NefitProtos.MsgAuthOrBuilder getM10OrBuilder();
 
     public nefit.proto.NefitProtos.Server.MsgCase getMsgCase();
   }
@@ -19517,48 +16465,6 @@ public final class NefitProtos {
               msgCase_ = 7;
               break;
             }
-            case 66: {
-              nefit.proto.NefitProtos.GetS.Builder subBuilder = null;
-              if (msgCase_ == 8) {
-                subBuilder = ((nefit.proto.NefitProtos.GetS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.GetS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.GetS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 8;
-              break;
-            }
-            case 74: {
-              nefit.proto.NefitProtos.NegotiationsS.Builder subBuilder = null;
-              if (msgCase_ == 9) {
-                subBuilder = ((nefit.proto.NefitProtos.NegotiationsS) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.NegotiationsS.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.NegotiationsS) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 9;
-              break;
-            }
-            case 82: {
-              nefit.proto.NefitProtos.MsgAuth.Builder subBuilder = null;
-              if (msgCase_ == 10) {
-                subBuilder = ((nefit.proto.NefitProtos.MsgAuth) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.MsgAuth.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.MsgAuth) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 10;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -19604,9 +16510,6 @@ public final class NefitProtos {
       M5(5),
       M6(6),
       M7(7),
-      M8(8),
-      M9(9),
-      M10(10),
       MSG_NOT_SET(0);
       private final int value;
       private MsgCase(int value) {
@@ -19631,9 +16534,6 @@ public final class NefitProtos {
           case 5: return M5;
           case 6: return M6;
           case 7: return M7;
-          case 8: return M8;
-          case 9: return M9;
-          case 10: return M10;
           case 0: return MSG_NOT_SET;
           default: return null;
         }
@@ -19845,90 +16745,6 @@ public final class NefitProtos {
       return nefit.proto.NefitProtos.OrderAckS.getDefaultInstance();
     }
 
-    public static final int M8_FIELD_NUMBER = 8;
-    /**
-     * <code>optional .nefit.GetS m8 = 8;</code>
-     * @return Whether the m8 field is set.
-     */
-    public boolean hasM8() {
-      return msgCase_ == 8;
-    }
-    /**
-     * <code>optional .nefit.GetS m8 = 8;</code>
-     * @return The m8.
-     */
-    public nefit.proto.NefitProtos.GetS getM8() {
-      if (msgCase_ == 8) {
-         return (nefit.proto.NefitProtos.GetS) msg_;
-      }
-      return nefit.proto.NefitProtos.GetS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.GetS m8 = 8;</code>
-     */
-    public nefit.proto.NefitProtos.GetSOrBuilder getM8OrBuilder() {
-      if (msgCase_ == 8) {
-         return (nefit.proto.NefitProtos.GetS) msg_;
-      }
-      return nefit.proto.NefitProtos.GetS.getDefaultInstance();
-    }
-
-    public static final int M9_FIELD_NUMBER = 9;
-    /**
-     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-     * @return Whether the m9 field is set.
-     */
-    public boolean hasM9() {
-      return msgCase_ == 9;
-    }
-    /**
-     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-     * @return The m9.
-     */
-    public nefit.proto.NefitProtos.NegotiationsS getM9() {
-      if (msgCase_ == 9) {
-         return (nefit.proto.NefitProtos.NegotiationsS) msg_;
-      }
-      return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-     */
-    public nefit.proto.NefitProtos.NegotiationsSOrBuilder getM9OrBuilder() {
-      if (msgCase_ == 9) {
-         return (nefit.proto.NefitProtos.NegotiationsS) msg_;
-      }
-      return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
-    }
-
-    public static final int M10_FIELD_NUMBER = 10;
-    /**
-     * <code>optional .nefit.MsgAuth m10 = 10;</code>
-     * @return Whether the m10 field is set.
-     */
-    public boolean hasM10() {
-      return msgCase_ == 10;
-    }
-    /**
-     * <code>optional .nefit.MsgAuth m10 = 10;</code>
-     * @return The m10.
-     */
-    public nefit.proto.NefitProtos.MsgAuth getM10() {
-      if (msgCase_ == 10) {
-         return (nefit.proto.NefitProtos.MsgAuth) msg_;
-      }
-      return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.MsgAuth m10 = 10;</code>
-     */
-    public nefit.proto.NefitProtos.MsgAuthOrBuilder getM10OrBuilder() {
-      if (msgCase_ == 10) {
-         return (nefit.proto.NefitProtos.MsgAuth) msg_;
-      }
-      return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -19978,24 +16794,6 @@ public final class NefitProtos {
           return false;
         }
       }
-      if (hasM8()) {
-        if (!getM8().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasM9()) {
-        if (!getM9().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasM10()) {
-        if (!getM10().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -20023,15 +16821,6 @@ public final class NefitProtos {
       }
       if (msgCase_ == 7) {
         output.writeMessage(7, (nefit.proto.NefitProtos.OrderAckS) msg_);
-      }
-      if (msgCase_ == 8) {
-        output.writeMessage(8, (nefit.proto.NefitProtos.GetS) msg_);
-      }
-      if (msgCase_ == 9) {
-        output.writeMessage(9, (nefit.proto.NefitProtos.NegotiationsS) msg_);
-      }
-      if (msgCase_ == 10) {
-        output.writeMessage(10, (nefit.proto.NefitProtos.MsgAuth) msg_);
       }
       unknownFields.writeTo(output);
     }
@@ -20069,18 +16858,6 @@ public final class NefitProtos {
       if (msgCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, (nefit.proto.NefitProtos.OrderAckS) msg_);
-      }
-      if (msgCase_ == 8) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, (nefit.proto.NefitProtos.GetS) msg_);
-      }
-      if (msgCase_ == 9) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, (nefit.proto.NefitProtos.NegotiationsS) msg_);
-      }
-      if (msgCase_ == 10) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, (nefit.proto.NefitProtos.MsgAuth) msg_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -20127,18 +16904,6 @@ public final class NefitProtos {
           if (!getM7()
               .equals(other.getM7())) return false;
           break;
-        case 8:
-          if (!getM8()
-              .equals(other.getM8())) return false;
-          break;
-        case 9:
-          if (!getM9()
-              .equals(other.getM9())) return false;
-          break;
-        case 10:
-          if (!getM10()
-              .equals(other.getM10())) return false;
-          break;
         case 0:
         default:
       }
@@ -20181,18 +16946,6 @@ public final class NefitProtos {
         case 7:
           hash = (37 * hash) + M7_FIELD_NUMBER;
           hash = (53 * hash) + getM7().hashCode();
-          break;
-        case 8:
-          hash = (37 * hash) + M8_FIELD_NUMBER;
-          hash = (53 * hash) + getM8().hashCode();
-          break;
-        case 9:
-          hash = (37 * hash) + M9_FIELD_NUMBER;
-          hash = (53 * hash) + getM9().hashCode();
-          break;
-        case 10:
-          hash = (37 * hash) + M10_FIELD_NUMBER;
-          hash = (53 * hash) + getM10().hashCode();
           break;
         case 0:
         default:
@@ -20409,27 +17162,6 @@ public final class NefitProtos {
             result.msg_ = m7Builder_.build();
           }
         }
-        if (msgCase_ == 8) {
-          if (m8Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m8Builder_.build();
-          }
-        }
-        if (msgCase_ == 9) {
-          if (m9Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m9Builder_.build();
-          }
-        }
-        if (msgCase_ == 10) {
-          if (m10Builder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = m10Builder_.build();
-          }
-        }
         result.bitField0_ = to_bitField0_;
         result.msgCase_ = msgCase_;
         onBuilt();
@@ -20509,18 +17241,6 @@ public final class NefitProtos {
             mergeM7(other.getM7());
             break;
           }
-          case M8: {
-            mergeM8(other.getM8());
-            break;
-          }
-          case M9: {
-            mergeM9(other.getM9());
-            break;
-          }
-          case M10: {
-            mergeM10(other.getM10());
-            break;
-          }
           case MSG_NOT_SET: {
             break;
           }
@@ -20564,21 +17284,6 @@ public final class NefitProtos {
         }
         if (hasM7()) {
           if (!getM7().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM8()) {
-          if (!getM8().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM9()) {
-          if (!getM9().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasM10()) {
-          if (!getM10().isInitialized()) {
             return false;
           }
         }
@@ -21585,420 +18290,6 @@ public final class NefitProtos {
         onChanged();;
         return m7Builder_;
       }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.GetS, nefit.proto.NefitProtos.GetS.Builder, nefit.proto.NefitProtos.GetSOrBuilder> m8Builder_;
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       * @return Whether the m8 field is set.
-       */
-      public boolean hasM8() {
-        return msgCase_ == 8;
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       * @return The m8.
-       */
-      public nefit.proto.NefitProtos.GetS getM8() {
-        if (m8Builder_ == null) {
-          if (msgCase_ == 8) {
-            return (nefit.proto.NefitProtos.GetS) msg_;
-          }
-          return nefit.proto.NefitProtos.GetS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 8) {
-            return m8Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.GetS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       */
-      public Builder setM8(nefit.proto.NefitProtos.GetS value) {
-        if (m8Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m8Builder_.setMessage(value);
-        }
-        msgCase_ = 8;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       */
-      public Builder setM8(
-          nefit.proto.NefitProtos.GetS.Builder builderForValue) {
-        if (m8Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m8Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 8;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       */
-      public Builder mergeM8(nefit.proto.NefitProtos.GetS value) {
-        if (m8Builder_ == null) {
-          if (msgCase_ == 8 &&
-              msg_ != nefit.proto.NefitProtos.GetS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.GetS.newBuilder((nefit.proto.NefitProtos.GetS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 8) {
-            m8Builder_.mergeFrom(value);
-          }
-          m8Builder_.setMessage(value);
-        }
-        msgCase_ = 8;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       */
-      public Builder clearM8() {
-        if (m8Builder_ == null) {
-          if (msgCase_ == 8) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 8) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m8Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       */
-      public nefit.proto.NefitProtos.GetS.Builder getM8Builder() {
-        return getM8FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       */
-      public nefit.proto.NefitProtos.GetSOrBuilder getM8OrBuilder() {
-        if ((msgCase_ == 8) && (m8Builder_ != null)) {
-          return m8Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 8) {
-            return (nefit.proto.NefitProtos.GetS) msg_;
-          }
-          return nefit.proto.NefitProtos.GetS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.GetS m8 = 8;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.GetS, nefit.proto.NefitProtos.GetS.Builder, nefit.proto.NefitProtos.GetSOrBuilder> 
-          getM8FieldBuilder() {
-        if (m8Builder_ == null) {
-          if (!(msgCase_ == 8)) {
-            msg_ = nefit.proto.NefitProtos.GetS.getDefaultInstance();
-          }
-          m8Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.GetS, nefit.proto.NefitProtos.GetS.Builder, nefit.proto.NefitProtos.GetSOrBuilder>(
-                  (nefit.proto.NefitProtos.GetS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 8;
-        onChanged();;
-        return m8Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.NegotiationsS, nefit.proto.NefitProtos.NegotiationsS.Builder, nefit.proto.NefitProtos.NegotiationsSOrBuilder> m9Builder_;
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       * @return Whether the m9 field is set.
-       */
-      public boolean hasM9() {
-        return msgCase_ == 9;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       * @return The m9.
-       */
-      public nefit.proto.NefitProtos.NegotiationsS getM9() {
-        if (m9Builder_ == null) {
-          if (msgCase_ == 9) {
-            return (nefit.proto.NefitProtos.NegotiationsS) msg_;
-          }
-          return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
-        } else {
-          if (msgCase_ == 9) {
-            return m9Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       */
-      public Builder setM9(nefit.proto.NefitProtos.NegotiationsS value) {
-        if (m9Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m9Builder_.setMessage(value);
-        }
-        msgCase_ = 9;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       */
-      public Builder setM9(
-          nefit.proto.NefitProtos.NegotiationsS.Builder builderForValue) {
-        if (m9Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m9Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 9;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       */
-      public Builder mergeM9(nefit.proto.NefitProtos.NegotiationsS value) {
-        if (m9Builder_ == null) {
-          if (msgCase_ == 9 &&
-              msg_ != nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.NegotiationsS.newBuilder((nefit.proto.NefitProtos.NegotiationsS) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 9) {
-            m9Builder_.mergeFrom(value);
-          }
-          m9Builder_.setMessage(value);
-        }
-        msgCase_ = 9;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       */
-      public Builder clearM9() {
-        if (m9Builder_ == null) {
-          if (msgCase_ == 9) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 9) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m9Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       */
-      public nefit.proto.NefitProtos.NegotiationsS.Builder getM9Builder() {
-        return getM9FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       */
-      public nefit.proto.NefitProtos.NegotiationsSOrBuilder getM9OrBuilder() {
-        if ((msgCase_ == 9) && (m9Builder_ != null)) {
-          return m9Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 9) {
-            return (nefit.proto.NefitProtos.NegotiationsS) msg_;
-          }
-          return nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.NegotiationsS m9 = 9;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.NegotiationsS, nefit.proto.NefitProtos.NegotiationsS.Builder, nefit.proto.NefitProtos.NegotiationsSOrBuilder> 
-          getM9FieldBuilder() {
-        if (m9Builder_ == null) {
-          if (!(msgCase_ == 9)) {
-            msg_ = nefit.proto.NefitProtos.NegotiationsS.getDefaultInstance();
-          }
-          m9Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.NegotiationsS, nefit.proto.NefitProtos.NegotiationsS.Builder, nefit.proto.NefitProtos.NegotiationsSOrBuilder>(
-                  (nefit.proto.NefitProtos.NegotiationsS) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 9;
-        onChanged();;
-        return m9Builder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.MsgAuth, nefit.proto.NefitProtos.MsgAuth.Builder, nefit.proto.NefitProtos.MsgAuthOrBuilder> m10Builder_;
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       * @return Whether the m10 field is set.
-       */
-      public boolean hasM10() {
-        return msgCase_ == 10;
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       * @return The m10.
-       */
-      public nefit.proto.NefitProtos.MsgAuth getM10() {
-        if (m10Builder_ == null) {
-          if (msgCase_ == 10) {
-            return (nefit.proto.NefitProtos.MsgAuth) msg_;
-          }
-          return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
-        } else {
-          if (msgCase_ == 10) {
-            return m10Builder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       */
-      public Builder setM10(nefit.proto.NefitProtos.MsgAuth value) {
-        if (m10Builder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          m10Builder_.setMessage(value);
-        }
-        msgCase_ = 10;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       */
-      public Builder setM10(
-          nefit.proto.NefitProtos.MsgAuth.Builder builderForValue) {
-        if (m10Builder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          m10Builder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 10;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       */
-      public Builder mergeM10(nefit.proto.NefitProtos.MsgAuth value) {
-        if (m10Builder_ == null) {
-          if (msgCase_ == 10 &&
-              msg_ != nefit.proto.NefitProtos.MsgAuth.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.MsgAuth.newBuilder((nefit.proto.NefitProtos.MsgAuth) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 10) {
-            m10Builder_.mergeFrom(value);
-          }
-          m10Builder_.setMessage(value);
-        }
-        msgCase_ = 10;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       */
-      public Builder clearM10() {
-        if (m10Builder_ == null) {
-          if (msgCase_ == 10) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 10) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          m10Builder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       */
-      public nefit.proto.NefitProtos.MsgAuth.Builder getM10Builder() {
-        return getM10FieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       */
-      public nefit.proto.NefitProtos.MsgAuthOrBuilder getM10OrBuilder() {
-        if ((msgCase_ == 10) && (m10Builder_ != null)) {
-          return m10Builder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 10) {
-            return (nefit.proto.NefitProtos.MsgAuth) msg_;
-          }
-          return nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.MsgAuth m10 = 10;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.MsgAuth, nefit.proto.NefitProtos.MsgAuth.Builder, nefit.proto.NefitProtos.MsgAuthOrBuilder> 
-          getM10FieldBuilder() {
-        if (m10Builder_ == null) {
-          if (!(msgCase_ == 10)) {
-            msg_ = nefit.proto.NefitProtos.MsgAuth.getDefaultInstance();
-          }
-          m10Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.MsgAuth, nefit.proto.NefitProtos.MsgAuth.Builder, nefit.proto.NefitProtos.MsgAuthOrBuilder>(
-                  (nefit.proto.NefitProtos.MsgAuth) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 10;
-        onChanged();;
-        return m10Builder_;
-      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -22072,47 +18363,32 @@ public final class NefitProtos {
     nefit.proto.NefitProtos.OrderAckIOrBuilder getOrdackOrBuilder();
 
     /**
-     * <code>optional .nefit.NegotiationsI nego = 2;</code>
-     * @return Whether the nego field is set.
-     */
-    boolean hasNego();
-    /**
-     * <code>optional .nefit.NegotiationsI nego = 2;</code>
-     * @return The nego.
-     */
-    nefit.proto.NefitProtos.NegotiationsI getNego();
-    /**
-     * <code>optional .nefit.NegotiationsI nego = 2;</code>
-     */
-    nefit.proto.NefitProtos.NegotiationsIOrBuilder getNegoOrBuilder();
-
-    /**
-     * <code>optional .nefit.ResultI result = 3;</code>
+     * <code>optional .nefit.ResultI result = 2;</code>
      * @return Whether the result field is set.
      */
     boolean hasResult();
     /**
-     * <code>optional .nefit.ResultI result = 3;</code>
+     * <code>optional .nefit.ResultI result = 2;</code>
      * @return The result.
      */
     nefit.proto.NefitProtos.ResultI getResult();
     /**
-     * <code>optional .nefit.ResultI result = 3;</code>
+     * <code>optional .nefit.ResultI result = 2;</code>
      */
     nefit.proto.NefitProtos.ResultIOrBuilder getResultOrBuilder();
 
     /**
-     * <code>optional .nefit.InfoI info = 4;</code>
+     * <code>optional .nefit.InfoI info = 3;</code>
      * @return Whether the info field is set.
      */
     boolean hasInfo();
     /**
-     * <code>optional .nefit.InfoI info = 4;</code>
+     * <code>optional .nefit.InfoI info = 3;</code>
      * @return The info.
      */
     nefit.proto.NefitProtos.InfoI getInfo();
     /**
-     * <code>optional .nefit.InfoI info = 4;</code>
+     * <code>optional .nefit.InfoI info = 3;</code>
      */
     nefit.proto.NefitProtos.InfoIOrBuilder getInfoOrBuilder();
 
@@ -22179,22 +18455,8 @@ public final class NefitProtos {
               break;
             }
             case 18: {
-              nefit.proto.NefitProtos.NegotiationsI.Builder subBuilder = null;
-              if (msgCase_ == 2) {
-                subBuilder = ((nefit.proto.NefitProtos.NegotiationsI) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.NegotiationsI.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.NegotiationsI) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 2;
-              break;
-            }
-            case 26: {
               nefit.proto.NefitProtos.ResultI.Builder subBuilder = null;
-              if (msgCase_ == 3) {
+              if (msgCase_ == 2) {
                 subBuilder = ((nefit.proto.NefitProtos.ResultI) msg_).toBuilder();
               }
               msg_ =
@@ -22203,12 +18465,12 @@ public final class NefitProtos {
                 subBuilder.mergeFrom((nefit.proto.NefitProtos.ResultI) msg_);
                 msg_ = subBuilder.buildPartial();
               }
-              msgCase_ = 3;
+              msgCase_ = 2;
               break;
             }
-            case 34: {
+            case 26: {
               nefit.proto.NefitProtos.InfoI.Builder subBuilder = null;
-              if (msgCase_ == 4) {
+              if (msgCase_ == 3) {
                 subBuilder = ((nefit.proto.NefitProtos.InfoI) msg_).toBuilder();
               }
               msg_ =
@@ -22217,7 +18479,7 @@ public final class NefitProtos {
                 subBuilder.mergeFrom((nefit.proto.NefitProtos.InfoI) msg_);
                 msg_ = subBuilder.buildPartial();
               }
-              msgCase_ = 4;
+              msgCase_ = 3;
               break;
             }
             default: {
@@ -22259,9 +18521,8 @@ public final class NefitProtos {
         implements com.google.protobuf.Internal.EnumLite,
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       ORDACK(1),
-      NEGO(2),
-      RESULT(3),
-      INFO(4),
+      RESULT(2),
+      INFO(3),
       MSG_NOT_SET(0);
       private final int value;
       private MsgCase(int value) {
@@ -22280,9 +18541,8 @@ public final class NefitProtos {
       public static MsgCase forNumber(int value) {
         switch (value) {
           case 1: return ORDACK;
-          case 2: return NEGO;
-          case 3: return RESULT;
-          case 4: return INFO;
+          case 2: return RESULT;
+          case 3: return INFO;
           case 0: return MSG_NOT_SET;
           default: return null;
         }
@@ -22326,85 +18586,57 @@ public final class NefitProtos {
       return nefit.proto.NefitProtos.OrderAckI.getDefaultInstance();
     }
 
-    public static final int NEGO_FIELD_NUMBER = 2;
+    public static final int RESULT_FIELD_NUMBER = 2;
     /**
-     * <code>optional .nefit.NegotiationsI nego = 2;</code>
-     * @return Whether the nego field is set.
-     */
-    public boolean hasNego() {
-      return msgCase_ == 2;
-    }
-    /**
-     * <code>optional .nefit.NegotiationsI nego = 2;</code>
-     * @return The nego.
-     */
-    public nefit.proto.NefitProtos.NegotiationsI getNego() {
-      if (msgCase_ == 2) {
-         return (nefit.proto.NefitProtos.NegotiationsI) msg_;
-      }
-      return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.NegotiationsI nego = 2;</code>
-     */
-    public nefit.proto.NefitProtos.NegotiationsIOrBuilder getNegoOrBuilder() {
-      if (msgCase_ == 2) {
-         return (nefit.proto.NefitProtos.NegotiationsI) msg_;
-      }
-      return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
-    }
-
-    public static final int RESULT_FIELD_NUMBER = 3;
-    /**
-     * <code>optional .nefit.ResultI result = 3;</code>
+     * <code>optional .nefit.ResultI result = 2;</code>
      * @return Whether the result field is set.
      */
     public boolean hasResult() {
-      return msgCase_ == 3;
+      return msgCase_ == 2;
     }
     /**
-     * <code>optional .nefit.ResultI result = 3;</code>
+     * <code>optional .nefit.ResultI result = 2;</code>
      * @return The result.
      */
     public nefit.proto.NefitProtos.ResultI getResult() {
-      if (msgCase_ == 3) {
+      if (msgCase_ == 2) {
          return (nefit.proto.NefitProtos.ResultI) msg_;
       }
       return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
     }
     /**
-     * <code>optional .nefit.ResultI result = 3;</code>
+     * <code>optional .nefit.ResultI result = 2;</code>
      */
     public nefit.proto.NefitProtos.ResultIOrBuilder getResultOrBuilder() {
-      if (msgCase_ == 3) {
+      if (msgCase_ == 2) {
          return (nefit.proto.NefitProtos.ResultI) msg_;
       }
       return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
     }
 
-    public static final int INFO_FIELD_NUMBER = 4;
+    public static final int INFO_FIELD_NUMBER = 3;
     /**
-     * <code>optional .nefit.InfoI info = 4;</code>
+     * <code>optional .nefit.InfoI info = 3;</code>
      * @return Whether the info field is set.
      */
     public boolean hasInfo() {
-      return msgCase_ == 4;
+      return msgCase_ == 3;
     }
     /**
-     * <code>optional .nefit.InfoI info = 4;</code>
+     * <code>optional .nefit.InfoI info = 3;</code>
      * @return The info.
      */
     public nefit.proto.NefitProtos.InfoI getInfo() {
-      if (msgCase_ == 4) {
+      if (msgCase_ == 3) {
          return (nefit.proto.NefitProtos.InfoI) msg_;
       }
       return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
     }
     /**
-     * <code>optional .nefit.InfoI info = 4;</code>
+     * <code>optional .nefit.InfoI info = 3;</code>
      */
     public nefit.proto.NefitProtos.InfoIOrBuilder getInfoOrBuilder() {
-      if (msgCase_ == 4) {
+      if (msgCase_ == 3) {
          return (nefit.proto.NefitProtos.InfoI) msg_;
       }
       return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
@@ -22419,12 +18651,6 @@ public final class NefitProtos {
 
       if (hasOrdack()) {
         if (!getOrdack().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasNego()) {
-        if (!getNego().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -22452,13 +18678,10 @@ public final class NefitProtos {
         output.writeMessage(1, (nefit.proto.NefitProtos.OrderAckI) msg_);
       }
       if (msgCase_ == 2) {
-        output.writeMessage(2, (nefit.proto.NefitProtos.NegotiationsI) msg_);
+        output.writeMessage(2, (nefit.proto.NefitProtos.ResultI) msg_);
       }
       if (msgCase_ == 3) {
-        output.writeMessage(3, (nefit.proto.NefitProtos.ResultI) msg_);
-      }
-      if (msgCase_ == 4) {
-        output.writeMessage(4, (nefit.proto.NefitProtos.InfoI) msg_);
+        output.writeMessage(3, (nefit.proto.NefitProtos.InfoI) msg_);
       }
       unknownFields.writeTo(output);
     }
@@ -22475,15 +18698,11 @@ public final class NefitProtos {
       }
       if (msgCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (nefit.proto.NefitProtos.NegotiationsI) msg_);
+          .computeMessageSize(2, (nefit.proto.NefitProtos.ResultI) msg_);
       }
       if (msgCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (nefit.proto.NefitProtos.ResultI) msg_);
-      }
-      if (msgCase_ == 4) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (nefit.proto.NefitProtos.InfoI) msg_);
+          .computeMessageSize(3, (nefit.proto.NefitProtos.InfoI) msg_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -22507,14 +18726,10 @@ public final class NefitProtos {
               .equals(other.getOrdack())) return false;
           break;
         case 2:
-          if (!getNego()
-              .equals(other.getNego())) return false;
-          break;
-        case 3:
           if (!getResult()
               .equals(other.getResult())) return false;
           break;
-        case 4:
+        case 3:
           if (!getInfo()
               .equals(other.getInfo())) return false;
           break;
@@ -22538,14 +18753,10 @@ public final class NefitProtos {
           hash = (53 * hash) + getOrdack().hashCode();
           break;
         case 2:
-          hash = (37 * hash) + NEGO_FIELD_NUMBER;
-          hash = (53 * hash) + getNego().hashCode();
-          break;
-        case 3:
           hash = (37 * hash) + RESULT_FIELD_NUMBER;
           hash = (53 * hash) + getResult().hashCode();
           break;
-        case 4:
+        case 3:
           hash = (37 * hash) + INFO_FIELD_NUMBER;
           hash = (53 * hash) + getInfo().hashCode();
           break;
@@ -22723,20 +18934,13 @@ public final class NefitProtos {
           }
         }
         if (msgCase_ == 2) {
-          if (negoBuilder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = negoBuilder_.build();
-          }
-        }
-        if (msgCase_ == 3) {
           if (resultBuilder_ == null) {
             result.msg_ = msg_;
           } else {
             result.msg_ = resultBuilder_.build();
           }
         }
-        if (msgCase_ == 4) {
+        if (msgCase_ == 3) {
           if (infoBuilder_ == null) {
             result.msg_ = msg_;
           } else {
@@ -22798,10 +19002,6 @@ public final class NefitProtos {
             mergeOrdack(other.getOrdack());
             break;
           }
-          case NEGO: {
-            mergeNego(other.getNego());
-            break;
-          }
           case RESULT: {
             mergeResult(other.getResult());
             break;
@@ -22823,11 +19023,6 @@ public final class NefitProtos {
       public final boolean isInitialized() {
         if (hasOrdack()) {
           if (!getOrdack().isInitialized()) {
-            return false;
-          }
-        }
-        if (hasNego()) {
-          if (!getNego().isInitialized()) {
             return false;
           }
         }
@@ -23018,171 +19213,33 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.NegotiationsI, nefit.proto.NefitProtos.NegotiationsI.Builder, nefit.proto.NefitProtos.NegotiationsIOrBuilder> negoBuilder_;
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       * @return Whether the nego field is set.
-       */
-      public boolean hasNego() {
-        return msgCase_ == 2;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       * @return The nego.
-       */
-      public nefit.proto.NefitProtos.NegotiationsI getNego() {
-        if (negoBuilder_ == null) {
-          if (msgCase_ == 2) {
-            return (nefit.proto.NefitProtos.NegotiationsI) msg_;
-          }
-          return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
-        } else {
-          if (msgCase_ == 2) {
-            return negoBuilder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       */
-      public Builder setNego(nefit.proto.NefitProtos.NegotiationsI value) {
-        if (negoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          negoBuilder_.setMessage(value);
-        }
-        msgCase_ = 2;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       */
-      public Builder setNego(
-          nefit.proto.NefitProtos.NegotiationsI.Builder builderForValue) {
-        if (negoBuilder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          negoBuilder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 2;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       */
-      public Builder mergeNego(nefit.proto.NefitProtos.NegotiationsI value) {
-        if (negoBuilder_ == null) {
-          if (msgCase_ == 2 &&
-              msg_ != nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.NegotiationsI.newBuilder((nefit.proto.NefitProtos.NegotiationsI) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 2) {
-            negoBuilder_.mergeFrom(value);
-          }
-          negoBuilder_.setMessage(value);
-        }
-        msgCase_ = 2;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       */
-      public Builder clearNego() {
-        if (negoBuilder_ == null) {
-          if (msgCase_ == 2) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 2) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          negoBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       */
-      public nefit.proto.NefitProtos.NegotiationsI.Builder getNegoBuilder() {
-        return getNegoFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       */
-      public nefit.proto.NefitProtos.NegotiationsIOrBuilder getNegoOrBuilder() {
-        if ((msgCase_ == 2) && (negoBuilder_ != null)) {
-          return negoBuilder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 2) {
-            return (nefit.proto.NefitProtos.NegotiationsI) msg_;
-          }
-          return nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.NegotiationsI nego = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.NegotiationsI, nefit.proto.NefitProtos.NegotiationsI.Builder, nefit.proto.NefitProtos.NegotiationsIOrBuilder> 
-          getNegoFieldBuilder() {
-        if (negoBuilder_ == null) {
-          if (!(msgCase_ == 2)) {
-            msg_ = nefit.proto.NefitProtos.NegotiationsI.getDefaultInstance();
-          }
-          negoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.NegotiationsI, nefit.proto.NefitProtos.NegotiationsI.Builder, nefit.proto.NefitProtos.NegotiationsIOrBuilder>(
-                  (nefit.proto.NefitProtos.NegotiationsI) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 2;
-        onChanged();;
-        return negoBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.ResultI, nefit.proto.NefitProtos.ResultI.Builder, nefit.proto.NefitProtos.ResultIOrBuilder> resultBuilder_;
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        * @return Whether the result field is set.
        */
       public boolean hasResult() {
-        return msgCase_ == 3;
+        return msgCase_ == 2;
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        * @return The result.
        */
       public nefit.proto.NefitProtos.ResultI getResult() {
         if (resultBuilder_ == null) {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             return (nefit.proto.NefitProtos.ResultI) msg_;
           }
           return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             return resultBuilder_.getMessage();
           }
           return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        */
       public Builder setResult(nefit.proto.NefitProtos.ResultI value) {
         if (resultBuilder_ == null) {
@@ -23194,11 +19251,11 @@ public final class NefitProtos {
         } else {
           resultBuilder_.setMessage(value);
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         return this;
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        */
       public Builder setResult(
           nefit.proto.NefitProtos.ResultI.Builder builderForValue) {
@@ -23208,15 +19265,15 @@ public final class NefitProtos {
         } else {
           resultBuilder_.setMessage(builderForValue.build());
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         return this;
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        */
       public Builder mergeResult(nefit.proto.NefitProtos.ResultI value) {
         if (resultBuilder_ == null) {
-          if (msgCase_ == 3 &&
+          if (msgCase_ == 2 &&
               msg_ != nefit.proto.NefitProtos.ResultI.getDefaultInstance()) {
             msg_ = nefit.proto.NefitProtos.ResultI.newBuilder((nefit.proto.NefitProtos.ResultI) msg_)
                 .mergeFrom(value).buildPartial();
@@ -23225,26 +19282,26 @@ public final class NefitProtos {
           }
           onChanged();
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             resultBuilder_.mergeFrom(value);
           }
           resultBuilder_.setMessage(value);
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         return this;
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        */
       public Builder clearResult() {
         if (resultBuilder_ == null) {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             msgCase_ = 0;
             msg_ = null;
             onChanged();
           }
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             msgCase_ = 0;
             msg_ = null;
           }
@@ -23253,32 +19310,32 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        */
       public nefit.proto.NefitProtos.ResultI.Builder getResultBuilder() {
         return getResultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        */
       public nefit.proto.NefitProtos.ResultIOrBuilder getResultOrBuilder() {
-        if ((msgCase_ == 3) && (resultBuilder_ != null)) {
+        if ((msgCase_ == 2) && (resultBuilder_ != null)) {
           return resultBuilder_.getMessageOrBuilder();
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             return (nefit.proto.NefitProtos.ResultI) msg_;
           }
           return nefit.proto.NefitProtos.ResultI.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.ResultI result = 3;</code>
+       * <code>optional .nefit.ResultI result = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.ResultI, nefit.proto.NefitProtos.ResultI.Builder, nefit.proto.NefitProtos.ResultIOrBuilder> 
           getResultFieldBuilder() {
         if (resultBuilder_ == null) {
-          if (!(msgCase_ == 3)) {
+          if (!(msgCase_ == 2)) {
             msg_ = nefit.proto.NefitProtos.ResultI.getDefaultInstance();
           }
           resultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -23288,7 +19345,7 @@ public final class NefitProtos {
                   isClean());
           msg_ = null;
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         onChanged();;
         return resultBuilder_;
       }
@@ -23296,31 +19353,31 @@ public final class NefitProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> infoBuilder_;
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        * @return Whether the info field is set.
        */
       public boolean hasInfo() {
-        return msgCase_ == 4;
+        return msgCase_ == 3;
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        * @return The info.
        */
       public nefit.proto.NefitProtos.InfoI getInfo() {
         if (infoBuilder_ == null) {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             return (nefit.proto.NefitProtos.InfoI) msg_;
           }
           return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             return infoBuilder_.getMessage();
           }
           return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        */
       public Builder setInfo(nefit.proto.NefitProtos.InfoI value) {
         if (infoBuilder_ == null) {
@@ -23332,11 +19389,11 @@ public final class NefitProtos {
         } else {
           infoBuilder_.setMessage(value);
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        */
       public Builder setInfo(
           nefit.proto.NefitProtos.InfoI.Builder builderForValue) {
@@ -23346,15 +19403,15 @@ public final class NefitProtos {
         } else {
           infoBuilder_.setMessage(builderForValue.build());
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        */
       public Builder mergeInfo(nefit.proto.NefitProtos.InfoI value) {
         if (infoBuilder_ == null) {
-          if (msgCase_ == 4 &&
+          if (msgCase_ == 3 &&
               msg_ != nefit.proto.NefitProtos.InfoI.getDefaultInstance()) {
             msg_ = nefit.proto.NefitProtos.InfoI.newBuilder((nefit.proto.NefitProtos.InfoI) msg_)
                 .mergeFrom(value).buildPartial();
@@ -23363,26 +19420,26 @@ public final class NefitProtos {
           }
           onChanged();
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             infoBuilder_.mergeFrom(value);
           }
           infoBuilder_.setMessage(value);
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        */
       public Builder clearInfo() {
         if (infoBuilder_ == null) {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             msgCase_ = 0;
             msg_ = null;
             onChanged();
           }
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             msgCase_ = 0;
             msg_ = null;
           }
@@ -23391,32 +19448,32 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        */
       public nefit.proto.NefitProtos.InfoI.Builder getInfoBuilder() {
         return getInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        */
       public nefit.proto.NefitProtos.InfoIOrBuilder getInfoOrBuilder() {
-        if ((msgCase_ == 4) && (infoBuilder_ != null)) {
+        if ((msgCase_ == 3) && (infoBuilder_ != null)) {
           return infoBuilder_.getMessageOrBuilder();
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             return (nefit.proto.NefitProtos.InfoI) msg_;
           }
           return nefit.proto.NefitProtos.InfoI.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.InfoI info = 4;</code>
+       * <code>optional .nefit.InfoI info = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.InfoI, nefit.proto.NefitProtos.InfoI.Builder, nefit.proto.NefitProtos.InfoIOrBuilder> 
           getInfoFieldBuilder() {
         if (infoBuilder_ == null) {
-          if (!(msgCase_ == 4)) {
+          if (!(msgCase_ == 3)) {
             msg_ = nefit.proto.NefitProtos.InfoI.getDefaultInstance();
           }
           infoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -23426,7 +19483,7 @@ public final class NefitProtos {
                   isClean());
           msg_ = null;
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         onChanged();;
         return infoBuilder_;
       }
@@ -23488,62 +19545,47 @@ public final class NefitProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .nefit.GetN get = 1;</code>
-     * @return Whether the get field is set.
-     */
-    boolean hasGet();
-    /**
-     * <code>optional .nefit.GetN get = 1;</code>
-     * @return The get.
-     */
-    nefit.proto.NefitProtos.GetN getGet();
-    /**
-     * <code>optional .nefit.GetN get = 1;</code>
-     */
-    nefit.proto.NefitProtos.GetNOrBuilder getGetOrBuilder();
-
-    /**
-     * <code>optional .nefit.SubN sub = 2;</code>
+     * <code>optional .nefit.SubN sub = 1;</code>
      * @return Whether the sub field is set.
      */
     boolean hasSub();
     /**
-     * <code>optional .nefit.SubN sub = 2;</code>
+     * <code>optional .nefit.SubN sub = 1;</code>
      * @return The sub.
      */
     nefit.proto.NefitProtos.SubN getSub();
     /**
-     * <code>optional .nefit.SubN sub = 2;</code>
+     * <code>optional .nefit.SubN sub = 1;</code>
      */
     nefit.proto.NefitProtos.SubNOrBuilder getSubOrBuilder();
 
     /**
-     * <code>optional .nefit.OrderN order = 3;</code>
+     * <code>optional .nefit.OrderN order = 2;</code>
      * @return Whether the order field is set.
      */
     boolean hasOrder();
     /**
-     * <code>optional .nefit.OrderN order = 3;</code>
+     * <code>optional .nefit.OrderN order = 2;</code>
      * @return The order.
      */
     nefit.proto.NefitProtos.OrderN getOrder();
     /**
-     * <code>optional .nefit.OrderN order = 3;</code>
+     * <code>optional .nefit.OrderN order = 2;</code>
      */
     nefit.proto.NefitProtos.OrderNOrBuilder getOrderOrBuilder();
 
     /**
-     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      * @return Whether the disponibility field is set.
      */
     boolean hasDisponibility();
     /**
-     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      * @return The disponibility.
      */
     nefit.proto.NefitProtos.DisponibilityN getDisponibility();
     /**
-     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      */
     nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder();
 
@@ -23596,22 +19638,8 @@ public final class NefitProtos {
               done = true;
               break;
             case 10: {
-              nefit.proto.NefitProtos.GetN.Builder subBuilder = null;
-              if (msgCase_ == 1) {
-                subBuilder = ((nefit.proto.NefitProtos.GetN) msg_).toBuilder();
-              }
-              msg_ =
-                  input.readMessage(nefit.proto.NefitProtos.GetN.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.proto.NefitProtos.GetN) msg_);
-                msg_ = subBuilder.buildPartial();
-              }
-              msgCase_ = 1;
-              break;
-            }
-            case 18: {
               nefit.proto.NefitProtos.SubN.Builder subBuilder = null;
-              if (msgCase_ == 2) {
+              if (msgCase_ == 1) {
                 subBuilder = ((nefit.proto.NefitProtos.SubN) msg_).toBuilder();
               }
               msg_ =
@@ -23620,12 +19648,12 @@ public final class NefitProtos {
                 subBuilder.mergeFrom((nefit.proto.NefitProtos.SubN) msg_);
                 msg_ = subBuilder.buildPartial();
               }
-              msgCase_ = 2;
+              msgCase_ = 1;
               break;
             }
-            case 26: {
+            case 18: {
               nefit.proto.NefitProtos.OrderN.Builder subBuilder = null;
-              if (msgCase_ == 3) {
+              if (msgCase_ == 2) {
                 subBuilder = ((nefit.proto.NefitProtos.OrderN) msg_).toBuilder();
               }
               msg_ =
@@ -23634,12 +19662,12 @@ public final class NefitProtos {
                 subBuilder.mergeFrom((nefit.proto.NefitProtos.OrderN) msg_);
                 msg_ = subBuilder.buildPartial();
               }
-              msgCase_ = 3;
+              msgCase_ = 2;
               break;
             }
-            case 34: {
+            case 26: {
               nefit.proto.NefitProtos.DisponibilityN.Builder subBuilder = null;
-              if (msgCase_ == 4) {
+              if (msgCase_ == 3) {
                 subBuilder = ((nefit.proto.NefitProtos.DisponibilityN) msg_).toBuilder();
               }
               msg_ =
@@ -23648,7 +19676,7 @@ public final class NefitProtos {
                 subBuilder.mergeFrom((nefit.proto.NefitProtos.DisponibilityN) msg_);
                 msg_ = subBuilder.buildPartial();
               }
-              msgCase_ = 4;
+              msgCase_ = 3;
               break;
             }
             default: {
@@ -23689,10 +19717,9 @@ public final class NefitProtos {
     public enum MsgCase
         implements com.google.protobuf.Internal.EnumLite,
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      GET(1),
-      SUB(2),
-      ORDER(3),
-      DISPONIBILITY(4),
+      SUB(1),
+      ORDER(2),
+      DISPONIBILITY(3),
       MSG_NOT_SET(0);
       private final int value;
       private MsgCase(int value) {
@@ -23710,10 +19737,9 @@ public final class NefitProtos {
 
       public static MsgCase forNumber(int value) {
         switch (value) {
-          case 1: return GET;
-          case 2: return SUB;
-          case 3: return ORDER;
-          case 4: return DISPONIBILITY;
+          case 1: return SUB;
+          case 2: return ORDER;
+          case 3: return DISPONIBILITY;
           case 0: return MSG_NOT_SET;
           default: return null;
         }
@@ -23729,113 +19755,85 @@ public final class NefitProtos {
           msgCase_);
     }
 
-    public static final int GET_FIELD_NUMBER = 1;
+    public static final int SUB_FIELD_NUMBER = 1;
     /**
-     * <code>optional .nefit.GetN get = 1;</code>
-     * @return Whether the get field is set.
-     */
-    public boolean hasGet() {
-      return msgCase_ == 1;
-    }
-    /**
-     * <code>optional .nefit.GetN get = 1;</code>
-     * @return The get.
-     */
-    public nefit.proto.NefitProtos.GetN getGet() {
-      if (msgCase_ == 1) {
-         return (nefit.proto.NefitProtos.GetN) msg_;
-      }
-      return nefit.proto.NefitProtos.GetN.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.GetN get = 1;</code>
-     */
-    public nefit.proto.NefitProtos.GetNOrBuilder getGetOrBuilder() {
-      if (msgCase_ == 1) {
-         return (nefit.proto.NefitProtos.GetN) msg_;
-      }
-      return nefit.proto.NefitProtos.GetN.getDefaultInstance();
-    }
-
-    public static final int SUB_FIELD_NUMBER = 2;
-    /**
-     * <code>optional .nefit.SubN sub = 2;</code>
+     * <code>optional .nefit.SubN sub = 1;</code>
      * @return Whether the sub field is set.
      */
     public boolean hasSub() {
-      return msgCase_ == 2;
+      return msgCase_ == 1;
     }
     /**
-     * <code>optional .nefit.SubN sub = 2;</code>
+     * <code>optional .nefit.SubN sub = 1;</code>
      * @return The sub.
      */
     public nefit.proto.NefitProtos.SubN getSub() {
-      if (msgCase_ == 2) {
+      if (msgCase_ == 1) {
          return (nefit.proto.NefitProtos.SubN) msg_;
       }
       return nefit.proto.NefitProtos.SubN.getDefaultInstance();
     }
     /**
-     * <code>optional .nefit.SubN sub = 2;</code>
+     * <code>optional .nefit.SubN sub = 1;</code>
      */
     public nefit.proto.NefitProtos.SubNOrBuilder getSubOrBuilder() {
-      if (msgCase_ == 2) {
+      if (msgCase_ == 1) {
          return (nefit.proto.NefitProtos.SubN) msg_;
       }
       return nefit.proto.NefitProtos.SubN.getDefaultInstance();
     }
 
-    public static final int ORDER_FIELD_NUMBER = 3;
+    public static final int ORDER_FIELD_NUMBER = 2;
     /**
-     * <code>optional .nefit.OrderN order = 3;</code>
+     * <code>optional .nefit.OrderN order = 2;</code>
      * @return Whether the order field is set.
      */
     public boolean hasOrder() {
-      return msgCase_ == 3;
+      return msgCase_ == 2;
     }
     /**
-     * <code>optional .nefit.OrderN order = 3;</code>
+     * <code>optional .nefit.OrderN order = 2;</code>
      * @return The order.
      */
     public nefit.proto.NefitProtos.OrderN getOrder() {
-      if (msgCase_ == 3) {
+      if (msgCase_ == 2) {
          return (nefit.proto.NefitProtos.OrderN) msg_;
       }
       return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
     }
     /**
-     * <code>optional .nefit.OrderN order = 3;</code>
+     * <code>optional .nefit.OrderN order = 2;</code>
      */
     public nefit.proto.NefitProtos.OrderNOrBuilder getOrderOrBuilder() {
-      if (msgCase_ == 3) {
+      if (msgCase_ == 2) {
          return (nefit.proto.NefitProtos.OrderN) msg_;
       }
       return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
     }
 
-    public static final int DISPONIBILITY_FIELD_NUMBER = 4;
+    public static final int DISPONIBILITY_FIELD_NUMBER = 3;
     /**
-     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      * @return Whether the disponibility field is set.
      */
     public boolean hasDisponibility() {
-      return msgCase_ == 4;
+      return msgCase_ == 3;
     }
     /**
-     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      * @return The disponibility.
      */
     public nefit.proto.NefitProtos.DisponibilityN getDisponibility() {
-      if (msgCase_ == 4) {
+      if (msgCase_ == 3) {
          return (nefit.proto.NefitProtos.DisponibilityN) msg_;
       }
       return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
     }
     /**
-     * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+     * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      */
     public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
-      if (msgCase_ == 4) {
+      if (msgCase_ == 3) {
          return (nefit.proto.NefitProtos.DisponibilityN) msg_;
       }
       return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
@@ -23848,12 +19846,6 @@ public final class NefitProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (hasGet()) {
-        if (!getGet().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasSub()) {
         if (!getSub().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -23880,16 +19872,13 @@ public final class NefitProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (msgCase_ == 1) {
-        output.writeMessage(1, (nefit.proto.NefitProtos.GetN) msg_);
+        output.writeMessage(1, (nefit.proto.NefitProtos.SubN) msg_);
       }
       if (msgCase_ == 2) {
-        output.writeMessage(2, (nefit.proto.NefitProtos.SubN) msg_);
+        output.writeMessage(2, (nefit.proto.NefitProtos.OrderN) msg_);
       }
       if (msgCase_ == 3) {
-        output.writeMessage(3, (nefit.proto.NefitProtos.OrderN) msg_);
-      }
-      if (msgCase_ == 4) {
-        output.writeMessage(4, (nefit.proto.NefitProtos.DisponibilityN) msg_);
+        output.writeMessage(3, (nefit.proto.NefitProtos.DisponibilityN) msg_);
       }
       unknownFields.writeTo(output);
     }
@@ -23902,19 +19891,15 @@ public final class NefitProtos {
       size = 0;
       if (msgCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (nefit.proto.NefitProtos.GetN) msg_);
+          .computeMessageSize(1, (nefit.proto.NefitProtos.SubN) msg_);
       }
       if (msgCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (nefit.proto.NefitProtos.SubN) msg_);
+          .computeMessageSize(2, (nefit.proto.NefitProtos.OrderN) msg_);
       }
       if (msgCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (nefit.proto.NefitProtos.OrderN) msg_);
-      }
-      if (msgCase_ == 4) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (nefit.proto.NefitProtos.DisponibilityN) msg_);
+          .computeMessageSize(3, (nefit.proto.NefitProtos.DisponibilityN) msg_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -23934,18 +19919,14 @@ public final class NefitProtos {
       if (!getMsgCase().equals(other.getMsgCase())) return false;
       switch (msgCase_) {
         case 1:
-          if (!getGet()
-              .equals(other.getGet())) return false;
-          break;
-        case 2:
           if (!getSub()
               .equals(other.getSub())) return false;
           break;
-        case 3:
+        case 2:
           if (!getOrder()
               .equals(other.getOrder())) return false;
           break;
-        case 4:
+        case 3:
           if (!getDisponibility()
               .equals(other.getDisponibility())) return false;
           break;
@@ -23965,18 +19946,14 @@ public final class NefitProtos {
       hash = (19 * hash) + getDescriptor().hashCode();
       switch (msgCase_) {
         case 1:
-          hash = (37 * hash) + GET_FIELD_NUMBER;
-          hash = (53 * hash) + getGet().hashCode();
-          break;
-        case 2:
           hash = (37 * hash) + SUB_FIELD_NUMBER;
           hash = (53 * hash) + getSub().hashCode();
           break;
-        case 3:
+        case 2:
           hash = (37 * hash) + ORDER_FIELD_NUMBER;
           hash = (53 * hash) + getOrder().hashCode();
           break;
-        case 4:
+        case 3:
           hash = (37 * hash) + DISPONIBILITY_FIELD_NUMBER;
           hash = (53 * hash) + getDisponibility().hashCode();
           break;
@@ -24147,27 +20124,20 @@ public final class NefitProtos {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (msgCase_ == 1) {
-          if (getBuilder_ == null) {
-            result.msg_ = msg_;
-          } else {
-            result.msg_ = getBuilder_.build();
-          }
-        }
-        if (msgCase_ == 2) {
           if (subBuilder_ == null) {
             result.msg_ = msg_;
           } else {
             result.msg_ = subBuilder_.build();
           }
         }
-        if (msgCase_ == 3) {
+        if (msgCase_ == 2) {
           if (orderBuilder_ == null) {
             result.msg_ = msg_;
           } else {
             result.msg_ = orderBuilder_.build();
           }
         }
-        if (msgCase_ == 4) {
+        if (msgCase_ == 3) {
           if (disponibilityBuilder_ == null) {
             result.msg_ = msg_;
           } else {
@@ -24225,10 +20195,6 @@ public final class NefitProtos {
       public Builder mergeFrom(nefit.proto.NefitProtos.Negotiator other) {
         if (other == nefit.proto.NefitProtos.Negotiator.getDefaultInstance()) return this;
         switch (other.getMsgCase()) {
-          case GET: {
-            mergeGet(other.getGet());
-            break;
-          }
           case SUB: {
             mergeSub(other.getSub());
             break;
@@ -24252,11 +20218,6 @@ public final class NefitProtos {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (hasGet()) {
-          if (!getGet().isInitialized()) {
-            return false;
-          }
-        }
         if (hasSub()) {
           if (!getSub().isInitialized()) {
             return false;
@@ -24311,171 +20272,33 @@ public final class NefitProtos {
       private int bitField0_;
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.GetN, nefit.proto.NefitProtos.GetN.Builder, nefit.proto.NefitProtos.GetNOrBuilder> getBuilder_;
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       * @return Whether the get field is set.
-       */
-      public boolean hasGet() {
-        return msgCase_ == 1;
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       * @return The get.
-       */
-      public nefit.proto.NefitProtos.GetN getGet() {
-        if (getBuilder_ == null) {
-          if (msgCase_ == 1) {
-            return (nefit.proto.NefitProtos.GetN) msg_;
-          }
-          return nefit.proto.NefitProtos.GetN.getDefaultInstance();
-        } else {
-          if (msgCase_ == 1) {
-            return getBuilder_.getMessage();
-          }
-          return nefit.proto.NefitProtos.GetN.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       */
-      public Builder setGet(nefit.proto.NefitProtos.GetN value) {
-        if (getBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          msg_ = value;
-          onChanged();
-        } else {
-          getBuilder_.setMessage(value);
-        }
-        msgCase_ = 1;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       */
-      public Builder setGet(
-          nefit.proto.NefitProtos.GetN.Builder builderForValue) {
-        if (getBuilder_ == null) {
-          msg_ = builderForValue.build();
-          onChanged();
-        } else {
-          getBuilder_.setMessage(builderForValue.build());
-        }
-        msgCase_ = 1;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       */
-      public Builder mergeGet(nefit.proto.NefitProtos.GetN value) {
-        if (getBuilder_ == null) {
-          if (msgCase_ == 1 &&
-              msg_ != nefit.proto.NefitProtos.GetN.getDefaultInstance()) {
-            msg_ = nefit.proto.NefitProtos.GetN.newBuilder((nefit.proto.NefitProtos.GetN) msg_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            msg_ = value;
-          }
-          onChanged();
-        } else {
-          if (msgCase_ == 1) {
-            getBuilder_.mergeFrom(value);
-          }
-          getBuilder_.setMessage(value);
-        }
-        msgCase_ = 1;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       */
-      public Builder clearGet() {
-        if (getBuilder_ == null) {
-          if (msgCase_ == 1) {
-            msgCase_ = 0;
-            msg_ = null;
-            onChanged();
-          }
-        } else {
-          if (msgCase_ == 1) {
-            msgCase_ = 0;
-            msg_ = null;
-          }
-          getBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       */
-      public nefit.proto.NefitProtos.GetN.Builder getGetBuilder() {
-        return getGetFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       */
-      public nefit.proto.NefitProtos.GetNOrBuilder getGetOrBuilder() {
-        if ((msgCase_ == 1) && (getBuilder_ != null)) {
-          return getBuilder_.getMessageOrBuilder();
-        } else {
-          if (msgCase_ == 1) {
-            return (nefit.proto.NefitProtos.GetN) msg_;
-          }
-          return nefit.proto.NefitProtos.GetN.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.GetN get = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.proto.NefitProtos.GetN, nefit.proto.NefitProtos.GetN.Builder, nefit.proto.NefitProtos.GetNOrBuilder> 
-          getGetFieldBuilder() {
-        if (getBuilder_ == null) {
-          if (!(msgCase_ == 1)) {
-            msg_ = nefit.proto.NefitProtos.GetN.getDefaultInstance();
-          }
-          getBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.proto.NefitProtos.GetN, nefit.proto.NefitProtos.GetN.Builder, nefit.proto.NefitProtos.GetNOrBuilder>(
-                  (nefit.proto.NefitProtos.GetN) msg_,
-                  getParentForChildren(),
-                  isClean());
-          msg_ = null;
-        }
-        msgCase_ = 1;
-        onChanged();;
-        return getBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.SubN, nefit.proto.NefitProtos.SubN.Builder, nefit.proto.NefitProtos.SubNOrBuilder> subBuilder_;
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        * @return Whether the sub field is set.
        */
       public boolean hasSub() {
-        return msgCase_ == 2;
+        return msgCase_ == 1;
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        * @return The sub.
        */
       public nefit.proto.NefitProtos.SubN getSub() {
         if (subBuilder_ == null) {
-          if (msgCase_ == 2) {
+          if (msgCase_ == 1) {
             return (nefit.proto.NefitProtos.SubN) msg_;
           }
           return nefit.proto.NefitProtos.SubN.getDefaultInstance();
         } else {
-          if (msgCase_ == 2) {
+          if (msgCase_ == 1) {
             return subBuilder_.getMessage();
           }
           return nefit.proto.NefitProtos.SubN.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        */
       public Builder setSub(nefit.proto.NefitProtos.SubN value) {
         if (subBuilder_ == null) {
@@ -24487,11 +20310,11 @@ public final class NefitProtos {
         } else {
           subBuilder_.setMessage(value);
         }
-        msgCase_ = 2;
+        msgCase_ = 1;
         return this;
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        */
       public Builder setSub(
           nefit.proto.NefitProtos.SubN.Builder builderForValue) {
@@ -24501,15 +20324,15 @@ public final class NefitProtos {
         } else {
           subBuilder_.setMessage(builderForValue.build());
         }
-        msgCase_ = 2;
+        msgCase_ = 1;
         return this;
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        */
       public Builder mergeSub(nefit.proto.NefitProtos.SubN value) {
         if (subBuilder_ == null) {
-          if (msgCase_ == 2 &&
+          if (msgCase_ == 1 &&
               msg_ != nefit.proto.NefitProtos.SubN.getDefaultInstance()) {
             msg_ = nefit.proto.NefitProtos.SubN.newBuilder((nefit.proto.NefitProtos.SubN) msg_)
                 .mergeFrom(value).buildPartial();
@@ -24518,26 +20341,26 @@ public final class NefitProtos {
           }
           onChanged();
         } else {
-          if (msgCase_ == 2) {
+          if (msgCase_ == 1) {
             subBuilder_.mergeFrom(value);
           }
           subBuilder_.setMessage(value);
         }
-        msgCase_ = 2;
+        msgCase_ = 1;
         return this;
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        */
       public Builder clearSub() {
         if (subBuilder_ == null) {
-          if (msgCase_ == 2) {
+          if (msgCase_ == 1) {
             msgCase_ = 0;
             msg_ = null;
             onChanged();
           }
         } else {
-          if (msgCase_ == 2) {
+          if (msgCase_ == 1) {
             msgCase_ = 0;
             msg_ = null;
           }
@@ -24546,32 +20369,32 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        */
       public nefit.proto.NefitProtos.SubN.Builder getSubBuilder() {
         return getSubFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        */
       public nefit.proto.NefitProtos.SubNOrBuilder getSubOrBuilder() {
-        if ((msgCase_ == 2) && (subBuilder_ != null)) {
+        if ((msgCase_ == 1) && (subBuilder_ != null)) {
           return subBuilder_.getMessageOrBuilder();
         } else {
-          if (msgCase_ == 2) {
+          if (msgCase_ == 1) {
             return (nefit.proto.NefitProtos.SubN) msg_;
           }
           return nefit.proto.NefitProtos.SubN.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.SubN sub = 2;</code>
+       * <code>optional .nefit.SubN sub = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.SubN, nefit.proto.NefitProtos.SubN.Builder, nefit.proto.NefitProtos.SubNOrBuilder> 
           getSubFieldBuilder() {
         if (subBuilder_ == null) {
-          if (!(msgCase_ == 2)) {
+          if (!(msgCase_ == 1)) {
             msg_ = nefit.proto.NefitProtos.SubN.getDefaultInstance();
           }
           subBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -24581,7 +20404,7 @@ public final class NefitProtos {
                   isClean());
           msg_ = null;
         }
-        msgCase_ = 2;
+        msgCase_ = 1;
         onChanged();;
         return subBuilder_;
       }
@@ -24589,31 +20412,31 @@ public final class NefitProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.OrderN, nefit.proto.NefitProtos.OrderN.Builder, nefit.proto.NefitProtos.OrderNOrBuilder> orderBuilder_;
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        * @return Whether the order field is set.
        */
       public boolean hasOrder() {
-        return msgCase_ == 3;
+        return msgCase_ == 2;
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        * @return The order.
        */
       public nefit.proto.NefitProtos.OrderN getOrder() {
         if (orderBuilder_ == null) {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             return (nefit.proto.NefitProtos.OrderN) msg_;
           }
           return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             return orderBuilder_.getMessage();
           }
           return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        */
       public Builder setOrder(nefit.proto.NefitProtos.OrderN value) {
         if (orderBuilder_ == null) {
@@ -24625,11 +20448,11 @@ public final class NefitProtos {
         } else {
           orderBuilder_.setMessage(value);
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         return this;
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        */
       public Builder setOrder(
           nefit.proto.NefitProtos.OrderN.Builder builderForValue) {
@@ -24639,15 +20462,15 @@ public final class NefitProtos {
         } else {
           orderBuilder_.setMessage(builderForValue.build());
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         return this;
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        */
       public Builder mergeOrder(nefit.proto.NefitProtos.OrderN value) {
         if (orderBuilder_ == null) {
-          if (msgCase_ == 3 &&
+          if (msgCase_ == 2 &&
               msg_ != nefit.proto.NefitProtos.OrderN.getDefaultInstance()) {
             msg_ = nefit.proto.NefitProtos.OrderN.newBuilder((nefit.proto.NefitProtos.OrderN) msg_)
                 .mergeFrom(value).buildPartial();
@@ -24656,26 +20479,26 @@ public final class NefitProtos {
           }
           onChanged();
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             orderBuilder_.mergeFrom(value);
           }
           orderBuilder_.setMessage(value);
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         return this;
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             msgCase_ = 0;
             msg_ = null;
             onChanged();
           }
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             msgCase_ = 0;
             msg_ = null;
           }
@@ -24684,32 +20507,32 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        */
       public nefit.proto.NefitProtos.OrderN.Builder getOrderBuilder() {
         return getOrderFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        */
       public nefit.proto.NefitProtos.OrderNOrBuilder getOrderOrBuilder() {
-        if ((msgCase_ == 3) && (orderBuilder_ != null)) {
+        if ((msgCase_ == 2) && (orderBuilder_ != null)) {
           return orderBuilder_.getMessageOrBuilder();
         } else {
-          if (msgCase_ == 3) {
+          if (msgCase_ == 2) {
             return (nefit.proto.NefitProtos.OrderN) msg_;
           }
           return nefit.proto.NefitProtos.OrderN.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.OrderN order = 3;</code>
+       * <code>optional .nefit.OrderN order = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.OrderN, nefit.proto.NefitProtos.OrderN.Builder, nefit.proto.NefitProtos.OrderNOrBuilder> 
           getOrderFieldBuilder() {
         if (orderBuilder_ == null) {
-          if (!(msgCase_ == 3)) {
+          if (!(msgCase_ == 2)) {
             msg_ = nefit.proto.NefitProtos.OrderN.getDefaultInstance();
           }
           orderBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -24719,7 +20542,7 @@ public final class NefitProtos {
                   isClean());
           msg_ = null;
         }
-        msgCase_ = 3;
+        msgCase_ = 2;
         onChanged();;
         return orderBuilder_;
       }
@@ -24727,31 +20550,31 @@ public final class NefitProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder> disponibilityBuilder_;
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        * @return Whether the disponibility field is set.
        */
       public boolean hasDisponibility() {
-        return msgCase_ == 4;
+        return msgCase_ == 3;
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        * @return The disponibility.
        */
       public nefit.proto.NefitProtos.DisponibilityN getDisponibility() {
         if (disponibilityBuilder_ == null) {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             return (nefit.proto.NefitProtos.DisponibilityN) msg_;
           }
           return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             return disponibilityBuilder_.getMessage();
           }
           return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       public Builder setDisponibility(nefit.proto.NefitProtos.DisponibilityN value) {
         if (disponibilityBuilder_ == null) {
@@ -24763,11 +20586,11 @@ public final class NefitProtos {
         } else {
           disponibilityBuilder_.setMessage(value);
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       public Builder setDisponibility(
           nefit.proto.NefitProtos.DisponibilityN.Builder builderForValue) {
@@ -24777,15 +20600,15 @@ public final class NefitProtos {
         } else {
           disponibilityBuilder_.setMessage(builderForValue.build());
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       public Builder mergeDisponibility(nefit.proto.NefitProtos.DisponibilityN value) {
         if (disponibilityBuilder_ == null) {
-          if (msgCase_ == 4 &&
+          if (msgCase_ == 3 &&
               msg_ != nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance()) {
             msg_ = nefit.proto.NefitProtos.DisponibilityN.newBuilder((nefit.proto.NefitProtos.DisponibilityN) msg_)
                 .mergeFrom(value).buildPartial();
@@ -24794,26 +20617,26 @@ public final class NefitProtos {
           }
           onChanged();
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             disponibilityBuilder_.mergeFrom(value);
           }
           disponibilityBuilder_.setMessage(value);
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       public Builder clearDisponibility() {
         if (disponibilityBuilder_ == null) {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             msgCase_ = 0;
             msg_ = null;
             onChanged();
           }
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             msgCase_ = 0;
             msg_ = null;
           }
@@ -24822,32 +20645,32 @@ public final class NefitProtos {
         return this;
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       public nefit.proto.NefitProtos.DisponibilityN.Builder getDisponibilityBuilder() {
         return getDisponibilityFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       public nefit.proto.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
-        if ((msgCase_ == 4) && (disponibilityBuilder_ != null)) {
+        if ((msgCase_ == 3) && (disponibilityBuilder_ != null)) {
           return disponibilityBuilder_.getMessageOrBuilder();
         } else {
-          if (msgCase_ == 4) {
+          if (msgCase_ == 3) {
             return (nefit.proto.NefitProtos.DisponibilityN) msg_;
           }
           return nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .nefit.DisponibilityN disponibility = 4;</code>
+       * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           nefit.proto.NefitProtos.DisponibilityN, nefit.proto.NefitProtos.DisponibilityN.Builder, nefit.proto.NefitProtos.DisponibilityNOrBuilder> 
           getDisponibilityFieldBuilder() {
         if (disponibilityBuilder_ == null) {
-          if (!(msgCase_ == 4)) {
+          if (!(msgCase_ == 3)) {
             msg_ = nefit.proto.NefitProtos.DisponibilityN.getDefaultInstance();
           }
           disponibilityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -24857,7 +20680,7 @@ public final class NefitProtos {
                   isClean());
           msg_ = null;
         }
-        msgCase_ = 4;
+        msgCase_ = 3;
         onChanged();;
         return disponibilityBuilder_;
       }
@@ -24995,26 +20818,6 @@ public final class NefitProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_InfoI_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_nefit_GetS_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_nefit_GetS_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_nefit_GetN_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_nefit_GetN_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_nefit_NegotiationsS_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_nefit_NegotiationsS_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_nefit_NegotiationsI_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_nefit_NegotiationsI_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_Server_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -25070,28 +20873,20 @@ public final class NefitProtos {
       "n\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\022\r" +
       "\n\005nameI\030\007 \002(\t\"f\n\005InfoI\022\r\n\005nameM\030\001 \002(\t\022\r\n" +
       "\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 \002(\005\022\017\n\007maximun" +
-      "\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\"\025\n" +
-      "\004GetS\022\r\n\005nameI\030\001 \002(\t\"\025\n\004GetN\022\r\n\005nameI\030\001 " +
-      "\002(\t\"B\n\rNegotiationsS\022\r\n\005nameI\030\001 \002(\t\022\"\n\014n" +
-      "egotiations\030\002 \003(\0132\014.nefit.InfoS\"3\n\rNegot" +
-      "iationsI\022\"\n\014negotiations\030\001 \003(\0132\014.nefit.I" +
-      "nfoI\"\306\002\n\006Server\022#\n\002m1\030\001 \001(\0132\025.nefit.Disp" +
-      "onibilitySH\000\022\033\n\002m2\030\002 \001(\0132\r.nefit.OrderSH" +
-      "\000\022\031\n\002m3\030\003 \001(\0132\013.nefit.SubSH\000\022\034\n\002m4\030\004 \001(\013" +
-      "2\016.nefit.ResultSH\000\022\032\n\002m5\030\005 \001(\0132\014.nefit.I" +
-      "nfoSH\000\022 \n\002m6\030\006 \001(\0132\022.nefit.ProductionSH\000" +
-      "\022\036\n\002m7\030\007 \001(\0132\020.nefit.OrderAckSH\000\022\031\n\002m8\030\010" +
-      " \001(\0132\013.nefit.GetSH\000\022\"\n\002m9\030\t \001(\0132\024.nefit." +
-      "NegotiationsSH\000\022\035\n\003m10\030\n \001(\0132\016.nefit.Msg" +
-      "AuthH\000B\005\n\003msg\"\233\001\n\010Importer\022\"\n\006ordack\030\001 \001" +
-      "(\0132\020.nefit.OrderAckIH\000\022$\n\004nego\030\002 \001(\0132\024.n" +
-      "efit.NegotiationsIH\000\022 \n\006result\030\003 \001(\0132\016.n" +
-      "efit.ResultIH\000\022\034\n\004info\030\004 \001(\0132\014.nefit.Inf" +
-      "oIH\000B\005\n\003msg\"\233\001\n\nNegotiator\022\032\n\003get\030\001 \001(\0132" +
-      "\013.nefit.GetNH\000\022\032\n\003sub\030\002 \001(\0132\013.nefit.SubN" +
-      "H\000\022\036\n\005order\030\003 \001(\0132\r.nefit.OrderNH\000\022.\n\rdi" +
-      "sponibility\030\004 \001(\0132\025.nefit.DisponibilityN" +
-      "H\000B\005\n\003msgB\032\n\013nefit.protoB\013NefitProtos"
+      "\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\"\350\001" +
+      "\n\006Server\022#\n\002m1\030\001 \001(\0132\025.nefit.Disponibili" +
+      "tySH\000\022\033\n\002m2\030\002 \001(\0132\r.nefit.OrderSH\000\022\031\n\002m3" +
+      "\030\003 \001(\0132\013.nefit.SubSH\000\022\034\n\002m4\030\004 \001(\0132\016.nefi" +
+      "t.ResultSH\000\022\032\n\002m5\030\005 \001(\0132\014.nefit.InfoSH\000\022" +
+      " \n\002m6\030\006 \001(\0132\022.nefit.ProductionSH\000\022\036\n\002m7\030" +
+      "\007 \001(\0132\020.nefit.OrderAckSH\000B\005\n\003msg\"u\n\010Impo" +
+      "rter\022\"\n\006ordack\030\001 \001(\0132\020.nefit.OrderAckIH\000" +
+      "\022 \n\006result\030\002 \001(\0132\016.nefit.ResultIH\000\022\034\n\004in" +
+      "fo\030\003 \001(\0132\014.nefit.InfoIH\000B\005\n\003msg\"\177\n\nNegot" +
+      "iator\022\032\n\003sub\030\001 \001(\0132\013.nefit.SubNH\000\022\036\n\005ord" +
+      "er\030\002 \001(\0132\r.nefit.OrderNH\000\022.\n\rdisponibili" +
+      "ty\030\003 \001(\0132\025.nefit.DisponibilityNH\000B\005\n\003msg" +
+      "B\032\n\013nefit.protoB\013NefitProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25193,48 +20988,24 @@ public final class NefitProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_InfoI_descriptor,
         new java.lang.String[] { "NameM", "NameP", "Minimun", "Maximun", "Value", "Period", });
-    internal_static_nefit_GetS_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_nefit_GetS_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_nefit_GetS_descriptor,
-        new java.lang.String[] { "NameI", });
-    internal_static_nefit_GetN_descriptor =
-      getDescriptor().getMessageTypes().get(17);
-    internal_static_nefit_GetN_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_nefit_GetN_descriptor,
-        new java.lang.String[] { "NameI", });
-    internal_static_nefit_NegotiationsS_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_nefit_NegotiationsS_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_nefit_NegotiationsS_descriptor,
-        new java.lang.String[] { "NameI", "Negotiations", });
-    internal_static_nefit_NegotiationsI_descriptor =
-      getDescriptor().getMessageTypes().get(19);
-    internal_static_nefit_NegotiationsI_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_nefit_NegotiationsI_descriptor,
-        new java.lang.String[] { "Negotiations", });
     internal_static_nefit_Server_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_nefit_Server_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_Server_descriptor,
-        new java.lang.String[] { "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "Msg", });
+        new java.lang.String[] { "M1", "M2", "M3", "M4", "M5", "M6", "M7", "Msg", });
     internal_static_nefit_Importer_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_nefit_Importer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_Importer_descriptor,
-        new java.lang.String[] { "Ordack", "Nego", "Result", "Info", "Msg", });
+        new java.lang.String[] { "Ordack", "Result", "Info", "Msg", });
     internal_static_nefit_Negotiator_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_nefit_Negotiator_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_Negotiator_descriptor,
-        new java.lang.String[] { "Get", "Sub", "Order", "Disponibility", "Msg", });
+        new java.lang.String[] { "Sub", "Order", "Disponibility", "Msg", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

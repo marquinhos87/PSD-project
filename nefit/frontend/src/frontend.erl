@@ -5,77 +5,132 @@
 -include("nefitproto.hrl").
 
 run(Port) ->
-    Authenticator = spawn(fun()-> authenticator(maps:new()) end),
-    Negotiations = spawn(fun()-> treatNegotiation(maps:new()) end),
-    Orders = spawn(fun()-> treatOrder([], Negotiations) end),
-    Productions = spawn(fun()-> treatProduction([],[],Negotiations) end),
+    Arbiters = maps:new(), % Inicializar os arbiters depois...
+    State = spawn(fun()-> globalState(
+        maps:new(),
+        maps:new(),
+        Arbiters)
+                  end),
     {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, 4}, {reuseaddr, true}]),
-    acceptor(LSock, Authenticator, Orders, Productions).
+    acceptor(LSock, State).
 
 % accepts connections
-acceptor(LSock, Authenticator, Orders, Productions) ->
+acceptor(LSock, State) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> acceptor(LSock, Authenticator, Orders, Productions) end),
-    connectedClient(Sock, Authenticator, Orders, Productions).
+    spawn(fun() -> acceptor(LSock, State) end),
+    connectedClient(Sock, State).
 
-% process responsible for article orders
-treatOrder(Orders, Negotiations) ->
+globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
     receive
+        {Sock, login, Name, Pass, Type} ->
+            Status = maps:find(Name,RegisteredUsers),
+            io:format("Status->~w",[Status]),
+            case Status of
+                {ok, Value} ->
+                    io:format("Value->~w",[Value]),
+                    if
+                        Value == Pass ->
+                            Connected = maps:put(Name,Sock,ConnectedUsers),
+                            Sock ! {success, login, Type},
+                            globalState(RegisteredUsers, Connected, Arbiters);
+                        true ->
+                            Sock ! {failure},
+                            globalState(RegisteredUsers, ConnectedUsers, Arbiters)
+                    end;
+                error ->
+                    Sock ! {failure}
+            end;
+
+        {Sock, register, Name, Pass, _} ->
+            Status = maps:find(Name,RegisteredUsers),
+            io:format("Status->~w",[Status]),
+            case Status of
+                {ok, _} ->
+                    Sock ! {failure},
+                    globalState(RegisteredUsers, ConnectedUsers, Arbiters);
+                error ->
+                    io:format("4"),
+                    Registered = maps:put(Name, Pass, RegisteredUsers),
+                    Sock ! {success, register},
+                    globalState(Registered, ConnectedUsers, Arbiters)
+            end;
+
         {order, Pid, Manuf, Product, Quant, Value} ->
             Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value},
-            nefitproto:encode_msg(Msg),
-            Negotiations ! {order, Pid, Msg},
-            treatOrder(Orders, Negotiations)
+            List = maps:to_list(Arbiters),
+            [Arbiter ! {sub, Msg} || {Arbiter,_} <- List],
+            globalState(RegisteredUsers, ConnectedUsers, Arbiters);
+
+        {sub, Imp, Manuf} ->
+            Msg = #'SubN'{nameI = Imp, subs = Manuf},
+            List = maps:to_list(Arbiters),
+            [Arbiter ! {sub, Msg} || {Arbiter,_} <- List],
+            globalState(RegisteredUsers, ConnectedUsers, Arbiters);
+
+        {disponibility, M, P, Value, Min, Max, Period} ->
+            Msg = #'DisponibilityN'{nameM = M, nameP = P, value = Value, minimun = Min, maximun = Max, period = Period},
+            {Sock,I} = for(maps:size(Arbiters),"c",99999999,maps:iterator(Arbiters)),
+            Map = maps:put(Sock,I+1),
+            Sock ! {disponibility, Msg},
+            globalState(RegisteredUsers, ConnectedUsers, Map);
+        {production, M,P,Q,V} ->
+            Msg = #'ProductionM'{nameP = P,quant = Q, value = V},
+            {Sock,_} = maps:get(M,ConnectedUsers),
+            Sock ! {production, Msg},
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+        {result, R,M,I} ->
+            Msg = #'ResultI'{result = R, msg = M},
+            {Sock,_} = maps:get(I,ConnectedUsers),
+            Sock ! {result, Msg},
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+        {ack,A,M,I} ->
+            Msg = #'OrderAckI'{ack = A, msg = M},
+            {Sock,_} = maps:get(I,ConnectedUsers),
+            Sock ! {ack, Msg},
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+        {info,M,P,Min,Max,V,Pe,I} ->
+            Msg = #'InfoI'{nameM = M, nameP = P,maximun = Max, minimun = Min, value = V, period = Pe},
+            {Sock,_} = maps:get(I,ConnectedUsers),
+            Sock ! {info, Msg},
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters)
     end.
 
-% process responsible for article productions
-treatProduction(Productions, Subs, Negotiations) ->
-    receive
-        {production, Sock, Manuf, Product, Value, Min, Max, Period} ->
-            Msg = #'DisponibilityN'{nameP = Product, nameM = Manuf, value = Value, minimun = Min, maximun = Max,
-                period = Period},
-            nefitproto:encode_msg(Msg),
-            Negotiations ! {disponibility, Sock, Msg},
-            % percorrer os sockets guardados em Subs para mandar notificacao de nova producao de um fabricante
-            treatProduction(Productions, Subs, Negotiations)
-    end.
-
-% process responsible for the results received by the arbiters
-treatNegotiation(Arbiters) ->
-    receive
-        {order, Importer, Msg} ->
-            % send the order to the arbiter with the least amount of load
-            treatNegotiation(Arbiters)
+for(0,Sock,I,_) -> {Sock,I};
+for(N,Sock,I,Arbiters) ->
+    {A,B,C} = maps:next(Arbiters),
+    if
+        B < I -> for(N-1,A,B,C);
+        true -> for(N-1,Sock,I,C)
     end.
 
 % treat data received from arbiters
-arbiter(Sock, Negotiations) ->
+arbiter(Sock, State) ->
     receive
         {tcp, _, Data} ->
             Msg = decode(Data),
             Field = Msg#'Server'.msg,
             case Field of
                 {m6, Production} ->
-                    Negotiations ! {Sock,
+                    State ! {production,
                         Production#'ProductionS'.nameM,
                         Production#'ProductionS'.nameP,
                         Production#'ProductionS'.quant,
                         Production#'ProductionS'.value},
-                    arbiter(Sock, Negotiations);
+                    arbiter(Sock, State);
                 {m4, Result} ->
-                    Negotiations ! {Sock,
+                    State ! {result,
                         Result#'ResultS'.result,
                         Result#'ResultS'.msg,
                         Result#'ResultS'.nameI},
-                    arbiter(Sock, Negotiations);
+                    arbiter(Sock, State);
                 {m7, Ack} ->
-                    Negotiations ! {Sock,
+                    State ! {ack,
                         Ack#'OrderAckS'.ack,
                         Ack#'OrderAckS'.msg,
                         Ack#'OrderAckS'.nameI},
-                    arbiter(Sock, Negotiations);
+                    arbiter(Sock, State);
                 {m5, Info} ->
-                    Negotiations ! {Sock,
+                    State ! {info,
                         Info#'InfoS'.nameM,
                         Info#'InfoS'.nameP,
                         Info#'InfoS'.minimun,
@@ -83,29 +138,44 @@ arbiter(Sock, Negotiations) ->
                         Info#'InfoS'.value,
                         Info#'InfoS'.period,
                         Info#'InfoS'.nameI},
-                    arbiter(Sock, Negotiations)
+                    arbiter(Sock, State)
             end;
         {order, Msg} ->
             gen_tcp:send(Sock, Msg),
-            arbiter(Sock, Negotiations)
+            arbiter(Sock, State);
+        {disponibility, Msg} ->
+            gen_tcp:send(Sock, Msg),
+            arbiter(Sock, State);
+        {sub, Msg} ->
+            gen_tcp:send(Sock, Msg),
+            arbiter(Sock, State);
+        {tcp_closed, _} ->
+            io:format("Closed.");
+        {tcp_error, _, _} ->
+            io:format("Error.")
     end.
 
 % treats client logged as manufacturer
-manufacturer(Sock, Productions) ->
+manufacturer(Sock, State) ->
     receive
         {tcp, _, Data} ->
             Msg = decode(Data),
             Field = Msg#'Server'.msg,
             case Field of
                 {m1, ProductionOffer} ->
-                    Productions ! {production, Sock,
+                    State ! {disponibility,
                         ProductionOffer#'DisponibilityS'.nameM,
                         ProductionOffer#'DisponibilityS'.nameP,
                         ProductionOffer#'DisponibilityS'.value,
                         ProductionOffer#'DisponibilityS'.minimun,
                         ProductionOffer#'DisponibilityS'.maximun,
                         ProductionOffer#'DisponibilityS'.period}
-        end;
+            end,
+            manufacturer(Sock, State);
+        {production, Msg} ->
+            M = nefitproto:encode_msg(Msg),
+            gen_tcp:send(Sock,M),
+            manufacturer(Sock,State);
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
@@ -113,26 +183,35 @@ manufacturer(Sock, Productions) ->
     end.
 
 % treats client logged as importer
-importer(Sock, Orders, Productions) ->
+importer(Sock, State) ->
     receive
         {tcp, _, Data} ->
             Msg = decode(Data),
             Field = Msg#'Server'.msg,
             case Field of
                 {m2,Order} ->
-                    Orders ! {order,Sock,
+                    State ! {order,Sock,
                         Order#'OrderS'.nameM,
                         Order#'OrderS'.nameP,
                         Order#'OrderS'.quant,
                         Order#'OrderS'.value},
-                    importer(Sock, Orders, Productions);
+                    importer(Sock, State);
                 {m3,Sub} ->
-                    Productions ! {sub, Sock, Sub#'SubS'.subs},
-                    importer(Sock, Orders, Productions);
-                {m8, Get} ->
-                    % to do
-                    importer(Sock, Orders, Productions)
+                    State ! {sub, Sub#'SubS'.nameI ,Sub#'SubS'.subs},
+                    importer(Sock, State)
             end;
+        {ack, Msg} ->
+            M = nefitproto:encode_msg(Msg),
+            gen_tcp:send(Sock,M),
+            importer(Sock,State);
+        {result, Msg} ->
+            M = nefitproto:encode_msg(Msg),
+            gen_tcp:send(Sock,M),
+            importer(Sock,State);
+        {info, Msg} ->
+            M = nefitproto:encode_msg(Msg),
+            gen_tcp:send(Sock,M),
+            importer(Sock,State);
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
@@ -140,80 +219,50 @@ importer(Sock, Orders, Productions) ->
     end.
 
 % registers or logs in the connected client
-connectedClient(Sock, Authenticator, Orders, Productions) ->
-    io:format("Chegou aqui~n"),
+connectedClient(Sock, State) ->
     receive
         {tcp, _, Data} ->
-            io:format("Recebeu autenticacao~n"),
             Msg = nefitproto:decode_msg(Data,'MsgAuth'),
-            io:format("Bin -> ~w~n",[Data]),
-            io:format("Msg -> ~w~n",[Msg]),
-            io:format("MTYPE -> ~w~w~w~w~n", [Msg#'MsgAuth'.name,Msg#'MsgAuth'.pass,Msg#'MsgAuth'.ctype,Msg#'MsgAuth'.mtype]),
+            io:format("Msg => ~w~n",[Msg]),
             case Msg#'MsgAuth'.mtype of
                 'REGISTER' ->
-                    Authenticator ! {Sock,
+                    io:format("1~n"),
+                    State ! {Sock,
                         register,
                         Msg#'MsgAuth'.name,
                         Msg#'MsgAuth'.pass,
                         Msg#'MsgAuth'.ctype};
                 'LOGIN' ->
-                    Authenticator ! {Sock,
+                    io:format("2~n"),
+                    State ! {Sock,
                         login,
                         Msg#'MsgAuth'.name,
                         Msg#'MsgAuth'.pass,
                         Msg#'MsgAuth'.ctype}
             end,
-            connectedClient(Sock, Authenticator, Orders, Productions);
+            io:format("Chega aqui~n"),
+            connectedClient(Sock, State);
         {success, login, Type} ->
             Msg = #'MsgAck'{ok = true},
             gen_tcp:send(Sock, Msg),
             case Type of
-                'IMPORTER'-> importer(Sock, Orders, Productions);
-                'MANUFACTURER'-> io:format("Login Manufacturer~n"),manufacturer(Sock, Productions)
+                'IMPORTER'-> importer(Sock, State);
+                'MANUFACTURER'-> manufacturer(Sock, State)
             end;
         {success, register} ->
+            io:format("3~n"),
             Msg = #'MsgAck'{ok = true},
             gen_tcp:send(Sock, Msg),
-            connectedClient(Sock, Authenticator, Orders, Productions);
+            io:format("3~n"),
+            connectedClient(Sock, State);
         {failure} ->
             Msg = #'MsgAck'{ok = false},
-            gen_tcp:send(Sock, Msg);
+            gen_tcp:send(Sock, Msg),
+            io:format("3~n");
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
             io:format("Error.")
-    end.
-
-% process responsible for authenticating and maybe register users, might separate
-authenticator(RegisteredUsers) ->
-    receive
-        {Sock, login, Name, Pass, Type} ->
-            Status = maps:find(Name,RegisteredUsers),
-            case Status of
-                {ok, Value} ->
-                    if
-                        Value == Pass ->
-                            Sock ! {success, login, Type},
-                            authenticator(RegisteredUsers);
-                        true ->
-                            Sock ! {failure},
-                            authenticator(RegisteredUsers)
-                    end;
-                error ->
-                    Sock ! {failure}
-            end;
-        {Sock, register, Name, Pass, _} ->
-            Status = maps:find(Name,RegisteredUsers),
-            io:format("Recebeu registo~n"),
-            case Status of
-                {ok, _} ->
-                    Sock ! {failure},
-                    authenticator(RegisteredUsers);
-                error ->
-                    Registered = maps:put(Name, Pass, RegisteredUsers),
-                    Sock ! {success, register},
-                    authenticator(Registered)
-            end
     end.
 
 % serialize

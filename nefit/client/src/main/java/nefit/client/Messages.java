@@ -27,12 +27,12 @@ public class Messages
             return msg.setCtype(NefitProtos.MsgAuth.ClientType.MANUFACTURER)
                 .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN).build();
         }
-        if(typeAuth)
+        if(typeAuth && !client)
         {
             return msg.setCtype(NefitProtos.MsgAuth.ClientType.IMPORTER)
                 .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN).build();
         }
-        if(client)
+        if(!typeAuth && client)
         {
             return msg.setCtype(NefitProtos.MsgAuth.ClientType.MANUFACTURER)
                 .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER).build();
@@ -99,8 +99,8 @@ public class Messages
      * @param name Name of the Importer
      * @return Message with the name of the Importer
      */
-    public NefitProtos.GetS createGetS(String name)
+    /*public NefitProtos.GetS createGetS(String name)
     {
         return NefitProtos.GetS.newBuilder().setNameI(name).build();
-    }
+    }*/
 }
