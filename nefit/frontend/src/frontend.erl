@@ -5,8 +5,8 @@
 -include("nefitproto.hrl").
 
 run(Port) ->
-    Authenticator = spawn(fun()-> authenticator(map:new()) end),
-    Negotiations = spawn(fun()-> treatNegotiation(map:new()) end),
+    Authenticator = spawn(fun()-> authenticator(maps:new()) end),
+    Negotiations = spawn(fun()-> treatNegotiation(maps:new()) end),
     Orders = spawn(fun()-> treatOrder([], Negotiations) end),
     Productions = spawn(fun()-> treatProduction([],[],Negotiations) end),
     {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, line}, {reuseaddr, true}]),
@@ -15,8 +15,8 @@ run(Port) ->
 % accepts connections
 acceptor(LSock, Authenticator, Orders, Productions) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> connectedClient(Sock, Authenticator, Orders, Productions) end),
-    acceptor(LSock, Authenticator).
+    spawn(fun() -> acceptor(LSock, Authenticator, Orders, Productions) end),
+    connectedClient(Sock, Authenticator, Orders, Productions).
 
 % process responsible for article orders
 treatOrder(Orders, Negotiations) ->
@@ -141,20 +141,31 @@ importer(Sock, Orders, Productions) ->
 
 % registers or logs in the connected client
 connectedClient(Sock, Authenticator, Orders, Productions) ->
+    io:format("Chegou aqui~n"),
     receive
         {tcp, _, Data} ->
-            Msg = decode(Data,'MsgAuth'),
+            io:format("Recebeu autenticacao~n"),
+            Msg = nefitproto:decode_msg(Data,'MsgAuth'),
             Authenticator ! {Sock,
                 Msg#'MsgAuth'.mtype,
                 Msg#'MsgAuth'.name,
                 Msg#'MsgAuth'.pass,
                 Msg#'MsgAuth'.ctype},
             connectedClient(Sock, Authenticator, Orders, Productions);
-        {success, Type} ->
+        {success, login, Type} ->
+            Msg = #'MsgAck'{ok = true},
+            gen_tcp:send(Sock, Msg),
             case Type of
                 'IMPORTER'-> importer(Sock, Orders, Productions);
-                'MANUFACTURER'-> manufacturer(Sock, Productions)
+                'MANUFACTURER'-> io:format("Login Manufacturer~n"),manufacturer(Sock, Productions)
             end;
+        {success, register} ->
+            Msg = #'MsgAck'{ok = true},
+            gen_tcp:send(Sock, Msg),
+            connectedClient(Sock, Authenticator, Orders, Productions);
+        {failure} ->
+            Msg = #'MsgAck'{ok = false},
+            gen_tcp:send(Sock, Msg);
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
@@ -170,7 +181,7 @@ authenticator(RegisteredUsers) ->
                 {ok, Value} ->
                     if
                         Value == Pass ->
-                            Sock ! {success, Type},
+                            Sock ! {success, login, Type},
                             authenticator(RegisteredUsers);
                         true ->
                             Sock ! {failure},
@@ -187,6 +198,7 @@ authenticator(RegisteredUsers) ->
                     authenticator(RegisteredUsers);
                 error ->
                     Registered = maps:put(Name, Pass, RegisteredUsers),
+                    Sock ! {success, register},
                     authenticator(Registered)
             end
     end.
