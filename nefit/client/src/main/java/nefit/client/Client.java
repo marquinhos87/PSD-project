@@ -11,16 +11,15 @@ public class Client
     public static void main(String[] args)
     {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
+        Prompt prompt = new Prompt(new PrintWriter(new OutputStreamWriter(System.out)));
 
         Pair<Pair<String,String>,Pair<String,String>> arg = parseArgs(args);
 
         if(arg == null)
         {
-            out.println("Usage: <type> <auth> <name> <pass>");
-            out.println("<type> is 'm' or 'i'");
-            out.println("<auth> is 'l' or 'r'");
-            out.flush();
+            prompt.printError("Usage: <type> <auth> <name> <pass>");
+            prompt.printError("<type> is 'm' or 'i'");
+            prompt.printError("<auth> is 'l' or 'r'");
             System.exit(2);
         }
 
@@ -36,8 +35,7 @@ public class Client
             {
                 if(!Login(arg.getValue(),messages,is,os))
                 {
-                    out.println("Invalid data, shutting down");
-                    out.flush();
+                    prompt.printError("Invalid data, shutting down");
                     System.exit(3);
                 }
             }
@@ -47,32 +45,28 @@ public class Client
                 {
                     if(!Login(arg.getValue(),messages,is,os))
                     {
-                        out.println("Something went wrong, shutting down");
-                        out.flush();
+                        prompt.printError("Something went wrong, shutting down");
                         System.exit(3);
                     }
                 }
                 else
                 {
-                    out.println("Manufactor/Importer yet registered, trying Login");
-                    out.flush();
+                    prompt.printError("Manufactor/Importer yet registered, trying Login");
                     if(!Login(arg.getValue(),messages,is,os))
                     {
-                        out.println("Something went wrong, shutting down");
-                        out.flush();
+                        prompt.printError("Something went wrong, shutting down");
                         System.exit(3);
                     }
                 }
             }
             if (arg.getKey().getValue().equals("m"))
-                new Manufacturer(arg.getValue().getKey(),in,out,is,os,messages).run();
+                new Manufacturer(arg.getValue().getKey(),in,is,os,messages,prompt).run();
             else
-                new Importer(arg.getValue().getKey(),in,out,is,os,messages).run();
+                new Importer(arg.getValue().getKey(),in,is,os,messages,prompt).run();
         }
         catch (IOException e)
         {
-            out.println("Something went wrong");
-            out.flush();
+            prompt.printError("Something went wrong");
             System.exit(4);
         }
     }

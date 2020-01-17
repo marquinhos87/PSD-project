@@ -33,6 +33,9 @@ public class Arbiter implements Runnable
     //Map<NameImporter,List<NameManufacturer>>
     private Map<String,List<String>> subscribers;
 
+    //Map<NameManufacturer,List<NameImporter>>
+    private Map<String,List<String>> importerManu;
+
     public Arbiter(){}
 
     public static void main(String[] args)
@@ -51,6 +54,7 @@ public class Arbiter implements Runnable
         this.negotiations = new HashMap<>();
         this.subscribers = new HashMap<>();
         this.importerNego = new HashMap<>();
+        this.importerManu = new HashMap<>();
 
         //TODO
         while(true)
@@ -92,6 +96,20 @@ public class Arbiter implements Runnable
         this.importerNego.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new ArrayList<>());
         this.disp = disponibility;
         new Thread(this::executeResult).start();
+        if(!this.importerManu.containsKey(disponibility.getNameM()))
+            this.importerManu.put(disponibility.getNameM(),new ArrayList<>());
+        else
+            for(String str: this.importerManu.get(disponibility.getNameM()))
+                this.socket.send(
+                    this.messages.createInfoS(
+                        disponibility.getNameM(),
+                        disponibility.getNameP(),
+                        disponibility.getMaximun(),
+                        disponibility.getMinimun(),
+                        disponibility.getValue(),
+                        disponibility.getPeriod(),
+                        str)
+                    .toByteArray(),0);
     }
 
     private void executeOrder(NefitProtos.OrderN order) {
@@ -152,6 +170,17 @@ public class Arbiter implements Runnable
     private void executeSub(NefitProtos.SubN sub)
     {
         this.subscribers.put(sub.getNameI(),sub.getSubsList().subList(0,sub.getSubsCount()));
+        for(String str: sub.getSubsList().subList(0,sub.getSubsCount())) {
+            if (this.importerManu.containsKey(str)) {
+                if (!this.importerManu.get(str).contains(sub.getNameI()))
+                    this.importerManu.get(str).add(sub.getNameI());
+            }
+            else {
+                List<String> aux = new ArrayList<>();
+                aux.add(sub.getNameI());
+                this.importerManu.put(str,aux);
+            }
+        }
     }
 
     private void executeResult()
@@ -168,6 +197,19 @@ public class Arbiter implements Runnable
                 for(String str: this.importerNego.get(prod))
                     if(!str.equals(order.getNameI()))
                         this.socket.send(this.messages.createResultS(false,order.getNameM() + ":" + order.getNameP(),str).toByteArray(),0);
+                this.socket.send(
+                    this.messages.createProductionS(
+                        prod.getKey(),prod.getValue(),order.getQuant(),order.getValue()
+                    ).toByteArray(),0
+                );
+            }
+            else
+            {
+                this.socket.send(
+                    this.messages.createProductionS(
+                        prod.getKey(),prod.getValue(),0,0
+                    ).toByteArray(),0
+                );
             }
             this.negotiations.remove(prod);
             this.importerNego.remove(prod);

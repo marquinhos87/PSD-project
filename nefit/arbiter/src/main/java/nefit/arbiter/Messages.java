@@ -41,7 +41,7 @@ public class Messages {
      * @param value Value per unit
      * @return Message with the Info to Manufacturer produce his Product
      */
-    public NefitProtos.ProductionS createProductionS(String nameM, String nameP, int quantity, int value)
+    public NefitProtos.ProductionS createProductionS(String nameM, String nameP, int quantity, float value)
     {
         return NefitProtos.ProductionS.newBuilder()
             .setNameM(nameM)

@@ -10,26 +10,25 @@ public class Importer implements Runnable
 {
     private String name;
     private BufferedReader in;
-    private PrintWriter out;
     private InputStream is;
     private OutputStream os;
     private Messages messages;
+    private Prompt prompt;
 
-    public Importer(String name, BufferedReader in, PrintWriter out, InputStream is, OutputStream os, Messages messages)
+    public Importer(String name, BufferedReader in, InputStream is, OutputStream os, Messages messages,Prompt prompt)
     {
         this.name = name;
         this.in = in;
-        this.out = out;
         this.is = is;
         this.os = os;
         this.messages = messages;
+        this.prompt = prompt;
     }
 
     @Override
     public void run()
     {
-        printCommands();
-        out.flush();
+        prompt.printOthers(printCommands());
         new Thread(this::receive).start();
         while(true)
         {
@@ -38,7 +37,7 @@ public class Importer implements Runnable
                 String[] fields = command.split(" ");
                 if (fields.length < 1)
                 {
-                    out.println("You don't write anything");
+                    prompt.printWarning("You don't write anything");
                 }
                 else
                 {
@@ -57,19 +56,15 @@ public class Importer implements Runnable
                             break;
 
                         default:
-                            out.println("Wrong command, try one of this:");
-                            printCommands();
+                            prompt.printWarning("Wrong command, try one of this:");
+                            prompt.printOthers(printCommands());
                             break;
                     }
                 }
             }
             catch (IOException e)
             {
-                out.println("Something went wrong");
-            }
-            finally
-            {
-                out.flush();
+                prompt.printError("Something went wrong");
             }
         }
     }
@@ -78,7 +73,7 @@ public class Importer implements Runnable
     {
         if (fields.length == 1)
         {
-            out.println("Forgot Names of Manufacturers");
+            prompt.printWarning("Forgot Names of Manufacturers");
         }
         else
         {
@@ -94,7 +89,7 @@ public class Importer implements Runnable
     {
         if (fields.length != 1)
         {
-            out.println("To 'get' type only 'get'");
+            prompt.printWarning("To 'get' type only 'get'");
         }
         else
         {
@@ -107,7 +102,7 @@ public class Importer implements Runnable
     {
         if (fields.length != 5)
         {
-            out.println("Maybe forgot something");
+            prompt.printWarning("Maybe forgot something");
         }
         else
         {
@@ -120,7 +115,7 @@ public class Importer implements Runnable
             }
             catch (NumberFormatException e)
             {
-                out.println("Quantity and Price have to be a number");
+                prompt.printError("Quantity and Price have to be a number");
             }
         }
     }
@@ -135,8 +130,8 @@ public class Importer implements Runnable
 
                 if(importer.hasInfo())
                 {
-                    out.println("New Product available:");
-                    printInfo(importer.getInfo());
+                    prompt.printMessages("New Product available:");
+                    prompt.printMessages(printInfo(importer.getInfo()));
                 }
 
                 if(importer.hasResult())
@@ -151,34 +146,32 @@ public class Importer implements Runnable
             }
             catch (IOException e)
             {
-                out.println("Something went wrong");
-            }
-            finally
-            {
-                out.flush();
+                prompt.printError("Something went wrong");
             }
         }
     }
 
-    private void printInfo(NefitProtos.InfoI info)
+    private String printInfo(NefitProtos.InfoI info)
     {
-        out.println("\tManufacturer: " + info.getNameM());
-        out.println("\tProduct: " + info.getNameP());
-        out.println("\tMin quantity: " + info.getMinimun());
-        out.println("\tMax quantity: " + info.getMaximun());
-        out.println("\tMin unit price: " + info.getValue());
-        out.println("\tTime Available: " + info.getPeriod() + " seconds");
+        StringBuilder sb = new StringBuilder();
+        sb.append("\tManufacturer: " + info.getNameM());
+        sb.append("\n\tProduct: " + info.getNameP());
+        sb.append("\n\tMin quantity: " + info.getMinimun());
+        sb.append("\n\tMax quantity: " + info.getMaximun());
+        sb.append("\n\tMin unit price: " + info.getValue());
+        sb.append("\n\tTime Available: " + info.getPeriod() + " seconds");
+        return  sb.toString();
     }
 
     private void printResult(NefitProtos.ResultI result)
     {
         if(result.getResult())
         {
-            out.println("You win the order " + result.getMsg());
+            prompt.printMessages("You win the order " + result.getMsg());
         }
         else
         {
-            out.println("You lose the order " + result.getMsg());
+            prompt.printMessages("You lose the order " + result.getMsg());
         }
     }
 
@@ -186,31 +179,33 @@ public class Importer implements Runnable
     {
         if(ack.getOutdated())
         {
-            out.println(ack.getMsg());
+            prompt.printMessages(ack.getMsg());
         }
         if(ack.getAck())
         {
-            out.println("Order accepted");
+            prompt.printMessages("Order accepted");
         }
         else
         {
-            out.println("Order decline, because: "+ack.getMsg());
+            prompt.printMessages("Order decline, because: "+ack.getMsg());
         }
     }
 
     private void printNegotiations(NefitProtos.NegotiationsI negotiation)
     {
         for (NefitProtos.InfoI info : negotiation.getNegotiationsList()) {
-            out.println("Product available:");
-            printInfo(info);
+            prompt.printMessages("Product available:");
+            prompt.printMessages(printInfo(info));
         }
     }
 
-    private void printCommands()
+    private String printCommands()
     {
-        out.println("You can use some commands like 'sub' 'get' 'order'");
-        out.println("Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...");
-        out.println("Command get: <get>");
-        out.println("Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>");
+        StringBuilder sb = new StringBuilder();
+        sb.append("You can use some commands like 'sub' 'get' 'order'\n");
+        sb.append("Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...\n");
+        sb.append("Command get: <get>\n");
+        sb.append("Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>");
+        return sb.toString();
     }
 }
