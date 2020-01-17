@@ -55,7 +55,8 @@
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
          quant                  :: integer(),       % = 3, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan % = 4
+         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 4
+         nameI                  :: iodata()         % = 5
         }).
 -endif.
 
@@ -65,7 +66,8 @@
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
          quant                  :: integer(),       % = 3, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan % = 4
+         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 4
+         nameI                  :: iodata()         % = 5
         }).
 -endif.
 
@@ -74,7 +76,8 @@
 -record('OrderAckS',
         {ack                    :: boolean() | 0 | 1, % = 1
          msg                    :: iodata() | undefined, % = 2
-         nameI                  :: iodata()         % = 3
+         nameI                  :: iodata(),        % = 3
+         outdated               :: boolean() | 0 | 1 % = 4
         }).
 -endif.
 
@@ -82,21 +85,24 @@
 -define('ORDERACKI_PB_H', true).
 -record('OrderAckI',
         {ack                    :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata() | undefined % = 2
+         msg                    :: iodata() | undefined, % = 2
+         outdated               :: boolean() | 0 | 1 % = 3
         }).
 -endif.
 
 -ifndef('SUBS_PB_H').
 -define('SUBS_PB_H', true).
 -record('SubS',
-        {subs = []              :: [iodata()] | undefined % = 1
+        {nameI                  :: iodata(),        % = 1
+         subs = []              :: [iodata()] | undefined % = 2
         }).
 -endif.
 
 -ifndef('SUBN_PB_H').
 -define('SUBN_PB_H', true).
 -record('SubN',
-        {subs = []              :: [iodata()] | undefined % = 1
+        {nameI                  :: iodata(),        % = 1
+         subs = []              :: [iodata()] | undefined % = 2
         }).
 -endif.
 
@@ -179,7 +185,7 @@
 -define('NEGOTIATIONSS_PB_H', true).
 -record('NegotiationsS',
         {nameI                  :: iodata(),        % = 1
-         negotiations = []      :: [nefitproto:'InfoI'()] | undefined % = 2
+         negotiations = []      :: [nefitproto:'InfoS'()] | undefined % = 2
         }).
 -endif.
 

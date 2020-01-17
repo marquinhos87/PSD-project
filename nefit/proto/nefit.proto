@@ -120,6 +120,7 @@ message InfoS {
     required int32 period = 6;
     required string nameI = 7;
 }
+
 message InfoI {
     required string nameM = 1;
     required string nameP = 2;
@@ -128,7 +129,6 @@ message InfoI {
     required float value = 5;
     required int32 period = 6;
 }
-
 
 message GetS {
     required string nameI = 1;

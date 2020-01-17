@@ -28,16 +28,16 @@ public class Importer implements Runnable
     @Override
     public void run()
     {
-        prompt.printOthers(printCommands());
+        this.prompt.printOthers(printCommands());
         new Thread(this::receive).start();
         while(true)
         {
             try {
-                String command = in.readLine();
+                String command = this.in.readLine();
                 String[] fields = command.split(" ");
                 if (fields.length < 1)
                 {
-                    prompt.printWarning("You don't write anything");
+                    this.prompt.printWarning("You don't write anything");
                 }
                 else
                 {
@@ -56,15 +56,15 @@ public class Importer implements Runnable
                             break;
 
                         default:
-                            prompt.printWarning("Wrong command, try one of this:");
-                            prompt.printOthers(printCommands());
+                            this.prompt.printWarning("Wrong command, try one of this:");
+                            this.prompt.printOthers(printCommands());
                             break;
                     }
                 }
             }
             catch (IOException e)
             {
-                prompt.printError("Something went wrong");
+                this.prompt.printError("Something went wrong");
             }
         }
     }
@@ -73,7 +73,7 @@ public class Importer implements Runnable
     {
         if (fields.length == 1)
         {
-            prompt.printWarning("Forgot Names of Manufacturers");
+            this.prompt.printWarning("Forgot Names of Manufacturers");
         }
         else
         {
@@ -89,7 +89,7 @@ public class Importer implements Runnable
     {
         if (fields.length != 1)
         {
-            prompt.printWarning("To 'get' type only 'get'");
+            this.prompt.printWarning("To 'get' type only 'get'");
         }
         else
         {
@@ -102,7 +102,7 @@ public class Importer implements Runnable
     {
         if (fields.length != 5)
         {
-            prompt.printWarning("Maybe forgot something");
+            this.prompt.printWarning("Maybe forgot something");
         }
         else
         {
@@ -115,7 +115,7 @@ public class Importer implements Runnable
             }
             catch (NumberFormatException e)
             {
-                prompt.printError("Quantity and Price have to be a number");
+                this.prompt.printError("Quantity and Price have to be a number");
             }
         }
     }
@@ -130,8 +130,8 @@ public class Importer implements Runnable
 
                 if(importer.hasInfo())
                 {
-                    prompt.printMessages("New Product available:");
-                    prompt.printMessages(printInfo(importer.getInfo()));
+                    this.prompt.printMessages("New Product available:");
+                    this.prompt.printMessages(printInfo(importer.getInfo()));
                 }
 
                 if(importer.hasResult())
@@ -146,7 +146,7 @@ public class Importer implements Runnable
             }
             catch (IOException e)
             {
-                prompt.printError("Something went wrong");
+                this.prompt.printError("Something went wrong");
             }
         }
     }
@@ -167,11 +167,11 @@ public class Importer implements Runnable
     {
         if(result.getResult())
         {
-            prompt.printMessages("You win the order " + result.getMsg());
+            this.prompt.printMessages("You win the order " + result.getMsg());
         }
         else
         {
-            prompt.printMessages("You lose the order " + result.getMsg());
+            this.prompt.printMessages("You lose the order " + result.getMsg());
         }
     }
 
@@ -179,23 +179,23 @@ public class Importer implements Runnable
     {
         if(ack.getOutdated())
         {
-            prompt.printMessages(ack.getMsg());
+            this.prompt.printMessages(ack.getMsg());
         }
         if(ack.getAck())
         {
-            prompt.printMessages("Order accepted");
+            this.prompt.printMessages("Order accepted");
         }
         else
         {
-            prompt.printMessages("Order decline, because: "+ack.getMsg());
+            this.prompt.printMessages("Order decline, because: "+ack.getMsg());
         }
     }
 
     private void printNegotiations(NefitProtos.NegotiationsI negotiation)
     {
         for (NefitProtos.InfoI info : negotiation.getNegotiationsList()) {
-            prompt.printMessages("Product available:");
-            prompt.printMessages(printInfo(info));
+            this.prompt.printMessages("Product available:");
+            this.prompt.printMessages(printInfo(info));
         }
     }
 

@@ -295,7 +295,7 @@ encode_msg_OrderS(Msg, TrUserData) ->
 
 
 encode_msg_OrderS(#'OrderS'{nameM = F1, nameP = F2,
-			    quant = F3, value = F4},
+			    quant = F3, value = F4, nameI = F5},
 		  Bin, TrUserData) ->
     B1 = begin
 	   TrF1 = id(F1, TrUserData),
@@ -309,9 +309,13 @@ encode_msg_OrderS(#'OrderS'{nameM = F1, nameP = F2,
 	   TrF3 = id(F3, TrUserData),
 	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
 	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
+	 end,
     begin
-      TrF4 = id(F4, TrUserData),
-      e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
+      TrF5 = id(F5, TrUserData),
+      e_type_string(TrF5, <<B4/binary, 42>>, TrUserData)
     end.
 
 encode_msg_OrderN(Msg, TrUserData) ->
@@ -319,7 +323,7 @@ encode_msg_OrderN(Msg, TrUserData) ->
 
 
 encode_msg_OrderN(#'OrderN'{nameM = F1, nameP = F2,
-			    quant = F3, value = F4},
+			    quant = F3, value = F4, nameI = F5},
 		  Bin, TrUserData) ->
     B1 = begin
 	   TrF1 = id(F1, TrUserData),
@@ -333,9 +337,13 @@ encode_msg_OrderN(#'OrderN'{nameM = F1, nameP = F2,
 	   TrF3 = id(F3, TrUserData),
 	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
 	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
+	 end,
     begin
-      TrF4 = id(F4, TrUserData),
-      e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
+      TrF5 = id(F5, TrUserData),
+      e_type_string(TrF5, <<B4/binary, 42>>, TrUserData)
     end.
 
 encode_msg_OrderAckS(Msg, TrUserData) ->
@@ -343,7 +351,34 @@ encode_msg_OrderAckS(Msg, TrUserData) ->
 
 
 encode_msg_OrderAckS(#'OrderAckS'{ack = F1, msg = F2,
-				  nameI = F3},
+				  nameI = F3, outdated = F4},
+		     Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
+	 end,
+    B2 = if F2 == undefined -> B1;
+	    true ->
+		begin
+		  TrF2 = id(F2, TrUserData),
+		  e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+		end
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
+	 end,
+    begin
+      TrF4 = id(F4, TrUserData),
+      e_type_bool(TrF4, <<B3/binary, 32>>, TrUserData)
+    end.
+
+encode_msg_OrderAckI(Msg, TrUserData) ->
+    encode_msg_OrderAckI(Msg, <<>>, TrUserData).
+
+
+encode_msg_OrderAckI(#'OrderAckI'{ack = F1, msg = F2,
+				  outdated = F3},
 		     Bin, TrUserData) ->
     B1 = begin
 	   TrF1 = id(F1, TrUserData),
@@ -358,36 +393,23 @@ encode_msg_OrderAckS(#'OrderAckS'{ack = F1, msg = F2,
 	 end,
     begin
       TrF3 = id(F3, TrUserData),
-      e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
-    end.
-
-encode_msg_OrderAckI(Msg, TrUserData) ->
-    encode_msg_OrderAckI(Msg, <<>>, TrUserData).
-
-
-encode_msg_OrderAckI(#'OrderAckI'{ack = F1, msg = F2},
-		     Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
-	 end,
-    if F2 == undefined -> B1;
-       true ->
-	   begin
-	     TrF2 = id(F2, TrUserData),
-	     e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	   end
+      e_type_bool(TrF3, <<B2/binary, 24>>, TrUserData)
     end.
 
 encode_msg_SubS(Msg, TrUserData) ->
     encode_msg_SubS(Msg, <<>>, TrUserData).
 
 
-encode_msg_SubS(#'SubS'{subs = F1}, Bin, TrUserData) ->
+encode_msg_SubS(#'SubS'{nameI = F1, subs = F2}, Bin,
+		TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
     begin
-      TrF1 = id(F1, TrUserData),
-      if TrF1 == [] -> Bin;
-	 true -> e_field_SubS_subs(TrF1, Bin, TrUserData)
+      TrF2 = id(F2, TrUserData),
+      if TrF2 == [] -> B1;
+	 true -> e_field_SubS_subs(TrF2, B1, TrUserData)
       end
     end.
 
@@ -395,11 +417,16 @@ encode_msg_SubN(Msg, TrUserData) ->
     encode_msg_SubN(Msg, <<>>, TrUserData).
 
 
-encode_msg_SubN(#'SubN'{subs = F1}, Bin, TrUserData) ->
+encode_msg_SubN(#'SubN'{nameI = F1, subs = F2}, Bin,
+		TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
     begin
-      TrF1 = id(F1, TrUserData),
-      if TrF1 == [] -> Bin;
-	 true -> e_field_SubN_subs(TrF1, Bin, TrUserData)
+      TrF2 = id(F2, TrUserData),
+      if TrF2 == [] -> B1;
+	 true -> e_field_SubN_subs(TrF2, B1, TrUserData)
       end
     end.
 
@@ -752,14 +779,14 @@ encode_msg_Negotiator(#'Negotiator'{msg = F1}, Bin,
     end.
 
 e_field_SubS_subs([Elem | Rest], Bin, TrUserData) ->
-    Bin2 = <<Bin/binary, 10>>,
+    Bin2 = <<Bin/binary, 18>>,
     Bin3 = e_type_string(id(Elem, TrUserData), Bin2,
 			 TrUserData),
     e_field_SubS_subs(Rest, Bin3, TrUserData);
 e_field_SubS_subs([], Bin, _TrUserData) -> Bin.
 
 e_field_SubN_subs([Elem | Rest], Bin, TrUserData) ->
-    Bin2 = <<Bin/binary, 10>>,
+    Bin2 = <<Bin/binary, 18>>,
     Bin3 = e_type_string(id(Elem, TrUserData), Bin2,
 			 TrUserData),
     e_field_SubN_subs(Rest, Bin3, TrUserData);
@@ -767,7 +794,7 @@ e_field_SubN_subs([], Bin, _TrUserData) -> Bin.
 
 e_mfield_NegotiationsS_negotiations(Msg, Bin,
 				    TrUserData) ->
-    SubBin = encode_msg_InfoI(Msg, <<>>, TrUserData),
+    SubBin = encode_msg_InfoS(Msg, <<>>, TrUserData),
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
@@ -1965,85 +1992,93 @@ decode_msg_OrderS(Bin, TrUserData) ->
 			      id(undefined, TrUserData),
 			      id(undefined, TrUserData),
 			      id(undefined, TrUserData),
+			      id(undefined, TrUserData),
 			      id(undefined, TrUserData), TrUserData).
 
 dfp_read_field_def_OrderS(<<10, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderS_nameM(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderS(<<18, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderS_nameP(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderS(<<24, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderS_quant(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderS(<<37, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderS_value(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
+dfp_read_field_def_OrderS(<<42, Rest/binary>>, Z1, Z2,
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
+    d_field_OrderS_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			  F@_4, _) ->
+			  F@_4, F@_5, _) ->
     #'OrderS'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4};
+	      value = F@_4, nameI = F@_5};
 dfp_read_field_def_OrderS(Other, Z1, Z2, F@_1, F@_2,
-			  F@_3, F@_4, TrUserData) ->
+			  F@_3, F@_4, F@_5, TrUserData) ->
     dg_read_field_def_OrderS(Other, Z1, Z2, F@_1, F@_2,
-			     F@_3, F@_4, TrUserData).
+			     F@_3, F@_4, F@_5, TrUserData).
 
 dg_read_field_def_OrderS(<<1:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
+			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_OrderS(Rest, N + 7, X bsl N + Acc,
-			     F@_1, F@_2, F@_3, F@_4, TrUserData);
+			     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
 dg_read_field_def_OrderS(<<0:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       10 ->
 	  d_field_OrderS_nameM(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
       18 ->
 	  d_field_OrderS_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
       24 ->
 	  d_field_OrderS_quant(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
       37 ->
 	  d_field_OrderS_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
+      42 ->
+	  d_field_OrderS_nameI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
+			       F@_5, TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				   TrUserData);
+				   F@_5, TrUserData);
 	    1 ->
-		skip_64_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
+		skip_64_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
 			       TrUserData);
 	    2 ->
 		skip_length_delimited_OrderS(Rest, 0, 0, F@_1, F@_2,
-					     F@_3, F@_4, TrUserData);
+					     F@_3, F@_4, F@_5, TrUserData);
 	    3 ->
 		skip_group_OrderS(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				  F@_4, TrUserData);
+				  F@_4, F@_5, TrUserData);
 	    5 ->
-		skip_32_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
+		skip_32_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
 			       TrUserData)
 	  end
     end;
 dg_read_field_def_OrderS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			 F@_4, _) ->
+			 F@_4, F@_5, _) ->
     #'OrderS'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4}.
+	      value = F@_4, nameI = F@_5}.
 
 d_field_OrderS_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     d_field_OrderS_nameM(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
 d_field_OrderS_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     _, F@_2, F@_3, F@_4, TrUserData) ->
+		     _, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2052,15 +2087,15 @@ d_field_OrderS_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
 			    Rest2}
 			 end,
     dfp_read_field_def_OrderS(RestF, 0, 0, NewFValue, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 d_field_OrderS_nameP(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     d_field_OrderS_nameP(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
 d_field_OrderS_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, _, F@_3, F@_4, TrUserData) ->
+		     F@_1, _, F@_3, F@_4, F@_5, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2069,15 +2104,15 @@ d_field_OrderS_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
 			    Rest2}
 			 end,
     dfp_read_field_def_OrderS(RestF, 0, 0, F@_1, NewFValue,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 d_field_OrderS_quant(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     d_field_OrderS_quant(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
 d_field_OrderS_quant(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, _, F@_4, TrUserData) ->
+		     F@_1, F@_2, _, F@_4, F@_5, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:32/signed-native>> = <<(X bsl N +
 							    Acc):32/unsigned-native>>,
@@ -2085,148 +2120,175 @@ d_field_OrderS_quant(<<0:1, X:7, Rest/binary>>, N, Acc,
 			  end,
 			  Rest},
     dfp_read_field_def_OrderS(RestF, 0, 0, F@_1, F@_2,
-			      NewFValue, F@_4, TrUserData).
+			      NewFValue, F@_4, F@_5, TrUserData).
 
 d_field_OrderS_value(<<0:16, 128, 127, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(infinity, TrUserData), TrUserData);
+			      F@_3, id(infinity, TrUserData), F@_5, TrUserData);
 d_field_OrderS_value(<<0:16, 128, 255, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id('-infinity', TrUserData), TrUserData);
+			      F@_3, id('-infinity', TrUserData), F@_5,
+			      TrUserData);
 d_field_OrderS_value(<<_:16, 1:1, _:7, _:1, 127:7,
 		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(nan, TrUserData), TrUserData);
+			      F@_3, id(nan, TrUserData), F@_5, TrUserData);
 d_field_OrderS_value(<<Value:32/little-float,
 		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(Value, TrUserData), TrUserData).
+			      F@_3, id(Value, TrUserData), F@_5, TrUserData).
+
+d_field_OrderS_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    d_field_OrderS_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
+d_field_OrderS_nameI(<<0:1, X:7, Rest/binary>>, N, Acc,
+		     F@_1, F@_2, F@_3, F@_4, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_OrderS(RestF, 0, 0, F@_1, F@_2, F@_3,
+			      F@_4, NewFValue, TrUserData).
 
 skip_varint_OrderS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     skip_varint_OrderS(Rest, Z1, Z2, F@_1, F@_2, F@_3, F@_4,
-		       TrUserData);
+		       F@_5, TrUserData);
 skip_varint_OrderS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 skip_length_delimited_OrderS(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
+			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     skip_length_delimited_OrderS(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, TrUserData);
+				 F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
 skip_length_delimited_OrderS(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+			     TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_OrderS(Rest2, 0, 0, F@_1, F@_2, F@_3,
-			      F@_4, TrUserData).
+			      F@_4, F@_5, TrUserData).
 
 skip_group_OrderS(Bin, FNum, Z2, F@_1, F@_2, F@_3, F@_4,
-		  TrUserData) ->
+		  F@_5, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_OrderS(Rest, 0, Z2, F@_1, F@_2, F@_3,
-			      F@_4, TrUserData).
+			      F@_4, F@_5, TrUserData).
 
 skip_32_OrderS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, TrUserData) ->
+	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 skip_64_OrderS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, TrUserData) ->
+	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 decode_msg_OrderN(Bin, TrUserData) ->
     dfp_read_field_def_OrderN(Bin, 0, 0,
 			      id(undefined, TrUserData),
 			      id(undefined, TrUserData),
 			      id(undefined, TrUserData),
+			      id(undefined, TrUserData),
 			      id(undefined, TrUserData), TrUserData).
 
 dfp_read_field_def_OrderN(<<10, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderN_nameM(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderN(<<18, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderN_nameP(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderN(<<24, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderN_quant(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderN(<<37, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     d_field_OrderN_value(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
+			 F@_4, F@_5, TrUserData);
+dfp_read_field_def_OrderN(<<42, Rest/binary>>, Z1, Z2,
+			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
+    d_field_OrderN_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
+			 F@_4, F@_5, TrUserData);
 dfp_read_field_def_OrderN(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			  F@_4, _) ->
+			  F@_4, F@_5, _) ->
     #'OrderN'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4};
+	      value = F@_4, nameI = F@_5};
 dfp_read_field_def_OrderN(Other, Z1, Z2, F@_1, F@_2,
-			  F@_3, F@_4, TrUserData) ->
+			  F@_3, F@_4, F@_5, TrUserData) ->
     dg_read_field_def_OrderN(Other, Z1, Z2, F@_1, F@_2,
-			     F@_3, F@_4, TrUserData).
+			     F@_3, F@_4, F@_5, TrUserData).
 
 dg_read_field_def_OrderN(<<1:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
+			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_OrderN(Rest, N + 7, X bsl N + Acc,
-			     F@_1, F@_2, F@_3, F@_4, TrUserData);
+			     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
 dg_read_field_def_OrderN(<<0:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       10 ->
 	  d_field_OrderN_nameM(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
       18 ->
 	  d_field_OrderN_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
       24 ->
 	  d_field_OrderN_quant(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
       37 ->
 	  d_field_OrderN_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
+			       F@_5, TrUserData);
+      42 ->
+	  d_field_OrderN_nameI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
+			       F@_5, TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				   TrUserData);
+				   F@_5, TrUserData);
 	    1 ->
-		skip_64_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
+		skip_64_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
 			       TrUserData);
 	    2 ->
 		skip_length_delimited_OrderN(Rest, 0, 0, F@_1, F@_2,
-					     F@_3, F@_4, TrUserData);
+					     F@_3, F@_4, F@_5, TrUserData);
 	    3 ->
 		skip_group_OrderN(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				  F@_4, TrUserData);
+				  F@_4, F@_5, TrUserData);
 	    5 ->
-		skip_32_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
+		skip_32_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
 			       TrUserData)
 	  end
     end;
 dg_read_field_def_OrderN(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			 F@_4, _) ->
+			 F@_4, F@_5, _) ->
     #'OrderN'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4}.
+	      value = F@_4, nameI = F@_5}.
 
 d_field_OrderN_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     d_field_OrderN_nameM(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
 d_field_OrderN_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     _, F@_2, F@_3, F@_4, TrUserData) ->
+		     _, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2235,15 +2297,15 @@ d_field_OrderN_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
 			    Rest2}
 			 end,
     dfp_read_field_def_OrderN(RestF, 0, 0, NewFValue, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 d_field_OrderN_nameP(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     d_field_OrderN_nameP(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
 d_field_OrderN_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, _, F@_3, F@_4, TrUserData) ->
+		     F@_1, _, F@_3, F@_4, F@_5, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2252,15 +2314,15 @@ d_field_OrderN_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
 			    Rest2}
 			 end,
     dfp_read_field_def_OrderN(RestF, 0, 0, F@_1, NewFValue,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 d_field_OrderN_quant(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     d_field_OrderN_quant(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
 d_field_OrderN_quant(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, _, F@_4, TrUserData) ->
+		     F@_1, F@_2, _, F@_4, F@_5, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:32/signed-native>> = <<(X bsl N +
 							    Acc):32/unsigned-native>>,
@@ -2268,151 +2330,180 @@ d_field_OrderN_quant(<<0:1, X:7, Rest/binary>>, N, Acc,
 			  end,
 			  Rest},
     dfp_read_field_def_OrderN(RestF, 0, 0, F@_1, F@_2,
-			      NewFValue, F@_4, TrUserData).
+			      NewFValue, F@_4, F@_5, TrUserData).
 
 d_field_OrderN_value(<<0:16, 128, 127, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(infinity, TrUserData), TrUserData);
+			      F@_3, id(infinity, TrUserData), F@_5, TrUserData);
 d_field_OrderN_value(<<0:16, 128, 255, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id('-infinity', TrUserData), TrUserData);
+			      F@_3, id('-infinity', TrUserData), F@_5,
+			      TrUserData);
 d_field_OrderN_value(<<_:16, 1:1, _:7, _:1, 127:7,
 		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(nan, TrUserData), TrUserData);
+			      F@_3, id(nan, TrUserData), F@_5, TrUserData);
 d_field_OrderN_value(<<Value:32/little-float,
 		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
+		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
     dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(Value, TrUserData), TrUserData).
+			      F@_3, id(Value, TrUserData), F@_5, TrUserData).
+
+d_field_OrderN_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
+		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    d_field_OrderN_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
+			 F@_2, F@_3, F@_4, F@_5, TrUserData);
+d_field_OrderN_nameI(<<0:1, X:7, Rest/binary>>, N, Acc,
+		     F@_1, F@_2, F@_3, F@_4, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_OrderN(RestF, 0, 0, F@_1, F@_2, F@_3,
+			      F@_4, NewFValue, TrUserData).
 
 skip_varint_OrderN(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     skip_varint_OrderN(Rest, Z1, Z2, F@_1, F@_2, F@_3, F@_4,
-		       TrUserData);
+		       F@_5, TrUserData);
 skip_varint_OrderN(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 skip_length_delimited_OrderN(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
+			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
     when N < 57 ->
     skip_length_delimited_OrderN(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, TrUserData);
+				 F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
 skip_length_delimited_OrderN(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+			     TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_OrderN(Rest2, 0, 0, F@_1, F@_2, F@_3,
-			      F@_4, TrUserData).
+			      F@_4, F@_5, TrUserData).
 
 skip_group_OrderN(Bin, FNum, Z2, F@_1, F@_2, F@_3, F@_4,
-		  TrUserData) ->
+		  F@_5, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_OrderN(Rest, 0, Z2, F@_1, F@_2, F@_3,
-			      F@_4, TrUserData).
+			      F@_4, F@_5, TrUserData).
 
 skip_32_OrderN(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, TrUserData) ->
+	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 skip_64_OrderN(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, TrUserData) ->
+	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
     dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData).
+			      F@_3, F@_4, F@_5, TrUserData).
 
 decode_msg_OrderAckS(Bin, TrUserData) ->
     dfp_read_field_def_OrderAckS(Bin, 0, 0,
 				 id(undefined, TrUserData),
 				 id(undefined, TrUserData),
+				 id(undefined, TrUserData),
 				 id(undefined, TrUserData), TrUserData).
 
 dfp_read_field_def_OrderAckS(<<8, Rest/binary>>, Z1, Z2,
-			     F@_1, F@_2, F@_3, TrUserData) ->
+			     F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     d_field_OrderAckS_ack(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  TrUserData);
+			  F@_4, TrUserData);
 dfp_read_field_def_OrderAckS(<<18, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, F@_3, TrUserData) ->
+			     Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     d_field_OrderAckS_msg(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  TrUserData);
+			  F@_4, TrUserData);
 dfp_read_field_def_OrderAckS(<<26, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, F@_3, TrUserData) ->
+			     Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     d_field_OrderAckS_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			    TrUserData);
+			    F@_4, TrUserData);
+dfp_read_field_def_OrderAckS(<<32, Rest/binary>>, Z1,
+			     Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+    d_field_OrderAckS_outdated(Rest, Z1, Z2, F@_1, F@_2,
+			       F@_3, F@_4, TrUserData);
 dfp_read_field_def_OrderAckS(<<>>, 0, 0, F@_1, F@_2,
-			     F@_3, _) ->
-    #'OrderAckS'{ack = F@_1, msg = F@_2, nameI = F@_3};
+			     F@_3, F@_4, _) ->
+    #'OrderAckS'{ack = F@_1, msg = F@_2, nameI = F@_3,
+		 outdated = F@_4};
 dfp_read_field_def_OrderAckS(Other, Z1, Z2, F@_1, F@_2,
-			     F@_3, TrUserData) ->
+			     F@_3, F@_4, TrUserData) ->
     dg_read_field_def_OrderAckS(Other, Z1, Z2, F@_1, F@_2,
-				F@_3, TrUserData).
+				F@_3, F@_4, TrUserData).
 
 dg_read_field_def_OrderAckS(<<1:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, TrUserData)
+			    N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_OrderAckS(Rest, N + 7, X bsl N + Acc,
-				F@_1, F@_2, F@_3, TrUserData);
+				F@_1, F@_2, F@_3, F@_4, TrUserData);
 dg_read_field_def_OrderAckS(<<0:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
+			    N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       8 ->
 	  d_field_OrderAckS_ack(Rest, 0, 0, F@_1, F@_2, F@_3,
-				TrUserData);
+				F@_4, TrUserData);
       18 ->
 	  d_field_OrderAckS_msg(Rest, 0, 0, F@_1, F@_2, F@_3,
-				TrUserData);
+				F@_4, TrUserData);
       26 ->
 	  d_field_OrderAckS_nameI(Rest, 0, 0, F@_1, F@_2, F@_3,
-				  TrUserData);
+				  F@_4, TrUserData);
+      32 ->
+	  d_field_OrderAckS_outdated(Rest, 0, 0, F@_1, F@_2, F@_3,
+				     F@_4, TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3,
-				      TrUserData);
+				      F@_4, TrUserData);
 	    1 ->
-		skip_64_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3,
+		skip_64_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
 				  TrUserData);
 	    2 ->
 		skip_length_delimited_OrderAckS(Rest, 0, 0, F@_1, F@_2,
-						F@_3, TrUserData);
+						F@_3, F@_4, TrUserData);
 	    3 ->
 		skip_group_OrderAckS(Rest, Key bsr 3, 0, F@_1, F@_2,
-				     F@_3, TrUserData);
+				     F@_3, F@_4, TrUserData);
 	    5 ->
-		skip_32_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3,
+		skip_32_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
 				  TrUserData)
 	  end
     end;
 dg_read_field_def_OrderAckS(<<>>, 0, 0, F@_1, F@_2,
-			    F@_3, _) ->
-    #'OrderAckS'{ack = F@_1, msg = F@_2, nameI = F@_3}.
+			    F@_3, F@_4, _) ->
+    #'OrderAckS'{ack = F@_1, msg = F@_2, nameI = F@_3,
+		 outdated = F@_4}.
 
 d_field_OrderAckS_ack(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, TrUserData)
+		      F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 57 ->
     d_field_OrderAckS_ack(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, TrUserData);
+			  F@_2, F@_3, F@_4, TrUserData);
 d_field_OrderAckS_ack(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      _, F@_2, F@_3, TrUserData) ->
+		      _, F@_2, F@_3, F@_4, TrUserData) ->
     {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
 			     TrUserData),
 			  Rest},
     dfp_read_field_def_OrderAckS(RestF, 0, 0, NewFValue,
-				 F@_2, F@_3, TrUserData).
+				 F@_2, F@_3, F@_4, TrUserData).
 
 d_field_OrderAckS_msg(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, TrUserData)
+		      F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 57 ->
     d_field_OrderAckS_msg(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, TrUserData);
+			  F@_2, F@_3, F@_4, TrUserData);
 d_field_OrderAckS_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, _, F@_3, TrUserData) ->
+		      F@_1, _, F@_3, F@_4, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2421,15 +2512,15 @@ d_field_OrderAckS_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
 			    Rest2}
 			 end,
     dfp_read_field_def_OrderAckS(RestF, 0, 0, F@_1,
-				 NewFValue, F@_3, TrUserData).
+				 NewFValue, F@_3, F@_4, TrUserData).
 
 d_field_OrderAckS_nameI(<<1:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, F@_3, TrUserData)
+			Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 57 ->
     d_field_OrderAckS_nameI(Rest, N + 7, X bsl N + Acc,
-			    F@_1, F@_2, F@_3, TrUserData);
+			    F@_1, F@_2, F@_3, F@_4, TrUserData);
 d_field_OrderAckS_nameI(<<0:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, _, TrUserData) ->
+			Acc, F@_1, F@_2, _, F@_4, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2438,125 +2529,148 @@ d_field_OrderAckS_nameI(<<0:1, X:7, Rest/binary>>, N,
 			    Rest2}
 			 end,
     dfp_read_field_def_OrderAckS(RestF, 0, 0, F@_1, F@_2,
-				 NewFValue, TrUserData).
+				 NewFValue, F@_4, TrUserData).
+
+d_field_OrderAckS_outdated(<<1:1, X:7, Rest/binary>>, N,
+			   Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
+    when N < 57 ->
+    d_field_OrderAckS_outdated(Rest, N + 7, X bsl N + Acc,
+			       F@_1, F@_2, F@_3, F@_4, TrUserData);
+d_field_OrderAckS_outdated(<<0:1, X:7, Rest/binary>>, N,
+			   Acc, F@_1, F@_2, F@_3, _, TrUserData) ->
+    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
+			     TrUserData),
+			  Rest},
+    dfp_read_field_def_OrderAckS(RestF, 0, 0, F@_1, F@_2,
+				 F@_3, NewFValue, TrUserData).
 
 skip_varint_OrderAckS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, F@_3, TrUserData) ->
+		      F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     skip_varint_OrderAckS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  TrUserData);
+			  F@_4, TrUserData);
 skip_varint_OrderAckS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, F@_3, TrUserData) ->
+		      F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     dfp_read_field_def_OrderAckS(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
+				 F@_3, F@_4, TrUserData).
 
 skip_length_delimited_OrderAckS(<<1:1, X:7,
 				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, F@_3, TrUserData)
+				N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 57 ->
     skip_length_delimited_OrderAckS(Rest, N + 7,
-				    X bsl N + Acc, F@_1, F@_2, F@_3,
+				    X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
 				    TrUserData);
 skip_length_delimited_OrderAckS(<<0:1, X:7,
 				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
+				N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_OrderAckS(Rest2, 0, 0, F@_1, F@_2,
-				 F@_3, TrUserData).
+				 F@_3, F@_4, TrUserData).
 
 skip_group_OrderAckS(Bin, FNum, Z2, F@_1, F@_2, F@_3,
-		     TrUserData) ->
+		     F@_4, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_OrderAckS(Rest, 0, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
+				 F@_3, F@_4, TrUserData).
 
 skip_32_OrderAckS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, F@_3, TrUserData) ->
+		  F@_2, F@_3, F@_4, TrUserData) ->
     dfp_read_field_def_OrderAckS(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
+				 F@_3, F@_4, TrUserData).
 
 skip_64_OrderAckS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, F@_3, TrUserData) ->
+		  F@_2, F@_3, F@_4, TrUserData) ->
     dfp_read_field_def_OrderAckS(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
+				 F@_3, F@_4, TrUserData).
 
 decode_msg_OrderAckI(Bin, TrUserData) ->
     dfp_read_field_def_OrderAckI(Bin, 0, 0,
 				 id(undefined, TrUserData),
+				 id(undefined, TrUserData),
 				 id(undefined, TrUserData), TrUserData).
 
 dfp_read_field_def_OrderAckI(<<8, Rest/binary>>, Z1, Z2,
-			     F@_1, F@_2, TrUserData) ->
-    d_field_OrderAckI_ack(Rest, Z1, Z2, F@_1, F@_2,
+			     F@_1, F@_2, F@_3, TrUserData) ->
+    d_field_OrderAckI_ack(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			  TrUserData);
 dfp_read_field_def_OrderAckI(<<18, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, TrUserData) ->
-    d_field_OrderAckI_msg(Rest, Z1, Z2, F@_1, F@_2,
+			     Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    d_field_OrderAckI_msg(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			  TrUserData);
+dfp_read_field_def_OrderAckI(<<24, Rest/binary>>, Z1,
+			     Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    d_field_OrderAckI_outdated(Rest, Z1, Z2, F@_1, F@_2,
+			       F@_3, TrUserData);
 dfp_read_field_def_OrderAckI(<<>>, 0, 0, F@_1, F@_2,
-			     _) ->
-    #'OrderAckI'{ack = F@_1, msg = F@_2};
+			     F@_3, _) ->
+    #'OrderAckI'{ack = F@_1, msg = F@_2, outdated = F@_3};
 dfp_read_field_def_OrderAckI(Other, Z1, Z2, F@_1, F@_2,
-			     TrUserData) ->
+			     F@_3, TrUserData) ->
     dg_read_field_def_OrderAckI(Other, Z1, Z2, F@_1, F@_2,
-				TrUserData).
+				F@_3, TrUserData).
 
 dg_read_field_def_OrderAckI(<<1:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, TrUserData)
+			    N, Acc, F@_1, F@_2, F@_3, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_OrderAckI(Rest, N + 7, X bsl N + Acc,
-				F@_1, F@_2, TrUserData);
+				F@_1, F@_2, F@_3, TrUserData);
 dg_read_field_def_OrderAckI(<<0:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, TrUserData) ->
+			    N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       8 ->
-	  d_field_OrderAckI_ack(Rest, 0, 0, F@_1, F@_2,
+	  d_field_OrderAckI_ack(Rest, 0, 0, F@_1, F@_2, F@_3,
 				TrUserData);
       18 ->
-	  d_field_OrderAckI_msg(Rest, 0, 0, F@_1, F@_2,
+	  d_field_OrderAckI_msg(Rest, 0, 0, F@_1, F@_2, F@_3,
 				TrUserData);
+      24 ->
+	  d_field_OrderAckI_outdated(Rest, 0, 0, F@_1, F@_2, F@_3,
+				     TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
-		skip_varint_OrderAckI(Rest, 0, 0, F@_1, F@_2,
+		skip_varint_OrderAckI(Rest, 0, 0, F@_1, F@_2, F@_3,
 				      TrUserData);
 	    1 ->
-		skip_64_OrderAckI(Rest, 0, 0, F@_1, F@_2, TrUserData);
+		skip_64_OrderAckI(Rest, 0, 0, F@_1, F@_2, F@_3,
+				  TrUserData);
 	    2 ->
 		skip_length_delimited_OrderAckI(Rest, 0, 0, F@_1, F@_2,
-						TrUserData);
+						F@_3, TrUserData);
 	    3 ->
 		skip_group_OrderAckI(Rest, Key bsr 3, 0, F@_1, F@_2,
-				     TrUserData);
+				     F@_3, TrUserData);
 	    5 ->
-		skip_32_OrderAckI(Rest, 0, 0, F@_1, F@_2, TrUserData)
+		skip_32_OrderAckI(Rest, 0, 0, F@_1, F@_2, F@_3,
+				  TrUserData)
 	  end
     end;
 dg_read_field_def_OrderAckI(<<>>, 0, 0, F@_1, F@_2,
-			    _) ->
-    #'OrderAckI'{ack = F@_1, msg = F@_2}.
+			    F@_3, _) ->
+    #'OrderAckI'{ack = F@_1, msg = F@_2, outdated = F@_3}.
 
 d_field_OrderAckI_ack(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, TrUserData)
+		      F@_1, F@_2, F@_3, TrUserData)
     when N < 57 ->
     d_field_OrderAckI_ack(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, TrUserData);
+			  F@_2, F@_3, TrUserData);
 d_field_OrderAckI_ack(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      _, F@_2, TrUserData) ->
+		      _, F@_2, F@_3, TrUserData) ->
     {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
 			     TrUserData),
 			  Rest},
     dfp_read_field_def_OrderAckI(RestF, 0, 0, NewFValue,
-				 F@_2, TrUserData).
+				 F@_2, F@_3, TrUserData).
 
 d_field_OrderAckI_msg(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, TrUserData)
+		      F@_1, F@_2, F@_3, TrUserData)
     when N < 57 ->
     d_field_OrderAckI_msg(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, TrUserData);
+			  F@_2, F@_3, TrUserData);
 d_field_OrderAckI_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, _, TrUserData) ->
+		      F@_1, _, F@_3, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2565,92 +2679,121 @@ d_field_OrderAckI_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
 			    Rest2}
 			 end,
     dfp_read_field_def_OrderAckI(RestF, 0, 0, F@_1,
+				 NewFValue, F@_3, TrUserData).
+
+d_field_OrderAckI_outdated(<<1:1, X:7, Rest/binary>>, N,
+			   Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_OrderAckI_outdated(Rest, N + 7, X bsl N + Acc,
+			       F@_1, F@_2, F@_3, TrUserData);
+d_field_OrderAckI_outdated(<<0:1, X:7, Rest/binary>>, N,
+			   Acc, F@_1, F@_2, _, TrUserData) ->
+    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
+			     TrUserData),
+			  Rest},
+    dfp_read_field_def_OrderAckI(RestF, 0, 0, F@_1, F@_2,
 				 NewFValue, TrUserData).
 
 skip_varint_OrderAckI(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, TrUserData) ->
-    skip_varint_OrderAckI(Rest, Z1, Z2, F@_1, F@_2,
+		      F@_1, F@_2, F@_3, TrUserData) ->
+    skip_varint_OrderAckI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			  TrUserData);
 skip_varint_OrderAckI(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, TrUserData) ->
+		      F@_1, F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_OrderAckI(Rest, Z1, Z2, F@_1, F@_2,
-				 TrUserData).
+				 F@_3, TrUserData).
 
 skip_length_delimited_OrderAckI(<<1:1, X:7,
 				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, TrUserData)
+				N, Acc, F@_1, F@_2, F@_3, TrUserData)
     when N < 57 ->
     skip_length_delimited_OrderAckI(Rest, N + 7,
-				    X bsl N + Acc, F@_1, F@_2, TrUserData);
+				    X bsl N + Acc, F@_1, F@_2, F@_3,
+				    TrUserData);
 skip_length_delimited_OrderAckI(<<0:1, X:7,
 				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, TrUserData) ->
+				N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_OrderAckI(Rest2, 0, 0, F@_1, F@_2,
-				 TrUserData).
+				 F@_3, TrUserData).
 
-skip_group_OrderAckI(Bin, FNum, Z2, F@_1, F@_2,
+skip_group_OrderAckI(Bin, FNum, Z2, F@_1, F@_2, F@_3,
 		     TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_OrderAckI(Rest, 0, Z2, F@_1, F@_2,
-				 TrUserData).
+				 F@_3, TrUserData).
 
 skip_32_OrderAckI(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, TrUserData) ->
+		  F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_OrderAckI(Rest, Z1, Z2, F@_1, F@_2,
-				 TrUserData).
+				 F@_3, TrUserData).
 
 skip_64_OrderAckI(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, TrUserData) ->
+		  F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_OrderAckI(Rest, Z1, Z2, F@_1, F@_2,
-				 TrUserData).
+				 F@_3, TrUserData).
 
 decode_msg_SubS(Bin, TrUserData) ->
-    dfp_read_field_def_SubS(Bin, 0, 0, id([], TrUserData),
+    dfp_read_field_def_SubS(Bin, 0, 0,
+			    id(undefined, TrUserData), id([], TrUserData),
 			    TrUserData).
 
 dfp_read_field_def_SubS(<<10, Rest/binary>>, Z1, Z2,
-			F@_1, TrUserData) ->
-    d_field_SubS_subs(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_SubS(<<>>, 0, 0, R1, TrUserData) ->
-    #'SubS'{subs = lists_reverse(R1, TrUserData)};
-dfp_read_field_def_SubS(Other, Z1, Z2, F@_1,
+			F@_1, F@_2, TrUserData) ->
+    d_field_SubS_nameI(Rest, Z1, Z2, F@_1, F@_2,
+		       TrUserData);
+dfp_read_field_def_SubS(<<18, Rest/binary>>, Z1, Z2,
+			F@_1, F@_2, TrUserData) ->
+    d_field_SubS_subs(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
+dfp_read_field_def_SubS(<<>>, 0, 0, F@_1, R1,
 			TrUserData) ->
-    dg_read_field_def_SubS(Other, Z1, Z2, F@_1, TrUserData).
+    #'SubS'{nameI = F@_1,
+	    subs = lists_reverse(R1, TrUserData)};
+dfp_read_field_def_SubS(Other, Z1, Z2, F@_1, F@_2,
+			TrUserData) ->
+    dg_read_field_def_SubS(Other, Z1, Z2, F@_1, F@_2,
+			   TrUserData).
 
 dg_read_field_def_SubS(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData)
+		       Acc, F@_1, F@_2, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_SubS(Rest, N + 7, X bsl N + Acc, F@_1,
-			   TrUserData);
+			   F@_2, TrUserData);
 dg_read_field_def_SubS(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData) ->
+		       Acc, F@_1, F@_2, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
-      10 -> d_field_SubS_subs(Rest, 0, 0, F@_1, TrUserData);
+      10 ->
+	  d_field_SubS_nameI(Rest, 0, 0, F@_1, F@_2, TrUserData);
+      18 ->
+	  d_field_SubS_subs(Rest, 0, 0, F@_1, F@_2, TrUserData);
       _ ->
 	  case Key band 7 of
-	    0 -> skip_varint_SubS(Rest, 0, 0, F@_1, TrUserData);
-	    1 -> skip_64_SubS(Rest, 0, 0, F@_1, TrUserData);
+	    0 ->
+		skip_varint_SubS(Rest, 0, 0, F@_1, F@_2, TrUserData);
+	    1 -> skip_64_SubS(Rest, 0, 0, F@_1, F@_2, TrUserData);
 	    2 ->
-		skip_length_delimited_SubS(Rest, 0, 0, F@_1,
+		skip_length_delimited_SubS(Rest, 0, 0, F@_1, F@_2,
 					   TrUserData);
 	    3 ->
-		skip_group_SubS(Rest, Key bsr 3, 0, F@_1, TrUserData);
-	    5 -> skip_32_SubS(Rest, 0, 0, F@_1, TrUserData)
+		skip_group_SubS(Rest, Key bsr 3, 0, F@_1, F@_2,
+				TrUserData);
+	    5 -> skip_32_SubS(Rest, 0, 0, F@_1, F@_2, TrUserData)
 	  end
     end;
-dg_read_field_def_SubS(<<>>, 0, 0, R1, TrUserData) ->
-    #'SubS'{subs = lists_reverse(R1, TrUserData)}.
+dg_read_field_def_SubS(<<>>, 0, 0, F@_1, R1,
+		       TrUserData) ->
+    #'SubS'{nameI = F@_1,
+	    subs = lists_reverse(R1, TrUserData)}.
 
-d_field_SubS_subs(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
+d_field_SubS_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
+		   F@_1, F@_2, TrUserData)
     when N < 57 ->
-    d_field_SubS_subs(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_SubS_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
+    d_field_SubS_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
+		       F@_2, TrUserData);
+d_field_SubS_nameI(<<0:1, X:7, Rest/binary>>, N, Acc, _,
+		   F@_2, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2658,84 +2801,122 @@ d_field_SubS_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_SubS(RestF, 0, 0,
+    dfp_read_field_def_SubS(RestF, 0, 0, NewFValue, F@_2,
+			    TrUserData).
+
+d_field_SubS_subs(<<1:1, X:7, Rest/binary>>, N, Acc,
+		  F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_SubS_subs(Rest, N + 7, X bsl N + Acc, F@_1,
+		      F@_2, TrUserData);
+d_field_SubS_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
+		  F@_1, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_SubS(RestF, 0, 0, F@_1,
 			    cons(NewFValue, Prev, TrUserData), TrUserData).
 
 skip_varint_SubS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    skip_varint_SubS(Rest, Z1, Z2, F@_1, TrUserData);
+		 F@_1, F@_2, TrUserData) ->
+    skip_varint_SubS(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
 skip_varint_SubS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, TrUserData).
+		 F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, F@_2,
+			    TrUserData).
 
 skip_length_delimited_SubS(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData)
+			   Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     skip_length_delimited_SubS(Rest, N + 7, X bsl N + Acc,
-			       F@_1, TrUserData);
+			       F@_1, F@_2, TrUserData);
 skip_length_delimited_SubS(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData) ->
+			   Acc, F@_1, F@_2, TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_SubS(Rest2, 0, 0, F@_1, TrUserData).
+    dfp_read_field_def_SubS(Rest2, 0, 0, F@_1, F@_2,
+			    TrUserData).
 
-skip_group_SubS(Bin, FNum, Z2, F@_1, TrUserData) ->
+skip_group_SubS(Bin, FNum, Z2, F@_1, F@_2,
+		TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_SubS(Rest, 0, Z2, F@_1, TrUserData).
+    dfp_read_field_def_SubS(Rest, 0, Z2, F@_1, F@_2,
+			    TrUserData).
 
-skip_32_SubS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
+skip_32_SubS(<<_:32, Rest/binary>>, Z1, Z2, F@_1, F@_2,
 	     TrUserData) ->
-    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, TrUserData).
+    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, F@_2,
+			    TrUserData).
 
-skip_64_SubS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
+skip_64_SubS(<<_:64, Rest/binary>>, Z1, Z2, F@_1, F@_2,
 	     TrUserData) ->
-    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, TrUserData).
+    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, F@_2,
+			    TrUserData).
 
 decode_msg_SubN(Bin, TrUserData) ->
-    dfp_read_field_def_SubN(Bin, 0, 0, id([], TrUserData),
+    dfp_read_field_def_SubN(Bin, 0, 0,
+			    id(undefined, TrUserData), id([], TrUserData),
 			    TrUserData).
 
 dfp_read_field_def_SubN(<<10, Rest/binary>>, Z1, Z2,
-			F@_1, TrUserData) ->
-    d_field_SubN_subs(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_SubN(<<>>, 0, 0, R1, TrUserData) ->
-    #'SubN'{subs = lists_reverse(R1, TrUserData)};
-dfp_read_field_def_SubN(Other, Z1, Z2, F@_1,
+			F@_1, F@_2, TrUserData) ->
+    d_field_SubN_nameI(Rest, Z1, Z2, F@_1, F@_2,
+		       TrUserData);
+dfp_read_field_def_SubN(<<18, Rest/binary>>, Z1, Z2,
+			F@_1, F@_2, TrUserData) ->
+    d_field_SubN_subs(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
+dfp_read_field_def_SubN(<<>>, 0, 0, F@_1, R1,
 			TrUserData) ->
-    dg_read_field_def_SubN(Other, Z1, Z2, F@_1, TrUserData).
+    #'SubN'{nameI = F@_1,
+	    subs = lists_reverse(R1, TrUserData)};
+dfp_read_field_def_SubN(Other, Z1, Z2, F@_1, F@_2,
+			TrUserData) ->
+    dg_read_field_def_SubN(Other, Z1, Z2, F@_1, F@_2,
+			   TrUserData).
 
 dg_read_field_def_SubN(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData)
+		       Acc, F@_1, F@_2, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_SubN(Rest, N + 7, X bsl N + Acc, F@_1,
-			   TrUserData);
+			   F@_2, TrUserData);
 dg_read_field_def_SubN(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData) ->
+		       Acc, F@_1, F@_2, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
-      10 -> d_field_SubN_subs(Rest, 0, 0, F@_1, TrUserData);
+      10 ->
+	  d_field_SubN_nameI(Rest, 0, 0, F@_1, F@_2, TrUserData);
+      18 ->
+	  d_field_SubN_subs(Rest, 0, 0, F@_1, F@_2, TrUserData);
       _ ->
 	  case Key band 7 of
-	    0 -> skip_varint_SubN(Rest, 0, 0, F@_1, TrUserData);
-	    1 -> skip_64_SubN(Rest, 0, 0, F@_1, TrUserData);
+	    0 ->
+		skip_varint_SubN(Rest, 0, 0, F@_1, F@_2, TrUserData);
+	    1 -> skip_64_SubN(Rest, 0, 0, F@_1, F@_2, TrUserData);
 	    2 ->
-		skip_length_delimited_SubN(Rest, 0, 0, F@_1,
+		skip_length_delimited_SubN(Rest, 0, 0, F@_1, F@_2,
 					   TrUserData);
 	    3 ->
-		skip_group_SubN(Rest, Key bsr 3, 0, F@_1, TrUserData);
-	    5 -> skip_32_SubN(Rest, 0, 0, F@_1, TrUserData)
+		skip_group_SubN(Rest, Key bsr 3, 0, F@_1, F@_2,
+				TrUserData);
+	    5 -> skip_32_SubN(Rest, 0, 0, F@_1, F@_2, TrUserData)
 	  end
     end;
-dg_read_field_def_SubN(<<>>, 0, 0, R1, TrUserData) ->
-    #'SubN'{subs = lists_reverse(R1, TrUserData)}.
+dg_read_field_def_SubN(<<>>, 0, 0, F@_1, R1,
+		       TrUserData) ->
+    #'SubN'{nameI = F@_1,
+	    subs = lists_reverse(R1, TrUserData)}.
 
-d_field_SubN_subs(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
+d_field_SubN_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
+		   F@_1, F@_2, TrUserData)
     when N < 57 ->
-    d_field_SubN_subs(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_SubN_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
+    d_field_SubN_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
+		       F@_2, TrUserData);
+d_field_SubN_nameI(<<0:1, X:7, Rest/binary>>, N, Acc, _,
+		   F@_2, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2743,38 +2924,61 @@ d_field_SubN_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_SubN(RestF, 0, 0,
+    dfp_read_field_def_SubN(RestF, 0, 0, NewFValue, F@_2,
+			    TrUserData).
+
+d_field_SubN_subs(<<1:1, X:7, Rest/binary>>, N, Acc,
+		  F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_SubN_subs(Rest, N + 7, X bsl N + Acc, F@_1,
+		      F@_2, TrUserData);
+d_field_SubN_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
+		  F@_1, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_SubN(RestF, 0, 0, F@_1,
 			    cons(NewFValue, Prev, TrUserData), TrUserData).
 
 skip_varint_SubN(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    skip_varint_SubN(Rest, Z1, Z2, F@_1, TrUserData);
+		 F@_1, F@_2, TrUserData) ->
+    skip_varint_SubN(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
 skip_varint_SubN(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, TrUserData) ->
-    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, TrUserData).
+		 F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, F@_2,
+			    TrUserData).
 
 skip_length_delimited_SubN(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData)
+			   Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     skip_length_delimited_SubN(Rest, N + 7, X bsl N + Acc,
-			       F@_1, TrUserData);
+			       F@_1, F@_2, TrUserData);
 skip_length_delimited_SubN(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData) ->
+			   Acc, F@_1, F@_2, TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_SubN(Rest2, 0, 0, F@_1, TrUserData).
+    dfp_read_field_def_SubN(Rest2, 0, 0, F@_1, F@_2,
+			    TrUserData).
 
-skip_group_SubN(Bin, FNum, Z2, F@_1, TrUserData) ->
+skip_group_SubN(Bin, FNum, Z2, F@_1, F@_2,
+		TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_SubN(Rest, 0, Z2, F@_1, TrUserData).
+    dfp_read_field_def_SubN(Rest, 0, Z2, F@_1, F@_2,
+			    TrUserData).
 
-skip_32_SubN(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
+skip_32_SubN(<<_:32, Rest/binary>>, Z1, Z2, F@_1, F@_2,
 	     TrUserData) ->
-    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, TrUserData).
+    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, F@_2,
+			    TrUserData).
 
-skip_64_SubN(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
+skip_64_SubN(<<_:64, Rest/binary>>, Z1, Z2, F@_1, F@_2,
 	     TrUserData) ->
-    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, TrUserData).
+    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, F@_2,
+			    TrUserData).
 
 decode_msg_ProductionS(Bin, TrUserData) ->
     dfp_read_field_def_ProductionS(Bin, 0, 0,
@@ -4169,7 +4373,7 @@ d_field_NegotiationsS_negotiations(<<0:1, X:7,
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_InfoI(Bs, TrUserData), TrUserData),
+			   {id(decode_msg_InfoS(Bs, TrUserData), TrUserData),
 			    Rest2}
 			 end,
     dfp_read_field_def_NegotiationsS(RestF, 0, 0, F@_1,
@@ -5259,43 +5463,48 @@ merge_msg_DisponibilityN(#'DisponibilityN'{},
 -compile({nowarn_unused_function,merge_msg_OrderS/3}).
 merge_msg_OrderS(#'OrderS'{},
 		 #'OrderS'{nameM = NFnameM, nameP = NFnameP,
-			   quant = NFquant, value = NFvalue},
+			   quant = NFquant, value = NFvalue, nameI = NFnameI},
 		 _) ->
     #'OrderS'{nameM = NFnameM, nameP = NFnameP,
-	      quant = NFquant, value = NFvalue}.
+	      quant = NFquant, value = NFvalue, nameI = NFnameI}.
 
 -compile({nowarn_unused_function,merge_msg_OrderN/3}).
 merge_msg_OrderN(#'OrderN'{},
 		 #'OrderN'{nameM = NFnameM, nameP = NFnameP,
-			   quant = NFquant, value = NFvalue},
+			   quant = NFquant, value = NFvalue, nameI = NFnameI},
 		 _) ->
     #'OrderN'{nameM = NFnameM, nameP = NFnameP,
-	      quant = NFquant, value = NFvalue}.
+	      quant = NFquant, value = NFvalue, nameI = NFnameI}.
 
 -compile({nowarn_unused_function,merge_msg_OrderAckS/3}).
 merge_msg_OrderAckS(#'OrderAckS'{msg = PFmsg},
-		    #'OrderAckS'{ack = NFack, msg = NFmsg, nameI = NFnameI},
+		    #'OrderAckS'{ack = NFack, msg = NFmsg, nameI = NFnameI,
+				 outdated = NFoutdated},
 		    _) ->
     #'OrderAckS'{ack = NFack,
 		 msg =
 		     if NFmsg =:= undefined -> PFmsg;
 			true -> NFmsg
 		     end,
-		 nameI = NFnameI}.
+		 nameI = NFnameI, outdated = NFoutdated}.
 
 -compile({nowarn_unused_function,merge_msg_OrderAckI/3}).
 merge_msg_OrderAckI(#'OrderAckI'{msg = PFmsg},
-		    #'OrderAckI'{ack = NFack, msg = NFmsg}, _) ->
+		    #'OrderAckI'{ack = NFack, msg = NFmsg,
+				 outdated = NFoutdated},
+		    _) ->
     #'OrderAckI'{ack = NFack,
 		 msg =
 		     if NFmsg =:= undefined -> PFmsg;
 			true -> NFmsg
-		     end}.
+		     end,
+		 outdated = NFoutdated}.
 
 -compile({nowarn_unused_function,merge_msg_SubS/3}).
 merge_msg_SubS(#'SubS'{subs = PFsubs},
-	       #'SubS'{subs = NFsubs}, TrUserData) ->
-    #'SubS'{subs =
+	       #'SubS'{nameI = NFnameI, subs = NFsubs}, TrUserData) ->
+    #'SubS'{nameI = NFnameI,
+	    subs =
 		if PFsubs /= undefined, NFsubs /= undefined ->
 		       'erlang_++'(PFsubs, NFsubs, TrUserData);
 		   PFsubs == undefined -> NFsubs;
@@ -5304,8 +5513,9 @@ merge_msg_SubS(#'SubS'{subs = PFsubs},
 
 -compile({nowarn_unused_function,merge_msg_SubN/3}).
 merge_msg_SubN(#'SubN'{subs = PFsubs},
-	       #'SubN'{subs = NFsubs}, TrUserData) ->
-    #'SubN'{subs =
+	       #'SubN'{nameI = NFnameI, subs = NFsubs}, TrUserData) ->
+    #'SubN'{nameI = NFnameI,
+	    subs =
 		if PFsubs /= undefined, NFsubs /= undefined ->
 		       'erlang_++'(PFsubs, NFsubs, TrUserData);
 		   PFsubs == undefined -> NFsubs;
@@ -5591,12 +5801,13 @@ v_msg_DisponibilityN(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_OrderS/3}).
 -dialyzer({nowarn_function,v_msg_OrderS/3}).
 v_msg_OrderS(#'OrderS'{nameM = F1, nameP = F2,
-		       quant = F3, value = F4},
+		       quant = F3, value = F4, nameI = F5},
 	     Path, TrUserData) ->
     v_type_string(F1, [nameM | Path], TrUserData),
     v_type_string(F2, [nameP | Path], TrUserData),
     v_type_int32(F3, [quant | Path], TrUserData),
     v_type_float(F4, [value | Path], TrUserData),
+    v_type_string(F5, [nameI | Path], TrUserData),
     ok;
 v_msg_OrderS(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'OrderS'}, X, Path).
@@ -5604,12 +5815,13 @@ v_msg_OrderS(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_OrderN/3}).
 -dialyzer({nowarn_function,v_msg_OrderN/3}).
 v_msg_OrderN(#'OrderN'{nameM = F1, nameP = F2,
-		       quant = F3, value = F4},
+		       quant = F3, value = F4, nameI = F5},
 	     Path, TrUserData) ->
     v_type_string(F1, [nameM | Path], TrUserData),
     v_type_string(F2, [nameP | Path], TrUserData),
     v_type_int32(F3, [quant | Path], TrUserData),
     v_type_float(F4, [value | Path], TrUserData),
+    v_type_string(F5, [nameI | Path], TrUserData),
     ok;
 v_msg_OrderN(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'OrderN'}, X, Path).
@@ -5617,38 +5829,43 @@ v_msg_OrderN(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_OrderAckS/3}).
 -dialyzer({nowarn_function,v_msg_OrderAckS/3}).
 v_msg_OrderAckS(#'OrderAckS'{ack = F1, msg = F2,
-			     nameI = F3},
+			     nameI = F3, outdated = F4},
 		Path, TrUserData) ->
     v_type_bool(F1, [ack | Path], TrUserData),
     if F2 == undefined -> ok;
        true -> v_type_string(F2, [msg | Path], TrUserData)
     end,
     v_type_string(F3, [nameI | Path], TrUserData),
+    v_type_bool(F4, [outdated | Path], TrUserData),
     ok;
 v_msg_OrderAckS(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'OrderAckS'}, X, Path).
 
 -compile({nowarn_unused_function,v_msg_OrderAckI/3}).
 -dialyzer({nowarn_function,v_msg_OrderAckI/3}).
-v_msg_OrderAckI(#'OrderAckI'{ack = F1, msg = F2}, Path,
-		TrUserData) ->
+v_msg_OrderAckI(#'OrderAckI'{ack = F1, msg = F2,
+			     outdated = F3},
+		Path, TrUserData) ->
     v_type_bool(F1, [ack | Path], TrUserData),
     if F2 == undefined -> ok;
        true -> v_type_string(F2, [msg | Path], TrUserData)
     end,
+    v_type_bool(F3, [outdated | Path], TrUserData),
     ok;
 v_msg_OrderAckI(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'OrderAckI'}, X, Path).
 
 -compile({nowarn_unused_function,v_msg_SubS/3}).
 -dialyzer({nowarn_function,v_msg_SubS/3}).
-v_msg_SubS(#'SubS'{subs = F1}, Path, TrUserData) ->
-    if is_list(F1) ->
+v_msg_SubS(#'SubS'{nameI = F1, subs = F2}, Path,
+	   TrUserData) ->
+    v_type_string(F1, [nameI | Path], TrUserData),
+    if is_list(F2) ->
 	   _ = [v_type_string(Elem, [subs | Path], TrUserData)
-		|| Elem <- F1],
+		|| Elem <- F2],
 	   ok;
        true ->
-	   mk_type_error({invalid_list_of, string}, F1,
+	   mk_type_error({invalid_list_of, string}, F2,
 			 [subs | Path])
     end,
     ok;
@@ -5657,13 +5874,15 @@ v_msg_SubS(X, Path, _TrUserData) ->
 
 -compile({nowarn_unused_function,v_msg_SubN/3}).
 -dialyzer({nowarn_function,v_msg_SubN/3}).
-v_msg_SubN(#'SubN'{subs = F1}, Path, TrUserData) ->
-    if is_list(F1) ->
+v_msg_SubN(#'SubN'{nameI = F1, subs = F2}, Path,
+	   TrUserData) ->
+    v_type_string(F1, [nameI | Path], TrUserData),
+    if is_list(F2) ->
 	   _ = [v_type_string(Elem, [subs | Path], TrUserData)
-		|| Elem <- F1],
+		|| Elem <- F2],
 	   ok;
        true ->
-	   mk_type_error({invalid_list_of, string}, F1,
+	   mk_type_error({invalid_list_of, string}, F2,
 			 [subs | Path])
     end,
     ok;
@@ -5770,12 +5989,12 @@ v_msg_NegotiationsS(#'NegotiationsS'{nameI = F1,
 		    Path, TrUserData) ->
     v_type_string(F1, [nameI | Path], TrUserData),
     if is_list(F2) ->
-	   _ = [v_msg_InfoI(Elem, [negotiations | Path],
+	   _ = [v_msg_InfoS(Elem, [negotiations | Path],
 			    TrUserData)
 		|| Elem <- F2],
 	   ok;
        true ->
-	   mk_type_error({invalid_list_of, {msg, 'InfoI'}}, F2,
+	   mk_type_error({invalid_list_of, {msg, 'InfoS'}}, F2,
 			 [negotiations | Path])
     end,
     ok;
@@ -6058,6 +6277,8 @@ get_msg_defs() ->
        #field{name = quant, fnum = 3, rnum = 4, type = int32,
 	      occurrence = required, opts = []},
        #field{name = value, fnum = 4, rnum = 5, type = float,
+	      occurrence = required, opts = []},
+       #field{name = nameI, fnum = 5, rnum = 6, type = string,
 	      occurrence = required, opts = []}]},
      {{msg, 'OrderN'},
       [#field{name = nameM, fnum = 1, rnum = 2, type = string,
@@ -6067,6 +6288,8 @@ get_msg_defs() ->
        #field{name = quant, fnum = 3, rnum = 4, type = int32,
 	      occurrence = required, opts = []},
        #field{name = value, fnum = 4, rnum = 5, type = float,
+	      occurrence = required, opts = []},
+       #field{name = nameI, fnum = 5, rnum = 6, type = string,
 	      occurrence = required, opts = []}]},
      {{msg, 'OrderAckS'},
       [#field{name = ack, fnum = 1, rnum = 2, type = bool,
@@ -6074,17 +6297,25 @@ get_msg_defs() ->
        #field{name = msg, fnum = 2, rnum = 3, type = string,
 	      occurrence = optional, opts = []},
        #field{name = nameI, fnum = 3, rnum = 4, type = string,
+	      occurrence = required, opts = []},
+       #field{name = outdated, fnum = 4, rnum = 5, type = bool,
 	      occurrence = required, opts = []}]},
      {{msg, 'OrderAckI'},
       [#field{name = ack, fnum = 1, rnum = 2, type = bool,
 	      occurrence = required, opts = []},
        #field{name = msg, fnum = 2, rnum = 3, type = string,
-	      occurrence = optional, opts = []}]},
+	      occurrence = optional, opts = []},
+       #field{name = outdated, fnum = 3, rnum = 4, type = bool,
+	      occurrence = required, opts = []}]},
      {{msg, 'SubS'},
-      [#field{name = subs, fnum = 1, rnum = 2, type = string,
+      [#field{name = nameI, fnum = 1, rnum = 2, type = string,
+	      occurrence = required, opts = []},
+       #field{name = subs, fnum = 2, rnum = 3, type = string,
 	      occurrence = repeated, opts = []}]},
      {{msg, 'SubN'},
-      [#field{name = subs, fnum = 1, rnum = 2, type = string,
+      [#field{name = nameI, fnum = 1, rnum = 2, type = string,
+	      occurrence = required, opts = []},
+       #field{name = subs, fnum = 2, rnum = 3, type = string,
 	      occurrence = repeated, opts = []}]},
      {{msg, 'ProductionS'},
       [#field{name = nameM, fnum = 1, rnum = 2, type = string,
@@ -6152,7 +6383,7 @@ get_msg_defs() ->
       [#field{name = nameI, fnum = 1, rnum = 2, type = string,
 	      occurrence = required, opts = []},
        #field{name = negotiations, fnum = 2, rnum = 3,
-	      type = {msg, 'InfoI'}, occurrence = repeated,
+	      type = {msg, 'InfoS'}, occurrence = repeated,
 	      opts = []}]},
      {{msg, 'NegotiationsI'},
       [#field{name = negotiations, fnum = 1, rnum = 2,
@@ -6312,6 +6543,8 @@ find_msg_def('OrderS') ->
      #field{name = quant, fnum = 3, rnum = 4, type = int32,
 	    occurrence = required, opts = []},
      #field{name = value, fnum = 4, rnum = 5, type = float,
+	    occurrence = required, opts = []},
+     #field{name = nameI, fnum = 5, rnum = 6, type = string,
 	    occurrence = required, opts = []}];
 find_msg_def('OrderN') ->
     [#field{name = nameM, fnum = 1, rnum = 2, type = string,
@@ -6321,6 +6554,8 @@ find_msg_def('OrderN') ->
      #field{name = quant, fnum = 3, rnum = 4, type = int32,
 	    occurrence = required, opts = []},
      #field{name = value, fnum = 4, rnum = 5, type = float,
+	    occurrence = required, opts = []},
+     #field{name = nameI, fnum = 5, rnum = 6, type = string,
 	    occurrence = required, opts = []}];
 find_msg_def('OrderAckS') ->
     [#field{name = ack, fnum = 1, rnum = 2, type = bool,
@@ -6328,17 +6563,25 @@ find_msg_def('OrderAckS') ->
      #field{name = msg, fnum = 2, rnum = 3, type = string,
 	    occurrence = optional, opts = []},
      #field{name = nameI, fnum = 3, rnum = 4, type = string,
+	    occurrence = required, opts = []},
+     #field{name = outdated, fnum = 4, rnum = 5, type = bool,
 	    occurrence = required, opts = []}];
 find_msg_def('OrderAckI') ->
     [#field{name = ack, fnum = 1, rnum = 2, type = bool,
 	    occurrence = required, opts = []},
      #field{name = msg, fnum = 2, rnum = 3, type = string,
-	    occurrence = optional, opts = []}];
+	    occurrence = optional, opts = []},
+     #field{name = outdated, fnum = 3, rnum = 4, type = bool,
+	    occurrence = required, opts = []}];
 find_msg_def('SubS') ->
-    [#field{name = subs, fnum = 1, rnum = 2, type = string,
+    [#field{name = nameI, fnum = 1, rnum = 2, type = string,
+	    occurrence = required, opts = []},
+     #field{name = subs, fnum = 2, rnum = 3, type = string,
 	    occurrence = repeated, opts = []}];
 find_msg_def('SubN') ->
-    [#field{name = subs, fnum = 1, rnum = 2, type = string,
+    [#field{name = nameI, fnum = 1, rnum = 2, type = string,
+	    occurrence = required, opts = []},
+     #field{name = subs, fnum = 2, rnum = 3, type = string,
 	    occurrence = repeated, opts = []}];
 find_msg_def('ProductionS') ->
     [#field{name = nameM, fnum = 1, rnum = 2, type = string,
@@ -6406,7 +6649,7 @@ find_msg_def('NegotiationsS') ->
     [#field{name = nameI, fnum = 1, rnum = 2, type = string,
 	    occurrence = required, opts = []},
      #field{name = negotiations, fnum = 2, rnum = 3,
-	    type = {msg, 'InfoI'}, occurrence = repeated,
+	    type = {msg, 'InfoS'}, occurrence = repeated,
 	    opts = []}];
 find_msg_def('NegotiationsI') ->
     [#field{name = negotiations, fnum = 1, rnum = 2,

@@ -1,7 +1,6 @@
 package nefit.arbiter;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.MapEntry;
 import javafx.util.Pair;
 import nefit.proto.NefitProtos;
 import org.zeromq.SocketType;
@@ -24,18 +23,38 @@ public class Arbiter implements Runnable
 
     private NefitProtos.DisponibilityN disp;
 
-    //Map<NameManufacturer,Pair<Product,Best Order>>
+    /**
+     * Map where the Key is a Pair with the name of the Manufacturer and name of the Product
+     * The Value for this Key is a Pair with the information of the product and the best order to the product
+     * The best order to the product can be 'null' if doesn't exist a order that satisfies the requirements of the product
+     * Map<NameManufacturer,Pair<Product,Best Order>>
+     */
     private Map<Pair<String,String>,Pair<NefitProtos.DisponibilityN, NefitProtos.OrderN>> negotiations;
 
-    //Map<Pair<NameManufacturer,Product>,List<NameImporter>>
+    /**
+     * Map where the Key is a Pair with the name of the Manufacturer and name of the Product
+     * The Value for this Key is the list of all importers that make at least one offer to the product
+     * Map<Pair<NameManufacturer,Product>,List<NameImporter>>
+     */
     private Map<Pair<String,String>,List<String>> importerNego;
 
-    //Map<NameImporter,List<NameManufacturer>>
+    /**
+     * Map where the Key is the name of the Importer
+     * The Value for this Key is the list of all Manufacturers names that the Importer is interested
+     * Map<NameImporter,List<NameManufacturer>>
+     */
     private Map<String,List<String>> subscribers;
 
-    //Map<NameManufacturer,List<NameImporter>>
+    /**
+     * Map where the Key is the name of the Manufacturer
+     * The Value for this Key is the list of all Importers names that are interested in all products of this Manufacturer
+     * Map<NameManufacturer,List<NameImporter>>
+     */
     private Map<String,List<String>> importerManu;
 
+    /**
+     * Empty constructor
+     */
     public Arbiter(){}
 
     public static void main(String[] args)
@@ -56,12 +75,11 @@ public class Arbiter implements Runnable
         this.importerNego = new HashMap<>();
         this.importerManu = new HashMap<>();
 
-        //TODO
         while(true)
         {
             try
             {
-                byte[] reply = socket.recv(0);
+                byte[] reply = this.socket.recv(0);
                 NefitProtos.Negotiator negotiator = NefitProtos.Negotiator.parseFrom(reply);
 
                 if(negotiator.hasDisponibility())
@@ -95,7 +113,10 @@ public class Arbiter implements Runnable
         this.negotiations.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new Pair<>(disponibility, null));
         this.importerNego.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new ArrayList<>());
         this.disp = disponibility;
+
+        //Thread that leads to
         new Thread(this::executeResult).start();
+
         if(!this.importerManu.containsKey(disponibility.getNameM()))
             this.importerManu.put(disponibility.getNameM(),new ArrayList<>());
         else
@@ -113,7 +134,7 @@ public class Arbiter implements Runnable
     }
 
     private void executeOrder(NefitProtos.OrderN order) {
-        NefitProtos.OrderAckS ack = NefitProtos.OrderAckS.newBuilder().build();
+        NefitProtos.OrderAckS ack;
         if(this.negotiations.containsKey(new Pair<>(order.getNameM(),order.getNameP())))
         {
             Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN> aux = this.negotiations.get(new Pair<>(order.getNameM(),order.getNameP()));
@@ -188,7 +209,7 @@ public class Arbiter implements Runnable
         NefitProtos.DisponibilityN disp = NefitProtos.DisponibilityN.newBuilder(this.disp).build();
         try {
             Thread.sleep(disp.getPeriod()*1000L);
-            l.lock();
+            this.l.lock();
             Pair<String,String> prod = new Pair<>(disp.getNameM(),disp.getNameP());
             if(!(this.negotiations.get(prod).getValue() == null))
             {
@@ -217,7 +238,7 @@ public class Arbiter implements Runnable
             e.printStackTrace();
         }
         finally {
-            l.unlock();
+            this.l.unlock();
         }
     }
 }
