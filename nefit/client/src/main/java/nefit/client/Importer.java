@@ -176,7 +176,6 @@ public class Importer implements Runnable
         StringBuilder sb = new StringBuilder();
         sb.append("You can use some commands like 'sub' 'get' 'order'\n");
         sb.append("Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...\n");
-        sb.append("Command get: <get>\n");
         sb.append("Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>");
         return sb.toString();
     }

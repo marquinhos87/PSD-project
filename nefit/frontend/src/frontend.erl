@@ -24,10 +24,8 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
     receive
         {Sock, login, Name, Pass, Type} ->
             Status = maps:find(Name,RegisteredUsers),
-            io:format("Status->~w",[Status]),
             case Status of
                 {ok, Value} ->
-                    io:format("Value->~w",[Value]),
                     if
                         Value == Pass ->
                             Connected = maps:put(Name,Sock,ConnectedUsers),
@@ -43,13 +41,11 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
 
         {Sock, register, Name, Pass, _} ->
             Status = maps:find(Name,RegisteredUsers),
-            io:format("Status->~w",[Status]),
             case Status of
                 {ok, _} ->
                     Sock ! {failure},
                     globalState(RegisteredUsers, ConnectedUsers, Arbiters);
                 error ->
-                    io:format("4"),
                     Registered = maps:put(Name, Pass, RegisteredUsers),
                     Sock ! {successR},
                     globalState(Registered, ConnectedUsers, Arbiters)
@@ -200,7 +196,7 @@ importer(Sock, State) ->
             Field = Msg#'Server'.msg,
             case Field of
                 {m2,Order} ->
-                    State ! {order,Sock,
+                    State ! {order,self(),
                         Order#'OrderS'.nameM,
                         Order#'OrderS'.nameP,
                         Order#'OrderS'.quant,
@@ -236,24 +232,20 @@ connectedClient(Sock, State) ->
     receive
         {tcp, _, Data} ->
             Msg = nefitproto:decode_msg(Data,'MsgAuth'),
-            io:format("Msg => ~w~n",[Msg]),
             case Msg#'MsgAuth'.mtype of
                 'REGISTER' ->
-                    io:format("1~n"),
-                    State ! {Sock,
+                    State ! {self(),
                         register,
                         Msg#'MsgAuth'.name,
                         Msg#'MsgAuth'.pass,
                         Msg#'MsgAuth'.ctype};
                 'LOGIN' ->
-                    io:format("2~n"),
-                    State ! {Sock,
+                    State ! {self(),
                         login,
                         Msg#'MsgAuth'.name,
                         Msg#'MsgAuth'.pass,
                         Msg#'MsgAuth'.ctype}
             end,
-            io:format("Chega aqui~n"),
             connectedClient(Sock, State);
         {success, Type} ->
             Msg = #'MsgAck'{ok = true},
@@ -264,18 +256,14 @@ connectedClient(Sock, State) ->
                 'MANUFACTURER'-> manufacturer(Sock, State)
             end;
         {successR} ->
-            io:format("3~n"),
             Msg = #'MsgAck'{ok = true},
             M = nefitproto:encode_msg(Msg),
             gen_tcp:send(Sock, M),
-            io:format("3~n"),
             connectedClient(Sock, State);
         {failure} ->
-            io:format("3~n"),
             Msg = #'MsgAck'{ok = false},
             M = nefitproto:encode_msg(Msg),
-            gen_tcp:send(Sock, M),
-            io:format("3~n");
+            gen_tcp:send(Sock, M);
         {tcp_closed, _} ->
             io:format("Closed.");
         {tcp_error, _, _} ->
