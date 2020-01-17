@@ -91,7 +91,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             {Sock,_} = maps:get(I,ConnectedUsers),
             Sock ! {ack, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
-        
+
         {info,M,P,Min,Max,V,Pe,I} ->
             Msg = #'InfoI'{nameM = M, nameP = P,maximun = Max, minimun = Min, value = V, period = Pe},
             {Sock,_} = maps:get(I,ConnectedUsers),

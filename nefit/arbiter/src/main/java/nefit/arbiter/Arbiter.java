@@ -163,30 +163,7 @@ public class Arbiter implements Runnable
                 this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).add(order.getNameI());
             this.socket.send(ack.toByteArray(),0);
         }
-        else
-            this.socket.send(this.messages.createOrderAckS(false,"The Manufacturer doesn't exist or doesn't has this product",order.getNameI(),false).toByteArray(),0);
     }
-
-    /*private void executeGet(NefitProtos.GetN get)
-    {
-        List<NefitProtos.InfoS> res = new ArrayList<>();
-        for(Map.Entry<Pair<String,String>,Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN>> entry: this.negotiations.entrySet()) {
-            for (String str : this.subscribers.get(get.getNameI()))
-                if (str.equals(entry.getKey().getKey()))
-                    res.add(
-                        this.messages.createInfoS(
-                            str,
-                            entry.getKey().getValue(),
-                            entry.getValue().getKey().getMaximun(),
-                            entry.getValue().getKey().getMinimun(),
-                            entry.getValue().getKey().getValue(),
-                            entry.getValue().getKey().getPeriod(),
-                            get.getNameI()
-                        )
-                    );
-        }
-        this.socket.send(this.messages.createNegotiationsS(get.getNameI(),res).toByteArray(),0);
-    }*/
 
     private void executeSub(NefitProtos.SubN sub)
     {
