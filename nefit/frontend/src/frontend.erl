@@ -77,11 +77,13 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             Sock ! {disponibility, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Map);
 
-        {production, M,P,Q,V} ->
+        {production,Pid, M,P,Q,V} ->
             Msg = #'ProductionM'{nameP = P,quant = Q, value = V},
             {Sock,_} = maps:get(M,ConnectedUsers),
             Sock ! {production, Msg},
-            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+            {_,I} = maps:get(Pid,Arbiters),
+            Map = maps:put(Pid,I-1,Arbiters),
+            globalState(RegisteredUsers,ConnectedUsers,Map);
 
         {result, R,M,I} ->
             Msg = #'ResultI'{result = R, msg = M},
@@ -121,7 +123,7 @@ arbiter(Sock, State) ->
             Field = Msg#'Server'.msg,
             case Field of
                 {m6, Production} ->
-                    State ! {production,
+                    State ! {production, self(),
                         Production#'ProductionS'.nameM,
                         Production#'ProductionS'.nameP,
                         Production#'ProductionS'.quant,
