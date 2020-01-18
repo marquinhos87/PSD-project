@@ -29,36 +29,36 @@ acceptor(LSock, State) ->
 
 globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
     receive
-        {Sock, login, Name, Pass, Type} ->
+        {Pid, login, Name, Pass, Type} ->
             Status = maps:find(Name,RegisteredUsers),
             case Status of
                 {ok, Value} ->
                     if
                         Value == Pass ->
-                            Connected = maps:put(Name,Sock,ConnectedUsers),
-                            Sock ! {success, Type},
+                            Connected = maps:put(Name,Pid,ConnectedUsers),
+                            Pid ! {success, Type},
                             globalState(RegisteredUsers, Connected, Arbiters);
                         true ->
-                            Sock ! {failure},
+                            Pid ! {failure},
                             globalState(RegisteredUsers, ConnectedUsers, Arbiters)
                     end;
                 error ->
-                    Sock ! {failure}
+                    Pid ! {failure}
             end;
 
-        {Sock, register, Name, Pass, _} ->
+        {Pid, register, Name, Pass, _} ->
             Status = maps:find(Name,RegisteredUsers),
             case Status of
                 {ok, _} ->
-                    Sock ! {failure},
+                    Pid ! {failure},
                     globalState(RegisteredUsers, ConnectedUsers, Arbiters);
                 error ->
                     Registered = maps:put(Name, Pass, RegisteredUsers),
-                    Sock ! {successR},
+                    Pid ! {successR},
                     globalState(Registered, ConnectedUsers, Arbiters)
             end;
 
-        {order, Pid, Manuf, Product, Quant, Value} ->
+        {order, Manuf, Product, Quant, Value} ->
             Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value},
             List = maps:to_list(Arbiters),
             [Arbiter ! {sub, Msg} || {Arbiter,_} <- List],
@@ -72,74 +72,62 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
 
         {disponibility, M, P, Value, Min, Max, Period} ->
             Msg = #'DisponibilityN'{nameM = M, nameP = P, value = Value, minimun = Min, maximun = Max, period = Period},
-            {Sock,I} = for(maps:size(Arbiters),"c",99999999,maps:iterator(Arbiters)),
-            Map = maps:put(Sock,I+1),
-            Sock ! {disponibility, Msg},
+            {Pid,I} = for(maps:size(Arbiters),"c",99999999,maps:iterator(Arbiters)),
+            Map = maps:put(Pid,I+1,Arbiters),
+            Pid ! {disponibility, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Map);
 
-        {production,Pid, M,P,Q,V} ->
+        {production,PidA, M,P,Q,V} ->
             Msg = #'ProductionM'{nameP = P,quant = Q, value = V},
-            {Sock,_} = maps:get(M,ConnectedUsers),
-            Sock ! {production, Msg},
-            {_,I} = maps:get(Pid,Arbiters),
-            Map = maps:put(Pid,I-1,Arbiters),
+            {PidU,_} = maps:get(M,ConnectedUsers),
+            PidU ! {production, Msg},
+            {_,I} = maps:get(PidA,Arbiters),
+            Map = maps:put(PidA,I-1,Arbiters),
             globalState(RegisteredUsers,ConnectedUsers,Map);
 
         {result, R,M,I} ->
             Msg = #'ResultI'{result = R, msg = M},
-            {Sock,_} = maps:get(I,ConnectedUsers),
-            Sock ! {result, Msg},
+            {Pid,_} = maps:get(I,ConnectedUsers),
+            Pid ! {result, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
 
         {ack,A,M,I} ->
             Msg = #'OrderAckI'{ack = A, msg = M},
-            {Sock,_} = maps:get(I,ConnectedUsers),
-            Sock ! {ack, Msg},
+            {Pid,_} = maps:get(I,ConnectedUsers),
+            Pid ! {ack, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
 
         {info,M,P,Min,Max,V,Pe,I} ->
             Msg = #'InfoI'{nameM = M, nameP = P,maximun = Max, minimun = Min, value = V, period = Pe},
-            {Sock,_} = maps:get(I,ConnectedUsers),
-            Sock ! {info, Msg},
+            {Pid,_} = maps:get(I,ConnectedUsers),
+            Pid ! {info, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
-        {arbiter, Sock} ->
-            Map = maps:put(Sock,0,Arbiters),
+        {arbiter, Pid} ->
+            Map = maps:put(Pid,0,Arbiters),
             globalState(RegisteredUsers,ConnectedUsers,Map)
     end.
 
-for(0,Sock,I,_) -> {Sock,I};
-for(N,Sock,I,Arbiters) ->
+%aux function to discover the Arbiter with less active negotiations
+for(0,Arbiter,I,_) -> {Arbiter,I};
+for(N,Arbiter,I,Arbiters) ->
     {A,B,C} = maps:next(Arbiters),
     if
         B < I -> for(N-1,A,B,C);
-        true -> for(N-1,Sock,I,C)
+        true -> for(N-1,Arbiter,I,C)
     end.
 
 % treat data received from arbiters
 arbiter(Sock, State) ->
     receive
         {tcp, _, Data} ->
-            Msg = decode(Data),
+            Msg = nefitproto:decode_msg(Data,'Server'),
             Field = Msg#'Server'.msg,
             case Field of
-                {m6, Production} ->
-                    State ! {production, self(),
-                        Production#'ProductionS'.nameM,
-                        Production#'ProductionS'.nameP,
-                        Production#'ProductionS'.quant,
-                        Production#'ProductionS'.value},
-                    arbiter(Sock, State);
                 {m4, Result} ->
                     State ! {result,
                         Result#'ResultS'.result,
                         Result#'ResultS'.msg,
                         Result#'ResultS'.nameI},
-                    arbiter(Sock, State);
-                {m7, Ack} ->
-                    State ! {ack,
-                        Ack#'OrderAckS'.ack,
-                        Ack#'OrderAckS'.msg,
-                        Ack#'OrderAckS'.nameI},
                     arbiter(Sock, State);
                 {m5, Info} ->
                     State ! {info,
@@ -150,6 +138,19 @@ arbiter(Sock, State) ->
                         Info#'InfoS'.value,
                         Info#'InfoS'.period,
                         Info#'InfoS'.nameI},
+                    arbiter(Sock, State);
+                {m6, Production} ->
+                    State ! {production, self(),
+                        Production#'ProductionS'.nameM,
+                        Production#'ProductionS'.nameP,
+                        Production#'ProductionS'.quant,
+                        Production#'ProductionS'.value},
+                    arbiter(Sock, State);
+                {m7, Ack} ->
+                    State ! {ack,
+                        Ack#'OrderAckS'.ack,
+                        Ack#'OrderAckS'.msg,
+                        Ack#'OrderAckS'.nameI},
                     arbiter(Sock, State)
             end;
         {order, Msg} ->
@@ -208,7 +209,7 @@ importer(Sock, State) ->
             Field = Msg#'Server'.msg,
             case Field of
                 {m2,Order} ->
-                    State ! {order,self(),
+                    State ! {order,
                         Order#'OrderS'.nameM,
                         Order#'OrderS'.nameP,
                         Order#'OrderS'.quant,
@@ -281,15 +282,3 @@ connectedClient(Sock, State) ->
         {tcp_error, _, _} ->
             io:format("Error.")
     end.
-
-% serialize
-
-
-% deserialize
-decode(Data) ->
-    Details = nefitproto:decode_msg(Data, 'Server'),
-    Details.
-
-decode(Data, Type) ->
-    Details = nefitproto:decode_msg(Data, Type),
-    Details.
