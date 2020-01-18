@@ -178,7 +178,7 @@ arbiter(Sock, State) ->
 manufacturer(Sock, State) ->
     receive
         {tcp, _, Data} ->
-            Msg = decode(Data),
+            Msg = nefitproto:decode_msg(Data,'Server'),
             Field = Msg#'Server'.msg,
             case Field of
                 {m1, ProductionOffer} ->
@@ -205,7 +205,7 @@ manufacturer(Sock, State) ->
 importer(Sock, State) ->
     receive
         {tcp, _, Data} ->
-            Msg = decode(Data),
+            Msg = nefitproto:decode_msg(Data,'Server'),
             Field = Msg#'Server'.msg,
             case Field of
                 {m2,Order} ->
