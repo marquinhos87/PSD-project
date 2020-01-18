@@ -136,8 +136,8 @@ public class Importer implements Runnable
         StringBuilder sb = new StringBuilder();
         sb.append("\tManufacturer: " + info.getNameM());
         sb.append("\n\tProduct: " + info.getNameP());
-        sb.append("\n\tMin quantity: " + info.getMinimun());
-        sb.append("\n\tMax quantity: " + info.getMaximun());
+        sb.append("\n\tMin quantity: " + info.getMinimum());
+        sb.append("\n\tMax quantity: " + info.getMaximum());
         sb.append("\n\tMin unit price: " + info.getValue());
         sb.append("\n\tTime Available: " + info.getPeriod() + " seconds");
         return  sb.toString();

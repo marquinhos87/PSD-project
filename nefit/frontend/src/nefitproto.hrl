@@ -30,8 +30,8 @@
 -record('DisponibilityS',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).
@@ -42,8 +42,8 @@
 -record('DisponibilityN',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).
@@ -147,8 +147,8 @@
 -record('InfoS',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer(),       % = 6, 32 bits
          nameI                  :: iodata()         % = 7
@@ -160,8 +160,8 @@
 -record('InfoI',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).

@@ -56,8 +56,8 @@ public class Messages
         return NefitProtos.DisponibilityS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
-            .setMinimun(minimum)
-            .setMaximun(maximum)
+            .setMinimum(minimum)
+            .setMaximum(maximum)
             .setValue(value)
             .setPeriod(period)
             .build();

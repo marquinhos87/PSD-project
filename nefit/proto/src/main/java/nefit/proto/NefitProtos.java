@@ -1979,26 +1979,26 @@ public final class NefitProtos {
         getNamePBytes();
 
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    boolean hasMinimun();
+    boolean hasMinimum();
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    int getMinimun();
+    int getMinimum();
 
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    boolean hasMaximun();
+    boolean hasMaximum();
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    int getMaximun();
+    int getMaximum();
 
     /**
      * <code>required float value = 5;</code>
@@ -2084,12 +2084,12 @@ public final class NefitProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              minimun_ = input.readInt32();
+              minimum_ = input.readInt32();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              maximun_ = input.readInt32();
+              maximum_ = input.readInt32();
               break;
             }
             case 45: {
@@ -2225,38 +2225,38 @@ public final class NefitProtos {
       }
     }
 
-    public static final int MINIMUN_FIELD_NUMBER = 3;
-    private int minimun_;
+    public static final int MINIMUM_FIELD_NUMBER = 3;
+    private int minimum_;
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    public boolean hasMinimun() {
+    public boolean hasMinimum() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    public int getMinimun() {
-      return minimun_;
+    public int getMinimum() {
+      return minimum_;
     }
 
-    public static final int MAXIMUN_FIELD_NUMBER = 4;
-    private int maximun_;
+    public static final int MAXIMUM_FIELD_NUMBER = 4;
+    private int maximum_;
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    public boolean hasMaximun() {
+    public boolean hasMaximum() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    public int getMaximun() {
-      return maximun_;
+    public int getMaximum() {
+      return maximum_;
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
@@ -2308,11 +2308,11 @@ public final class NefitProtos {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMinimun()) {
+      if (!hasMinimum()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMaximun()) {
+      if (!hasMaximum()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2338,10 +2338,10 @@ public final class NefitProtos {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, minimun_);
+        output.writeInt32(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, maximun_);
+        output.writeInt32(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         output.writeFloat(5, value_);
@@ -2366,11 +2366,11 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, minimun_);
+          .computeInt32Size(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, maximun_);
+          .computeInt32Size(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2405,15 +2405,15 @@ public final class NefitProtos {
         if (!getNameP()
             .equals(other.getNameP())) return false;
       }
-      if (hasMinimun() != other.hasMinimun()) return false;
-      if (hasMinimun()) {
-        if (getMinimun()
-            != other.getMinimun()) return false;
+      if (hasMinimum() != other.hasMinimum()) return false;
+      if (hasMinimum()) {
+        if (getMinimum()
+            != other.getMinimum()) return false;
       }
-      if (hasMaximun() != other.hasMaximun()) return false;
-      if (hasMaximun()) {
-        if (getMaximun()
-            != other.getMaximun()) return false;
+      if (hasMaximum() != other.hasMaximum()) return false;
+      if (hasMaximum()) {
+        if (getMaximum()
+            != other.getMaximum()) return false;
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
@@ -2445,13 +2445,13 @@ public final class NefitProtos {
         hash = (37 * hash) + NAMEP_FIELD_NUMBER;
         hash = (53 * hash) + getNameP().hashCode();
       }
-      if (hasMinimun()) {
-        hash = (37 * hash) + MINIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMinimun();
+      if (hasMinimum()) {
+        hash = (37 * hash) + MINIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMinimum();
       }
-      if (hasMaximun()) {
-        hash = (37 * hash) + MAXIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMaximun();
+      if (hasMaximum()) {
+        hash = (37 * hash) + MAXIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMaximum();
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -2599,9 +2599,9 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         nameP_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        minimun_ = 0;
+        minimum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        maximun_ = 0;
+        maximum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
         value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -2644,11 +2644,11 @@ public final class NefitProtos {
         }
         result.nameP_ = nameP_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.minimun_ = minimun_;
+          result.minimum_ = minimum_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.maximun_ = maximun_;
+          result.maximum_ = maximum_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
@@ -2718,11 +2718,11 @@ public final class NefitProtos {
           nameP_ = other.nameP_;
           onChanged();
         }
-        if (other.hasMinimun()) {
-          setMinimun(other.getMinimun());
+        if (other.hasMinimum()) {
+          setMinimum(other.getMinimum());
         }
-        if (other.hasMaximun()) {
-          setMaximun(other.getMaximun());
+        if (other.hasMaximum()) {
+          setMaximum(other.getMaximum());
         }
         if (other.hasValue()) {
           setValue(other.getValue());
@@ -2743,10 +2743,10 @@ public final class NefitProtos {
         if (!hasNameP()) {
           return false;
         }
-        if (!hasMinimun()) {
+        if (!hasMinimum()) {
           return false;
         }
-        if (!hasMaximun()) {
+        if (!hasMaximum()) {
           return false;
         }
         if (!hasValue()) {
@@ -2946,76 +2946,76 @@ public final class NefitProtos {
         return this;
       }
 
-      private int minimun_ ;
+      private int minimum_ ;
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return Whether the minimun field is set.
+       * <code>required int32 minimum = 3;</code>
+       * @return Whether the minimum field is set.
        */
-      public boolean hasMinimun() {
+      public boolean hasMinimum() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return The minimun.
+       * <code>required int32 minimum = 3;</code>
+       * @return The minimum.
        */
-      public int getMinimun() {
-        return minimun_;
+      public int getMinimum() {
+        return minimum_;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @param value The minimun to set.
+       * <code>required int32 minimum = 3;</code>
+       * @param value The minimum to set.
        * @return This builder for chaining.
        */
-      public Builder setMinimun(int value) {
+      public Builder setMinimum(int value) {
         bitField0_ |= 0x00000004;
-        minimun_ = value;
+        minimum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
+       * <code>required int32 minimum = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMinimun() {
+      public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        minimun_ = 0;
+        minimum_ = 0;
         onChanged();
         return this;
       }
 
-      private int maximun_ ;
+      private int maximum_ ;
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return Whether the maximun field is set.
+       * <code>required int32 maximum = 4;</code>
+       * @return Whether the maximum field is set.
        */
-      public boolean hasMaximun() {
+      public boolean hasMaximum() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return The maximun.
+       * <code>required int32 maximum = 4;</code>
+       * @return The maximum.
        */
-      public int getMaximun() {
-        return maximun_;
+      public int getMaximum() {
+        return maximum_;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @param value The maximun to set.
+       * <code>required int32 maximum = 4;</code>
+       * @param value The maximum to set.
        * @return This builder for chaining.
        */
-      public Builder setMaximun(int value) {
+      public Builder setMaximum(int value) {
         bitField0_ |= 0x00000008;
-        maximun_ = value;
+        maximum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
+       * <code>required int32 maximum = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMaximun() {
+      public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        maximun_ = 0;
+        maximum_ = 0;
         onChanged();
         return this;
       }
@@ -3185,26 +3185,26 @@ public final class NefitProtos {
         getNamePBytes();
 
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    boolean hasMinimun();
+    boolean hasMinimum();
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    int getMinimun();
+    int getMinimum();
 
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    boolean hasMaximun();
+    boolean hasMaximum();
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    int getMaximun();
+    int getMaximum();
 
     /**
      * <code>required float value = 5;</code>
@@ -3290,12 +3290,12 @@ public final class NefitProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              minimun_ = input.readInt32();
+              minimum_ = input.readInt32();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              maximun_ = input.readInt32();
+              maximum_ = input.readInt32();
               break;
             }
             case 45: {
@@ -3431,38 +3431,38 @@ public final class NefitProtos {
       }
     }
 
-    public static final int MINIMUN_FIELD_NUMBER = 3;
-    private int minimun_;
+    public static final int MINIMUM_FIELD_NUMBER = 3;
+    private int minimum_;
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    public boolean hasMinimun() {
+    public boolean hasMinimum() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    public int getMinimun() {
-      return minimun_;
+    public int getMinimum() {
+      return minimum_;
     }
 
-    public static final int MAXIMUN_FIELD_NUMBER = 4;
-    private int maximun_;
+    public static final int MAXIMUM_FIELD_NUMBER = 4;
+    private int maximum_;
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    public boolean hasMaximun() {
+    public boolean hasMaximum() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    public int getMaximun() {
-      return maximun_;
+    public int getMaximum() {
+      return maximum_;
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
@@ -3514,11 +3514,11 @@ public final class NefitProtos {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMinimun()) {
+      if (!hasMinimum()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMaximun()) {
+      if (!hasMaximum()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3544,10 +3544,10 @@ public final class NefitProtos {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, minimun_);
+        output.writeInt32(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, maximun_);
+        output.writeInt32(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         output.writeFloat(5, value_);
@@ -3572,11 +3572,11 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, minimun_);
+          .computeInt32Size(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, maximun_);
+          .computeInt32Size(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3611,15 +3611,15 @@ public final class NefitProtos {
         if (!getNameP()
             .equals(other.getNameP())) return false;
       }
-      if (hasMinimun() != other.hasMinimun()) return false;
-      if (hasMinimun()) {
-        if (getMinimun()
-            != other.getMinimun()) return false;
+      if (hasMinimum() != other.hasMinimum()) return false;
+      if (hasMinimum()) {
+        if (getMinimum()
+            != other.getMinimum()) return false;
       }
-      if (hasMaximun() != other.hasMaximun()) return false;
-      if (hasMaximun()) {
-        if (getMaximun()
-            != other.getMaximun()) return false;
+      if (hasMaximum() != other.hasMaximum()) return false;
+      if (hasMaximum()) {
+        if (getMaximum()
+            != other.getMaximum()) return false;
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
@@ -3651,13 +3651,13 @@ public final class NefitProtos {
         hash = (37 * hash) + NAMEP_FIELD_NUMBER;
         hash = (53 * hash) + getNameP().hashCode();
       }
-      if (hasMinimun()) {
-        hash = (37 * hash) + MINIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMinimun();
+      if (hasMinimum()) {
+        hash = (37 * hash) + MINIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMinimum();
       }
-      if (hasMaximun()) {
-        hash = (37 * hash) + MAXIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMaximun();
+      if (hasMaximum()) {
+        hash = (37 * hash) + MAXIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMaximum();
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -3805,9 +3805,9 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         nameP_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        minimun_ = 0;
+        minimum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        maximun_ = 0;
+        maximum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
         value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -3850,11 +3850,11 @@ public final class NefitProtos {
         }
         result.nameP_ = nameP_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.minimun_ = minimun_;
+          result.minimum_ = minimum_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.maximun_ = maximun_;
+          result.maximum_ = maximum_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
@@ -3924,11 +3924,11 @@ public final class NefitProtos {
           nameP_ = other.nameP_;
           onChanged();
         }
-        if (other.hasMinimun()) {
-          setMinimun(other.getMinimun());
+        if (other.hasMinimum()) {
+          setMinimum(other.getMinimum());
         }
-        if (other.hasMaximun()) {
-          setMaximun(other.getMaximun());
+        if (other.hasMaximum()) {
+          setMaximum(other.getMaximum());
         }
         if (other.hasValue()) {
           setValue(other.getValue());
@@ -3949,10 +3949,10 @@ public final class NefitProtos {
         if (!hasNameP()) {
           return false;
         }
-        if (!hasMinimun()) {
+        if (!hasMinimum()) {
           return false;
         }
-        if (!hasMaximun()) {
+        if (!hasMaximum()) {
           return false;
         }
         if (!hasValue()) {
@@ -4152,76 +4152,76 @@ public final class NefitProtos {
         return this;
       }
 
-      private int minimun_ ;
+      private int minimum_ ;
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return Whether the minimun field is set.
+       * <code>required int32 minimum = 3;</code>
+       * @return Whether the minimum field is set.
        */
-      public boolean hasMinimun() {
+      public boolean hasMinimum() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return The minimun.
+       * <code>required int32 minimum = 3;</code>
+       * @return The minimum.
        */
-      public int getMinimun() {
-        return minimun_;
+      public int getMinimum() {
+        return minimum_;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @param value The minimun to set.
+       * <code>required int32 minimum = 3;</code>
+       * @param value The minimum to set.
        * @return This builder for chaining.
        */
-      public Builder setMinimun(int value) {
+      public Builder setMinimum(int value) {
         bitField0_ |= 0x00000004;
-        minimun_ = value;
+        minimum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
+       * <code>required int32 minimum = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMinimun() {
+      public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        minimun_ = 0;
+        minimum_ = 0;
         onChanged();
         return this;
       }
 
-      private int maximun_ ;
+      private int maximum_ ;
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return Whether the maximun field is set.
+       * <code>required int32 maximum = 4;</code>
+       * @return Whether the maximum field is set.
        */
-      public boolean hasMaximun() {
+      public boolean hasMaximum() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return The maximun.
+       * <code>required int32 maximum = 4;</code>
+       * @return The maximum.
        */
-      public int getMaximun() {
-        return maximun_;
+      public int getMaximum() {
+        return maximum_;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @param value The maximun to set.
+       * <code>required int32 maximum = 4;</code>
+       * @param value The maximum to set.
        * @return This builder for chaining.
        */
-      public Builder setMaximun(int value) {
+      public Builder setMaximum(int value) {
         bitField0_ |= 0x00000008;
-        maximun_ = value;
+        maximum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
+       * <code>required int32 maximum = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMaximun() {
+      public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        maximun_ = 0;
+        maximum_ = 0;
         onChanged();
         return this;
       }
@@ -13651,26 +13651,26 @@ public final class NefitProtos {
         getNamePBytes();
 
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    boolean hasMinimun();
+    boolean hasMinimum();
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    int getMinimun();
+    int getMinimum();
 
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    boolean hasMaximun();
+    boolean hasMaximum();
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    int getMaximun();
+    int getMaximum();
 
     /**
      * <code>required float value = 5;</code>
@@ -13774,12 +13774,12 @@ public final class NefitProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              minimun_ = input.readInt32();
+              minimum_ = input.readInt32();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              maximun_ = input.readInt32();
+              maximum_ = input.readInt32();
               break;
             }
             case 45: {
@@ -13921,38 +13921,38 @@ public final class NefitProtos {
       }
     }
 
-    public static final int MINIMUN_FIELD_NUMBER = 3;
-    private int minimun_;
+    public static final int MINIMUM_FIELD_NUMBER = 3;
+    private int minimum_;
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    public boolean hasMinimun() {
+    public boolean hasMinimum() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    public int getMinimun() {
-      return minimun_;
+    public int getMinimum() {
+      return minimum_;
     }
 
-    public static final int MAXIMUN_FIELD_NUMBER = 4;
-    private int maximun_;
+    public static final int MAXIMUM_FIELD_NUMBER = 4;
+    private int maximum_;
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    public boolean hasMaximun() {
+    public boolean hasMaximum() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    public int getMaximun() {
-      return maximun_;
+    public int getMaximum() {
+      return maximum_;
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
@@ -14049,11 +14049,11 @@ public final class NefitProtos {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMinimun()) {
+      if (!hasMinimum()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMaximun()) {
+      if (!hasMaximum()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -14083,10 +14083,10 @@ public final class NefitProtos {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, minimun_);
+        output.writeInt32(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, maximun_);
+        output.writeInt32(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         output.writeFloat(5, value_);
@@ -14114,11 +14114,11 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, minimun_);
+          .computeInt32Size(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, maximun_);
+          .computeInt32Size(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -14156,15 +14156,15 @@ public final class NefitProtos {
         if (!getNameP()
             .equals(other.getNameP())) return false;
       }
-      if (hasMinimun() != other.hasMinimun()) return false;
-      if (hasMinimun()) {
-        if (getMinimun()
-            != other.getMinimun()) return false;
+      if (hasMinimum() != other.hasMinimum()) return false;
+      if (hasMinimum()) {
+        if (getMinimum()
+            != other.getMinimum()) return false;
       }
-      if (hasMaximun() != other.hasMaximun()) return false;
-      if (hasMaximun()) {
-        if (getMaximun()
-            != other.getMaximun()) return false;
+      if (hasMaximum() != other.hasMaximum()) return false;
+      if (hasMaximum()) {
+        if (getMaximum()
+            != other.getMaximum()) return false;
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
@@ -14201,13 +14201,13 @@ public final class NefitProtos {
         hash = (37 * hash) + NAMEP_FIELD_NUMBER;
         hash = (53 * hash) + getNameP().hashCode();
       }
-      if (hasMinimun()) {
-        hash = (37 * hash) + MINIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMinimun();
+      if (hasMinimum()) {
+        hash = (37 * hash) + MINIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMinimum();
       }
-      if (hasMaximun()) {
-        hash = (37 * hash) + MAXIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMaximun();
+      if (hasMaximum()) {
+        hash = (37 * hash) + MAXIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMaximum();
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -14359,9 +14359,9 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         nameP_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        minimun_ = 0;
+        minimum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        maximun_ = 0;
+        maximum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
         value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -14406,11 +14406,11 @@ public final class NefitProtos {
         }
         result.nameP_ = nameP_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.minimun_ = minimun_;
+          result.minimum_ = minimum_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.maximun_ = maximun_;
+          result.maximum_ = maximum_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
@@ -14484,11 +14484,11 @@ public final class NefitProtos {
           nameP_ = other.nameP_;
           onChanged();
         }
-        if (other.hasMinimun()) {
-          setMinimun(other.getMinimun());
+        if (other.hasMinimum()) {
+          setMinimum(other.getMinimum());
         }
-        if (other.hasMaximun()) {
-          setMaximun(other.getMaximun());
+        if (other.hasMaximum()) {
+          setMaximum(other.getMaximum());
         }
         if (other.hasValue()) {
           setValue(other.getValue());
@@ -14514,10 +14514,10 @@ public final class NefitProtos {
         if (!hasNameP()) {
           return false;
         }
-        if (!hasMinimun()) {
+        if (!hasMinimum()) {
           return false;
         }
-        if (!hasMaximun()) {
+        if (!hasMaximum()) {
           return false;
         }
         if (!hasValue()) {
@@ -14720,76 +14720,76 @@ public final class NefitProtos {
         return this;
       }
 
-      private int minimun_ ;
+      private int minimum_ ;
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return Whether the minimun field is set.
+       * <code>required int32 minimum = 3;</code>
+       * @return Whether the minimum field is set.
        */
-      public boolean hasMinimun() {
+      public boolean hasMinimum() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return The minimun.
+       * <code>required int32 minimum = 3;</code>
+       * @return The minimum.
        */
-      public int getMinimun() {
-        return minimun_;
+      public int getMinimum() {
+        return minimum_;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @param value The minimun to set.
+       * <code>required int32 minimum = 3;</code>
+       * @param value The minimum to set.
        * @return This builder for chaining.
        */
-      public Builder setMinimun(int value) {
+      public Builder setMinimum(int value) {
         bitField0_ |= 0x00000004;
-        minimun_ = value;
+        minimum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
+       * <code>required int32 minimum = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMinimun() {
+      public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        minimun_ = 0;
+        minimum_ = 0;
         onChanged();
         return this;
       }
 
-      private int maximun_ ;
+      private int maximum_ ;
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return Whether the maximun field is set.
+       * <code>required int32 maximum = 4;</code>
+       * @return Whether the maximum field is set.
        */
-      public boolean hasMaximun() {
+      public boolean hasMaximum() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return The maximun.
+       * <code>required int32 maximum = 4;</code>
+       * @return The maximum.
        */
-      public int getMaximun() {
-        return maximun_;
+      public int getMaximum() {
+        return maximum_;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @param value The maximun to set.
+       * <code>required int32 maximum = 4;</code>
+       * @param value The maximum to set.
        * @return This builder for chaining.
        */
-      public Builder setMaximun(int value) {
+      public Builder setMaximum(int value) {
         bitField0_ |= 0x00000008;
-        maximun_ = value;
+        maximum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
+       * <code>required int32 maximum = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMaximun() {
+      public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        maximun_ = 0;
+        maximum_ = 0;
         onChanged();
         return this;
       }
@@ -15043,26 +15043,26 @@ public final class NefitProtos {
         getNamePBytes();
 
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    boolean hasMinimun();
+    boolean hasMinimum();
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    int getMinimun();
+    int getMinimum();
 
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    boolean hasMaximun();
+    boolean hasMaximum();
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    int getMaximun();
+    int getMaximum();
 
     /**
      * <code>required float value = 5;</code>
@@ -15148,12 +15148,12 @@ public final class NefitProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              minimun_ = input.readInt32();
+              minimum_ = input.readInt32();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              maximun_ = input.readInt32();
+              maximum_ = input.readInt32();
               break;
             }
             case 45: {
@@ -15289,38 +15289,38 @@ public final class NefitProtos {
       }
     }
 
-    public static final int MINIMUN_FIELD_NUMBER = 3;
-    private int minimun_;
+    public static final int MINIMUM_FIELD_NUMBER = 3;
+    private int minimum_;
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return Whether the minimun field is set.
+     * <code>required int32 minimum = 3;</code>
+     * @return Whether the minimum field is set.
      */
-    public boolean hasMinimun() {
+    public boolean hasMinimum() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>required int32 minimun = 3;</code>
-     * @return The minimun.
+     * <code>required int32 minimum = 3;</code>
+     * @return The minimum.
      */
-    public int getMinimun() {
-      return minimun_;
+    public int getMinimum() {
+      return minimum_;
     }
 
-    public static final int MAXIMUN_FIELD_NUMBER = 4;
-    private int maximun_;
+    public static final int MAXIMUM_FIELD_NUMBER = 4;
+    private int maximum_;
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return Whether the maximun field is set.
+     * <code>required int32 maximum = 4;</code>
+     * @return Whether the maximum field is set.
      */
-    public boolean hasMaximun() {
+    public boolean hasMaximum() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required int32 maximun = 4;</code>
-     * @return The maximun.
+     * <code>required int32 maximum = 4;</code>
+     * @return The maximum.
      */
-    public int getMaximun() {
-      return maximun_;
+    public int getMaximum() {
+      return maximum_;
     }
 
     public static final int VALUE_FIELD_NUMBER = 5;
@@ -15372,11 +15372,11 @@ public final class NefitProtos {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMinimun()) {
+      if (!hasMinimum()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMaximun()) {
+      if (!hasMaximum()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -15402,10 +15402,10 @@ public final class NefitProtos {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nameP_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, minimun_);
+        output.writeInt32(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, maximun_);
+        output.writeInt32(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         output.writeFloat(5, value_);
@@ -15430,11 +15430,11 @@ public final class NefitProtos {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, minimun_);
+          .computeInt32Size(3, minimum_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, maximun_);
+          .computeInt32Size(4, maximum_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -15469,15 +15469,15 @@ public final class NefitProtos {
         if (!getNameP()
             .equals(other.getNameP())) return false;
       }
-      if (hasMinimun() != other.hasMinimun()) return false;
-      if (hasMinimun()) {
-        if (getMinimun()
-            != other.getMinimun()) return false;
+      if (hasMinimum() != other.hasMinimum()) return false;
+      if (hasMinimum()) {
+        if (getMinimum()
+            != other.getMinimum()) return false;
       }
-      if (hasMaximun() != other.hasMaximun()) return false;
-      if (hasMaximun()) {
-        if (getMaximun()
-            != other.getMaximun()) return false;
+      if (hasMaximum() != other.hasMaximum()) return false;
+      if (hasMaximum()) {
+        if (getMaximum()
+            != other.getMaximum()) return false;
       }
       if (hasValue() != other.hasValue()) return false;
       if (hasValue()) {
@@ -15509,13 +15509,13 @@ public final class NefitProtos {
         hash = (37 * hash) + NAMEP_FIELD_NUMBER;
         hash = (53 * hash) + getNameP().hashCode();
       }
-      if (hasMinimun()) {
-        hash = (37 * hash) + MINIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMinimun();
+      if (hasMinimum()) {
+        hash = (37 * hash) + MINIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMinimum();
       }
-      if (hasMaximun()) {
-        hash = (37 * hash) + MAXIMUN_FIELD_NUMBER;
-        hash = (53 * hash) + getMaximun();
+      if (hasMaximum()) {
+        hash = (37 * hash) + MAXIMUM_FIELD_NUMBER;
+        hash = (53 * hash) + getMaximum();
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -15663,9 +15663,9 @@ public final class NefitProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         nameP_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        minimun_ = 0;
+        minimum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        maximun_ = 0;
+        maximum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
         value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -15708,11 +15708,11 @@ public final class NefitProtos {
         }
         result.nameP_ = nameP_;
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.minimun_ = minimun_;
+          result.minimum_ = minimum_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.maximun_ = maximun_;
+          result.maximum_ = maximum_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
@@ -15782,11 +15782,11 @@ public final class NefitProtos {
           nameP_ = other.nameP_;
           onChanged();
         }
-        if (other.hasMinimun()) {
-          setMinimun(other.getMinimun());
+        if (other.hasMinimum()) {
+          setMinimum(other.getMinimum());
         }
-        if (other.hasMaximun()) {
-          setMaximun(other.getMaximun());
+        if (other.hasMaximum()) {
+          setMaximum(other.getMaximum());
         }
         if (other.hasValue()) {
           setValue(other.getValue());
@@ -15807,10 +15807,10 @@ public final class NefitProtos {
         if (!hasNameP()) {
           return false;
         }
-        if (!hasMinimun()) {
+        if (!hasMinimum()) {
           return false;
         }
-        if (!hasMaximun()) {
+        if (!hasMaximum()) {
           return false;
         }
         if (!hasValue()) {
@@ -16010,76 +16010,76 @@ public final class NefitProtos {
         return this;
       }
 
-      private int minimun_ ;
+      private int minimum_ ;
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return Whether the minimun field is set.
+       * <code>required int32 minimum = 3;</code>
+       * @return Whether the minimum field is set.
        */
-      public boolean hasMinimun() {
+      public boolean hasMinimum() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @return The minimun.
+       * <code>required int32 minimum = 3;</code>
+       * @return The minimum.
        */
-      public int getMinimun() {
-        return minimun_;
+      public int getMinimum() {
+        return minimum_;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
-       * @param value The minimun to set.
+       * <code>required int32 minimum = 3;</code>
+       * @param value The minimum to set.
        * @return This builder for chaining.
        */
-      public Builder setMinimun(int value) {
+      public Builder setMinimum(int value) {
         bitField0_ |= 0x00000004;
-        minimun_ = value;
+        minimum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 minimun = 3;</code>
+       * <code>required int32 minimum = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMinimun() {
+      public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        minimun_ = 0;
+        minimum_ = 0;
         onChanged();
         return this;
       }
 
-      private int maximun_ ;
+      private int maximum_ ;
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return Whether the maximun field is set.
+       * <code>required int32 maximum = 4;</code>
+       * @return Whether the maximum field is set.
        */
-      public boolean hasMaximun() {
+      public boolean hasMaximum() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @return The maximun.
+       * <code>required int32 maximum = 4;</code>
+       * @return The maximum.
        */
-      public int getMaximun() {
-        return maximun_;
+      public int getMaximum() {
+        return maximum_;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
-       * @param value The maximun to set.
+       * <code>required int32 maximum = 4;</code>
+       * @param value The maximum to set.
        * @return This builder for chaining.
        */
-      public Builder setMaximun(int value) {
+      public Builder setMaximum(int value) {
         bitField0_ |= 0x00000008;
-        maximun_ = value;
+        maximum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 maximun = 4;</code>
+       * <code>required int32 maximum = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMaximun() {
+      public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        maximun_ = 0;
+        maximum_ = 0;
         onChanged();
         return this;
       }
@@ -20849,10 +20849,10 @@ public final class NefitProtos {
       "gType\022\t\n\005LOGIN\020\000\022\014\n\010REGISTER\020\001\"!\n\006MsgAck" +
       "\022\n\n\002ok\030\001 \002(\010\022\013\n\003msg\030\002 \001(\t\"o\n\016Disponibili" +
       "tyS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007min" +
-      "imun\030\003 \002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002" +
+      "imum\030\003 \002(\005\022\017\n\007maximum\030\004 \002(\005\022\r\n\005value\030\005 \002" +
       "(\002\022\016\n\006period\030\006 \002(\005\"o\n\016DisponibilityN\022\r\n\005" +
-      "nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 " +
-      "\002(\005\022\017\n\007maximun\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006p" +
+      "nameM\030\001 \002(\t\022\r\n\005nameP\030\002 \002(\t\022\017\n\007minimum\030\003 " +
+      "\002(\005\022\017\n\007maximum\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006p" +
       "eriod\030\006 \002(\005\"S\n\006OrderS\022\r\n\005nameM\030\001 \002(\t\022\r\n\005" +
       "nameP\030\002 \002(\t\022\r\n\005quant\030\003 \002(\005\022\r\n\005value\030\004 \002(" +
       "\002\022\r\n\005nameI\030\005 \002(\t\"S\n\006OrderN\022\r\n\005nameM\030\001 \002(" +
@@ -20869,10 +20869,10 @@ public final class NefitProtos {
       "5\n\007ResultS\022\016\n\006result\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\022" +
       "\r\n\005nameI\030\003 \002(\t\"&\n\007ResultI\022\016\n\006result\030\001 \002(" +
       "\010\022\013\n\003msg\030\002 \002(\t\"u\n\005InfoS\022\r\n\005nameM\030\001 \002(\t\022\r" +
-      "\n\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 \002(\005\022\017\n\007maximu" +
-      "n\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\022\r" +
+      "\n\005nameP\030\002 \002(\t\022\017\n\007minimum\030\003 \002(\005\022\017\n\007maximu" +
+      "m\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\022\r" +
       "\n\005nameI\030\007 \002(\t\"f\n\005InfoI\022\r\n\005nameM\030\001 \002(\t\022\r\n" +
-      "\005nameP\030\002 \002(\t\022\017\n\007minimun\030\003 \002(\005\022\017\n\007maximun" +
+      "\005nameP\030\002 \002(\t\022\017\n\007minimum\030\003 \002(\005\022\017\n\007maximum" +
       "\030\004 \002(\005\022\r\n\005value\030\005 \002(\002\022\016\n\006period\030\006 \002(\005\"\350\001" +
       "\n\006Server\022#\n\002m1\030\001 \001(\0132\025.nefit.Disponibili" +
       "tySH\000\022\033\n\002m2\030\002 \001(\0132\r.nefit.OrderSH\000\022\031\n\002m3" +
@@ -20909,13 +20909,13 @@ public final class NefitProtos {
     internal_static_nefit_DisponibilityS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_DisponibilityS_descriptor,
-        new java.lang.String[] { "NameM", "NameP", "Minimun", "Maximun", "Value", "Period", });
+        new java.lang.String[] { "NameM", "NameP", "Minimum", "Maximum", "Value", "Period", });
     internal_static_nefit_DisponibilityN_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_nefit_DisponibilityN_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_DisponibilityN_descriptor,
-        new java.lang.String[] { "NameM", "NameP", "Minimun", "Maximun", "Value", "Period", });
+        new java.lang.String[] { "NameM", "NameP", "Minimum", "Maximum", "Value", "Period", });
     internal_static_nefit_OrderS_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_nefit_OrderS_fieldAccessorTable = new
@@ -20981,13 +20981,13 @@ public final class NefitProtos {
     internal_static_nefit_InfoS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_InfoS_descriptor,
-        new java.lang.String[] { "NameM", "NameP", "Minimun", "Maximun", "Value", "Period", "NameI", });
+        new java.lang.String[] { "NameM", "NameP", "Minimum", "Maximum", "Value", "Period", "NameI", });
     internal_static_nefit_InfoI_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_nefit_InfoI_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_InfoI_descriptor,
-        new java.lang.String[] { "NameM", "NameP", "Minimun", "Maximun", "Value", "Period", });
+        new java.lang.String[] { "NameM", "NameP", "Minimum", "Maximum", "Value", "Period", });
     internal_static_nefit_Server_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_nefit_Server_fieldAccessorTable = new

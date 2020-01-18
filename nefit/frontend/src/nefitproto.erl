@@ -206,8 +206,8 @@ encode_msg_DisponibilityS(Msg, TrUserData) ->
 
 
 encode_msg_DisponibilityS(#'DisponibilityS'{nameM = F1,
-					    nameP = F2, minimun = F3,
-					    maximun = F4, value = F5,
+					    nameP = F2, minimum = F3,
+					    maximum = F4, value = F5,
 					    period = F6},
 			  Bin, TrUserData) ->
     B1 = begin
@@ -240,8 +240,8 @@ encode_msg_DisponibilityN(Msg, TrUserData) ->
 
 
 encode_msg_DisponibilityN(#'DisponibilityN'{nameM = F1,
-					    nameP = F2, minimun = F3,
-					    maximun = F4, value = F5,
+					    nameP = F2, minimum = F3,
+					    maximum = F4, value = F5,
 					    period = F6},
 			  Bin, TrUserData) ->
     B1 = begin
@@ -493,7 +493,7 @@ encode_msg_InfoS(Msg, TrUserData) ->
 
 
 encode_msg_InfoS(#'InfoS'{nameM = F1, nameP = F2,
-			  minimun = F3, maximun = F4, value = F5, period = F6,
+			  minimum = F3, maximum = F4, value = F5, period = F6,
 			  nameI = F7},
 		 Bin, TrUserData) ->
     B1 = begin
@@ -530,7 +530,7 @@ encode_msg_InfoI(Msg, TrUserData) ->
 
 
 encode_msg_InfoI(#'InfoI'{nameM = F1, nameP = F2,
-			  minimun = F3, maximun = F4, value = F5, period = F6},
+			  minimum = F3, maximum = F4, value = F5, period = F6},
 		 Bin, TrUserData) ->
     B1 = begin
 	   TrF1 = id(F1, TrUserData),
@@ -1252,12 +1252,12 @@ dfp_read_field_def_DisponibilityS(<<18, Rest/binary>>,
 dfp_read_field_def_DisponibilityS(<<24, Rest/binary>>,
 				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 				  TrUserData) ->
-    d_field_DisponibilityS_minimun(Rest, Z1, Z2, F@_1, F@_2,
+    d_field_DisponibilityS_minimum(Rest, Z1, Z2, F@_1, F@_2,
 				   F@_3, F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_DisponibilityS(<<32, Rest/binary>>,
 				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 				  TrUserData) ->
-    d_field_DisponibilityS_maximun(Rest, Z1, Z2, F@_1, F@_2,
+    d_field_DisponibilityS_maximum(Rest, Z1, Z2, F@_1, F@_2,
 				   F@_3, F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_DisponibilityS(<<45, Rest/binary>>,
 				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
@@ -1272,7 +1272,7 @@ dfp_read_field_def_DisponibilityS(<<48, Rest/binary>>,
 dfp_read_field_def_DisponibilityS(<<>>, 0, 0, F@_1,
 				  F@_2, F@_3, F@_4, F@_5, F@_6, _) ->
     #'DisponibilityS'{nameM = F@_1, nameP = F@_2,
-		      minimun = F@_3, maximun = F@_4, value = F@_5,
+		      minimum = F@_3, maximum = F@_4, value = F@_5,
 		      period = F@_6};
 dfp_read_field_def_DisponibilityS(Other, Z1, Z2, F@_1,
 				  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
@@ -1300,10 +1300,10 @@ dg_read_field_def_DisponibilityS(<<0:1, X:7,
 	  d_field_DisponibilityS_nameP(Rest, 0, 0, F@_1, F@_2,
 				       F@_3, F@_4, F@_5, F@_6, TrUserData);
       24 ->
-	  d_field_DisponibilityS_minimun(Rest, 0, 0, F@_1, F@_2,
+	  d_field_DisponibilityS_minimum(Rest, 0, 0, F@_1, F@_2,
 					 F@_3, F@_4, F@_5, F@_6, TrUserData);
       32 ->
-	  d_field_DisponibilityS_maximun(Rest, 0, 0, F@_1, F@_2,
+	  d_field_DisponibilityS_maximum(Rest, 0, 0, F@_1, F@_2,
 					 F@_3, F@_4, F@_5, F@_6, TrUserData);
       45 ->
 	  d_field_DisponibilityS_value(Rest, 0, 0, F@_1, F@_2,
@@ -1335,7 +1335,7 @@ dg_read_field_def_DisponibilityS(<<0:1, X:7,
 dg_read_field_def_DisponibilityS(<<>>, 0, 0, F@_1, F@_2,
 				 F@_3, F@_4, F@_5, F@_6, _) ->
     #'DisponibilityS'{nameM = F@_1, nameP = F@_2,
-		      minimun = F@_3, maximun = F@_4, value = F@_5,
+		      minimum = F@_3, maximum = F@_4, value = F@_5,
 		      period = F@_6}.
 
 d_field_DisponibilityS_nameM(<<1:1, X:7, Rest/binary>>,
@@ -1380,15 +1380,15 @@ d_field_DisponibilityS_nameP(<<0:1, X:7, Rest/binary>>,
 				      NewFValue, F@_3, F@_4, F@_5, F@_6,
 				      TrUserData).
 
-d_field_DisponibilityS_minimun(<<1:1, X:7,
+d_field_DisponibilityS_minimum(<<1:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 			       TrUserData)
     when N < 57 ->
-    d_field_DisponibilityS_minimun(Rest, N + 7,
+    d_field_DisponibilityS_minimum(Rest, N + 7,
 				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
 				   F@_6, TrUserData);
-d_field_DisponibilityS_minimun(<<0:1, X:7,
+d_field_DisponibilityS_minimum(<<0:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, _, F@_4, F@_5, F@_6,
 			       TrUserData) ->
@@ -1402,15 +1402,15 @@ d_field_DisponibilityS_minimun(<<0:1, X:7,
 				      F@_2, NewFValue, F@_4, F@_5, F@_6,
 				      TrUserData).
 
-d_field_DisponibilityS_maximun(<<1:1, X:7,
+d_field_DisponibilityS_maximum(<<1:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 			       TrUserData)
     when N < 57 ->
-    d_field_DisponibilityS_maximun(Rest, N + 7,
+    d_field_DisponibilityS_maximum(Rest, N + 7,
 				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
 				   F@_6, TrUserData);
-d_field_DisponibilityS_maximun(<<0:1, X:7,
+d_field_DisponibilityS_maximum(<<0:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, F@_3, _, F@_5, F@_6,
 			       TrUserData) ->
@@ -1541,12 +1541,12 @@ dfp_read_field_def_DisponibilityN(<<18, Rest/binary>>,
 dfp_read_field_def_DisponibilityN(<<24, Rest/binary>>,
 				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 				  TrUserData) ->
-    d_field_DisponibilityN_minimun(Rest, Z1, Z2, F@_1, F@_2,
+    d_field_DisponibilityN_minimum(Rest, Z1, Z2, F@_1, F@_2,
 				   F@_3, F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_DisponibilityN(<<32, Rest/binary>>,
 				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 				  TrUserData) ->
-    d_field_DisponibilityN_maximun(Rest, Z1, Z2, F@_1, F@_2,
+    d_field_DisponibilityN_maximum(Rest, Z1, Z2, F@_1, F@_2,
 				   F@_3, F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_DisponibilityN(<<45, Rest/binary>>,
 				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
@@ -1561,7 +1561,7 @@ dfp_read_field_def_DisponibilityN(<<48, Rest/binary>>,
 dfp_read_field_def_DisponibilityN(<<>>, 0, 0, F@_1,
 				  F@_2, F@_3, F@_4, F@_5, F@_6, _) ->
     #'DisponibilityN'{nameM = F@_1, nameP = F@_2,
-		      minimun = F@_3, maximun = F@_4, value = F@_5,
+		      minimum = F@_3, maximum = F@_4, value = F@_5,
 		      period = F@_6};
 dfp_read_field_def_DisponibilityN(Other, Z1, Z2, F@_1,
 				  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
@@ -1589,10 +1589,10 @@ dg_read_field_def_DisponibilityN(<<0:1, X:7,
 	  d_field_DisponibilityN_nameP(Rest, 0, 0, F@_1, F@_2,
 				       F@_3, F@_4, F@_5, F@_6, TrUserData);
       24 ->
-	  d_field_DisponibilityN_minimun(Rest, 0, 0, F@_1, F@_2,
+	  d_field_DisponibilityN_minimum(Rest, 0, 0, F@_1, F@_2,
 					 F@_3, F@_4, F@_5, F@_6, TrUserData);
       32 ->
-	  d_field_DisponibilityN_maximun(Rest, 0, 0, F@_1, F@_2,
+	  d_field_DisponibilityN_maximum(Rest, 0, 0, F@_1, F@_2,
 					 F@_3, F@_4, F@_5, F@_6, TrUserData);
       45 ->
 	  d_field_DisponibilityN_value(Rest, 0, 0, F@_1, F@_2,
@@ -1624,7 +1624,7 @@ dg_read_field_def_DisponibilityN(<<0:1, X:7,
 dg_read_field_def_DisponibilityN(<<>>, 0, 0, F@_1, F@_2,
 				 F@_3, F@_4, F@_5, F@_6, _) ->
     #'DisponibilityN'{nameM = F@_1, nameP = F@_2,
-		      minimun = F@_3, maximun = F@_4, value = F@_5,
+		      minimum = F@_3, maximum = F@_4, value = F@_5,
 		      period = F@_6}.
 
 d_field_DisponibilityN_nameM(<<1:1, X:7, Rest/binary>>,
@@ -1669,15 +1669,15 @@ d_field_DisponibilityN_nameP(<<0:1, X:7, Rest/binary>>,
 				      NewFValue, F@_3, F@_4, F@_5, F@_6,
 				      TrUserData).
 
-d_field_DisponibilityN_minimun(<<1:1, X:7,
+d_field_DisponibilityN_minimum(<<1:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 			       TrUserData)
     when N < 57 ->
-    d_field_DisponibilityN_minimun(Rest, N + 7,
+    d_field_DisponibilityN_minimum(Rest, N + 7,
 				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
 				   F@_6, TrUserData);
-d_field_DisponibilityN_minimun(<<0:1, X:7,
+d_field_DisponibilityN_minimum(<<0:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, _, F@_4, F@_5, F@_6,
 			       TrUserData) ->
@@ -1691,15 +1691,15 @@ d_field_DisponibilityN_minimun(<<0:1, X:7,
 				      F@_2, NewFValue, F@_4, F@_5, F@_6,
 				      TrUserData).
 
-d_field_DisponibilityN_maximun(<<1:1, X:7,
+d_field_DisponibilityN_maximum(<<1:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
 			       TrUserData)
     when N < 57 ->
-    d_field_DisponibilityN_maximun(Rest, N + 7,
+    d_field_DisponibilityN_maximum(Rest, N + 7,
 				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
 				   F@_6, TrUserData);
-d_field_DisponibilityN_maximun(<<0:1, X:7,
+d_field_DisponibilityN_maximum(<<0:1, X:7,
 				 Rest/binary>>,
 			       N, Acc, F@_1, F@_2, F@_3, _, F@_5, F@_6,
 			       TrUserData) ->
@@ -3442,12 +3442,12 @@ dfp_read_field_def_InfoS(<<18, Rest/binary>>, Z1, Z2,
 dfp_read_field_def_InfoS(<<24, Rest/binary>>, Z1, Z2,
 			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
 			 TrUserData) ->
-    d_field_InfoS_minimun(Rest, Z1, Z2, F@_1, F@_2, F@_3,
+    d_field_InfoS_minimum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			  F@_4, F@_5, F@_6, F@_7, TrUserData);
 dfp_read_field_def_InfoS(<<32, Rest/binary>>, Z1, Z2,
 			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
 			 TrUserData) ->
-    d_field_InfoS_maximun(Rest, Z1, Z2, F@_1, F@_2, F@_3,
+    d_field_InfoS_maximum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			  F@_4, F@_5, F@_6, F@_7, TrUserData);
 dfp_read_field_def_InfoS(<<45, Rest/binary>>, Z1, Z2,
 			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
@@ -3466,8 +3466,8 @@ dfp_read_field_def_InfoS(<<58, Rest/binary>>, Z1, Z2,
 			F@_4, F@_5, F@_6, F@_7, TrUserData);
 dfp_read_field_def_InfoS(<<>>, 0, 0, F@_1, F@_2, F@_3,
 			 F@_4, F@_5, F@_6, F@_7, _) ->
-    #'InfoS'{nameM = F@_1, nameP = F@_2, minimun = F@_3,
-	     maximun = F@_4, value = F@_5, period = F@_6,
+    #'InfoS'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
+	     maximum = F@_4, value = F@_5, period = F@_6,
 	     nameI = F@_7};
 dfp_read_field_def_InfoS(Other, Z1, Z2, F@_1, F@_2,
 			 F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
@@ -3493,10 +3493,10 @@ dg_read_field_def_InfoS(<<0:1, X:7, Rest/binary>>, N,
 	  d_field_InfoS_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
 			      F@_5, F@_6, F@_7, TrUserData);
       24 ->
-	  d_field_InfoS_minimun(Rest, 0, 0, F@_1, F@_2, F@_3,
+	  d_field_InfoS_minimum(Rest, 0, 0, F@_1, F@_2, F@_3,
 				F@_4, F@_5, F@_6, F@_7, TrUserData);
       32 ->
-	  d_field_InfoS_maximun(Rest, 0, 0, F@_1, F@_2, F@_3,
+	  d_field_InfoS_maximum(Rest, 0, 0, F@_1, F@_2, F@_3,
 				F@_4, F@_5, F@_6, F@_7, TrUserData);
       45 ->
 	  d_field_InfoS_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
@@ -3529,8 +3529,8 @@ dg_read_field_def_InfoS(<<0:1, X:7, Rest/binary>>, N,
     end;
 dg_read_field_def_InfoS(<<>>, 0, 0, F@_1, F@_2, F@_3,
 			F@_4, F@_5, F@_6, F@_7, _) ->
-    #'InfoS'{nameM = F@_1, nameP = F@_2, minimun = F@_3,
-	     maximun = F@_4, value = F@_5, period = F@_6,
+    #'InfoS'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
+	     maximum = F@_4, value = F@_5, period = F@_6,
 	     nameI = F@_7}.
 
 d_field_InfoS_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
@@ -3567,12 +3567,12 @@ d_field_InfoS_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
     dfp_read_field_def_InfoS(RestF, 0, 0, F@_1, NewFValue,
 			     F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData).
 
-d_field_InfoS_minimun(<<1:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoS_minimum(<<1:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
     when N < 57 ->
-    d_field_InfoS_minimun(Rest, N + 7, X bsl N + Acc, F@_1,
+    d_field_InfoS_minimum(Rest, N + 7, X bsl N + Acc, F@_1,
 			  F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_minimun(<<0:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoS_minimum(<<0:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, _, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:32/signed-native>> = <<(X bsl N +
@@ -3583,12 +3583,12 @@ d_field_InfoS_minimun(<<0:1, X:7, Rest/binary>>, N, Acc,
     dfp_read_field_def_InfoS(RestF, 0, 0, F@_1, F@_2,
 			     NewFValue, F@_4, F@_5, F@_6, F@_7, TrUserData).
 
-d_field_InfoS_maximun(<<1:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoS_maximum(<<1:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
     when N < 57 ->
-    d_field_InfoS_maximun(Rest, N + 7, X bsl N + Acc, F@_1,
+    d_field_InfoS_maximum(Rest, N + 7, X bsl N + Acc, F@_1,
 			  F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_maximun(<<0:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoS_maximum(<<0:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, F@_3, _, F@_5, F@_6, F@_7, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:32/signed-native>> = <<(X bsl N +
@@ -3717,11 +3717,11 @@ dfp_read_field_def_InfoI(<<18, Rest/binary>>, Z1, Z2,
 			F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_InfoI(<<24, Rest/binary>>, Z1, Z2,
 			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_minimun(Rest, Z1, Z2, F@_1, F@_2, F@_3,
+    d_field_InfoI_minimum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			  F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_InfoI(<<32, Rest/binary>>, Z1, Z2,
 			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_maximun(Rest, Z1, Z2, F@_1, F@_2, F@_3,
+    d_field_InfoI_maximum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
 			  F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_InfoI(<<45, Rest/binary>>, Z1, Z2,
 			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
@@ -3733,8 +3733,8 @@ dfp_read_field_def_InfoI(<<48, Rest/binary>>, Z1, Z2,
 			 F@_4, F@_5, F@_6, TrUserData);
 dfp_read_field_def_InfoI(<<>>, 0, 0, F@_1, F@_2, F@_3,
 			 F@_4, F@_5, F@_6, _) ->
-    #'InfoI'{nameM = F@_1, nameP = F@_2, minimun = F@_3,
-	     maximun = F@_4, value = F@_5, period = F@_6};
+    #'InfoI'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
+	     maximum = F@_4, value = F@_5, period = F@_6};
 dfp_read_field_def_InfoI(Other, Z1, Z2, F@_1, F@_2,
 			 F@_3, F@_4, F@_5, F@_6, TrUserData) ->
     dg_read_field_def_InfoI(Other, Z1, Z2, F@_1, F@_2, F@_3,
@@ -3756,10 +3756,10 @@ dg_read_field_def_InfoI(<<0:1, X:7, Rest/binary>>, N,
 	  d_field_InfoI_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
 			      F@_5, F@_6, TrUserData);
       24 ->
-	  d_field_InfoI_minimun(Rest, 0, 0, F@_1, F@_2, F@_3,
+	  d_field_InfoI_minimum(Rest, 0, 0, F@_1, F@_2, F@_3,
 				F@_4, F@_5, F@_6, TrUserData);
       32 ->
-	  d_field_InfoI_maximun(Rest, 0, 0, F@_1, F@_2, F@_3,
+	  d_field_InfoI_maximum(Rest, 0, 0, F@_1, F@_2, F@_3,
 				F@_4, F@_5, F@_6, TrUserData);
       45 ->
 	  d_field_InfoI_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
@@ -3788,8 +3788,8 @@ dg_read_field_def_InfoI(<<0:1, X:7, Rest/binary>>, N,
     end;
 dg_read_field_def_InfoI(<<>>, 0, 0, F@_1, F@_2, F@_3,
 			F@_4, F@_5, F@_6, _) ->
-    #'InfoI'{nameM = F@_1, nameP = F@_2, minimun = F@_3,
-	     maximun = F@_4, value = F@_5, period = F@_6}.
+    #'InfoI'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
+	     maximum = F@_4, value = F@_5, period = F@_6}.
 
 d_field_InfoI_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
 		    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
@@ -3825,12 +3825,12 @@ d_field_InfoI_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
     dfp_read_field_def_InfoI(RestF, 0, 0, F@_1, NewFValue,
 			     F@_3, F@_4, F@_5, F@_6, TrUserData).
 
-d_field_InfoI_minimun(<<1:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoI_minimum(<<1:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
     when N < 57 ->
-    d_field_InfoI_minimun(Rest, N + 7, X bsl N + Acc, F@_1,
+    d_field_InfoI_minimum(Rest, N + 7, X bsl N + Acc, F@_1,
 			  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-d_field_InfoI_minimun(<<0:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoI_minimum(<<0:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, _, F@_4, F@_5, F@_6, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:32/signed-native>> = <<(X bsl N +
@@ -3841,12 +3841,12 @@ d_field_InfoI_minimun(<<0:1, X:7, Rest/binary>>, N, Acc,
     dfp_read_field_def_InfoI(RestF, 0, 0, F@_1, F@_2,
 			     NewFValue, F@_4, F@_5, F@_6, TrUserData).
 
-d_field_InfoI_maximun(<<1:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoI_maximum(<<1:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
     when N < 57 ->
-    d_field_InfoI_maximun(Rest, N + 7, X bsl N + Acc, F@_1,
+    d_field_InfoI_maximum(Rest, N + 7, X bsl N + Acc, F@_1,
 			  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-d_field_InfoI_maximun(<<0:1, X:7, Rest/binary>>, N, Acc,
+d_field_InfoI_maximum(<<0:1, X:7, Rest/binary>>, N, Acc,
 		      F@_1, F@_2, F@_3, _, F@_5, F@_6, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:32/signed-native>> = <<(X bsl N +
@@ -4682,23 +4682,23 @@ merge_msg_MsgAck(#'MsgAck'{msg = PFmsg},
 -compile({nowarn_unused_function,merge_msg_DisponibilityS/3}).
 merge_msg_DisponibilityS(#'DisponibilityS'{},
 			 #'DisponibilityS'{nameM = NFnameM, nameP = NFnameP,
-					   minimun = NFminimun,
-					   maximun = NFmaximun, value = NFvalue,
+					   minimum = NFminimum,
+					   maximum = NFmaximum, value = NFvalue,
 					   period = NFperiod},
 			 _) ->
     #'DisponibilityS'{nameM = NFnameM, nameP = NFnameP,
-		      minimun = NFminimun, maximun = NFmaximun,
+		      minimum = NFminimum, maximum = NFmaximum,
 		      value = NFvalue, period = NFperiod}.
 
 -compile({nowarn_unused_function,merge_msg_DisponibilityN/3}).
 merge_msg_DisponibilityN(#'DisponibilityN'{},
 			 #'DisponibilityN'{nameM = NFnameM, nameP = NFnameP,
-					   minimun = NFminimun,
-					   maximun = NFmaximun, value = NFvalue,
+					   minimum = NFminimum,
+					   maximum = NFmaximum, value = NFvalue,
 					   period = NFperiod},
 			 _) ->
     #'DisponibilityN'{nameM = NFnameM, nameP = NFnameP,
-		      minimun = NFminimun, maximun = NFmaximun,
+		      minimum = NFminimum, maximum = NFmaximum,
 		      value = NFvalue, period = NFperiod}.
 
 -compile({nowarn_unused_function,merge_msg_OrderS/3}).
@@ -4795,21 +4795,21 @@ merge_msg_ResultI(#'ResultI'{},
 -compile({nowarn_unused_function,merge_msg_InfoS/3}).
 merge_msg_InfoS(#'InfoS'{},
 		#'InfoS'{nameM = NFnameM, nameP = NFnameP,
-			 minimun = NFminimun, maximun = NFmaximun,
+			 minimum = NFminimum, maximum = NFmaximum,
 			 value = NFvalue, period = NFperiod, nameI = NFnameI},
 		_) ->
     #'InfoS'{nameM = NFnameM, nameP = NFnameP,
-	     minimun = NFminimun, maximun = NFmaximun,
+	     minimum = NFminimum, maximum = NFmaximum,
 	     value = NFvalue, period = NFperiod, nameI = NFnameI}.
 
 -compile({nowarn_unused_function,merge_msg_InfoI/3}).
 merge_msg_InfoI(#'InfoI'{},
 		#'InfoI'{nameM = NFnameM, nameP = NFnameP,
-			 minimun = NFminimun, maximun = NFmaximun,
+			 minimum = NFminimum, maximum = NFmaximum,
 			 value = NFvalue, period = NFperiod},
 		_) ->
     #'InfoI'{nameM = NFnameM, nameP = NFnameP,
-	     minimun = NFminimun, maximun = NFmaximun,
+	     minimum = NFminimum, maximum = NFmaximum,
 	     value = NFvalue, period = NFperiod}.
 
 -compile({nowarn_unused_function,merge_msg_Server/3}).
@@ -4948,13 +4948,13 @@ v_msg_MsgAck(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_DisponibilityS/3}).
 -dialyzer({nowarn_function,v_msg_DisponibilityS/3}).
 v_msg_DisponibilityS(#'DisponibilityS'{nameM = F1,
-				       nameP = F2, minimun = F3, maximun = F4,
+				       nameP = F2, minimum = F3, maximum = F4,
 				       value = F5, period = F6},
 		     Path, TrUserData) ->
     v_type_string(F1, [nameM | Path], TrUserData),
     v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimun | Path], TrUserData),
-    v_type_int32(F4, [maximun | Path], TrUserData),
+    v_type_int32(F3, [minimum | Path], TrUserData),
+    v_type_int32(F4, [maximum | Path], TrUserData),
     v_type_float(F5, [value | Path], TrUserData),
     v_type_int32(F6, [period | Path], TrUserData),
     ok;
@@ -4965,13 +4965,13 @@ v_msg_DisponibilityS(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_DisponibilityN/3}).
 -dialyzer({nowarn_function,v_msg_DisponibilityN/3}).
 v_msg_DisponibilityN(#'DisponibilityN'{nameM = F1,
-				       nameP = F2, minimun = F3, maximun = F4,
+				       nameP = F2, minimum = F3, maximum = F4,
 				       value = F5, period = F6},
 		     Path, TrUserData) ->
     v_type_string(F1, [nameM | Path], TrUserData),
     v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimun | Path], TrUserData),
-    v_type_int32(F4, [maximun | Path], TrUserData),
+    v_type_int32(F3, [minimum | Path], TrUserData),
+    v_type_int32(F4, [maximum | Path], TrUserData),
     v_type_float(F5, [value | Path], TrUserData),
     v_type_int32(F6, [period | Path], TrUserData),
     ok;
@@ -5120,13 +5120,13 @@ v_msg_ResultI(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_InfoS/3}).
 -dialyzer({nowarn_function,v_msg_InfoS/3}).
 v_msg_InfoS(#'InfoS'{nameM = F1, nameP = F2,
-		     minimun = F3, maximun = F4, value = F5, period = F6,
+		     minimum = F3, maximum = F4, value = F5, period = F6,
 		     nameI = F7},
 	    Path, TrUserData) ->
     v_type_string(F1, [nameM | Path], TrUserData),
     v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimun | Path], TrUserData),
-    v_type_int32(F4, [maximun | Path], TrUserData),
+    v_type_int32(F3, [minimum | Path], TrUserData),
+    v_type_int32(F4, [maximum | Path], TrUserData),
     v_type_float(F5, [value | Path], TrUserData),
     v_type_int32(F6, [period | Path], TrUserData),
     v_type_string(F7, [nameI | Path], TrUserData),
@@ -5137,12 +5137,12 @@ v_msg_InfoS(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_InfoI/3}).
 -dialyzer({nowarn_function,v_msg_InfoI/3}).
 v_msg_InfoI(#'InfoI'{nameM = F1, nameP = F2,
-		     minimun = F3, maximun = F4, value = F5, period = F6},
+		     minimum = F3, maximum = F4, value = F5, period = F6},
 	    Path, TrUserData) ->
     v_type_string(F1, [nameM | Path], TrUserData),
     v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimun | Path], TrUserData),
-    v_type_int32(F4, [maximun | Path], TrUserData),
+    v_type_int32(F3, [minimum | Path], TrUserData),
+    v_type_int32(F4, [maximum | Path], TrUserData),
     v_type_float(F5, [value | Path], TrUserData),
     v_type_int32(F6, [period | Path], TrUserData),
     ok;
@@ -5368,9 +5368,9 @@ get_msg_defs() ->
 	      occurrence = required, opts = []},
        #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	      occurrence = required, opts = []},
-       #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	      occurrence = required, opts = []},
-       #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	      occurrence = required, opts = []},
        #field{name = value, fnum = 5, rnum = 6, type = float,
 	      occurrence = required, opts = []},
@@ -5381,9 +5381,9 @@ get_msg_defs() ->
 	      occurrence = required, opts = []},
        #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	      occurrence = required, opts = []},
-       #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	      occurrence = required, opts = []},
-       #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	      occurrence = required, opts = []},
        #field{name = value, fnum = 5, rnum = 6, type = float,
 	      occurrence = required, opts = []},
@@ -5470,9 +5470,9 @@ get_msg_defs() ->
 	      occurrence = required, opts = []},
        #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	      occurrence = required, opts = []},
-       #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	      occurrence = required, opts = []},
-       #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	      occurrence = required, opts = []},
        #field{name = value, fnum = 5, rnum = 6, type = float,
 	      occurrence = required, opts = []},
@@ -5485,9 +5485,9 @@ get_msg_defs() ->
 	      occurrence = required, opts = []},
        #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	      occurrence = required, opts = []},
-       #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	      occurrence = required, opts = []},
-       #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	      occurrence = required, opts = []},
        #field{name = value, fnum = 5, rnum = 6, type = float,
 	      occurrence = required, opts = []},
@@ -5601,9 +5601,9 @@ find_msg_def('DisponibilityS') ->
 	    occurrence = required, opts = []},
      #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	    occurrence = required, opts = []},
-     #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	    occurrence = required, opts = []},
-     #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	    occurrence = required, opts = []},
      #field{name = value, fnum = 5, rnum = 6, type = float,
 	    occurrence = required, opts = []},
@@ -5614,9 +5614,9 @@ find_msg_def('DisponibilityN') ->
 	    occurrence = required, opts = []},
      #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	    occurrence = required, opts = []},
-     #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	    occurrence = required, opts = []},
-     #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	    occurrence = required, opts = []},
      #field{name = value, fnum = 5, rnum = 6, type = float,
 	    occurrence = required, opts = []},
@@ -5703,9 +5703,9 @@ find_msg_def('InfoS') ->
 	    occurrence = required, opts = []},
      #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	    occurrence = required, opts = []},
-     #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	    occurrence = required, opts = []},
-     #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	    occurrence = required, opts = []},
      #field{name = value, fnum = 5, rnum = 6, type = float,
 	    occurrence = required, opts = []},
@@ -5718,9 +5718,9 @@ find_msg_def('InfoI') ->
 	    occurrence = required, opts = []},
      #field{name = nameP, fnum = 2, rnum = 3, type = string,
 	    occurrence = required, opts = []},
-     #field{name = minimun, fnum = 3, rnum = 4, type = int32,
+     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
 	    occurrence = required, opts = []},
-     #field{name = maximun, fnum = 4, rnum = 5, type = int32,
+     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
 	    occurrence = required, opts = []},
      #field{name = value, fnum = 5, rnum = 6, type = float,
 	    occurrence = required, opts = []},

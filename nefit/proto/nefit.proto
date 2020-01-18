@@ -33,8 +33,8 @@ message MsgAck {
 message DisponibilityS {
     required string nameM = 1;
     required string nameP = 2;
-    required int32 minimun = 3;
-    required int32 maximun = 4;
+    required int32 minimum = 3;
+    required int32 maximum = 4;
     required float value = 5;
     required int32 period = 6;
 }
@@ -42,8 +42,8 @@ message DisponibilityS {
 message DisponibilityN {
     required string nameM = 1;
     required string nameP = 2;
-    required int32 minimun = 3;
-    required int32 maximun = 4;
+    required int32 minimum = 3;
+    required int32 maximum = 4;
     required float value = 5;
     required int32 period = 6;
 }
@@ -114,8 +114,8 @@ message ResultI {
 message InfoS {
     required string nameM = 1;
     required string nameP = 2;
-    required int32 minimun = 3;
-    required int32 maximun = 4;
+    required int32 minimum = 3;
+    required int32 maximum = 4;
     required float value = 5;
     required int32 period = 6;
     required string nameI = 7;
@@ -124,8 +124,8 @@ message InfoS {
 message InfoI {
     required string nameM = 1;
     required string nameP = 2;
-    required int32 minimun = 3;
-    required int32 maximun = 4;
+    required int32 minimum = 3;
+    required int32 maximum = 4;
     required float value = 5;
     required int32 period = 6;
 }

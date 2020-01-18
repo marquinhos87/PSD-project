@@ -71,7 +71,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             globalState(RegisteredUsers, ConnectedUsers, Arbiters);
 
         {disponibility, M, P, Value, Min, Max, Period} ->
-            Msg = #'DisponibilityN'{nameM = M, nameP = P, value = Value, minimun = Min, maximun = Max, period = Period},
+            Msg = #'DisponibilityN'{nameM = M, nameP = P, value = Value, minimum = Min, maximum = Max, period = Period},
             {Pid,I} = for(maps:size(Arbiters),"c",99999999,maps:iterator(Arbiters)),
             Map = maps:put(Pid,I+1,Arbiters),
             Pid ! {disponibility, Msg},
@@ -98,7 +98,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
 
         {info,M,P,Min,Max,V,Pe,I} ->
-            Msg = #'InfoI'{nameM = M, nameP = P,maximun = Max, minimun = Min, value = V, period = Pe},
+            Msg = #'InfoI'{nameM = M, nameP = P,maximum = Max, minimum = Min, value = V, period = Pe},
             {Pid,_} = maps:get(I,ConnectedUsers),
             Pid ! {info, Msg},
             globalState(RegisteredUsers,ConnectedUsers,Arbiters);
@@ -133,8 +133,8 @@ arbiter(Sock, State) ->
                     State ! {info,
                         Info#'InfoS'.nameM,
                         Info#'InfoS'.nameP,
-                        Info#'InfoS'.minimun,
-                        Info#'InfoS'.maximun,
+                        Info#'InfoS'.minimum,
+                        Info#'InfoS'.maximum,
                         Info#'InfoS'.value,
                         Info#'InfoS'.period,
                         Info#'InfoS'.nameI},
@@ -186,8 +186,8 @@ manufacturer(Sock, State) ->
                         ProductionOffer#'DisponibilityS'.nameM,
                         ProductionOffer#'DisponibilityS'.nameP,
                         ProductionOffer#'DisponibilityS'.value,
-                        ProductionOffer#'DisponibilityS'.minimun,
-                        ProductionOffer#'DisponibilityS'.maximun,
+                        ProductionOffer#'DisponibilityS'.minimum,
+                        ProductionOffer#'DisponibilityS'.maximum,
                         ProductionOffer#'DisponibilityS'.period}
             end,
             manufacturer(Sock, State);

@@ -115,8 +115,8 @@ public class Arbiter implements Runnable
                     this.messages.createInfoS(
                         disponibility.getNameM(),
                         disponibility.getNameP(),
-                        disponibility.getMaximun(),
-                        disponibility.getMinimun(),
+                        disponibility.getMaximum(),
+                        disponibility.getMinimum(),
                         disponibility.getValue(),
                         disponibility.getPeriod(),
                         str)
@@ -128,7 +128,7 @@ public class Arbiter implements Runnable
         if(this.negotiations.containsKey(new Pair<>(order.getNameM(),order.getNameP())))
         {
             Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN> aux = this.negotiations.get(new Pair<>(order.getNameM(),order.getNameP()));
-            if (aux.getKey().getMaximun() >= order.getQuant() && aux.getKey().getMinimun() <= order.getQuant() && aux.getKey().getValue() <= order.getValue())
+            if (aux.getKey().getMaximum() >= order.getQuant() && aux.getKey().getMinimum() <= order.getQuant() && aux.getKey().getValue() <= order.getValue())
             {
                 float old_v = aux.getValue().getValue() * aux.getValue().getQuant();
                 float new_v = order.getValue() * order.getQuant();
