@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 
 public class Prompt implements AutoCloseable
 {
-
     private final BufferedReader in;
     private final PrintWriter out;
 
