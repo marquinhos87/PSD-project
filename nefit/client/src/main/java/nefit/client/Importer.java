@@ -77,6 +77,33 @@ public class Importer extends Client< NefitProtos.Importer >
 
     private void handleCommandOffer(List< String > arguments)
     {
+        // validate and parse arguments (we know command is "announce")
+
+        final var manufacturerName = arguments.get(0);
+        Util.ensure(!manufacturerName.isBlank(), "Invalid manufacturer name.");
+
+        final var productName = arguments.get(1);
+        Util.ensure(!productName.isBlank(), "Invalid product name.");
+
+        final var quantity = Integer.parseInt(arguments.get(2));
+        Util.ensure(quantity > 0, "Quantitiy must be positive.");
+
+        final var unitPrice = Float.parseFloat(arguments.get(3));
+        Util.ensure(unitPrice > 0, "Unit price must be positive.");
+
+        // send message to server
+
+        final var messageOrder =
+            NefitProtos.OrderS
+                .newBuilder()
+                .setNameI(this.getUsername())
+                .setNameM(manufacturerName)
+                .setNameP(productName)
+                .setQuant(quantity)
+                .setValue(unitPrice)
+                .build();
+
+
         if (fields.length != 5)
         {
             this.prompt.printWarning("Maybe forgot something");
