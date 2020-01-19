@@ -142,7 +142,6 @@ public class Importer extends Client< NefitProtos.Importer >
                 result.getResult() ? "accepted" : "rejected"
             );
         }
-
         else if (message.hasOrdack())
         {
             final var ack = message.getOrdack();
