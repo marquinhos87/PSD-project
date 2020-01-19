@@ -9,23 +9,20 @@ option java_outer_classname = "NefitProto";
 /* -------------------------------------------------------------------------- */
 /* generic client <--> server */
 
-enum ClientType
-{
+enum ClientType {
     IMPORTER = 0;
     MANUFACTURER = 1;
 }
 
 // request to login using existing account
 // (each username is either an importer or a manufacturer)
-message ClientToServerLogin
-{
+message ClientToServerLogin {
     required string username = 1;
     required string password = 2;
 }
 
 // request to register a new account with the given type
-message ClientToServerRegister
-{
+message ClientToServerRegister {
     required string username = 1;
     required string password = 2;
 
@@ -35,8 +32,7 @@ message ClientToServerRegister
 // response to a login or register request
 // (if ok is true, then clientType is present and errorMessage is not)
 // (if ok is false, then errorMessage is present and clientType is not)
-message ServerToClientAuth
-{
+message ServerToClientAuth {
     required bool ok = 1;
     optional ClientType clientType = 2;
     optional string errorMessage = 3;
@@ -45,13 +41,13 @@ message ServerToClientAuth
 /* -------------------------------------------------------------------------- */
 /* manufacturer client <--> server */
 
-message ServerToManufacturer
-{
-
+message ManufacturerToServer {
+    oneof message {
+        ManufacturerToServerAnnounce announce = 1;
+    }
 }
 
-message ManufacturerToServerAnnounce
-{
+message ManufacturerToServerAnnounce {
     required string productName = 1;
     required int32 minQuantity = 2;
     required int32 maxQuantity = 3;
@@ -59,23 +55,49 @@ message ManufacturerToServerAnnounce
     required int32 timeout = 5;
 }
 
+message ServerToManufacturer {
+    oneof message {
+        ServerToManufacturerAnnounceSucceeded announceSucceeded = 1;
+        ServerToManufacturerAnnounceFailed announceFailed = 2;
+        ServerToManufacturerNoOffers noOffers = 3;
+        ServerToManufacturerSold sold = 4;
+    }
+}
+
+message ServerToManufacturerAnnounceSucceeded {
+}
+
+message ServerToManufacturerAnnounceFailed {
+    optional string errorMessage = 1;
+}
+
+message ServerToManufacturerNoOffers {
+    required string productName = 1;
+}
+
+message ServerToManufacturerSold {
+    required string productName = 1;
+    required int32 quantity = 2;
+    required float unitPrice = 3;
+}
+
 /* -------------------------------------------------------------------------- */
 
 message MsgAuth {
-	required string name = 1;
-	required string pass = 2;
+    required string name = 1;
+    required string pass = 2;
 
-	enum ClientType {
+    enum ClientType {
         MANUFACTURER = 0;
-    	IMPORTER = 1;
+        IMPORTER = 1;
     }
     required ClientType ctype = 3;
 
-	enum MsgType {
-		LOGIN = 0;
-		REGISTER = 1;
-	}
-	required MsgType mtype = 4 [default = LOGIN];
+    enum MsgType {
+        LOGIN = 0;
+        REGISTER = 1;
+    }
+    required MsgType mtype = 4 [default = LOGIN];
 }
 
 message MsgAck {

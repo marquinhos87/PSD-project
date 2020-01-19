@@ -108,8 +108,8 @@ public class Manufacturer extends Client< NefitProto.ProductionM >
         else
         {
             this.getPrompt().printNotice(
-                "\nSold %d units of product \"%s\" at a unit price of %.2f," +
-                    " totalling a price of %.2f. Announcement removed.",
+                "\nSold %d units of product \"%s\" at unit price %.2f, for a" +
+                    " total price of %.2f. Announcement removed.",
                 message.getQuant(),
                 message.getNameP(),
                 message.getValue(),
