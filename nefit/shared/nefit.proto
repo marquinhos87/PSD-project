@@ -280,3 +280,37 @@ message ServerToArbiterSubscribe {
     required string importerName = 1;
     repeated string manufacturerNames = 2;
 }
+
+/* -------------------------------------------------------------------------- */
+/* frontend <--> catalog */
+
+message FrontendToCatalog {
+    oneof message {
+        FrontendToCatalogAddUser addUser = 1;
+        FrontendToCatalogAddNegotiation addNegotiation = 2;
+        FrontendToCatalogRemoveNegotiation removeNegotiation = 3;
+    }
+}
+
+message FrontendToCatalogAddUser
+{
+    required string username = 1;
+    required ClientType type = 2;
+}
+
+message FrontendToCatalogAddNegotiation
+{
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required int32 minQuantity = 3;
+    required int32 maxQuantity = 4;
+    required float minUnitPrice = 5;
+}
+
+message FrontendToCatalogRemoveNegotiation
+{
+    required string manufacturerName = 1;
+    required string productName = 2;
+}
+
+/* -------------------------------------------------------------------------- */

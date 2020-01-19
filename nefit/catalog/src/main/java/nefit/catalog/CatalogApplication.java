@@ -77,13 +77,13 @@ public class CatalogApplication
 
                 switch (topic)
                 {
-                    case "add-user":
+                    case "addUser":
                         break;
 
-                    case "add-negotiation":
+                    case "addNegotiation":
                         break;
 
-                    case "remove-negotiation":
+                    case "removeNegotiation":
                         break;
                 }
             }
