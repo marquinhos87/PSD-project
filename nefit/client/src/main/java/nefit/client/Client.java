@@ -58,6 +58,11 @@ public abstract class Client< MessageType >
 
     }
 
+    public Prompt getPrompt()
+    {
+
+    }
+
     abstract protected void handleCommand(String command, String[] args)
         throws IOException;
 

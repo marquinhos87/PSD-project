@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Manufacturer
-    extends Client< NefitProtos.ServerToClientManufacturer >
+    extends Client< NefitProtos.ProductionM >
 {
     private final Set< String > activeProductNames;
 
@@ -16,7 +16,7 @@ public class Manufacturer
         super(
             connection,
             username,
-            NefitProtos.ServerToClientManufacturer.parser(),
+            NefitProtos.ProductionM.parser(),
             new Command(
                 "announce",
                 "Product name",
@@ -88,24 +88,28 @@ public class Manufacturer
     }
 
     @Override
-    public void handleMessage(NefitProtos.ServerToClientManufacturer message)
+    public void handleMessage(NefitProtos.ProductionM message)
     {
-        final var prod = nefit.client.prev.Client
-            .parseDelimited(this.is, NefitProtos.ProductionM.parser());
-        if (prod.getQuant() == 0)
-            this.prompt.printMessages(
-                "No good offers to your product " + prod.getNameP());
+        if (message.getQuant() == 0)
+        {
+            this.printNotice(
+                "No offers received for product \"%s\". Announcement removed.",
+                message.getNameP()
+            );
+        }
         else
-            this.prompt.printMessages(
-                "Your product " + prod.getNameP() + " gives you " + (prod
-                    .getValue() * prod.getQuant()) + " M.U.");
-        for (NefitProtos.DisponibilityN aux : this.itemsAvailable)
-            if (aux.getNameP().equals(prod.getNameP()))
-            {
-                this.itemsAvailable.remove(aux);
-                break;
-            }
+        {
+            this.printNotice(
+                "Sold %d units of product \"%s\" at a unit price of %.2f," +
+                    " totalling a price of %.2f. Announcement removed.",
+                message.getQuant(),
+                message.getNameP(),
+                message.getValue(),
+                message.getQuant() * message.getValue()
+            );
+        }
 
+        this.activeProductNames.remove(message.getNameP());
     }
 
 //    try

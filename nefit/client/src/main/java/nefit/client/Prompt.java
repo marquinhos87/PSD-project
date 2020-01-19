@@ -36,6 +36,18 @@ public class Prompt implements AutoCloseable {
         this.out.flush();
     }
 
+    public void printSuccess(String error)
+    {
+        this.out.format("\033[32m%s\033[0m\n", error);
+        this.out.flush();
+    }
+
+    public void printNotice(String error)
+    {
+        this.out.format("\033[33m%s\033[0m\n", error);
+        this.out.flush();
+    }
+
     public void printError(String error)
     {
         this.out.format("\033[31m%s\033[0m\n", error);
