@@ -50,7 +50,11 @@ public class Importer extends Client< NefitProtos.Importer >
 
     private void handleCommandGet(List< String > arguments)
     {
+        // send request to server
 
+        final var messageGet =
+            NefitProtos.GetS
+            .
     }
 
     private void handleCommandSubscribe(List< String > arguments)
@@ -72,7 +76,13 @@ public class Importer extends Client< NefitProtos.Importer >
                 .addAllSubs(Arrays.asList(manufacturers))
                 .build();
 
-        this.getConnection().send(messageSubscribe);
+        final var messageServer =
+            NefitProtos.Server
+                .newBuilder()
+                .setM3(messageSubscribe)
+                .build();
+
+        this.getConnection().send(messageServer);
 
         // TODO: should maybe wait for acknowledgment from server
     }
