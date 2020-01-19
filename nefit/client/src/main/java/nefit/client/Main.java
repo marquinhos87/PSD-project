@@ -21,6 +21,7 @@ public class Main
         {
             prompt.print("Usage: nefit-client <server_host> <server_port>");
             System.exit(2);
+            return null;
         }
     }
 
@@ -35,6 +36,7 @@ public class Main
         catch (Exception e)
         {
             prompt.fail(e.getMessage());
+            return null;
         }
     }
 
