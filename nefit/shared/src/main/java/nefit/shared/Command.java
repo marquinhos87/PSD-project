@@ -1,4 +1,4 @@
-package nefit.client;
+package nefit.shared;
 
 public class Command
 {

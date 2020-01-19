@@ -1,8 +1,7 @@
-package nefit.client;
+package nefit.shared;
 
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.Parser;
-import nefit.shared.Util;
 
 import java.io.IOException;
 import java.io.InputStream;

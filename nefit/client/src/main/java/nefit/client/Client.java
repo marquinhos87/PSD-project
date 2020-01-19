@@ -1,6 +1,9 @@
 package nefit.client;
 
 import com.google.protobuf.Parser;
+import nefit.shared.Command;
+import nefit.shared.Connection;
+import nefit.shared.Prompt;
 
 import java.io.IOException;
 import java.util.ArrayList;

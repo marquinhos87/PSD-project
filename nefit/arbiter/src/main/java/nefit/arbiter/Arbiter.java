@@ -2,15 +2,16 @@ package nefit.arbiter;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import javafx.util.Pair;
+import nefit.shared.Connection;
 import nefit.shared.NefitProto;
+import nefit.shared.Prompt;
+import nefit.shared.Util;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,10 +21,8 @@ public class Arbiter implements Runnable
 {
     private ZMQ.Socket socketZ;
     private ZContext context;
-    private Messages messages;
-    private Socket socket;
-    private InputStream is;
-    private OutputStream os;
+    private Connection connection;
+    private Prompt prompt;
 
     private NefitProto.DisponibilityN disp;
 
@@ -59,57 +58,88 @@ public class Arbiter implements Runnable
     /**
      * Empty constructor
      */
-    public Arbiter(){}
+    public Arbiter(Prompt prompt, Connection connection){
+        this.prompt = prompt;
+        this.connection = connection;
+    }
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException, InterruptedException
     {
-        new Arbiter().run();
+        try (final var prompt = new Prompt())
+        {
+            final var serverEndpoint = parseArgs(prompt, args);
+            final var connection = connectToServer(prompt, serverEndpoint);
+            new Arbiter(prompt, connection).run();
+        }
+    }
+
+    private static Connection connectToServer(
+        Prompt prompt, InetSocketAddress serverEndpoint
+    )
+    {
+        try
+        {
+            return new Connection(serverEndpoint);
+        }
+        catch (Exception e)
+        {
+            prompt.fail(e.getMessage());
+            return null;
+        }
+    }
+
+    private static InetSocketAddress parseArgs(Prompt prompt, String[] args)
+    {
+        try
+        {
+            Util.ensure(args.length == 1);
+
+            final var parts = args[0].split(":", 2);
+            Util.ensure(parts.length == 2);
+
+            return new InetSocketAddress(parts[0], Integer.parseInt(parts[1]));
+        }
+        catch (Exception e)
+        {
+            prompt.print("Usage: nefit-client <server_host>:<server_port>");
+            System.exit(2);
+            return null;
+        }
     }
 
     @Override
     public void run()
     {
-        try {
-            this.messages = new Messages();
-            this.context = new ZContext();
-            this.socketZ = context.createSocket(SocketType.SUB);
-            this.socketZ.connect("tcp://localhost:12346");
+        this.context = new ZContext();
+        this.socketZ = context.createSocket(SocketType.SUB);
+        this.socketZ.connect("tcp://localhost:12346");
 
-            this.socket = new Socket("localhost",12345);
-            this.is = this.socket.getInputStream();
-            this.os = this.socket.getOutputStream();
+        this.negotiations = new HashMap<>();
+        this.subscribers = new HashMap<>();
+        this.importerNego = new HashMap<>();
+        this.importerManu = new HashMap<>();
 
-            this.negotiations = new HashMap<>();
-            this.subscribers = new HashMap<>();
-            this.importerNego = new HashMap<>();
-            this.importerManu = new HashMap<>();
+        new Thread(this::receivedZMQ).start();
 
-            new Thread(this::receivedZMQ).start();
-
-            while(true)
+        while(true)
+        {
+            try
             {
-                try
-                {
-                    final var negotiator = NefitProto.Negotiator.parseDelimitedFrom(is);
-                    //final var negotiator = connection.receive(is, NefitProto.Negotiator.parser());
-                    System.out.println("Chegou uma mensagem");
-                    System.out.println(negotiator.getDisponibility().getNameM());
+                final var negotiator = connection.receive(NefitProto.ServerToArbiter.parser());
+                //final var negotiator = connection.receive(is, NefitProto.Negotiator.parser());
 
-                    if(negotiator.hasDisponibility())
-                        executeDisponibility(negotiator.getDisponibility());
+                if(negotiator.hasAnnounce())
+                    executeDisponibility(negotiator.getAnnounce());
 
-                    if(negotiator.hasSub())
-                        executeSub(negotiator.getSub());
-                }
-                catch (InvalidProtocolBufferException e) {
-                    e.printStackTrace();
-                }
-                catch (IOException e){
-                    e.printStackTrace();
-                }
+                if(negotiator.hasSubscribe())
+                    executeSub(negotiator.getSubscribe());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            catch (InvalidProtocolBufferException e) {
+                e.printStackTrace();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -118,10 +148,10 @@ public class Arbiter implements Runnable
             try {
                 byte[] reply = this.socketZ.recv(0);
                 //Não funciona neste momento
-                NefitProto.Negotiator negotiator = NefitProto.Negotiator.parseFrom(reply);
+                NefitProto.ServerToArbiter negotiator = NefitProto.ServerToArbiter.parseFrom(reply);
 
-                if(negotiator.hasOrder())
-                    executeOrder(negotiator.getOrder());
+                if(negotiator.hasOffer())
+                    executeOrder(negotiator.getOffer());
 
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
@@ -131,7 +161,7 @@ public class Arbiter implements Runnable
         }
     }
 
-    private synchronized void executeDisponibility(NefitProto.DisponibilityN disponibility) throws IOException {
+    private synchronized void executeDisponibility(NefitProto.ServerToArbiterAnnounce disponibility) throws IOException {
         this.negotiations.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new Pair<>(disponibility, null));
         this.importerNego.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new ArrayList<>());
         this.disp = disponibility;
@@ -158,7 +188,7 @@ public class Arbiter implements Runnable
             }
     }
 
-    private synchronized void executeOrder(NefitProto.OrderN order) throws IOException {
+    private synchronized void executeOrder(NefitProto.ServerToArbiterOffer order) throws IOException {
         NefitProto.OrderAckS ack;
         if(this.negotiations.containsKey(new Pair<>(order.getNameM(),order.getNameP())))
         {
@@ -190,7 +220,7 @@ public class Arbiter implements Runnable
         }
     }
 
-    private synchronized void executeSub(NefitProto.SubN sub)
+    private synchronized void executeSub(NefitProto.ServerToArbiterSubscribe sub)
     {
         this.subscribers.put(sub.getNameI(),sub.getSubsList().subList(0,sub.getSubsCount()));
         for(String str: sub.getSubsList().subList(0,sub.getSubsCount())) {

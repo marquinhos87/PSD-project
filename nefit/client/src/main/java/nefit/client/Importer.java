@@ -1,6 +1,9 @@
 package nefit.client;
 
+import nefit.shared.Command;
+import nefit.shared.Connection;
 import nefit.shared.NefitProto;
+import nefit.shared.Prompt;
 import nefit.shared.Util;
 
 import java.io.IOException;
