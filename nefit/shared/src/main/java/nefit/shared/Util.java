@@ -24,17 +24,17 @@ public class Util
         // read message size
 
         final var header = input.readNBytes(4);
-        assert header.length == 4;
+        ensure(header.length == 4);
 
         // decode message size
 
         final var msgSize = ByteBuffer.wrap(header).getInt();
-        assert msgSize >= 0;
+        ensure(msgSize >= 0);
 
         // read actual message
 
         final var bytes = input.readNBytes(msgSize);
-        assert bytes.length == msgSize;
+        ensure(bytes.length == msgSize);
 
         // decode actual message
 
