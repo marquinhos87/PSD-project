@@ -5,6 +5,8 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import nefit.catalog.resources.NegotiationsResource;
 import nefit.catalog.resources.UsersResource;
+import org.zeromq.SocketType;
+import org.zeromq.ZMQ;
 
 public class CatalogApplication
     extends Application< CatalogConfiguration >
@@ -12,9 +14,21 @@ public class CatalogApplication
 {
     private final State state;
 
-    public CatalogApplication(int zeromqPort)
+    private final ZMQ.Context zmqContext;
+    private final ZMQ.Socket zmqSocket;
+
+    private final Thread receiveThread;
+
+    public CatalogApplication(int zmqPort)
     {
         this.state = new State();
+
+        this.zmqContext = ZMQ.context(1);
+        this.zmqSocket = this.zmqContext.socket(SocketType.SUB);
+        this.zmqSocket.bind(String.format("tcp://*:%d", zmqPort));
+        this.zmqSocket.subscribe("".getBytes(ZMQ.CHARSET));
+
+        this.receiveThread = new Thread(this::receiveLoop);
     }
 
     @Override
@@ -33,15 +47,53 @@ public class CatalogApplication
         CatalogConfiguration catalogConfiguration, Environment environment
     )
     {
-        environment.healthChecks()
-            .register("placeholder", new CatalogHealthCheck());
+        environment.healthChecks().register("check", new CatalogHealthCheck());
         environment.jersey().register(new UsersResource(state));
         environment.jersey().register(new NegotiationsResource(state));
     }
 
     @Override
-    public void close()
+    public void close() throws InterruptedException
     {
+        this.zmqSocket.close();
+        this.zmqContext.close();
 
+        // terminate message receiving thread
+
+        this.receiveThread.interrupt();
+        this.receiveThread.join();
+    }
+
+    private void receiveLoop()
+    {
+        // receive messages until interrupted
+
+        while (!Thread.interrupted())
+        {
+            try
+            {
+                final var topic = this.zmqSocket.recvStr();
+                final var message = this.zmqSocket.recv();
+
+                switch (topic)
+                {
+                    case "add-user":
+                        break;
+
+                    case "add-negotiation":
+                        break;
+
+                    case "remove-negotiation":
+                        break;
+                }
+            }
+            catch (Throwable t)
+            {
+                if (Thread.interrupted())
+                    break; // ignore exception if connection closed
+                else
+                    throw new RuntimeException(t);
+            }
+        }
     }
 }
