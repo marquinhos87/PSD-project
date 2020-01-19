@@ -353,15 +353,20 @@ encode_msg_ClientToServerRegister(Msg, TrUserData) ->
 
 encode_msg_ClientToServerRegister(#'ClientToServerRegister'{username
 								= F1,
-							    password = F2},
+							    password = F2,
+							    clientType = F3},
 				  Bin, TrUserData) ->
     B1 = begin
 	   TrF1 = id(F1, TrUserData),
 	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
 	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
     begin
-      TrF2 = id(F2, TrUserData),
-      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+      TrF3 = id(F3, TrUserData),
+      e_enum_ClientType(TrF3, <<B2/binary, 24>>, TrUserData)
     end.
 
 encode_msg_ServerToClientAuth(Msg, TrUserData) ->
@@ -980,15 +985,36 @@ encode_msg_ArbiterToServerAnnounceAccepted(#'ArbiterToServerAnnounceAccepted'{ma
 										  F1,
 									      productName
 										  =
-										  F2},
+										  F2,
+									      minQuantity
+										  =
+										  F3,
+									      maxQuantity
+										  =
+										  F4,
+									      minUnitPrice
+										  =
+										  F5},
 					   Bin, TrUserData) ->
     B1 = begin
 	   TrF1 = id(F1, TrUserData),
 	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
 	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
+	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
+	 end,
     begin
-      TrF2 = id(F2, TrUserData),
-      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+      TrF5 = id(F5, TrUserData),
+      e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
     end.
 
 encode_msg_ArbiterToServerAnnounceInvalid(Msg,
@@ -2365,80 +2391,94 @@ decode_msg_ClientToServerRegister(Bin, TrUserData) ->
     dfp_read_field_def_ClientToServerRegister(Bin, 0, 0,
 					      id(undefined, TrUserData),
 					      id(undefined, TrUserData),
+					      id(undefined, TrUserData),
 					      TrUserData).
 
 dfp_read_field_def_ClientToServerRegister(<<10,
 					    Rest/binary>>,
-					  Z1, Z2, F@_1, F@_2, TrUserData) ->
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
     d_field_ClientToServerRegister_username(Rest, Z1, Z2,
-					    F@_1, F@_2, TrUserData);
+					    F@_1, F@_2, F@_3, TrUserData);
 dfp_read_field_def_ClientToServerRegister(<<18,
 					    Rest/binary>>,
-					  Z1, Z2, F@_1, F@_2, TrUserData) ->
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
     d_field_ClientToServerRegister_password(Rest, Z1, Z2,
-					    F@_1, F@_2, TrUserData);
+					    F@_1, F@_2, F@_3, TrUserData);
+dfp_read_field_def_ClientToServerRegister(<<24,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
+    d_field_ClientToServerRegister_clientType(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, TrUserData);
 dfp_read_field_def_ClientToServerRegister(<<>>, 0, 0,
-					  F@_1, F@_2, _) ->
+					  F@_1, F@_2, F@_3, _) ->
     #'ClientToServerRegister'{username = F@_1,
-			      password = F@_2};
+			      password = F@_2, clientType = F@_3};
 dfp_read_field_def_ClientToServerRegister(Other, Z1, Z2,
-					  F@_1, F@_2, TrUserData) ->
+					  F@_1, F@_2, F@_3, TrUserData) ->
     dg_read_field_def_ClientToServerRegister(Other, Z1, Z2,
-					     F@_1, F@_2, TrUserData).
+					     F@_1, F@_2, F@_3, TrUserData).
 
 dg_read_field_def_ClientToServerRegister(<<1:1, X:7,
 					   Rest/binary>>,
-					 N, Acc, F@_1, F@_2, TrUserData)
+					 N, Acc, F@_1, F@_2, F@_3, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_ClientToServerRegister(Rest, N + 7,
-					     X bsl N + Acc, F@_1, F@_2,
+					     X bsl N + Acc, F@_1, F@_2, F@_3,
 					     TrUserData);
 dg_read_field_def_ClientToServerRegister(<<0:1, X:7,
 					   Rest/binary>>,
-					 N, Acc, F@_1, F@_2, TrUserData) ->
+					 N, Acc, F@_1, F@_2, F@_3,
+					 TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       10 ->
 	  d_field_ClientToServerRegister_username(Rest, 0, 0,
-						  F@_1, F@_2, TrUserData);
+						  F@_1, F@_2, F@_3, TrUserData);
       18 ->
 	  d_field_ClientToServerRegister_password(Rest, 0, 0,
-						  F@_1, F@_2, TrUserData);
+						  F@_1, F@_2, F@_3, TrUserData);
+      24 ->
+	  d_field_ClientToServerRegister_clientType(Rest, 0, 0,
+						    F@_1, F@_2, F@_3,
+						    TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_ClientToServerRegister(Rest, 0, 0, F@_1,
-						   F@_2, TrUserData);
+						   F@_2, F@_3, TrUserData);
 	    1 ->
 		skip_64_ClientToServerRegister(Rest, 0, 0, F@_1, F@_2,
-					       TrUserData);
+					       F@_3, TrUserData);
 	    2 ->
 		skip_length_delimited_ClientToServerRegister(Rest, 0, 0,
-							     F@_1, F@_2,
+							     F@_1, F@_2, F@_3,
 							     TrUserData);
 	    3 ->
 		skip_group_ClientToServerRegister(Rest, Key bsr 3, 0,
-						  F@_1, F@_2, TrUserData);
+						  F@_1, F@_2, F@_3, TrUserData);
 	    5 ->
 		skip_32_ClientToServerRegister(Rest, 0, 0, F@_1, F@_2,
-					       TrUserData)
+					       F@_3, TrUserData)
 	  end
     end;
 dg_read_field_def_ClientToServerRegister(<<>>, 0, 0,
-					 F@_1, F@_2, _) ->
+					 F@_1, F@_2, F@_3, _) ->
     #'ClientToServerRegister'{username = F@_1,
-			      password = F@_2}.
+			      password = F@_2, clientType = F@_3}.
 
 d_field_ClientToServerRegister_username(<<1:1, X:7,
 					  Rest/binary>>,
-					N, Acc, F@_1, F@_2, TrUserData)
+					N, Acc, F@_1, F@_2, F@_3, TrUserData)
     when N < 57 ->
     d_field_ClientToServerRegister_username(Rest, N + 7,
-					    X bsl N + Acc, F@_1, F@_2,
+					    X bsl N + Acc, F@_1, F@_2, F@_3,
 					    TrUserData);
 d_field_ClientToServerRegister_username(<<0:1, X:7,
 					  Rest/binary>>,
-					N, Acc, _, F@_2, TrUserData) ->
+					N, Acc, _, F@_2, F@_3, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2447,18 +2487,19 @@ d_field_ClientToServerRegister_username(<<0:1, X:7,
 			    Rest2}
 			 end,
     dfp_read_field_def_ClientToServerRegister(RestF, 0, 0,
-					      NewFValue, F@_2, TrUserData).
+					      NewFValue, F@_2, F@_3,
+					      TrUserData).
 
 d_field_ClientToServerRegister_password(<<1:1, X:7,
 					  Rest/binary>>,
-					N, Acc, F@_1, F@_2, TrUserData)
+					N, Acc, F@_1, F@_2, F@_3, TrUserData)
     when N < 57 ->
     d_field_ClientToServerRegister_password(Rest, N + 7,
-					    X bsl N + Acc, F@_1, F@_2,
+					    X bsl N + Acc, F@_1, F@_2, F@_3,
 					    TrUserData);
 d_field_ClientToServerRegister_password(<<0:1, X:7,
 					  Rest/binary>>,
-					N, Acc, F@_1, _, TrUserData) ->
+					N, Acc, F@_1, _, F@_3, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -2467,49 +2508,76 @@ d_field_ClientToServerRegister_password(<<0:1, X:7,
 			    Rest2}
 			 end,
     dfp_read_field_def_ClientToServerRegister(RestF, 0, 0,
-					      F@_1, NewFValue, TrUserData).
+					      F@_1, NewFValue, F@_3,
+					      TrUserData).
+
+d_field_ClientToServerRegister_clientType(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ClientToServerRegister_clientType(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2, F@_3,
+					      TrUserData);
+d_field_ClientToServerRegister_clientType(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, _, TrUserData) ->
+    {NewFValue, RestF} = {id(d_enum_ClientType(begin
+						 <<Res:32/signed-native>> = <<(X
+										 bsl
+										 N
+										 +
+										 Acc):32/unsigned-native>>,
+						 id(Res, TrUserData)
+					       end),
+			     TrUserData),
+			  Rest},
+    dfp_read_field_def_ClientToServerRegister(RestF, 0, 0,
+					      F@_1, F@_2, NewFValue,
+					      TrUserData).
 
 skip_varint_ClientToServerRegister(<<1:1, _:7,
 				     Rest/binary>>,
-				   Z1, Z2, F@_1, F@_2, TrUserData) ->
+				   Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
     skip_varint_ClientToServerRegister(Rest, Z1, Z2, F@_1,
-				       F@_2, TrUserData);
+				       F@_2, F@_3, TrUserData);
 skip_varint_ClientToServerRegister(<<0:1, _:7,
 				     Rest/binary>>,
-				   Z1, Z2, F@_1, F@_2, TrUserData) ->
+				   Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_ClientToServerRegister(Rest, Z1, Z2,
-					      F@_1, F@_2, TrUserData).
+					      F@_1, F@_2, F@_3, TrUserData).
 
 skip_length_delimited_ClientToServerRegister(<<1:1, X:7,
 					       Rest/binary>>,
-					     N, Acc, F@_1, F@_2, TrUserData)
+					     N, Acc, F@_1, F@_2, F@_3,
+					     TrUserData)
     when N < 57 ->
     skip_length_delimited_ClientToServerRegister(Rest,
 						 N + 7, X bsl N + Acc, F@_1,
-						 F@_2, TrUserData);
+						 F@_2, F@_3, TrUserData);
 skip_length_delimited_ClientToServerRegister(<<0:1, X:7,
 					       Rest/binary>>,
-					     N, Acc, F@_1, F@_2, TrUserData) ->
+					     N, Acc, F@_1, F@_2, F@_3,
+					     TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_ClientToServerRegister(Rest2, 0, 0,
-					      F@_1, F@_2, TrUserData).
+					      F@_1, F@_2, F@_3, TrUserData).
 
 skip_group_ClientToServerRegister(Bin, FNum, Z2, F@_1,
-				  F@_2, TrUserData) ->
+				  F@_2, F@_3, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_ClientToServerRegister(Rest, 0, Z2,
-					      F@_1, F@_2, TrUserData).
+					      F@_1, F@_2, F@_3, TrUserData).
 
 skip_32_ClientToServerRegister(<<_:32, Rest/binary>>,
-			       Z1, Z2, F@_1, F@_2, TrUserData) ->
+			       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_ClientToServerRegister(Rest, Z1, Z2,
-					      F@_1, F@_2, TrUserData).
+					      F@_1, F@_2, F@_3, TrUserData).
 
 skip_64_ClientToServerRegister(<<_:64, Rest/binary>>,
-			       Z1, Z2, F@_1, F@_2, TrUserData) ->
+			       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_ClientToServerRegister(Rest, Z1, Z2,
-					      F@_1, F@_2, TrUserData).
+					      F@_1, F@_2, F@_3, TrUserData).
 
 decode_msg_ServerToClientAuth(Bin, TrUserData) ->
     dfp_read_field_def_ServerToClientAuth(Bin, 0, 0,
@@ -6919,100 +6987,164 @@ decode_msg_ArbiterToServerAnnounceAccepted(Bin,
 							  TrUserData),
 						       id(undefined,
 							  TrUserData),
+						       id(undefined,
+							  TrUserData),
+						       id(undefined,
+							  TrUserData),
+						       id(undefined,
+							  TrUserData),
 						       TrUserData).
 
 dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<10,
 						     Rest/binary>>,
-						   Z1, Z2, F@_1, F@_2,
-						   TrUserData) ->
+						   Z1, Z2, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData) ->
     d_field_ArbiterToServerAnnounceAccepted_manufacturerName(Rest,
 							     Z1, Z2, F@_1, F@_2,
+							     F@_3, F@_4, F@_5,
 							     TrUserData);
 dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<18,
 						     Rest/binary>>,
-						   Z1, Z2, F@_1, F@_2,
-						   TrUserData) ->
+						   Z1, Z2, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData) ->
     d_field_ArbiterToServerAnnounceAccepted_productName(Rest,
 							Z1, Z2, F@_1, F@_2,
+							F@_3, F@_4, F@_5,
 							TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<24,
+						     Rest/binary>>,
+						   Z1, Z2, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToServerAnnounceAccepted_minQuantity(Rest,
+							Z1, Z2, F@_1, F@_2,
+							F@_3, F@_4, F@_5,
+							TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<32,
+						     Rest/binary>>,
+						   Z1, Z2, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToServerAnnounceAccepted_maxQuantity(Rest,
+							Z1, Z2, F@_1, F@_2,
+							F@_3, F@_4, F@_5,
+							TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<45,
+						     Rest/binary>>,
+						   Z1, Z2, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToServerAnnounceAccepted_minUnitPrice(Rest,
+							 Z1, Z2, F@_1, F@_2,
+							 F@_3, F@_4, F@_5,
+							 TrUserData);
 dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<>>,
-						   0, 0, F@_1, F@_2, _) ->
+						   0, 0, F@_1, F@_2, F@_3, F@_4,
+						   F@_5, _) ->
     #'ArbiterToServerAnnounceAccepted'{manufacturerName =
 					   F@_1,
-				       productName = F@_2};
+				       productName = F@_2, minQuantity = F@_3,
+				       maxQuantity = F@_4, minUnitPrice = F@_5};
 dfp_read_field_def_ArbiterToServerAnnounceAccepted(Other,
-						   Z1, Z2, F@_1, F@_2,
-						   TrUserData) ->
+						   Z1, Z2, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData) ->
     dg_read_field_def_ArbiterToServerAnnounceAccepted(Other,
-						      Z1, Z2, F@_1, F@_2,
-						      TrUserData).
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData).
 
 dg_read_field_def_ArbiterToServerAnnounceAccepted(<<1:1,
 						    X:7, Rest/binary>>,
-						  N, Acc, F@_1, F@_2,
-						  TrUserData)
+						  N, Acc, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
 						      N + 7, X bsl N + Acc,
-						      F@_1, F@_2, TrUserData);
+						      F@_1, F@_2, F@_3, F@_4,
+						      F@_5, TrUserData);
 dg_read_field_def_ArbiterToServerAnnounceAccepted(<<0:1,
 						    X:7, Rest/binary>>,
-						  N, Acc, F@_1, F@_2,
-						  TrUserData) ->
+						  N, Acc, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       10 ->
 	  d_field_ArbiterToServerAnnounceAccepted_manufacturerName(Rest,
 								   0, 0, F@_1,
-								   F@_2,
+								   F@_2, F@_3,
+								   F@_4, F@_5,
 								   TrUserData);
       18 ->
 	  d_field_ArbiterToServerAnnounceAccepted_productName(Rest,
 							      0, 0, F@_1, F@_2,
+							      F@_3, F@_4, F@_5,
 							      TrUserData);
+      24 ->
+	  d_field_ArbiterToServerAnnounceAccepted_minQuantity(Rest,
+							      0, 0, F@_1, F@_2,
+							      F@_3, F@_4, F@_5,
+							      TrUserData);
+      32 ->
+	  d_field_ArbiterToServerAnnounceAccepted_maxQuantity(Rest,
+							      0, 0, F@_1, F@_2,
+							      F@_3, F@_4, F@_5,
+							      TrUserData);
+      45 ->
+	  d_field_ArbiterToServerAnnounceAccepted_minUnitPrice(Rest,
+							       0, 0, F@_1, F@_2,
+							       F@_3, F@_4, F@_5,
+							       TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_ArbiterToServerAnnounceAccepted(Rest, 0, 0,
-							    F@_1, F@_2,
+							    F@_1, F@_2, F@_3,
+							    F@_4, F@_5,
 							    TrUserData);
 	    1 ->
 		skip_64_ArbiterToServerAnnounceAccepted(Rest, 0, 0,
-							F@_1, F@_2, TrUserData);
+							F@_1, F@_2, F@_3, F@_4,
+							F@_5, TrUserData);
 	    2 ->
 		skip_length_delimited_ArbiterToServerAnnounceAccepted(Rest,
 								      0, 0,
 								      F@_1,
 								      F@_2,
+								      F@_3,
+								      F@_4,
+								      F@_5,
 								      TrUserData);
 	    3 ->
 		skip_group_ArbiterToServerAnnounceAccepted(Rest,
 							   Key bsr 3, 0, F@_1,
-							   F@_2, TrUserData);
+							   F@_2, F@_3, F@_4,
+							   F@_5, TrUserData);
 	    5 ->
 		skip_32_ArbiterToServerAnnounceAccepted(Rest, 0, 0,
-							F@_1, F@_2, TrUserData)
+							F@_1, F@_2, F@_3, F@_4,
+							F@_5, TrUserData)
 	  end
     end;
 dg_read_field_def_ArbiterToServerAnnounceAccepted(<<>>,
-						  0, 0, F@_1, F@_2, _) ->
+						  0, 0, F@_1, F@_2, F@_3, F@_4,
+						  F@_5, _) ->
     #'ArbiterToServerAnnounceAccepted'{manufacturerName =
 					   F@_1,
-				       productName = F@_2}.
+				       productName = F@_2, minQuantity = F@_3,
+				       maxQuantity = F@_4, minUnitPrice = F@_5}.
 
 d_field_ArbiterToServerAnnounceAccepted_manufacturerName(<<1:1,
 							   X:7, Rest/binary>>,
 							 N, Acc, F@_1, F@_2,
+							 F@_3, F@_4, F@_5,
 							 TrUserData)
     when N < 57 ->
     d_field_ArbiterToServerAnnounceAccepted_manufacturerName(Rest,
 							     N + 7,
 							     X bsl N + Acc,
-							     F@_1, F@_2,
+							     F@_1, F@_2, F@_3,
+							     F@_4, F@_5,
 							     TrUserData);
 d_field_ArbiterToServerAnnounceAccepted_manufacturerName(<<0:1,
 							   X:7, Rest/binary>>,
-							 N, Acc, _, F@_2,
+							 N, Acc, _, F@_2, F@_3,
+							 F@_4, F@_5,
 							 TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
@@ -7023,20 +7155,22 @@ d_field_ArbiterToServerAnnounceAccepted_manufacturerName(<<0:1,
 			 end,
     dfp_read_field_def_ArbiterToServerAnnounceAccepted(RestF,
 						       0, 0, NewFValue, F@_2,
+						       F@_3, F@_4, F@_5,
 						       TrUserData).
 
 d_field_ArbiterToServerAnnounceAccepted_productName(<<1:1,
 						      X:7, Rest/binary>>,
-						    N, Acc, F@_1, F@_2,
-						    TrUserData)
+						    N, Acc, F@_1, F@_2, F@_3,
+						    F@_4, F@_5, TrUserData)
     when N < 57 ->
     d_field_ArbiterToServerAnnounceAccepted_productName(Rest,
 							N + 7, X bsl N + Acc,
-							F@_1, F@_2, TrUserData);
+							F@_1, F@_2, F@_3, F@_4,
+							F@_5, TrUserData);
 d_field_ArbiterToServerAnnounceAccepted_productName(<<0:1,
 						      X:7, Rest/binary>>,
-						    N, Acc, F@_1, _,
-						    TrUserData) ->
+						    N, Acc, F@_1, _, F@_3, F@_4,
+						    F@_5, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -7046,59 +7180,154 @@ d_field_ArbiterToServerAnnounceAccepted_productName(<<0:1,
 			 end,
     dfp_read_field_def_ArbiterToServerAnnounceAccepted(RestF,
 						       0, 0, F@_1, NewFValue,
+						       F@_3, F@_4, F@_5,
+						       TrUserData).
+
+d_field_ArbiterToServerAnnounceAccepted_minQuantity(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, F@_3,
+						    F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceAccepted_minQuantity(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, F@_3, F@_4,
+							F@_5, TrUserData);
+d_field_ArbiterToServerAnnounceAccepted_minQuantity(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, _, F@_4,
+						    F@_5, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(RestF,
+						       0, 0, F@_1, F@_2,
+						       NewFValue, F@_4, F@_5,
+						       TrUserData).
+
+d_field_ArbiterToServerAnnounceAccepted_maxQuantity(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, F@_3,
+						    F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceAccepted_maxQuantity(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, F@_3, F@_4,
+							F@_5, TrUserData);
+d_field_ArbiterToServerAnnounceAccepted_maxQuantity(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, F@_3, _,
+						    F@_5, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(RestF,
+						       0, 0, F@_1, F@_2, F@_3,
+						       NewFValue, F@_5,
+						       TrUserData).
+
+d_field_ArbiterToServerAnnounceAccepted_minUnitPrice(<<0:16,
+						       128, 127, Rest/binary>>,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4,
+						       id(infinity, TrUserData),
+						       TrUserData);
+d_field_ArbiterToServerAnnounceAccepted_minUnitPrice(<<0:16,
+						       128, 255, Rest/binary>>,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4,
+						       id('-infinity',
+							  TrUserData),
+						       TrUserData);
+d_field_ArbiterToServerAnnounceAccepted_minUnitPrice(<<_:16,
+						       1:1, _:7, _:1, 127:7,
+						       Rest/binary>>,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4,
+						       id(nan, TrUserData),
+						       TrUserData);
+d_field_ArbiterToServerAnnounceAccepted_minUnitPrice(<<Value:32/little-float,
+						       Rest/binary>>,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4,
+						       id(Value, TrUserData),
 						       TrUserData).
 
 skip_varint_ArbiterToServerAnnounceAccepted(<<1:1, _:7,
 					      Rest/binary>>,
-					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+					    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, TrUserData) ->
     skip_varint_ArbiterToServerAnnounceAccepted(Rest, Z1,
-						Z2, F@_1, F@_2, TrUserData);
+						Z2, F@_1, F@_2, F@_3, F@_4,
+						F@_5, TrUserData);
 skip_varint_ArbiterToServerAnnounceAccepted(<<0:1, _:7,
 					      Rest/binary>>,
-					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+					    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, TrUserData) ->
     dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
-						       Z1, Z2, F@_1, F@_2,
-						       TrUserData).
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData).
 
 skip_length_delimited_ArbiterToServerAnnounceAccepted(<<1:1,
 							X:7, Rest/binary>>,
-						      N, Acc, F@_1, F@_2,
-						      TrUserData)
+						      N, Acc, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData)
     when N < 57 ->
     skip_length_delimited_ArbiterToServerAnnounceAccepted(Rest,
 							  N + 7, X bsl N + Acc,
-							  F@_1, F@_2,
+							  F@_1, F@_2, F@_3,
+							  F@_4, F@_5,
 							  TrUserData);
 skip_length_delimited_ArbiterToServerAnnounceAccepted(<<0:1,
 							X:7, Rest/binary>>,
-						      N, Acc, F@_1, F@_2,
-						      TrUserData) ->
+						      N, Acc, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest2,
-						       0, 0, F@_1, F@_2,
-						       TrUserData).
+						       0, 0, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData).
 
 skip_group_ArbiterToServerAnnounceAccepted(Bin, FNum,
-					   Z2, F@_1, F@_2, TrUserData) ->
+					   Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
-						       0, Z2, F@_1, F@_2,
-						       TrUserData).
+						       0, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData).
 
 skip_32_ArbiterToServerAnnounceAccepted(<<_:32,
 					  Rest/binary>>,
-					Z1, Z2, F@_1, F@_2, TrUserData) ->
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
     dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
-						       Z1, Z2, F@_1, F@_2,
-						       TrUserData).
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData).
 
 skip_64_ArbiterToServerAnnounceAccepted(<<_:64,
 					  Rest/binary>>,
-					Z1, Z2, F@_1, F@_2, TrUserData) ->
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
     dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
-						       Z1, Z2, F@_1, F@_2,
-						       TrUserData).
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData).
 
 decode_msg_ArbiterToServerAnnounceInvalid(Bin,
 					  TrUserData) ->
@@ -11443,10 +11672,12 @@ merge_msg_ClientToServerRegister(#'ClientToServerRegister'{},
 				 #'ClientToServerRegister'{username =
 							       NFusername,
 							   password =
-							       NFpassword},
+							       NFpassword,
+							   clientType =
+							       NFclientType},
 				 _) ->
     #'ClientToServerRegister'{username = NFusername,
-			      password = NFpassword}.
+			      password = NFpassword, clientType = NFclientType}.
 
 -compile({nowarn_unused_function,merge_msg_ServerToClientAuth/3}).
 merge_msg_ServerToClientAuth(#'ServerToClientAuth'{clientType
@@ -11880,11 +12111,23 @@ merge_msg_ArbiterToServerAnnounceAccepted(#'ArbiterToServerAnnounceAccepted'{},
 										 NFmanufacturerName,
 									     productName
 										 =
-										 NFproductName},
+										 NFproductName,
+									     minQuantity
+										 =
+										 NFminQuantity,
+									     maxQuantity
+										 =
+										 NFmaxQuantity,
+									     minUnitPrice
+										 =
+										 NFminUnitPrice},
 					  _) ->
     #'ArbiterToServerAnnounceAccepted'{manufacturerName =
 					   NFmanufacturerName,
-				       productName = NFproductName}.
+				       productName = NFproductName,
+				       minQuantity = NFminQuantity,
+				       maxQuantity = NFmaxQuantity,
+				       minUnitPrice = NFminUnitPrice}.
 
 -compile({nowarn_unused_function,merge_msg_ArbiterToServerAnnounceInvalid/3}).
 merge_msg_ArbiterToServerAnnounceInvalid(#'ArbiterToServerAnnounceInvalid'{},
@@ -12364,10 +12607,12 @@ v_msg_ClientToServerLogin(X, Path, _TrUserData) ->
 -dialyzer({nowarn_function,v_msg_ClientToServerRegister/3}).
 v_msg_ClientToServerRegister(#'ClientToServerRegister'{username
 							   = F1,
-						       password = F2},
+						       password = F2,
+						       clientType = F3},
 			     Path, TrUserData) ->
     v_type_string(F1, [username | Path], TrUserData),
     v_type_string(F2, [password | Path], TrUserData),
+    v_enum_ClientType(F3, [clientType | Path], TrUserData),
     ok;
 v_msg_ClientToServerRegister(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'ClientToServerRegister'},
@@ -12805,11 +13050,23 @@ v_msg_ArbiterToServerAnnounceAccepted(#'ArbiterToServerAnnounceAccepted'{manufac
 									     F1,
 									 productName
 									     =
-									     F2},
+									     F2,
+									 minQuantity
+									     =
+									     F3,
+									 maxQuantity
+									     =
+									     F4,
+									 minUnitPrice
+									     =
+									     F5},
 				      Path, TrUserData) ->
     v_type_string(F1, [manufacturerName | Path],
 		  TrUserData),
     v_type_string(F2, [productName | Path], TrUserData),
+    v_type_int32(F3, [minQuantity | Path], TrUserData),
+    v_type_int32(F4, [maxQuantity | Path], TrUserData),
+    v_type_float(F5, [minUnitPrice | Path], TrUserData),
     ok;
 v_msg_ArbiterToServerAnnounceAccepted(X, Path,
 				      _TrUserData) ->
@@ -13304,7 +13561,10 @@ get_msg_defs() ->
       [#field{name = username, fnum = 1, rnum = 2,
 	      type = string, occurrence = required, opts = []},
        #field{name = password, fnum = 2, rnum = 3,
-	      type = string, occurrence = required, opts = []}]},
+	      type = string, occurrence = required, opts = []},
+       #field{name = clientType, fnum = 3, rnum = 4,
+	      type = {enum, 'ClientType'}, occurrence = required,
+	      opts = []}]},
      {{msg, 'ServerToClientAuth'},
       [#field{name = ok, fnum = 1, rnum = 2, type = bool,
 	      occurrence = required, opts = []},
@@ -13495,7 +13755,13 @@ get_msg_defs() ->
       [#field{name = manufacturerName, fnum = 1, rnum = 2,
 	      type = string, occurrence = required, opts = []},
        #field{name = productName, fnum = 2, rnum = 3,
-	      type = string, occurrence = required, opts = []}]},
+	      type = string, occurrence = required, opts = []},
+       #field{name = minQuantity, fnum = 3, rnum = 4,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = maxQuantity, fnum = 4, rnum = 5,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	      type = float, occurrence = required, opts = []}]},
      {{msg, 'ArbiterToServerAnnounceInvalid'},
       [#field{name = manufacturerName, fnum = 1, rnum = 2,
 	      type = string, occurrence = required, opts = []},
@@ -13742,7 +14008,10 @@ find_msg_def('ClientToServerRegister') ->
     [#field{name = username, fnum = 1, rnum = 2,
 	    type = string, occurrence = required, opts = []},
      #field{name = password, fnum = 2, rnum = 3,
-	    type = string, occurrence = required, opts = []}];
+	    type = string, occurrence = required, opts = []},
+     #field{name = clientType, fnum = 3, rnum = 4,
+	    type = {enum, 'ClientType'}, occurrence = required,
+	    opts = []}];
 find_msg_def('ServerToClientAuth') ->
     [#field{name = ok, fnum = 1, rnum = 2, type = bool,
 	    occurrence = required, opts = []},
@@ -13933,7 +14202,13 @@ find_msg_def('ArbiterToServerAnnounceAccepted') ->
     [#field{name = manufacturerName, fnum = 1, rnum = 2,
 	    type = string, occurrence = required, opts = []},
      #field{name = productName, fnum = 2, rnum = 3,
-	    type = string, occurrence = required, opts = []}];
+	    type = string, occurrence = required, opts = []},
+     #field{name = minQuantity, fnum = 3, rnum = 4,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = maxQuantity, fnum = 4, rnum = 5,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	    type = float, occurrence = required, opts = []}];
 find_msg_def('ArbiterToServerAnnounceInvalid') ->
     [#field{name = manufacturerName, fnum = 1, rnum = 2,
 	    type = string, occurrence = required, opts = []},

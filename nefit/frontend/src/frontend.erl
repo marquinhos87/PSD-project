@@ -35,7 +35,6 @@ acceptor(LSock, State) ->
 globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
     receive
     % Send Message to a Client with info about his login
-    %Check
         {Pid, login, Name, Pass, Type} ->
             Status = maps:find(Name, RegisteredUsers),
             case Status of
@@ -55,8 +54,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             end;
 
     % Send Message to a Client with info about his register
-    %Check
-        {Pid, register, Name, Pass} ->
+        {Pid, register, Name, Pass, Type} ->
             Status = maps:find(Name, RegisteredUsers),
             case Status of
                 {ok, _} ->
@@ -65,11 +63,14 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
                 error ->
                     Registered = maps:put(Name, Pass, RegisteredUsers),
                     Pid ! {successR},
+                    Msg = #'FrontendToCatalogAddUser'{username = Name, type = Type},
+                    M = nefitproto:encode_msg(Msg),
+                    Str = binary:list_to_bin("addUser"),
+                    chumak:send_multipart(Socket,[Str,M]),
                     globalState(Registered, ConnectedUsers, Arbiters, Socket, Pos)
             end;
 
     % Send Message to Arbiter Actor with a new Order from an Importer
-    %Check
         {order, Manuf, Product, Quant, Value, Imp} ->
             Msg = #'ServerToArbiterOffer'{
                 manufacturerName = Manuf,
@@ -78,18 +79,13 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
                 unitPrice = Value,
                 importerName = Imp},
             MsgN = #'ServerToArbiter'{message = {offer,Msg}},
-            Aux = string:concat(string:concat(Manuf, Product),"!"),
+            Aux = string:concat(Manuf, Product),
             Str = binary:list_to_bin(Aux),
-            %Neste momento rebenta por causa do Tam
             M = nefitproto:encode_msg(MsgN),
-            %chumak:send_multipart(Socket, Str),
             chumak:send_multipart(Socket,[Str,M]),
-            %List = maps:to_list(Arbiters),
-            %[Arbiter ! {order, Msg} || {Arbiter, _} <- List],
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos + 1);
 
     % Send Message to all Arbiter Actors with the Manufacturers subscribed by an Importer
-    %Check
         {sub, Imp, Manuf} ->
             Msg = #'ServerToArbiterSubscribe'{
                 importerName = Imp,
@@ -99,7 +95,6 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
 
     % Send Message to an Arbiter Actor with a new Product, the Arbiter chosen where the one with less Active Negotiations
-    %Check
         {disponibility, M, P, Value, Min, Max, Period} ->
             Msg = #'ServerToArbiterAnnounce'{
                 manufacturerName = M,
@@ -114,7 +109,6 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
 
     % Send Message to a Manufacturer Actor with the Result about one of its products
-        %Check
         {sold, PidA, M, P, Q, V} ->
             Msg = #'ServerToManufacturerSold'{
                 productName = P,
@@ -124,48 +118,65 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             PidU ! {production, Msg},
             I = maps:get(PidA, Arbiters),
             Map = maps:put(PidA, I - 1, Arbiters),
+            MsgN = #'ArbiterToCatalogRemoveNegotiation'{manufacturerName = M, productName = P},
+            M = nefitproto:encode_msg(MsgN),
+            Str = binary:list_to_bin("removeNegotiation"),
+            chumak:send_multipart(Socket,[Str,M]),
             globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
-        %Check
+
         {noOffers, PidA, M, P} ->
             Msg = #'ServerToManufacturerNoOffers'{productName = P},
             PidU = maps:get(M, ConnectedUsers),
             PidU ! {noproduction, Msg},
             I = maps:get(PidA, Arbiters),
             Map = maps:put(PidA, I - 1, Arbiters),
+            MsgN = #'ArbiterToCatalogRemoveNegotiation'{manufacturerName = M, productName = P},
+            M = nefitproto:encode_msg(MsgN),
+            Str = binary:list_to_bin("removeNegotiation"),
+            chumak:send_multipart(Socket,[Str,M]),
             globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
 
-        %Check
-        {accepted, M, P} ->
+        {accepted, M, P, Min, Max, V} ->
             Msg = #'ServerToManufacturerAnnounced'{productName = P},
             PidU = maps:get(M, ConnectedUsers),
             PidU ! {announced, Msg},
+            MsgN = #'ArbiterToCatalogAddNegotiation'{
+                manufacturerName = M,
+                productName = P,
+                minQuantity = Min,
+                maxQuantity = Max,
+                minUnitPrice = V
+            },
+            M = nefitproto:encode_msg(MsgN),
+            Str = binary:list_to_bin("addNegotiation"),
+            chumak:send_multipart(Socket,[Str,M]),
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-        %Check
+
         {announceInvalid, M,P, Message} ->
             Msg = #'ServerToManufacturerInvalid'{productName = P, errorMessage = Message},
             PidU = maps:get(M, ConnectedUsers),
             PidU ! {invalid, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-        %check
+
         {submitted, M, P ,I} ->
             Msg = #'ServerToImporterOfferSubmitted'{manufacturerName = M, productName = P},
             PidU = maps:get(I,ConnectedUsers),
             PidU ! {submitted, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-    %check
+
         {offerInvalid, M, P, I, Message} ->
             Msg = #'ServerToImporterOfferInvalid'{manufacturerName = M, productName = P, errorMessage = Message},
             PidU = maps:get(I,ConnectedUsers),
             PidU ! {offerInvalid, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-    %check
+
     % Send Message to an Importer Actor with an Result about one Product that his puts at least one Order
         {won, I, M, P, Q, V} ->
             Msg = #'ServerToImporterOfferWon'{manufacturerName = M, productName = P, quantity = Q, unitPrice = V},
             Pid = maps:get(I, ConnectedUsers),
             Pid ! {won, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-    %check
+
         {lose, I, M, P} ->
             Msg = #'ServerToImporterOfferLose'{
                 manufacturerName = M,
@@ -173,7 +184,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             Pid = maps:get(I, ConnectedUsers),
             Pid ! {lose, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-%check
+
     % Send Message to an Importer Actor with an Ack About its Order
         {offerOutdated, I, M, P} ->
             Msg = #'ServerToImporterOfferOutdated'{
@@ -182,7 +193,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             Pid = maps:get(I, ConnectedUsers),
             Pid ! {offerOutdated, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-%check
+
     % Send Message to an Importer Actor with Info about a Product
         {product, M, P, Min, Max, V, T, I} ->
             Msg = #'ServerToImporterNewProduct'{
@@ -197,13 +208,11 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
 
     % Add new Arbiter to the Arbiters Map
-    %Check
         {arbiter, Pid} ->
             Map = maps:put(Pid, 0, Arbiters),
             globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
 
     % disconnect user when something went wrong
-    %Check
         {disconnectUser, Pid} ->
             Map = maps:remove(Pid, ConnectedUsers),
             globalState(RegisteredUsers, Map, Arbiters, Socket, Pos)
@@ -226,14 +235,16 @@ arbiter(Sock, State) ->
             Field = Msg#'ArbiterToServer'.message,
             case Field of
 
-                %Check
                 {accepted, Message} ->
                     State ! { accepted,
                         Message#'ArbiterToServerAnnounceAccepted'.manufacturerName,
-                        Message#'ArbiterToServerAnnounceAccepted'.productName
+                        Message#'ArbiterToServerAnnounceAccepted'.productName,
+                        Message#'ArbiterToServerAnnounceAccepted'.minQuantity,
+                        Message#'ArbiterToServerAnnounceAccepted'.maxQuantity,
+                        Message#'ArbiterToServerAnnounceAccepted'.minUnitPrice
                     },
                     arbiter(Sock, State);
-                %Check
+
                 {announceInvalid, Message} ->
                     State ! { announceInvalid,
                         Message#'ArbiterToServerAnnounceInvalid'.manufacturerName,
@@ -241,7 +252,7 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerAnnounceInvalid'.errorMessage
                     },
                     arbiter(Sock, State);
-                %Check
+
                 {sold, Message} ->
                     State ! { sold, self(),
                         Message#'ArbiterToServerAnnounceSold'.manufacturerName,
@@ -250,14 +261,14 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerAnnounceSold'.unitPrice
                     },
                     arbiter(Sock, State);
-                %Check
+
                 {noOffers, Message} ->
                     State ! {noOffers, self(),
                         Message#'ArbiterToServerAnnounceNoOffers'.manufacturerName,
                         Message#'ArbiterToServerAnnounceNoOffers'.productName
                         },
                     arbiter(Sock, State);
-%check
+
                 {submitted, Message} ->
                     State ! {submitted,
                         Message#'ArbiterToServerOfferSubmitted'.manufacturerName,
@@ -265,7 +276,7 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerOfferSubmitted'.importerName
                         },
                     arbiter(Sock, State);
-%check
+
                 {offerInvalid, Message} ->
                     State ! {offerInvalid,
                         Message#'ArbiterToServerOfferInvalid'.manufacturerName,
@@ -274,7 +285,7 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerOfferInvalid'.errorMessage
                         },
                     arbiter(Sock, State);
-%check
+
                 {won, Message} ->
                     State ! {won ,
                         Message#'ArbiterToServerOfferWon'.importerName,
@@ -284,7 +295,7 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerOfferWon'.unitPrice
                         },
                     arbiter(Sock, State);
-%check
+
                 {lose, Message} ->
                     State ! {lose,
                         Message#'ArbiterToServerOfferLose'.importerName,
@@ -292,7 +303,7 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerOfferLose'.productName
                         },
                     arbiter(Sock, State);
-%check
+
                 {offerOutdated, Message} ->
                     State ! {offerOutdated ,
                         Message#'ArbiterToServerOfferOutdated'.importerName,
@@ -300,7 +311,7 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerOfferOutdated'.productName
                         },
                     arbiter(Sock, State);
-%check
+
                 {product, Message} ->
                     State ! {product,
                         Message#'ArbiterToServerNewProduct'.manufacturerName,
@@ -422,39 +433,39 @@ importer(Sock, State) ->
                         Sub#'ImporterToServerSubscribe'.manufacturerNames},
                     importer(Sock, State)
             end;
-%check
+
     % Send Message to Importer Process with an Ack about an Order that he make
         {submitted, Msg} ->
             MsgI = #'ServerToImporter'{message = {offerSubmitted, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
-%check
+
         {offerInvalid, Msg} ->
             MsgI = #'ServerToImporter'{message = {offerInvalid, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
-    %check
+
         {offerOutdated, Msg} ->
             MsgI = #'ServerToImporter'{message = {offerOutdated, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
-%check
+
     % Send Message to Importer Process with Result about one Product that his puts at least one Order
         {won, Msg} ->
             MsgI = #'ServerToImporter'{message = {offerWon, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
-%check
+
         {lose, Msg} ->
             MsgI = #'ServerToImporter'{message = {offerLose, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
-%check
+
     % Send Message to Importer Process with Info about a new Product
         {product, Msg} ->
             MsgI = #'ServerToImporter'{message = {newProduct, Msg}},
@@ -485,7 +496,8 @@ connectedClient(Sock, State) ->
                     State ! {self(),
                         register,
                         M#'ClientToServerRegister'.username,
-                        M#'ClientToServerRegister'.password};
+                        M#'ClientToServerRegister'.password,
+                        M#'ClientToServerRegister'.clientType};
 %check
                 % Send Message to GlobalState Actor to Client make login
                 {login,M} ->

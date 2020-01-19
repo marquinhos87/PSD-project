@@ -34,6 +34,8 @@ message ClientToServerLogin {
 message ClientToServerRegister {
     required string username = 1;
     required string password = 2;
+
+    required ClientType clientType = 3;
 }
 
 // response to a login or register request
@@ -184,6 +186,9 @@ message ArbiterToServer {
 message ArbiterToServerAnnounceAccepted {
     required string manufacturerName = 1;
     required string productName = 2;
+    required int32 minQuantity = 3;
+    required int32 maxQuantity = 4;
+    required float minUnitPrice = 5;
 }
 
 message ArbiterToServerAnnounceInvalid {

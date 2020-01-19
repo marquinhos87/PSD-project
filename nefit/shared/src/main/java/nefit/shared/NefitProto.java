@@ -2032,6 +2032,17 @@ public final class NefitProto {
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
+
+    /**
+     * <code>required .nefit.ClientType clientType = 3;</code>
+     * @return Whether the clientType field is set.
+     */
+    boolean hasClientType();
+    /**
+     * <code>required .nefit.ClientType clientType = 3;</code>
+     * @return The clientType.
+     */
+    nefit.shared.NefitProto.ClientType getClientType();
   }
   /**
    * <pre>
@@ -2052,6 +2063,7 @@ public final class NefitProto {
     private ClientToServerRegister() {
       username_ = "";
       password_ = "";
+      clientType_ = 0;
     }
 
     @java.lang.Override
@@ -2095,6 +2107,18 @@ public final class NefitProto {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
               password_ = bs;
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
+              nefit.shared.NefitProto.ClientType value = nefit.shared.NefitProto.ClientType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(3, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                clientType_ = rawValue;
+              }
               break;
             }
             default: {
@@ -2220,6 +2244,25 @@ public final class NefitProto {
       }
     }
 
+    public static final int CLIENTTYPE_FIELD_NUMBER = 3;
+    private int clientType_;
+    /**
+     * <code>required .nefit.ClientType clientType = 3;</code>
+     * @return Whether the clientType field is set.
+     */
+    public boolean hasClientType() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required .nefit.ClientType clientType = 3;</code>
+     * @return The clientType.
+     */
+    public nefit.shared.NefitProto.ClientType getClientType() {
+      @SuppressWarnings("deprecation")
+      nefit.shared.NefitProto.ClientType result = nefit.shared.NefitProto.ClientType.valueOf(clientType_);
+      return result == null ? nefit.shared.NefitProto.ClientType.IMPORTER : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2232,6 +2275,10 @@ public final class NefitProto {
         return false;
       }
       if (!hasPassword()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasClientType()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2248,6 +2295,9 @@ public final class NefitProto {
       if (((bitField0_ & 0x00000002) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
       }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeEnum(3, clientType_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2262,6 +2312,10 @@ public final class NefitProto {
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, clientType_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2288,6 +2342,10 @@ public final class NefitProto {
         if (!getPassword()
             .equals(other.getPassword())) return false;
       }
+      if (hasClientType() != other.hasClientType()) return false;
+      if (hasClientType()) {
+        if (clientType_ != other.clientType_) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2306,6 +2364,10 @@ public final class NefitProto {
       if (hasPassword()) {
         hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
         hash = (53 * hash) + getPassword().hashCode();
+      }
+      if (hasClientType()) {
+        hash = (37 * hash) + CLIENTTYPE_FIELD_NUMBER;
+        hash = (53 * hash) + clientType_;
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2448,6 +2510,8 @@ public final class NefitProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         password_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        clientType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -2484,6 +2548,10 @@ public final class NefitProto {
           to_bitField0_ |= 0x00000002;
         }
         result.password_ = password_;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.clientType_ = clientType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2543,6 +2611,9 @@ public final class NefitProto {
           password_ = other.password_;
           onChanged();
         }
+        if (other.hasClientType()) {
+          setClientType(other.getClientType());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2554,6 +2625,9 @@ public final class NefitProto {
           return false;
         }
         if (!hasPassword()) {
+          return false;
+        }
+        if (!hasClientType()) {
           return false;
         }
         return true;
@@ -2743,6 +2817,48 @@ public final class NefitProto {
   }
   bitField0_ |= 0x00000002;
         password_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int clientType_ = 0;
+      /**
+       * <code>required .nefit.ClientType clientType = 3;</code>
+       * @return Whether the clientType field is set.
+       */
+      public boolean hasClientType() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>required .nefit.ClientType clientType = 3;</code>
+       * @return The clientType.
+       */
+      public nefit.shared.NefitProto.ClientType getClientType() {
+        @SuppressWarnings("deprecation")
+        nefit.shared.NefitProto.ClientType result = nefit.shared.NefitProto.ClientType.valueOf(clientType_);
+        return result == null ? nefit.shared.NefitProto.ClientType.IMPORTER : result;
+      }
+      /**
+       * <code>required .nefit.ClientType clientType = 3;</code>
+       * @param value The clientType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setClientType(nefit.shared.NefitProto.ClientType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000004;
+        clientType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .nefit.ClientType clientType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearClientType() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        clientType_ = 0;
         onChanged();
         return this;
       }
@@ -23377,6 +23493,39 @@ public final class NefitProto {
      */
     com.google.protobuf.ByteString
         getProductNameBytes();
+
+    /**
+     * <code>required int32 minQuantity = 3;</code>
+     * @return Whether the minQuantity field is set.
+     */
+    boolean hasMinQuantity();
+    /**
+     * <code>required int32 minQuantity = 3;</code>
+     * @return The minQuantity.
+     */
+    int getMinQuantity();
+
+    /**
+     * <code>required int32 maxQuantity = 4;</code>
+     * @return Whether the maxQuantity field is set.
+     */
+    boolean hasMaxQuantity();
+    /**
+     * <code>required int32 maxQuantity = 4;</code>
+     * @return The maxQuantity.
+     */
+    int getMaxQuantity();
+
+    /**
+     * <code>required float minUnitPrice = 5;</code>
+     * @return Whether the minUnitPrice field is set.
+     */
+    boolean hasMinUnitPrice();
+    /**
+     * <code>required float minUnitPrice = 5;</code>
+     * @return The minUnitPrice.
+     */
+    float getMinUnitPrice();
   }
   /**
    * Protobuf type {@code nefit.ArbiterToServerAnnounceAccepted}
@@ -23436,6 +23585,21 @@ public final class NefitProto {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
               productName_ = bs;
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              minQuantity_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              maxQuantity_ = input.readInt32();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
+              minUnitPrice_ = input.readFloat();
               break;
             }
             default: {
@@ -23561,6 +23725,57 @@ public final class NefitProto {
       }
     }
 
+    public static final int MINQUANTITY_FIELD_NUMBER = 3;
+    private int minQuantity_;
+    /**
+     * <code>required int32 minQuantity = 3;</code>
+     * @return Whether the minQuantity field is set.
+     */
+    public boolean hasMinQuantity() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required int32 minQuantity = 3;</code>
+     * @return The minQuantity.
+     */
+    public int getMinQuantity() {
+      return minQuantity_;
+    }
+
+    public static final int MAXQUANTITY_FIELD_NUMBER = 4;
+    private int maxQuantity_;
+    /**
+     * <code>required int32 maxQuantity = 4;</code>
+     * @return Whether the maxQuantity field is set.
+     */
+    public boolean hasMaxQuantity() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>required int32 maxQuantity = 4;</code>
+     * @return The maxQuantity.
+     */
+    public int getMaxQuantity() {
+      return maxQuantity_;
+    }
+
+    public static final int MINUNITPRICE_FIELD_NUMBER = 5;
+    private float minUnitPrice_;
+    /**
+     * <code>required float minUnitPrice = 5;</code>
+     * @return Whether the minUnitPrice field is set.
+     */
+    public boolean hasMinUnitPrice() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required float minUnitPrice = 5;</code>
+     * @return The minUnitPrice.
+     */
+    public float getMinUnitPrice() {
+      return minUnitPrice_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -23573,6 +23788,18 @@ public final class NefitProto {
         return false;
       }
       if (!hasProductName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMinQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMaxQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMinUnitPrice()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -23589,6 +23816,15 @@ public final class NefitProto {
       if (((bitField0_ & 0x00000002) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, productName_);
       }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt32(3, minQuantity_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeInt32(4, maxQuantity_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeFloat(5, minUnitPrice_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -23603,6 +23839,18 @@ public final class NefitProto {
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, productName_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, minQuantity_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, maxQuantity_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, minUnitPrice_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -23629,6 +23877,22 @@ public final class NefitProto {
         if (!getProductName()
             .equals(other.getProductName())) return false;
       }
+      if (hasMinQuantity() != other.hasMinQuantity()) return false;
+      if (hasMinQuantity()) {
+        if (getMinQuantity()
+            != other.getMinQuantity()) return false;
+      }
+      if (hasMaxQuantity() != other.hasMaxQuantity()) return false;
+      if (hasMaxQuantity()) {
+        if (getMaxQuantity()
+            != other.getMaxQuantity()) return false;
+      }
+      if (hasMinUnitPrice() != other.hasMinUnitPrice()) return false;
+      if (hasMinUnitPrice()) {
+        if (java.lang.Float.floatToIntBits(getMinUnitPrice())
+            != java.lang.Float.floatToIntBits(
+                other.getMinUnitPrice())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -23647,6 +23911,19 @@ public final class NefitProto {
       if (hasProductName()) {
         hash = (37 * hash) + PRODUCTNAME_FIELD_NUMBER;
         hash = (53 * hash) + getProductName().hashCode();
+      }
+      if (hasMinQuantity()) {
+        hash = (37 * hash) + MINQUANTITY_FIELD_NUMBER;
+        hash = (53 * hash) + getMinQuantity();
+      }
+      if (hasMaxQuantity()) {
+        hash = (37 * hash) + MAXQUANTITY_FIELD_NUMBER;
+        hash = (53 * hash) + getMaxQuantity();
+      }
+      if (hasMinUnitPrice()) {
+        hash = (37 * hash) + MINUNITPRICE_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getMinUnitPrice());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -23785,6 +24062,12 @@ public final class NefitProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         productName_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        minQuantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        maxQuantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        minUnitPrice_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -23821,6 +24104,18 @@ public final class NefitProto {
           to_bitField0_ |= 0x00000002;
         }
         result.productName_ = productName_;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.minQuantity_ = minQuantity_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.maxQuantity_ = maxQuantity_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.minUnitPrice_ = minUnitPrice_;
+          to_bitField0_ |= 0x00000010;
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -23880,6 +24175,15 @@ public final class NefitProto {
           productName_ = other.productName_;
           onChanged();
         }
+        if (other.hasMinQuantity()) {
+          setMinQuantity(other.getMinQuantity());
+        }
+        if (other.hasMaxQuantity()) {
+          setMaxQuantity(other.getMaxQuantity());
+        }
+        if (other.hasMinUnitPrice()) {
+          setMinUnitPrice(other.getMinUnitPrice());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -23891,6 +24195,15 @@ public final class NefitProto {
           return false;
         }
         if (!hasProductName()) {
+          return false;
+        }
+        if (!hasMinQuantity()) {
+          return false;
+        }
+        if (!hasMaxQuantity()) {
+          return false;
+        }
+        if (!hasMinUnitPrice()) {
           return false;
         }
         return true;
@@ -24080,6 +24393,117 @@ public final class NefitProto {
   }
   bitField0_ |= 0x00000002;
         productName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int minQuantity_ ;
+      /**
+       * <code>required int32 minQuantity = 3;</code>
+       * @return Whether the minQuantity field is set.
+       */
+      public boolean hasMinQuantity() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>required int32 minQuantity = 3;</code>
+       * @return The minQuantity.
+       */
+      public int getMinQuantity() {
+        return minQuantity_;
+      }
+      /**
+       * <code>required int32 minQuantity = 3;</code>
+       * @param value The minQuantity to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinQuantity(int value) {
+        bitField0_ |= 0x00000004;
+        minQuantity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 minQuantity = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinQuantity() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        minQuantity_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int maxQuantity_ ;
+      /**
+       * <code>required int32 maxQuantity = 4;</code>
+       * @return Whether the maxQuantity field is set.
+       */
+      public boolean hasMaxQuantity() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>required int32 maxQuantity = 4;</code>
+       * @return The maxQuantity.
+       */
+      public int getMaxQuantity() {
+        return maxQuantity_;
+      }
+      /**
+       * <code>required int32 maxQuantity = 4;</code>
+       * @param value The maxQuantity to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxQuantity(int value) {
+        bitField0_ |= 0x00000008;
+        maxQuantity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 maxQuantity = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxQuantity() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        maxQuantity_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private float minUnitPrice_ ;
+      /**
+       * <code>required float minUnitPrice = 5;</code>
+       * @return Whether the minUnitPrice field is set.
+       */
+      public boolean hasMinUnitPrice() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>required float minUnitPrice = 5;</code>
+       * @return The minUnitPrice.
+       */
+      public float getMinUnitPrice() {
+        return minUnitPrice_;
+      }
+      /**
+       * <code>required float minUnitPrice = 5;</code>
+       * @param value The minUnitPrice to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinUnitPrice(float value) {
+        bitField0_ |= 0x00000010;
+        minUnitPrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float minUnitPrice = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinUnitPrice() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        minUnitPrice_ = 0F;
         onChanged();
         return this;
       }
@@ -41478,133 +41902,135 @@ public final class NefitProto {
       "rverRegisterH\000B\t\n\007message\"`\n\023ClientToSer" +
       "verLogin\022\020\n\010username\030\001 \002(\t\022\020\n\010password\030\002" +
       " \002(\t\022%\n\nclientType\030\003 \002(\0162\021.nefit.ClientT" +
-      "ype\"<\n\026ClientToServerRegister\022\020\n\010usernam" +
-      "e\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"]\n\022ServerToCli" +
-      "entAuth\022\n\n\002ok\030\001 \002(\010\022%\n\nclientType\030\002 \001(\0162" +
-      "\021.nefit.ClientType\022\024\n\014errorMessage\030\003 \001(\t" +
-      "\"Z\n\024ManufacturerToServer\0227\n\010announce\030\001 \001" +
-      "(\0132#.nefit.ManufacturerToServerAnnounceH" +
-      "\000B\t\n\007message\"\236\001\n\034ManufacturerToServerAnn" +
-      "ounce\022\023\n\013productName\030\001 \002(\t\022\023\n\013minQuantit" +
-      "y\030\002 \002(\005\022\023\n\013maxQuantity\030\003 \002(\005\022\024\n\014minUnitP" +
-      "rice\030\004 \002(\002\022\017\n\007timeout\030\005 \002(\005\022\030\n\020manufactu" +
-      "rerName\030\006 \002(\t\"\375\001\n\024ServerToManufacturer\0229" +
-      "\n\tannounced\030\001 \001(\0132$.nefit.ServerToManufa" +
-      "cturerAnnouncedH\000\0225\n\007invalid\030\002 \001(\0132\".nef" +
-      "it.ServerToManufacturerInvalidH\000\0227\n\010noOf" +
-      "fers\030\003 \001(\0132#.nefit.ServerToManufacturerN" +
-      "oOffersH\000\022/\n\004sold\030\004 \001(\0132\037.nefit.ServerTo" +
-      "ManufacturerSoldH\000B\t\n\007message\"4\n\035ServerT" +
-      "oManufacturerAnnounced\022\023\n\013productName\030\001 " +
-      "\002(\t\"H\n\033ServerToManufacturerInvalid\022\024\n\014er" +
-      "rorMessage\030\001 \001(\t\022\023\n\013productName\030\002 \002(\t\"3\n" +
-      "\034ServerToManufacturerNoOffers\022\023\n\013product" +
-      "Name\030\001 \002(\t\"T\n\030ServerToManufacturerSold\022\023" +
-      "\n\013productName\030\001 \002(\t\022\020\n\010quantity\030\002 \002(\005\022\021\n" +
-      "\tunitPrice\030\003 \002(\002\"\203\001\n\020ImporterToServer\0225\n" +
-      "\tsubscribe\030\001 \001(\0132 .nefit.ImporterToServe" +
-      "rSubscribeH\000\022-\n\005offer\030\002 \001(\0132\034.nefit.Impo" +
-      "rterToServerOfferH\000B\t\n\007message\"L\n\031Import" +
-      "erToServerSubscribe\022\031\n\021manufacturerNames" +
-      "\030\001 \003(\t\022\024\n\014importerName\030\002 \002(\t\"\201\001\n\025Importe" +
-      "rToServerOffer\022\030\n\020manufacturerName\030\001 \002(\t" +
-      "\022\023\n\013productName\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022" +
-      "\021\n\tunitPrice\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t" +
-      "\"\377\002\n\020ServerToImporter\022?\n\016offerSubmitted\030" +
-      "\001 \001(\0132%.nefit.ServerToImporterOfferSubmi" +
-      "ttedH\000\022;\n\014offerInvalid\030\002 \001(\0132#.nefit.Ser" +
-      "verToImporterOfferInvalidH\000\0223\n\010offerWon\030" +
-      "\003 \001(\0132\037.nefit.ServerToImporterOfferWonH\000" +
-      "\0225\n\tofferLose\030\004 \001(\0132 .nefit.ServerToImpo" +
-      "rterOfferLoseH\000\022=\n\rofferOutdated\030\005 \001(\0132$" +
-      ".nefit.ServerToImporterOfferOutdatedH\000\0227" +
-      "\n\nnewProduct\030\006 \001(\0132!.nefit.ServerToImpor" +
-      "terNewProductH\000B\t\n\007message\"O\n\036ServerToIm" +
-      "porterOfferSubmitted\022\030\n\020manufacturerName" +
-      "\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"c\n\034ServerToI" +
-      "mporterOfferInvalid\022\030\n\020manufacturerName\030" +
-      "\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\024\n\014errorMessa" +
-      "ge\030\003 \002(\t\"n\n\030ServerToImporterOfferWon\022\030\n\020" +
-      "manufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 " +
-      "\002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002" +
-      "\"J\n\031ServerToImporterOfferLose\022\030\n\020manufac" +
-      "turerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"N\n\035" +
-      "ServerToImporterOfferOutdated\022\030\n\020manufac" +
-      "turerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"\234\001\n" +
-      "\032ServerToImporterNewProduct\022\023\n\013productNa" +
-      "me\030\001 \002(\t\022\023\n\013minQuantity\030\002 \002(\005\022\023\n\013maxQuan" +
-      "tity\030\003 \002(\005\022\024\n\014minUnitPrice\030\004 \002(\002\022\017\n\007time" +
-      "out\030\005 \002(\005\022\030\n\020manufacturerName\030\006 \002(\t\"\225\005\n\017" +
-      "ArbiterToServer\022:\n\010accepted\030\001 \001(\0132&.nefi" +
-      "t.ArbiterToServerAnnounceAcceptedH\000\022@\n\017a" +
-      "nnounceInvalid\030\002 \001(\0132%.nefit.ArbiterToSe" +
-      "rverAnnounceInvalidH\000\0222\n\004sold\030\003 \001(\0132\".ne" +
-      "fit.ArbiterToServerAnnounceSoldH\000\022:\n\010noO" +
-      "ffers\030\004 \001(\0132&.nefit.ArbiterToServerAnnou" +
-      "nceNoOffersH\000\0229\n\tsubmitted\030\005 \001(\0132$.nefit" +
-      ".ArbiterToServerOfferSubmittedH\000\022:\n\014offe" +
-      "rInvalid\030\006 \001(\0132\".nefit.ArbiterToServerOf" +
-      "ferInvalidH\000\022-\n\003won\030\007 \001(\0132\036.nefit.Arbite" +
-      "rToServerOfferWonH\000\022/\n\004lose\030\010 \001(\0132\037.nefi" +
-      "t.ArbiterToServerOfferLoseH\000\022<\n\rofferOut" +
-      "dated\030\t \001(\0132#.nefit.ArbiterToServerOffer" +
-      "OutdatedH\000\0223\n\007product\030\n \001(\0132 .nefit.Arbi" +
-      "terToServerNewProductH\000\022?\n\014subsAccepted\030" +
-      "\013 \001(\0132\'.nefit.ArbiterToServerSubscribeAc" +
-      "ceptedH\000B\t\n\007message\"P\n\037ArbiterToServerAn" +
-      "nounceAccepted\022\030\n\020manufacturerName\030\001 \002(\t" +
-      "\022\023\n\013productName\030\002 \002(\t\"e\n\036ArbiterToServer" +
-      "AnnounceInvalid\022\030\n\020manufacturerName\030\001 \002(" +
-      "\t\022\023\n\013productName\030\002 \002(\t\022\024\n\014errorMessage\030\003" +
-      " \002(\t\"q\n\033ArbiterToServerAnnounceSold\022\030\n\020m" +
+      "ype\"c\n\026ClientToServerRegister\022\020\n\010usernam" +
+      "e\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022%\n\nclientType\030" +
+      "\003 \002(\0162\021.nefit.ClientType\"]\n\022ServerToClie" +
+      "ntAuth\022\n\n\002ok\030\001 \002(\010\022%\n\nclientType\030\002 \001(\0162\021" +
+      ".nefit.ClientType\022\024\n\014errorMessage\030\003 \001(\t\"" +
+      "Z\n\024ManufacturerToServer\0227\n\010announce\030\001 \001(" +
+      "\0132#.nefit.ManufacturerToServerAnnounceH\000" +
+      "B\t\n\007message\"\236\001\n\034ManufacturerToServerAnno" +
+      "unce\022\023\n\013productName\030\001 \002(\t\022\023\n\013minQuantity" +
+      "\030\002 \002(\005\022\023\n\013maxQuantity\030\003 \002(\005\022\024\n\014minUnitPr" +
+      "ice\030\004 \002(\002\022\017\n\007timeout\030\005 \002(\005\022\030\n\020manufactur" +
+      "erName\030\006 \002(\t\"\375\001\n\024ServerToManufacturer\0229\n" +
+      "\tannounced\030\001 \001(\0132$.nefit.ServerToManufac" +
+      "turerAnnouncedH\000\0225\n\007invalid\030\002 \001(\0132\".nefi" +
+      "t.ServerToManufacturerInvalidH\000\0227\n\010noOff" +
+      "ers\030\003 \001(\0132#.nefit.ServerToManufacturerNo" +
+      "OffersH\000\022/\n\004sold\030\004 \001(\0132\037.nefit.ServerToM" +
+      "anufacturerSoldH\000B\t\n\007message\"4\n\035ServerTo" +
+      "ManufacturerAnnounced\022\023\n\013productName\030\001 \002" +
+      "(\t\"H\n\033ServerToManufacturerInvalid\022\024\n\014err" +
+      "orMessage\030\001 \001(\t\022\023\n\013productName\030\002 \002(\t\"3\n\034" +
+      "ServerToManufacturerNoOffers\022\023\n\013productN" +
+      "ame\030\001 \002(\t\"T\n\030ServerToManufacturerSold\022\023\n" +
+      "\013productName\030\001 \002(\t\022\020\n\010quantity\030\002 \002(\005\022\021\n\t" +
+      "unitPrice\030\003 \002(\002\"\203\001\n\020ImporterToServer\0225\n\t" +
+      "subscribe\030\001 \001(\0132 .nefit.ImporterToServer" +
+      "SubscribeH\000\022-\n\005offer\030\002 \001(\0132\034.nefit.Impor" +
+      "terToServerOfferH\000B\t\n\007message\"L\n\031Importe" +
+      "rToServerSubscribe\022\031\n\021manufacturerNames\030" +
+      "\001 \003(\t\022\024\n\014importerName\030\002 \002(\t\"\201\001\n\025Importer" +
+      "ToServerOffer\022\030\n\020manufacturerName\030\001 \002(\t\022" +
+      "\023\n\013productName\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021" +
+      "\n\tunitPrice\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t\"" +
+      "\377\002\n\020ServerToImporter\022?\n\016offerSubmitted\030\001" +
+      " \001(\0132%.nefit.ServerToImporterOfferSubmit" +
+      "tedH\000\022;\n\014offerInvalid\030\002 \001(\0132#.nefit.Serv" +
+      "erToImporterOfferInvalidH\000\0223\n\010offerWon\030\003" +
+      " \001(\0132\037.nefit.ServerToImporterOfferWonH\000\022" +
+      "5\n\tofferLose\030\004 \001(\0132 .nefit.ServerToImpor" +
+      "terOfferLoseH\000\022=\n\rofferOutdated\030\005 \001(\0132$." +
+      "nefit.ServerToImporterOfferOutdatedH\000\0227\n" +
+      "\nnewProduct\030\006 \001(\0132!.nefit.ServerToImport" +
+      "erNewProductH\000B\t\n\007message\"O\n\036ServerToImp" +
+      "orterOfferSubmitted\022\030\n\020manufacturerName\030" +
+      "\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"c\n\034ServerToIm" +
+      "porterOfferInvalid\022\030\n\020manufacturerName\030\001" +
+      " \002(\t\022\023\n\013productName\030\002 \002(\t\022\024\n\014errorMessag" +
+      "e\030\003 \002(\t\"n\n\030ServerToImporterOfferWon\022\030\n\020m" +
       "anufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002" +
       "(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002\"" +
-      "P\n\037ArbiterToServerAnnounceNoOffers\022\030\n\020ma" +
-      "nufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(" +
-      "\t\"d\n\035ArbiterToServerOfferSubmitted\022\024\n\014im" +
-      "porterName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\030\n" +
-      "\020manufacturerName\030\003 \002(\t\"x\n\033ArbiterToServ" +
-      "erOfferInvalid\022\024\n\014importerName\030\001 \002(\t\022\023\n\013" +
-      "productName\030\002 \002(\t\022\030\n\020manufacturerName\030\003 " +
-      "\002(\t\022\024\n\014errorMessage\030\004 \002(\t\"\203\001\n\027ArbiterToS" +
-      "erverOfferWon\022\024\n\014importerName\030\001 \002(\t\022\023\n\013p" +
-      "roductName\030\002 \002(\t\022\030\n\020manufacturerName\030\003 \002" +
-      "(\t\022\020\n\010quantity\030\004 \002(\005\022\021\n\tunitPrice\030\005 \002(\002\"" +
-      "_\n\030ArbiterToServerOfferLose\022\024\n\014importerN" +
-      "ame\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\030\n\020manufa" +
-      "cturerName\030\003 \002(\t\"c\n\034ArbiterToServerOffer" +
-      "Outdated\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013pr" +
-      "oductName\030\002 \002(\t\022\024\n\014importerName\030\003 \002(\t\"\261\001" +
-      "\n\031ArbiterToServerNewProduct\022\030\n\020manufactu" +
-      "rerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013mi" +
-      "nQuantity\030\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014" +
-      "minUnitPrice\030\005 \002(\002\022\017\n\007timeout\030\006 \002(\005\022\024\n\014i" +
-      "mporterName\030\007 \002(\t\"8\n ArbiterToServerSubs" +
-      "cribeAccepted\022\024\n\014importerName\030\001 \002(\t\"\264\001\n\017" +
-      "ServerToArbiter\022,\n\005offer\030\001 \001(\0132\033.nefit.S" +
-      "erverToArbiterOfferH\000\0222\n\010announce\030\002 \001(\0132" +
-      "\036.nefit.ServerToArbiterAnnounceH\000\0224\n\tsub" +
-      "scribe\030\003 \001(\0132\037.nefit.ServerToArbiterSubs" +
-      "cribeH\000B\t\n\007message\"\200\001\n\024ServerToArbiterOf" +
-      "fer\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013product" +
-      "Name\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPric" +
-      "e\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t\"\230\001\n\027Server" +
-      "ToArbiterAnnounce\022\030\n\020manufacturerName\030\001 " +
-      "\002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013minQuantity\030" +
-      "\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitPri" +
-      "ce\030\005 \002(\002\022\016\n\006timout\030\006 \002(\005\"K\n\030ServerToArbi" +
-      "terSubscribe\022\024\n\014importerName\030\001 \002(\t\022\031\n\021ma" +
-      "nufacturerNames\030\002 \003(\t\"M\n\030FrontendToCatal" +
-      "ogAddUser\022\020\n\010username\030\001 \002(\t\022\037\n\004type\030\002 \002(" +
-      "\0162\021.nefit.ClientType\"\217\001\n\036ArbiterToCatalo" +
-      "gAddNegotiation\022\030\n\020manufacturerName\030\001 \002(" +
-      "\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013minQuantity\030\003 " +
-      "\002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitPrice" +
-      "\030\005 \002(\002\"R\n!ArbiterToCatalogRemoveNegotiat" +
-      "ion\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013product" +
-      "Name\030\002 \002(\t*,\n\nClientType\022\014\n\010IMPORTER\020\000\022\020" +
-      "\n\014MANUFACTURER\020\001B\032\n\014nefit.sharedB\nNefitP" +
-      "roto"
+      "J\n\031ServerToImporterOfferLose\022\030\n\020manufact" +
+      "urerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"N\n\035S" +
+      "erverToImporterOfferOutdated\022\030\n\020manufact" +
+      "urerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"\234\001\n\032" +
+      "ServerToImporterNewProduct\022\023\n\013productNam" +
+      "e\030\001 \002(\t\022\023\n\013minQuantity\030\002 \002(\005\022\023\n\013maxQuant" +
+      "ity\030\003 \002(\005\022\024\n\014minUnitPrice\030\004 \002(\002\022\017\n\007timeo" +
+      "ut\030\005 \002(\005\022\030\n\020manufacturerName\030\006 \002(\t\"\225\005\n\017A" +
+      "rbiterToServer\022:\n\010accepted\030\001 \001(\0132&.nefit" +
+      ".ArbiterToServerAnnounceAcceptedH\000\022@\n\017an" +
+      "nounceInvalid\030\002 \001(\0132%.nefit.ArbiterToSer" +
+      "verAnnounceInvalidH\000\0222\n\004sold\030\003 \001(\0132\".nef" +
+      "it.ArbiterToServerAnnounceSoldH\000\022:\n\010noOf" +
+      "fers\030\004 \001(\0132&.nefit.ArbiterToServerAnnoun" +
+      "ceNoOffersH\000\0229\n\tsubmitted\030\005 \001(\0132$.nefit." +
+      "ArbiterToServerOfferSubmittedH\000\022:\n\014offer" +
+      "Invalid\030\006 \001(\0132\".nefit.ArbiterToServerOff" +
+      "erInvalidH\000\022-\n\003won\030\007 \001(\0132\036.nefit.Arbiter" +
+      "ToServerOfferWonH\000\022/\n\004lose\030\010 \001(\0132\037.nefit" +
+      ".ArbiterToServerOfferLoseH\000\022<\n\rofferOutd" +
+      "ated\030\t \001(\0132#.nefit.ArbiterToServerOfferO" +
+      "utdatedH\000\0223\n\007product\030\n \001(\0132 .nefit.Arbit" +
+      "erToServerNewProductH\000\022?\n\014subsAccepted\030\013" +
+      " \001(\0132\'.nefit.ArbiterToServerSubscribeAcc" +
+      "eptedH\000B\t\n\007message\"\220\001\n\037ArbiterToServerAn" +
+      "nounceAccepted\022\030\n\020manufacturerName\030\001 \002(\t" +
+      "\022\023\n\013productName\030\002 \002(\t\022\023\n\013minQuantity\030\003 \002" +
+      "(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitPrice\030" +
+      "\005 \002(\002\"e\n\036ArbiterToServerAnnounceInvalid\022" +
+      "\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013productName" +
+      "\030\002 \002(\t\022\024\n\014errorMessage\030\003 \002(\t\"q\n\033ArbiterT" +
+      "oServerAnnounceSold\022\030\n\020manufacturerName\030" +
+      "\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\020\n\010quantity\030\003" +
+      " \002(\005\022\021\n\tunitPrice\030\004 \002(\002\"P\n\037ArbiterToServ" +
+      "erAnnounceNoOffers\022\030\n\020manufacturerName\030\001" +
+      " \002(\t\022\023\n\013productName\030\002 \002(\t\"d\n\035ArbiterToSe" +
+      "rverOfferSubmitted\022\024\n\014importerName\030\001 \002(\t" +
+      "\022\023\n\013productName\030\002 \002(\t\022\030\n\020manufacturerNam" +
+      "e\030\003 \002(\t\"x\n\033ArbiterToServerOfferInvalid\022\024" +
+      "\n\014importerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(" +
+      "\t\022\030\n\020manufacturerName\030\003 \002(\t\022\024\n\014errorMess" +
+      "age\030\004 \002(\t\"\203\001\n\027ArbiterToServerOfferWon\022\024\n" +
+      "\014importerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t" +
+      "\022\030\n\020manufacturerName\030\003 \002(\t\022\020\n\010quantity\030\004" +
+      " \002(\005\022\021\n\tunitPrice\030\005 \002(\002\"_\n\030ArbiterToServ" +
+      "erOfferLose\022\024\n\014importerName\030\001 \002(\t\022\023\n\013pro" +
+      "ductName\030\002 \002(\t\022\030\n\020manufacturerName\030\003 \002(\t" +
+      "\"c\n\034ArbiterToServerOfferOutdated\022\030\n\020manu" +
+      "facturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022" +
+      "\024\n\014importerName\030\003 \002(\t\"\261\001\n\031ArbiterToServe" +
+      "rNewProduct\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n" +
+      "\013productName\030\002 \002(\t\022\023\n\013minQuantity\030\003 \002(\005\022" +
+      "\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitPrice\030\005 \002" +
+      "(\002\022\017\n\007timeout\030\006 \002(\005\022\024\n\014importerName\030\007 \002(" +
+      "\t\"8\n ArbiterToServerSubscribeAccepted\022\024\n" +
+      "\014importerName\030\001 \002(\t\"\264\001\n\017ServerToArbiter\022" +
+      ",\n\005offer\030\001 \001(\0132\033.nefit.ServerToArbiterOf" +
+      "ferH\000\0222\n\010announce\030\002 \001(\0132\036.nefit.ServerTo" +
+      "ArbiterAnnounceH\000\0224\n\tsubscribe\030\003 \001(\0132\037.n" +
+      "efit.ServerToArbiterSubscribeH\000B\t\n\007messa" +
+      "ge\"\200\001\n\024ServerToArbiterOffer\022\030\n\020manufactu" +
+      "rerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\020\n\010qu" +
+      "antity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002\022\024\n\014impor" +
+      "terName\030\005 \002(\t\"\230\001\n\027ServerToArbiterAnnounc" +
+      "e\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013productNa" +
+      "me\030\002 \002(\t\022\023\n\013minQuantity\030\003 \002(\005\022\023\n\013maxQuan" +
+      "tity\030\004 \002(\005\022\024\n\014minUnitPrice\030\005 \002(\002\022\016\n\006timo" +
+      "ut\030\006 \002(\005\"K\n\030ServerToArbiterSubscribe\022\024\n\014" +
+      "importerName\030\001 \002(\t\022\031\n\021manufacturerNames\030" +
+      "\002 \003(\t\"M\n\030FrontendToCatalogAddUser\022\020\n\010use" +
+      "rname\030\001 \002(\t\022\037\n\004type\030\002 \002(\0162\021.nefit.Client" +
+      "Type\"\217\001\n\036ArbiterToCatalogAddNegotiation\022" +
+      "\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013productName" +
+      "\030\002 \002(\t\022\023\n\013minQuantity\030\003 \002(\005\022\023\n\013maxQuanti" +
+      "ty\030\004 \002(\005\022\024\n\014minUnitPrice\030\005 \002(\002\"R\n!Arbite" +
+      "rToCatalogRemoveNegotiation\022\030\n\020manufactu" +
+      "rerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t*,\n\nCl" +
+      "ientType\022\014\n\010IMPORTER\020\000\022\020\n\014MANUFACTURER\020\001" +
+      "B\032\n\014nefit.sharedB\nNefitProto"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -41627,7 +42053,7 @@ public final class NefitProto {
     internal_static_nefit_ClientToServerRegister_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ClientToServerRegister_descriptor,
-        new java.lang.String[] { "Username", "Password", });
+        new java.lang.String[] { "Username", "Password", "ClientType", });
     internal_static_nefit_ServerToClientAuth_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_nefit_ServerToClientAuth_fieldAccessorTable = new
@@ -41747,7 +42173,7 @@ public final class NefitProto {
     internal_static_nefit_ArbiterToServerAnnounceAccepted_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerAnnounceAccepted_descriptor,
-        new java.lang.String[] { "ManufacturerName", "ProductName", });
+        new java.lang.String[] { "ManufacturerName", "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", });
     internal_static_nefit_ArbiterToServerAnnounceInvalid_descriptor =
       getDescriptor().getMessageTypes().get(23);
     internal_static_nefit_ArbiterToServerAnnounceInvalid_fieldAccessorTable = new

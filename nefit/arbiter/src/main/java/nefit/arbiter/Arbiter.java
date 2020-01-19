@@ -127,16 +127,12 @@ public class Arbiter implements Runnable
             try
             {
                 final var negotiator = connection.receive(NefitProto.ServerToArbiter.parser());
-                //final var negotiator = connection.receive(is, NefitProto.Negotiator.parser());
 
                 if(negotiator.hasAnnounce())
                     executeDisponibility(negotiator.getAnnounce());
 
                 if(negotiator.hasSubscribe())
                     executeSub(negotiator.getSubscribe());
-
-                //if(negotiator.hasOffer())
-                  //  executeOrder(negotiator.getOffer());
             }
             catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
@@ -151,14 +147,7 @@ public class Arbiter implements Runnable
         while (true){
             try {
                 this.socketZ.recv(0);
-
                 byte[] reply = this.socketZ.recv(0);
-
-                //String[] aux = new String(reply).split("!",2);
-
-                //byte[] a = Arrays.copyOfRange(reply,aux[0].length(),reply.length-aux[0].length());
-
-                System.out.println(reply);
 
                 NefitProto.ServerToArbiter negotiator = NefitProto.ServerToArbiter.parseFrom(reply);
 
@@ -206,7 +195,11 @@ public class Arbiter implements Runnable
         }
         NefitProto.ArbiterToServerAnnounceAccepted accepted = NefitProto.ArbiterToServerAnnounceAccepted.newBuilder()
             .setManufacturerName(disponibility.getManufacturerName())
-            .setProductName(disponibility.getProductName()).build();
+            .setProductName(disponibility.getProductName())
+            .setMinQuantity(disponibility.getMinQuantity())
+            .setMaxQuantity(disponibility.getMaxQuantity())
+            .setMinUnitPrice(disponibility.getMinUnitPrice())
+            .build();
         connection.send(NefitProto.ArbiterToServer.newBuilder().setAccepted(accepted).build());
     }
 

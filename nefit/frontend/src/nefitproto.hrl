@@ -27,7 +27,8 @@
 -define('CLIENTTOSERVERREGISTER_PB_H', true).
 -record('ClientToServerRegister',
         {username               :: iodata(),        % = 1
-         password               :: iodata()         % = 2
+         password               :: iodata(),        % = 2
+         clientType             :: 'IMPORTER' | 'MANUFACTURER' | integer() % = 3, enum ClientType
         }).
 -endif.
 
@@ -196,7 +197,10 @@
 -define('ARBITERTOSERVERANNOUNCEACCEPTED_PB_H', true).
 -record('ArbiterToServerAnnounceAccepted',
         {manufacturerName       :: iodata(),        % = 1
-         productName            :: iodata()         % = 2
+         productName            :: iodata(),        % = 2
+         minQuantity            :: integer(),       % = 3, 32 bits
+         maxQuantity            :: integer(),       % = 4, 32 bits
+         minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan % = 5
         }).
 -endif.
 

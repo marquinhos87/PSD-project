@@ -180,12 +180,11 @@ public class Main
         final var username = prompt.input("Username: ");
         final var password = prompt.input("Password: ");
 
-        // TODO: use newer messages
-
         final var registerMessage = NefitProto.ClientToServerRegister
             .newBuilder()
             .setUsername(username)
             .setPassword(password)
+            .setClientType(clientType)
             .build();
 
         connection.send(NefitProto.ClientToServer.newBuilder().setRegister(registerMessage).build());
