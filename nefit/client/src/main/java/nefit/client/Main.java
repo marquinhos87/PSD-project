@@ -13,9 +13,7 @@ public class Main
         {
             Util.ensure(args.length == 2);
 
-            return new InetSocketAddress(
-                args[0], Integer.parseInt(args[1])
-            );
+            return new InetSocketAddress(args[0], Integer.parseInt(args[1]));
         }
         catch (Exception e)
         {
