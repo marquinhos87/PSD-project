@@ -132,20 +132,30 @@ public class Main
     }
 
     private static String register(
-        Connection connection, Prompt prompt, NefitProtos.ClientType clientType
+        Connection connection, Prompt prompt,
+        NefitProtos.MsgAuth.ClientType clientType
     ) throws IOException
     {
         final var username = prompt.input("Username: ");
         final var password = prompt.input("Password: ");
 
-        final var registerMsg = NefitProtos.ClientToServerRegister
-            .newBuilder()
-            .setUsername(username)
-            .setPassword(password)
-            .setClientType(clientType)
-            .build();
+//        final var registerMessage = NefitProtos.ClientToServerRegister
+//            .newBuilder()
+//            .setUsername(username)
+//            .setPassword(password)
+//            .setClientType(clientType)
+//            .build();
 
-        connection.send(registerMsg);
+        final var registerMessage =
+            NefitProtos.MsgAuth
+                .newBuilder()
+                .setName(username)
+                .setPass(password)
+                .setCtype(clientType)
+                .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER)
+                .build();
+
+        connection.send(registerMessage);
 
         return username;
     }
