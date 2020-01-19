@@ -63,7 +63,7 @@ public class Main
                 username = login(connection, prompt);
                 break;
 
-            case "m":
+            case "r":
                 username = register(connection, prompt);
                 break;
 
@@ -98,7 +98,7 @@ public class Main
     }
 
     private static String login(Connection connection, Prompt prompt)
-        throws IOException
+        throws IOException, InterruptedException
     {
         final NefitProto.MsgAuth.ClientType clientType;
 
@@ -139,11 +139,31 @@ public class Main
 
         connection.send(loginMessage);
 
+        final var ackMessage = connection.receive(NefitProto.MsgAck.parser());
+
+        if (!ackMessage.getOk())
+            prompt.fail(ackMessage.getMsg());
+
+        switch (clientType)
+        {
+            case IMPORTER:
+                prompt.print("You are now authenticated as an Importer.");
+                new Importer(prompt, connection, username).run();
+                break;
+
+            case MANUFACTURER:
+                prompt.print(
+                    "You are now authenticated as an Manufacturer."
+                );
+                new Manufacturer(prompt, connection, username).run();
+                break;
+        }
+
         return username;
     }
 
     private static String register(Connection connection, Prompt prompt)
-        throws IOException
+        throws IOException, InterruptedException
     {
         final NefitProto.MsgAuth.ClientType clientType;
 
@@ -184,6 +204,26 @@ public class Main
                 .build();
 
         connection.send(registerMessage);
+
+        final var ackMessage = connection.receive(NefitProto.MsgAck.parser());
+
+        if (!ackMessage.getOk())
+            prompt.fail(ackMessage.getMsg());
+
+        switch (clientType)
+        {
+            case IMPORTER:
+                prompt.print("You are now authenticated as an Importer.");
+                new Importer(prompt, connection, username).run();
+                break;
+
+            case MANUFACTURER:
+                prompt.print(
+                    "You are now authenticated as an Manufacturer."
+                );
+                new Manufacturer(prompt, connection, username).run();
+                break;
+        }
 
         return username;
     }
