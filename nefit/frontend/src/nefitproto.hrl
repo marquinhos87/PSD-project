@@ -147,7 +147,7 @@
 -record('ProductionM',
         {nameP                  :: iodata(),        % = 1
          quant                  :: integer(),       % = 2, 32 bits
-         value                  :: integer()        % = 3, 32 bits
+         value                  :: float() | integer() | infinity | '-infinity' | nan % = 3
         }).
 -endif.
 

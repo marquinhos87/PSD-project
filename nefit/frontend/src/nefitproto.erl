@@ -535,7 +535,7 @@ encode_msg_ProductionM(#'ProductionM'{nameP = F1,
 	 end,
     begin
       TrF3 = id(F3, TrUserData),
-      e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
+      e_type_float(TrF3, <<B2/binary, 29>>, TrUserData)
     end.
 
 encode_msg_ResultS(Msg, TrUserData) ->
@@ -3625,7 +3625,7 @@ dfp_read_field_def_ProductionM(<<16, Rest/binary>>, Z1,
 			       Z2, F@_1, F@_2, F@_3, TrUserData) ->
     d_field_ProductionM_quant(Rest, Z1, Z2, F@_1, F@_2,
 			      F@_3, TrUserData);
-dfp_read_field_def_ProductionM(<<24, Rest/binary>>, Z1,
+dfp_read_field_def_ProductionM(<<29, Rest/binary>>, Z1,
 			       Z2, F@_1, F@_2, F@_3, TrUserData) ->
     d_field_ProductionM_value(Rest, Z1, Z2, F@_1, F@_2,
 			      F@_3, TrUserData);
@@ -3653,7 +3653,7 @@ dg_read_field_def_ProductionM(<<0:1, X:7, Rest/binary>>,
       16 ->
 	  d_field_ProductionM_quant(Rest, 0, 0, F@_1, F@_2, F@_3,
 				    TrUserData);
-      24 ->
+      29 ->
 	  d_field_ProductionM_value(Rest, 0, 0, F@_1, F@_2, F@_3,
 				    TrUserData);
       _ ->
@@ -3713,21 +3713,26 @@ d_field_ProductionM_quant(<<0:1, X:7, Rest/binary>>, N,
     dfp_read_field_def_ProductionM(RestF, 0, 0, F@_1,
 				   NewFValue, F@_3, TrUserData).
 
-d_field_ProductionM_value(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_ProductionM_value(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, TrUserData);
-d_field_ProductionM_value(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, _, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_ProductionM(RestF, 0, 0, F@_1, F@_2,
-				   NewFValue, TrUserData).
+d_field_ProductionM_value(<<0:16, 128, 127,
+			    Rest/binary>>,
+			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
+				   id(infinity, TrUserData), TrUserData);
+d_field_ProductionM_value(<<0:16, 128, 255,
+			    Rest/binary>>,
+			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
+				   id('-infinity', TrUserData), TrUserData);
+d_field_ProductionM_value(<<_:16, 1:1, _:7, _:1, 127:7,
+			    Rest/binary>>,
+			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
+				   id(nan, TrUserData), TrUserData);
+d_field_ProductionM_value(<<Value:32/little-float,
+			    Rest/binary>>,
+			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
+				   id(Value, TrUserData), TrUserData).
 
 skip_varint_ProductionM(<<1:1, _:7, Rest/binary>>, Z1,
 			Z2, F@_1, F@_2, F@_3, TrUserData) ->
@@ -5815,7 +5820,7 @@ v_msg_ProductionM(#'ProductionM'{nameP = F1, quant = F2,
 		  Path, TrUserData) ->
     v_type_string(F1, [nameP | Path], TrUserData),
     v_type_int32(F2, [quant | Path], TrUserData),
-    v_type_int32(F3, [value | Path], TrUserData),
+    v_type_float(F3, [value | Path], TrUserData),
     ok;
 v_msg_ProductionM(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'ProductionM'}, X, Path).
@@ -6210,7 +6215,7 @@ get_msg_defs() ->
 	      occurrence = required, opts = []},
        #field{name = quant, fnum = 2, rnum = 3, type = int32,
 	      occurrence = required, opts = []},
-       #field{name = value, fnum = 3, rnum = 4, type = int32,
+       #field{name = value, fnum = 3, rnum = 4, type = float,
 	      occurrence = required, opts = []}]},
      {{msg, 'ResultS'},
       [#field{name = result, fnum = 1, rnum = 2, type = bool,
@@ -6466,7 +6471,7 @@ find_msg_def('ProductionM') ->
 	    occurrence = required, opts = []},
      #field{name = quant, fnum = 2, rnum = 3, type = int32,
 	    occurrence = required, opts = []},
-     #field{name = value, fnum = 3, rnum = 4, type = int32,
+     #field{name = value, fnum = 3, rnum = 4, type = float,
 	    occurrence = required, opts = []}];
 find_msg_def('ResultS') ->
     [#field{name = result, fnum = 1, rnum = 2, type = bool,

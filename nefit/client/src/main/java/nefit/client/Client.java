@@ -84,6 +84,18 @@ public abstract class Client< MessageType >
         this.connection.send(message);
     }
 
+    private static Boolean Register(String type, Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException
+    {
+        NefitProtos.MsgAuth msgl;
+        if (type.equals("m"))
+            msgl = messages
+                .createMsgAuth(false, true, arg.getKey(), arg.getValue());
+        else
+            msgl = messages
+                .createMsgAuth(false, false, arg.getKey(), arg.getValue());
+        writeDelimited(os, msgl);
+    }
+
     private void receiveLoop()
     {
         // receive messages until interrupted

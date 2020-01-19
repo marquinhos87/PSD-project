@@ -12,17 +12,27 @@ run(Port) ->
     State = spawn(fun()-> globalState(
         maps:new(),
         maps:new(),
-        maps:new())
+        maps:new(),
+        Socket,
+        0)
                   end),
-    acceptorA(2,LSock,State),
-    acceptor(LSock, State).
+    acceptorA(0,LSock,State).
+    %spawn(fun() -> acceptorA(LSock,State) end),
+    %spawn(fun() -> acceptorA(LSock,State) end),
+    %acceptor(LSock, State).
 
 % accepts arbiters connections
-acceptorA(N,LSock,State) when N > 0 ->
+acceptorA(N,LSock,State) ->
     {ok, Sock} = gen_tcp:accept(LSock),
-    spawn(fun() -> acceptorA(N-1,LSock,State) end),
     State ! {arbiter, self()},
-    arbiter(Sock,State).
+    if
+        N == 0 ->
+            spawn(fun() -> acceptorA(N+1,LSock,State) end),
+            arbiter(Sock,State);
+        true ->
+            spawn(fun() -> acceptor(LSock,State) end),
+            arbiter(Sock,State)
+    end.
 
 % accepts connections
 acceptor(LSock, State) ->
@@ -30,7 +40,7 @@ acceptor(LSock, State) ->
     spawn(fun() -> acceptor(LSock, State) end),
     connectedClient(Sock, State).
 
-globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
+globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
     receive
         % Send Message to a Client with info about his login
         {Pid, login, Name, Pass, Type} ->
@@ -41,14 +51,14 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
                         Value == Pass ->
                             Connected = maps:put(Name,Pid,ConnectedUsers),
                             Pid ! {success, Type},
-                            globalState(RegisteredUsers, Connected, Arbiters);
+                            globalState(RegisteredUsers, Connected, Arbiters, Socket, Pos);
                         true ->
                             Pid ! {failure},
-                            globalState(RegisteredUsers, ConnectedUsers, Arbiters)
+                            globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos)
                     end;
                 error ->
                     Pid ! {failure},
-                    globalState(RegisteredUsers, ConnectedUsers, Arbiters)
+                    globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos)
             end;
 
         % Send Message to a Client with info about his register
@@ -57,31 +67,28 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             case Status of
                 {ok, _} ->
                     Pid ! {failure},
-                    globalState(RegisteredUsers, ConnectedUsers, Arbiters);
+                    globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
                 error ->
                     Registered = maps:put(Name, Pass, RegisteredUsers),
                     Pid ! {successR},
-                    globalState(Registered, ConnectedUsers, Arbiters)
+                    globalState(Registered, ConnectedUsers, Arbiters, Socket, Pos)
             end;
 
         % Send Message to all Arbiter Actors with a new Order from an Importer
-        {order, Manuf, Product, Quant, Value} ->
-            Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value},
-            %Substituir as proximas duas linhas pelas proximas tres
-            List = maps:to_list(Arbiters),
-            [Arbiter ! {sub, Msg} || {Arbiter,_} <- List],
-            %MsgN = #'Negotiator'{msg = Msg},
-            %M = nefitproto:encode_msg(MsgN),
-            %chumak:send(Socket,<<Manuf+Product , , MsgN),
-            %Aqui acrescentar dois parametros, e nas outras chamadas todas tambem
-            globalState(RegisteredUsers, ConnectedUsers, Arbiters);
+        {order, Manuf, Product, Quant, Value, Imp} ->
+            Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value, nameI = Imp},
+            MsgN = #'Negotiator'{msg = {order,Msg}},
+            M = nefitproto:encode_msg(MsgN),
+            Str = string:concat(Manuf,Product),
+            chumak:send(Socket,<<Str , M>>),
+            globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos +1);
 
         % Send Message to all Arbiter Actors with the Manufacturers subscribed by an Importer
         {sub, Imp, Manuf} ->
             Msg = #'SubN'{nameI = Imp, subs = Manuf},
             List = maps:to_list(Arbiters),
             [Arbiter ! {sub, Msg} || {Arbiter,_} <- List],
-            globalState(RegisteredUsers, ConnectedUsers, Arbiters);
+            globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
 
         % Send Message to an Arbiter Actor with a new Product, the Arbiter chosen where the one with less Active Negotiations
         {disponibility, M, P, Value, Min, Max, Period} ->
@@ -89,47 +96,47 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
             {Pid,I} = for(maps:size(Arbiters),"c",99999999,maps:iterator(Arbiters)),
             Map = maps:put(Pid,I+1,Arbiters),
             Pid ! {disponibility, Msg},
-            globalState(RegisteredUsers, ConnectedUsers, Map);
+            globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
 
         % Send Message to a Manufacturer Actor with the Result about one of its products
         {production,PidA, M,P,Q,V} ->
             Msg = #'ProductionM'{nameP = P,quant = Q, value = V},
-            {PidU,_} = maps:get(M,ConnectedUsers),
+            PidU = maps:get(M,ConnectedUsers),
             PidU ! {production, Msg},
-            {_,I} = maps:get(PidA,Arbiters),
+            I = maps:get(PidA,Arbiters),
             Map = maps:put(PidA,I-1,Arbiters),
-            globalState(RegisteredUsers,ConnectedUsers,Map);
+            globalState(RegisteredUsers,ConnectedUsers,Map, Socket, Pos);
 
         % Send Message to an Importer Actor with an Result about one Product that his puts at least one Order
         {result, R,M,I} ->
             Msg = #'ResultI'{result = R, msg = M},
-            {Pid,_} = maps:get(I,ConnectedUsers),
+            Pid = maps:get(I,ConnectedUsers),
             Pid ! {result, Msg},
-            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters, Socket, Pos);
 
         % Send Message to an Importer Actor with an Ack About its Order
         {ack,A,M,I} ->
             Msg = #'OrderAckI'{ack = A, msg = M},
-            {Pid,_} = maps:get(I,ConnectedUsers),
+            Pid = maps:get(I,ConnectedUsers),
             Pid ! {ack, Msg},
-            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters, Socket, Pos);
 
         % Send Message to an Importer Actor with Info about a Product
         {info,M,P,Min,Max,V,Pe,I} ->
             Msg = #'InfoI'{nameM = M, nameP = P,maximum = Max, minimum = Min, value = V, period = Pe},
-            {Pid,_} = maps:get(I,ConnectedUsers),
+            Pid = maps:get(I,ConnectedUsers),
             Pid ! {info, Msg},
-            globalState(RegisteredUsers,ConnectedUsers,Arbiters);
+            globalState(RegisteredUsers,ConnectedUsers,Arbiters, Socket, Pos);
 
         % Add new Arbiter to the Arbiters Map
         {arbiter, Pid} ->
             Map = maps:put(Pid,0,Arbiters),
-            globalState(RegisteredUsers,ConnectedUsers,Map);
+            globalState(RegisteredUsers,ConnectedUsers,Map, Socket, Pos);
 
         % disconnect user when something went wrong
         {disconnectUser, Pid} ->
             Map = maps:remove(Pid,ConnectedUsers),
-            globalState(RegisteredUsers,Map,Arbiters)
+            globalState(RegisteredUsers,Map,Arbiters, Socket, Pos)
     end.
 
 % aux function to discover the Arbiter with less active negotiations
@@ -189,21 +196,21 @@ arbiter(Sock, State) ->
 
         % Send Message to Arbiter Process with an Order about a Product
         {order, Msg} ->
-            MsgN = #'Negotiator'{msg = Msg},
+            MsgN = #'Negotiator'{msg = {order,Msg}},
             M = nefitproto:encode_msg(MsgN),
             gen_tcp:send(Sock, M),
             arbiter(Sock, State);
 
         % Send Message to Arbiter Process with a new Product
         {disponibility, Msg} ->
-            MsgN = #'Negotiator'{msg = Msg},
+            MsgN = #'Negotiator'{msg = {disponibility,Msg}},
             M = nefitproto:encode_msg(MsgN),
             gen_tcp:send(Sock, M),
             arbiter(Sock, State);
 
         % Send Message to Arbiter Process with Subscribers from a Importer
         {sub, Msg} ->
-            MsgN = #'Negotiator'{msg = Msg},
+            MsgN = #'Negotiator'{msg = {sub,Msg}},
             M = nefitproto:encode_msg(MsgN),
             gen_tcp:send(Sock, M),
             arbiter(Sock, State);
@@ -265,7 +272,8 @@ importer(Sock, State) ->
                         Order#'OrderS'.nameM,
                         Order#'OrderS'.nameP,
                         Order#'OrderS'.quant,
-                        Order#'OrderS'.value},
+                        Order#'OrderS'.value,
+                        Order#'OrderS'.nameI},
                     importer(Sock, State);
 
                 % Send Message to GlobalState Actor with Subscribers from this Importer
@@ -276,21 +284,21 @@ importer(Sock, State) ->
 
         % Send Message to Importer Process with an Ack about an Order that he make
         {ack, Msg} ->
-            MsgI = #'Importer'{msg = Msg},
+            MsgI = #'Importer'{msg = {ordack,Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock,M),
             importer(Sock,State);
 
         % Send Message to Importer Process with Result about one Product that his puts at least one Order
         {result, Msg} ->
-            MsgI = #'Importer'{msg = Msg},
+            MsgI = #'Importer'{msg = {result,Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock,M),
             importer(Sock,State);
 
         % Send Message to Importer Process with Info about a new Product
         {info, Msg} ->
-            MsgI = #'Importer'{msg = Msg},
+            MsgI = #'Importer'{msg = {info,Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock,M),
             importer(Sock,State);
