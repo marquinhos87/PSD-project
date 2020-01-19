@@ -7,8 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Manufacturer
-    extends Client< NefitProtos.ProductionM >
+public class Manufacturer extends Client< NefitProtos.ProductionM >
 {
     private final Set< String > activeProductNames;
 

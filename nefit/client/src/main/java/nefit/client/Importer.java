@@ -1,22 +1,80 @@
 package nefit.client;
 
-public class Importer {
-    private final Connection connection;
-    private final Prompt prompt;
+import nefit.proto.NefitProtos;
 
+import java.io.IOException;
+import java.util.List;
+
+public class Importer extends Client< NefitProtos.Importer >
+{
     public Importer(Prompt prompt, Connection connection, String username)
     {
-        this.connection = connection;
-        this.prompt = prompt;
+        super(
+            prompt,
+            connection,
+            username,
+            NefitProtos.Importer.parser(),
+            new Command(
+                "subscribe",
+                "Manufacturers"
+            ),
+            new Command(
+                "get"
+            ),
+            new Command(
+                "offer"
+            )
+        );
     }
+
+    @Override
+    protected void handleCommand(String command, List< String > arguments)
+        throws IOException
+    {
+    }
+
+    private void handleCommandSubscribe(List< String > arguments)
+    {
+        // validate and parse arguments (we know command is "announce")
+
+        final var manufacturers =
+            arguments.get(0).isBlank()
+                ? new String[] {}
+                : arguments.get(0).trim().split("\\s+");
+
+        // send subscription request to server
+
+        final var messageAnnounce =
+            NefitProtos.DisponibilityS
+                .newBuilder()
+                .setNameM(this.getUsername())
+                .setNameP(productName)
+                .setMinimum(minQuantity)
+                .setMaximum(maxQuantity)
+                .setValue(minUnitPrice)
+                .setPeriod(timeout)
+                .build();
+
+        final var messageServer =
+            NefitProtos.Server
+                .newBuilder()
+                .setM1(messageAnnounce)
+                .build();
+
+        this.getConnection().send(messageServer);
+
+        // TODO: must wait for acknowledgment from server
+    }
+
 
     public void run()
     {
         this.prompt.printOthers(printCommands());
         new Thread(this::receive).start();
-        while(true)
+        while (true)
         {
-            try {
+            try
+            {
                 String command = this.in.readLine();
                 String[] fields = command.split(" ");
                 if (fields.length < 1)
@@ -36,7 +94,8 @@ public class Importer {
                             break;
 
                         default:
-                            this.prompt.printWarning("Wrong command, try one of this:");
+                            this.prompt.printWarning(
+                                "Wrong command, try one of this:");
                             this.prompt.printOthers(printCommands());
                             break;
                     }
@@ -57,11 +116,14 @@ public class Importer {
         }
         else
         {
-            List<String> topics = new ArrayList<>();
-            for(int i = 1 ; i < fields.length ; i++)
+            List< String > topics = new ArrayList<>();
+            for (int i = 1; i < fields.length; i++)
                 topics.add(fields[i]);
-            NefitProtos.SubS sub = this.messages.createSubS(this.name,topics);
-            Client.writeDelimited(this.os, NefitProtos.Server.newBuilder().setM3(sub).build());
+            NefitProtos.SubS sub = this.messages.createSubS(this.name, topics);
+            Client.writeDelimited(
+                this.os,
+                NefitProtos.Server.newBuilder().setM3(sub).build()
+            );
         }
     }
 
@@ -76,13 +138,18 @@ public class Importer {
             try
             {
                 NefitProtos.OrderS order = this.messages.createOrderS(
-                    this.name,fields[1], fields[2], Integer.parseInt(fields[3]), Float.parseFloat(fields[4])
+                    this.name, fields[1], fields[2],
+                    Integer.parseInt(fields[3]), Float.parseFloat(fields[4])
                 );
-                Client.writeDelimited(this.os, NefitProtos.Server.newBuilder().setM2(order).build());
+                Client.writeDelimited(
+                    this.os,
+                    NefitProtos.Server.newBuilder().setM2(order).build()
+                );
             }
             catch (NumberFormatException e)
             {
-                this.prompt.printError("Quantity and Price have to be a number");
+                this.prompt
+                    .printError("Quantity and Price have to be a number");
             }
         }
     }
@@ -93,18 +160,19 @@ public class Importer {
         {
             try
             {
-                final var importer = Client.parseDelimited(this.is, NefitProtos.Importer.parser());
+                final var importer = Client
+                    .parseDelimited(this.is, NefitProtos.Importer.parser());
 
-                if(importer.hasInfo())
+                if (importer.hasInfo())
                 {
                     this.prompt.printMessages("New Product available:");
                     this.prompt.printMessages(printInfo(importer.getInfo()));
                 }
 
-                if(importer.hasResult())
+                if (importer.hasResult())
                     printResult(importer.getResult());
 
-                if(importer.hasOrdack())
+                if (importer.hasOrdack())
                     printOrderAck(importer.getOrdack());
 
             }
@@ -124,12 +192,12 @@ public class Importer {
         sb.append("\n\tMax quantity: " + info.getMaximum());
         sb.append("\n\tMin unit price: " + info.getValue());
         sb.append("\n\tTime Available: " + info.getPeriod() + " seconds");
-        return  sb.toString();
+        return sb.toString();
     }
 
     private void printResult(NefitProtos.ResultI result)
     {
-        if(result.getResult())
+        if (result.getResult())
         {
             this.prompt.printMessages("You win the order " + result.getMsg());
         }
@@ -141,17 +209,18 @@ public class Importer {
 
     private void printOrderAck(NefitProtos.OrderAckI ack)
     {
-        if(ack.getOutdated())
+        if (ack.getOutdated())
         {
             this.prompt.printMessages(ack.getMsg());
         }
-        if(ack.getAck())
+        if (ack.getAck())
         {
             this.prompt.printMessages("Order accepted");
         }
         else
         {
-            this.prompt.printMessages("Order decline, because: "+ack.getMsg());
+            this.prompt
+                .printMessages("Order decline, because: " + ack.getMsg());
         }
     }
 
@@ -159,8 +228,10 @@ public class Importer {
     {
         StringBuilder sb = new StringBuilder();
         sb.append("You can use some commands like 'sub' 'order'\n");
-        sb.append("Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...\n");
-        sb.append("Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>");
+        sb.append(
+            "Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...\n");
+        sb.append(
+            "Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>");
         return sb.toString();
     }
 }
