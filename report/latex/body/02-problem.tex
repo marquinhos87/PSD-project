@@ -1,0 +1,37 @@
+% ---------------------------------------------------------------------------- %
+
+\section{Problem Statement}
+\label{sec:problem}
+
+The platform that's being developed for negotiation, between product manufacturers and importers, must include clients, a front-end server, negotiators, a catalog of entities and active negotiations.
+The system should support a large number of clients connected in real time, and the clients will always be either product manufacturers or importers.
+
+The manufacturers can manifest their availability to produce a given article while the importers show interest in their articles by making an offer with how much they are willing to pay for them.
+The front-end server authenticates clients and forwards their requests to one of the available negotiators. It should also inform the catalog of the clients registered in the system.
+Finally the catalog should provide a \emph{RESTful} interface that includes all the information about the importers, manufacturers and active negotiations. 
+
+The assignment requires that the client, negotiator, and catalog programs be developed using the Java programming language, and the frontend server using Erlang. The developed system must leverage ZeroMQ~\cite{website:zeromq} where appropriate and the catalog application must use Dropwizard~\cite{website:dropwizard} to expose its RESTful interface.
+Further, Protocol Buffers~\cite{website:protobuf} shall be used for message encoding and decoding.
+
+Both types of clients need to authenticate themselves on the frontend server with their name and password. Once they are authenticated, if the client is a manufacturer, it can state its availability to produce an article by stating its name, the maximum and minimum quantity, the negotiation period, i.e, the period of time that the importers can make offers.
+On the other hand, if the client is an importer, it can make offers for products posted by the manufacturers by stating the name of the manufacturer, the product name, quantity and the price he is willing to pay. Importers may also \emph{subscribe} to a certain manufacturer to receive a \emph{notification} every time he announces an article. 
+        
+Negotiation works as follows: a \textbf{negotiator} receives, from the frontend server, the availability to produce an article from a manufacturer as well as offers for this article by the importers. After the period of time specified by the manufacturer the offer is canceled if the minimum quantity of offers is not met, otherwise the offers with the highest price are approved.   
+
+% \paragraph{Requirements}
+
+% The system characteristics that were specified in the assignment must be followed in it's development:
+% \nuno{Falta falar no zeroMQ}
+% \begin{itemize}
+    
+%     \item The clients, negotiators and catalog should be developed using \emph{Java}. 
+    
+%     \item The front-end server should follow an \emph{actor model} and be developed using \emph{Erlang}.
+    
+%     \item The \emph{Dropwizard}~\cite{website:dropwizard} framework should be used for the \emph{RESTful} interface.
+    
+%     \item The language heterogeneity raises the need for data \emph{serialization} and this should be accomplished by using google's \emph{Protocol Buffers}~\cite{website:protobuf}.
+    
+% \end{itemize}
+
+% ---------------------------------------------------------------------------- %

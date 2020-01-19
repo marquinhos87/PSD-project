@@ -1,0 +1,102 @@
+% ---------------------------------------------------------------------------- %
+
+\section{Design and Implementation}
+\label{sec:design}
+
+% \alberto{CLIs, communication patterns, catalog state updates, arbiter load balancing policy}
+% \alberto{Usages, languages, libraries, client sockets, message headers}
+
+In this section, we describe the architecture and functioning of the developed system, identifying and justifying major design decisions, and also present several aspects of the system's implementation.
+
+\paragraph{System overview} 
+
+The system is composed of multiple clients, a set of negotiators, a catalog and a front-end server. Clients can exist in high numbers at any given time and they can be either importers or manufacturers. Negotiators exist as a fixed number and are pre-initialized and known to the front-end server. The front-end server is responsible for allowing communication between clients and an arbiter. Information about registered clients and active negotiations are stored and can be observed on the catalog, this information is obtained from the front-end server and from the arbiters. 
+
+Manufacturers announce, to the front-end server, their interest on producing an article and give a period of time to collect offers for that article. The front-end server then forwards that request to one of the available arbiters.
+Importers show their interest on the products announced by sending an offer, to the front-end server, and give a quantity and price to pay. The front-end server also forwards that request to the arbiter responsible for the negotiation of that product.
+
+The arbiter will report to the front-end server the outcome of a negotiation after the period time specified expires, so that the front-end server can inform the manufacturer and all importers that made an offered of the negotiation outcome. After receiving a product announcement the arbiter also informs the catalog of the new active negotiation.
+
+\paragraph{Data serialization} 
+
+Clients, catalog and arbiters use \emph{Java SE 11}, while the front-end server is developed using \emph{Erlang/OTP 22.2}. This language heterogeneity raises the need for a consensus regarding the communication protocol. This is achieved with google's \emph{Protocol Buffers}~\cite{website:protobuf}. which is a binary serialization format thus more compact and computationally more efficient. Every message exchanged in the system are specified in the a \emph{.proto} file shared by both languages.  
+ 
+\paragraph{Communication between clients and the frontend server}
+
+Communication between clients and the frontend server is implemented using bare TCP sockets.
+This is adequate as (i) clients do not need to communicate with each other, (2) always know which server to contact (there is only a single frontend server), and (3) follow a session-oriented protocol with the frontend server (clients must authenticate before performing any actions).
+For these same reasons, the use of messaing middleware with higher level primitives is not advantageous.
+
+As protocol buffers do not delimit messages, however, plain TCP sockets require extra information to be transmitted alongside the messages.
+We simply prefix every message with a 4-byte, big-endian encoding of the number of bytes in the message.
+This has a straightforward Java implementation and can be handled transparently in Erlang using the \texttt{\{packet, 4\}} socket option.
+
+\paragraph{Communication between arbiters and the frontend server}
+
+The frontend server delegates the responsability of managing each negotiation to a given arbiter.
+When a negotiation begins, it is \emph{assigned to the arbiter with the least ongoing negotiations}.
+The frontend server must also forward offers made by clients to the appropriate arbiter.
+This is accomplished through a publish-subscribe messaing pattern using ZeroMQ, whereby the frontend server publishes notices of client offers (with a topic that identifies the manufacturer and product) and the interested arbiter receives those offers.
+
+\paragraph{Catalog state}
+
+At any point, users of the catalog's interface may want to observe active negotiations, or the registered manufacturers and importers. The catalog must remain updated, and so the strategy is to use a \emph{publish-subscribe} pattern with \emph{ZeroMQ}~\cite{website:zeromq} (\emph{JeroMQ}~\cite{website:jeromq} for the catalog and arbiters and \emph{chumak}~\cite{website:chumak} for the frontend server).
+
+Whenever a new client (importer or manufacturer) account is registered, the frontend server informs the catalog of this fact by publishing a message with the corresponding topic and the username of the new client.
+The catalog is a subscriber of messages with these topics, and so receives it and uses it to update its internal copy of the system state.
+Whenever a negotiation is created or ends, the respective arbiter also inform the catalog of the fact by publishing messages with the appropriate topic to the messaging middleware.
+
+The catalog thus maintains an up-to-date copy of the relevant system state, and uses it to answer requests made to its RESTful interface.
+Note that this ``push-based'' design is most appropriate for workload in which the catalog is frequently queried for information, as answering these queries does not require any further communication with other system components.
+
+
+
+% \begin{itemize}
+%     \item Java SE 11.
+%     \item Erlang/OTP 22.2.
+%     \item Protocol Buffers~\cite{website:protobuf}.
+%     \item ZeroMQ~\cite{website:zeromq}.
+%     \item Dropwizard~\cite{website:dropwizard}.
+%     \item gpb~\cite{website:gpb} for Protocol Buffers in Erlang.
+%     \item chumak~\cite{website:chumak} for ZeroMQ in Erlang.
+%     \item JeroMQ~\cite{website:jeromq} for ZeroMQ in Java.
+% \end{itemize}
+
+% \begin{verbatim}
+%   Client (xN)
+%     - Java
+%     - Fala unicamente com Servidor
+%     - Pode ser um "Manufacturer" ou "Importer"
+
+%   Server (x1)
+%     - Protocol Buffers: https://github.com/tomas-abrahamsson/gpb
+%     - ZeroMQ: https://github.com/zeromq/chumak
+%     - Fala com Negociadores ponto-a-ponto
+%     - Informa os Catálogos de cenas através de ZeroMQ Pub-Sub
+
+%   Arbiter (x2)
+%     - Fala com Servidor ponto-a-ponto
+%     - Informa os Catálogos de cenas através de ZeroMQ Pub-Sub
+
+%   Catalog (x1)
+%     - Subscrevem mensagens no ZeroMQ Pub-Sub
+%     - Disponibiliza interface RESTful
+
+% NOTA: Uma negociação é atribuída ao negociador com menos negociações em
+% progresso aquando do início da nova negociação.
+% \end{verbatim}
+
+% Manufacturer commands:
+
+% \begin{itemize}
+%     \item announce -- announce the production of a given product
+% \end{itemize}
+
+% Importer commands:
+
+% \begin{itemize}
+%     \item subscribe -- subscribe to notifications of production announcements from given manufacturers
+%     \item offer -- submit an offer to a production announcement for a given product from a given manufacturer
+% \end{itemize}
+
+% ---------------------------------------------------------------------------- %

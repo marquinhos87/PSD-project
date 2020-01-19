@@ -1,0 +1,102 @@
+% ---------------------------------------------------------------------------- %
+
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\documentclass[acmsmall,nonacm,screen]{acmart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{minted}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{varwidth}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{stackengine}
+\usepackage{blindtext}
+\usepackage{enumitem}
+
+% ---------------------------------------------------------------------------- %
+% configuration
+
+% configure template
+
+\makeatletter
+\let\@authorsaddresses\@empty
+\makeatother
+
+\makeatletter
+\let\ftype@table\ftype@figure
+\makeatother
+
+\makeatletter
+\setlength{\@fptop}{0pt plus 1fil}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+\setlength{\intextsep}{10pt}
+\setlength{\textfloatsep}{10pt}
+
+\captionsetup[figure]{name={Figure}}
+
+\setlist{nosep}
+
+% ---------------------------------------------------------------------------- %
+% utilities
+
+\makeatletter
+\newcommand{\gobblepars}{\@ifnextchar\par{\expandafter\gobblepars\@gobble}{}}
+\makeatother
+
+\renewcommand{\paragraph}[1]{%
+  \vspace*{.5\baselineskip}%
+  \noindent\textbf{#1.} %
+  \gobblepars%
+  }
+
+\newcommand{\mynote}[3]{%
+    {\color{black}%
+        \fbox{\bfseries\sffamily\scriptsize#1}%
+        {\small$\blacktriangleright$\textsf{\emph{\color{#2}{#3}}}$\blacktriangleleft$}%
+    }%
+  }
+
+\newcommand{\alberto}[1]{\mynote{alberto}{purple}{#1}}
+\newcommand{\joao}[1]{\mynote{joao}{purple}{#1}}
+\newcommand{\nuno}[1]{\mynote{nuno}{purple}{#1}}
+
+\newcommand{\oldtext}{\color{red}}
+\newcommand{\newtext}{\color{Green}}
+
+% ---------------------------------------------------------------------------- %
+% document
+
+\begin{document}
+
+\title{PSD 19/20 -- Report}
+\makeatletter \renewcommand{\shortauthors}{\@title} \makeatother
+
+\begin{abstract}
+\large
+\vspace*{-\baselineskip}
+Alberto Faria (A79077), João Marques (A81826), Nuno Rei (A81918)
+\vspace*{.2\baselineskip}
+\par \noindent 19 January 2020
+\vspace*{.2\baselineskip}
+\end{abstract}
+
+\maketitle
+
+\input{body/01-introduction.tex}
+\input{body/02-problem.tex}
+\input{body/03-design.tex}
+\input{body/04-implementation.tex}
+\input{body/05-conclusion.tex}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bibliography}
+
+\end{document}
+
+% ---------------------------------------------------------------------------- %
