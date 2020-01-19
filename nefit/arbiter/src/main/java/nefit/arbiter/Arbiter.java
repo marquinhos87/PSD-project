@@ -147,8 +147,14 @@ public class Arbiter implements Runnable
         while (true){
             try {
                 byte[] reply = this.socketZ.recv(0);
-                //Não funciona neste momento
-                NefitProto.ServerToArbiter negotiator = NefitProto.ServerToArbiter.parseFrom(reply);
+
+                //System.out.println(reply);
+
+                //System.out.println(reply.toString());
+
+                String[] aux = reply.toString().split("\n",2);
+
+                NefitProto.ServerToArbiter negotiator = NefitProto.ServerToArbiter.parseFrom(aux[1].getBytes());
 
                 if(negotiator.hasOffer())
                     executeOrder(negotiator.getOffer());

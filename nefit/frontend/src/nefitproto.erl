@@ -95,8 +95,6 @@
 
 -type 'ServerToImporterNewProduct'() :: #'ServerToImporterNewProduct'{}.
 
--type 'ServerToImporterSubscribeAccepted'() :: #'ServerToImporterSubscribeAccepted'{}.
-
 -type 'ArbiterToServer'() :: #'ArbiterToServer'{}.
 
 -type 'ArbiterToServerAnnounceAccepted'() :: #'ArbiterToServerAnnounceAccepted'{}.
@@ -129,20 +127,20 @@
 
 -type 'ServerToArbiterSubscribe'() :: #'ServerToArbiterSubscribe'{}.
 
--export_type(['ClientToServer'/0, 'ClientToServerLogin'/0, 'ClientToServerRegister'/0, 'ServerToClientAuth'/0, 'ManufacturerToServer'/0, 'ManufacturerToServerAnnounce'/0, 'ServerToManufacturer'/0, 'ServerToManufacturerAnnounced'/0, 'ServerToManufacturerInvalid'/0, 'ServerToManufacturerNoOffers'/0, 'ServerToManufacturerSold'/0, 'ImporterToServer'/0, 'ImporterToServerSubscribe'/0, 'ImporterToServerOffer'/0, 'ServerToImporter'/0, 'ServerToImporterOfferSubmitted'/0, 'ServerToImporterOfferInvalid'/0, 'ServerToImporterOfferWon'/0, 'ServerToImporterOfferLose'/0, 'ServerToImporterOfferOutdated'/0, 'ServerToImporterNewProduct'/0, 'ServerToImporterSubscribeAccepted'/0, 'ArbiterToServer'/0, 'ArbiterToServerAnnounceAccepted'/0, 'ArbiterToServerAnnounceInvalid'/0, 'ArbiterToServerAnnounceSold'/0, 'ArbiterToServerAnnounceNoOffers'/0, 'ArbiterToServerOfferSubmitted'/0, 'ArbiterToServerOfferInvalid'/0, 'ArbiterToServerOfferWon'/0, 'ArbiterToServerOfferLose'/0, 'ArbiterToServerOfferOutdated'/0, 'ArbiterToServerNewProduct'/0, 'ArbiterToServerSubscribeAccepted'/0, 'ServerToArbiter'/0, 'ServerToArbiterOffer'/0, 'ServerToArbiterAnnounce'/0, 'ServerToArbiterSubscribe'/0]).
+-export_type(['ClientToServer'/0, 'ClientToServerLogin'/0, 'ClientToServerRegister'/0, 'ServerToClientAuth'/0, 'ManufacturerToServer'/0, 'ManufacturerToServerAnnounce'/0, 'ServerToManufacturer'/0, 'ServerToManufacturerAnnounced'/0, 'ServerToManufacturerInvalid'/0, 'ServerToManufacturerNoOffers'/0, 'ServerToManufacturerSold'/0, 'ImporterToServer'/0, 'ImporterToServerSubscribe'/0, 'ImporterToServerOffer'/0, 'ServerToImporter'/0, 'ServerToImporterOfferSubmitted'/0, 'ServerToImporterOfferInvalid'/0, 'ServerToImporterOfferWon'/0, 'ServerToImporterOfferLose'/0, 'ServerToImporterOfferOutdated'/0, 'ServerToImporterNewProduct'/0, 'ArbiterToServer'/0, 'ArbiterToServerAnnounceAccepted'/0, 'ArbiterToServerAnnounceInvalid'/0, 'ArbiterToServerAnnounceSold'/0, 'ArbiterToServerAnnounceNoOffers'/0, 'ArbiterToServerOfferSubmitted'/0, 'ArbiterToServerOfferInvalid'/0, 'ArbiterToServerOfferWon'/0, 'ArbiterToServerOfferLose'/0, 'ArbiterToServerOfferOutdated'/0, 'ArbiterToServerNewProduct'/0, 'ArbiterToServerSubscribeAccepted'/0, 'ServerToArbiter'/0, 'ServerToArbiterOffer'/0, 'ServerToArbiterAnnounce'/0, 'ServerToArbiterSubscribe'/0]).
 
--spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ServerToImporterSubscribeAccepted'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}) -> binary().
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}) -> binary().
 encode_msg(Msg) when tuple_size(Msg) >= 1 ->
     encode_msg(Msg, element(1, Msg), []).
 
--spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ServerToImporterSubscribeAccepted'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom() | list()) -> binary().
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom() | list()) -> binary().
 encode_msg(Msg, MsgName) when is_atom(MsgName) ->
     encode_msg(Msg, MsgName, []);
 encode_msg(Msg, Opts)
     when tuple_size(Msg) >= 1, is_list(Opts) ->
     encode_msg(Msg, element(1, Msg), Opts).
 
--spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ServerToImporterSubscribeAccepted'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom(), list()) -> binary().
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom(), list()) -> binary().
 encode_msg(Msg, MsgName, Opts) ->
     case proplists:get_bool(verify, Opts) of
       true -> verify_msg(Msg, MsgName, Opts);
@@ -223,10 +221,6 @@ encode_msg(Msg, MsgName, Opts) ->
 	  encode_msg_ServerToImporterNewProduct(id(Msg,
 						   TrUserData),
 						TrUserData);
-      'ServerToImporterSubscribeAccepted' ->
-	  encode_msg_ServerToImporterSubscribeAccepted(id(Msg,
-							  TrUserData),
-						       TrUserData);
       'ArbiterToServer' ->
 	  encode_msg_ArbiterToServer(id(Msg, TrUserData),
 				     TrUserData);
@@ -702,13 +696,6 @@ encode_msg_ServerToImporter(#'ServerToImporter'{message
 		   e_mfield_ServerToImporter_newProduct(TrTF1,
 							<<Bin/binary, 50>>,
 							TrUserData)
-		 end;
-	     {subsAccepted, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_ServerToImporter_subsAccepted(TrTF1,
-							  <<Bin/binary, 58>>,
-							  TrUserData)
 		 end
 	   end
     end.
@@ -877,10 +864,6 @@ encode_msg_ServerToImporterNewProduct(#'ServerToImporterNewProduct'{productName
       TrF6 = id(F6, TrUserData),
       e_type_string(TrF6, <<B5/binary, 50>>, TrUserData)
     end.
-
-encode_msg_ServerToImporterSubscribeAccepted(_Msg,
-					     _TrUserData) ->
-    <<>>.
 
 encode_msg_ArbiterToServer(Msg, TrUserData) ->
     encode_msg_ArbiterToServer(Msg, <<>>, TrUserData).
@@ -1528,10 +1511,6 @@ e_mfield_ServerToImporter_newProduct(Msg, Bin,
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_ServerToImporter_subsAccepted(_Msg, Bin,
-				       _TrUserData) ->
-    <<Bin/binary, 0>>.
-
 e_mfield_ArbiterToServer_accepted(Msg, Bin,
 				  TrUserData) ->
     SubBin = encode_msg_ArbiterToServerAnnounceAccepted(Msg,
@@ -1852,11 +1831,6 @@ decode_msg_2_doit('ServerToImporterNewProduct', Bin,
 		  TrUserData) ->
     id(decode_msg_ServerToImporterNewProduct(Bin,
 					     TrUserData),
-       TrUserData);
-decode_msg_2_doit('ServerToImporterSubscribeAccepted',
-		  Bin, TrUserData) ->
-    id(decode_msg_ServerToImporterSubscribeAccepted(Bin,
-						    TrUserData),
        TrUserData);
 decode_msg_2_doit('ArbiterToServer', Bin, TrUserData) ->
     id(decode_msg_ArbiterToServer(Bin, TrUserData),
@@ -4637,10 +4611,6 @@ dfp_read_field_def_ServerToImporter(<<50, Rest/binary>>,
 				    Z1, Z2, F@_1, TrUserData) ->
     d_field_ServerToImporter_newProduct(Rest, Z1, Z2, F@_1,
 					TrUserData);
-dfp_read_field_def_ServerToImporter(<<58, Rest/binary>>,
-				    Z1, Z2, F@_1, TrUserData) ->
-    d_field_ServerToImporter_subsAccepted(Rest, Z1, Z2,
-					  F@_1, TrUserData);
 dfp_read_field_def_ServerToImporter(<<>>, 0, 0, F@_1,
 				    _) ->
     #'ServerToImporter'{message = F@_1};
@@ -4678,9 +4648,6 @@ dg_read_field_def_ServerToImporter(<<0:1, X:7,
       50 ->
 	  d_field_ServerToImporter_newProduct(Rest, 0, 0, F@_1,
 					      TrUserData);
-      58 ->
-	  d_field_ServerToImporter_subsAccepted(Rest, 0, 0, F@_1,
-						TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
@@ -4902,40 +4869,6 @@ d_field_ServerToImporter_newProduct(<<0:1, X:7,
 						 TrUserData);
 					  _ ->
 					      id({newProduct, NewFValue},
-						 TrUserData)
-					end,
-					TrUserData).
-
-d_field_ServerToImporter_subsAccepted(<<1:1, X:7,
-					Rest/binary>>,
-				      N, Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_ServerToImporter_subsAccepted(Rest, N + 7,
-					  X bsl N + Acc, F@_1, TrUserData);
-d_field_ServerToImporter_subsAccepted(<<0:1, X:7,
-					Rest/binary>>,
-				      N, Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_ServerToImporterSubscribeAccepted(Bs,
-									    TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_ServerToImporter(RestF, 0, 0,
-					case Prev of
-					  undefined ->
-					      id({subsAccepted, NewFValue},
-						 TrUserData);
-					  {subsAccepted, MVPrev} ->
-					      id({subsAccepted,
-						  merge_msg_ServerToImporterSubscribeAccepted(MVPrev,
-											      NewFValue,
-											      TrUserData)},
-						 TrUserData);
-					  _ ->
-					      id({subsAccepted, NewFValue},
 						 TrUserData)
 					end,
 					TrUserData).
@@ -6344,98 +6277,6 @@ skip_64_ServerToImporterNewProduct(<<_:64,
     dfp_read_field_def_ServerToImporterNewProduct(Rest, Z1,
 						  Z2, F@_1, F@_2, F@_3, F@_4,
 						  F@_5, F@_6, TrUserData).
-
-decode_msg_ServerToImporterSubscribeAccepted(Bin,
-					     TrUserData) ->
-    dfp_read_field_def_ServerToImporterSubscribeAccepted(Bin,
-							 0, 0, TrUserData).
-
-dfp_read_field_def_ServerToImporterSubscribeAccepted(<<>>,
-						     0, 0, _) ->
-    #'ServerToImporterSubscribeAccepted'{};
-dfp_read_field_def_ServerToImporterSubscribeAccepted(Other,
-						     Z1, Z2, TrUserData) ->
-    dg_read_field_def_ServerToImporterSubscribeAccepted(Other,
-							Z1, Z2, TrUserData).
-
-dg_read_field_def_ServerToImporterSubscribeAccepted(<<1:1,
-						      X:7, Rest/binary>>,
-						    N, Acc, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_ServerToImporterSubscribeAccepted(Rest,
-							N + 7, X bsl N + Acc,
-							TrUserData);
-dg_read_field_def_ServerToImporterSubscribeAccepted(<<0:1,
-						      X:7, Rest/binary>>,
-						    N, Acc, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key band 7 of
-      0 ->
-	  skip_varint_ServerToImporterSubscribeAccepted(Rest, 0,
-							0, TrUserData);
-      1 ->
-	  skip_64_ServerToImporterSubscribeAccepted(Rest, 0, 0,
-						    TrUserData);
-      2 ->
-	  skip_length_delimited_ServerToImporterSubscribeAccepted(Rest,
-								  0, 0,
-								  TrUserData);
-      3 ->
-	  skip_group_ServerToImporterSubscribeAccepted(Rest,
-						       Key bsr 3, 0,
-						       TrUserData);
-      5 ->
-	  skip_32_ServerToImporterSubscribeAccepted(Rest, 0, 0,
-						    TrUserData)
-    end;
-dg_read_field_def_ServerToImporterSubscribeAccepted(<<>>,
-						    0, 0, _) ->
-    #'ServerToImporterSubscribeAccepted'{}.
-
-skip_varint_ServerToImporterSubscribeAccepted(<<1:1,
-						_:7, Rest/binary>>,
-					      Z1, Z2, TrUserData) ->
-    skip_varint_ServerToImporterSubscribeAccepted(Rest, Z1,
-						  Z2, TrUserData);
-skip_varint_ServerToImporterSubscribeAccepted(<<0:1,
-						_:7, Rest/binary>>,
-					      Z1, Z2, TrUserData) ->
-    dfp_read_field_def_ServerToImporterSubscribeAccepted(Rest,
-							 Z1, Z2, TrUserData).
-
-skip_length_delimited_ServerToImporterSubscribeAccepted(<<1:1,
-							  X:7, Rest/binary>>,
-							N, Acc, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_ServerToImporterSubscribeAccepted(Rest,
-							    N + 7,
-							    X bsl N + Acc,
-							    TrUserData);
-skip_length_delimited_ServerToImporterSubscribeAccepted(<<0:1,
-							  X:7, Rest/binary>>,
-							N, Acc, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_ServerToImporterSubscribeAccepted(Rest2,
-							 0, 0, TrUserData).
-
-skip_group_ServerToImporterSubscribeAccepted(Bin, FNum,
-					     Z2, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_ServerToImporterSubscribeAccepted(Rest,
-							 0, Z2, TrUserData).
-
-skip_32_ServerToImporterSubscribeAccepted(<<_:32,
-					    Rest/binary>>,
-					  Z1, Z2, TrUserData) ->
-    dfp_read_field_def_ServerToImporterSubscribeAccepted(Rest,
-							 Z1, Z2, TrUserData).
-
-skip_64_ServerToImporterSubscribeAccepted(<<_:64,
-					    Rest/binary>>,
-					  Z1, Z2, TrUserData) ->
-    dfp_read_field_def_ServerToImporterSubscribeAccepted(Rest,
-							 Z1, Z2, TrUserData).
 
 decode_msg_ArbiterToServer(Bin, TrUserData) ->
     dfp_read_field_def_ArbiterToServer(Bin, 0, 0,
@@ -10714,9 +10555,6 @@ merge_msgs(Prev, New, MsgName, Opts) ->
       'ServerToImporterNewProduct' ->
 	  merge_msg_ServerToImporterNewProduct(Prev, New,
 					       TrUserData);
-      'ServerToImporterSubscribeAccepted' ->
-	  merge_msg_ServerToImporterSubscribeAccepted(Prev, New,
-						      TrUserData);
       'ArbiterToServer' ->
 	  merge_msg_ArbiterToServer(Prev, New, TrUserData);
       'ArbiterToServerAnnounceAccepted' ->
@@ -11056,12 +10894,6 @@ merge_msg_ServerToImporter(#'ServerToImporter'{message =
 				   merge_msg_ServerToImporterNewProduct(OPFmessage,
 									ONFmessage,
 									TrUserData)};
-			      {{subsAccepted, OPFmessage},
-			       {subsAccepted, ONFmessage}} ->
-				  {subsAccepted,
-				   merge_msg_ServerToImporterSubscribeAccepted(OPFmessage,
-									       ONFmessage,
-									       TrUserData)};
 			      {_, undefined} -> PFmessage;
 			      _ -> NFmessage
 			    end}.
@@ -11162,11 +10994,6 @@ merge_msg_ServerToImporterNewProduct(#'ServerToImporterNewProduct'{},
 				  minUnitPrice = NFminUnitPrice,
 				  timeout = NFtimeout,
 				  manufacturerName = NFmanufacturerName}.
-
--compile({nowarn_unused_function,merge_msg_ServerToImporterSubscribeAccepted/3}).
-merge_msg_ServerToImporterSubscribeAccepted(_Prev, New,
-					    _TrUserData) ->
-    New.
 
 -compile({nowarn_unused_function,merge_msg_ArbiterToServer/3}).
 merge_msg_ArbiterToServer(#'ArbiterToServer'{message =
@@ -11587,9 +11414,6 @@ verify_msg(Msg, MsgName, Opts) ->
       'ServerToImporterNewProduct' ->
 	  v_msg_ServerToImporterNewProduct(Msg, [MsgName],
 					   TrUserData);
-      'ServerToImporterSubscribeAccepted' ->
-	  v_msg_ServerToImporterSubscribeAccepted(Msg, [MsgName],
-						  TrUserData);
       'ArbiterToServer' ->
 	  v_msg_ArbiterToServer(Msg, [MsgName], TrUserData);
       'ArbiterToServerAnnounceAccepted' ->
@@ -11934,11 +11758,6 @@ v_msg_ServerToImporter(#'ServerToImporter'{message =
 	  v_msg_ServerToImporterNewProduct(OF1,
 					   [newProduct, message | Path],
 					   TrUserData);
-      {subsAccepted, OF1} ->
-	  v_msg_ServerToImporterSubscribeAccepted(OF1,
-						  [subsAccepted, message
-						   | Path],
-						  TrUserData);
       _ -> mk_type_error(invalid_oneof, F1, [message | Path])
     end,
     ok;
@@ -12059,17 +11878,6 @@ v_msg_ServerToImporterNewProduct(X, Path,
 				 _TrUserData) ->
     mk_type_error({expected_msg,
 		   'ServerToImporterNewProduct'},
-		  X, Path).
-
--compile({nowarn_unused_function,v_msg_ServerToImporterSubscribeAccepted/3}).
--dialyzer({nowarn_function,v_msg_ServerToImporterSubscribeAccepted/3}).
-v_msg_ServerToImporterSubscribeAccepted(#'ServerToImporterSubscribeAccepted'{},
-					_Path, _) ->
-    ok;
-v_msg_ServerToImporterSubscribeAccepted(X, Path,
-					_TrUserData) ->
-    mk_type_error({expected_msg,
-		   'ServerToImporterSubscribeAccepted'},
 		  X, Path).
 
 -compile({nowarn_unused_function,v_msg_ArbiterToServer/3}).
@@ -12679,9 +12487,6 @@ get_msg_defs() ->
 			      occurrence = optional, opts = []},
 		       #field{name = newProduct, fnum = 6, rnum = 2,
 			      type = {msg, 'ServerToImporterNewProduct'},
-			      occurrence = optional, opts = []},
-		       #field{name = subsAccepted, fnum = 7, rnum = 2,
-			      type = {msg, 'ServerToImporterSubscribeAccepted'},
 			      occurrence = optional, opts = []}]}]},
      {{msg, 'ServerToImporterOfferSubmitted'},
       [#field{name = manufacturerName, fnum = 1, rnum = 2,
@@ -12727,7 +12532,6 @@ get_msg_defs() ->
 	      occurrence = required, opts = []},
        #field{name = manufacturerName, fnum = 6, rnum = 7,
 	      type = string, occurrence = required, opts = []}]},
-     {{msg, 'ServerToImporterSubscribeAccepted'}, []},
      {{msg, 'ArbiterToServer'},
       [#gpb_oneof{name = message, rnum = 2,
 		  fields =
@@ -12905,8 +12709,7 @@ get_msg_names() ->
      'ServerToImporterOfferInvalid',
      'ServerToImporterOfferWon', 'ServerToImporterOfferLose',
      'ServerToImporterOfferOutdated',
-     'ServerToImporterNewProduct',
-     'ServerToImporterSubscribeAccepted', 'ArbiterToServer',
+     'ServerToImporterNewProduct', 'ArbiterToServer',
      'ArbiterToServerAnnounceAccepted',
      'ArbiterToServerAnnounceInvalid',
      'ArbiterToServerAnnounceSold',
@@ -12937,8 +12740,7 @@ get_msg_or_group_names() ->
      'ServerToImporterOfferInvalid',
      'ServerToImporterOfferWon', 'ServerToImporterOfferLose',
      'ServerToImporterOfferOutdated',
-     'ServerToImporterNewProduct',
-     'ServerToImporterSubscribeAccepted', 'ArbiterToServer',
+     'ServerToImporterNewProduct', 'ArbiterToServer',
      'ArbiterToServerAnnounceAccepted',
      'ArbiterToServerAnnounceInvalid',
      'ArbiterToServerAnnounceSold',
@@ -13097,9 +12899,6 @@ find_msg_def('ServerToImporter') ->
 			    occurrence = optional, opts = []},
 		     #field{name = newProduct, fnum = 6, rnum = 2,
 			    type = {msg, 'ServerToImporterNewProduct'},
-			    occurrence = optional, opts = []},
-		     #field{name = subsAccepted, fnum = 7, rnum = 2,
-			    type = {msg, 'ServerToImporterSubscribeAccepted'},
 			    occurrence = optional, opts = []}]}];
 find_msg_def('ServerToImporterOfferSubmitted') ->
     [#field{name = manufacturerName, fnum = 1, rnum = 2,
@@ -13145,7 +12944,6 @@ find_msg_def('ServerToImporterNewProduct') ->
 	    occurrence = required, opts = []},
      #field{name = manufacturerName, fnum = 6, rnum = 7,
 	    type = string, occurrence = required, opts = []}];
-find_msg_def('ServerToImporterSubscribeAccepted') -> [];
 find_msg_def('ArbiterToServer') ->
     [#gpb_oneof{name = message, rnum = 2,
 		fields =
@@ -13413,8 +13211,6 @@ fqbin_to_msg_name(<<"nefit.ServerToImporterOfferOutdated">>) ->
     'ServerToImporterOfferOutdated';
 fqbin_to_msg_name(<<"nefit.ServerToImporterNewProduct">>) ->
     'ServerToImporterNewProduct';
-fqbin_to_msg_name(<<"nefit.ServerToImporterSubscribeAccepted">>) ->
-    'ServerToImporterSubscribeAccepted';
 fqbin_to_msg_name(<<"nefit.ArbiterToServer">>) -> 'ArbiterToServer';
 fqbin_to_msg_name(<<"nefit.ArbiterToServerAnnounceAccepted">>) ->
     'ArbiterToServerAnnounceAccepted';
@@ -13478,8 +13274,6 @@ msg_name_to_fqbin('ServerToImporterOfferOutdated') ->
     <<"nefit.ServerToImporterOfferOutdated">>;
 msg_name_to_fqbin('ServerToImporterNewProduct') ->
     <<"nefit.ServerToImporterNewProduct">>;
-msg_name_to_fqbin('ServerToImporterSubscribeAccepted') ->
-    <<"nefit.ServerToImporterSubscribeAccepted">>;
 msg_name_to_fqbin('ArbiterToServer') -> <<"nefit.ArbiterToServer">>;
 msg_name_to_fqbin('ArbiterToServerAnnounceAccepted') ->
     <<"nefit.ArbiterToServerAnnounceAccepted">>;
@@ -13570,9 +13364,8 @@ get_msg_containment("nefit") ->
      'ServerToImporterOfferLose',
      'ServerToImporterOfferOutdated',
      'ServerToImporterOfferSubmitted',
-     'ServerToImporterOfferWon',
-     'ServerToImporterSubscribeAccepted',
-     'ServerToManufacturer', 'ServerToManufacturerAnnounced',
+     'ServerToImporterOfferWon', 'ServerToManufacturer',
+     'ServerToManufacturerAnnounced',
      'ServerToManufacturerInvalid',
      'ServerToManufacturerNoOffers',
      'ServerToManufacturerSold'];
@@ -13615,7 +13408,6 @@ get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerAnnounceNoOffers">>) -> "
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturerSold">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturerInvalid">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturerAnnounced">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterSubscribeAccepted">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferSubmitted">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferOutdated">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferInvalid">>) -> "nefit";

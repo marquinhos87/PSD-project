@@ -126,7 +126,7 @@
 -ifndef('SERVERTOIMPORTER_PB_H').
 -define('SERVERTOIMPORTER_PB_H', true).
 -record('ServerToImporter',
-        {message                :: {offerSubmitted, nefitproto:'ServerToImporterOfferSubmitted'()} | {offerInvalid, nefitproto:'ServerToImporterOfferInvalid'()} | {offerWon, nefitproto:'ServerToImporterOfferWon'()} | {offerLose, nefitproto:'ServerToImporterOfferLose'()} | {offerOutdated, nefitproto:'ServerToImporterOfferOutdated'()} | {newProduct, nefitproto:'ServerToImporterNewProduct'()} | {subsAccepted, nefitproto:'ServerToImporterSubscribeAccepted'()} | undefined % oneof
+        {message                :: {offerSubmitted, nefitproto:'ServerToImporterOfferSubmitted'()} | {offerInvalid, nefitproto:'ServerToImporterOfferInvalid'()} | {offerWon, nefitproto:'ServerToImporterOfferWon'()} | {offerLose, nefitproto:'ServerToImporterOfferLose'()} | {offerOutdated, nefitproto:'ServerToImporterOfferOutdated'()} | {newProduct, nefitproto:'ServerToImporterNewProduct'()} | undefined % oneof
         }).
 -endif.
 
@@ -182,13 +182,6 @@
          minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 4
          timeout                :: integer(),       % = 5, 32 bits
          manufacturerName       :: iodata()         % = 6
-        }).
--endif.
-
--ifndef('SERVERTOIMPORTERSUBSCRIBEACCEPTED_PB_H').
--define('SERVERTOIMPORTERSUBSCRIBEACCEPTED_PB_H', true).
--record('ServerToImporterSubscribeAccepted',
-        {
         }).
 -endif.
 

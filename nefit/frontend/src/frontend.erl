@@ -72,18 +72,17 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
     %Check
         {order, Manuf, Product, Quant, Value, Imp} ->
             Msg = #'ServerToArbiterOffer'{
-                importerName = Manuf,
+                manufacturerName = Manuf,
                 productName = Product,
                 quantity = Quant,
                 unitPrice = Value,
                 importerName = Imp},
-            MsgN = #'ServerToArbiter'{message = Msg},
-            Aux = string:concat(Manuf, Product),
+            MsgN = #'ServerToArbiter'{message = {offer,Msg}},
+            Aux = string:concat(string:concat(Manuf, Product),"\n"),
             Str = binary:list_to_bin(Aux),
-            Tam = string:length(Aux),
             %Neste momento rebenta por causa do Tam
             M = nefitproto:encode_msg(MsgN),
-            Mensagem = [Tam,Str, M],
+            Mensagem = [Str ,M],
             chumak:send(Socket, Mensagem),
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos + 1);
 
@@ -193,12 +192,6 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
                 timeout = T},
             Pid = maps:get(I, ConnectedUsers),
             Pid ! {product, Msg},
-            globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
-
-        {subsAccepted, I} ->
-            Msg = #'ServerToImporterSubscribeAccepted'{},
-            Pid = maps:get(I, ConnectedUsers),
-            Pid ! {subsAccepetd, Msg},
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
 
     % Add new Arbiter to the Arbiters Map
@@ -315,12 +308,6 @@ arbiter(Sock, State) ->
                         Message#'ArbiterToServerNewProduct'.minUnitPrice,
                         Message#'ArbiterToServerNewProduct'.timeout,
                         Message#'ArbiterToServerNewProduct'.importerName
-                        },
-                    arbiter(Sock, State);
-%check
-                {subsAccepted, Message} ->
-                    State ! {subsAccepted,
-                        Message#'ArbiterToServerSubscribeAccepted'.importerName
                         },
                     arbiter(Sock, State)
             end;
@@ -472,12 +459,6 @@ importer(Sock, State) ->
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
-%check
-        {subsAccepted, Msg} ->
-            MsgI = #'ServerToImporter'{message = {subsAccepted, Msg}},
-            M = nefitproto:encode_msg(MsgI),
-            gen_tcp:send(Sock, M),
-            importer(Sock, State);
 
     % Send Message to GlobalState Actor to be disconnect
         {tcp_closed, _} ->
@@ -498,14 +479,14 @@ connectedClient(Sock, State) ->
             case Msg#'ClientToServer'.message of
 %check
                 % Send Message to GlobalState Actor to Client make register
-                {'ClientToServerRegister', M} ->
+                {register, M} ->
                     State ! {self(),
                         register,
                         M#'ClientToServerRegister'.username,
                         M#'ClientToServerRegister'.password};
 %check
                 % Send Message to GlobalState Actor to Client make login
-                {'ClientToServerLogin',M} ->
+                {login,M} ->
                     State ! {self(),
                         login,
                         M#'ClientToServerLogin'.username,

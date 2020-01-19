@@ -5932,6 +5932,12 @@ public final class NefitProto {
           return false;
         }
       }
+      if (hasInvalid()) {
+        if (!getInvalid().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasNoOffers()) {
         if (!getNoOffers().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -6326,6 +6332,11 @@ public final class NefitProto {
       public final boolean isInitialized() {
         if (hasAnnounced()) {
           if (!getAnnounced().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasInvalid()) {
+          if (!getInvalid().isInitialized()) {
             return false;
           }
         }
@@ -7611,6 +7622,23 @@ public final class NefitProto {
      */
     com.google.protobuf.ByteString
         getErrorMessageBytes();
+
+    /**
+     * <code>required string productName = 2;</code>
+     * @return Whether the productName field is set.
+     */
+    boolean hasProductName();
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The productName.
+     */
+    java.lang.String getProductName();
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The bytes for productName.
+     */
+    com.google.protobuf.ByteString
+        getProductNameBytes();
   }
   /**
    * Protobuf type {@code nefit.ServerToManufacturerInvalid}
@@ -7626,6 +7654,7 @@ public final class NefitProto {
     }
     private ServerToManufacturerInvalid() {
       errorMessage_ = "";
+      productName_ = "";
     }
 
     @java.lang.Override
@@ -7663,6 +7692,12 @@ public final class NefitProto {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
               errorMessage_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              productName_ = bs;
               break;
             }
             default: {
@@ -7743,6 +7778,51 @@ public final class NefitProto {
       }
     }
 
+    public static final int PRODUCTNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object productName_;
+    /**
+     * <code>required string productName = 2;</code>
+     * @return Whether the productName field is set.
+     */
+    public boolean hasProductName() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The productName.
+     */
+    public java.lang.String getProductName() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          productName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The bytes for productName.
+     */
+    public com.google.protobuf.ByteString
+        getProductNameBytes() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        productName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7750,6 +7830,10 @@ public final class NefitProto {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasProductName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7759,6 +7843,9 @@ public final class NefitProto {
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, errorMessage_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, productName_);
       }
       unknownFields.writeTo(output);
     }
@@ -7771,6 +7858,9 @@ public final class NefitProto {
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, errorMessage_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, productName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7792,6 +7882,11 @@ public final class NefitProto {
         if (!getErrorMessage()
             .equals(other.getErrorMessage())) return false;
       }
+      if (hasProductName() != other.hasProductName()) return false;
+      if (hasProductName()) {
+        if (!getProductName()
+            .equals(other.getProductName())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7806,6 +7901,10 @@ public final class NefitProto {
       if (hasErrorMessage()) {
         hash = (37 * hash) + ERRORMESSAGE_FIELD_NUMBER;
         hash = (53 * hash) + getErrorMessage().hashCode();
+      }
+      if (hasProductName()) {
+        hash = (37 * hash) + PRODUCTNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getProductName().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -7942,6 +8041,8 @@ public final class NefitProto {
         super.clear();
         errorMessage_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        productName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -7974,6 +8075,10 @@ public final class NefitProto {
           to_bitField0_ |= 0x00000001;
         }
         result.errorMessage_ = errorMessage_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.productName_ = productName_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8028,6 +8133,11 @@ public final class NefitProto {
           errorMessage_ = other.errorMessage_;
           onChanged();
         }
+        if (other.hasProductName()) {
+          bitField0_ |= 0x00000002;
+          productName_ = other.productName_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -8035,6 +8145,9 @@ public final class NefitProto {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasProductName()) {
+          return false;
+        }
         return true;
       }
 
@@ -8138,6 +8251,90 @@ public final class NefitProto {
   }
   bitField0_ |= 0x00000001;
         errorMessage_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object productName_ = "";
+      /**
+       * <code>required string productName = 2;</code>
+       * @return Whether the productName field is set.
+       */
+      public boolean hasProductName() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @return The productName.
+       */
+      public java.lang.String getProductName() {
+        java.lang.Object ref = productName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            productName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @return The bytes for productName.
+       */
+      public com.google.protobuf.ByteString
+          getProductNameBytes() {
+        java.lang.Object ref = productName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          productName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @param value The productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        productName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProductName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        productName_ = getDefaultInstance().getProductName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @param value The bytes for productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        productName_ = value;
         onChanged();
         return this;
       }
@@ -12691,21 +12888,6 @@ public final class NefitProto {
      */
     nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder getNewProductOrBuilder();
 
-    /**
-     * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-     * @return Whether the subAcccepted field is set.
-     */
-    boolean hasSubAcccepted();
-    /**
-     * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-     * @return The subAcccepted.
-     */
-    nefit.shared.NefitProto.ServerToImporterSubscribeAccepted getSubAcccepted();
-    /**
-     * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-     */
-    nefit.shared.NefitProto.ServerToImporterSubscribeAcceptedOrBuilder getSubAccceptedOrBuilder();
-
     public nefit.shared.NefitProto.ServerToImporter.MessageCase getMessageCase();
   }
   /**
@@ -12838,20 +13020,6 @@ public final class NefitProto {
               messageCase_ = 6;
               break;
             }
-            case 58: {
-              nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder subBuilder = null;
-              if (messageCase_ == 7) {
-                subBuilder = ((nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_).toBuilder();
-              }
-              message_ =
-                  input.readMessage(nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_);
-                message_ = subBuilder.buildPartial();
-              }
-              messageCase_ = 7;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -12896,7 +13064,6 @@ public final class NefitProto {
       OFFERLOSE(4),
       OFFEROUTDATED(5),
       NEWPRODUCT(6),
-      SUBACCCEPTED(7),
       MESSAGE_NOT_SET(0);
       private final int value;
       private MessageCase(int value) {
@@ -12920,7 +13087,6 @@ public final class NefitProto {
           case 4: return OFFERLOSE;
           case 5: return OFFEROUTDATED;
           case 6: return NEWPRODUCT;
-          case 7: return SUBACCCEPTED;
           case 0: return MESSAGE_NOT_SET;
           default: return null;
         }
@@ -13104,34 +13270,6 @@ public final class NefitProto {
       return nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
     }
 
-    public static final int SUBACCCEPTED_FIELD_NUMBER = 7;
-    /**
-     * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-     * @return Whether the subAcccepted field is set.
-     */
-    public boolean hasSubAcccepted() {
-      return messageCase_ == 7;
-    }
-    /**
-     * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-     * @return The subAcccepted.
-     */
-    public nefit.shared.NefitProto.ServerToImporterSubscribeAccepted getSubAcccepted() {
-      if (messageCase_ == 7) {
-         return (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_;
-      }
-      return nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance();
-    }
-    /**
-     * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-     */
-    public nefit.shared.NefitProto.ServerToImporterSubscribeAcceptedOrBuilder getSubAccceptedOrBuilder() {
-      if (messageCase_ == 7) {
-         return (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_;
-      }
-      return nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance();
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -13200,9 +13338,6 @@ public final class NefitProto {
       if (messageCase_ == 6) {
         output.writeMessage(6, (nefit.shared.NefitProto.ServerToImporterNewProduct) message_);
       }
-      if (messageCase_ == 7) {
-        output.writeMessage(7, (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -13235,10 +13370,6 @@ public final class NefitProto {
       if (messageCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, (nefit.shared.NefitProto.ServerToImporterNewProduct) message_);
-      }
-      if (messageCase_ == 7) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -13281,10 +13412,6 @@ public final class NefitProto {
           if (!getNewProduct()
               .equals(other.getNewProduct())) return false;
           break;
-        case 7:
-          if (!getSubAcccepted()
-              .equals(other.getSubAcccepted())) return false;
-          break;
         case 0:
         default:
       }
@@ -13323,10 +13450,6 @@ public final class NefitProto {
         case 6:
           hash = (37 * hash) + NEWPRODUCT_FIELD_NUMBER;
           hash = (53 * hash) + getNewProduct().hashCode();
-          break;
-        case 7:
-          hash = (37 * hash) + SUBACCCEPTED_FIELD_NUMBER;
-          hash = (53 * hash) + getSubAcccepted().hashCode();
           break;
         case 0:
         default:
@@ -13536,13 +13659,6 @@ public final class NefitProto {
             result.message_ = newProductBuilder_.build();
           }
         }
-        if (messageCase_ == 7) {
-          if (subAccceptedBuilder_ == null) {
-            result.message_ = message_;
-          } else {
-            result.message_ = subAccceptedBuilder_.build();
-          }
-        }
         result.bitField0_ = to_bitField0_;
         result.messageCase_ = messageCase_;
         onBuilt();
@@ -13616,10 +13732,6 @@ public final class NefitProto {
           }
           case NEWPRODUCT: {
             mergeNewProduct(other.getNewProduct());
-            break;
-          }
-          case SUBACCCEPTED: {
-            mergeSubAcccepted(other.getSubAcccepted());
             break;
           }
           case MESSAGE_NOT_SET: {
@@ -14527,144 +14639,6 @@ public final class NefitProto {
         messageCase_ = 6;
         onChanged();;
         return newProductBuilder_;
-      }
-
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProto.ServerToImporterSubscribeAccepted, nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder, nefit.shared.NefitProto.ServerToImporterSubscribeAcceptedOrBuilder> subAccceptedBuilder_;
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       * @return Whether the subAcccepted field is set.
-       */
-      public boolean hasSubAcccepted() {
-        return messageCase_ == 7;
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       * @return The subAcccepted.
-       */
-      public nefit.shared.NefitProto.ServerToImporterSubscribeAccepted getSubAcccepted() {
-        if (subAccceptedBuilder_ == null) {
-          if (messageCase_ == 7) {
-            return (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_;
-          }
-          return nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance();
-        } else {
-          if (messageCase_ == 7) {
-            return subAccceptedBuilder_.getMessage();
-          }
-          return nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       */
-      public Builder setSubAcccepted(nefit.shared.NefitProto.ServerToImporterSubscribeAccepted value) {
-        if (subAccceptedBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          message_ = value;
-          onChanged();
-        } else {
-          subAccceptedBuilder_.setMessage(value);
-        }
-        messageCase_ = 7;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       */
-      public Builder setSubAcccepted(
-          nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder builderForValue) {
-        if (subAccceptedBuilder_ == null) {
-          message_ = builderForValue.build();
-          onChanged();
-        } else {
-          subAccceptedBuilder_.setMessage(builderForValue.build());
-        }
-        messageCase_ = 7;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       */
-      public Builder mergeSubAcccepted(nefit.shared.NefitProto.ServerToImporterSubscribeAccepted value) {
-        if (subAccceptedBuilder_ == null) {
-          if (messageCase_ == 7 &&
-              message_ != nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance()) {
-            message_ = nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.newBuilder((nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            message_ = value;
-          }
-          onChanged();
-        } else {
-          if (messageCase_ == 7) {
-            subAccceptedBuilder_.mergeFrom(value);
-          }
-          subAccceptedBuilder_.setMessage(value);
-        }
-        messageCase_ = 7;
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       */
-      public Builder clearSubAcccepted() {
-        if (subAccceptedBuilder_ == null) {
-          if (messageCase_ == 7) {
-            messageCase_ = 0;
-            message_ = null;
-            onChanged();
-          }
-        } else {
-          if (messageCase_ == 7) {
-            messageCase_ = 0;
-            message_ = null;
-          }
-          subAccceptedBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       */
-      public nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder getSubAccceptedBuilder() {
-        return getSubAccceptedFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       */
-      public nefit.shared.NefitProto.ServerToImporterSubscribeAcceptedOrBuilder getSubAccceptedOrBuilder() {
-        if ((messageCase_ == 7) && (subAccceptedBuilder_ != null)) {
-          return subAccceptedBuilder_.getMessageOrBuilder();
-        } else {
-          if (messageCase_ == 7) {
-            return (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_;
-          }
-          return nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>optional .nefit.ServerToImporterSubscribeAccepted subAcccepted = 7;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProto.ServerToImporterSubscribeAccepted, nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder, nefit.shared.NefitProto.ServerToImporterSubscribeAcceptedOrBuilder> 
-          getSubAccceptedFieldBuilder() {
-        if (subAccceptedBuilder_ == null) {
-          if (!(messageCase_ == 7)) {
-            message_ = nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance();
-          }
-          subAccceptedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProto.ServerToImporterSubscribeAccepted, nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder, nefit.shared.NefitProto.ServerToImporterSubscribeAcceptedOrBuilder>(
-                  (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) message_,
-                  getParentForChildren(),
-                  isClean());
-          message_ = null;
-        }
-        messageCase_ = 7;
-        onChanged();;
-        return subAccceptedBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -20292,424 +20266,6 @@ public final class NefitProto {
 
     @java.lang.Override
     public nefit.shared.NefitProto.ServerToImporterNewProduct getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ServerToImporterSubscribeAcceptedOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.ServerToImporterSubscribeAccepted)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code nefit.ServerToImporterSubscribeAccepted}
-   */
-  public  static final class ServerToImporterSubscribeAccepted extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.ServerToImporterSubscribeAccepted)
-      ServerToImporterSubscribeAcceptedOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ServerToImporterSubscribeAccepted.newBuilder() to construct.
-    private ServerToImporterSubscribeAccepted(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ServerToImporterSubscribeAccepted() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ServerToImporterSubscribeAccepted();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ServerToImporterSubscribeAccepted(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterSubscribeAccepted_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterSubscribeAccepted_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.class, nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof nefit.shared.NefitProto.ServerToImporterSubscribeAccepted)) {
-        return super.equals(obj);
-      }
-      nefit.shared.NefitProto.ServerToImporterSubscribeAccepted other = (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) obj;
-
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(nefit.shared.NefitProto.ServerToImporterSubscribeAccepted prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code nefit.ServerToImporterSubscribeAccepted}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.ServerToImporterSubscribeAccepted)
-        nefit.shared.NefitProto.ServerToImporterSubscribeAcceptedOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterSubscribeAccepted_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterSubscribeAccepted_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.class, nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.Builder.class);
-      }
-
-      // Construct using nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterSubscribeAccepted_descriptor;
-      }
-
-      @java.lang.Override
-      public nefit.shared.NefitProto.ServerToImporterSubscribeAccepted getDefaultInstanceForType() {
-        return nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public nefit.shared.NefitProto.ServerToImporterSubscribeAccepted build() {
-        nefit.shared.NefitProto.ServerToImporterSubscribeAccepted result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public nefit.shared.NefitProto.ServerToImporterSubscribeAccepted buildPartial() {
-        nefit.shared.NefitProto.ServerToImporterSubscribeAccepted result = new nefit.shared.NefitProto.ServerToImporterSubscribeAccepted(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) {
-          return mergeFrom((nefit.shared.NefitProto.ServerToImporterSubscribeAccepted)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(nefit.shared.NefitProto.ServerToImporterSubscribeAccepted other) {
-        if (other == nefit.shared.NefitProto.ServerToImporterSubscribeAccepted.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        nefit.shared.NefitProto.ServerToImporterSubscribeAccepted parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProto.ServerToImporterSubscribeAccepted) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:nefit.ServerToImporterSubscribeAccepted)
-    }
-
-    // @@protoc_insertion_point(class_scope:nefit.ServerToImporterSubscribeAccepted)
-    private static final nefit.shared.NefitProto.ServerToImporterSubscribeAccepted DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ServerToImporterSubscribeAccepted();
-    }
-
-    public static nefit.shared.NefitProto.ServerToImporterSubscribeAccepted getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ServerToImporterSubscribeAccepted>
-        PARSER = new com.google.protobuf.AbstractParser<ServerToImporterSubscribeAccepted>() {
-      @java.lang.Override
-      public ServerToImporterSubscribeAccepted parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ServerToImporterSubscribeAccepted(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ServerToImporterSubscribeAccepted> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ServerToImporterSubscribeAccepted> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public nefit.shared.NefitProto.ServerToImporterSubscribeAccepted getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -39187,11 +38743,6 @@ public final class NefitProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ServerToImporterNewProduct_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_nefit_ServerToImporterSubscribeAccepted_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_nefit_ServerToImporterSubscribeAccepted_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ArbiterToServer_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -39304,109 +38855,107 @@ public final class NefitProto {
       "oOffersH\000\022/\n\004sold\030\004 \001(\0132\037.nefit.ServerTo" +
       "ManufacturerSoldH\000B\t\n\007message\"4\n\035ServerT" +
       "oManufacturerAnnounced\022\023\n\013productName\030\001 " +
-      "\002(\t\"3\n\033ServerToManufacturerInvalid\022\024\n\014er" +
-      "rorMessage\030\001 \001(\t\"3\n\034ServerToManufacturer" +
-      "NoOffers\022\023\n\013productName\030\001 \002(\t\"T\n\030ServerT" +
-      "oManufacturerSold\022\023\n\013productName\030\001 \002(\t\022\020" +
-      "\n\010quantity\030\002 \002(\005\022\021\n\tunitPrice\030\003 \002(\002\"\203\001\n\020" +
-      "ImporterToServer\0225\n\tsubscribe\030\001 \001(\0132 .ne" +
-      "fit.ImporterToServerSubscribeH\000\022-\n\005offer" +
-      "\030\002 \001(\0132\034.nefit.ImporterToServerOfferH\000B\t" +
-      "\n\007message\"L\n\031ImporterToServerSubscribe\022\031" +
-      "\n\021manufacturerNames\030\001 \003(\t\022\024\n\014importerNam" +
-      "e\030\002 \002(\t\"\201\001\n\025ImporterToServerOffer\022\030\n\020man" +
-      "ufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t" +
-      "\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002\022\024\n" +
-      "\014importerName\030\005 \002(\t\"\301\003\n\020ServerToImporter" +
-      "\022?\n\016offerSubmitted\030\001 \001(\0132%.nefit.ServerT" +
-      "oImporterOfferSubmittedH\000\022;\n\014offerInvali" +
-      "d\030\002 \001(\0132#.nefit.ServerToImporterOfferInv" +
-      "alidH\000\0223\n\010offerWon\030\003 \001(\0132\037.nefit.ServerT" +
-      "oImporterOfferWonH\000\0225\n\tofferLose\030\004 \001(\0132 " +
-      ".nefit.ServerToImporterOfferLoseH\000\022=\n\rof" +
-      "ferOutdated\030\005 \001(\0132$.nefit.ServerToImport" +
-      "erOfferOutdatedH\000\0227\n\nnewProduct\030\006 \001(\0132!." +
-      "nefit.ServerToImporterNewProductH\000\022@\n\014su" +
-      "bAcccepted\030\007 \001(\0132(.nefit.ServerToImporte" +
-      "rSubscribeAcceptedH\000B\t\n\007message\"O\n\036Serve" +
-      "rToImporterOfferSubmitted\022\030\n\020manufacture" +
-      "rName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"c\n\034Serv" +
-      "erToImporterOfferInvalid\022\030\n\020manufacturer" +
-      "Name\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\024\n\014error" +
-      "Message\030\003 \002(\t\"n\n\030ServerToImporterOfferWo" +
-      "n\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013productNa" +
-      "me\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030" +
-      "\004 \002(\002\"J\n\031ServerToImporterOfferLose\022\030\n\020ma" +
-      "nufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(" +
-      "\t\"N\n\035ServerToImporterOfferOutdated\022\030\n\020ma" +
-      "nufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(" +
-      "\t\"\234\001\n\032ServerToImporterNewProduct\022\023\n\013prod" +
-      "uctName\030\001 \002(\t\022\023\n\013minQuantity\030\002 \002(\005\022\023\n\013ma" +
-      "xQuantity\030\003 \002(\005\022\024\n\014minUnitPrice\030\004 \002(\002\022\017\n" +
-      "\007timeout\030\005 \002(\005\022\030\n\020manufacturerName\030\006 \002(\t" +
-      "\"#\n!ServerToImporterSubscribeAccepted\"\225\005" +
-      "\n\017ArbiterToServer\022:\n\010accepted\030\001 \001(\0132&.ne" +
-      "fit.ArbiterToServerAnnounceAcceptedH\000\022@\n" +
-      "\017announceInvalid\030\002 \001(\0132%.nefit.ArbiterTo" +
-      "ServerAnnounceInvalidH\000\0222\n\004sold\030\003 \001(\0132\"." +
-      "nefit.ArbiterToServerAnnounceSoldH\000\022:\n\010n" +
-      "oOffers\030\004 \001(\0132&.nefit.ArbiterToServerAnn" +
-      "ounceNoOffersH\000\0229\n\tsubmitted\030\005 \001(\0132$.nef" +
-      "it.ArbiterToServerOfferSubmittedH\000\022:\n\014of" +
-      "ferInvalid\030\006 \001(\0132\".nefit.ArbiterToServer" +
-      "OfferInvalidH\000\022-\n\003won\030\007 \001(\0132\036.nefit.Arbi" +
-      "terToServerOfferWonH\000\022/\n\004lose\030\010 \001(\0132\037.ne" +
-      "fit.ArbiterToServerOfferLoseH\000\022<\n\rofferO" +
-      "utdated\030\t \001(\0132#.nefit.ArbiterToServerOff" +
-      "erOutdatedH\000\0223\n\007product\030\n \001(\0132 .nefit.Ar" +
-      "biterToServerNewProductH\000\022?\n\014subsAccepte" +
-      "d\030\013 \001(\0132\'.nefit.ArbiterToServerSubscribe" +
-      "AcceptedH\000B\t\n\007message\"P\n\037ArbiterToServer" +
-      "AnnounceAccepted\022\030\n\020manufacturerName\030\001 \002" +
-      "(\t\022\023\n\013productName\030\002 \002(\t\"e\n\036ArbiterToServ" +
-      "erAnnounceInvalid\022\030\n\020manufacturerName\030\001 " +
-      "\002(\t\022\023\n\013productName\030\002 \002(\t\022\024\n\014errorMessage" +
-      "\030\003 \002(\t\"q\n\033ArbiterToServerAnnounceSold\022\030\n" +
-      "\020manufacturerName\030\001 \002(\t\022\023\n\013productName\030\002" +
-      " \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(" +
-      "\002\"P\n\037ArbiterToServerAnnounceNoOffers\022\030\n\020" +
+      "\002(\t\"H\n\033ServerToManufacturerInvalid\022\024\n\014er" +
+      "rorMessage\030\001 \001(\t\022\023\n\013productName\030\002 \002(\t\"3\n" +
+      "\034ServerToManufacturerNoOffers\022\023\n\013product" +
+      "Name\030\001 \002(\t\"T\n\030ServerToManufacturerSold\022\023" +
+      "\n\013productName\030\001 \002(\t\022\020\n\010quantity\030\002 \002(\005\022\021\n" +
+      "\tunitPrice\030\003 \002(\002\"\203\001\n\020ImporterToServer\0225\n" +
+      "\tsubscribe\030\001 \001(\0132 .nefit.ImporterToServe" +
+      "rSubscribeH\000\022-\n\005offer\030\002 \001(\0132\034.nefit.Impo" +
+      "rterToServerOfferH\000B\t\n\007message\"L\n\031Import" +
+      "erToServerSubscribe\022\031\n\021manufacturerNames" +
+      "\030\001 \003(\t\022\024\n\014importerName\030\002 \002(\t\"\201\001\n\025Importe" +
+      "rToServerOffer\022\030\n\020manufacturerName\030\001 \002(\t" +
+      "\022\023\n\013productName\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022" +
+      "\021\n\tunitPrice\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t" +
+      "\"\377\002\n\020ServerToImporter\022?\n\016offerSubmitted\030" +
+      "\001 \001(\0132%.nefit.ServerToImporterOfferSubmi" +
+      "ttedH\000\022;\n\014offerInvalid\030\002 \001(\0132#.nefit.Ser" +
+      "verToImporterOfferInvalidH\000\0223\n\010offerWon\030" +
+      "\003 \001(\0132\037.nefit.ServerToImporterOfferWonH\000" +
+      "\0225\n\tofferLose\030\004 \001(\0132 .nefit.ServerToImpo" +
+      "rterOfferLoseH\000\022=\n\rofferOutdated\030\005 \001(\0132$" +
+      ".nefit.ServerToImporterOfferOutdatedH\000\0227" +
+      "\n\nnewProduct\030\006 \001(\0132!.nefit.ServerToImpor" +
+      "terNewProductH\000B\t\n\007message\"O\n\036ServerToIm" +
+      "porterOfferSubmitted\022\030\n\020manufacturerName" +
+      "\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"c\n\034ServerToI" +
+      "mporterOfferInvalid\022\030\n\020manufacturerName\030" +
+      "\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\024\n\014errorMessa" +
+      "ge\030\003 \002(\t\"n\n\030ServerToImporterOfferWon\022\030\n\020" +
       "manufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 " +
-      "\002(\t\"d\n\035ArbiterToServerOfferSubmitted\022\024\n\014" +
-      "importerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022" +
-      "\030\n\020manufacturerName\030\003 \002(\t\"x\n\033ArbiterToSe" +
-      "rverOfferInvalid\022\024\n\014importerName\030\001 \002(\t\022\023" +
-      "\n\013productName\030\002 \002(\t\022\030\n\020manufacturerName\030" +
-      "\003 \002(\t\022\024\n\014errorMessage\030\004 \002(\t\"\203\001\n\027ArbiterT" +
-      "oServerOfferWon\022\024\n\014importerName\030\001 \002(\t\022\023\n" +
-      "\013productName\030\002 \002(\t\022\030\n\020manufacturerName\030\003" +
-      " \002(\t\022\020\n\010quantity\030\004 \002(\005\022\021\n\tunitPrice\030\005 \002(" +
-      "\002\"_\n\030ArbiterToServerOfferLose\022\024\n\014importe" +
-      "rName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\030\n\020manu" +
-      "facturerName\030\003 \002(\t\"c\n\034ArbiterToServerOff" +
-      "erOutdated\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013" +
-      "productName\030\002 \002(\t\022\024\n\014importerName\030\003 \002(\t\"" +
-      "\261\001\n\031ArbiterToServerNewProduct\022\030\n\020manufac" +
-      "turerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013" +
-      "minQuantity\030\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024" +
-      "\n\014minUnitPrice\030\005 \002(\002\022\017\n\007timeout\030\006 \002(\005\022\024\n" +
-      "\014importerName\030\007 \002(\t\"8\n ArbiterToServerSu" +
-      "bscribeAccepted\022\024\n\014importerName\030\001 \002(\t\"\264\001" +
-      "\n\017ServerToArbiter\022,\n\005offer\030\001 \001(\0132\033.nefit" +
-      ".ServerToArbiterOfferH\000\0222\n\010announce\030\002 \001(" +
-      "\0132\036.nefit.ServerToArbiterAnnounceH\000\0224\n\ts" +
-      "ubscribe\030\003 \001(\0132\037.nefit.ServerToArbiterSu" +
-      "bscribeH\000B\t\n\007message\"\200\001\n\024ServerToArbiter" +
-      "Offer\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013produ" +
-      "ctName\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPr" +
-      "ice\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t\"\230\001\n\027Serv" +
-      "erToArbiterAnnounce\022\030\n\020manufacturerName\030" +
-      "\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013minQuantit" +
-      "y\030\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitP" +
-      "rice\030\005 \002(\002\022\016\n\006timout\030\006 \002(\005\"K\n\030ServerToAr" +
-      "biterSubscribe\022\024\n\014importerName\030\001 \002(\t\022\031\n\021" +
-      "manufacturerNames\030\002 \003(\t*,\n\nClientType\022\014\n" +
-      "\010IMPORTER\020\000\022\020\n\014MANUFACTURER\020\001B\032\n\014nefit.s" +
-      "haredB\nNefitProto"
+      "\002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002" +
+      "\"J\n\031ServerToImporterOfferLose\022\030\n\020manufac" +
+      "turerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"N\n\035" +
+      "ServerToImporterOfferOutdated\022\030\n\020manufac" +
+      "turerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\"\234\001\n" +
+      "\032ServerToImporterNewProduct\022\023\n\013productNa" +
+      "me\030\001 \002(\t\022\023\n\013minQuantity\030\002 \002(\005\022\023\n\013maxQuan" +
+      "tity\030\003 \002(\005\022\024\n\014minUnitPrice\030\004 \002(\002\022\017\n\007time" +
+      "out\030\005 \002(\005\022\030\n\020manufacturerName\030\006 \002(\t\"\225\005\n\017" +
+      "ArbiterToServer\022:\n\010accepted\030\001 \001(\0132&.nefi" +
+      "t.ArbiterToServerAnnounceAcceptedH\000\022@\n\017a" +
+      "nnounceInvalid\030\002 \001(\0132%.nefit.ArbiterToSe" +
+      "rverAnnounceInvalidH\000\0222\n\004sold\030\003 \001(\0132\".ne" +
+      "fit.ArbiterToServerAnnounceSoldH\000\022:\n\010noO" +
+      "ffers\030\004 \001(\0132&.nefit.ArbiterToServerAnnou" +
+      "nceNoOffersH\000\0229\n\tsubmitted\030\005 \001(\0132$.nefit" +
+      ".ArbiterToServerOfferSubmittedH\000\022:\n\014offe" +
+      "rInvalid\030\006 \001(\0132\".nefit.ArbiterToServerOf" +
+      "ferInvalidH\000\022-\n\003won\030\007 \001(\0132\036.nefit.Arbite" +
+      "rToServerOfferWonH\000\022/\n\004lose\030\010 \001(\0132\037.nefi" +
+      "t.ArbiterToServerOfferLoseH\000\022<\n\rofferOut" +
+      "dated\030\t \001(\0132#.nefit.ArbiterToServerOffer" +
+      "OutdatedH\000\0223\n\007product\030\n \001(\0132 .nefit.Arbi" +
+      "terToServerNewProductH\000\022?\n\014subsAccepted\030" +
+      "\013 \001(\0132\'.nefit.ArbiterToServerSubscribeAc" +
+      "ceptedH\000B\t\n\007message\"P\n\037ArbiterToServerAn" +
+      "nounceAccepted\022\030\n\020manufacturerName\030\001 \002(\t" +
+      "\022\023\n\013productName\030\002 \002(\t\"e\n\036ArbiterToServer" +
+      "AnnounceInvalid\022\030\n\020manufacturerName\030\001 \002(" +
+      "\t\022\023\n\013productName\030\002 \002(\t\022\024\n\014errorMessage\030\003" +
+      " \002(\t\"q\n\033ArbiterToServerAnnounceSold\022\030\n\020m" +
+      "anufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002" +
+      "(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002\"" +
+      "P\n\037ArbiterToServerAnnounceNoOffers\022\030\n\020ma" +
+      "nufacturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(" +
+      "\t\"d\n\035ArbiterToServerOfferSubmitted\022\024\n\014im" +
+      "porterName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\030\n" +
+      "\020manufacturerName\030\003 \002(\t\"x\n\033ArbiterToServ" +
+      "erOfferInvalid\022\024\n\014importerName\030\001 \002(\t\022\023\n\013" +
+      "productName\030\002 \002(\t\022\030\n\020manufacturerName\030\003 " +
+      "\002(\t\022\024\n\014errorMessage\030\004 \002(\t\"\203\001\n\027ArbiterToS" +
+      "erverOfferWon\022\024\n\014importerName\030\001 \002(\t\022\023\n\013p" +
+      "roductName\030\002 \002(\t\022\030\n\020manufacturerName\030\003 \002" +
+      "(\t\022\020\n\010quantity\030\004 \002(\005\022\021\n\tunitPrice\030\005 \002(\002\"" +
+      "_\n\030ArbiterToServerOfferLose\022\024\n\014importerN" +
+      "ame\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\030\n\020manufa" +
+      "cturerName\030\003 \002(\t\"c\n\034ArbiterToServerOffer" +
+      "Outdated\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013pr" +
+      "oductName\030\002 \002(\t\022\024\n\014importerName\030\003 \002(\t\"\261\001" +
+      "\n\031ArbiterToServerNewProduct\022\030\n\020manufactu" +
+      "rerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013mi" +
+      "nQuantity\030\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014" +
+      "minUnitPrice\030\005 \002(\002\022\017\n\007timeout\030\006 \002(\005\022\024\n\014i" +
+      "mporterName\030\007 \002(\t\"8\n ArbiterToServerSubs" +
+      "cribeAccepted\022\024\n\014importerName\030\001 \002(\t\"\264\001\n\017" +
+      "ServerToArbiter\022,\n\005offer\030\001 \001(\0132\033.nefit.S" +
+      "erverToArbiterOfferH\000\0222\n\010announce\030\002 \001(\0132" +
+      "\036.nefit.ServerToArbiterAnnounceH\000\0224\n\tsub" +
+      "scribe\030\003 \001(\0132\037.nefit.ServerToArbiterSubs" +
+      "cribeH\000B\t\n\007message\"\200\001\n\024ServerToArbiterOf" +
+      "fer\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013product" +
+      "Name\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPric" +
+      "e\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t\"\230\001\n\027Server" +
+      "ToArbiterAnnounce\022\030\n\020manufacturerName\030\001 " +
+      "\002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013minQuantity\030" +
+      "\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitPri" +
+      "ce\030\005 \002(\002\022\016\n\006timout\030\006 \002(\005\"K\n\030ServerToArbi" +
+      "terSubscribe\022\024\n\014importerName\030\001 \002(\t\022\031\n\021ma" +
+      "nufacturerNames\030\002 \003(\t*,\n\nClientType\022\014\n\010I" +
+      "MPORTER\020\000\022\020\n\014MANUFACTURER\020\001B\032\n\014nefit.sha" +
+      "redB\nNefitProto"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -39465,7 +39014,7 @@ public final class NefitProto {
     internal_static_nefit_ServerToManufacturerInvalid_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToManufacturerInvalid_descriptor,
-        new java.lang.String[] { "ErrorMessage", });
+        new java.lang.String[] { "ErrorMessage", "ProductName", });
     internal_static_nefit_ServerToManufacturerNoOffers_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_nefit_ServerToManufacturerNoOffers_fieldAccessorTable = new
@@ -39501,7 +39050,7 @@ public final class NefitProto {
     internal_static_nefit_ServerToImporter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToImporter_descriptor,
-        new java.lang.String[] { "OfferSubmitted", "OfferInvalid", "OfferWon", "OfferLose", "OfferOutdated", "NewProduct", "SubAcccepted", "Message", });
+        new java.lang.String[] { "OfferSubmitted", "OfferInvalid", "OfferWon", "OfferLose", "OfferOutdated", "NewProduct", "Message", });
     internal_static_nefit_ServerToImporterOfferSubmitted_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_nefit_ServerToImporterOfferSubmitted_fieldAccessorTable = new
@@ -39538,104 +39087,98 @@ public final class NefitProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToImporterNewProduct_descriptor,
         new java.lang.String[] { "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timeout", "ManufacturerName", });
-    internal_static_nefit_ServerToImporterSubscribeAccepted_descriptor =
-      getDescriptor().getMessageTypes().get(21);
-    internal_static_nefit_ServerToImporterSubscribeAccepted_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_nefit_ServerToImporterSubscribeAccepted_descriptor,
-        new java.lang.String[] { });
     internal_static_nefit_ArbiterToServer_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_nefit_ArbiterToServer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServer_descriptor,
         new java.lang.String[] { "Accepted", "AnnounceInvalid", "Sold", "NoOffers", "Submitted", "OfferInvalid", "Won", "Lose", "OfferOutdated", "Product", "SubsAccepted", "Message", });
     internal_static_nefit_ArbiterToServerAnnounceAccepted_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_nefit_ArbiterToServerAnnounceAccepted_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerAnnounceAccepted_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", });
     internal_static_nefit_ArbiterToServerAnnounceInvalid_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_nefit_ArbiterToServerAnnounceInvalid_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerAnnounceInvalid_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", "ErrorMessage", });
     internal_static_nefit_ArbiterToServerAnnounceSold_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_nefit_ArbiterToServerAnnounceSold_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerAnnounceSold_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", "Quantity", "UnitPrice", });
     internal_static_nefit_ArbiterToServerAnnounceNoOffers_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_nefit_ArbiterToServerAnnounceNoOffers_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerAnnounceNoOffers_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", });
     internal_static_nefit_ArbiterToServerOfferSubmitted_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_nefit_ArbiterToServerOfferSubmitted_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerOfferSubmitted_descriptor,
         new java.lang.String[] { "ImporterName", "ProductName", "ManufacturerName", });
     internal_static_nefit_ArbiterToServerOfferInvalid_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_nefit_ArbiterToServerOfferInvalid_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerOfferInvalid_descriptor,
         new java.lang.String[] { "ImporterName", "ProductName", "ManufacturerName", "ErrorMessage", });
     internal_static_nefit_ArbiterToServerOfferWon_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_nefit_ArbiterToServerOfferWon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerOfferWon_descriptor,
         new java.lang.String[] { "ImporterName", "ProductName", "ManufacturerName", "Quantity", "UnitPrice", });
     internal_static_nefit_ArbiterToServerOfferLose_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_nefit_ArbiterToServerOfferLose_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerOfferLose_descriptor,
         new java.lang.String[] { "ImporterName", "ProductName", "ManufacturerName", });
     internal_static_nefit_ArbiterToServerOfferOutdated_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_nefit_ArbiterToServerOfferOutdated_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerOfferOutdated_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", "ImporterName", });
     internal_static_nefit_ArbiterToServerNewProduct_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_nefit_ArbiterToServerNewProduct_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerNewProduct_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timeout", "ImporterName", });
     internal_static_nefit_ArbiterToServerSubscribeAccepted_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_nefit_ArbiterToServerSubscribeAccepted_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerSubscribeAccepted_descriptor,
         new java.lang.String[] { "ImporterName", });
     internal_static_nefit_ServerToArbiter_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_nefit_ServerToArbiter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToArbiter_descriptor,
         new java.lang.String[] { "Offer", "Announce", "Subscribe", "Message", });
     internal_static_nefit_ServerToArbiterOffer_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_nefit_ServerToArbiterOffer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToArbiterOffer_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", "Quantity", "UnitPrice", "ImporterName", });
     internal_static_nefit_ServerToArbiterAnnounce_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_nefit_ServerToArbiterAnnounce_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToArbiterAnnounce_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timout", });
     internal_static_nefit_ServerToArbiterSubscribe_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_nefit_ServerToArbiterSubscribe_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToArbiterSubscribe_descriptor,
