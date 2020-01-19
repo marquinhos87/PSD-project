@@ -14,27 +14,43 @@ public class ProtoUtil
     {
     }
 
-    public static < T > T read(InputStream in, Parser< T > msgParser)
+    public static < T > T read(InputStream input, Parser< T > messageParser)
         throws IOException
     {
-        final var header = in.readNBytes(4);
+        // read message size
+
+        final var header = input.readNBytes(4);
         assert header.length == 4;
 
-        final var msgSize = ByteBuffer.wrap(header).getInt();
+        // decode message size
 
-        final var bytes = in.readNBytes(msgSize);
+        final var msgSize = ByteBuffer.wrap(header).getInt();
+        assert msgSize >= 0;
+
+        // read actual message
+
+        final var bytes = input.readNBytes(msgSize);
         assert bytes.length == msgSize;
 
-        return msgParser.parseFrom(bytes);
+        // decode actual message
+
+        return messageParser.parseFrom(bytes);
     }
 
-    public static void write(OutputStream out, MessageLite msg)
+    public static void write(OutputStream output, MessageLite message)
         throws IOException
     {
-        final var msgSize = msg.getSerializedSize();
+        // encode message size
+
+        final var msgSize = message.getSerializedSize();
         final var header = ByteBuffer.allocate(4).putInt(msgSize).array();
 
-        out.write(header);
-        msg.writeTo(out);
+        // write message size
+
+        output.write(header);
+
+        // encode and write actual message
+
+        message.writeTo(output);
     }
 }
