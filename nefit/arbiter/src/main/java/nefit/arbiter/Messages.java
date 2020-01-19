@@ -1,6 +1,6 @@
 package nefit.arbiter;
 
-import nefit.shared.NefitProtos;
+import nefit.shared.NefitProto;
 
 public class Messages {
 
@@ -13,17 +13,17 @@ public class Messages {
      * @param nameI Name of the Importer
      * @return Message with the Info of a proposed order
      */
-    public NefitProtos.OrderAckS createOrderAckS(Boolean ack, String msg, String nameI, Boolean outdated)
+    public NefitProto.OrderAckS createOrderAckS(Boolean ack, String msg, String nameI, Boolean outdated)
     {
         if(msg == null)
         {
-            return NefitProtos.OrderAckS.newBuilder()
+            return NefitProto.OrderAckS.newBuilder()
                 .setAck(ack)
                 .setNameI(nameI)
                 .setOutdated(outdated)
                 .build();
         }
-        return NefitProtos.OrderAckS.newBuilder()
+        return NefitProto.OrderAckS.newBuilder()
             .setAck(ack)
             .setMsg(msg)
             .setNameI(nameI)
@@ -39,9 +39,9 @@ public class Messages {
      * @param value Value per unit
      * @return Message with the Info to Manufacturer produce his Product
      */
-    public NefitProtos.ProductionS createProductionS(String nameM, String nameP, int quantity, float value)
+    public NefitProto.ProductionS createProductionS(String nameM, String nameP, int quantity, float value)
     {
-        return NefitProtos.ProductionS.newBuilder()
+        return NefitProto.ProductionS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
             .setQuant(quantity)
@@ -56,25 +56,25 @@ public class Messages {
      * @param nameI Name of the Importer
      * @return Message with the Result of one Negotiation
      */
-    public NefitProtos.ResultS createResultS(Boolean ack, String msg, String nameI)
+    public NefitProto.ResultS createResultS(Boolean ack, String msg, String nameI)
     {
         if(msg == null)
         {
-            return NefitProtos.ResultS.newBuilder()
+            return NefitProto.ResultS.newBuilder()
                 .setResult(ack)
                 .setNameI(nameI)
                 .build();
         }
-        return NefitProtos.ResultS.newBuilder()
+        return NefitProto.ResultS.newBuilder()
             .setResult(ack)
             .setMsg(msg)
             .setNameI(nameI)
             .build();
     }
 
-    public NefitProtos.InfoS createInfoS(String nameM, String nameP, int maximum, int minimum, float value, int period, String nameI)
+    public NefitProto.InfoS createInfoS(String nameM, String nameP, int maximum, int minimum, float value, int period, String nameI)
     {
-        return NefitProtos.InfoS.newBuilder()
+        return NefitProto.InfoS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
             .setMaximum(maximum)

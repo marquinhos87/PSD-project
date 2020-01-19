@@ -1,6 +1,6 @@
 package nefit.client;
 
-import nefit.shared.NefitProtos;
+import nefit.shared.NefitProto;
 import nefit.shared.Util;
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Manufacturer extends Client< NefitProtos.ProductionM >
+public class Manufacturer extends Client< NefitProto.ProductionM >
 {
     private final Set< String > activeProductNames;
 
@@ -18,7 +18,7 @@ public class Manufacturer extends Client< NefitProtos.ProductionM >
             prompt,
             connection,
             username,
-            NefitProtos.ProductionM.parser(),
+            NefitProto.ProductionM.parser(),
             new Command(
                 "announce",
                 "Product name",
@@ -71,7 +71,7 @@ public class Manufacturer extends Client< NefitProtos.ProductionM >
         // send announcement request to server
 
         final var messageAnnounce =
-            NefitProtos.DisponibilityS
+            NefitProto.DisponibilityS
                 .newBuilder()
                 .setNameM(this.getUsername())
                 .setNameP(productName)
@@ -82,7 +82,7 @@ public class Manufacturer extends Client< NefitProtos.ProductionM >
                 .build();
 
         final var messageServer =
-            NefitProtos.Server
+            NefitProto.Server
                 .newBuilder()
                 .setM1(messageAnnounce)
                 .build();
@@ -93,7 +93,7 @@ public class Manufacturer extends Client< NefitProtos.ProductionM >
     }
 
     @Override
-    protected void handleMessage(NefitProtos.ProductionM message)
+    protected void handleMessage(NefitProto.ProductionM message)
     {
         this.getPrompt().print();
 

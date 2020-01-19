@@ -1,6 +1,6 @@
 package nefit.client;
 
-import nefit.shared.NefitProtos;
+import nefit.shared.NefitProto;
 import nefit.shared.Util;
 
 import java.io.IOException;
@@ -100,16 +100,16 @@ public class Main
     private static String login(Connection connection, Prompt prompt)
         throws IOException
     {
-        final NefitProtos.MsgAuth.ClientType clientType;
+        final NefitProto.MsgAuth.ClientType clientType;
 
         switch (prompt.input("Importer or Manufacturer [i/m]: "))
         {
             case "i":
-                clientType = NefitProtos.MsgAuth.ClientType.IMPORTER;
+                clientType = NefitProto.MsgAuth.ClientType.IMPORTER;
                 break;
 
             case "m":
-                clientType = NefitProtos.MsgAuth.ClientType.MANUFACTURER;
+                clientType = NefitProto.MsgAuth.ClientType.MANUFACTURER;
                 break;
 
             default:
@@ -129,12 +129,12 @@ public class Main
 //            .build();
 
         final var loginMessage =
-            NefitProtos.MsgAuth
+            NefitProto.MsgAuth
                 .newBuilder()
                 .setName(username)
                 .setPass(password)
                 .setCtype(clientType)
-                .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN)
+                .setMtype(NefitProto.MsgAuth.MsgType.LOGIN)
                 .build();
 
         connection.send(loginMessage);
@@ -145,16 +145,16 @@ public class Main
     private static String register(Connection connection, Prompt prompt)
         throws IOException
     {
-        final NefitProtos.MsgAuth.ClientType clientType;
+        final NefitProto.MsgAuth.ClientType clientType;
 
         switch (prompt.input("Importer or Manufacturer [i/m]: "))
         {
             case "i":
-                clientType = NefitProtos.MsgAuth.ClientType.IMPORTER;
+                clientType = NefitProto.MsgAuth.ClientType.IMPORTER;
                 break;
 
             case "m":
-                clientType = NefitProtos.MsgAuth.ClientType.MANUFACTURER;
+                clientType = NefitProto.MsgAuth.ClientType.MANUFACTURER;
                 break;
 
             default:
@@ -175,12 +175,12 @@ public class Main
 //            .build();
 
         final var registerMessage =
-            NefitProtos.MsgAuth
+            NefitProto.MsgAuth
                 .newBuilder()
                 .setName(username)
                 .setPass(password)
                 .setCtype(clientType)
-                .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER)
+                .setMtype(NefitProto.MsgAuth.MsgType.REGISTER)
                 .build();
 
         connection.send(registerMessage);

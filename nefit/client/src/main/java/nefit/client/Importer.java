@@ -1,13 +1,13 @@
 package nefit.client;
 
-import nefit.shared.NefitProtos;
+import nefit.shared.NefitProto;
 import nefit.shared.Util;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class Importer extends Client< NefitProtos.Importer >
+public class Importer extends Client< NefitProto.Importer >
 {
     public Importer(Prompt prompt, Connection connection, String username)
     {
@@ -15,7 +15,7 @@ public class Importer extends Client< NefitProtos.Importer >
             prompt,
             connection,
             username,
-            NefitProtos.Importer.parser(),
+            NefitProto.Importer.parser(),
             new Command(
                 "subscribe",
                 "Manufacturer names"
@@ -59,14 +59,14 @@ public class Importer extends Client< NefitProtos.Importer >
         // send subscription request to server
 
         final var messageSubscribe =
-            NefitProtos.SubS
+            NefitProto.SubS
                 .newBuilder()
                 .setNameI(this.getUsername())
                 .addAllSubs(Arrays.asList(manufacturers))
                 .build();
 
         final var messageServer =
-            NefitProtos.Server
+            NefitProto.Server
                 .newBuilder()
                 .setM3(messageSubscribe)
                 .build();
@@ -95,7 +95,7 @@ public class Importer extends Client< NefitProtos.Importer >
         // send message to server
 
         final var messageOffer =
-            NefitProtos.OrderS
+            NefitProto.OrderS
                 .newBuilder()
                 .setNameI(this.getUsername())
                 .setNameM(manufacturerName)
@@ -105,7 +105,7 @@ public class Importer extends Client< NefitProtos.Importer >
                 .build();
 
         final var messageServer =
-            NefitProtos.Server
+            NefitProto.Server
                 .newBuilder()
                 .setM2(messageOffer)
                 .build();
@@ -116,7 +116,7 @@ public class Importer extends Client< NefitProtos.Importer >
     }
 
     @Override
-    protected void handleMessage(NefitProtos.Importer message)
+    protected void handleMessage(NefitProto.Importer message)
     {
         if (message.hasInfo())
         {

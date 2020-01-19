@@ -3,8 +3,8 @@
 
 package nefit.shared;
 
-public final class NefitProtos {
-  private NefitProtos() {}
+public final class NefitProto {
+  private NefitProto() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -87,7 +87,7 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.getDescriptor().getEnumTypes().get(0);
+      return nefit.shared.NefitProto.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final ClientType[] VALUES = values();
@@ -234,15 +234,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerLogin_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ClientToServerLogin.class, nefit.shared.NefitProtos.ClientToServerLogin.Builder.class);
+              nefit.shared.NefitProto.ClientToServerLogin.class, nefit.shared.NefitProto.ClientToServerLogin.Builder.class);
     }
 
     private int bitField0_;
@@ -389,10 +389,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ClientToServerLogin)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ClientToServerLogin)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ClientToServerLogin other = (nefit.shared.NefitProtos.ClientToServerLogin) obj;
+      nefit.shared.NefitProto.ClientToServerLogin other = (nefit.shared.NefitProto.ClientToServerLogin) obj;
 
       if (hasUsername() != other.hasUsername()) return false;
       if (hasUsername()) {
@@ -428,69 +428,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServerLogin parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -503,7 +503,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ClientToServerLogin prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ClientToServerLogin prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -529,21 +529,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ClientToServerLogin)
-        nefit.shared.NefitProtos.ClientToServerLoginOrBuilder {
+        nefit.shared.NefitProto.ClientToServerLoginOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerLogin_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ClientToServerLogin.class, nefit.shared.NefitProtos.ClientToServerLogin.Builder.class);
+                nefit.shared.NefitProto.ClientToServerLogin.class, nefit.shared.NefitProto.ClientToServerLogin.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ClientToServerLogin.newBuilder()
+      // Construct using nefit.shared.NefitProto.ClientToServerLogin.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -571,17 +571,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerLogin_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ClientToServerLogin getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ClientToServerLogin.getDefaultInstance();
+      public nefit.shared.NefitProto.ClientToServerLogin getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ClientToServerLogin build() {
-        nefit.shared.NefitProtos.ClientToServerLogin result = buildPartial();
+      public nefit.shared.NefitProto.ClientToServerLogin build() {
+        nefit.shared.NefitProto.ClientToServerLogin result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -589,8 +589,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ClientToServerLogin buildPartial() {
-        nefit.shared.NefitProtos.ClientToServerLogin result = new nefit.shared.NefitProtos.ClientToServerLogin(this);
+      public nefit.shared.NefitProto.ClientToServerLogin buildPartial() {
+        nefit.shared.NefitProto.ClientToServerLogin result = new nefit.shared.NefitProto.ClientToServerLogin(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -640,16 +640,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ClientToServerLogin) {
-          return mergeFrom((nefit.shared.NefitProtos.ClientToServerLogin)other);
+        if (other instanceof nefit.shared.NefitProto.ClientToServerLogin) {
+          return mergeFrom((nefit.shared.NefitProto.ClientToServerLogin)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ClientToServerLogin other) {
-        if (other == nefit.shared.NefitProtos.ClientToServerLogin.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ClientToServerLogin other) {
+        if (other == nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance()) return this;
         if (other.hasUsername()) {
           bitField0_ |= 0x00000001;
           username_ = other.username_;
@@ -681,11 +681,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ClientToServerLogin parsedMessage = null;
+        nefit.shared.NefitProto.ClientToServerLogin parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ClientToServerLogin) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ClientToServerLogin) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -880,12 +880,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ClientToServerLogin)
-    private static final nefit.shared.NefitProtos.ClientToServerLogin DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ClientToServerLogin DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ClientToServerLogin();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ClientToServerLogin();
     }
 
-    public static nefit.shared.NefitProtos.ClientToServerLogin getDefaultInstance() {
+    public static nefit.shared.NefitProto.ClientToServerLogin getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -910,7 +910,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ClientToServerLogin getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ClientToServerLogin getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -963,7 +963,7 @@ public final class NefitProtos {
      * <code>required .nefit.ClientType clientType = 3;</code>
      * @return The clientType.
      */
-    nefit.shared.NefitProtos.ClientType getClientType();
+    nefit.shared.NefitProto.ClientType getClientType();
   }
   /**
    * <pre>
@@ -1033,7 +1033,7 @@ public final class NefitProtos {
             case 24: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
-              nefit.shared.NefitProtos.ClientType value = nefit.shared.NefitProtos.ClientType.valueOf(rawValue);
+              nefit.shared.NefitProto.ClientType value = nefit.shared.NefitProto.ClientType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(3, rawValue);
               } else {
@@ -1063,15 +1063,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerRegister_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ClientToServerRegister.class, nefit.shared.NefitProtos.ClientToServerRegister.Builder.class);
+              nefit.shared.NefitProto.ClientToServerRegister.class, nefit.shared.NefitProto.ClientToServerRegister.Builder.class);
     }
 
     private int bitField0_;
@@ -1178,10 +1178,10 @@ public final class NefitProtos {
      * <code>required .nefit.ClientType clientType = 3;</code>
      * @return The clientType.
      */
-    public nefit.shared.NefitProtos.ClientType getClientType() {
+    public nefit.shared.NefitProto.ClientType getClientType() {
       @SuppressWarnings("deprecation")
-      nefit.shared.NefitProtos.ClientType result = nefit.shared.NefitProtos.ClientType.valueOf(clientType_);
-      return result == null ? nefit.shared.NefitProtos.ClientType.IMPORTER : result;
+      nefit.shared.NefitProto.ClientType result = nefit.shared.NefitProto.ClientType.valueOf(clientType_);
+      return result == null ? nefit.shared.NefitProto.ClientType.IMPORTER : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1248,10 +1248,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ClientToServerRegister)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ClientToServerRegister)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ClientToServerRegister other = (nefit.shared.NefitProtos.ClientToServerRegister) obj;
+      nefit.shared.NefitProto.ClientToServerRegister other = (nefit.shared.NefitProto.ClientToServerRegister) obj;
 
       if (hasUsername() != other.hasUsername()) return false;
       if (hasUsername()) {
@@ -1295,69 +1295,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServerRegister parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1370,7 +1370,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ClientToServerRegister prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ClientToServerRegister prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1395,21 +1395,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ClientToServerRegister)
-        nefit.shared.NefitProtos.ClientToServerRegisterOrBuilder {
+        nefit.shared.NefitProto.ClientToServerRegisterOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerRegister_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ClientToServerRegister.class, nefit.shared.NefitProtos.ClientToServerRegister.Builder.class);
+                nefit.shared.NefitProto.ClientToServerRegister.class, nefit.shared.NefitProto.ClientToServerRegister.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ClientToServerRegister.newBuilder()
+      // Construct using nefit.shared.NefitProto.ClientToServerRegister.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1439,17 +1439,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ClientToServerRegister_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ClientToServerRegister getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ClientToServerRegister.getDefaultInstance();
+      public nefit.shared.NefitProto.ClientToServerRegister getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ClientToServerRegister build() {
-        nefit.shared.NefitProtos.ClientToServerRegister result = buildPartial();
+      public nefit.shared.NefitProto.ClientToServerRegister build() {
+        nefit.shared.NefitProto.ClientToServerRegister result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1457,8 +1457,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ClientToServerRegister buildPartial() {
-        nefit.shared.NefitProtos.ClientToServerRegister result = new nefit.shared.NefitProtos.ClientToServerRegister(this);
+      public nefit.shared.NefitProto.ClientToServerRegister buildPartial() {
+        nefit.shared.NefitProto.ClientToServerRegister result = new nefit.shared.NefitProto.ClientToServerRegister(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -1512,16 +1512,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ClientToServerRegister) {
-          return mergeFrom((nefit.shared.NefitProtos.ClientToServerRegister)other);
+        if (other instanceof nefit.shared.NefitProto.ClientToServerRegister) {
+          return mergeFrom((nefit.shared.NefitProto.ClientToServerRegister)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ClientToServerRegister other) {
-        if (other == nefit.shared.NefitProtos.ClientToServerRegister.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ClientToServerRegister other) {
+        if (other == nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance()) return this;
         if (other.hasUsername()) {
           bitField0_ |= 0x00000001;
           username_ = other.username_;
@@ -1559,11 +1559,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ClientToServerRegister parsedMessage = null;
+        nefit.shared.NefitProto.ClientToServerRegister parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ClientToServerRegister) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ClientToServerRegister) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1754,17 +1754,17 @@ public final class NefitProtos {
        * <code>required .nefit.ClientType clientType = 3;</code>
        * @return The clientType.
        */
-      public nefit.shared.NefitProtos.ClientType getClientType() {
+      public nefit.shared.NefitProto.ClientType getClientType() {
         @SuppressWarnings("deprecation")
-        nefit.shared.NefitProtos.ClientType result = nefit.shared.NefitProtos.ClientType.valueOf(clientType_);
-        return result == null ? nefit.shared.NefitProtos.ClientType.IMPORTER : result;
+        nefit.shared.NefitProto.ClientType result = nefit.shared.NefitProto.ClientType.valueOf(clientType_);
+        return result == null ? nefit.shared.NefitProto.ClientType.IMPORTER : result;
       }
       /**
        * <code>required .nefit.ClientType clientType = 3;</code>
        * @param value The clientType to set.
        * @return This builder for chaining.
        */
-      public Builder setClientType(nefit.shared.NefitProtos.ClientType value) {
+      public Builder setClientType(nefit.shared.NefitProto.ClientType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1800,12 +1800,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ClientToServerRegister)
-    private static final nefit.shared.NefitProtos.ClientToServerRegister DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ClientToServerRegister DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ClientToServerRegister();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ClientToServerRegister();
     }
 
-    public static nefit.shared.NefitProtos.ClientToServerRegister getDefaultInstance() {
+    public static nefit.shared.NefitProto.ClientToServerRegister getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1830,7 +1830,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ClientToServerRegister getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ClientToServerRegister getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1860,7 +1860,7 @@ public final class NefitProtos {
      * <code>optional .nefit.ClientType clientType = 2;</code>
      * @return The clientType.
      */
-    nefit.shared.NefitProtos.ClientType getClientType();
+    nefit.shared.NefitProto.ClientType getClientType();
 
     /**
      * <code>optional string errorMessage = 3;</code>
@@ -1941,7 +1941,7 @@ public final class NefitProtos {
             case 16: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
-              nefit.shared.NefitProtos.ClientType value = nefit.shared.NefitProtos.ClientType.valueOf(rawValue);
+              nefit.shared.NefitProto.ClientType value = nefit.shared.NefitProto.ClientType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(2, rawValue);
               } else {
@@ -1977,15 +1977,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientAuth_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToClientAuth_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientAuth_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToClientAuth_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ServerToClientAuth.class, nefit.shared.NefitProtos.ServerToClientAuth.Builder.class);
+              nefit.shared.NefitProto.ServerToClientAuth.class, nefit.shared.NefitProto.ServerToClientAuth.Builder.class);
     }
 
     private int bitField0_;
@@ -2019,10 +2019,10 @@ public final class NefitProtos {
      * <code>optional .nefit.ClientType clientType = 2;</code>
      * @return The clientType.
      */
-    public nefit.shared.NefitProtos.ClientType getClientType() {
+    public nefit.shared.NefitProto.ClientType getClientType() {
       @SuppressWarnings("deprecation")
-      nefit.shared.NefitProtos.ClientType result = nefit.shared.NefitProtos.ClientType.valueOf(clientType_);
-      return result == null ? nefit.shared.NefitProtos.ClientType.IMPORTER : result;
+      nefit.shared.NefitProto.ClientType result = nefit.shared.NefitProto.ClientType.valueOf(clientType_);
+      return result == null ? nefit.shared.NefitProto.ClientType.IMPORTER : result;
     }
 
     public static final int ERRORMESSAGE_FIELD_NUMBER = 3;
@@ -2127,10 +2127,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ServerToClientAuth)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ServerToClientAuth)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ServerToClientAuth other = (nefit.shared.NefitProtos.ServerToClientAuth) obj;
+      nefit.shared.NefitProto.ServerToClientAuth other = (nefit.shared.NefitProto.ServerToClientAuth) obj;
 
       if (hasOk() != other.hasOk()) return false;
       if (hasOk()) {
@@ -2175,69 +2175,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ServerToClientAuth parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ServerToClientAuth parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientAuth parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2250,7 +2250,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ServerToClientAuth prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ServerToClientAuth prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2277,21 +2277,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ServerToClientAuth)
-        nefit.shared.NefitProtos.ServerToClientAuthOrBuilder {
+        nefit.shared.NefitProto.ServerToClientAuthOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientAuth_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToClientAuth_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientAuth_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToClientAuth_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ServerToClientAuth.class, nefit.shared.NefitProtos.ServerToClientAuth.Builder.class);
+                nefit.shared.NefitProto.ServerToClientAuth.class, nefit.shared.NefitProto.ServerToClientAuth.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ServerToClientAuth.newBuilder()
+      // Construct using nefit.shared.NefitProto.ServerToClientAuth.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2321,17 +2321,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientAuth_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToClientAuth_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ServerToClientAuth getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ServerToClientAuth.getDefaultInstance();
+      public nefit.shared.NefitProto.ServerToClientAuth getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ServerToClientAuth.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ServerToClientAuth build() {
-        nefit.shared.NefitProtos.ServerToClientAuth result = buildPartial();
+      public nefit.shared.NefitProto.ServerToClientAuth build() {
+        nefit.shared.NefitProto.ServerToClientAuth result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2339,8 +2339,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ServerToClientAuth buildPartial() {
-        nefit.shared.NefitProtos.ServerToClientAuth result = new nefit.shared.NefitProtos.ServerToClientAuth(this);
+      public nefit.shared.NefitProto.ServerToClientAuth buildPartial() {
+        nefit.shared.NefitProto.ServerToClientAuth result = new nefit.shared.NefitProto.ServerToClientAuth(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -2394,16 +2394,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ServerToClientAuth) {
-          return mergeFrom((nefit.shared.NefitProtos.ServerToClientAuth)other);
+        if (other instanceof nefit.shared.NefitProto.ServerToClientAuth) {
+          return mergeFrom((nefit.shared.NefitProto.ServerToClientAuth)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ServerToClientAuth other) {
-        if (other == nefit.shared.NefitProtos.ServerToClientAuth.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ServerToClientAuth other) {
+        if (other == nefit.shared.NefitProto.ServerToClientAuth.getDefaultInstance()) return this;
         if (other.hasOk()) {
           setOk(other.getOk());
         }
@@ -2433,11 +2433,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ServerToClientAuth parsedMessage = null;
+        nefit.shared.NefitProto.ServerToClientAuth parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ServerToClientAuth) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ServerToClientAuth) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2497,17 +2497,17 @@ public final class NefitProtos {
        * <code>optional .nefit.ClientType clientType = 2;</code>
        * @return The clientType.
        */
-      public nefit.shared.NefitProtos.ClientType getClientType() {
+      public nefit.shared.NefitProto.ClientType getClientType() {
         @SuppressWarnings("deprecation")
-        nefit.shared.NefitProtos.ClientType result = nefit.shared.NefitProtos.ClientType.valueOf(clientType_);
-        return result == null ? nefit.shared.NefitProtos.ClientType.IMPORTER : result;
+        nefit.shared.NefitProto.ClientType result = nefit.shared.NefitProto.ClientType.valueOf(clientType_);
+        return result == null ? nefit.shared.NefitProto.ClientType.IMPORTER : result;
       }
       /**
        * <code>optional .nefit.ClientType clientType = 2;</code>
        * @param value The clientType to set.
        * @return This builder for chaining.
        */
-      public Builder setClientType(nefit.shared.NefitProtos.ClientType value) {
+      public Builder setClientType(nefit.shared.NefitProto.ClientType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2627,12 +2627,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ServerToClientAuth)
-    private static final nefit.shared.NefitProtos.ServerToClientAuth DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ServerToClientAuth DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ServerToClientAuth();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ServerToClientAuth();
     }
 
-    public static nefit.shared.NefitProtos.ServerToClientAuth getDefaultInstance() {
+    public static nefit.shared.NefitProto.ServerToClientAuth getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2657,7 +2657,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ServerToClientAuth getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ServerToClientAuth getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2733,15 +2733,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientManufacturer_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToClientManufacturer_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientManufacturer_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToClientManufacturer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ServerToClientManufacturer.class, nefit.shared.NefitProtos.ServerToClientManufacturer.Builder.class);
+              nefit.shared.NefitProto.ServerToClientManufacturer.class, nefit.shared.NefitProto.ServerToClientManufacturer.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2777,10 +2777,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ServerToClientManufacturer)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ServerToClientManufacturer)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ServerToClientManufacturer other = (nefit.shared.NefitProtos.ServerToClientManufacturer) obj;
+      nefit.shared.NefitProto.ServerToClientManufacturer other = (nefit.shared.NefitProto.ServerToClientManufacturer) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2798,69 +2798,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer parseFrom(
+    public static nefit.shared.NefitProto.ServerToClientManufacturer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2873,7 +2873,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ServerToClientManufacturer prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ServerToClientManufacturer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2894,21 +2894,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ServerToClientManufacturer)
-        nefit.shared.NefitProtos.ServerToClientManufacturerOrBuilder {
+        nefit.shared.NefitProto.ServerToClientManufacturerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientManufacturer_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToClientManufacturer_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientManufacturer_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToClientManufacturer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ServerToClientManufacturer.class, nefit.shared.NefitProtos.ServerToClientManufacturer.Builder.class);
+                nefit.shared.NefitProto.ServerToClientManufacturer.class, nefit.shared.NefitProto.ServerToClientManufacturer.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ServerToClientManufacturer.newBuilder()
+      // Construct using nefit.shared.NefitProto.ServerToClientManufacturer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2932,17 +2932,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ServerToClientManufacturer_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToClientManufacturer_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ServerToClientManufacturer getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ServerToClientManufacturer.getDefaultInstance();
+      public nefit.shared.NefitProto.ServerToClientManufacturer getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ServerToClientManufacturer.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ServerToClientManufacturer build() {
-        nefit.shared.NefitProtos.ServerToClientManufacturer result = buildPartial();
+      public nefit.shared.NefitProto.ServerToClientManufacturer build() {
+        nefit.shared.NefitProto.ServerToClientManufacturer result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2950,8 +2950,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ServerToClientManufacturer buildPartial() {
-        nefit.shared.NefitProtos.ServerToClientManufacturer result = new nefit.shared.NefitProtos.ServerToClientManufacturer(this);
+      public nefit.shared.NefitProto.ServerToClientManufacturer buildPartial() {
+        nefit.shared.NefitProto.ServerToClientManufacturer result = new nefit.shared.NefitProto.ServerToClientManufacturer(this);
         onBuilt();
         return result;
       }
@@ -2990,16 +2990,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ServerToClientManufacturer) {
-          return mergeFrom((nefit.shared.NefitProtos.ServerToClientManufacturer)other);
+        if (other instanceof nefit.shared.NefitProto.ServerToClientManufacturer) {
+          return mergeFrom((nefit.shared.NefitProto.ServerToClientManufacturer)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ServerToClientManufacturer other) {
-        if (other == nefit.shared.NefitProtos.ServerToClientManufacturer.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ServerToClientManufacturer other) {
+        if (other == nefit.shared.NefitProto.ServerToClientManufacturer.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -3015,11 +3015,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ServerToClientManufacturer parsedMessage = null;
+        nefit.shared.NefitProto.ServerToClientManufacturer parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ServerToClientManufacturer) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ServerToClientManufacturer) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3045,12 +3045,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ServerToClientManufacturer)
-    private static final nefit.shared.NefitProtos.ServerToClientManufacturer DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ServerToClientManufacturer DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ServerToClientManufacturer();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ServerToClientManufacturer();
     }
 
-    public static nefit.shared.NefitProtos.ServerToClientManufacturer getDefaultInstance() {
+    public static nefit.shared.NefitProto.ServerToClientManufacturer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3075,7 +3075,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ServerToClientManufacturer getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ServerToClientManufacturer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3128,7 +3128,7 @@ public final class NefitProtos {
      * <code>required .nefit.MsgAuth.ClientType ctype = 3;</code>
      * @return The ctype.
      */
-    nefit.shared.NefitProtos.MsgAuth.ClientType getCtype();
+    nefit.shared.NefitProto.MsgAuth.ClientType getCtype();
 
     /**
      * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
@@ -3139,7 +3139,7 @@ public final class NefitProtos {
      * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
      * @return The mtype.
      */
-    nefit.shared.NefitProtos.MsgAuth.MsgType getMtype();
+    nefit.shared.NefitProto.MsgAuth.MsgType getMtype();
   }
   /**
    * Protobuf type {@code nefit.MsgAuth}
@@ -3206,7 +3206,7 @@ public final class NefitProtos {
             case 24: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
-              nefit.shared.NefitProtos.MsgAuth.ClientType value = nefit.shared.NefitProtos.MsgAuth.ClientType.valueOf(rawValue);
+              nefit.shared.NefitProto.MsgAuth.ClientType value = nefit.shared.NefitProto.MsgAuth.ClientType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(3, rawValue);
               } else {
@@ -3218,7 +3218,7 @@ public final class NefitProtos {
             case 32: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
-              nefit.shared.NefitProtos.MsgAuth.MsgType value = nefit.shared.NefitProtos.MsgAuth.MsgType.valueOf(rawValue);
+              nefit.shared.NefitProto.MsgAuth.MsgType value = nefit.shared.NefitProto.MsgAuth.MsgType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(4, rawValue);
               } else {
@@ -3248,15 +3248,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_MsgAuth_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_MsgAuth_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_MsgAuth_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_MsgAuth_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.MsgAuth.class, nefit.shared.NefitProtos.MsgAuth.Builder.class);
+              nefit.shared.NefitProto.MsgAuth.class, nefit.shared.NefitProto.MsgAuth.Builder.class);
     }
 
     /**
@@ -3332,7 +3332,7 @@ public final class NefitProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.MsgAuth.getDescriptor().getEnumTypes().get(0);
+        return nefit.shared.NefitProto.MsgAuth.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final ClientType[] VALUES = values();
@@ -3428,7 +3428,7 @@ public final class NefitProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.MsgAuth.getDescriptor().getEnumTypes().get(1);
+        return nefit.shared.NefitProto.MsgAuth.getDescriptor().getEnumTypes().get(1);
       }
 
       private static final MsgType[] VALUES = values();
@@ -3555,10 +3555,10 @@ public final class NefitProtos {
      * <code>required .nefit.MsgAuth.ClientType ctype = 3;</code>
      * @return The ctype.
      */
-    public nefit.shared.NefitProtos.MsgAuth.ClientType getCtype() {
+    public nefit.shared.NefitProto.MsgAuth.ClientType getCtype() {
       @SuppressWarnings("deprecation")
-      nefit.shared.NefitProtos.MsgAuth.ClientType result = nefit.shared.NefitProtos.MsgAuth.ClientType.valueOf(ctype_);
-      return result == null ? nefit.shared.NefitProtos.MsgAuth.ClientType.MANUFACTURER : result;
+      nefit.shared.NefitProto.MsgAuth.ClientType result = nefit.shared.NefitProto.MsgAuth.ClientType.valueOf(ctype_);
+      return result == null ? nefit.shared.NefitProto.MsgAuth.ClientType.MANUFACTURER : result;
     }
 
     public static final int MTYPE_FIELD_NUMBER = 4;
@@ -3574,10 +3574,10 @@ public final class NefitProtos {
      * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
      * @return The mtype.
      */
-    public nefit.shared.NefitProtos.MsgAuth.MsgType getMtype() {
+    public nefit.shared.NefitProto.MsgAuth.MsgType getMtype() {
       @SuppressWarnings("deprecation")
-      nefit.shared.NefitProtos.MsgAuth.MsgType result = nefit.shared.NefitProtos.MsgAuth.MsgType.valueOf(mtype_);
-      return result == null ? nefit.shared.NefitProtos.MsgAuth.MsgType.LOGIN : result;
+      nefit.shared.NefitProto.MsgAuth.MsgType result = nefit.shared.NefitProto.MsgAuth.MsgType.valueOf(mtype_);
+      return result == null ? nefit.shared.NefitProto.MsgAuth.MsgType.LOGIN : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3655,10 +3655,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.MsgAuth)) {
+      if (!(obj instanceof nefit.shared.NefitProto.MsgAuth)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.MsgAuth other = (nefit.shared.NefitProtos.MsgAuth) obj;
+      nefit.shared.NefitProto.MsgAuth other = (nefit.shared.NefitProto.MsgAuth) obj;
 
       if (hasName() != other.hasName()) return false;
       if (hasName()) {
@@ -3710,69 +3710,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.MsgAuth parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseDelimitedFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.MsgAuth parseFrom(
+    public static nefit.shared.NefitProto.MsgAuth parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3785,7 +3785,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.MsgAuth prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.MsgAuth prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3806,21 +3806,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.MsgAuth)
-        nefit.shared.NefitProtos.MsgAuthOrBuilder {
+        nefit.shared.NefitProto.MsgAuthOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_MsgAuth_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_MsgAuth_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_MsgAuth_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_MsgAuth_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.MsgAuth.class, nefit.shared.NefitProtos.MsgAuth.Builder.class);
+                nefit.shared.NefitProto.MsgAuth.class, nefit.shared.NefitProto.MsgAuth.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.MsgAuth.newBuilder()
+      // Construct using nefit.shared.NefitProto.MsgAuth.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3852,17 +3852,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_MsgAuth_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_MsgAuth_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.MsgAuth getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.MsgAuth.getDefaultInstance();
+      public nefit.shared.NefitProto.MsgAuth getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.MsgAuth.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.MsgAuth build() {
-        nefit.shared.NefitProtos.MsgAuth result = buildPartial();
+      public nefit.shared.NefitProto.MsgAuth build() {
+        nefit.shared.NefitProto.MsgAuth result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3870,8 +3870,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.MsgAuth buildPartial() {
-        nefit.shared.NefitProtos.MsgAuth result = new nefit.shared.NefitProtos.MsgAuth(this);
+      public nefit.shared.NefitProto.MsgAuth buildPartial() {
+        nefit.shared.NefitProto.MsgAuth result = new nefit.shared.NefitProto.MsgAuth(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -3929,16 +3929,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.MsgAuth) {
-          return mergeFrom((nefit.shared.NefitProtos.MsgAuth)other);
+        if (other instanceof nefit.shared.NefitProto.MsgAuth) {
+          return mergeFrom((nefit.shared.NefitProto.MsgAuth)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.MsgAuth other) {
-        if (other == nefit.shared.NefitProtos.MsgAuth.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.MsgAuth other) {
+        if (other == nefit.shared.NefitProto.MsgAuth.getDefaultInstance()) return this;
         if (other.hasName()) {
           bitField0_ |= 0x00000001;
           name_ = other.name_;
@@ -3982,11 +3982,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.MsgAuth parsedMessage = null;
+        nefit.shared.NefitProto.MsgAuth parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.MsgAuth) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.MsgAuth) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4177,17 +4177,17 @@ public final class NefitProtos {
        * <code>required .nefit.MsgAuth.ClientType ctype = 3;</code>
        * @return The ctype.
        */
-      public nefit.shared.NefitProtos.MsgAuth.ClientType getCtype() {
+      public nefit.shared.NefitProto.MsgAuth.ClientType getCtype() {
         @SuppressWarnings("deprecation")
-        nefit.shared.NefitProtos.MsgAuth.ClientType result = nefit.shared.NefitProtos.MsgAuth.ClientType.valueOf(ctype_);
-        return result == null ? nefit.shared.NefitProtos.MsgAuth.ClientType.MANUFACTURER : result;
+        nefit.shared.NefitProto.MsgAuth.ClientType result = nefit.shared.NefitProto.MsgAuth.ClientType.valueOf(ctype_);
+        return result == null ? nefit.shared.NefitProto.MsgAuth.ClientType.MANUFACTURER : result;
       }
       /**
        * <code>required .nefit.MsgAuth.ClientType ctype = 3;</code>
        * @param value The ctype to set.
        * @return This builder for chaining.
        */
-      public Builder setCtype(nefit.shared.NefitProtos.MsgAuth.ClientType value) {
+      public Builder setCtype(nefit.shared.NefitProto.MsgAuth.ClientType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -4219,17 +4219,17 @@ public final class NefitProtos {
        * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
        * @return The mtype.
        */
-      public nefit.shared.NefitProtos.MsgAuth.MsgType getMtype() {
+      public nefit.shared.NefitProto.MsgAuth.MsgType getMtype() {
         @SuppressWarnings("deprecation")
-        nefit.shared.NefitProtos.MsgAuth.MsgType result = nefit.shared.NefitProtos.MsgAuth.MsgType.valueOf(mtype_);
-        return result == null ? nefit.shared.NefitProtos.MsgAuth.MsgType.LOGIN : result;
+        nefit.shared.NefitProto.MsgAuth.MsgType result = nefit.shared.NefitProto.MsgAuth.MsgType.valueOf(mtype_);
+        return result == null ? nefit.shared.NefitProto.MsgAuth.MsgType.LOGIN : result;
       }
       /**
        * <code>required .nefit.MsgAuth.MsgType mtype = 4 [default = LOGIN];</code>
        * @param value The mtype to set.
        * @return This builder for chaining.
        */
-      public Builder setMtype(nefit.shared.NefitProtos.MsgAuth.MsgType value) {
+      public Builder setMtype(nefit.shared.NefitProto.MsgAuth.MsgType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -4265,12 +4265,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.MsgAuth)
-    private static final nefit.shared.NefitProtos.MsgAuth DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.MsgAuth DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.MsgAuth();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.MsgAuth();
     }
 
-    public static nefit.shared.NefitProtos.MsgAuth getDefaultInstance() {
+    public static nefit.shared.NefitProto.MsgAuth getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4295,7 +4295,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.MsgAuth getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.MsgAuth getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4412,15 +4412,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_MsgAck_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_MsgAck_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_MsgAck_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_MsgAck_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.MsgAck.class, nefit.shared.NefitProtos.MsgAck.Builder.class);
+              nefit.shared.NefitProto.MsgAck.class, nefit.shared.NefitProto.MsgAck.Builder.class);
     }
 
     private int bitField0_;
@@ -4536,10 +4536,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.MsgAck)) {
+      if (!(obj instanceof nefit.shared.NefitProto.MsgAck)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.MsgAck other = (nefit.shared.NefitProtos.MsgAck) obj;
+      nefit.shared.NefitProto.MsgAck other = (nefit.shared.NefitProto.MsgAck) obj;
 
       if (hasOk() != other.hasOk()) return false;
       if (hasOk()) {
@@ -4576,69 +4576,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.MsgAck parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.MsgAck parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.MsgAck parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseDelimitedFrom(
+    public static nefit.shared.NefitProto.MsgAck parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.MsgAck parseFrom(
+    public static nefit.shared.NefitProto.MsgAck parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4651,7 +4651,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.MsgAck prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.MsgAck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4672,21 +4672,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.MsgAck)
-        nefit.shared.NefitProtos.MsgAckOrBuilder {
+        nefit.shared.NefitProto.MsgAckOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_MsgAck_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_MsgAck_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_MsgAck_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_MsgAck_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.MsgAck.class, nefit.shared.NefitProtos.MsgAck.Builder.class);
+                nefit.shared.NefitProto.MsgAck.class, nefit.shared.NefitProto.MsgAck.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.MsgAck.newBuilder()
+      // Construct using nefit.shared.NefitProto.MsgAck.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4714,17 +4714,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_MsgAck_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_MsgAck_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.MsgAck getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.MsgAck.getDefaultInstance();
+      public nefit.shared.NefitProto.MsgAck getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.MsgAck.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.MsgAck build() {
-        nefit.shared.NefitProtos.MsgAck result = buildPartial();
+      public nefit.shared.NefitProto.MsgAck build() {
+        nefit.shared.NefitProto.MsgAck result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4732,8 +4732,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.MsgAck buildPartial() {
-        nefit.shared.NefitProtos.MsgAck result = new nefit.shared.NefitProtos.MsgAck(this);
+      public nefit.shared.NefitProto.MsgAck buildPartial() {
+        nefit.shared.NefitProto.MsgAck result = new nefit.shared.NefitProto.MsgAck(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -4783,16 +4783,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.MsgAck) {
-          return mergeFrom((nefit.shared.NefitProtos.MsgAck)other);
+        if (other instanceof nefit.shared.NefitProto.MsgAck) {
+          return mergeFrom((nefit.shared.NefitProto.MsgAck)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.MsgAck other) {
-        if (other == nefit.shared.NefitProtos.MsgAck.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.MsgAck other) {
+        if (other == nefit.shared.NefitProto.MsgAck.getDefaultInstance()) return this;
         if (other.hasOk()) {
           setOk(other.getOk());
         }
@@ -4819,11 +4819,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.MsgAck parsedMessage = null;
+        nefit.shared.NefitProto.MsgAck parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.MsgAck) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.MsgAck) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4971,12 +4971,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.MsgAck)
-    private static final nefit.shared.NefitProtos.MsgAck DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.MsgAck DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.MsgAck();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.MsgAck();
     }
 
-    public static nefit.shared.NefitProtos.MsgAck getDefaultInstance() {
+    public static nefit.shared.NefitProto.MsgAck getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5001,7 +5001,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.MsgAck getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.MsgAck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5190,15 +5190,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityS_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_DisponibilityS_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityS_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_DisponibilityS_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.DisponibilityS.class, nefit.shared.NefitProtos.DisponibilityS.Builder.class);
+              nefit.shared.NefitProto.DisponibilityS.class, nefit.shared.NefitProto.DisponibilityS.Builder.class);
     }
 
     private int bitField0_;
@@ -5457,10 +5457,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.DisponibilityS)) {
+      if (!(obj instanceof nefit.shared.NefitProto.DisponibilityS)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.DisponibilityS other = (nefit.shared.NefitProtos.DisponibilityS) obj;
+      nefit.shared.NefitProto.DisponibilityS other = (nefit.shared.NefitProto.DisponibilityS) obj;
 
       if (hasNameM() != other.hasNameM()) return false;
       if (hasNameM()) {
@@ -5534,69 +5534,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.DisponibilityS parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseDelimitedFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.DisponibilityS parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityS parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5609,7 +5609,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.DisponibilityS prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.DisponibilityS prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5630,21 +5630,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.DisponibilityS)
-        nefit.shared.NefitProtos.DisponibilitySOrBuilder {
+        nefit.shared.NefitProto.DisponibilitySOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_DisponibilityS_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityS_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_DisponibilityS_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.DisponibilityS.class, nefit.shared.NefitProtos.DisponibilityS.Builder.class);
+                nefit.shared.NefitProto.DisponibilityS.class, nefit.shared.NefitProto.DisponibilityS.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.DisponibilityS.newBuilder()
+      // Construct using nefit.shared.NefitProto.DisponibilityS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5680,17 +5680,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_DisponibilityS_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.DisponibilityS getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance();
+      public nefit.shared.NefitProto.DisponibilityS getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.DisponibilityS.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.DisponibilityS build() {
-        nefit.shared.NefitProtos.DisponibilityS result = buildPartial();
+      public nefit.shared.NefitProto.DisponibilityS build() {
+        nefit.shared.NefitProto.DisponibilityS result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5698,8 +5698,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.DisponibilityS buildPartial() {
-        nefit.shared.NefitProtos.DisponibilityS result = new nefit.shared.NefitProtos.DisponibilityS(this);
+      public nefit.shared.NefitProto.DisponibilityS buildPartial() {
+        nefit.shared.NefitProto.DisponibilityS result = new nefit.shared.NefitProto.DisponibilityS(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -5765,16 +5765,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.DisponibilityS) {
-          return mergeFrom((nefit.shared.NefitProtos.DisponibilityS)other);
+        if (other instanceof nefit.shared.NefitProto.DisponibilityS) {
+          return mergeFrom((nefit.shared.NefitProto.DisponibilityS)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.DisponibilityS other) {
-        if (other == nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.DisponibilityS other) {
+        if (other == nefit.shared.NefitProto.DisponibilityS.getDefaultInstance()) return this;
         if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
           nameM_ = other.nameM_;
@@ -5830,11 +5830,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.DisponibilityS parsedMessage = null;
+        nefit.shared.NefitProto.DisponibilityS parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.DisponibilityS) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.DisponibilityS) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6177,12 +6177,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.DisponibilityS)
-    private static final nefit.shared.NefitProtos.DisponibilityS DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.DisponibilityS DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.DisponibilityS();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.DisponibilityS();
     }
 
-    public static nefit.shared.NefitProtos.DisponibilityS getDefaultInstance() {
+    public static nefit.shared.NefitProto.DisponibilityS getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6207,7 +6207,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.DisponibilityS getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.DisponibilityS getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6396,15 +6396,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityN_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_DisponibilityN_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityN_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_DisponibilityN_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.DisponibilityN.class, nefit.shared.NefitProtos.DisponibilityN.Builder.class);
+              nefit.shared.NefitProto.DisponibilityN.class, nefit.shared.NefitProto.DisponibilityN.Builder.class);
     }
 
     private int bitField0_;
@@ -6663,10 +6663,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.DisponibilityN)) {
+      if (!(obj instanceof nefit.shared.NefitProto.DisponibilityN)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.DisponibilityN other = (nefit.shared.NefitProtos.DisponibilityN) obj;
+      nefit.shared.NefitProto.DisponibilityN other = (nefit.shared.NefitProto.DisponibilityN) obj;
 
       if (hasNameM() != other.hasNameM()) return false;
       if (hasNameM()) {
@@ -6740,69 +6740,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.DisponibilityN parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseDelimitedFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.DisponibilityN parseFrom(
+    public static nefit.shared.NefitProto.DisponibilityN parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6815,7 +6815,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.DisponibilityN prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.DisponibilityN prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6836,21 +6836,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.DisponibilityN)
-        nefit.shared.NefitProtos.DisponibilityNOrBuilder {
+        nefit.shared.NefitProto.DisponibilityNOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityN_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_DisponibilityN_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityN_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_DisponibilityN_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.DisponibilityN.class, nefit.shared.NefitProtos.DisponibilityN.Builder.class);
+                nefit.shared.NefitProto.DisponibilityN.class, nefit.shared.NefitProto.DisponibilityN.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.DisponibilityN.newBuilder()
+      // Construct using nefit.shared.NefitProto.DisponibilityN.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6886,17 +6886,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_DisponibilityN_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_DisponibilityN_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.DisponibilityN getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance();
+      public nefit.shared.NefitProto.DisponibilityN getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.DisponibilityN.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.DisponibilityN build() {
-        nefit.shared.NefitProtos.DisponibilityN result = buildPartial();
+      public nefit.shared.NefitProto.DisponibilityN build() {
+        nefit.shared.NefitProto.DisponibilityN result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6904,8 +6904,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.DisponibilityN buildPartial() {
-        nefit.shared.NefitProtos.DisponibilityN result = new nefit.shared.NefitProtos.DisponibilityN(this);
+      public nefit.shared.NefitProto.DisponibilityN buildPartial() {
+        nefit.shared.NefitProto.DisponibilityN result = new nefit.shared.NefitProto.DisponibilityN(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -6971,16 +6971,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.DisponibilityN) {
-          return mergeFrom((nefit.shared.NefitProtos.DisponibilityN)other);
+        if (other instanceof nefit.shared.NefitProto.DisponibilityN) {
+          return mergeFrom((nefit.shared.NefitProto.DisponibilityN)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.DisponibilityN other) {
-        if (other == nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.DisponibilityN other) {
+        if (other == nefit.shared.NefitProto.DisponibilityN.getDefaultInstance()) return this;
         if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
           nameM_ = other.nameM_;
@@ -7036,11 +7036,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.DisponibilityN parsedMessage = null;
+        nefit.shared.NefitProto.DisponibilityN parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.DisponibilityN) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.DisponibilityN) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7383,12 +7383,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.DisponibilityN)
-    private static final nefit.shared.NefitProtos.DisponibilityN DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.DisponibilityN DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.DisponibilityN();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.DisponibilityN();
     }
 
-    public static nefit.shared.NefitProtos.DisponibilityN getDefaultInstance() {
+    public static nefit.shared.NefitProto.DisponibilityN getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7413,7 +7413,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.DisponibilityN getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.DisponibilityN getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7594,15 +7594,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderS_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_OrderS_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderS_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_OrderS_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.OrderS.class, nefit.shared.NefitProtos.OrderS.Builder.class);
+              nefit.shared.NefitProto.OrderS.class, nefit.shared.NefitProto.OrderS.Builder.class);
     }
 
     private int bitField0_;
@@ -7860,10 +7860,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.OrderS)) {
+      if (!(obj instanceof nefit.shared.NefitProto.OrderS)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.OrderS other = (nefit.shared.NefitProtos.OrderS) obj;
+      nefit.shared.NefitProto.OrderS other = (nefit.shared.NefitProto.OrderS) obj;
 
       if (hasNameM() != other.hasNameM()) return false;
       if (hasNameM()) {
@@ -7928,69 +7928,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.OrderS parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderS parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderS parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderS parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderS parseDelimitedFrom(
+    public static nefit.shared.NefitProto.OrderS parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderS parseFrom(
+    public static nefit.shared.NefitProto.OrderS parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8003,7 +8003,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.OrderS prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.OrderS prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8024,21 +8024,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.OrderS)
-        nefit.shared.NefitProtos.OrderSOrBuilder {
+        nefit.shared.NefitProto.OrderSOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderS_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderS_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_OrderS_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.OrderS.class, nefit.shared.NefitProtos.OrderS.Builder.class);
+                nefit.shared.NefitProto.OrderS.class, nefit.shared.NefitProto.OrderS.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.OrderS.newBuilder()
+      // Construct using nefit.shared.NefitProto.OrderS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8072,17 +8072,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderS_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderS getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.OrderS.getDefaultInstance();
+      public nefit.shared.NefitProto.OrderS getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.OrderS.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderS build() {
-        nefit.shared.NefitProtos.OrderS result = buildPartial();
+      public nefit.shared.NefitProto.OrderS build() {
+        nefit.shared.NefitProto.OrderS result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8090,8 +8090,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderS buildPartial() {
-        nefit.shared.NefitProtos.OrderS result = new nefit.shared.NefitProtos.OrderS(this);
+      public nefit.shared.NefitProto.OrderS buildPartial() {
+        nefit.shared.NefitProto.OrderS result = new nefit.shared.NefitProto.OrderS(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -8153,16 +8153,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.OrderS) {
-          return mergeFrom((nefit.shared.NefitProtos.OrderS)other);
+        if (other instanceof nefit.shared.NefitProto.OrderS) {
+          return mergeFrom((nefit.shared.NefitProto.OrderS)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.OrderS other) {
-        if (other == nefit.shared.NefitProtos.OrderS.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.OrderS other) {
+        if (other == nefit.shared.NefitProto.OrderS.getDefaultInstance()) return this;
         if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
           nameM_ = other.nameM_;
@@ -8214,11 +8214,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.OrderS parsedMessage = null;
+        nefit.shared.NefitProto.OrderS parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.OrderS) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.OrderS) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8571,12 +8571,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.OrderS)
-    private static final nefit.shared.NefitProtos.OrderS DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.OrderS DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.OrderS();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.OrderS();
     }
 
-    public static nefit.shared.NefitProtos.OrderS getDefaultInstance() {
+    public static nefit.shared.NefitProto.OrderS getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8601,7 +8601,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.OrderS getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.OrderS getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8782,15 +8782,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderN_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_OrderN_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderN_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_OrderN_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.OrderN.class, nefit.shared.NefitProtos.OrderN.Builder.class);
+              nefit.shared.NefitProto.OrderN.class, nefit.shared.NefitProto.OrderN.Builder.class);
     }
 
     private int bitField0_;
@@ -9048,10 +9048,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.OrderN)) {
+      if (!(obj instanceof nefit.shared.NefitProto.OrderN)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.OrderN other = (nefit.shared.NefitProtos.OrderN) obj;
+      nefit.shared.NefitProto.OrderN other = (nefit.shared.NefitProto.OrderN) obj;
 
       if (hasNameM() != other.hasNameM()) return false;
       if (hasNameM()) {
@@ -9116,69 +9116,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.OrderN parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderN parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderN parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderN parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderN parseDelimitedFrom(
+    public static nefit.shared.NefitProto.OrderN parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderN parseFrom(
+    public static nefit.shared.NefitProto.OrderN parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9191,7 +9191,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.OrderN prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.OrderN prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9212,21 +9212,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.OrderN)
-        nefit.shared.NefitProtos.OrderNOrBuilder {
+        nefit.shared.NefitProto.OrderNOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderN_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderN_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderN_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_OrderN_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.OrderN.class, nefit.shared.NefitProtos.OrderN.Builder.class);
+                nefit.shared.NefitProto.OrderN.class, nefit.shared.NefitProto.OrderN.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.OrderN.newBuilder()
+      // Construct using nefit.shared.NefitProto.OrderN.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9260,17 +9260,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderN_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderN_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderN getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.OrderN.getDefaultInstance();
+      public nefit.shared.NefitProto.OrderN getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.OrderN.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderN build() {
-        nefit.shared.NefitProtos.OrderN result = buildPartial();
+      public nefit.shared.NefitProto.OrderN build() {
+        nefit.shared.NefitProto.OrderN result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9278,8 +9278,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderN buildPartial() {
-        nefit.shared.NefitProtos.OrderN result = new nefit.shared.NefitProtos.OrderN(this);
+      public nefit.shared.NefitProto.OrderN buildPartial() {
+        nefit.shared.NefitProto.OrderN result = new nefit.shared.NefitProto.OrderN(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -9341,16 +9341,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.OrderN) {
-          return mergeFrom((nefit.shared.NefitProtos.OrderN)other);
+        if (other instanceof nefit.shared.NefitProto.OrderN) {
+          return mergeFrom((nefit.shared.NefitProto.OrderN)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.OrderN other) {
-        if (other == nefit.shared.NefitProtos.OrderN.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.OrderN other) {
+        if (other == nefit.shared.NefitProto.OrderN.getDefaultInstance()) return this;
         if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
           nameM_ = other.nameM_;
@@ -9402,11 +9402,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.OrderN parsedMessage = null;
+        nefit.shared.NefitProto.OrderN parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.OrderN) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.OrderN) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9759,12 +9759,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.OrderN)
-    private static final nefit.shared.NefitProtos.OrderN DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.OrderN DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.OrderN();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.OrderN();
     }
 
-    public static nefit.shared.NefitProtos.OrderN getDefaultInstance() {
+    public static nefit.shared.NefitProto.OrderN getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -9789,7 +9789,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.OrderN getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.OrderN getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -9946,15 +9946,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderAckS_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_OrderAckS_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderAckS_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_OrderAckS_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.OrderAckS.class, nefit.shared.NefitProtos.OrderAckS.Builder.class);
+              nefit.shared.NefitProto.OrderAckS.class, nefit.shared.NefitProto.OrderAckS.Builder.class);
     }
 
     private int bitField0_;
@@ -10153,10 +10153,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.OrderAckS)) {
+      if (!(obj instanceof nefit.shared.NefitProto.OrderAckS)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.OrderAckS other = (nefit.shared.NefitProtos.OrderAckS) obj;
+      nefit.shared.NefitProto.OrderAckS other = (nefit.shared.NefitProto.OrderAckS) obj;
 
       if (hasAck() != other.hasAck()) return false;
       if (hasAck()) {
@@ -10212,69 +10212,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderAckS parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseDelimitedFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderAckS parseFrom(
+    public static nefit.shared.NefitProto.OrderAckS parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10287,7 +10287,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.OrderAckS prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.OrderAckS prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -10308,21 +10308,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.OrderAckS)
-        nefit.shared.NefitProtos.OrderAckSOrBuilder {
+        nefit.shared.NefitProto.OrderAckSOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderAckS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderAckS_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderAckS_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_OrderAckS_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.OrderAckS.class, nefit.shared.NefitProtos.OrderAckS.Builder.class);
+                nefit.shared.NefitProto.OrderAckS.class, nefit.shared.NefitProto.OrderAckS.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.OrderAckS.newBuilder()
+      // Construct using nefit.shared.NefitProto.OrderAckS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10354,17 +10354,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderAckS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderAckS_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderAckS getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.OrderAckS.getDefaultInstance();
+      public nefit.shared.NefitProto.OrderAckS getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.OrderAckS.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderAckS build() {
-        nefit.shared.NefitProtos.OrderAckS result = buildPartial();
+      public nefit.shared.NefitProto.OrderAckS build() {
+        nefit.shared.NefitProto.OrderAckS result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -10372,8 +10372,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderAckS buildPartial() {
-        nefit.shared.NefitProtos.OrderAckS result = new nefit.shared.NefitProtos.OrderAckS(this);
+      public nefit.shared.NefitProto.OrderAckS buildPartial() {
+        nefit.shared.NefitProto.OrderAckS result = new nefit.shared.NefitProto.OrderAckS(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -10431,16 +10431,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.OrderAckS) {
-          return mergeFrom((nefit.shared.NefitProtos.OrderAckS)other);
+        if (other instanceof nefit.shared.NefitProto.OrderAckS) {
+          return mergeFrom((nefit.shared.NefitProto.OrderAckS)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.OrderAckS other) {
-        if (other == nefit.shared.NefitProtos.OrderAckS.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.OrderAckS other) {
+        if (other == nefit.shared.NefitProto.OrderAckS.getDefaultInstance()) return this;
         if (other.hasAck()) {
           setAck(other.getAck());
         }
@@ -10481,11 +10481,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.OrderAckS parsedMessage = null;
+        nefit.shared.NefitProto.OrderAckS parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.OrderAckS) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.OrderAckS) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10754,12 +10754,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.OrderAckS)
-    private static final nefit.shared.NefitProtos.OrderAckS DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.OrderAckS DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.OrderAckS();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.OrderAckS();
     }
 
-    public static nefit.shared.NefitProtos.OrderAckS getDefaultInstance() {
+    public static nefit.shared.NefitProto.OrderAckS getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -10784,7 +10784,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.OrderAckS getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.OrderAckS getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -10917,15 +10917,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderAckI_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_OrderAckI_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_OrderAckI_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_OrderAckI_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.OrderAckI.class, nefit.shared.NefitProtos.OrderAckI.Builder.class);
+              nefit.shared.NefitProto.OrderAckI.class, nefit.shared.NefitProto.OrderAckI.Builder.class);
     }
 
     private int bitField0_;
@@ -11069,10 +11069,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.OrderAckI)) {
+      if (!(obj instanceof nefit.shared.NefitProto.OrderAckI)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.OrderAckI other = (nefit.shared.NefitProtos.OrderAckI) obj;
+      nefit.shared.NefitProto.OrderAckI other = (nefit.shared.NefitProto.OrderAckI) obj;
 
       if (hasAck() != other.hasAck()) return false;
       if (hasAck()) {
@@ -11119,69 +11119,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.OrderAckI parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseDelimitedFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.OrderAckI parseFrom(
+    public static nefit.shared.NefitProto.OrderAckI parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -11194,7 +11194,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.OrderAckI prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.OrderAckI prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -11215,21 +11215,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.OrderAckI)
-        nefit.shared.NefitProtos.OrderAckIOrBuilder {
+        nefit.shared.NefitProto.OrderAckIOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderAckI_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderAckI_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderAckI_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_OrderAckI_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.OrderAckI.class, nefit.shared.NefitProtos.OrderAckI.Builder.class);
+                nefit.shared.NefitProto.OrderAckI.class, nefit.shared.NefitProto.OrderAckI.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.OrderAckI.newBuilder()
+      // Construct using nefit.shared.NefitProto.OrderAckI.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11259,17 +11259,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_OrderAckI_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_OrderAckI_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderAckI getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.OrderAckI.getDefaultInstance();
+      public nefit.shared.NefitProto.OrderAckI getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.OrderAckI.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderAckI build() {
-        nefit.shared.NefitProtos.OrderAckI result = buildPartial();
+      public nefit.shared.NefitProto.OrderAckI build() {
+        nefit.shared.NefitProto.OrderAckI result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -11277,8 +11277,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.OrderAckI buildPartial() {
-        nefit.shared.NefitProtos.OrderAckI result = new nefit.shared.NefitProtos.OrderAckI(this);
+      public nefit.shared.NefitProto.OrderAckI buildPartial() {
+        nefit.shared.NefitProto.OrderAckI result = new nefit.shared.NefitProto.OrderAckI(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -11332,16 +11332,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.OrderAckI) {
-          return mergeFrom((nefit.shared.NefitProtos.OrderAckI)other);
+        if (other instanceof nefit.shared.NefitProto.OrderAckI) {
+          return mergeFrom((nefit.shared.NefitProto.OrderAckI)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.OrderAckI other) {
-        if (other == nefit.shared.NefitProtos.OrderAckI.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.OrderAckI other) {
+        if (other == nefit.shared.NefitProto.OrderAckI.getDefaultInstance()) return this;
         if (other.hasAck()) {
           setAck(other.getAck());
         }
@@ -11374,11 +11374,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.OrderAckI parsedMessage = null;
+        nefit.shared.NefitProto.OrderAckI parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.OrderAckI) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.OrderAckI) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -11563,12 +11563,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.OrderAckI)
-    private static final nefit.shared.NefitProtos.OrderAckI DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.OrderAckI DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.OrderAckI();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.OrderAckI();
     }
 
-    public static nefit.shared.NefitProtos.OrderAckI getDefaultInstance() {
+    public static nefit.shared.NefitProto.OrderAckI getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -11593,7 +11593,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.OrderAckI getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.OrderAckI getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -11732,15 +11732,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_SubS_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_SubS_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_SubS_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_SubS_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.SubS.class, nefit.shared.NefitProtos.SubS.Builder.class);
+              nefit.shared.NefitProto.SubS.class, nefit.shared.NefitProto.SubS.Builder.class);
     }
 
     private int bitField0_;
@@ -11878,10 +11878,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.SubS)) {
+      if (!(obj instanceof nefit.shared.NefitProto.SubS)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.SubS other = (nefit.shared.NefitProtos.SubS) obj;
+      nefit.shared.NefitProto.SubS other = (nefit.shared.NefitProto.SubS) obj;
 
       if (hasNameI() != other.hasNameI()) return false;
       if (hasNameI()) {
@@ -11914,69 +11914,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.SubS parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.SubS parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubS parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.SubS parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.SubS parseDelimitedFrom(
+    public static nefit.shared.NefitProto.SubS parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.SubS parseFrom(
+    public static nefit.shared.NefitProto.SubS parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -11989,7 +11989,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.SubS prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.SubS prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -12010,21 +12010,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.SubS)
-        nefit.shared.NefitProtos.SubSOrBuilder {
+        nefit.shared.NefitProto.SubSOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_SubS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_SubS_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_SubS_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_SubS_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.SubS.class, nefit.shared.NefitProtos.SubS.Builder.class);
+                nefit.shared.NefitProto.SubS.class, nefit.shared.NefitProto.SubS.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.SubS.newBuilder()
+      // Construct using nefit.shared.NefitProto.SubS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12052,17 +12052,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_SubS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_SubS_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.SubS getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.SubS.getDefaultInstance();
+      public nefit.shared.NefitProto.SubS getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.SubS.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.SubS build() {
-        nefit.shared.NefitProtos.SubS result = buildPartial();
+      public nefit.shared.NefitProto.SubS build() {
+        nefit.shared.NefitProto.SubS result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -12070,8 +12070,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.SubS buildPartial() {
-        nefit.shared.NefitProtos.SubS result = new nefit.shared.NefitProtos.SubS(this);
+      public nefit.shared.NefitProto.SubS buildPartial() {
+        nefit.shared.NefitProto.SubS result = new nefit.shared.NefitProto.SubS(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -12122,16 +12122,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.SubS) {
-          return mergeFrom((nefit.shared.NefitProtos.SubS)other);
+        if (other instanceof nefit.shared.NefitProto.SubS) {
+          return mergeFrom((nefit.shared.NefitProto.SubS)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.SubS other) {
-        if (other == nefit.shared.NefitProtos.SubS.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.SubS other) {
+        if (other == nefit.shared.NefitProto.SubS.getDefaultInstance()) return this;
         if (other.hasNameI()) {
           bitField0_ |= 0x00000001;
           nameI_ = other.nameI_;
@@ -12165,11 +12165,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.SubS parsedMessage = null;
+        nefit.shared.NefitProto.SubS parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.SubS) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.SubS) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -12389,12 +12389,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.SubS)
-    private static final nefit.shared.NefitProtos.SubS DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.SubS DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.SubS();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.SubS();
     }
 
-    public static nefit.shared.NefitProtos.SubS getDefaultInstance() {
+    public static nefit.shared.NefitProto.SubS getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -12419,7 +12419,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.SubS getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.SubS getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -12558,15 +12558,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_SubN_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_SubN_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_SubN_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_SubN_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.SubN.class, nefit.shared.NefitProtos.SubN.Builder.class);
+              nefit.shared.NefitProto.SubN.class, nefit.shared.NefitProto.SubN.Builder.class);
     }
 
     private int bitField0_;
@@ -12704,10 +12704,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.SubN)) {
+      if (!(obj instanceof nefit.shared.NefitProto.SubN)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.SubN other = (nefit.shared.NefitProtos.SubN) obj;
+      nefit.shared.NefitProto.SubN other = (nefit.shared.NefitProto.SubN) obj;
 
       if (hasNameI() != other.hasNameI()) return false;
       if (hasNameI()) {
@@ -12740,69 +12740,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.SubN parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.SubN parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubN parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.SubN parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.SubN parseDelimitedFrom(
+    public static nefit.shared.NefitProto.SubN parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.SubN parseFrom(
+    public static nefit.shared.NefitProto.SubN parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -12815,7 +12815,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.SubN prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.SubN prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -12836,21 +12836,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.SubN)
-        nefit.shared.NefitProtos.SubNOrBuilder {
+        nefit.shared.NefitProto.SubNOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_SubN_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_SubN_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_SubN_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_SubN_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.SubN.class, nefit.shared.NefitProtos.SubN.Builder.class);
+                nefit.shared.NefitProto.SubN.class, nefit.shared.NefitProto.SubN.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.SubN.newBuilder()
+      // Construct using nefit.shared.NefitProto.SubN.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12878,17 +12878,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_SubN_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_SubN_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.SubN getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.SubN.getDefaultInstance();
+      public nefit.shared.NefitProto.SubN getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.SubN.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.SubN build() {
-        nefit.shared.NefitProtos.SubN result = buildPartial();
+      public nefit.shared.NefitProto.SubN build() {
+        nefit.shared.NefitProto.SubN result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -12896,8 +12896,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.SubN buildPartial() {
-        nefit.shared.NefitProtos.SubN result = new nefit.shared.NefitProtos.SubN(this);
+      public nefit.shared.NefitProto.SubN buildPartial() {
+        nefit.shared.NefitProto.SubN result = new nefit.shared.NefitProto.SubN(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -12948,16 +12948,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.SubN) {
-          return mergeFrom((nefit.shared.NefitProtos.SubN)other);
+        if (other instanceof nefit.shared.NefitProto.SubN) {
+          return mergeFrom((nefit.shared.NefitProto.SubN)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.SubN other) {
-        if (other == nefit.shared.NefitProtos.SubN.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.SubN other) {
+        if (other == nefit.shared.NefitProto.SubN.getDefaultInstance()) return this;
         if (other.hasNameI()) {
           bitField0_ |= 0x00000001;
           nameI_ = other.nameI_;
@@ -12991,11 +12991,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.SubN parsedMessage = null;
+        nefit.shared.NefitProto.SubN parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.SubN) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.SubN) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -13215,12 +13215,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.SubN)
-    private static final nefit.shared.NefitProtos.SubN DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.SubN DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.SubN();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.SubN();
     }
 
-    public static nefit.shared.NefitProtos.SubN getDefaultInstance() {
+    public static nefit.shared.NefitProto.SubN getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -13245,7 +13245,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.SubN getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.SubN getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -13402,15 +13402,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ProductionS_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ProductionS_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ProductionS_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ProductionS_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ProductionS.class, nefit.shared.NefitProtos.ProductionS.Builder.class);
+              nefit.shared.NefitProto.ProductionS.class, nefit.shared.NefitProto.ProductionS.Builder.class);
     }
 
     private int bitField0_;
@@ -13613,10 +13613,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ProductionS)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ProductionS)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ProductionS other = (nefit.shared.NefitProtos.ProductionS) obj;
+      nefit.shared.NefitProto.ProductionS other = (nefit.shared.NefitProto.ProductionS) obj;
 
       if (hasNameM() != other.hasNameM()) return false;
       if (hasNameM()) {
@@ -13672,69 +13672,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ProductionS parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ProductionS parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ProductionS parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ProductionS parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ProductionS parseFrom(
+    public static nefit.shared.NefitProto.ProductionS parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -13747,7 +13747,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ProductionS prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ProductionS prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -13768,21 +13768,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ProductionS)
-        nefit.shared.NefitProtos.ProductionSOrBuilder {
+        nefit.shared.NefitProto.ProductionSOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ProductionS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ProductionS_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ProductionS_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ProductionS_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ProductionS.class, nefit.shared.NefitProtos.ProductionS.Builder.class);
+                nefit.shared.NefitProto.ProductionS.class, nefit.shared.NefitProto.ProductionS.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ProductionS.newBuilder()
+      // Construct using nefit.shared.NefitProto.ProductionS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -13814,17 +13814,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ProductionS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ProductionS_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ProductionS getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ProductionS.getDefaultInstance();
+      public nefit.shared.NefitProto.ProductionS getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ProductionS.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ProductionS build() {
-        nefit.shared.NefitProtos.ProductionS result = buildPartial();
+      public nefit.shared.NefitProto.ProductionS build() {
+        nefit.shared.NefitProto.ProductionS result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -13832,8 +13832,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ProductionS buildPartial() {
-        nefit.shared.NefitProtos.ProductionS result = new nefit.shared.NefitProtos.ProductionS(this);
+      public nefit.shared.NefitProto.ProductionS buildPartial() {
+        nefit.shared.NefitProto.ProductionS result = new nefit.shared.NefitProto.ProductionS(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -13891,16 +13891,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ProductionS) {
-          return mergeFrom((nefit.shared.NefitProtos.ProductionS)other);
+        if (other instanceof nefit.shared.NefitProto.ProductionS) {
+          return mergeFrom((nefit.shared.NefitProto.ProductionS)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ProductionS other) {
-        if (other == nefit.shared.NefitProtos.ProductionS.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ProductionS other) {
+        if (other == nefit.shared.NefitProto.ProductionS.getDefaultInstance()) return this;
         if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
           nameM_ = other.nameM_;
@@ -13944,11 +13944,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ProductionS parsedMessage = null;
+        nefit.shared.NefitProto.ProductionS parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ProductionS) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ProductionS) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -14217,12 +14217,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ProductionS)
-    private static final nefit.shared.NefitProtos.ProductionS DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ProductionS DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ProductionS();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ProductionS();
     }
 
-    public static nefit.shared.NefitProtos.ProductionS getDefaultInstance() {
+    public static nefit.shared.NefitProto.ProductionS getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -14247,7 +14247,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ProductionS getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ProductionS getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -14380,15 +14380,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ProductionM_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ProductionM_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ProductionM_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ProductionM_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ProductionM.class, nefit.shared.NefitProtos.ProductionM.Builder.class);
+              nefit.shared.NefitProto.ProductionM.class, nefit.shared.NefitProto.ProductionM.Builder.class);
     }
 
     private int bitField0_;
@@ -14536,10 +14536,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ProductionM)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ProductionM)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ProductionM other = (nefit.shared.NefitProtos.ProductionM) obj;
+      nefit.shared.NefitProto.ProductionM other = (nefit.shared.NefitProto.ProductionM) obj;
 
       if (hasNameP() != other.hasNameP()) return false;
       if (hasNameP()) {
@@ -14586,69 +14586,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ProductionM parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ProductionM parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ProductionM parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ProductionM parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ProductionM parseFrom(
+    public static nefit.shared.NefitProto.ProductionM parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -14661,7 +14661,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ProductionM prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ProductionM prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -14682,21 +14682,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ProductionM)
-        nefit.shared.NefitProtos.ProductionMOrBuilder {
+        nefit.shared.NefitProto.ProductionMOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ProductionM_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ProductionM_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ProductionM_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ProductionM_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ProductionM.class, nefit.shared.NefitProtos.ProductionM.Builder.class);
+                nefit.shared.NefitProto.ProductionM.class, nefit.shared.NefitProto.ProductionM.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ProductionM.newBuilder()
+      // Construct using nefit.shared.NefitProto.ProductionM.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -14726,17 +14726,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ProductionM_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ProductionM_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ProductionM getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ProductionM.getDefaultInstance();
+      public nefit.shared.NefitProto.ProductionM getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ProductionM.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ProductionM build() {
-        nefit.shared.NefitProtos.ProductionM result = buildPartial();
+      public nefit.shared.NefitProto.ProductionM build() {
+        nefit.shared.NefitProto.ProductionM result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -14744,8 +14744,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ProductionM buildPartial() {
-        nefit.shared.NefitProtos.ProductionM result = new nefit.shared.NefitProtos.ProductionM(this);
+      public nefit.shared.NefitProto.ProductionM buildPartial() {
+        nefit.shared.NefitProto.ProductionM result = new nefit.shared.NefitProto.ProductionM(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -14799,16 +14799,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ProductionM) {
-          return mergeFrom((nefit.shared.NefitProtos.ProductionM)other);
+        if (other instanceof nefit.shared.NefitProto.ProductionM) {
+          return mergeFrom((nefit.shared.NefitProto.ProductionM)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ProductionM other) {
-        if (other == nefit.shared.NefitProtos.ProductionM.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ProductionM other) {
+        if (other == nefit.shared.NefitProto.ProductionM.getDefaultInstance()) return this;
         if (other.hasNameP()) {
           bitField0_ |= 0x00000001;
           nameP_ = other.nameP_;
@@ -14844,11 +14844,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ProductionM parsedMessage = null;
+        nefit.shared.NefitProto.ProductionM parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ProductionM) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ProductionM) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -15033,12 +15033,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ProductionM)
-    private static final nefit.shared.NefitProtos.ProductionM DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ProductionM DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ProductionM();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ProductionM();
     }
 
-    public static nefit.shared.NefitProtos.ProductionM getDefaultInstance() {
+    public static nefit.shared.NefitProto.ProductionM getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -15063,7 +15063,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ProductionM getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ProductionM getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -15204,15 +15204,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ResultS_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ResultS_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ResultS_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ResultS_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ResultS.class, nefit.shared.NefitProtos.ResultS.Builder.class);
+              nefit.shared.NefitProto.ResultS.class, nefit.shared.NefitProto.ResultS.Builder.class);
     }
 
     private int bitField0_;
@@ -15387,10 +15387,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ResultS)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ResultS)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ResultS other = (nefit.shared.NefitProtos.ResultS) obj;
+      nefit.shared.NefitProto.ResultS other = (nefit.shared.NefitProto.ResultS) obj;
 
       if (hasResult() != other.hasResult()) return false;
       if (hasResult()) {
@@ -15436,69 +15436,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ResultS parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ResultS parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultS parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ResultS parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ResultS parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ResultS parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ResultS parseFrom(
+    public static nefit.shared.NefitProto.ResultS parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -15511,7 +15511,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ResultS prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ResultS prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -15532,21 +15532,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ResultS)
-        nefit.shared.NefitProtos.ResultSOrBuilder {
+        nefit.shared.NefitProto.ResultSOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ResultS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ResultS_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ResultS_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ResultS_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ResultS.class, nefit.shared.NefitProtos.ResultS.Builder.class);
+                nefit.shared.NefitProto.ResultS.class, nefit.shared.NefitProto.ResultS.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ResultS.newBuilder()
+      // Construct using nefit.shared.NefitProto.ResultS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -15576,17 +15576,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ResultS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ResultS_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ResultS getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ResultS.getDefaultInstance();
+      public nefit.shared.NefitProto.ResultS getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ResultS.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ResultS build() {
-        nefit.shared.NefitProtos.ResultS result = buildPartial();
+      public nefit.shared.NefitProto.ResultS build() {
+        nefit.shared.NefitProto.ResultS result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -15594,8 +15594,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ResultS buildPartial() {
-        nefit.shared.NefitProtos.ResultS result = new nefit.shared.NefitProtos.ResultS(this);
+      public nefit.shared.NefitProto.ResultS buildPartial() {
+        nefit.shared.NefitProto.ResultS result = new nefit.shared.NefitProto.ResultS(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -15649,16 +15649,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ResultS) {
-          return mergeFrom((nefit.shared.NefitProtos.ResultS)other);
+        if (other instanceof nefit.shared.NefitProto.ResultS) {
+          return mergeFrom((nefit.shared.NefitProto.ResultS)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ResultS other) {
-        if (other == nefit.shared.NefitProtos.ResultS.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ResultS other) {
+        if (other == nefit.shared.NefitProto.ResultS.getDefaultInstance()) return this;
         if (other.hasResult()) {
           setResult(other.getResult());
         }
@@ -15696,11 +15696,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ResultS parsedMessage = null;
+        nefit.shared.NefitProto.ResultS parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ResultS) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ResultS) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -15932,12 +15932,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ResultS)
-    private static final nefit.shared.NefitProtos.ResultS DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ResultS DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ResultS();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ResultS();
     }
 
-    public static nefit.shared.NefitProtos.ResultS getDefaultInstance() {
+    public static nefit.shared.NefitProto.ResultS getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -15962,7 +15962,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ResultS getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ResultS getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -16079,15 +16079,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ResultI_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ResultI_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_ResultI_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ResultI_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.ResultI.class, nefit.shared.NefitProtos.ResultI.Builder.class);
+              nefit.shared.NefitProto.ResultI.class, nefit.shared.NefitProto.ResultI.Builder.class);
     }
 
     private int bitField0_;
@@ -16207,10 +16207,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.ResultI)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ResultI)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.ResultI other = (nefit.shared.NefitProtos.ResultI) obj;
+      nefit.shared.NefitProto.ResultI other = (nefit.shared.NefitProto.ResultI) obj;
 
       if (hasResult() != other.hasResult()) return false;
       if (hasResult()) {
@@ -16247,69 +16247,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ResultI parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ResultI parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultI parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ResultI parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ResultI parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ResultI parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.ResultI parseFrom(
+    public static nefit.shared.NefitProto.ResultI parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -16322,7 +16322,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.ResultI prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ResultI prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -16343,21 +16343,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.ResultI)
-        nefit.shared.NefitProtos.ResultIOrBuilder {
+        nefit.shared.NefitProto.ResultIOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ResultI_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ResultI_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ResultI_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ResultI_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.ResultI.class, nefit.shared.NefitProtos.ResultI.Builder.class);
+                nefit.shared.NefitProto.ResultI.class, nefit.shared.NefitProto.ResultI.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.ResultI.newBuilder()
+      // Construct using nefit.shared.NefitProto.ResultI.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -16385,17 +16385,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_ResultI_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ResultI_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ResultI getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.ResultI.getDefaultInstance();
+      public nefit.shared.NefitProto.ResultI getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ResultI.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ResultI build() {
-        nefit.shared.NefitProtos.ResultI result = buildPartial();
+      public nefit.shared.NefitProto.ResultI build() {
+        nefit.shared.NefitProto.ResultI result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -16403,8 +16403,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.ResultI buildPartial() {
-        nefit.shared.NefitProtos.ResultI result = new nefit.shared.NefitProtos.ResultI(this);
+      public nefit.shared.NefitProto.ResultI buildPartial() {
+        nefit.shared.NefitProto.ResultI result = new nefit.shared.NefitProto.ResultI(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -16454,16 +16454,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.ResultI) {
-          return mergeFrom((nefit.shared.NefitProtos.ResultI)other);
+        if (other instanceof nefit.shared.NefitProto.ResultI) {
+          return mergeFrom((nefit.shared.NefitProto.ResultI)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.ResultI other) {
-        if (other == nefit.shared.NefitProtos.ResultI.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ResultI other) {
+        if (other == nefit.shared.NefitProto.ResultI.getDefaultInstance()) return this;
         if (other.hasResult()) {
           setResult(other.getResult());
         }
@@ -16493,11 +16493,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.ResultI parsedMessage = null;
+        nefit.shared.NefitProto.ResultI parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.ResultI) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ResultI) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -16645,12 +16645,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.ResultI)
-    private static final nefit.shared.NefitProtos.ResultI DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.ResultI DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.ResultI();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ResultI();
     }
 
-    public static nefit.shared.NefitProtos.ResultI getDefaultInstance() {
+    public static nefit.shared.NefitProto.ResultI getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -16675,7 +16675,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.ResultI getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ResultI getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -16888,15 +16888,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_InfoS_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_InfoS_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_InfoS_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_InfoS_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.InfoS.class, nefit.shared.NefitProtos.InfoS.Builder.class);
+              nefit.shared.NefitProto.InfoS.class, nefit.shared.NefitProto.InfoS.Builder.class);
     }
 
     private int bitField0_;
@@ -17210,10 +17210,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.InfoS)) {
+      if (!(obj instanceof nefit.shared.NefitProto.InfoS)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.InfoS other = (nefit.shared.NefitProtos.InfoS) obj;
+      nefit.shared.NefitProto.InfoS other = (nefit.shared.NefitProto.InfoS) obj;
 
       if (hasNameM() != other.hasNameM()) return false;
       if (hasNameM()) {
@@ -17296,69 +17296,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.InfoS parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.InfoS parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoS parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.InfoS parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.InfoS parseDelimitedFrom(
+    public static nefit.shared.NefitProto.InfoS parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.InfoS parseFrom(
+    public static nefit.shared.NefitProto.InfoS parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -17371,7 +17371,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.InfoS prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.InfoS prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -17392,21 +17392,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.InfoS)
-        nefit.shared.NefitProtos.InfoSOrBuilder {
+        nefit.shared.NefitProto.InfoSOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_InfoS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_InfoS_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_InfoS_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_InfoS_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.InfoS.class, nefit.shared.NefitProtos.InfoS.Builder.class);
+                nefit.shared.NefitProto.InfoS.class, nefit.shared.NefitProto.InfoS.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.InfoS.newBuilder()
+      // Construct using nefit.shared.NefitProto.InfoS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -17444,17 +17444,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_InfoS_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_InfoS_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.InfoS getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.InfoS.getDefaultInstance();
+      public nefit.shared.NefitProto.InfoS getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.InfoS.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.InfoS build() {
-        nefit.shared.NefitProtos.InfoS result = buildPartial();
+      public nefit.shared.NefitProto.InfoS build() {
+        nefit.shared.NefitProto.InfoS result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -17462,8 +17462,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.InfoS buildPartial() {
-        nefit.shared.NefitProtos.InfoS result = new nefit.shared.NefitProtos.InfoS(this);
+      public nefit.shared.NefitProto.InfoS buildPartial() {
+        nefit.shared.NefitProto.InfoS result = new nefit.shared.NefitProto.InfoS(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -17533,16 +17533,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.InfoS) {
-          return mergeFrom((nefit.shared.NefitProtos.InfoS)other);
+        if (other instanceof nefit.shared.NefitProto.InfoS) {
+          return mergeFrom((nefit.shared.NefitProto.InfoS)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.InfoS other) {
-        if (other == nefit.shared.NefitProtos.InfoS.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.InfoS other) {
+        if (other == nefit.shared.NefitProto.InfoS.getDefaultInstance()) return this;
         if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
           nameM_ = other.nameM_;
@@ -17606,11 +17606,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.InfoS parsedMessage = null;
+        nefit.shared.NefitProto.InfoS parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.InfoS) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.InfoS) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -18037,12 +18037,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.InfoS)
-    private static final nefit.shared.NefitProtos.InfoS DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.InfoS DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.InfoS();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.InfoS();
     }
 
-    public static nefit.shared.NefitProtos.InfoS getDefaultInstance() {
+    public static nefit.shared.NefitProto.InfoS getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -18067,7 +18067,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.InfoS getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.InfoS getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -18256,15 +18256,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_InfoI_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_InfoI_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_InfoI_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_InfoI_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.InfoI.class, nefit.shared.NefitProtos.InfoI.Builder.class);
+              nefit.shared.NefitProto.InfoI.class, nefit.shared.NefitProto.InfoI.Builder.class);
     }
 
     private int bitField0_;
@@ -18523,10 +18523,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.InfoI)) {
+      if (!(obj instanceof nefit.shared.NefitProto.InfoI)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.InfoI other = (nefit.shared.NefitProtos.InfoI) obj;
+      nefit.shared.NefitProto.InfoI other = (nefit.shared.NefitProto.InfoI) obj;
 
       if (hasNameM() != other.hasNameM()) return false;
       if (hasNameM()) {
@@ -18600,69 +18600,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.InfoI parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.InfoI parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoI parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.InfoI parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.InfoI parseDelimitedFrom(
+    public static nefit.shared.NefitProto.InfoI parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.InfoI parseFrom(
+    public static nefit.shared.NefitProto.InfoI parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -18675,7 +18675,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.InfoI prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.InfoI prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -18696,21 +18696,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.InfoI)
-        nefit.shared.NefitProtos.InfoIOrBuilder {
+        nefit.shared.NefitProto.InfoIOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_InfoI_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_InfoI_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_InfoI_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_InfoI_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.InfoI.class, nefit.shared.NefitProtos.InfoI.Builder.class);
+                nefit.shared.NefitProto.InfoI.class, nefit.shared.NefitProto.InfoI.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.InfoI.newBuilder()
+      // Construct using nefit.shared.NefitProto.InfoI.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -18746,17 +18746,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_InfoI_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_InfoI_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.InfoI getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.InfoI.getDefaultInstance();
+      public nefit.shared.NefitProto.InfoI getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.InfoI.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.InfoI build() {
-        nefit.shared.NefitProtos.InfoI result = buildPartial();
+      public nefit.shared.NefitProto.InfoI build() {
+        nefit.shared.NefitProto.InfoI result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -18764,8 +18764,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.InfoI buildPartial() {
-        nefit.shared.NefitProtos.InfoI result = new nefit.shared.NefitProtos.InfoI(this);
+      public nefit.shared.NefitProto.InfoI buildPartial() {
+        nefit.shared.NefitProto.InfoI result = new nefit.shared.NefitProto.InfoI(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -18831,16 +18831,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.InfoI) {
-          return mergeFrom((nefit.shared.NefitProtos.InfoI)other);
+        if (other instanceof nefit.shared.NefitProto.InfoI) {
+          return mergeFrom((nefit.shared.NefitProto.InfoI)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.InfoI other) {
-        if (other == nefit.shared.NefitProtos.InfoI.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.InfoI other) {
+        if (other == nefit.shared.NefitProto.InfoI.getDefaultInstance()) return this;
         if (other.hasNameM()) {
           bitField0_ |= 0x00000001;
           nameM_ = other.nameM_;
@@ -18896,11 +18896,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.InfoI parsedMessage = null;
+        nefit.shared.NefitProto.InfoI parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.InfoI) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.InfoI) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -19243,12 +19243,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.InfoI)
-    private static final nefit.shared.NefitProtos.InfoI DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.InfoI DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.InfoI();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.InfoI();
     }
 
-    public static nefit.shared.NefitProtos.InfoI getDefaultInstance() {
+    public static nefit.shared.NefitProto.InfoI getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -19273,7 +19273,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.InfoI getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.InfoI getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -19292,11 +19292,11 @@ public final class NefitProtos {
      * <code>optional .nefit.DisponibilityS m1 = 1;</code>
      * @return The m1.
      */
-    nefit.shared.NefitProtos.DisponibilityS getM1();
+    nefit.shared.NefitProto.DisponibilityS getM1();
     /**
      * <code>optional .nefit.DisponibilityS m1 = 1;</code>
      */
-    nefit.shared.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder();
+    nefit.shared.NefitProto.DisponibilitySOrBuilder getM1OrBuilder();
 
     /**
      * <code>optional .nefit.OrderS m2 = 2;</code>
@@ -19307,11 +19307,11 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderS m2 = 2;</code>
      * @return The m2.
      */
-    nefit.shared.NefitProtos.OrderS getM2();
+    nefit.shared.NefitProto.OrderS getM2();
     /**
      * <code>optional .nefit.OrderS m2 = 2;</code>
      */
-    nefit.shared.NefitProtos.OrderSOrBuilder getM2OrBuilder();
+    nefit.shared.NefitProto.OrderSOrBuilder getM2OrBuilder();
 
     /**
      * <code>optional .nefit.SubS m3 = 3;</code>
@@ -19322,11 +19322,11 @@ public final class NefitProtos {
      * <code>optional .nefit.SubS m3 = 3;</code>
      * @return The m3.
      */
-    nefit.shared.NefitProtos.SubS getM3();
+    nefit.shared.NefitProto.SubS getM3();
     /**
      * <code>optional .nefit.SubS m3 = 3;</code>
      */
-    nefit.shared.NefitProtos.SubSOrBuilder getM3OrBuilder();
+    nefit.shared.NefitProto.SubSOrBuilder getM3OrBuilder();
 
     /**
      * <code>optional .nefit.ResultS m4 = 4;</code>
@@ -19337,11 +19337,11 @@ public final class NefitProtos {
      * <code>optional .nefit.ResultS m4 = 4;</code>
      * @return The m4.
      */
-    nefit.shared.NefitProtos.ResultS getM4();
+    nefit.shared.NefitProto.ResultS getM4();
     /**
      * <code>optional .nefit.ResultS m4 = 4;</code>
      */
-    nefit.shared.NefitProtos.ResultSOrBuilder getM4OrBuilder();
+    nefit.shared.NefitProto.ResultSOrBuilder getM4OrBuilder();
 
     /**
      * <code>optional .nefit.InfoS m5 = 5;</code>
@@ -19352,11 +19352,11 @@ public final class NefitProtos {
      * <code>optional .nefit.InfoS m5 = 5;</code>
      * @return The m5.
      */
-    nefit.shared.NefitProtos.InfoS getM5();
+    nefit.shared.NefitProto.InfoS getM5();
     /**
      * <code>optional .nefit.InfoS m5 = 5;</code>
      */
-    nefit.shared.NefitProtos.InfoSOrBuilder getM5OrBuilder();
+    nefit.shared.NefitProto.InfoSOrBuilder getM5OrBuilder();
 
     /**
      * <code>optional .nefit.ProductionS m6 = 6;</code>
@@ -19367,11 +19367,11 @@ public final class NefitProtos {
      * <code>optional .nefit.ProductionS m6 = 6;</code>
      * @return The m6.
      */
-    nefit.shared.NefitProtos.ProductionS getM6();
+    nefit.shared.NefitProto.ProductionS getM6();
     /**
      * <code>optional .nefit.ProductionS m6 = 6;</code>
      */
-    nefit.shared.NefitProtos.ProductionSOrBuilder getM6OrBuilder();
+    nefit.shared.NefitProto.ProductionSOrBuilder getM6OrBuilder();
 
     /**
      * <code>optional .nefit.OrderAckS m7 = 7;</code>
@@ -19382,13 +19382,13 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderAckS m7 = 7;</code>
      * @return The m7.
      */
-    nefit.shared.NefitProtos.OrderAckS getM7();
+    nefit.shared.NefitProto.OrderAckS getM7();
     /**
      * <code>optional .nefit.OrderAckS m7 = 7;</code>
      */
-    nefit.shared.NefitProtos.OrderAckSOrBuilder getM7OrBuilder();
+    nefit.shared.NefitProto.OrderAckSOrBuilder getM7OrBuilder();
 
-    public nefit.shared.NefitProtos.Server.MsgCase getMsgCase();
+    public nefit.shared.NefitProto.Server.MsgCase getMsgCase();
   }
   /**
    * Protobuf type {@code nefit.Server}
@@ -19437,98 +19437,98 @@ public final class NefitProtos {
               done = true;
               break;
             case 10: {
-              nefit.shared.NefitProtos.DisponibilityS.Builder subBuilder = null;
+              nefit.shared.NefitProto.DisponibilityS.Builder subBuilder = null;
               if (msgCase_ == 1) {
-                subBuilder = ((nefit.shared.NefitProtos.DisponibilityS) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.DisponibilityS) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.DisponibilityS.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.DisponibilityS.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.DisponibilityS) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.DisponibilityS) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 1;
               break;
             }
             case 18: {
-              nefit.shared.NefitProtos.OrderS.Builder subBuilder = null;
+              nefit.shared.NefitProto.OrderS.Builder subBuilder = null;
               if (msgCase_ == 2) {
-                subBuilder = ((nefit.shared.NefitProtos.OrderS) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.OrderS) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.OrderS.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.OrderS.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.OrderS) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.OrderS) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 2;
               break;
             }
             case 26: {
-              nefit.shared.NefitProtos.SubS.Builder subBuilder = null;
+              nefit.shared.NefitProto.SubS.Builder subBuilder = null;
               if (msgCase_ == 3) {
-                subBuilder = ((nefit.shared.NefitProtos.SubS) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.SubS) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.SubS.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.SubS.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.SubS) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.SubS) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 3;
               break;
             }
             case 34: {
-              nefit.shared.NefitProtos.ResultS.Builder subBuilder = null;
+              nefit.shared.NefitProto.ResultS.Builder subBuilder = null;
               if (msgCase_ == 4) {
-                subBuilder = ((nefit.shared.NefitProtos.ResultS) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.ResultS) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.ResultS.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.ResultS.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.ResultS) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.ResultS) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 4;
               break;
             }
             case 42: {
-              nefit.shared.NefitProtos.InfoS.Builder subBuilder = null;
+              nefit.shared.NefitProto.InfoS.Builder subBuilder = null;
               if (msgCase_ == 5) {
-                subBuilder = ((nefit.shared.NefitProtos.InfoS) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.InfoS) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.InfoS.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.InfoS.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.InfoS) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.InfoS) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 5;
               break;
             }
             case 50: {
-              nefit.shared.NefitProtos.ProductionS.Builder subBuilder = null;
+              nefit.shared.NefitProto.ProductionS.Builder subBuilder = null;
               if (msgCase_ == 6) {
-                subBuilder = ((nefit.shared.NefitProtos.ProductionS) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.ProductionS) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.ProductionS.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.ProductionS.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.ProductionS) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.ProductionS) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 6;
               break;
             }
             case 58: {
-              nefit.shared.NefitProtos.OrderAckS.Builder subBuilder = null;
+              nefit.shared.NefitProto.OrderAckS.Builder subBuilder = null;
               if (msgCase_ == 7) {
-                subBuilder = ((nefit.shared.NefitProtos.OrderAckS) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.OrderAckS) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.OrderAckS.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.OrderAckS.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.OrderAckS) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.OrderAckS) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 7;
@@ -19555,15 +19555,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_Server_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_Server_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_Server_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_Server_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.Server.class, nefit.shared.NefitProtos.Server.Builder.class);
+              nefit.shared.NefitProto.Server.class, nefit.shared.NefitProto.Server.Builder.class);
     }
 
     private int bitField0_;
@@ -19630,20 +19630,20 @@ public final class NefitProtos {
      * <code>optional .nefit.DisponibilityS m1 = 1;</code>
      * @return The m1.
      */
-    public nefit.shared.NefitProtos.DisponibilityS getM1() {
+    public nefit.shared.NefitProto.DisponibilityS getM1() {
       if (msgCase_ == 1) {
-         return (nefit.shared.NefitProtos.DisponibilityS) msg_;
+         return (nefit.shared.NefitProto.DisponibilityS) msg_;
       }
-      return nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance();
+      return nefit.shared.NefitProto.DisponibilityS.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.DisponibilityS m1 = 1;</code>
      */
-    public nefit.shared.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder() {
+    public nefit.shared.NefitProto.DisponibilitySOrBuilder getM1OrBuilder() {
       if (msgCase_ == 1) {
-         return (nefit.shared.NefitProtos.DisponibilityS) msg_;
+         return (nefit.shared.NefitProto.DisponibilityS) msg_;
       }
-      return nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance();
+      return nefit.shared.NefitProto.DisponibilityS.getDefaultInstance();
     }
 
     public static final int M2_FIELD_NUMBER = 2;
@@ -19658,20 +19658,20 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderS m2 = 2;</code>
      * @return The m2.
      */
-    public nefit.shared.NefitProtos.OrderS getM2() {
+    public nefit.shared.NefitProto.OrderS getM2() {
       if (msgCase_ == 2) {
-         return (nefit.shared.NefitProtos.OrderS) msg_;
+         return (nefit.shared.NefitProto.OrderS) msg_;
       }
-      return nefit.shared.NefitProtos.OrderS.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderS.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.OrderS m2 = 2;</code>
      */
-    public nefit.shared.NefitProtos.OrderSOrBuilder getM2OrBuilder() {
+    public nefit.shared.NefitProto.OrderSOrBuilder getM2OrBuilder() {
       if (msgCase_ == 2) {
-         return (nefit.shared.NefitProtos.OrderS) msg_;
+         return (nefit.shared.NefitProto.OrderS) msg_;
       }
-      return nefit.shared.NefitProtos.OrderS.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderS.getDefaultInstance();
     }
 
     public static final int M3_FIELD_NUMBER = 3;
@@ -19686,20 +19686,20 @@ public final class NefitProtos {
      * <code>optional .nefit.SubS m3 = 3;</code>
      * @return The m3.
      */
-    public nefit.shared.NefitProtos.SubS getM3() {
+    public nefit.shared.NefitProto.SubS getM3() {
       if (msgCase_ == 3) {
-         return (nefit.shared.NefitProtos.SubS) msg_;
+         return (nefit.shared.NefitProto.SubS) msg_;
       }
-      return nefit.shared.NefitProtos.SubS.getDefaultInstance();
+      return nefit.shared.NefitProto.SubS.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.SubS m3 = 3;</code>
      */
-    public nefit.shared.NefitProtos.SubSOrBuilder getM3OrBuilder() {
+    public nefit.shared.NefitProto.SubSOrBuilder getM3OrBuilder() {
       if (msgCase_ == 3) {
-         return (nefit.shared.NefitProtos.SubS) msg_;
+         return (nefit.shared.NefitProto.SubS) msg_;
       }
-      return nefit.shared.NefitProtos.SubS.getDefaultInstance();
+      return nefit.shared.NefitProto.SubS.getDefaultInstance();
     }
 
     public static final int M4_FIELD_NUMBER = 4;
@@ -19714,20 +19714,20 @@ public final class NefitProtos {
      * <code>optional .nefit.ResultS m4 = 4;</code>
      * @return The m4.
      */
-    public nefit.shared.NefitProtos.ResultS getM4() {
+    public nefit.shared.NefitProto.ResultS getM4() {
       if (msgCase_ == 4) {
-         return (nefit.shared.NefitProtos.ResultS) msg_;
+         return (nefit.shared.NefitProto.ResultS) msg_;
       }
-      return nefit.shared.NefitProtos.ResultS.getDefaultInstance();
+      return nefit.shared.NefitProto.ResultS.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.ResultS m4 = 4;</code>
      */
-    public nefit.shared.NefitProtos.ResultSOrBuilder getM4OrBuilder() {
+    public nefit.shared.NefitProto.ResultSOrBuilder getM4OrBuilder() {
       if (msgCase_ == 4) {
-         return (nefit.shared.NefitProtos.ResultS) msg_;
+         return (nefit.shared.NefitProto.ResultS) msg_;
       }
-      return nefit.shared.NefitProtos.ResultS.getDefaultInstance();
+      return nefit.shared.NefitProto.ResultS.getDefaultInstance();
     }
 
     public static final int M5_FIELD_NUMBER = 5;
@@ -19742,20 +19742,20 @@ public final class NefitProtos {
      * <code>optional .nefit.InfoS m5 = 5;</code>
      * @return The m5.
      */
-    public nefit.shared.NefitProtos.InfoS getM5() {
+    public nefit.shared.NefitProto.InfoS getM5() {
       if (msgCase_ == 5) {
-         return (nefit.shared.NefitProtos.InfoS) msg_;
+         return (nefit.shared.NefitProto.InfoS) msg_;
       }
-      return nefit.shared.NefitProtos.InfoS.getDefaultInstance();
+      return nefit.shared.NefitProto.InfoS.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.InfoS m5 = 5;</code>
      */
-    public nefit.shared.NefitProtos.InfoSOrBuilder getM5OrBuilder() {
+    public nefit.shared.NefitProto.InfoSOrBuilder getM5OrBuilder() {
       if (msgCase_ == 5) {
-         return (nefit.shared.NefitProtos.InfoS) msg_;
+         return (nefit.shared.NefitProto.InfoS) msg_;
       }
-      return nefit.shared.NefitProtos.InfoS.getDefaultInstance();
+      return nefit.shared.NefitProto.InfoS.getDefaultInstance();
     }
 
     public static final int M6_FIELD_NUMBER = 6;
@@ -19770,20 +19770,20 @@ public final class NefitProtos {
      * <code>optional .nefit.ProductionS m6 = 6;</code>
      * @return The m6.
      */
-    public nefit.shared.NefitProtos.ProductionS getM6() {
+    public nefit.shared.NefitProto.ProductionS getM6() {
       if (msgCase_ == 6) {
-         return (nefit.shared.NefitProtos.ProductionS) msg_;
+         return (nefit.shared.NefitProto.ProductionS) msg_;
       }
-      return nefit.shared.NefitProtos.ProductionS.getDefaultInstance();
+      return nefit.shared.NefitProto.ProductionS.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.ProductionS m6 = 6;</code>
      */
-    public nefit.shared.NefitProtos.ProductionSOrBuilder getM6OrBuilder() {
+    public nefit.shared.NefitProto.ProductionSOrBuilder getM6OrBuilder() {
       if (msgCase_ == 6) {
-         return (nefit.shared.NefitProtos.ProductionS) msg_;
+         return (nefit.shared.NefitProto.ProductionS) msg_;
       }
-      return nefit.shared.NefitProtos.ProductionS.getDefaultInstance();
+      return nefit.shared.NefitProto.ProductionS.getDefaultInstance();
     }
 
     public static final int M7_FIELD_NUMBER = 7;
@@ -19798,20 +19798,20 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderAckS m7 = 7;</code>
      * @return The m7.
      */
-    public nefit.shared.NefitProtos.OrderAckS getM7() {
+    public nefit.shared.NefitProto.OrderAckS getM7() {
       if (msgCase_ == 7) {
-         return (nefit.shared.NefitProtos.OrderAckS) msg_;
+         return (nefit.shared.NefitProto.OrderAckS) msg_;
       }
-      return nefit.shared.NefitProtos.OrderAckS.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderAckS.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.OrderAckS m7 = 7;</code>
      */
-    public nefit.shared.NefitProtos.OrderAckSOrBuilder getM7OrBuilder() {
+    public nefit.shared.NefitProto.OrderAckSOrBuilder getM7OrBuilder() {
       if (msgCase_ == 7) {
-         return (nefit.shared.NefitProtos.OrderAckS) msg_;
+         return (nefit.shared.NefitProto.OrderAckS) msg_;
       }
-      return nefit.shared.NefitProtos.OrderAckS.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderAckS.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -19871,25 +19871,25 @@ public final class NefitProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (msgCase_ == 1) {
-        output.writeMessage(1, (nefit.shared.NefitProtos.DisponibilityS) msg_);
+        output.writeMessage(1, (nefit.shared.NefitProto.DisponibilityS) msg_);
       }
       if (msgCase_ == 2) {
-        output.writeMessage(2, (nefit.shared.NefitProtos.OrderS) msg_);
+        output.writeMessage(2, (nefit.shared.NefitProto.OrderS) msg_);
       }
       if (msgCase_ == 3) {
-        output.writeMessage(3, (nefit.shared.NefitProtos.SubS) msg_);
+        output.writeMessage(3, (nefit.shared.NefitProto.SubS) msg_);
       }
       if (msgCase_ == 4) {
-        output.writeMessage(4, (nefit.shared.NefitProtos.ResultS) msg_);
+        output.writeMessage(4, (nefit.shared.NefitProto.ResultS) msg_);
       }
       if (msgCase_ == 5) {
-        output.writeMessage(5, (nefit.shared.NefitProtos.InfoS) msg_);
+        output.writeMessage(5, (nefit.shared.NefitProto.InfoS) msg_);
       }
       if (msgCase_ == 6) {
-        output.writeMessage(6, (nefit.shared.NefitProtos.ProductionS) msg_);
+        output.writeMessage(6, (nefit.shared.NefitProto.ProductionS) msg_);
       }
       if (msgCase_ == 7) {
-        output.writeMessage(7, (nefit.shared.NefitProtos.OrderAckS) msg_);
+        output.writeMessage(7, (nefit.shared.NefitProto.OrderAckS) msg_);
       }
       unknownFields.writeTo(output);
     }
@@ -19902,31 +19902,31 @@ public final class NefitProtos {
       size = 0;
       if (msgCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (nefit.shared.NefitProtos.DisponibilityS) msg_);
+          .computeMessageSize(1, (nefit.shared.NefitProto.DisponibilityS) msg_);
       }
       if (msgCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (nefit.shared.NefitProtos.OrderS) msg_);
+          .computeMessageSize(2, (nefit.shared.NefitProto.OrderS) msg_);
       }
       if (msgCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (nefit.shared.NefitProtos.SubS) msg_);
+          .computeMessageSize(3, (nefit.shared.NefitProto.SubS) msg_);
       }
       if (msgCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (nefit.shared.NefitProtos.ResultS) msg_);
+          .computeMessageSize(4, (nefit.shared.NefitProto.ResultS) msg_);
       }
       if (msgCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (nefit.shared.NefitProtos.InfoS) msg_);
+          .computeMessageSize(5, (nefit.shared.NefitProto.InfoS) msg_);
       }
       if (msgCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (nefit.shared.NefitProtos.ProductionS) msg_);
+          .computeMessageSize(6, (nefit.shared.NefitProto.ProductionS) msg_);
       }
       if (msgCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (nefit.shared.NefitProtos.OrderAckS) msg_);
+          .computeMessageSize(7, (nefit.shared.NefitProto.OrderAckS) msg_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -19938,10 +19938,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.Server)) {
+      if (!(obj instanceof nefit.shared.NefitProto.Server)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.Server other = (nefit.shared.NefitProtos.Server) obj;
+      nefit.shared.NefitProto.Server other = (nefit.shared.NefitProto.Server) obj;
 
       if (!getMsgCase().equals(other.getMsgCase())) return false;
       switch (msgCase_) {
@@ -20024,69 +20024,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.Server parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.Server parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Server parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.Server parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Server parseDelimitedFrom(
+    public static nefit.shared.NefitProto.Server parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Server parseFrom(
+    public static nefit.shared.NefitProto.Server parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -20099,7 +20099,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.Server prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.Server prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -20120,21 +20120,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.Server)
-        nefit.shared.NefitProtos.ServerOrBuilder {
+        nefit.shared.NefitProto.ServerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Server_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_Server_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Server_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_Server_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.Server.class, nefit.shared.NefitProtos.Server.Builder.class);
+                nefit.shared.NefitProto.Server.class, nefit.shared.NefitProto.Server.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.Server.newBuilder()
+      // Construct using nefit.shared.NefitProto.Server.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -20160,17 +20160,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Server_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_Server_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Server getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.Server.getDefaultInstance();
+      public nefit.shared.NefitProto.Server getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.Server.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Server build() {
-        nefit.shared.NefitProtos.Server result = buildPartial();
+      public nefit.shared.NefitProto.Server build() {
+        nefit.shared.NefitProto.Server result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -20178,8 +20178,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Server buildPartial() {
-        nefit.shared.NefitProtos.Server result = new nefit.shared.NefitProtos.Server(this);
+      public nefit.shared.NefitProto.Server buildPartial() {
+        nefit.shared.NefitProto.Server result = new nefit.shared.NefitProto.Server(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (msgCase_ == 1) {
@@ -20271,16 +20271,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.Server) {
-          return mergeFrom((nefit.shared.NefitProtos.Server)other);
+        if (other instanceof nefit.shared.NefitProto.Server) {
+          return mergeFrom((nefit.shared.NefitProto.Server)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.Server other) {
-        if (other == nefit.shared.NefitProtos.Server.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.Server other) {
+        if (other == nefit.shared.NefitProto.Server.getDefaultInstance()) return this;
         switch (other.getMsgCase()) {
           case M1: {
             mergeM1(other.getM1());
@@ -20364,11 +20364,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.Server parsedMessage = null;
+        nefit.shared.NefitProto.Server parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.Server) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.Server) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -20395,7 +20395,7 @@ public final class NefitProtos {
       private int bitField0_;
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.DisponibilityS, nefit.shared.NefitProtos.DisponibilityS.Builder, nefit.shared.NefitProtos.DisponibilitySOrBuilder> m1Builder_;
+          nefit.shared.NefitProto.DisponibilityS, nefit.shared.NefitProto.DisponibilityS.Builder, nefit.shared.NefitProto.DisponibilitySOrBuilder> m1Builder_;
       /**
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        * @return Whether the m1 field is set.
@@ -20407,23 +20407,23 @@ public final class NefitProtos {
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        * @return The m1.
        */
-      public nefit.shared.NefitProtos.DisponibilityS getM1() {
+      public nefit.shared.NefitProto.DisponibilityS getM1() {
         if (m1Builder_ == null) {
           if (msgCase_ == 1) {
-            return (nefit.shared.NefitProtos.DisponibilityS) msg_;
+            return (nefit.shared.NefitProto.DisponibilityS) msg_;
           }
-          return nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance();
+          return nefit.shared.NefitProto.DisponibilityS.getDefaultInstance();
         } else {
           if (msgCase_ == 1) {
             return m1Builder_.getMessage();
           }
-          return nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance();
+          return nefit.shared.NefitProto.DisponibilityS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        */
-      public Builder setM1(nefit.shared.NefitProtos.DisponibilityS value) {
+      public Builder setM1(nefit.shared.NefitProto.DisponibilityS value) {
         if (m1Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -20440,7 +20440,7 @@ public final class NefitProtos {
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        */
       public Builder setM1(
-          nefit.shared.NefitProtos.DisponibilityS.Builder builderForValue) {
+          nefit.shared.NefitProto.DisponibilityS.Builder builderForValue) {
         if (m1Builder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -20453,11 +20453,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        */
-      public Builder mergeM1(nefit.shared.NefitProtos.DisponibilityS value) {
+      public Builder mergeM1(nefit.shared.NefitProto.DisponibilityS value) {
         if (m1Builder_ == null) {
           if (msgCase_ == 1 &&
-              msg_ != nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.DisponibilityS.newBuilder((nefit.shared.NefitProtos.DisponibilityS) msg_)
+              msg_ != nefit.shared.NefitProto.DisponibilityS.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.DisponibilityS.newBuilder((nefit.shared.NefitProto.DisponibilityS) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -20494,35 +20494,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        */
-      public nefit.shared.NefitProtos.DisponibilityS.Builder getM1Builder() {
+      public nefit.shared.NefitProto.DisponibilityS.Builder getM1Builder() {
         return getM1FieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        */
-      public nefit.shared.NefitProtos.DisponibilitySOrBuilder getM1OrBuilder() {
+      public nefit.shared.NefitProto.DisponibilitySOrBuilder getM1OrBuilder() {
         if ((msgCase_ == 1) && (m1Builder_ != null)) {
           return m1Builder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 1) {
-            return (nefit.shared.NefitProtos.DisponibilityS) msg_;
+            return (nefit.shared.NefitProto.DisponibilityS) msg_;
           }
-          return nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance();
+          return nefit.shared.NefitProto.DisponibilityS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.DisponibilityS, nefit.shared.NefitProtos.DisponibilityS.Builder, nefit.shared.NefitProtos.DisponibilitySOrBuilder> 
+          nefit.shared.NefitProto.DisponibilityS, nefit.shared.NefitProto.DisponibilityS.Builder, nefit.shared.NefitProto.DisponibilitySOrBuilder> 
           getM1FieldBuilder() {
         if (m1Builder_ == null) {
           if (!(msgCase_ == 1)) {
-            msg_ = nefit.shared.NefitProtos.DisponibilityS.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.DisponibilityS.getDefaultInstance();
           }
           m1Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.DisponibilityS, nefit.shared.NefitProtos.DisponibilityS.Builder, nefit.shared.NefitProtos.DisponibilitySOrBuilder>(
-                  (nefit.shared.NefitProtos.DisponibilityS) msg_,
+              nefit.shared.NefitProto.DisponibilityS, nefit.shared.NefitProto.DisponibilityS.Builder, nefit.shared.NefitProto.DisponibilitySOrBuilder>(
+                  (nefit.shared.NefitProto.DisponibilityS) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -20533,7 +20533,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderS, nefit.shared.NefitProtos.OrderS.Builder, nefit.shared.NefitProtos.OrderSOrBuilder> m2Builder_;
+          nefit.shared.NefitProto.OrderS, nefit.shared.NefitProto.OrderS.Builder, nefit.shared.NefitProto.OrderSOrBuilder> m2Builder_;
       /**
        * <code>optional .nefit.OrderS m2 = 2;</code>
        * @return Whether the m2 field is set.
@@ -20545,23 +20545,23 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderS m2 = 2;</code>
        * @return The m2.
        */
-      public nefit.shared.NefitProtos.OrderS getM2() {
+      public nefit.shared.NefitProto.OrderS getM2() {
         if (m2Builder_ == null) {
           if (msgCase_ == 2) {
-            return (nefit.shared.NefitProtos.OrderS) msg_;
+            return (nefit.shared.NefitProto.OrderS) msg_;
           }
-          return nefit.shared.NefitProtos.OrderS.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderS.getDefaultInstance();
         } else {
           if (msgCase_ == 2) {
             return m2Builder_.getMessage();
           }
-          return nefit.shared.NefitProtos.OrderS.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderS m2 = 2;</code>
        */
-      public Builder setM2(nefit.shared.NefitProtos.OrderS value) {
+      public Builder setM2(nefit.shared.NefitProto.OrderS value) {
         if (m2Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -20578,7 +20578,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderS m2 = 2;</code>
        */
       public Builder setM2(
-          nefit.shared.NefitProtos.OrderS.Builder builderForValue) {
+          nefit.shared.NefitProto.OrderS.Builder builderForValue) {
         if (m2Builder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -20591,11 +20591,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderS m2 = 2;</code>
        */
-      public Builder mergeM2(nefit.shared.NefitProtos.OrderS value) {
+      public Builder mergeM2(nefit.shared.NefitProto.OrderS value) {
         if (m2Builder_ == null) {
           if (msgCase_ == 2 &&
-              msg_ != nefit.shared.NefitProtos.OrderS.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.OrderS.newBuilder((nefit.shared.NefitProtos.OrderS) msg_)
+              msg_ != nefit.shared.NefitProto.OrderS.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.OrderS.newBuilder((nefit.shared.NefitProto.OrderS) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -20632,35 +20632,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderS m2 = 2;</code>
        */
-      public nefit.shared.NefitProtos.OrderS.Builder getM2Builder() {
+      public nefit.shared.NefitProto.OrderS.Builder getM2Builder() {
         return getM2FieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.OrderS m2 = 2;</code>
        */
-      public nefit.shared.NefitProtos.OrderSOrBuilder getM2OrBuilder() {
+      public nefit.shared.NefitProto.OrderSOrBuilder getM2OrBuilder() {
         if ((msgCase_ == 2) && (m2Builder_ != null)) {
           return m2Builder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 2) {
-            return (nefit.shared.NefitProtos.OrderS) msg_;
+            return (nefit.shared.NefitProto.OrderS) msg_;
           }
-          return nefit.shared.NefitProtos.OrderS.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderS m2 = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderS, nefit.shared.NefitProtos.OrderS.Builder, nefit.shared.NefitProtos.OrderSOrBuilder> 
+          nefit.shared.NefitProto.OrderS, nefit.shared.NefitProto.OrderS.Builder, nefit.shared.NefitProto.OrderSOrBuilder> 
           getM2FieldBuilder() {
         if (m2Builder_ == null) {
           if (!(msgCase_ == 2)) {
-            msg_ = nefit.shared.NefitProtos.OrderS.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.OrderS.getDefaultInstance();
           }
           m2Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.OrderS, nefit.shared.NefitProtos.OrderS.Builder, nefit.shared.NefitProtos.OrderSOrBuilder>(
-                  (nefit.shared.NefitProtos.OrderS) msg_,
+              nefit.shared.NefitProto.OrderS, nefit.shared.NefitProto.OrderS.Builder, nefit.shared.NefitProto.OrderSOrBuilder>(
+                  (nefit.shared.NefitProto.OrderS) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -20671,7 +20671,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.SubS, nefit.shared.NefitProtos.SubS.Builder, nefit.shared.NefitProtos.SubSOrBuilder> m3Builder_;
+          nefit.shared.NefitProto.SubS, nefit.shared.NefitProto.SubS.Builder, nefit.shared.NefitProto.SubSOrBuilder> m3Builder_;
       /**
        * <code>optional .nefit.SubS m3 = 3;</code>
        * @return Whether the m3 field is set.
@@ -20683,23 +20683,23 @@ public final class NefitProtos {
        * <code>optional .nefit.SubS m3 = 3;</code>
        * @return The m3.
        */
-      public nefit.shared.NefitProtos.SubS getM3() {
+      public nefit.shared.NefitProto.SubS getM3() {
         if (m3Builder_ == null) {
           if (msgCase_ == 3) {
-            return (nefit.shared.NefitProtos.SubS) msg_;
+            return (nefit.shared.NefitProto.SubS) msg_;
           }
-          return nefit.shared.NefitProtos.SubS.getDefaultInstance();
+          return nefit.shared.NefitProto.SubS.getDefaultInstance();
         } else {
           if (msgCase_ == 3) {
             return m3Builder_.getMessage();
           }
-          return nefit.shared.NefitProtos.SubS.getDefaultInstance();
+          return nefit.shared.NefitProto.SubS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.SubS m3 = 3;</code>
        */
-      public Builder setM3(nefit.shared.NefitProtos.SubS value) {
+      public Builder setM3(nefit.shared.NefitProto.SubS value) {
         if (m3Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -20716,7 +20716,7 @@ public final class NefitProtos {
        * <code>optional .nefit.SubS m3 = 3;</code>
        */
       public Builder setM3(
-          nefit.shared.NefitProtos.SubS.Builder builderForValue) {
+          nefit.shared.NefitProto.SubS.Builder builderForValue) {
         if (m3Builder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -20729,11 +20729,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.SubS m3 = 3;</code>
        */
-      public Builder mergeM3(nefit.shared.NefitProtos.SubS value) {
+      public Builder mergeM3(nefit.shared.NefitProto.SubS value) {
         if (m3Builder_ == null) {
           if (msgCase_ == 3 &&
-              msg_ != nefit.shared.NefitProtos.SubS.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.SubS.newBuilder((nefit.shared.NefitProtos.SubS) msg_)
+              msg_ != nefit.shared.NefitProto.SubS.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.SubS.newBuilder((nefit.shared.NefitProto.SubS) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -20770,35 +20770,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.SubS m3 = 3;</code>
        */
-      public nefit.shared.NefitProtos.SubS.Builder getM3Builder() {
+      public nefit.shared.NefitProto.SubS.Builder getM3Builder() {
         return getM3FieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.SubS m3 = 3;</code>
        */
-      public nefit.shared.NefitProtos.SubSOrBuilder getM3OrBuilder() {
+      public nefit.shared.NefitProto.SubSOrBuilder getM3OrBuilder() {
         if ((msgCase_ == 3) && (m3Builder_ != null)) {
           return m3Builder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 3) {
-            return (nefit.shared.NefitProtos.SubS) msg_;
+            return (nefit.shared.NefitProto.SubS) msg_;
           }
-          return nefit.shared.NefitProtos.SubS.getDefaultInstance();
+          return nefit.shared.NefitProto.SubS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.SubS m3 = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.SubS, nefit.shared.NefitProtos.SubS.Builder, nefit.shared.NefitProtos.SubSOrBuilder> 
+          nefit.shared.NefitProto.SubS, nefit.shared.NefitProto.SubS.Builder, nefit.shared.NefitProto.SubSOrBuilder> 
           getM3FieldBuilder() {
         if (m3Builder_ == null) {
           if (!(msgCase_ == 3)) {
-            msg_ = nefit.shared.NefitProtos.SubS.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.SubS.getDefaultInstance();
           }
           m3Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.SubS, nefit.shared.NefitProtos.SubS.Builder, nefit.shared.NefitProtos.SubSOrBuilder>(
-                  (nefit.shared.NefitProtos.SubS) msg_,
+              nefit.shared.NefitProto.SubS, nefit.shared.NefitProto.SubS.Builder, nefit.shared.NefitProto.SubSOrBuilder>(
+                  (nefit.shared.NefitProto.SubS) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -20809,7 +20809,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ResultS, nefit.shared.NefitProtos.ResultS.Builder, nefit.shared.NefitProtos.ResultSOrBuilder> m4Builder_;
+          nefit.shared.NefitProto.ResultS, nefit.shared.NefitProto.ResultS.Builder, nefit.shared.NefitProto.ResultSOrBuilder> m4Builder_;
       /**
        * <code>optional .nefit.ResultS m4 = 4;</code>
        * @return Whether the m4 field is set.
@@ -20821,23 +20821,23 @@ public final class NefitProtos {
        * <code>optional .nefit.ResultS m4 = 4;</code>
        * @return The m4.
        */
-      public nefit.shared.NefitProtos.ResultS getM4() {
+      public nefit.shared.NefitProto.ResultS getM4() {
         if (m4Builder_ == null) {
           if (msgCase_ == 4) {
-            return (nefit.shared.NefitProtos.ResultS) msg_;
+            return (nefit.shared.NefitProto.ResultS) msg_;
           }
-          return nefit.shared.NefitProtos.ResultS.getDefaultInstance();
+          return nefit.shared.NefitProto.ResultS.getDefaultInstance();
         } else {
           if (msgCase_ == 4) {
             return m4Builder_.getMessage();
           }
-          return nefit.shared.NefitProtos.ResultS.getDefaultInstance();
+          return nefit.shared.NefitProto.ResultS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.ResultS m4 = 4;</code>
        */
-      public Builder setM4(nefit.shared.NefitProtos.ResultS value) {
+      public Builder setM4(nefit.shared.NefitProto.ResultS value) {
         if (m4Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -20854,7 +20854,7 @@ public final class NefitProtos {
        * <code>optional .nefit.ResultS m4 = 4;</code>
        */
       public Builder setM4(
-          nefit.shared.NefitProtos.ResultS.Builder builderForValue) {
+          nefit.shared.NefitProto.ResultS.Builder builderForValue) {
         if (m4Builder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -20867,11 +20867,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.ResultS m4 = 4;</code>
        */
-      public Builder mergeM4(nefit.shared.NefitProtos.ResultS value) {
+      public Builder mergeM4(nefit.shared.NefitProto.ResultS value) {
         if (m4Builder_ == null) {
           if (msgCase_ == 4 &&
-              msg_ != nefit.shared.NefitProtos.ResultS.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.ResultS.newBuilder((nefit.shared.NefitProtos.ResultS) msg_)
+              msg_ != nefit.shared.NefitProto.ResultS.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.ResultS.newBuilder((nefit.shared.NefitProto.ResultS) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -20908,35 +20908,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.ResultS m4 = 4;</code>
        */
-      public nefit.shared.NefitProtos.ResultS.Builder getM4Builder() {
+      public nefit.shared.NefitProto.ResultS.Builder getM4Builder() {
         return getM4FieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.ResultS m4 = 4;</code>
        */
-      public nefit.shared.NefitProtos.ResultSOrBuilder getM4OrBuilder() {
+      public nefit.shared.NefitProto.ResultSOrBuilder getM4OrBuilder() {
         if ((msgCase_ == 4) && (m4Builder_ != null)) {
           return m4Builder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 4) {
-            return (nefit.shared.NefitProtos.ResultS) msg_;
+            return (nefit.shared.NefitProto.ResultS) msg_;
           }
-          return nefit.shared.NefitProtos.ResultS.getDefaultInstance();
+          return nefit.shared.NefitProto.ResultS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.ResultS m4 = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ResultS, nefit.shared.NefitProtos.ResultS.Builder, nefit.shared.NefitProtos.ResultSOrBuilder> 
+          nefit.shared.NefitProto.ResultS, nefit.shared.NefitProto.ResultS.Builder, nefit.shared.NefitProto.ResultSOrBuilder> 
           getM4FieldBuilder() {
         if (m4Builder_ == null) {
           if (!(msgCase_ == 4)) {
-            msg_ = nefit.shared.NefitProtos.ResultS.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.ResultS.getDefaultInstance();
           }
           m4Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.ResultS, nefit.shared.NefitProtos.ResultS.Builder, nefit.shared.NefitProtos.ResultSOrBuilder>(
-                  (nefit.shared.NefitProtos.ResultS) msg_,
+              nefit.shared.NefitProto.ResultS, nefit.shared.NefitProto.ResultS.Builder, nefit.shared.NefitProto.ResultSOrBuilder>(
+                  (nefit.shared.NefitProto.ResultS) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -20947,7 +20947,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.InfoS, nefit.shared.NefitProtos.InfoS.Builder, nefit.shared.NefitProtos.InfoSOrBuilder> m5Builder_;
+          nefit.shared.NefitProto.InfoS, nefit.shared.NefitProto.InfoS.Builder, nefit.shared.NefitProto.InfoSOrBuilder> m5Builder_;
       /**
        * <code>optional .nefit.InfoS m5 = 5;</code>
        * @return Whether the m5 field is set.
@@ -20959,23 +20959,23 @@ public final class NefitProtos {
        * <code>optional .nefit.InfoS m5 = 5;</code>
        * @return The m5.
        */
-      public nefit.shared.NefitProtos.InfoS getM5() {
+      public nefit.shared.NefitProto.InfoS getM5() {
         if (m5Builder_ == null) {
           if (msgCase_ == 5) {
-            return (nefit.shared.NefitProtos.InfoS) msg_;
+            return (nefit.shared.NefitProto.InfoS) msg_;
           }
-          return nefit.shared.NefitProtos.InfoS.getDefaultInstance();
+          return nefit.shared.NefitProto.InfoS.getDefaultInstance();
         } else {
           if (msgCase_ == 5) {
             return m5Builder_.getMessage();
           }
-          return nefit.shared.NefitProtos.InfoS.getDefaultInstance();
+          return nefit.shared.NefitProto.InfoS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.InfoS m5 = 5;</code>
        */
-      public Builder setM5(nefit.shared.NefitProtos.InfoS value) {
+      public Builder setM5(nefit.shared.NefitProto.InfoS value) {
         if (m5Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -20992,7 +20992,7 @@ public final class NefitProtos {
        * <code>optional .nefit.InfoS m5 = 5;</code>
        */
       public Builder setM5(
-          nefit.shared.NefitProtos.InfoS.Builder builderForValue) {
+          nefit.shared.NefitProto.InfoS.Builder builderForValue) {
         if (m5Builder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -21005,11 +21005,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.InfoS m5 = 5;</code>
        */
-      public Builder mergeM5(nefit.shared.NefitProtos.InfoS value) {
+      public Builder mergeM5(nefit.shared.NefitProto.InfoS value) {
         if (m5Builder_ == null) {
           if (msgCase_ == 5 &&
-              msg_ != nefit.shared.NefitProtos.InfoS.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.InfoS.newBuilder((nefit.shared.NefitProtos.InfoS) msg_)
+              msg_ != nefit.shared.NefitProto.InfoS.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.InfoS.newBuilder((nefit.shared.NefitProto.InfoS) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -21046,35 +21046,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.InfoS m5 = 5;</code>
        */
-      public nefit.shared.NefitProtos.InfoS.Builder getM5Builder() {
+      public nefit.shared.NefitProto.InfoS.Builder getM5Builder() {
         return getM5FieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.InfoS m5 = 5;</code>
        */
-      public nefit.shared.NefitProtos.InfoSOrBuilder getM5OrBuilder() {
+      public nefit.shared.NefitProto.InfoSOrBuilder getM5OrBuilder() {
         if ((msgCase_ == 5) && (m5Builder_ != null)) {
           return m5Builder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 5) {
-            return (nefit.shared.NefitProtos.InfoS) msg_;
+            return (nefit.shared.NefitProto.InfoS) msg_;
           }
-          return nefit.shared.NefitProtos.InfoS.getDefaultInstance();
+          return nefit.shared.NefitProto.InfoS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.InfoS m5 = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.InfoS, nefit.shared.NefitProtos.InfoS.Builder, nefit.shared.NefitProtos.InfoSOrBuilder> 
+          nefit.shared.NefitProto.InfoS, nefit.shared.NefitProto.InfoS.Builder, nefit.shared.NefitProto.InfoSOrBuilder> 
           getM5FieldBuilder() {
         if (m5Builder_ == null) {
           if (!(msgCase_ == 5)) {
-            msg_ = nefit.shared.NefitProtos.InfoS.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.InfoS.getDefaultInstance();
           }
           m5Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.InfoS, nefit.shared.NefitProtos.InfoS.Builder, nefit.shared.NefitProtos.InfoSOrBuilder>(
-                  (nefit.shared.NefitProtos.InfoS) msg_,
+              nefit.shared.NefitProto.InfoS, nefit.shared.NefitProto.InfoS.Builder, nefit.shared.NefitProto.InfoSOrBuilder>(
+                  (nefit.shared.NefitProto.InfoS) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -21085,7 +21085,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ProductionS, nefit.shared.NefitProtos.ProductionS.Builder, nefit.shared.NefitProtos.ProductionSOrBuilder> m6Builder_;
+          nefit.shared.NefitProto.ProductionS, nefit.shared.NefitProto.ProductionS.Builder, nefit.shared.NefitProto.ProductionSOrBuilder> m6Builder_;
       /**
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        * @return Whether the m6 field is set.
@@ -21097,23 +21097,23 @@ public final class NefitProtos {
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        * @return The m6.
        */
-      public nefit.shared.NefitProtos.ProductionS getM6() {
+      public nefit.shared.NefitProto.ProductionS getM6() {
         if (m6Builder_ == null) {
           if (msgCase_ == 6) {
-            return (nefit.shared.NefitProtos.ProductionS) msg_;
+            return (nefit.shared.NefitProto.ProductionS) msg_;
           }
-          return nefit.shared.NefitProtos.ProductionS.getDefaultInstance();
+          return nefit.shared.NefitProto.ProductionS.getDefaultInstance();
         } else {
           if (msgCase_ == 6) {
             return m6Builder_.getMessage();
           }
-          return nefit.shared.NefitProtos.ProductionS.getDefaultInstance();
+          return nefit.shared.NefitProto.ProductionS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        */
-      public Builder setM6(nefit.shared.NefitProtos.ProductionS value) {
+      public Builder setM6(nefit.shared.NefitProto.ProductionS value) {
         if (m6Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -21130,7 +21130,7 @@ public final class NefitProtos {
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        */
       public Builder setM6(
-          nefit.shared.NefitProtos.ProductionS.Builder builderForValue) {
+          nefit.shared.NefitProto.ProductionS.Builder builderForValue) {
         if (m6Builder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -21143,11 +21143,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        */
-      public Builder mergeM6(nefit.shared.NefitProtos.ProductionS value) {
+      public Builder mergeM6(nefit.shared.NefitProto.ProductionS value) {
         if (m6Builder_ == null) {
           if (msgCase_ == 6 &&
-              msg_ != nefit.shared.NefitProtos.ProductionS.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.ProductionS.newBuilder((nefit.shared.NefitProtos.ProductionS) msg_)
+              msg_ != nefit.shared.NefitProto.ProductionS.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.ProductionS.newBuilder((nefit.shared.NefitProto.ProductionS) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -21184,35 +21184,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        */
-      public nefit.shared.NefitProtos.ProductionS.Builder getM6Builder() {
+      public nefit.shared.NefitProto.ProductionS.Builder getM6Builder() {
         return getM6FieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        */
-      public nefit.shared.NefitProtos.ProductionSOrBuilder getM6OrBuilder() {
+      public nefit.shared.NefitProto.ProductionSOrBuilder getM6OrBuilder() {
         if ((msgCase_ == 6) && (m6Builder_ != null)) {
           return m6Builder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 6) {
-            return (nefit.shared.NefitProtos.ProductionS) msg_;
+            return (nefit.shared.NefitProto.ProductionS) msg_;
           }
-          return nefit.shared.NefitProtos.ProductionS.getDefaultInstance();
+          return nefit.shared.NefitProto.ProductionS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ProductionS, nefit.shared.NefitProtos.ProductionS.Builder, nefit.shared.NefitProtos.ProductionSOrBuilder> 
+          nefit.shared.NefitProto.ProductionS, nefit.shared.NefitProto.ProductionS.Builder, nefit.shared.NefitProto.ProductionSOrBuilder> 
           getM6FieldBuilder() {
         if (m6Builder_ == null) {
           if (!(msgCase_ == 6)) {
-            msg_ = nefit.shared.NefitProtos.ProductionS.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.ProductionS.getDefaultInstance();
           }
           m6Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.ProductionS, nefit.shared.NefitProtos.ProductionS.Builder, nefit.shared.NefitProtos.ProductionSOrBuilder>(
-                  (nefit.shared.NefitProtos.ProductionS) msg_,
+              nefit.shared.NefitProto.ProductionS, nefit.shared.NefitProto.ProductionS.Builder, nefit.shared.NefitProto.ProductionSOrBuilder>(
+                  (nefit.shared.NefitProto.ProductionS) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -21223,7 +21223,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderAckS, nefit.shared.NefitProtos.OrderAckS.Builder, nefit.shared.NefitProtos.OrderAckSOrBuilder> m7Builder_;
+          nefit.shared.NefitProto.OrderAckS, nefit.shared.NefitProto.OrderAckS.Builder, nefit.shared.NefitProto.OrderAckSOrBuilder> m7Builder_;
       /**
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        * @return Whether the m7 field is set.
@@ -21235,23 +21235,23 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        * @return The m7.
        */
-      public nefit.shared.NefitProtos.OrderAckS getM7() {
+      public nefit.shared.NefitProto.OrderAckS getM7() {
         if (m7Builder_ == null) {
           if (msgCase_ == 7) {
-            return (nefit.shared.NefitProtos.OrderAckS) msg_;
+            return (nefit.shared.NefitProto.OrderAckS) msg_;
           }
-          return nefit.shared.NefitProtos.OrderAckS.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderAckS.getDefaultInstance();
         } else {
           if (msgCase_ == 7) {
             return m7Builder_.getMessage();
           }
-          return nefit.shared.NefitProtos.OrderAckS.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderAckS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        */
-      public Builder setM7(nefit.shared.NefitProtos.OrderAckS value) {
+      public Builder setM7(nefit.shared.NefitProto.OrderAckS value) {
         if (m7Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -21268,7 +21268,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        */
       public Builder setM7(
-          nefit.shared.NefitProtos.OrderAckS.Builder builderForValue) {
+          nefit.shared.NefitProto.OrderAckS.Builder builderForValue) {
         if (m7Builder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -21281,11 +21281,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        */
-      public Builder mergeM7(nefit.shared.NefitProtos.OrderAckS value) {
+      public Builder mergeM7(nefit.shared.NefitProto.OrderAckS value) {
         if (m7Builder_ == null) {
           if (msgCase_ == 7 &&
-              msg_ != nefit.shared.NefitProtos.OrderAckS.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.OrderAckS.newBuilder((nefit.shared.NefitProtos.OrderAckS) msg_)
+              msg_ != nefit.shared.NefitProto.OrderAckS.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.OrderAckS.newBuilder((nefit.shared.NefitProto.OrderAckS) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -21322,35 +21322,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        */
-      public nefit.shared.NefitProtos.OrderAckS.Builder getM7Builder() {
+      public nefit.shared.NefitProto.OrderAckS.Builder getM7Builder() {
         return getM7FieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        */
-      public nefit.shared.NefitProtos.OrderAckSOrBuilder getM7OrBuilder() {
+      public nefit.shared.NefitProto.OrderAckSOrBuilder getM7OrBuilder() {
         if ((msgCase_ == 7) && (m7Builder_ != null)) {
           return m7Builder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 7) {
-            return (nefit.shared.NefitProtos.OrderAckS) msg_;
+            return (nefit.shared.NefitProto.OrderAckS) msg_;
           }
-          return nefit.shared.NefitProtos.OrderAckS.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderAckS.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderAckS, nefit.shared.NefitProtos.OrderAckS.Builder, nefit.shared.NefitProtos.OrderAckSOrBuilder> 
+          nefit.shared.NefitProto.OrderAckS, nefit.shared.NefitProto.OrderAckS.Builder, nefit.shared.NefitProto.OrderAckSOrBuilder> 
           getM7FieldBuilder() {
         if (m7Builder_ == null) {
           if (!(msgCase_ == 7)) {
-            msg_ = nefit.shared.NefitProtos.OrderAckS.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.OrderAckS.getDefaultInstance();
           }
           m7Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.OrderAckS, nefit.shared.NefitProtos.OrderAckS.Builder, nefit.shared.NefitProtos.OrderAckSOrBuilder>(
-                  (nefit.shared.NefitProtos.OrderAckS) msg_,
+              nefit.shared.NefitProto.OrderAckS, nefit.shared.NefitProto.OrderAckS.Builder, nefit.shared.NefitProto.OrderAckSOrBuilder>(
+                  (nefit.shared.NefitProto.OrderAckS) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -21376,12 +21376,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.Server)
-    private static final nefit.shared.NefitProtos.Server DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.Server DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.Server();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.Server();
     }
 
-    public static nefit.shared.NefitProtos.Server getDefaultInstance() {
+    public static nefit.shared.NefitProto.Server getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -21406,7 +21406,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.Server getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.Server getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -21425,11 +21425,11 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderAckI ordack = 1;</code>
      * @return The ordack.
      */
-    nefit.shared.NefitProtos.OrderAckI getOrdack();
+    nefit.shared.NefitProto.OrderAckI getOrdack();
     /**
      * <code>optional .nefit.OrderAckI ordack = 1;</code>
      */
-    nefit.shared.NefitProtos.OrderAckIOrBuilder getOrdackOrBuilder();
+    nefit.shared.NefitProto.OrderAckIOrBuilder getOrdackOrBuilder();
 
     /**
      * <code>optional .nefit.ResultI result = 2;</code>
@@ -21440,11 +21440,11 @@ public final class NefitProtos {
      * <code>optional .nefit.ResultI result = 2;</code>
      * @return The result.
      */
-    nefit.shared.NefitProtos.ResultI getResult();
+    nefit.shared.NefitProto.ResultI getResult();
     /**
      * <code>optional .nefit.ResultI result = 2;</code>
      */
-    nefit.shared.NefitProtos.ResultIOrBuilder getResultOrBuilder();
+    nefit.shared.NefitProto.ResultIOrBuilder getResultOrBuilder();
 
     /**
      * <code>optional .nefit.InfoI info = 3;</code>
@@ -21455,13 +21455,13 @@ public final class NefitProtos {
      * <code>optional .nefit.InfoI info = 3;</code>
      * @return The info.
      */
-    nefit.shared.NefitProtos.InfoI getInfo();
+    nefit.shared.NefitProto.InfoI getInfo();
     /**
      * <code>optional .nefit.InfoI info = 3;</code>
      */
-    nefit.shared.NefitProtos.InfoIOrBuilder getInfoOrBuilder();
+    nefit.shared.NefitProto.InfoIOrBuilder getInfoOrBuilder();
 
-    public nefit.shared.NefitProtos.Importer.MsgCase getMsgCase();
+    public nefit.shared.NefitProto.Importer.MsgCase getMsgCase();
   }
   /**
    * Protobuf type {@code nefit.Importer}
@@ -21510,42 +21510,42 @@ public final class NefitProtos {
               done = true;
               break;
             case 10: {
-              nefit.shared.NefitProtos.OrderAckI.Builder subBuilder = null;
+              nefit.shared.NefitProto.OrderAckI.Builder subBuilder = null;
               if (msgCase_ == 1) {
-                subBuilder = ((nefit.shared.NefitProtos.OrderAckI) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.OrderAckI) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.OrderAckI.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.OrderAckI.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.OrderAckI) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.OrderAckI) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 1;
               break;
             }
             case 18: {
-              nefit.shared.NefitProtos.ResultI.Builder subBuilder = null;
+              nefit.shared.NefitProto.ResultI.Builder subBuilder = null;
               if (msgCase_ == 2) {
-                subBuilder = ((nefit.shared.NefitProtos.ResultI) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.ResultI) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.ResultI.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.ResultI.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.ResultI) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.ResultI) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 2;
               break;
             }
             case 26: {
-              nefit.shared.NefitProtos.InfoI.Builder subBuilder = null;
+              nefit.shared.NefitProto.InfoI.Builder subBuilder = null;
               if (msgCase_ == 3) {
-                subBuilder = ((nefit.shared.NefitProtos.InfoI) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.InfoI) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.InfoI.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.InfoI.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.InfoI) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.InfoI) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 3;
@@ -21572,15 +21572,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_Importer_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_Importer_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_Importer_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_Importer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.Importer.class, nefit.shared.NefitProtos.Importer.Builder.class);
+              nefit.shared.NefitProto.Importer.class, nefit.shared.NefitProto.Importer.Builder.class);
     }
 
     private int bitField0_;
@@ -21639,20 +21639,20 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderAckI ordack = 1;</code>
      * @return The ordack.
      */
-    public nefit.shared.NefitProtos.OrderAckI getOrdack() {
+    public nefit.shared.NefitProto.OrderAckI getOrdack() {
       if (msgCase_ == 1) {
-         return (nefit.shared.NefitProtos.OrderAckI) msg_;
+         return (nefit.shared.NefitProto.OrderAckI) msg_;
       }
-      return nefit.shared.NefitProtos.OrderAckI.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderAckI.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.OrderAckI ordack = 1;</code>
      */
-    public nefit.shared.NefitProtos.OrderAckIOrBuilder getOrdackOrBuilder() {
+    public nefit.shared.NefitProto.OrderAckIOrBuilder getOrdackOrBuilder() {
       if (msgCase_ == 1) {
-         return (nefit.shared.NefitProtos.OrderAckI) msg_;
+         return (nefit.shared.NefitProto.OrderAckI) msg_;
       }
-      return nefit.shared.NefitProtos.OrderAckI.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderAckI.getDefaultInstance();
     }
 
     public static final int RESULT_FIELD_NUMBER = 2;
@@ -21667,20 +21667,20 @@ public final class NefitProtos {
      * <code>optional .nefit.ResultI result = 2;</code>
      * @return The result.
      */
-    public nefit.shared.NefitProtos.ResultI getResult() {
+    public nefit.shared.NefitProto.ResultI getResult() {
       if (msgCase_ == 2) {
-         return (nefit.shared.NefitProtos.ResultI) msg_;
+         return (nefit.shared.NefitProto.ResultI) msg_;
       }
-      return nefit.shared.NefitProtos.ResultI.getDefaultInstance();
+      return nefit.shared.NefitProto.ResultI.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.ResultI result = 2;</code>
      */
-    public nefit.shared.NefitProtos.ResultIOrBuilder getResultOrBuilder() {
+    public nefit.shared.NefitProto.ResultIOrBuilder getResultOrBuilder() {
       if (msgCase_ == 2) {
-         return (nefit.shared.NefitProtos.ResultI) msg_;
+         return (nefit.shared.NefitProto.ResultI) msg_;
       }
-      return nefit.shared.NefitProtos.ResultI.getDefaultInstance();
+      return nefit.shared.NefitProto.ResultI.getDefaultInstance();
     }
 
     public static final int INFO_FIELD_NUMBER = 3;
@@ -21695,20 +21695,20 @@ public final class NefitProtos {
      * <code>optional .nefit.InfoI info = 3;</code>
      * @return The info.
      */
-    public nefit.shared.NefitProtos.InfoI getInfo() {
+    public nefit.shared.NefitProto.InfoI getInfo() {
       if (msgCase_ == 3) {
-         return (nefit.shared.NefitProtos.InfoI) msg_;
+         return (nefit.shared.NefitProto.InfoI) msg_;
       }
-      return nefit.shared.NefitProtos.InfoI.getDefaultInstance();
+      return nefit.shared.NefitProto.InfoI.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.InfoI info = 3;</code>
      */
-    public nefit.shared.NefitProtos.InfoIOrBuilder getInfoOrBuilder() {
+    public nefit.shared.NefitProto.InfoIOrBuilder getInfoOrBuilder() {
       if (msgCase_ == 3) {
-         return (nefit.shared.NefitProtos.InfoI) msg_;
+         return (nefit.shared.NefitProto.InfoI) msg_;
       }
-      return nefit.shared.NefitProtos.InfoI.getDefaultInstance();
+      return nefit.shared.NefitProto.InfoI.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -21744,13 +21744,13 @@ public final class NefitProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (msgCase_ == 1) {
-        output.writeMessage(1, (nefit.shared.NefitProtos.OrderAckI) msg_);
+        output.writeMessage(1, (nefit.shared.NefitProto.OrderAckI) msg_);
       }
       if (msgCase_ == 2) {
-        output.writeMessage(2, (nefit.shared.NefitProtos.ResultI) msg_);
+        output.writeMessage(2, (nefit.shared.NefitProto.ResultI) msg_);
       }
       if (msgCase_ == 3) {
-        output.writeMessage(3, (nefit.shared.NefitProtos.InfoI) msg_);
+        output.writeMessage(3, (nefit.shared.NefitProto.InfoI) msg_);
       }
       unknownFields.writeTo(output);
     }
@@ -21763,15 +21763,15 @@ public final class NefitProtos {
       size = 0;
       if (msgCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (nefit.shared.NefitProtos.OrderAckI) msg_);
+          .computeMessageSize(1, (nefit.shared.NefitProto.OrderAckI) msg_);
       }
       if (msgCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (nefit.shared.NefitProtos.ResultI) msg_);
+          .computeMessageSize(2, (nefit.shared.NefitProto.ResultI) msg_);
       }
       if (msgCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (nefit.shared.NefitProtos.InfoI) msg_);
+          .computeMessageSize(3, (nefit.shared.NefitProto.InfoI) msg_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -21783,10 +21783,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.Importer)) {
+      if (!(obj instanceof nefit.shared.NefitProto.Importer)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.Importer other = (nefit.shared.NefitProtos.Importer) obj;
+      nefit.shared.NefitProto.Importer other = (nefit.shared.NefitProto.Importer) obj;
 
       if (!getMsgCase().equals(other.getMsgCase())) return false;
       switch (msgCase_) {
@@ -21837,69 +21837,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.Importer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.Importer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Importer parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.Importer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Importer parseDelimitedFrom(
+    public static nefit.shared.NefitProto.Importer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Importer parseFrom(
+    public static nefit.shared.NefitProto.Importer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -21912,7 +21912,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.Importer prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.Importer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -21933,21 +21933,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.Importer)
-        nefit.shared.NefitProtos.ImporterOrBuilder {
+        nefit.shared.NefitProto.ImporterOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Importer_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_Importer_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Importer_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_Importer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.Importer.class, nefit.shared.NefitProtos.Importer.Builder.class);
+                nefit.shared.NefitProto.Importer.class, nefit.shared.NefitProto.Importer.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.Importer.newBuilder()
+      // Construct using nefit.shared.NefitProto.Importer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -21973,17 +21973,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Importer_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_Importer_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Importer getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.Importer.getDefaultInstance();
+      public nefit.shared.NefitProto.Importer getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.Importer.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Importer build() {
-        nefit.shared.NefitProtos.Importer result = buildPartial();
+      public nefit.shared.NefitProto.Importer build() {
+        nefit.shared.NefitProto.Importer result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -21991,8 +21991,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Importer buildPartial() {
-        nefit.shared.NefitProtos.Importer result = new nefit.shared.NefitProtos.Importer(this);
+      public nefit.shared.NefitProto.Importer buildPartial() {
+        nefit.shared.NefitProto.Importer result = new nefit.shared.NefitProto.Importer(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (msgCase_ == 1) {
@@ -22056,16 +22056,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.Importer) {
-          return mergeFrom((nefit.shared.NefitProtos.Importer)other);
+        if (other instanceof nefit.shared.NefitProto.Importer) {
+          return mergeFrom((nefit.shared.NefitProto.Importer)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.Importer other) {
-        if (other == nefit.shared.NefitProtos.Importer.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.Importer other) {
+        if (other == nefit.shared.NefitProto.Importer.getDefaultInstance()) return this;
         switch (other.getMsgCase()) {
           case ORDACK: {
             mergeOrdack(other.getOrdack());
@@ -22113,11 +22113,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.Importer parsedMessage = null;
+        nefit.shared.NefitProto.Importer parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.Importer) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.Importer) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -22144,7 +22144,7 @@ public final class NefitProtos {
       private int bitField0_;
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderAckI, nefit.shared.NefitProtos.OrderAckI.Builder, nefit.shared.NefitProtos.OrderAckIOrBuilder> ordackBuilder_;
+          nefit.shared.NefitProto.OrderAckI, nefit.shared.NefitProto.OrderAckI.Builder, nefit.shared.NefitProto.OrderAckIOrBuilder> ordackBuilder_;
       /**
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        * @return Whether the ordack field is set.
@@ -22156,23 +22156,23 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        * @return The ordack.
        */
-      public nefit.shared.NefitProtos.OrderAckI getOrdack() {
+      public nefit.shared.NefitProto.OrderAckI getOrdack() {
         if (ordackBuilder_ == null) {
           if (msgCase_ == 1) {
-            return (nefit.shared.NefitProtos.OrderAckI) msg_;
+            return (nefit.shared.NefitProto.OrderAckI) msg_;
           }
-          return nefit.shared.NefitProtos.OrderAckI.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderAckI.getDefaultInstance();
         } else {
           if (msgCase_ == 1) {
             return ordackBuilder_.getMessage();
           }
-          return nefit.shared.NefitProtos.OrderAckI.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderAckI.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        */
-      public Builder setOrdack(nefit.shared.NefitProtos.OrderAckI value) {
+      public Builder setOrdack(nefit.shared.NefitProto.OrderAckI value) {
         if (ordackBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -22189,7 +22189,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        */
       public Builder setOrdack(
-          nefit.shared.NefitProtos.OrderAckI.Builder builderForValue) {
+          nefit.shared.NefitProto.OrderAckI.Builder builderForValue) {
         if (ordackBuilder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -22202,11 +22202,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        */
-      public Builder mergeOrdack(nefit.shared.NefitProtos.OrderAckI value) {
+      public Builder mergeOrdack(nefit.shared.NefitProto.OrderAckI value) {
         if (ordackBuilder_ == null) {
           if (msgCase_ == 1 &&
-              msg_ != nefit.shared.NefitProtos.OrderAckI.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.OrderAckI.newBuilder((nefit.shared.NefitProtos.OrderAckI) msg_)
+              msg_ != nefit.shared.NefitProto.OrderAckI.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.OrderAckI.newBuilder((nefit.shared.NefitProto.OrderAckI) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -22243,35 +22243,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        */
-      public nefit.shared.NefitProtos.OrderAckI.Builder getOrdackBuilder() {
+      public nefit.shared.NefitProto.OrderAckI.Builder getOrdackBuilder() {
         return getOrdackFieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        */
-      public nefit.shared.NefitProtos.OrderAckIOrBuilder getOrdackOrBuilder() {
+      public nefit.shared.NefitProto.OrderAckIOrBuilder getOrdackOrBuilder() {
         if ((msgCase_ == 1) && (ordackBuilder_ != null)) {
           return ordackBuilder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 1) {
-            return (nefit.shared.NefitProtos.OrderAckI) msg_;
+            return (nefit.shared.NefitProto.OrderAckI) msg_;
           }
-          return nefit.shared.NefitProtos.OrderAckI.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderAckI.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderAckI, nefit.shared.NefitProtos.OrderAckI.Builder, nefit.shared.NefitProtos.OrderAckIOrBuilder> 
+          nefit.shared.NefitProto.OrderAckI, nefit.shared.NefitProto.OrderAckI.Builder, nefit.shared.NefitProto.OrderAckIOrBuilder> 
           getOrdackFieldBuilder() {
         if (ordackBuilder_ == null) {
           if (!(msgCase_ == 1)) {
-            msg_ = nefit.shared.NefitProtos.OrderAckI.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.OrderAckI.getDefaultInstance();
           }
           ordackBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.OrderAckI, nefit.shared.NefitProtos.OrderAckI.Builder, nefit.shared.NefitProtos.OrderAckIOrBuilder>(
-                  (nefit.shared.NefitProtos.OrderAckI) msg_,
+              nefit.shared.NefitProto.OrderAckI, nefit.shared.NefitProto.OrderAckI.Builder, nefit.shared.NefitProto.OrderAckIOrBuilder>(
+                  (nefit.shared.NefitProto.OrderAckI) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -22282,7 +22282,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ResultI, nefit.shared.NefitProtos.ResultI.Builder, nefit.shared.NefitProtos.ResultIOrBuilder> resultBuilder_;
+          nefit.shared.NefitProto.ResultI, nefit.shared.NefitProto.ResultI.Builder, nefit.shared.NefitProto.ResultIOrBuilder> resultBuilder_;
       /**
        * <code>optional .nefit.ResultI result = 2;</code>
        * @return Whether the result field is set.
@@ -22294,23 +22294,23 @@ public final class NefitProtos {
        * <code>optional .nefit.ResultI result = 2;</code>
        * @return The result.
        */
-      public nefit.shared.NefitProtos.ResultI getResult() {
+      public nefit.shared.NefitProto.ResultI getResult() {
         if (resultBuilder_ == null) {
           if (msgCase_ == 2) {
-            return (nefit.shared.NefitProtos.ResultI) msg_;
+            return (nefit.shared.NefitProto.ResultI) msg_;
           }
-          return nefit.shared.NefitProtos.ResultI.getDefaultInstance();
+          return nefit.shared.NefitProto.ResultI.getDefaultInstance();
         } else {
           if (msgCase_ == 2) {
             return resultBuilder_.getMessage();
           }
-          return nefit.shared.NefitProtos.ResultI.getDefaultInstance();
+          return nefit.shared.NefitProto.ResultI.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.ResultI result = 2;</code>
        */
-      public Builder setResult(nefit.shared.NefitProtos.ResultI value) {
+      public Builder setResult(nefit.shared.NefitProto.ResultI value) {
         if (resultBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -22327,7 +22327,7 @@ public final class NefitProtos {
        * <code>optional .nefit.ResultI result = 2;</code>
        */
       public Builder setResult(
-          nefit.shared.NefitProtos.ResultI.Builder builderForValue) {
+          nefit.shared.NefitProto.ResultI.Builder builderForValue) {
         if (resultBuilder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -22340,11 +22340,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.ResultI result = 2;</code>
        */
-      public Builder mergeResult(nefit.shared.NefitProtos.ResultI value) {
+      public Builder mergeResult(nefit.shared.NefitProto.ResultI value) {
         if (resultBuilder_ == null) {
           if (msgCase_ == 2 &&
-              msg_ != nefit.shared.NefitProtos.ResultI.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.ResultI.newBuilder((nefit.shared.NefitProtos.ResultI) msg_)
+              msg_ != nefit.shared.NefitProto.ResultI.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.ResultI.newBuilder((nefit.shared.NefitProto.ResultI) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -22381,35 +22381,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.ResultI result = 2;</code>
        */
-      public nefit.shared.NefitProtos.ResultI.Builder getResultBuilder() {
+      public nefit.shared.NefitProto.ResultI.Builder getResultBuilder() {
         return getResultFieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.ResultI result = 2;</code>
        */
-      public nefit.shared.NefitProtos.ResultIOrBuilder getResultOrBuilder() {
+      public nefit.shared.NefitProto.ResultIOrBuilder getResultOrBuilder() {
         if ((msgCase_ == 2) && (resultBuilder_ != null)) {
           return resultBuilder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 2) {
-            return (nefit.shared.NefitProtos.ResultI) msg_;
+            return (nefit.shared.NefitProto.ResultI) msg_;
           }
-          return nefit.shared.NefitProtos.ResultI.getDefaultInstance();
+          return nefit.shared.NefitProto.ResultI.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.ResultI result = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ResultI, nefit.shared.NefitProtos.ResultI.Builder, nefit.shared.NefitProtos.ResultIOrBuilder> 
+          nefit.shared.NefitProto.ResultI, nefit.shared.NefitProto.ResultI.Builder, nefit.shared.NefitProto.ResultIOrBuilder> 
           getResultFieldBuilder() {
         if (resultBuilder_ == null) {
           if (!(msgCase_ == 2)) {
-            msg_ = nefit.shared.NefitProtos.ResultI.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.ResultI.getDefaultInstance();
           }
           resultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.ResultI, nefit.shared.NefitProtos.ResultI.Builder, nefit.shared.NefitProtos.ResultIOrBuilder>(
-                  (nefit.shared.NefitProtos.ResultI) msg_,
+              nefit.shared.NefitProto.ResultI, nefit.shared.NefitProto.ResultI.Builder, nefit.shared.NefitProto.ResultIOrBuilder>(
+                  (nefit.shared.NefitProto.ResultI) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -22420,7 +22420,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.InfoI, nefit.shared.NefitProtos.InfoI.Builder, nefit.shared.NefitProtos.InfoIOrBuilder> infoBuilder_;
+          nefit.shared.NefitProto.InfoI, nefit.shared.NefitProto.InfoI.Builder, nefit.shared.NefitProto.InfoIOrBuilder> infoBuilder_;
       /**
        * <code>optional .nefit.InfoI info = 3;</code>
        * @return Whether the info field is set.
@@ -22432,23 +22432,23 @@ public final class NefitProtos {
        * <code>optional .nefit.InfoI info = 3;</code>
        * @return The info.
        */
-      public nefit.shared.NefitProtos.InfoI getInfo() {
+      public nefit.shared.NefitProto.InfoI getInfo() {
         if (infoBuilder_ == null) {
           if (msgCase_ == 3) {
-            return (nefit.shared.NefitProtos.InfoI) msg_;
+            return (nefit.shared.NefitProto.InfoI) msg_;
           }
-          return nefit.shared.NefitProtos.InfoI.getDefaultInstance();
+          return nefit.shared.NefitProto.InfoI.getDefaultInstance();
         } else {
           if (msgCase_ == 3) {
             return infoBuilder_.getMessage();
           }
-          return nefit.shared.NefitProtos.InfoI.getDefaultInstance();
+          return nefit.shared.NefitProto.InfoI.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.InfoI info = 3;</code>
        */
-      public Builder setInfo(nefit.shared.NefitProtos.InfoI value) {
+      public Builder setInfo(nefit.shared.NefitProto.InfoI value) {
         if (infoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -22465,7 +22465,7 @@ public final class NefitProtos {
        * <code>optional .nefit.InfoI info = 3;</code>
        */
       public Builder setInfo(
-          nefit.shared.NefitProtos.InfoI.Builder builderForValue) {
+          nefit.shared.NefitProto.InfoI.Builder builderForValue) {
         if (infoBuilder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -22478,11 +22478,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.InfoI info = 3;</code>
        */
-      public Builder mergeInfo(nefit.shared.NefitProtos.InfoI value) {
+      public Builder mergeInfo(nefit.shared.NefitProto.InfoI value) {
         if (infoBuilder_ == null) {
           if (msgCase_ == 3 &&
-              msg_ != nefit.shared.NefitProtos.InfoI.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.InfoI.newBuilder((nefit.shared.NefitProtos.InfoI) msg_)
+              msg_ != nefit.shared.NefitProto.InfoI.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.InfoI.newBuilder((nefit.shared.NefitProto.InfoI) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -22519,35 +22519,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.InfoI info = 3;</code>
        */
-      public nefit.shared.NefitProtos.InfoI.Builder getInfoBuilder() {
+      public nefit.shared.NefitProto.InfoI.Builder getInfoBuilder() {
         return getInfoFieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.InfoI info = 3;</code>
        */
-      public nefit.shared.NefitProtos.InfoIOrBuilder getInfoOrBuilder() {
+      public nefit.shared.NefitProto.InfoIOrBuilder getInfoOrBuilder() {
         if ((msgCase_ == 3) && (infoBuilder_ != null)) {
           return infoBuilder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 3) {
-            return (nefit.shared.NefitProtos.InfoI) msg_;
+            return (nefit.shared.NefitProto.InfoI) msg_;
           }
-          return nefit.shared.NefitProtos.InfoI.getDefaultInstance();
+          return nefit.shared.NefitProto.InfoI.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.InfoI info = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.InfoI, nefit.shared.NefitProtos.InfoI.Builder, nefit.shared.NefitProtos.InfoIOrBuilder> 
+          nefit.shared.NefitProto.InfoI, nefit.shared.NefitProto.InfoI.Builder, nefit.shared.NefitProto.InfoIOrBuilder> 
           getInfoFieldBuilder() {
         if (infoBuilder_ == null) {
           if (!(msgCase_ == 3)) {
-            msg_ = nefit.shared.NefitProtos.InfoI.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.InfoI.getDefaultInstance();
           }
           infoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.InfoI, nefit.shared.NefitProtos.InfoI.Builder, nefit.shared.NefitProtos.InfoIOrBuilder>(
-                  (nefit.shared.NefitProtos.InfoI) msg_,
+              nefit.shared.NefitProto.InfoI, nefit.shared.NefitProto.InfoI.Builder, nefit.shared.NefitProto.InfoIOrBuilder>(
+                  (nefit.shared.NefitProto.InfoI) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -22573,12 +22573,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.Importer)
-    private static final nefit.shared.NefitProtos.Importer DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.Importer DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.Importer();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.Importer();
     }
 
-    public static nefit.shared.NefitProtos.Importer getDefaultInstance() {
+    public static nefit.shared.NefitProto.Importer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -22603,7 +22603,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.Importer getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.Importer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -22622,11 +22622,11 @@ public final class NefitProtos {
      * <code>optional .nefit.SubN sub = 1;</code>
      * @return The sub.
      */
-    nefit.shared.NefitProtos.SubN getSub();
+    nefit.shared.NefitProto.SubN getSub();
     /**
      * <code>optional .nefit.SubN sub = 1;</code>
      */
-    nefit.shared.NefitProtos.SubNOrBuilder getSubOrBuilder();
+    nefit.shared.NefitProto.SubNOrBuilder getSubOrBuilder();
 
     /**
      * <code>optional .nefit.OrderN order = 2;</code>
@@ -22637,11 +22637,11 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderN order = 2;</code>
      * @return The order.
      */
-    nefit.shared.NefitProtos.OrderN getOrder();
+    nefit.shared.NefitProto.OrderN getOrder();
     /**
      * <code>optional .nefit.OrderN order = 2;</code>
      */
-    nefit.shared.NefitProtos.OrderNOrBuilder getOrderOrBuilder();
+    nefit.shared.NefitProto.OrderNOrBuilder getOrderOrBuilder();
 
     /**
      * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
@@ -22652,13 +22652,13 @@ public final class NefitProtos {
      * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      * @return The disponibility.
      */
-    nefit.shared.NefitProtos.DisponibilityN getDisponibility();
+    nefit.shared.NefitProto.DisponibilityN getDisponibility();
     /**
      * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      */
-    nefit.shared.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder();
+    nefit.shared.NefitProto.DisponibilityNOrBuilder getDisponibilityOrBuilder();
 
-    public nefit.shared.NefitProtos.Negotiator.MsgCase getMsgCase();
+    public nefit.shared.NefitProto.Negotiator.MsgCase getMsgCase();
   }
   /**
    * Protobuf type {@code nefit.Negotiator}
@@ -22707,42 +22707,42 @@ public final class NefitProtos {
               done = true;
               break;
             case 10: {
-              nefit.shared.NefitProtos.SubN.Builder subBuilder = null;
+              nefit.shared.NefitProto.SubN.Builder subBuilder = null;
               if (msgCase_ == 1) {
-                subBuilder = ((nefit.shared.NefitProtos.SubN) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.SubN) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.SubN.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.SubN.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.SubN) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.SubN) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 1;
               break;
             }
             case 18: {
-              nefit.shared.NefitProtos.OrderN.Builder subBuilder = null;
+              nefit.shared.NefitProto.OrderN.Builder subBuilder = null;
               if (msgCase_ == 2) {
-                subBuilder = ((nefit.shared.NefitProtos.OrderN) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.OrderN) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.OrderN.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.OrderN.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.OrderN) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.OrderN) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 2;
               break;
             }
             case 26: {
-              nefit.shared.NefitProtos.DisponibilityN.Builder subBuilder = null;
+              nefit.shared.NefitProto.DisponibilityN.Builder subBuilder = null;
               if (msgCase_ == 3) {
-                subBuilder = ((nefit.shared.NefitProtos.DisponibilityN) msg_).toBuilder();
+                subBuilder = ((nefit.shared.NefitProto.DisponibilityN) msg_).toBuilder();
               }
               msg_ =
-                  input.readMessage(nefit.shared.NefitProtos.DisponibilityN.PARSER, extensionRegistry);
+                  input.readMessage(nefit.shared.NefitProto.DisponibilityN.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((nefit.shared.NefitProtos.DisponibilityN) msg_);
+                subBuilder.mergeFrom((nefit.shared.NefitProto.DisponibilityN) msg_);
                 msg_ = subBuilder.buildPartial();
               }
               msgCase_ = 3;
@@ -22769,15 +22769,15 @@ public final class NefitProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProtos.internal_static_nefit_Negotiator_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_Negotiator_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProtos.internal_static_nefit_Negotiator_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_Negotiator_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProtos.Negotiator.class, nefit.shared.NefitProtos.Negotiator.Builder.class);
+              nefit.shared.NefitProto.Negotiator.class, nefit.shared.NefitProto.Negotiator.Builder.class);
     }
 
     private int bitField0_;
@@ -22836,20 +22836,20 @@ public final class NefitProtos {
      * <code>optional .nefit.SubN sub = 1;</code>
      * @return The sub.
      */
-    public nefit.shared.NefitProtos.SubN getSub() {
+    public nefit.shared.NefitProto.SubN getSub() {
       if (msgCase_ == 1) {
-         return (nefit.shared.NefitProtos.SubN) msg_;
+         return (nefit.shared.NefitProto.SubN) msg_;
       }
-      return nefit.shared.NefitProtos.SubN.getDefaultInstance();
+      return nefit.shared.NefitProto.SubN.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.SubN sub = 1;</code>
      */
-    public nefit.shared.NefitProtos.SubNOrBuilder getSubOrBuilder() {
+    public nefit.shared.NefitProto.SubNOrBuilder getSubOrBuilder() {
       if (msgCase_ == 1) {
-         return (nefit.shared.NefitProtos.SubN) msg_;
+         return (nefit.shared.NefitProto.SubN) msg_;
       }
-      return nefit.shared.NefitProtos.SubN.getDefaultInstance();
+      return nefit.shared.NefitProto.SubN.getDefaultInstance();
     }
 
     public static final int ORDER_FIELD_NUMBER = 2;
@@ -22864,20 +22864,20 @@ public final class NefitProtos {
      * <code>optional .nefit.OrderN order = 2;</code>
      * @return The order.
      */
-    public nefit.shared.NefitProtos.OrderN getOrder() {
+    public nefit.shared.NefitProto.OrderN getOrder() {
       if (msgCase_ == 2) {
-         return (nefit.shared.NefitProtos.OrderN) msg_;
+         return (nefit.shared.NefitProto.OrderN) msg_;
       }
-      return nefit.shared.NefitProtos.OrderN.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderN.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.OrderN order = 2;</code>
      */
-    public nefit.shared.NefitProtos.OrderNOrBuilder getOrderOrBuilder() {
+    public nefit.shared.NefitProto.OrderNOrBuilder getOrderOrBuilder() {
       if (msgCase_ == 2) {
-         return (nefit.shared.NefitProtos.OrderN) msg_;
+         return (nefit.shared.NefitProto.OrderN) msg_;
       }
-      return nefit.shared.NefitProtos.OrderN.getDefaultInstance();
+      return nefit.shared.NefitProto.OrderN.getDefaultInstance();
     }
 
     public static final int DISPONIBILITY_FIELD_NUMBER = 3;
@@ -22892,20 +22892,20 @@ public final class NefitProtos {
      * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      * @return The disponibility.
      */
-    public nefit.shared.NefitProtos.DisponibilityN getDisponibility() {
+    public nefit.shared.NefitProto.DisponibilityN getDisponibility() {
       if (msgCase_ == 3) {
-         return (nefit.shared.NefitProtos.DisponibilityN) msg_;
+         return (nefit.shared.NefitProto.DisponibilityN) msg_;
       }
-      return nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance();
+      return nefit.shared.NefitProto.DisponibilityN.getDefaultInstance();
     }
     /**
      * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
      */
-    public nefit.shared.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
+    public nefit.shared.NefitProto.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
       if (msgCase_ == 3) {
-         return (nefit.shared.NefitProtos.DisponibilityN) msg_;
+         return (nefit.shared.NefitProto.DisponibilityN) msg_;
       }
-      return nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance();
+      return nefit.shared.NefitProto.DisponibilityN.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -22941,13 +22941,13 @@ public final class NefitProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (msgCase_ == 1) {
-        output.writeMessage(1, (nefit.shared.NefitProtos.SubN) msg_);
+        output.writeMessage(1, (nefit.shared.NefitProto.SubN) msg_);
       }
       if (msgCase_ == 2) {
-        output.writeMessage(2, (nefit.shared.NefitProtos.OrderN) msg_);
+        output.writeMessage(2, (nefit.shared.NefitProto.OrderN) msg_);
       }
       if (msgCase_ == 3) {
-        output.writeMessage(3, (nefit.shared.NefitProtos.DisponibilityN) msg_);
+        output.writeMessage(3, (nefit.shared.NefitProto.DisponibilityN) msg_);
       }
       unknownFields.writeTo(output);
     }
@@ -22960,15 +22960,15 @@ public final class NefitProtos {
       size = 0;
       if (msgCase_ == 1) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (nefit.shared.NefitProtos.SubN) msg_);
+          .computeMessageSize(1, (nefit.shared.NefitProto.SubN) msg_);
       }
       if (msgCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (nefit.shared.NefitProtos.OrderN) msg_);
+          .computeMessageSize(2, (nefit.shared.NefitProto.OrderN) msg_);
       }
       if (msgCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (nefit.shared.NefitProtos.DisponibilityN) msg_);
+          .computeMessageSize(3, (nefit.shared.NefitProto.DisponibilityN) msg_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -22980,10 +22980,10 @@ public final class NefitProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProtos.Negotiator)) {
+      if (!(obj instanceof nefit.shared.NefitProto.Negotiator)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProtos.Negotiator other = (nefit.shared.NefitProtos.Negotiator) obj;
+      nefit.shared.NefitProto.Negotiator other = (nefit.shared.NefitProto.Negotiator) obj;
 
       if (!getMsgCase().equals(other.getMsgCase())) return false;
       switch (msgCase_) {
@@ -23034,69 +23034,69 @@ public final class NefitProtos {
       return hash;
     }
 
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.Negotiator parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.Negotiator parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.Negotiator parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseDelimitedFrom(
+    public static nefit.shared.NefitProto.Negotiator parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProtos.Negotiator parseFrom(
+    public static nefit.shared.NefitProto.Negotiator parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -23109,7 +23109,7 @@ public final class NefitProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProtos.Negotiator prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.Negotiator prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -23130,21 +23130,21 @@ public final class NefitProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:nefit.Negotiator)
-        nefit.shared.NefitProtos.NegotiatorOrBuilder {
+        nefit.shared.NefitProto.NegotiatorOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Negotiator_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_Negotiator_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Negotiator_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_Negotiator_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProtos.Negotiator.class, nefit.shared.NefitProtos.Negotiator.Builder.class);
+                nefit.shared.NefitProto.Negotiator.class, nefit.shared.NefitProto.Negotiator.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProtos.Negotiator.newBuilder()
+      // Construct using nefit.shared.NefitProto.Negotiator.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -23170,17 +23170,17 @@ public final class NefitProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProtos.internal_static_nefit_Negotiator_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_Negotiator_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Negotiator getDefaultInstanceForType() {
-        return nefit.shared.NefitProtos.Negotiator.getDefaultInstance();
+      public nefit.shared.NefitProto.Negotiator getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.Negotiator.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Negotiator build() {
-        nefit.shared.NefitProtos.Negotiator result = buildPartial();
+      public nefit.shared.NefitProto.Negotiator build() {
+        nefit.shared.NefitProto.Negotiator result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -23188,8 +23188,8 @@ public final class NefitProtos {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProtos.Negotiator buildPartial() {
-        nefit.shared.NefitProtos.Negotiator result = new nefit.shared.NefitProtos.Negotiator(this);
+      public nefit.shared.NefitProto.Negotiator buildPartial() {
+        nefit.shared.NefitProto.Negotiator result = new nefit.shared.NefitProto.Negotiator(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (msgCase_ == 1) {
@@ -23253,16 +23253,16 @@ public final class NefitProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProtos.Negotiator) {
-          return mergeFrom((nefit.shared.NefitProtos.Negotiator)other);
+        if (other instanceof nefit.shared.NefitProto.Negotiator) {
+          return mergeFrom((nefit.shared.NefitProto.Negotiator)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProtos.Negotiator other) {
-        if (other == nefit.shared.NefitProtos.Negotiator.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.Negotiator other) {
+        if (other == nefit.shared.NefitProto.Negotiator.getDefaultInstance()) return this;
         switch (other.getMsgCase()) {
           case SUB: {
             mergeSub(other.getSub());
@@ -23310,11 +23310,11 @@ public final class NefitProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProtos.Negotiator parsedMessage = null;
+        nefit.shared.NefitProto.Negotiator parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProtos.Negotiator) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.Negotiator) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -23341,7 +23341,7 @@ public final class NefitProtos {
       private int bitField0_;
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.SubN, nefit.shared.NefitProtos.SubN.Builder, nefit.shared.NefitProtos.SubNOrBuilder> subBuilder_;
+          nefit.shared.NefitProto.SubN, nefit.shared.NefitProto.SubN.Builder, nefit.shared.NefitProto.SubNOrBuilder> subBuilder_;
       /**
        * <code>optional .nefit.SubN sub = 1;</code>
        * @return Whether the sub field is set.
@@ -23353,23 +23353,23 @@ public final class NefitProtos {
        * <code>optional .nefit.SubN sub = 1;</code>
        * @return The sub.
        */
-      public nefit.shared.NefitProtos.SubN getSub() {
+      public nefit.shared.NefitProto.SubN getSub() {
         if (subBuilder_ == null) {
           if (msgCase_ == 1) {
-            return (nefit.shared.NefitProtos.SubN) msg_;
+            return (nefit.shared.NefitProto.SubN) msg_;
           }
-          return nefit.shared.NefitProtos.SubN.getDefaultInstance();
+          return nefit.shared.NefitProto.SubN.getDefaultInstance();
         } else {
           if (msgCase_ == 1) {
             return subBuilder_.getMessage();
           }
-          return nefit.shared.NefitProtos.SubN.getDefaultInstance();
+          return nefit.shared.NefitProto.SubN.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.SubN sub = 1;</code>
        */
-      public Builder setSub(nefit.shared.NefitProtos.SubN value) {
+      public Builder setSub(nefit.shared.NefitProto.SubN value) {
         if (subBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -23386,7 +23386,7 @@ public final class NefitProtos {
        * <code>optional .nefit.SubN sub = 1;</code>
        */
       public Builder setSub(
-          nefit.shared.NefitProtos.SubN.Builder builderForValue) {
+          nefit.shared.NefitProto.SubN.Builder builderForValue) {
         if (subBuilder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -23399,11 +23399,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.SubN sub = 1;</code>
        */
-      public Builder mergeSub(nefit.shared.NefitProtos.SubN value) {
+      public Builder mergeSub(nefit.shared.NefitProto.SubN value) {
         if (subBuilder_ == null) {
           if (msgCase_ == 1 &&
-              msg_ != nefit.shared.NefitProtos.SubN.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.SubN.newBuilder((nefit.shared.NefitProtos.SubN) msg_)
+              msg_ != nefit.shared.NefitProto.SubN.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.SubN.newBuilder((nefit.shared.NefitProto.SubN) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -23440,35 +23440,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.SubN sub = 1;</code>
        */
-      public nefit.shared.NefitProtos.SubN.Builder getSubBuilder() {
+      public nefit.shared.NefitProto.SubN.Builder getSubBuilder() {
         return getSubFieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.SubN sub = 1;</code>
        */
-      public nefit.shared.NefitProtos.SubNOrBuilder getSubOrBuilder() {
+      public nefit.shared.NefitProto.SubNOrBuilder getSubOrBuilder() {
         if ((msgCase_ == 1) && (subBuilder_ != null)) {
           return subBuilder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 1) {
-            return (nefit.shared.NefitProtos.SubN) msg_;
+            return (nefit.shared.NefitProto.SubN) msg_;
           }
-          return nefit.shared.NefitProtos.SubN.getDefaultInstance();
+          return nefit.shared.NefitProto.SubN.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.SubN sub = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.SubN, nefit.shared.NefitProtos.SubN.Builder, nefit.shared.NefitProtos.SubNOrBuilder> 
+          nefit.shared.NefitProto.SubN, nefit.shared.NefitProto.SubN.Builder, nefit.shared.NefitProto.SubNOrBuilder> 
           getSubFieldBuilder() {
         if (subBuilder_ == null) {
           if (!(msgCase_ == 1)) {
-            msg_ = nefit.shared.NefitProtos.SubN.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.SubN.getDefaultInstance();
           }
           subBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.SubN, nefit.shared.NefitProtos.SubN.Builder, nefit.shared.NefitProtos.SubNOrBuilder>(
-                  (nefit.shared.NefitProtos.SubN) msg_,
+              nefit.shared.NefitProto.SubN, nefit.shared.NefitProto.SubN.Builder, nefit.shared.NefitProto.SubNOrBuilder>(
+                  (nefit.shared.NefitProto.SubN) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -23479,7 +23479,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderN, nefit.shared.NefitProtos.OrderN.Builder, nefit.shared.NefitProtos.OrderNOrBuilder> orderBuilder_;
+          nefit.shared.NefitProto.OrderN, nefit.shared.NefitProto.OrderN.Builder, nefit.shared.NefitProto.OrderNOrBuilder> orderBuilder_;
       /**
        * <code>optional .nefit.OrderN order = 2;</code>
        * @return Whether the order field is set.
@@ -23491,23 +23491,23 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderN order = 2;</code>
        * @return The order.
        */
-      public nefit.shared.NefitProtos.OrderN getOrder() {
+      public nefit.shared.NefitProto.OrderN getOrder() {
         if (orderBuilder_ == null) {
           if (msgCase_ == 2) {
-            return (nefit.shared.NefitProtos.OrderN) msg_;
+            return (nefit.shared.NefitProto.OrderN) msg_;
           }
-          return nefit.shared.NefitProtos.OrderN.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderN.getDefaultInstance();
         } else {
           if (msgCase_ == 2) {
             return orderBuilder_.getMessage();
           }
-          return nefit.shared.NefitProtos.OrderN.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderN.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderN order = 2;</code>
        */
-      public Builder setOrder(nefit.shared.NefitProtos.OrderN value) {
+      public Builder setOrder(nefit.shared.NefitProto.OrderN value) {
         if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -23524,7 +23524,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderN order = 2;</code>
        */
       public Builder setOrder(
-          nefit.shared.NefitProtos.OrderN.Builder builderForValue) {
+          nefit.shared.NefitProto.OrderN.Builder builderForValue) {
         if (orderBuilder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -23537,11 +23537,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderN order = 2;</code>
        */
-      public Builder mergeOrder(nefit.shared.NefitProtos.OrderN value) {
+      public Builder mergeOrder(nefit.shared.NefitProto.OrderN value) {
         if (orderBuilder_ == null) {
           if (msgCase_ == 2 &&
-              msg_ != nefit.shared.NefitProtos.OrderN.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.OrderN.newBuilder((nefit.shared.NefitProtos.OrderN) msg_)
+              msg_ != nefit.shared.NefitProto.OrderN.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.OrderN.newBuilder((nefit.shared.NefitProto.OrderN) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -23578,35 +23578,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.OrderN order = 2;</code>
        */
-      public nefit.shared.NefitProtos.OrderN.Builder getOrderBuilder() {
+      public nefit.shared.NefitProto.OrderN.Builder getOrderBuilder() {
         return getOrderFieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.OrderN order = 2;</code>
        */
-      public nefit.shared.NefitProtos.OrderNOrBuilder getOrderOrBuilder() {
+      public nefit.shared.NefitProto.OrderNOrBuilder getOrderOrBuilder() {
         if ((msgCase_ == 2) && (orderBuilder_ != null)) {
           return orderBuilder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 2) {
-            return (nefit.shared.NefitProtos.OrderN) msg_;
+            return (nefit.shared.NefitProto.OrderN) msg_;
           }
-          return nefit.shared.NefitProtos.OrderN.getDefaultInstance();
+          return nefit.shared.NefitProto.OrderN.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.OrderN order = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderN, nefit.shared.NefitProtos.OrderN.Builder, nefit.shared.NefitProtos.OrderNOrBuilder> 
+          nefit.shared.NefitProto.OrderN, nefit.shared.NefitProto.OrderN.Builder, nefit.shared.NefitProto.OrderNOrBuilder> 
           getOrderFieldBuilder() {
         if (orderBuilder_ == null) {
           if (!(msgCase_ == 2)) {
-            msg_ = nefit.shared.NefitProtos.OrderN.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.OrderN.getDefaultInstance();
           }
           orderBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.OrderN, nefit.shared.NefitProtos.OrderN.Builder, nefit.shared.NefitProtos.OrderNOrBuilder>(
-                  (nefit.shared.NefitProtos.OrderN) msg_,
+              nefit.shared.NefitProto.OrderN, nefit.shared.NefitProto.OrderN.Builder, nefit.shared.NefitProto.OrderNOrBuilder>(
+                  (nefit.shared.NefitProto.OrderN) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -23617,7 +23617,7 @@ public final class NefitProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.DisponibilityN, nefit.shared.NefitProtos.DisponibilityN.Builder, nefit.shared.NefitProtos.DisponibilityNOrBuilder> disponibilityBuilder_;
+          nefit.shared.NefitProto.DisponibilityN, nefit.shared.NefitProto.DisponibilityN.Builder, nefit.shared.NefitProto.DisponibilityNOrBuilder> disponibilityBuilder_;
       /**
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        * @return Whether the disponibility field is set.
@@ -23629,23 +23629,23 @@ public final class NefitProtos {
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        * @return The disponibility.
        */
-      public nefit.shared.NefitProtos.DisponibilityN getDisponibility() {
+      public nefit.shared.NefitProto.DisponibilityN getDisponibility() {
         if (disponibilityBuilder_ == null) {
           if (msgCase_ == 3) {
-            return (nefit.shared.NefitProtos.DisponibilityN) msg_;
+            return (nefit.shared.NefitProto.DisponibilityN) msg_;
           }
-          return nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance();
+          return nefit.shared.NefitProto.DisponibilityN.getDefaultInstance();
         } else {
           if (msgCase_ == 3) {
             return disponibilityBuilder_.getMessage();
           }
-          return nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance();
+          return nefit.shared.NefitProto.DisponibilityN.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
-      public Builder setDisponibility(nefit.shared.NefitProtos.DisponibilityN value) {
+      public Builder setDisponibility(nefit.shared.NefitProto.DisponibilityN value) {
         if (disponibilityBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -23662,7 +23662,7 @@ public final class NefitProtos {
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       public Builder setDisponibility(
-          nefit.shared.NefitProtos.DisponibilityN.Builder builderForValue) {
+          nefit.shared.NefitProto.DisponibilityN.Builder builderForValue) {
         if (disponibilityBuilder_ == null) {
           msg_ = builderForValue.build();
           onChanged();
@@ -23675,11 +23675,11 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
-      public Builder mergeDisponibility(nefit.shared.NefitProtos.DisponibilityN value) {
+      public Builder mergeDisponibility(nefit.shared.NefitProto.DisponibilityN value) {
         if (disponibilityBuilder_ == null) {
           if (msgCase_ == 3 &&
-              msg_ != nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance()) {
-            msg_ = nefit.shared.NefitProtos.DisponibilityN.newBuilder((nefit.shared.NefitProtos.DisponibilityN) msg_)
+              msg_ != nefit.shared.NefitProto.DisponibilityN.getDefaultInstance()) {
+            msg_ = nefit.shared.NefitProto.DisponibilityN.newBuilder((nefit.shared.NefitProto.DisponibilityN) msg_)
                 .mergeFrom(value).buildPartial();
           } else {
             msg_ = value;
@@ -23716,35 +23716,35 @@ public final class NefitProtos {
       /**
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
-      public nefit.shared.NefitProtos.DisponibilityN.Builder getDisponibilityBuilder() {
+      public nefit.shared.NefitProto.DisponibilityN.Builder getDisponibilityBuilder() {
         return getDisponibilityFieldBuilder().getBuilder();
       }
       /**
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
-      public nefit.shared.NefitProtos.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
+      public nefit.shared.NefitProto.DisponibilityNOrBuilder getDisponibilityOrBuilder() {
         if ((msgCase_ == 3) && (disponibilityBuilder_ != null)) {
           return disponibilityBuilder_.getMessageOrBuilder();
         } else {
           if (msgCase_ == 3) {
-            return (nefit.shared.NefitProtos.DisponibilityN) msg_;
+            return (nefit.shared.NefitProto.DisponibilityN) msg_;
           }
-          return nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance();
+          return nefit.shared.NefitProto.DisponibilityN.getDefaultInstance();
         }
       }
       /**
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.DisponibilityN, nefit.shared.NefitProtos.DisponibilityN.Builder, nefit.shared.NefitProtos.DisponibilityNOrBuilder> 
+          nefit.shared.NefitProto.DisponibilityN, nefit.shared.NefitProto.DisponibilityN.Builder, nefit.shared.NefitProto.DisponibilityNOrBuilder> 
           getDisponibilityFieldBuilder() {
         if (disponibilityBuilder_ == null) {
           if (!(msgCase_ == 3)) {
-            msg_ = nefit.shared.NefitProtos.DisponibilityN.getDefaultInstance();
+            msg_ = nefit.shared.NefitProto.DisponibilityN.getDefaultInstance();
           }
           disponibilityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              nefit.shared.NefitProtos.DisponibilityN, nefit.shared.NefitProtos.DisponibilityN.Builder, nefit.shared.NefitProtos.DisponibilityNOrBuilder>(
-                  (nefit.shared.NefitProtos.DisponibilityN) msg_,
+              nefit.shared.NefitProto.DisponibilityN, nefit.shared.NefitProto.DisponibilityN.Builder, nefit.shared.NefitProto.DisponibilityNOrBuilder>(
+                  (nefit.shared.NefitProto.DisponibilityN) msg_,
                   getParentForChildren(),
                   isClean());
           msg_ = null;
@@ -23770,12 +23770,12 @@ public final class NefitProtos {
     }
 
     // @@protoc_insertion_point(class_scope:nefit.Negotiator)
-    private static final nefit.shared.NefitProtos.Negotiator DEFAULT_INSTANCE;
+    private static final nefit.shared.NefitProto.Negotiator DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProtos.Negotiator();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.Negotiator();
     }
 
-    public static nefit.shared.NefitProtos.Negotiator getDefaultInstance() {
+    public static nefit.shared.NefitProto.Negotiator getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -23800,7 +23800,7 @@ public final class NefitProtos {
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProtos.Negotiator getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.Negotiator getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -23983,7 +23983,7 @@ public final class NefitProtos {
       "\n\005order\030\002 \001(\0132\r.nefit.OrderNH\000\022.\n\rdispon" +
       "ibility\030\003 \001(\0132\025.nefit.DisponibilityNH\000B\005" +
       "\n\003msg*,\n\nClientType\022\014\n\010IMPORTER\020\000\022\020\n\014MAN" +
-      "UFACTURER\020\001B\033\n\014nefit.sharedB\013NefitProtos"
+      "UFACTURER\020\001B\032\n\014nefit.sharedB\nNefitProto"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
