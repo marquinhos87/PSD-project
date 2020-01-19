@@ -3,8 +3,10 @@ package nefit.catalog;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import nefit.catalog.representations.Negotiation;
 import nefit.catalog.resources.NegotiationsResource;
 import nefit.catalog.resources.UsersResource;
+import nefit.shared.NefitProto;
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
@@ -73,17 +75,29 @@ public class CatalogApplication
             try
             {
                 final var topic = this.zmqSocket.recvStr();
-                final var message = this.zmqSocket.recv();
+                final var messageBytes = this.zmqSocket.recv();
 
                 switch (topic)
                 {
                     case "addUser":
+                        handleMessage(
+                            NefitProto.FrontendToCatalogAddUser
+                                .parseFrom(messageBytes)
+                        );
                         break;
 
                     case "addNegotiation":
+                        handleMessage(
+                            NefitProto.ArbiterToCatalogAddNegotiation
+                                .parseFrom(messageBytes)
+                        );
                         break;
 
                     case "removeNegotiation":
+                        handleMessage(
+                            NefitProto.ArbiterToCatalogRemoveNegotiation
+                                .parseFrom(messageBytes)
+                        );
                         break;
                 }
             }
@@ -95,5 +109,40 @@ public class CatalogApplication
                     throw new RuntimeException(t);
             }
         }
+    }
+
+    private void handleMessage(NefitProto.FrontendToCatalogAddUser msg)
+    {
+        switch (msg.getType())
+        {
+            case IMPORTER:
+                this.state.addImporter(msg.getUsername());
+                break;
+
+            case MANUFACTURER:
+                this.state.addManufacturer(msg.getUsername());
+                break;
+        }
+    }
+
+    private void handleMessage(NefitProto.ArbiterToCatalogAddNegotiation msg)
+    {
+        this.state.addNegotiation(
+            new Negotiation(
+                msg.getManufacturerName(),
+                msg.getProductName(),
+                msg.getMinQuantity(),
+                msg.getMaxQuantity(),
+                msg.getMinUnitPrice()
+            )
+        );
+    }
+
+    private void handleMessage(NefitProto.ArbiterToCatalogRemoveNegotiation msg)
+    {
+        this.state.removeNegotiation(
+            msg.getManufacturerName(),
+            msg.getProductName()
+        );
     }
 }

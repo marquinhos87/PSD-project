@@ -282,13 +282,13 @@ message ServerToArbiterSubscribe {
 }
 
 /* -------------------------------------------------------------------------- */
-/* frontend <--> catalog */
+/* frontend / arbiter <--> catalog */
 
-message FrontendToCatalog {
+message ToCatalog {
     oneof message {
         FrontendToCatalogAddUser addUser = 1;
-        FrontendToCatalogAddNegotiation addNegotiation = 2;
-        FrontendToCatalogRemoveNegotiation removeNegotiation = 3;
+        ArbiterToCatalogAddNegotiation addNegotiation = 2;
+        ArbiterToCatalogRemoveNegotiation removeNegotiation = 3;
     }
 }
 
@@ -298,7 +298,7 @@ message FrontendToCatalogAddUser
     required ClientType type = 2;
 }
 
-message FrontendToCatalogAddNegotiation
+message ArbiterToCatalogAddNegotiation
 {
     required string manufacturerName = 1;
     required string productName = 2;
@@ -307,7 +307,7 @@ message FrontendToCatalogAddNegotiation
     required float minUnitPrice = 5;
 }
 
-message FrontendToCatalogRemoveNegotiation
+message ArbiterToCatalogRemoveNegotiation
 {
     required string manufacturerName = 1;
     required string productName = 2;
