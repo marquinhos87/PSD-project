@@ -45,40 +45,20 @@ public class Main
             final var serverEndpoint = parseArgs(prompt, args);
             final var connection = connectToServer(prompt, serverEndpoint);
 
-            final var clientType = authenticate(prompt, connection);
-
-            switch (clientType)
-            {
-                case IMPORTER:
-                    prompt.print("You are now authenticated as an Importer.");
-                    new Importer(connection, prompt).run();
-                    break;
-
-                case MANUFACTURER:
-                    prompt.print(
-                        "You are now authenticated as an Manufacturer."
-                    );
-                    new Manufacturer(connection, prompt).run();
-                    break;
-            }
+            authenticateClient(prompt, connection);
         }
     }
 
-    private static InetSocketAddress parseArgs(String[] args)
-    {
-        // check number of arguments
-
-    }
-
-    private static NefitProtos.ClientType authenticate(
+    private static void authenticateClient(
         Prompt prompt, Connection connection
     ) throws IOException
     {
+        final String username;
 
         switch (prompt.input("Login or Register [l/r]: "))
         {
             case "l":
-                login(connection, prompt);
+                username = login(connection, prompt);
                 break;
 
             case "m":
@@ -86,14 +66,14 @@ public class Main
                 switch (prompt.input("Importer or Manufacturer [i/m]: "))
                 {
                     case "i":
-                        register(
+                        username = register(
                             connection, prompt,
                             NefitProtos.ClientType.IMPORTER
                         );
                         break;
 
                     case "m":
-                        register(
+                        username = register(
                             connection, prompt,
                             NefitProtos.ClientType.MANUFACTURER
                         );
@@ -101,26 +81,40 @@ public class Main
 
                     default:
                         prompt.fail("Invalid choice.");
+                        return;
                 }
 
                 break;
 
             default:
                 prompt.fail("Invalid choice.");
+                return;
         }
 
-        final var authMsg = connection
-            .receive(NefitProtos.ServerToClientAuth.parser());
+        final var authMsg = connection.receive(
+            NefitProtos.ServerToClientAuth.parser()
+        );
 
         if (!authMsg.getOk())
-        {
             prompt.fail(authMsg.getErrorMessage());
-        }
 
-        return authMsg.getClientType();
+        switch (authMsg.getClientType())
+        {
+            case IMPORTER:
+                prompt.print("You are now authenticated as an Importer.");
+                new Importer(prompt, connection, username).run();
+                break;
+
+            case MANUFACTURER:
+                prompt.print(
+                    "You are now authenticated as an Manufacturer."
+                );
+                new Manufacturer(prompt, connection, username).run();
+                break;
+        }
     }
 
-    private static void login(Connection connection, Prompt prompt)
+    private static String login(Connection connection, Prompt prompt)
         throws IOException
     {
         final var username = prompt.input("Username: ");
@@ -133,9 +127,11 @@ public class Main
             .build();
 
         connection.send(loginMsg);
+
+        return username;
     }
 
-    private static void register(
+    private static String register(
         Connection connection, Prompt prompt, NefitProtos.ClientType clientType
     ) throws IOException
     {
@@ -150,6 +146,8 @@ public class Main
             .build();
 
         connection.send(registerMsg);
+
+        return username;
     }
 
 //    private static Function< Connection, Client > promptClientType(
