@@ -16,8 +16,6 @@
 -export([find_msg_def/1, fetch_msg_def/1]).
 -export([find_enum_def/1, fetch_enum_def/1]).
 -export([enum_symbol_by_value/2, enum_value_by_symbol/2]).
--export(['enum_symbol_by_value_MsgAuth.ClientType'/1, 'enum_value_by_symbol_MsgAuth.ClientType'/1]).
--export(['enum_symbol_by_value_MsgAuth.MsgType'/1, 'enum_value_by_symbol_MsgAuth.MsgType'/1]).
 -export([enum_symbol_by_value_ClientType/1, enum_value_by_symbol_ClientType/1]).
 -export([get_service_names/0]).
 -export([get_service_def/1]).
@@ -51,50 +49,10 @@
 -include("gpb.hrl").
 
 %% enumerated types
--type 'MsgAuth.ClientType'() :: 'MANUFACTURER' | 'IMPORTER'.
--type 'MsgAuth.MsgType'() :: 'LOGIN' | 'REGISTER'.
 -type 'ClientType'() :: 'IMPORTER' | 'MANUFACTURER'.
--export_type(['MsgAuth.ClientType'/0, 'MsgAuth.MsgType'/0, 'ClientType'/0]).
+-export_type(['ClientType'/0]).
 
 %% message types
--type 'MsgAuth'() :: #'MsgAuth'{}.
-
--type 'MsgAck'() :: #'MsgAck'{}.
-
--type 'DisponibilityS'() :: #'DisponibilityS'{}.
-
--type 'DisponibilityN'() :: #'DisponibilityN'{}.
-
--type 'OrderS'() :: #'OrderS'{}.
-
--type 'OrderN'() :: #'OrderN'{}.
-
--type 'OrderAckS'() :: #'OrderAckS'{}.
-
--type 'OrderAckI'() :: #'OrderAckI'{}.
-
--type 'SubS'() :: #'SubS'{}.
-
--type 'SubN'() :: #'SubN'{}.
-
--type 'ProductionS'() :: #'ProductionS'{}.
-
--type 'ProductionM'() :: #'ProductionM'{}.
-
--type 'ResultS'() :: #'ResultS'{}.
-
--type 'ResultI'() :: #'ResultI'{}.
-
--type 'InfoS'() :: #'InfoS'{}.
-
--type 'InfoI'() :: #'InfoI'{}.
-
--type 'Server'() :: #'Server'{}.
-
--type 'Importer'() :: #'Importer'{}.
-
--type 'Negotiator'() :: #'Negotiator'{}.
-
 -type 'ClientToServer'() :: #'ClientToServer'{}.
 
 -type 'ClientToServerLogin'() :: #'ClientToServerLogin'{}.
@@ -135,20 +93,48 @@
 
 -type 'ServerToImporterNewProduct'() :: #'ServerToImporterNewProduct'{}.
 
--export_type(['MsgAuth'/0, 'MsgAck'/0, 'DisponibilityS'/0, 'DisponibilityN'/0, 'OrderS'/0, 'OrderN'/0, 'OrderAckS'/0, 'OrderAckI'/0, 'SubS'/0, 'SubN'/0, 'ProductionS'/0, 'ProductionM'/0, 'ResultS'/0, 'ResultI'/0, 'InfoS'/0, 'InfoI'/0, 'Server'/0, 'Importer'/0, 'Negotiator'/0, 'ClientToServer'/0, 'ClientToServerLogin'/0, 'ClientToServerRegister'/0, 'ServerToClientAuth'/0, 'ManufacturerToServer'/0, 'ManufacturerToServerAnnounce'/0, 'ServerToManufacturer'/0, 'ServerToManufacturerAnnounced'/0, 'ServerToManufacturerInvalid'/0, 'ServerToManufacturerNoOffers'/0, 'ServerToManufacturerSold'/0, 'ImporterToServer'/0, 'ImporterToServerSubscribe'/0, 'ImporterToServerOffer'/0, 'ServerToImporter'/0, 'ServerToImporterOfferSubmitted'/0, 'ServerToImporterOfferInvalid'/0, 'ServerToImporterOfferWon'/0, 'ServerToImporterOfferLose'/0, 'ServerToImporterNewProduct'/0]).
+-type 'ArbiterToServer'() :: #'ArbiterToServer'{}.
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{} | #'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterNewProduct'{}) -> binary().
+-type 'ArbiterToServerAnnounceAccepted'() :: #'ArbiterToServerAnnounceAccepted'{}.
+
+-type 'ArbiterToServerAnnounceInvalid'() :: #'ArbiterToServerAnnounceInvalid'{}.
+
+-type 'ArbiterToServerAnnounceSold'() :: #'ArbiterToServerAnnounceSold'{}.
+
+-type 'ArbiterToServerAnnounceNoOffers'() :: #'ArbiterToServerAnnounceNoOffers'{}.
+
+-type 'ArbiterToServerOfferSubmitted'() :: #'ArbiterToServerOfferSubmitted'{}.
+
+-type 'ArbiterToServerOfferInvalid'() :: #'ArbiterToServerOfferInvalid'{}.
+
+-type 'ArbiterToServerOfferWon'() :: #'ArbiterToServerOfferWon'{}.
+
+-type 'ArbiterToServerOfferLose'() :: #'ArbiterToServerOfferLose'{}.
+
+-type 'ArbiterToServerNewProduct'() :: #'ArbiterToServerNewProduct'{}.
+
+-type 'ServerToArbiter'() :: #'ServerToArbiter'{}.
+
+-type 'ServerToArbiterOffer'() :: #'ServerToArbiterOffer'{}.
+
+-type 'ServerToArbiterAnnounce'() :: #'ServerToArbiterAnnounce'{}.
+
+-type 'ServerToArbiterSubscribe'() :: #'ServerToArbiterSubscribe'{}.
+
+-export_type(['ClientToServer'/0, 'ClientToServerLogin'/0, 'ClientToServerRegister'/0, 'ServerToClientAuth'/0, 'ManufacturerToServer'/0, 'ManufacturerToServerAnnounce'/0, 'ServerToManufacturer'/0, 'ServerToManufacturerAnnounced'/0, 'ServerToManufacturerInvalid'/0, 'ServerToManufacturerNoOffers'/0, 'ServerToManufacturerSold'/0, 'ImporterToServer'/0, 'ImporterToServerSubscribe'/0, 'ImporterToServerOffer'/0, 'ServerToImporter'/0, 'ServerToImporterOfferSubmitted'/0, 'ServerToImporterOfferInvalid'/0, 'ServerToImporterOfferWon'/0, 'ServerToImporterOfferLose'/0, 'ServerToImporterNewProduct'/0, 'ArbiterToServer'/0, 'ArbiterToServerAnnounceAccepted'/0, 'ArbiterToServerAnnounceInvalid'/0, 'ArbiterToServerAnnounceSold'/0, 'ArbiterToServerAnnounceNoOffers'/0, 'ArbiterToServerOfferSubmitted'/0, 'ArbiterToServerOfferInvalid'/0, 'ArbiterToServerOfferWon'/0, 'ArbiterToServerOfferLose'/0, 'ArbiterToServerNewProduct'/0, 'ServerToArbiter'/0, 'ServerToArbiterOffer'/0, 'ServerToArbiterAnnounce'/0, 'ServerToArbiterSubscribe'/0]).
+
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerNewProduct'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}) -> binary().
 encode_msg(Msg) when tuple_size(Msg) >= 1 ->
     encode_msg(Msg, element(1, Msg), []).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{} | #'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterNewProduct'{}, atom() | list()) -> binary().
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerNewProduct'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom() | list()) -> binary().
 encode_msg(Msg, MsgName) when is_atom(MsgName) ->
     encode_msg(Msg, MsgName, []);
 encode_msg(Msg, Opts)
     when tuple_size(Msg) >= 1, is_list(Opts) ->
     encode_msg(Msg, element(1, Msg), Opts).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{} | #'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterNewProduct'{}, atom(), list()) -> binary().
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerNewProduct'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom(), list()) -> binary().
 encode_msg(Msg, MsgName, Opts) ->
     case proplists:get_bool(verify, Opts) of
       true -> verify_msg(Msg, MsgName, Opts);
@@ -156,46 +142,6 @@ encode_msg(Msg, MsgName, Opts) ->
     end,
     TrUserData = proplists:get_value(user_data, Opts),
     case MsgName of
-      'MsgAuth' ->
-	  encode_msg_MsgAuth(id(Msg, TrUserData), TrUserData);
-      'MsgAck' ->
-	  encode_msg_MsgAck(id(Msg, TrUserData), TrUserData);
-      'DisponibilityS' ->
-	  encode_msg_DisponibilityS(id(Msg, TrUserData),
-				    TrUserData);
-      'DisponibilityN' ->
-	  encode_msg_DisponibilityN(id(Msg, TrUserData),
-				    TrUserData);
-      'OrderS' ->
-	  encode_msg_OrderS(id(Msg, TrUserData), TrUserData);
-      'OrderN' ->
-	  encode_msg_OrderN(id(Msg, TrUserData), TrUserData);
-      'OrderAckS' ->
-	  encode_msg_OrderAckS(id(Msg, TrUserData), TrUserData);
-      'OrderAckI' ->
-	  encode_msg_OrderAckI(id(Msg, TrUserData), TrUserData);
-      'SubS' ->
-	  encode_msg_SubS(id(Msg, TrUserData), TrUserData);
-      'SubN' ->
-	  encode_msg_SubN(id(Msg, TrUserData), TrUserData);
-      'ProductionS' ->
-	  encode_msg_ProductionS(id(Msg, TrUserData), TrUserData);
-      'ProductionM' ->
-	  encode_msg_ProductionM(id(Msg, TrUserData), TrUserData);
-      'ResultS' ->
-	  encode_msg_ResultS(id(Msg, TrUserData), TrUserData);
-      'ResultI' ->
-	  encode_msg_ResultI(id(Msg, TrUserData), TrUserData);
-      'InfoS' ->
-	  encode_msg_InfoS(id(Msg, TrUserData), TrUserData);
-      'InfoI' ->
-	  encode_msg_InfoI(id(Msg, TrUserData), TrUserData);
-      'Server' ->
-	  encode_msg_Server(id(Msg, TrUserData), TrUserData);
-      'Importer' ->
-	  encode_msg_Importer(id(Msg, TrUserData), TrUserData);
-      'Negotiator' ->
-	  encode_msg_Negotiator(id(Msg, TrUserData), TrUserData);
       'ClientToServer' ->
 	  encode_msg_ClientToServer(id(Msg, TrUserData),
 				    TrUserData);
@@ -264,524 +210,58 @@ encode_msg(Msg, MsgName, Opts) ->
       'ServerToImporterNewProduct' ->
 	  encode_msg_ServerToImporterNewProduct(id(Msg,
 						   TrUserData),
-						TrUserData)
+						TrUserData);
+      'ArbiterToServer' ->
+	  encode_msg_ArbiterToServer(id(Msg, TrUserData),
+				     TrUserData);
+      'ArbiterToServerAnnounceAccepted' ->
+	  encode_msg_ArbiterToServerAnnounceAccepted(id(Msg,
+							TrUserData),
+						     TrUserData);
+      'ArbiterToServerAnnounceInvalid' ->
+	  encode_msg_ArbiterToServerAnnounceInvalid(id(Msg,
+						       TrUserData),
+						    TrUserData);
+      'ArbiterToServerAnnounceSold' ->
+	  encode_msg_ArbiterToServerAnnounceSold(id(Msg,
+						    TrUserData),
+						 TrUserData);
+      'ArbiterToServerAnnounceNoOffers' ->
+	  encode_msg_ArbiterToServerAnnounceNoOffers(id(Msg,
+							TrUserData),
+						     TrUserData);
+      'ArbiterToServerOfferSubmitted' ->
+	  encode_msg_ArbiterToServerOfferSubmitted(id(Msg,
+						      TrUserData),
+						   TrUserData);
+      'ArbiterToServerOfferInvalid' ->
+	  encode_msg_ArbiterToServerOfferInvalid(id(Msg,
+						    TrUserData),
+						 TrUserData);
+      'ArbiterToServerOfferWon' ->
+	  encode_msg_ArbiterToServerOfferWon(id(Msg, TrUserData),
+					     TrUserData);
+      'ArbiterToServerOfferLose' ->
+	  encode_msg_ArbiterToServerOfferLose(id(Msg, TrUserData),
+					      TrUserData);
+      'ArbiterToServerNewProduct' ->
+	  encode_msg_ArbiterToServerNewProduct(id(Msg,
+						  TrUserData),
+					       TrUserData);
+      'ServerToArbiter' ->
+	  encode_msg_ServerToArbiter(id(Msg, TrUserData),
+				     TrUserData);
+      'ServerToArbiterOffer' ->
+	  encode_msg_ServerToArbiterOffer(id(Msg, TrUserData),
+					  TrUserData);
+      'ServerToArbiterAnnounce' ->
+	  encode_msg_ServerToArbiterAnnounce(id(Msg, TrUserData),
+					     TrUserData);
+      'ServerToArbiterSubscribe' ->
+	  encode_msg_ServerToArbiterSubscribe(id(Msg, TrUserData),
+					      TrUserData)
     end.
 
-
-encode_msg_MsgAuth(Msg, TrUserData) ->
-    encode_msg_MsgAuth(Msg, <<>>, TrUserData).
-
-
-encode_msg_MsgAuth(#'MsgAuth'{name = F1, pass = F2,
-			      ctype = F3, mtype = F4},
-		   Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   'e_enum_MsgAuth.ClientType'(TrF3, <<B2/binary, 24>>,
-				       TrUserData)
-	 end,
-    begin
-      TrF4 = id(F4, TrUserData),
-      'e_enum_MsgAuth.MsgType'(TrF4, <<B3/binary, 32>>,
-			       TrUserData)
-    end.
-
-encode_msg_MsgAck(Msg, TrUserData) ->
-    encode_msg_MsgAck(Msg, <<>>, TrUserData).
-
-
-encode_msg_MsgAck(#'MsgAck'{ok = F1, msg = F2}, Bin,
-		  TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
-	 end,
-    if F2 == undefined -> B1;
-       true ->
-	   begin
-	     TrF2 = id(F2, TrUserData),
-	     e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	   end
-    end.
-
-encode_msg_DisponibilityS(Msg, TrUserData) ->
-    encode_msg_DisponibilityS(Msg, <<>>, TrUserData).
-
-
-encode_msg_DisponibilityS(#'DisponibilityS'{nameM = F1,
-					    nameP = F2, minimum = F3,
-					    maximum = F4, value = F5,
-					    period = F6},
-			  Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
-	 end,
-    B4 = begin
-	   TrF4 = id(F4, TrUserData),
-	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
-	 end,
-    B5 = begin
-	   TrF5 = id(F5, TrUserData),
-	   e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
-	 end,
-    begin
-      TrF6 = id(F6, TrUserData),
-      e_type_int32(TrF6, <<B5/binary, 48>>, TrUserData)
-    end.
-
-encode_msg_DisponibilityN(Msg, TrUserData) ->
-    encode_msg_DisponibilityN(Msg, <<>>, TrUserData).
-
-
-encode_msg_DisponibilityN(#'DisponibilityN'{nameM = F1,
-					    nameP = F2, minimum = F3,
-					    maximum = F4, value = F5,
-					    period = F6},
-			  Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
-	 end,
-    B4 = begin
-	   TrF4 = id(F4, TrUserData),
-	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
-	 end,
-    B5 = begin
-	   TrF5 = id(F5, TrUserData),
-	   e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
-	 end,
-    begin
-      TrF6 = id(F6, TrUserData),
-      e_type_int32(TrF6, <<B5/binary, 48>>, TrUserData)
-    end.
-
-encode_msg_OrderS(Msg, TrUserData) ->
-    encode_msg_OrderS(Msg, <<>>, TrUserData).
-
-
-encode_msg_OrderS(#'OrderS'{nameM = F1, nameP = F2,
-			    quant = F3, value = F4, nameI = F5},
-		  Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
-	 end,
-    B4 = begin
-	   TrF4 = id(F4, TrUserData),
-	   e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
-	 end,
-    begin
-      TrF5 = id(F5, TrUserData),
-      e_type_string(TrF5, <<B4/binary, 42>>, TrUserData)
-    end.
-
-encode_msg_OrderN(Msg, TrUserData) ->
-    encode_msg_OrderN(Msg, <<>>, TrUserData).
-
-
-encode_msg_OrderN(#'OrderN'{nameM = F1, nameP = F2,
-			    quant = F3, value = F4, nameI = F5},
-		  Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
-	 end,
-    B4 = begin
-	   TrF4 = id(F4, TrUserData),
-	   e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
-	 end,
-    begin
-      TrF5 = id(F5, TrUserData),
-      e_type_string(TrF5, <<B4/binary, 42>>, TrUserData)
-    end.
-
-encode_msg_OrderAckS(Msg, TrUserData) ->
-    encode_msg_OrderAckS(Msg, <<>>, TrUserData).
-
-
-encode_msg_OrderAckS(#'OrderAckS'{ack = F1, msg = F2,
-				  nameI = F3, outdated = F4},
-		     Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
-	 end,
-    B2 = if F2 == undefined -> B1;
-	    true ->
-		begin
-		  TrF2 = id(F2, TrUserData),
-		  e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-		end
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
-	 end,
-    begin
-      TrF4 = id(F4, TrUserData),
-      e_type_bool(TrF4, <<B3/binary, 32>>, TrUserData)
-    end.
-
-encode_msg_OrderAckI(Msg, TrUserData) ->
-    encode_msg_OrderAckI(Msg, <<>>, TrUserData).
-
-
-encode_msg_OrderAckI(#'OrderAckI'{ack = F1, msg = F2,
-				  outdated = F3},
-		     Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
-	 end,
-    B2 = if F2 == undefined -> B1;
-	    true ->
-		begin
-		  TrF2 = id(F2, TrUserData),
-		  e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-		end
-	 end,
-    begin
-      TrF3 = id(F3, TrUserData),
-      e_type_bool(TrF3, <<B2/binary, 24>>, TrUserData)
-    end.
-
-encode_msg_SubS(Msg, TrUserData) ->
-    encode_msg_SubS(Msg, <<>>, TrUserData).
-
-
-encode_msg_SubS(#'SubS'{nameI = F1, subs = F2}, Bin,
-		TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    begin
-      TrF2 = id(F2, TrUserData),
-      if TrF2 == [] -> B1;
-	 true -> e_field_SubS_subs(TrF2, B1, TrUserData)
-      end
-    end.
-
-encode_msg_SubN(Msg, TrUserData) ->
-    encode_msg_SubN(Msg, <<>>, TrUserData).
-
-
-encode_msg_SubN(#'SubN'{nameI = F1, subs = F2}, Bin,
-		TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    begin
-      TrF2 = id(F2, TrUserData),
-      if TrF2 == [] -> B1;
-	 true -> e_field_SubN_subs(TrF2, B1, TrUserData)
-      end
-    end.
-
-encode_msg_ProductionS(Msg, TrUserData) ->
-    encode_msg_ProductionS(Msg, <<>>, TrUserData).
-
-
-encode_msg_ProductionS(#'ProductionS'{nameM = F1,
-				      nameP = F2, quant = F3, value = F4},
-		       Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
-	 end,
-    begin
-      TrF4 = id(F4, TrUserData),
-      e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
-    end.
-
-encode_msg_ProductionM(Msg, TrUserData) ->
-    encode_msg_ProductionM(Msg, <<>>, TrUserData).
-
-
-encode_msg_ProductionM(#'ProductionM'{nameP = F1,
-				      quant = F2, value = F3},
-		       Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_int32(TrF2, <<B1/binary, 16>>, TrUserData)
-	 end,
-    begin
-      TrF3 = id(F3, TrUserData),
-      e_type_float(TrF3, <<B2/binary, 29>>, TrUserData)
-    end.
-
-encode_msg_ResultS(Msg, TrUserData) ->
-    encode_msg_ResultS(Msg, <<>>, TrUserData).
-
-
-encode_msg_ResultS(#'ResultS'{result = F1, msg = F2,
-			      nameI = F3},
-		   Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    begin
-      TrF3 = id(F3, TrUserData),
-      e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
-    end.
-
-encode_msg_ResultI(Msg, TrUserData) ->
-    encode_msg_ResultI(Msg, <<>>, TrUserData).
-
-
-encode_msg_ResultI(#'ResultI'{result = F1, msg = F2},
-		   Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
-	 end,
-    begin
-      TrF2 = id(F2, TrUserData),
-      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-    end.
-
-encode_msg_InfoS(Msg, TrUserData) ->
-    encode_msg_InfoS(Msg, <<>>, TrUserData).
-
-
-encode_msg_InfoS(#'InfoS'{nameM = F1, nameP = F2,
-			  minimum = F3, maximum = F4, value = F5, period = F6,
-			  nameI = F7},
-		 Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
-	 end,
-    B4 = begin
-	   TrF4 = id(F4, TrUserData),
-	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
-	 end,
-    B5 = begin
-	   TrF5 = id(F5, TrUserData),
-	   e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
-	 end,
-    B6 = begin
-	   TrF6 = id(F6, TrUserData),
-	   e_type_int32(TrF6, <<B5/binary, 48>>, TrUserData)
-	 end,
-    begin
-      TrF7 = id(F7, TrUserData),
-      e_type_string(TrF7, <<B6/binary, 58>>, TrUserData)
-    end.
-
-encode_msg_InfoI(Msg, TrUserData) ->
-    encode_msg_InfoI(Msg, <<>>, TrUserData).
-
-
-encode_msg_InfoI(#'InfoI'{nameM = F1, nameP = F2,
-			  minimum = F3, maximum = F4, value = F5, period = F6},
-		 Bin, TrUserData) ->
-    B1 = begin
-	   TrF1 = id(F1, TrUserData),
-	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	 end,
-    B2 = begin
-	   TrF2 = id(F2, TrUserData),
-	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
-	 end,
-    B3 = begin
-	   TrF3 = id(F3, TrUserData),
-	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
-	 end,
-    B4 = begin
-	   TrF4 = id(F4, TrUserData),
-	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
-	 end,
-    B5 = begin
-	   TrF5 = id(F5, TrUserData),
-	   e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
-	 end,
-    begin
-      TrF6 = id(F6, TrUserData),
-      e_type_int32(TrF6, <<B5/binary, 48>>, TrUserData)
-    end.
-
-encode_msg_Server(Msg, TrUserData) ->
-    encode_msg_Server(Msg, <<>>, TrUserData).
-
-
-encode_msg_Server(#'Server'{msg = F1}, Bin,
-		  TrUserData) ->
-    if F1 =:= undefined -> Bin;
-       true ->
-	   case id(F1, TrUserData) of
-	     {m1, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m1(TrTF1, <<Bin/binary, 10>>,
-				      TrUserData)
-		 end;
-	     {m2, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m2(TrTF1, <<Bin/binary, 18>>,
-				      TrUserData)
-		 end;
-	     {m3, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m3(TrTF1, <<Bin/binary, 26>>,
-				      TrUserData)
-		 end;
-	     {m4, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m4(TrTF1, <<Bin/binary, 34>>,
-				      TrUserData)
-		 end;
-	     {m5, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m5(TrTF1, <<Bin/binary, 42>>,
-				      TrUserData)
-		 end;
-	     {m6, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m6(TrTF1, <<Bin/binary, 50>>,
-				      TrUserData)
-		 end;
-	     {m7, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Server_m7(TrTF1, <<Bin/binary, 58>>,
-				      TrUserData)
-		 end
-	   end
-    end.
-
-encode_msg_Importer(Msg, TrUserData) ->
-    encode_msg_Importer(Msg, <<>>, TrUserData).
-
-
-encode_msg_Importer(#'Importer'{msg = F1}, Bin,
-		    TrUserData) ->
-    if F1 =:= undefined -> Bin;
-       true ->
-	   case id(F1, TrUserData) of
-	     {ordack, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Importer_ordack(TrTF1, <<Bin/binary, 10>>,
-					    TrUserData)
-		 end;
-	     {result, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Importer_result(TrTF1, <<Bin/binary, 18>>,
-					    TrUserData)
-		 end;
-	     {info, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Importer_info(TrTF1, <<Bin/binary, 26>>,
-					  TrUserData)
-		 end
-	   end
-    end.
-
-encode_msg_Negotiator(Msg, TrUserData) ->
-    encode_msg_Negotiator(Msg, <<>>, TrUserData).
-
-
-encode_msg_Negotiator(#'Negotiator'{msg = F1}, Bin,
-		      TrUserData) ->
-    if F1 =:= undefined -> Bin;
-       true ->
-	   case id(F1, TrUserData) of
-	     {sub, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Negotiator_sub(TrTF1, <<Bin/binary, 10>>,
-					   TrUserData)
-		 end;
-	     {order, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Negotiator_order(TrTF1, <<Bin/binary, 18>>,
-					     TrUserData)
-		 end;
-	     {disponibility, TF1} ->
-		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_Negotiator_disponibility(TrTF1,
-						     <<Bin/binary, 26>>,
-						     TrUserData)
-		 end
-	   end
-    end.
 
 encode_msg_ClientToServer(Msg, TrUserData) ->
     encode_msg_ClientToServer(Msg, <<>>, TrUserData).
@@ -988,9 +468,20 @@ encode_msg_ServerToManufacturer(#'ServerToManufacturer'{message
 	   end
     end.
 
-encode_msg_ServerToManufacturerAnnounced(_Msg,
-					 _TrUserData) ->
-    <<>>.
+encode_msg_ServerToManufacturerAnnounced(Msg,
+					 TrUserData) ->
+    encode_msg_ServerToManufacturerAnnounced(Msg, <<>>,
+					     TrUserData).
+
+
+encode_msg_ServerToManufacturerAnnounced(#'ServerToManufacturerAnnounced'{productName
+									      =
+									      F1},
+					 Bin, TrUserData) ->
+    begin
+      TrF1 = id(F1, TrUserData),
+      e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+    end.
 
 encode_msg_ServerToManufacturerInvalid(Msg,
 				       TrUserData) ->
@@ -1079,7 +570,7 @@ encode_msg_ImporterToServerSubscribe(Msg, TrUserData) ->
 					 TrUserData).
 
 
-encode_msg_ImporterToServerSubscribe(#'ImporterToServerSubscribe'{manufacturerName
+encode_msg_ImporterToServerSubscribe(#'ImporterToServerSubscribe'{manufacturerNames
 								      = F1,
 								  importerName =
 								      F2},
@@ -1088,9 +579,9 @@ encode_msg_ImporterToServerSubscribe(#'ImporterToServerSubscribe'{manufacturerNa
 	   TrF1 = id(F1, TrUserData),
 	   if TrF1 == [] -> Bin;
 	      true ->
-		  e_field_ImporterToServerSubscribe_manufacturerName(TrF1,
-								     Bin,
-								     TrUserData)
+		  e_field_ImporterToServerSubscribe_manufacturerNames(TrF1,
+								      Bin,
+								      TrUserData)
 	   end
 	 end,
     begin
@@ -1178,9 +669,27 @@ encode_msg_ServerToImporter(#'ServerToImporter'{message
 	   end
     end.
 
-encode_msg_ServerToImporterOfferSubmitted(_Msg,
-					  _TrUserData) ->
-    <<>>.
+encode_msg_ServerToImporterOfferSubmitted(Msg,
+					  TrUserData) ->
+    encode_msg_ServerToImporterOfferSubmitted(Msg, <<>>,
+					      TrUserData).
+
+
+encode_msg_ServerToImporterOfferSubmitted(#'ServerToImporterOfferSubmitted'{manufacturerName
+										=
+										F1,
+									    productName
+										=
+										F2},
+					  Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+    end.
 
 encode_msg_ServerToImporterOfferInvalid(Msg,
 					TrUserData) ->
@@ -1188,13 +697,27 @@ encode_msg_ServerToImporterOfferInvalid(Msg,
 					    TrUserData).
 
 
-encode_msg_ServerToImporterOfferInvalid(#'ServerToImporterOfferInvalid'{errorMessage
+encode_msg_ServerToImporterOfferInvalid(#'ServerToImporterOfferInvalid'{manufacturerName
 									    =
-									    F1},
+									    F1,
+									productName
+									    =
+									    F2,
+									errorMessage
+									    =
+									    F3},
 					Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
     begin
-      TrF1 = id(F1, TrUserData),
-      e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+      TrF3 = id(F3, TrUserData),
+      e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
     end.
 
 encode_msg_ServerToImporterOfferWon(Msg, TrUserData) ->
@@ -1289,87 +812,472 @@ encode_msg_ServerToImporterNewProduct(#'ServerToImporterNewProduct'{productName
       e_type_string(TrF6, <<B5/binary, 50>>, TrUserData)
     end.
 
-e_field_SubS_subs([Elem | Rest], Bin, TrUserData) ->
-    Bin2 = <<Bin/binary, 18>>,
-    Bin3 = e_type_string(id(Elem, TrUserData), Bin2,
-			 TrUserData),
-    e_field_SubS_subs(Rest, Bin3, TrUserData);
-e_field_SubS_subs([], Bin, _TrUserData) -> Bin.
+encode_msg_ArbiterToServer(Msg, TrUserData) ->
+    encode_msg_ArbiterToServer(Msg, <<>>, TrUserData).
 
-e_field_SubN_subs([Elem | Rest], Bin, TrUserData) ->
-    Bin2 = <<Bin/binary, 18>>,
-    Bin3 = e_type_string(id(Elem, TrUserData), Bin2,
-			 TrUserData),
-    e_field_SubN_subs(Rest, Bin3, TrUserData);
-e_field_SubN_subs([], Bin, _TrUserData) -> Bin.
 
-e_mfield_Server_m1(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_DisponibilityS(Msg, <<>>,
-				       TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServer(#'ArbiterToServer'{message =
+						  F1},
+			   Bin, TrUserData) ->
+    if F1 =:= undefined -> Bin;
+       true ->
+	   case id(F1, TrUserData) of
+	     {accepted, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_accepted(TrTF1,
+						     <<Bin/binary, 10>>,
+						     TrUserData)
+		 end;
+	     {announceInvalid, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_announceInvalid(TrTF1,
+							    <<Bin/binary, 18>>,
+							    TrUserData)
+		 end;
+	     {sold, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_sold(TrTF1, <<Bin/binary, 26>>,
+						 TrUserData)
+		 end;
+	     {noOffers, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_noOffers(TrTF1,
+						     <<Bin/binary, 34>>,
+						     TrUserData)
+		 end;
+	     {submitted, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_submitted(TrTF1,
+						      <<Bin/binary, 42>>,
+						      TrUserData)
+		 end;
+	     {offerInvalid, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_offerInvalid(TrTF1,
+							 <<Bin/binary, 50>>,
+							 TrUserData)
+		 end;
+	     {won, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_won(TrTF1, <<Bin/binary, 58>>,
+						TrUserData)
+		 end;
+	     {lose, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_lose(TrTF1, <<Bin/binary, 66>>,
+						 TrUserData)
+		 end;
+	     {product, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ArbiterToServer_product(TrTF1,
+						    <<Bin/binary, 74>>,
+						    TrUserData)
+		 end
+	   end
+    end.
 
-e_mfield_Server_m2(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_OrderS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceAccepted(Msg,
+					   TrUserData) ->
+    encode_msg_ArbiterToServerAnnounceAccepted(Msg, <<>>,
+					       TrUserData).
 
-e_mfield_Server_m3(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_SubS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_Server_m4(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_ResultS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceAccepted(#'ArbiterToServerAnnounceAccepted'{manufacturerName
+										  =
+										  F1,
+									      productName
+										  =
+										  F2},
+					   Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+    end.
 
-e_mfield_Server_m5(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_InfoS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceInvalid(Msg,
+					  TrUserData) ->
+    encode_msg_ArbiterToServerAnnounceInvalid(Msg, <<>>,
+					      TrUserData).
 
-e_mfield_Server_m6(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_ProductionS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_Server_m7(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_OrderAckS(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceInvalid(#'ArbiterToServerAnnounceInvalid'{manufacturerName
+										=
+										F1,
+									    productName
+										=
+										F2,
+									    errorMessage
+										=
+										F3},
+					  Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    begin
+      TrF3 = id(F3, TrUserData),
+      e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
+    end.
 
-e_mfield_Importer_ordack(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_OrderAckI(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceSold(Msg,
+				       TrUserData) ->
+    encode_msg_ArbiterToServerAnnounceSold(Msg, <<>>,
+					   TrUserData).
 
-e_mfield_Importer_result(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_ResultI(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_Importer_info(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_InfoI(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceSold(#'ArbiterToServerAnnounceSold'{manufacturerName
+									  = F1,
+								      productName
+									  = F2,
+								      quantity =
+									  F3,
+								      unitPrice
+									  = F4},
+				       Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
+	 end,
+    begin
+      TrF4 = id(F4, TrUserData),
+      e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
+    end.
 
-e_mfield_Negotiator_sub(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_SubN(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceNoOffers(Msg,
+					   TrUserData) ->
+    encode_msg_ArbiterToServerAnnounceNoOffers(Msg, <<>>,
+					       TrUserData).
 
-e_mfield_Negotiator_order(Msg, Bin, TrUserData) ->
-    SubBin = encode_msg_OrderN(Msg, <<>>, TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_Negotiator_disponibility(Msg, Bin,
-				  TrUserData) ->
-    SubBin = encode_msg_DisponibilityN(Msg, <<>>,
-				       TrUserData),
-    Bin2 = e_varint(byte_size(SubBin), Bin),
-    <<Bin2/binary, SubBin/binary>>.
+encode_msg_ArbiterToServerAnnounceNoOffers(#'ArbiterToServerAnnounceNoOffers'{manufacturerName
+										  =
+										  F1,
+									      productName
+										  =
+										  F2},
+					   Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+    end.
+
+encode_msg_ArbiterToServerOfferSubmitted(Msg,
+					 TrUserData) ->
+    encode_msg_ArbiterToServerOfferSubmitted(Msg, <<>>,
+					     TrUserData).
+
+
+encode_msg_ArbiterToServerOfferSubmitted(#'ArbiterToServerOfferSubmitted'{importerName
+									      =
+									      F1,
+									  productName
+									      =
+									      F2,
+									  manufacturerName
+									      =
+									      F3},
+					 Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    begin
+      TrF3 = id(F3, TrUserData),
+      e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
+    end.
+
+encode_msg_ArbiterToServerOfferInvalid(Msg,
+				       TrUserData) ->
+    encode_msg_ArbiterToServerOfferInvalid(Msg, <<>>,
+					   TrUserData).
+
+
+encode_msg_ArbiterToServerOfferInvalid(#'ArbiterToServerOfferInvalid'{importerName
+									  = F1,
+								      productName
+									  = F2,
+								      manufacturerName
+									  = F3,
+								      errorMessage
+									  = F4},
+				       Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
+	 end,
+    begin
+      TrF4 = id(F4, TrUserData),
+      e_type_string(TrF4, <<B3/binary, 34>>, TrUserData)
+    end.
+
+encode_msg_ArbiterToServerOfferWon(Msg, TrUserData) ->
+    encode_msg_ArbiterToServerOfferWon(Msg, <<>>,
+				       TrUserData).
+
+
+encode_msg_ArbiterToServerOfferWon(#'ArbiterToServerOfferWon'{importerName
+								  = F1,
+							      productName = F2,
+							      manufacturerName =
+								  F3,
+							      quantity = F4,
+							      unitPrice = F5},
+				   Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
+	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
+	 end,
+    begin
+      TrF5 = id(F5, TrUserData),
+      e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
+    end.
+
+encode_msg_ArbiterToServerOfferLose(Msg, TrUserData) ->
+    encode_msg_ArbiterToServerOfferLose(Msg, <<>>,
+					TrUserData).
+
+
+encode_msg_ArbiterToServerOfferLose(#'ArbiterToServerOfferLose'{importerName
+								    = F1,
+								productName =
+								    F2,
+								manufacturerName
+								    = F3},
+				    Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    begin
+      TrF3 = id(F3, TrUserData),
+      e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
+    end.
+
+encode_msg_ArbiterToServerNewProduct(Msg, TrUserData) ->
+    encode_msg_ArbiterToServerNewProduct(Msg, <<>>,
+					 TrUserData).
+
+
+encode_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{manufacturerName
+								      = F1,
+								  productName =
+								      F2,
+								  minQuantity =
+								      F3,
+								  maxQuantity =
+								      F4,
+								  minUnitPrice =
+								      F5,
+								  timout = F6},
+				     Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
+	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
+	 end,
+    B5 = begin
+	   TrF5 = id(F5, TrUserData),
+	   e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
+	 end,
+    begin
+      TrF6 = id(F6, TrUserData),
+      e_type_int32(TrF6, <<B5/binary, 48>>, TrUserData)
+    end.
+
+encode_msg_ServerToArbiter(Msg, TrUserData) ->
+    encode_msg_ServerToArbiter(Msg, <<>>, TrUserData).
+
+
+encode_msg_ServerToArbiter(#'ServerToArbiter'{message =
+						  F1},
+			   Bin, TrUserData) ->
+    if F1 =:= undefined -> Bin;
+       true ->
+	   case id(F1, TrUserData) of
+	     {offer, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ServerToArbiter_offer(TrTF1,
+						  <<Bin/binary, 10>>,
+						  TrUserData)
+		 end;
+	     {announce, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ServerToArbiter_announce(TrTF1,
+						     <<Bin/binary, 18>>,
+						     TrUserData)
+		 end;
+	     {subscribe, TF1} ->
+		 begin
+		   TrTF1 = id(TF1, TrUserData),
+		   e_mfield_ServerToArbiter_subscribe(TrTF1,
+						      <<Bin/binary, 26>>,
+						      TrUserData)
+		 end
+	   end
+    end.
+
+encode_msg_ServerToArbiterOffer(Msg, TrUserData) ->
+    encode_msg_ServerToArbiterOffer(Msg, <<>>, TrUserData).
+
+
+encode_msg_ServerToArbiterOffer(#'ServerToArbiterOffer'{manufacturerName
+							    = F1,
+							productName = F2,
+							quantity = F3,
+							unitPrice = F4,
+							importerName = F5},
+				Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
+	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
+	 end,
+    begin
+      TrF5 = id(F5, TrUserData),
+      e_type_string(TrF5, <<B4/binary, 42>>, TrUserData)
+    end.
+
+encode_msg_ServerToArbiterAnnounce(Msg, TrUserData) ->
+    encode_msg_ServerToArbiterAnnounce(Msg, <<>>,
+				       TrUserData).
+
+
+encode_msg_ServerToArbiterAnnounce(#'ServerToArbiterAnnounce'{manufacturerName
+								  = F1,
+							      productName = F2,
+							      minQuantity = F3,
+							      maxQuantity = F4,
+							      minUnitPrice = F5,
+							      timout = F6},
+				   Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
+	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
+	 end,
+    B5 = begin
+	   TrF5 = id(F5, TrUserData),
+	   e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
+	 end,
+    begin
+      TrF6 = id(F6, TrUserData),
+      e_type_int32(TrF6, <<B5/binary, 48>>, TrUserData)
+    end.
+
+encode_msg_ServerToArbiterSubscribe(Msg, TrUserData) ->
+    encode_msg_ServerToArbiterSubscribe(Msg, <<>>,
+					TrUserData).
+
+
+encode_msg_ServerToArbiterSubscribe(#'ServerToArbiterSubscribe'{importerName
+								    = F1,
+								manufacturerNames
+								    = F2},
+				    Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      if TrF2 == [] -> B1;
+	 true ->
+	     e_field_ServerToArbiterSubscribe_manufacturerNames(TrF2,
+								B1, TrUserData)
+      end
+    end.
 
 e_mfield_ClientToServer_login(Msg, Bin, TrUserData) ->
     SubBin = encode_msg_ClientToServerLogin(Msg, <<>>,
@@ -1391,9 +1299,12 @@ e_mfield_ManufacturerToServer_announce(Msg, Bin,
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_ServerToManufacturer_announced(_Msg, Bin,
-					_TrUserData) ->
-    <<Bin/binary, 0>>.
+e_mfield_ServerToManufacturer_announced(Msg, Bin,
+					TrUserData) ->
+    SubBin = encode_msg_ServerToManufacturerAnnounced(Msg,
+						      <<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
 
 e_mfield_ServerToManufacturer_invalid(Msg, Bin,
 				      TrUserData) ->
@@ -1429,21 +1340,24 @@ e_mfield_ImporterToServer_offer(Msg, Bin, TrUserData) ->
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
-e_field_ImporterToServerSubscribe_manufacturerName([Elem
-						    | Rest],
-						   Bin, TrUserData) ->
+e_field_ImporterToServerSubscribe_manufacturerNames([Elem
+						     | Rest],
+						    Bin, TrUserData) ->
     Bin2 = <<Bin/binary, 10>>,
     Bin3 = e_type_string(id(Elem, TrUserData), Bin2,
 			 TrUserData),
-    e_field_ImporterToServerSubscribe_manufacturerName(Rest,
-						       Bin3, TrUserData);
-e_field_ImporterToServerSubscribe_manufacturerName([],
-						   Bin, _TrUserData) ->
+    e_field_ImporterToServerSubscribe_manufacturerNames(Rest,
+							Bin3, TrUserData);
+e_field_ImporterToServerSubscribe_manufacturerNames([],
+						    Bin, _TrUserData) ->
     Bin.
 
-e_mfield_ServerToImporter_offerSubmitted(_Msg, Bin,
-					 _TrUserData) ->
-    <<Bin/binary, 0>>.
+e_mfield_ServerToImporter_offerSubmitted(Msg, Bin,
+					 TrUserData) ->
+    SubBin = encode_msg_ServerToImporterOfferSubmitted(Msg,
+						       <<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
 
 e_mfield_ServerToImporter_offerInvalid(Msg, Bin,
 				       TrUserData) ->
@@ -1473,22 +1387,97 @@ e_mfield_ServerToImporter_newProduct(Msg, Bin,
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
-'e_enum_MsgAuth.ClientType'('MANUFACTURER', Bin,
-			    _TrUserData) ->
-    <<Bin/binary, 0>>;
-'e_enum_MsgAuth.ClientType'('IMPORTER', Bin,
-			    _TrUserData) ->
-    <<Bin/binary, 1>>;
-'e_enum_MsgAuth.ClientType'(V, Bin, _TrUserData) ->
-    e_varint(V, Bin).
+e_mfield_ArbiterToServer_accepted(Msg, Bin,
+				  TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerAnnounceAccepted(Msg,
+							<<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
 
-'e_enum_MsgAuth.MsgType'('LOGIN', Bin, _TrUserData) ->
-    <<Bin/binary, 0>>;
-'e_enum_MsgAuth.MsgType'('REGISTER', Bin,
-			 _TrUserData) ->
-    <<Bin/binary, 1>>;
-'e_enum_MsgAuth.MsgType'(V, Bin, _TrUserData) ->
-    e_varint(V, Bin).
+e_mfield_ArbiterToServer_announceInvalid(Msg, Bin,
+					 TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerAnnounceInvalid(Msg,
+						       <<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ArbiterToServer_sold(Msg, Bin, TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerAnnounceSold(Msg,
+						    <<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ArbiterToServer_noOffers(Msg, Bin,
+				  TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerAnnounceNoOffers(Msg,
+							<<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ArbiterToServer_submitted(Msg, Bin,
+				   TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerOfferSubmitted(Msg,
+						      <<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ArbiterToServer_offerInvalid(Msg, Bin,
+				      TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerOfferInvalid(Msg,
+						    <<>>, TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ArbiterToServer_won(Msg, Bin, TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerOfferWon(Msg, <<>>,
+						TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ArbiterToServer_lose(Msg, Bin, TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerOfferLose(Msg, <<>>,
+						 TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ArbiterToServer_product(Msg, Bin,
+				 TrUserData) ->
+    SubBin = encode_msg_ArbiterToServerNewProduct(Msg, <<>>,
+						  TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ServerToArbiter_offer(Msg, Bin, TrUserData) ->
+    SubBin = encode_msg_ServerToArbiterOffer(Msg, <<>>,
+					     TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ServerToArbiter_announce(Msg, Bin,
+				  TrUserData) ->
+    SubBin = encode_msg_ServerToArbiterAnnounce(Msg, <<>>,
+						TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_ServerToArbiter_subscribe(Msg, Bin,
+				   TrUserData) ->
+    SubBin = encode_msg_ServerToArbiterSubscribe(Msg, <<>>,
+						 TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_field_ServerToArbiterSubscribe_manufacturerNames([Elem
+						    | Rest],
+						   Bin, TrUserData) ->
+    Bin2 = <<Bin/binary, 18>>,
+    Bin3 = e_type_string(id(Elem, TrUserData), Bin2,
+			 TrUserData),
+    e_field_ServerToArbiterSubscribe_manufacturerNames(Rest,
+						       Bin3, TrUserData);
+e_field_ServerToArbiterSubscribe_manufacturerNames([],
+						   Bin, _TrUserData) ->
+    Bin.
 
 e_enum_ClientType('IMPORTER', Bin, _TrUserData) ->
     <<Bin/binary, 0>>;
@@ -1611,46 +1600,6 @@ decode_msg_1_catch(Bin, MsgName, TrUserData) ->
     end.
 -endif.
 
-decode_msg_2_doit('MsgAuth', Bin, TrUserData) ->
-    id(decode_msg_MsgAuth(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('MsgAck', Bin, TrUserData) ->
-    id(decode_msg_MsgAck(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('DisponibilityS', Bin, TrUserData) ->
-    id(decode_msg_DisponibilityS(Bin, TrUserData),
-       TrUserData);
-decode_msg_2_doit('DisponibilityN', Bin, TrUserData) ->
-    id(decode_msg_DisponibilityN(Bin, TrUserData),
-       TrUserData);
-decode_msg_2_doit('OrderS', Bin, TrUserData) ->
-    id(decode_msg_OrderS(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('OrderN', Bin, TrUserData) ->
-    id(decode_msg_OrderN(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('OrderAckS', Bin, TrUserData) ->
-    id(decode_msg_OrderAckS(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('OrderAckI', Bin, TrUserData) ->
-    id(decode_msg_OrderAckI(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('SubS', Bin, TrUserData) ->
-    id(decode_msg_SubS(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('SubN', Bin, TrUserData) ->
-    id(decode_msg_SubN(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('ProductionS', Bin, TrUserData) ->
-    id(decode_msg_ProductionS(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('ProductionM', Bin, TrUserData) ->
-    id(decode_msg_ProductionM(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('ResultS', Bin, TrUserData) ->
-    id(decode_msg_ResultS(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('ResultI', Bin, TrUserData) ->
-    id(decode_msg_ResultI(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('InfoS', Bin, TrUserData) ->
-    id(decode_msg_InfoS(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('InfoI', Bin, TrUserData) ->
-    id(decode_msg_InfoI(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('Server', Bin, TrUserData) ->
-    id(decode_msg_Server(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('Importer', Bin, TrUserData) ->
-    id(decode_msg_Importer(Bin, TrUserData), TrUserData);
-decode_msg_2_doit('Negotiator', Bin, TrUserData) ->
-    id(decode_msg_Negotiator(Bin, TrUserData), TrUserData);
 decode_msg_2_doit('ClientToServer', Bin, TrUserData) ->
     id(decode_msg_ClientToServer(Bin, TrUserData),
        TrUserData);
@@ -1738,3640 +1687,70 @@ decode_msg_2_doit('ServerToImporterNewProduct', Bin,
 		  TrUserData) ->
     id(decode_msg_ServerToImporterNewProduct(Bin,
 					     TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServer', Bin, TrUserData) ->
+    id(decode_msg_ArbiterToServer(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerAnnounceAccepted',
+		  Bin, TrUserData) ->
+    id(decode_msg_ArbiterToServerAnnounceAccepted(Bin,
+						  TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerAnnounceInvalid', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToServerAnnounceInvalid(Bin,
+						 TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerAnnounceSold', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToServerAnnounceSold(Bin,
+					      TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerAnnounceNoOffers',
+		  Bin, TrUserData) ->
+    id(decode_msg_ArbiterToServerAnnounceNoOffers(Bin,
+						  TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerOfferSubmitted', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToServerOfferSubmitted(Bin,
+						TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerOfferInvalid', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToServerOfferInvalid(Bin,
+					      TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerOfferWon', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToServerOfferWon(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerOfferLose', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToServerOfferLose(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToServerNewProduct', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToServerNewProduct(Bin,
+					    TrUserData),
+       TrUserData);
+decode_msg_2_doit('ServerToArbiter', Bin, TrUserData) ->
+    id(decode_msg_ServerToArbiter(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ServerToArbiterOffer', Bin,
+		  TrUserData) ->
+    id(decode_msg_ServerToArbiterOffer(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ServerToArbiterAnnounce', Bin,
+		  TrUserData) ->
+    id(decode_msg_ServerToArbiterAnnounce(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ServerToArbiterSubscribe', Bin,
+		  TrUserData) ->
+    id(decode_msg_ServerToArbiterSubscribe(Bin, TrUserData),
        TrUserData).
 
 
-
-decode_msg_MsgAuth(Bin, TrUserData) ->
-    dfp_read_field_def_MsgAuth(Bin, 0, 0,
-			       id(undefined, TrUserData),
-			       id(undefined, TrUserData),
-			       id(undefined, TrUserData),
-			       id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_MsgAuth(<<10, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_MsgAuth_name(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
-dfp_read_field_def_MsgAuth(<<18, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_MsgAuth_pass(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, TrUserData);
-dfp_read_field_def_MsgAuth(<<24, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_MsgAuth_ctype(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, TrUserData);
-dfp_read_field_def_MsgAuth(<<32, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_MsgAuth_mtype(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, TrUserData);
-dfp_read_field_def_MsgAuth(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			   F@_4, _) ->
-    #'MsgAuth'{name = F@_1, pass = F@_2, ctype = F@_3,
-	       mtype = F@_4};
-dfp_read_field_def_MsgAuth(Other, Z1, Z2, F@_1, F@_2,
-			   F@_3, F@_4, TrUserData) ->
-    dg_read_field_def_MsgAuth(Other, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData).
-
-dg_read_field_def_MsgAuth(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_MsgAuth(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, F@_4, TrUserData);
-dg_read_field_def_MsgAuth(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_MsgAuth_name(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
-      18 ->
-	  d_field_MsgAuth_pass(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       TrUserData);
-      24 ->
-	  d_field_MsgAuth_ctype(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, TrUserData);
-      32 ->
-	  d_field_MsgAuth_mtype(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_MsgAuth(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				    TrUserData);
-	    1 ->
-		skip_64_MsgAuth(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				TrUserData);
-	    2 ->
-		skip_length_delimited_MsgAuth(Rest, 0, 0, F@_1, F@_2,
-					      F@_3, F@_4, TrUserData);
-	    3 ->
-		skip_group_MsgAuth(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				   F@_4, TrUserData);
-	    5 ->
-		skip_32_MsgAuth(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				TrUserData)
-	  end
-    end;
-dg_read_field_def_MsgAuth(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			  F@_4, _) ->
-    #'MsgAuth'{name = F@_1, pass = F@_2, ctype = F@_3,
-	       mtype = F@_4}.
-
-d_field_MsgAuth_name(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_MsgAuth_name(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
-d_field_MsgAuth_name(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     _, F@_2, F@_3, F@_4, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_MsgAuth(RestF, 0, 0, NewFValue, F@_2,
-			       F@_3, F@_4, TrUserData).
-
-d_field_MsgAuth_pass(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_MsgAuth_pass(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, TrUserData);
-d_field_MsgAuth_pass(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, _, F@_3, F@_4, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_MsgAuth(RestF, 0, 0, F@_1, NewFValue,
-			       F@_3, F@_4, TrUserData).
-
-d_field_MsgAuth_ctype(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_MsgAuth_ctype(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, TrUserData);
-d_field_MsgAuth_ctype(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, _, F@_4, TrUserData) ->
-    {NewFValue, RestF} =
-	{id('d_enum_MsgAuth.ClientType'(begin
-					  <<Res:32/signed-native>> = <<(X bsl N
-									  +
-									  Acc):32/unsigned-native>>,
-					  id(Res, TrUserData)
-					end),
-	    TrUserData),
-	 Rest},
-    dfp_read_field_def_MsgAuth(RestF, 0, 0, F@_1, F@_2,
-			       NewFValue, F@_4, TrUserData).
-
-d_field_MsgAuth_mtype(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_MsgAuth_mtype(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, TrUserData);
-d_field_MsgAuth_mtype(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, _, TrUserData) ->
-    {NewFValue, RestF} = {id('d_enum_MsgAuth.MsgType'(begin
-							<<Res:32/signed-native>> =
-							    <<(X bsl N +
-								 Acc):32/unsigned-native>>,
-							id(Res, TrUserData)
-						      end),
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_MsgAuth(RestF, 0, 0, F@_1, F@_2,
-			       F@_3, NewFValue, TrUserData).
-
-skip_varint_MsgAuth(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		    F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    skip_varint_MsgAuth(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, TrUserData);
-skip_varint_MsgAuth(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		    F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_MsgAuth(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, F@_4, TrUserData).
-
-skip_length_delimited_MsgAuth(<<1:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_MsgAuth(Rest, N + 7,
-				  X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-				  TrUserData);
-skip_length_delimited_MsgAuth(<<0:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_MsgAuth(Rest2, 0, 0, F@_1, F@_2,
-			       F@_3, F@_4, TrUserData).
-
-skip_group_MsgAuth(Bin, FNum, Z2, F@_1, F@_2, F@_3,
-		   F@_4, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_MsgAuth(Rest, 0, Z2, F@_1, F@_2,
-			       F@_3, F@_4, TrUserData).
-
-skip_32_MsgAuth(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_MsgAuth(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, F@_4, TrUserData).
-
-skip_64_MsgAuth(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_MsgAuth(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, F@_4, TrUserData).
-
-decode_msg_MsgAck(Bin, TrUserData) ->
-    dfp_read_field_def_MsgAck(Bin, 0, 0,
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_MsgAck(<<8, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, TrUserData) ->
-    d_field_MsgAck_ok(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
-dfp_read_field_def_MsgAck(<<18, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, TrUserData) ->
-    d_field_MsgAck_msg(Rest, Z1, Z2, F@_1, F@_2,
-		       TrUserData);
-dfp_read_field_def_MsgAck(<<>>, 0, 0, F@_1, F@_2, _) ->
-    #'MsgAck'{ok = F@_1, msg = F@_2};
-dfp_read_field_def_MsgAck(Other, Z1, Z2, F@_1, F@_2,
-			  TrUserData) ->
-    dg_read_field_def_MsgAck(Other, Z1, Z2, F@_1, F@_2,
-			     TrUserData).
-
-dg_read_field_def_MsgAck(<<1:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_MsgAck(Rest, N + 7, X bsl N + Acc,
-			     F@_1, F@_2, TrUserData);
-dg_read_field_def_MsgAck(<<0:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      8 ->
-	  d_field_MsgAck_ok(Rest, 0, 0, F@_1, F@_2, TrUserData);
-      18 ->
-	  d_field_MsgAck_msg(Rest, 0, 0, F@_1, F@_2, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_MsgAck(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    1 -> skip_64_MsgAck(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    2 ->
-		skip_length_delimited_MsgAck(Rest, 0, 0, F@_1, F@_2,
-					     TrUserData);
-	    3 ->
-		skip_group_MsgAck(Rest, Key bsr 3, 0, F@_1, F@_2,
-				  TrUserData);
-	    5 -> skip_32_MsgAck(Rest, 0, 0, F@_1, F@_2, TrUserData)
-	  end
-    end;
-dg_read_field_def_MsgAck(<<>>, 0, 0, F@_1, F@_2, _) ->
-    #'MsgAck'{ok = F@_1, msg = F@_2}.
-
-d_field_MsgAck_ok(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_MsgAck_ok(Rest, N + 7, X bsl N + Acc, F@_1,
-		      F@_2, TrUserData);
-d_field_MsgAck_ok(<<0:1, X:7, Rest/binary>>, N, Acc, _,
-		  F@_2, TrUserData) ->
-    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_MsgAck(RestF, 0, 0, NewFValue, F@_2,
-			      TrUserData).
-
-d_field_MsgAck_msg(<<1:1, X:7, Rest/binary>>, N, Acc,
-		   F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_MsgAck_msg(Rest, N + 7, X bsl N + Acc, F@_1,
-		       F@_2, TrUserData);
-d_field_MsgAck_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
-		   F@_1, _, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_MsgAck(RestF, 0, 0, F@_1, NewFValue,
-			      TrUserData).
-
-skip_varint_MsgAck(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, TrUserData) ->
-    skip_varint_MsgAck(Rest, Z1, Z2, F@_1, F@_2,
-		       TrUserData);
-skip_varint_MsgAck(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, TrUserData) ->
-    dfp_read_field_def_MsgAck(Rest, Z1, Z2, F@_1, F@_2,
-			      TrUserData).
-
-skip_length_delimited_MsgAck(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_MsgAck(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, TrUserData);
-skip_length_delimited_MsgAck(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_MsgAck(Rest2, 0, 0, F@_1, F@_2,
-			      TrUserData).
-
-skip_group_MsgAck(Bin, FNum, Z2, F@_1, F@_2,
-		  TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_MsgAck(Rest, 0, Z2, F@_1, F@_2,
-			      TrUserData).
-
-skip_32_MsgAck(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, TrUserData) ->
-    dfp_read_field_def_MsgAck(Rest, Z1, Z2, F@_1, F@_2,
-			      TrUserData).
-
-skip_64_MsgAck(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, TrUserData) ->
-    dfp_read_field_def_MsgAck(Rest, Z1, Z2, F@_1, F@_2,
-			      TrUserData).
-
-decode_msg_DisponibilityS(Bin, TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Bin, 0, 0,
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_DisponibilityS(<<10, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityS_nameM(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityS(<<18, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityS_nameP(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityS(<<24, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityS_minimum(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityS(<<32, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityS_maximum(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityS(<<45, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityS_value(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityS(<<48, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityS_period(Rest, Z1, Z2, F@_1, F@_2,
-				  F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityS(<<>>, 0, 0, F@_1,
-				  F@_2, F@_3, F@_4, F@_5, F@_6, _) ->
-    #'DisponibilityS'{nameM = F@_1, nameP = F@_2,
-		      minimum = F@_3, maximum = F@_4, value = F@_5,
-		      period = F@_6};
-dfp_read_field_def_DisponibilityS(Other, Z1, Z2, F@_1,
-				  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dg_read_field_def_DisponibilityS(Other, Z1, Z2, F@_1,
-				     F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-dg_read_field_def_DisponibilityS(<<1:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_DisponibilityS(Rest, N + 7,
-				     X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-				     F@_5, F@_6, TrUserData);
-dg_read_field_def_DisponibilityS(<<0:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_DisponibilityS_nameM(Rest, 0, 0, F@_1, F@_2,
-				       F@_3, F@_4, F@_5, F@_6, TrUserData);
-      18 ->
-	  d_field_DisponibilityS_nameP(Rest, 0, 0, F@_1, F@_2,
-				       F@_3, F@_4, F@_5, F@_6, TrUserData);
-      24 ->
-	  d_field_DisponibilityS_minimum(Rest, 0, 0, F@_1, F@_2,
-					 F@_3, F@_4, F@_5, F@_6, TrUserData);
-      32 ->
-	  d_field_DisponibilityS_maximum(Rest, 0, 0, F@_1, F@_2,
-					 F@_3, F@_4, F@_5, F@_6, TrUserData);
-      45 ->
-	  d_field_DisponibilityS_value(Rest, 0, 0, F@_1, F@_2,
-				       F@_3, F@_4, F@_5, F@_6, TrUserData);
-      48 ->
-	  d_field_DisponibilityS_period(Rest, 0, 0, F@_1, F@_2,
-					F@_3, F@_4, F@_5, F@_6, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_DisponibilityS(Rest, 0, 0, F@_1, F@_2, F@_3,
-					   F@_4, F@_5, F@_6, TrUserData);
-	    1 ->
-		skip_64_DisponibilityS(Rest, 0, 0, F@_1, F@_2, F@_3,
-				       F@_4, F@_5, F@_6, TrUserData);
-	    2 ->
-		skip_length_delimited_DisponibilityS(Rest, 0, 0, F@_1,
-						     F@_2, F@_3, F@_4, F@_5,
-						     F@_6, TrUserData);
-	    3 ->
-		skip_group_DisponibilityS(Rest, Key bsr 3, 0, F@_1,
-					  F@_2, F@_3, F@_4, F@_5, F@_6,
-					  TrUserData);
-	    5 ->
-		skip_32_DisponibilityS(Rest, 0, 0, F@_1, F@_2, F@_3,
-				       F@_4, F@_5, F@_6, TrUserData)
-	  end
-    end;
-dg_read_field_def_DisponibilityS(<<>>, 0, 0, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, _) ->
-    #'DisponibilityS'{nameM = F@_1, nameP = F@_2,
-		      minimum = F@_3, maximum = F@_4, value = F@_5,
-		      period = F@_6}.
-
-d_field_DisponibilityS_nameM(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityS_nameM(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData);
-d_field_DisponibilityS_nameM(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, _, F@_2, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_DisponibilityS(RestF, 0, 0,
-				      NewFValue, F@_2, F@_3, F@_4, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityS_nameP(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityS_nameP(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData);
-d_field_DisponibilityS_nameP(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, _, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_DisponibilityS(RestF, 0, 0, F@_1,
-				      NewFValue, F@_3, F@_4, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityS_minimum(<<1:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			       TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityS_minimum(Rest, N + 7,
-				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-				   F@_6, TrUserData);
-d_field_DisponibilityS_minimum(<<0:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, _, F@_4, F@_5, F@_6,
-			       TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_DisponibilityS(RestF, 0, 0, F@_1,
-				      F@_2, NewFValue, F@_4, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityS_maximum(<<1:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			       TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityS_maximum(Rest, N + 7,
-				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-				   F@_6, TrUserData);
-d_field_DisponibilityS_maximum(<<0:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, F@_3, _, F@_5, F@_6,
-			       TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_DisponibilityS(RestF, 0, 0, F@_1,
-				      F@_2, F@_3, NewFValue, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityS_value(<<0:16, 128, 127,
-			       Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4,
-				      id(infinity, TrUserData), F@_6,
-				      TrUserData);
-d_field_DisponibilityS_value(<<0:16, 128, 255,
-			       Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4,
-				      id('-infinity', TrUserData), F@_6,
-				      TrUserData);
-d_field_DisponibilityS_value(<<_:16, 1:1, _:7, _:1,
-			       127:7, Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, id(nan, TrUserData),
-				      F@_6, TrUserData);
-d_field_DisponibilityS_value(<<Value:32/little-float,
-			       Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, id(Value, TrUserData),
-				      F@_6, TrUserData).
-
-d_field_DisponibilityS_period(<<1:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			      TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityS_period(Rest, N + 7,
-				  X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-				  F@_6, TrUserData);
-d_field_DisponibilityS_period(<<0:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, _,
-			      TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_DisponibilityS(RestF, 0, 0, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, NewFValue,
-				      TrUserData).
-
-skip_varint_DisponibilityS(<<1:1, _:7, Rest/binary>>,
-			   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			   TrUserData) ->
-    skip_varint_DisponibilityS(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, F@_4, F@_5, F@_6, TrUserData);
-skip_varint_DisponibilityS(<<0:1, _:7, Rest/binary>>,
-			   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			   TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_length_delimited_DisponibilityS(<<1:1, X:7,
-				       Rest/binary>>,
-				     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				     TrUserData)
-    when N < 57 ->
-    skip_length_delimited_DisponibilityS(Rest, N + 7,
-					 X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-					 F@_5, F@_6, TrUserData);
-skip_length_delimited_DisponibilityS(<<0:1, X:7,
-				       Rest/binary>>,
-				     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				     TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_DisponibilityS(Rest2, 0, 0, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_group_DisponibilityS(Bin, FNum, Z2, F@_1, F@_2,
-			  F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_DisponibilityS(Rest, 0, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_32_DisponibilityS(<<_:32, Rest/binary>>, Z1, Z2,
-		       F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_64_DisponibilityS(<<_:64, Rest/binary>>, Z1, Z2,
-		       F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dfp_read_field_def_DisponibilityS(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-decode_msg_DisponibilityN(Bin, TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Bin, 0, 0,
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData),
-				      id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_DisponibilityN(<<10, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityN_nameM(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityN(<<18, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityN_nameP(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityN(<<24, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityN_minimum(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityN(<<32, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityN_maximum(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityN(<<45, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityN_value(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityN(<<48, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				  TrUserData) ->
-    d_field_DisponibilityN_period(Rest, Z1, Z2, F@_1, F@_2,
-				  F@_3, F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_DisponibilityN(<<>>, 0, 0, F@_1,
-				  F@_2, F@_3, F@_4, F@_5, F@_6, _) ->
-    #'DisponibilityN'{nameM = F@_1, nameP = F@_2,
-		      minimum = F@_3, maximum = F@_4, value = F@_5,
-		      period = F@_6};
-dfp_read_field_def_DisponibilityN(Other, Z1, Z2, F@_1,
-				  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dg_read_field_def_DisponibilityN(Other, Z1, Z2, F@_1,
-				     F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-dg_read_field_def_DisponibilityN(<<1:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_DisponibilityN(Rest, N + 7,
-				     X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-				     F@_5, F@_6, TrUserData);
-dg_read_field_def_DisponibilityN(<<0:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_DisponibilityN_nameM(Rest, 0, 0, F@_1, F@_2,
-				       F@_3, F@_4, F@_5, F@_6, TrUserData);
-      18 ->
-	  d_field_DisponibilityN_nameP(Rest, 0, 0, F@_1, F@_2,
-				       F@_3, F@_4, F@_5, F@_6, TrUserData);
-      24 ->
-	  d_field_DisponibilityN_minimum(Rest, 0, 0, F@_1, F@_2,
-					 F@_3, F@_4, F@_5, F@_6, TrUserData);
-      32 ->
-	  d_field_DisponibilityN_maximum(Rest, 0, 0, F@_1, F@_2,
-					 F@_3, F@_4, F@_5, F@_6, TrUserData);
-      45 ->
-	  d_field_DisponibilityN_value(Rest, 0, 0, F@_1, F@_2,
-				       F@_3, F@_4, F@_5, F@_6, TrUserData);
-      48 ->
-	  d_field_DisponibilityN_period(Rest, 0, 0, F@_1, F@_2,
-					F@_3, F@_4, F@_5, F@_6, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_DisponibilityN(Rest, 0, 0, F@_1, F@_2, F@_3,
-					   F@_4, F@_5, F@_6, TrUserData);
-	    1 ->
-		skip_64_DisponibilityN(Rest, 0, 0, F@_1, F@_2, F@_3,
-				       F@_4, F@_5, F@_6, TrUserData);
-	    2 ->
-		skip_length_delimited_DisponibilityN(Rest, 0, 0, F@_1,
-						     F@_2, F@_3, F@_4, F@_5,
-						     F@_6, TrUserData);
-	    3 ->
-		skip_group_DisponibilityN(Rest, Key bsr 3, 0, F@_1,
-					  F@_2, F@_3, F@_4, F@_5, F@_6,
-					  TrUserData);
-	    5 ->
-		skip_32_DisponibilityN(Rest, 0, 0, F@_1, F@_2, F@_3,
-				       F@_4, F@_5, F@_6, TrUserData)
-	  end
-    end;
-dg_read_field_def_DisponibilityN(<<>>, 0, 0, F@_1, F@_2,
-				 F@_3, F@_4, F@_5, F@_6, _) ->
-    #'DisponibilityN'{nameM = F@_1, nameP = F@_2,
-		      minimum = F@_3, maximum = F@_4, value = F@_5,
-		      period = F@_6}.
-
-d_field_DisponibilityN_nameM(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityN_nameM(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData);
-d_field_DisponibilityN_nameM(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, _, F@_2, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_DisponibilityN(RestF, 0, 0,
-				      NewFValue, F@_2, F@_3, F@_4, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityN_nameP(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityN_nameP(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				 TrUserData);
-d_field_DisponibilityN_nameP(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, _, F@_3, F@_4, F@_5, F@_6,
-			     TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_DisponibilityN(RestF, 0, 0, F@_1,
-				      NewFValue, F@_3, F@_4, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityN_minimum(<<1:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			       TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityN_minimum(Rest, N + 7,
-				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-				   F@_6, TrUserData);
-d_field_DisponibilityN_minimum(<<0:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, _, F@_4, F@_5, F@_6,
-			       TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_DisponibilityN(RestF, 0, 0, F@_1,
-				      F@_2, NewFValue, F@_4, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityN_maximum(<<1:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			       TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityN_maximum(Rest, N + 7,
-				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-				   F@_6, TrUserData);
-d_field_DisponibilityN_maximum(<<0:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, F@_3, _, F@_5, F@_6,
-			       TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_DisponibilityN(RestF, 0, 0, F@_1,
-				      F@_2, F@_3, NewFValue, F@_5, F@_6,
-				      TrUserData).
-
-d_field_DisponibilityN_value(<<0:16, 128, 127,
-			       Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4,
-				      id(infinity, TrUserData), F@_6,
-				      TrUserData);
-d_field_DisponibilityN_value(<<0:16, 128, 255,
-			       Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4,
-				      id('-infinity', TrUserData), F@_6,
-				      TrUserData);
-d_field_DisponibilityN_value(<<_:16, 1:1, _:7, _:1,
-			       127:7, Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, id(nan, TrUserData),
-				      F@_6, TrUserData);
-d_field_DisponibilityN_value(<<Value:32/little-float,
-			       Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6,
-			     TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, id(Value, TrUserData),
-				      F@_6, TrUserData).
-
-d_field_DisponibilityN_period(<<1:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			      TrUserData)
-    when N < 57 ->
-    d_field_DisponibilityN_period(Rest, N + 7,
-				  X bsl N + Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-				  F@_6, TrUserData);
-d_field_DisponibilityN_period(<<0:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, _,
-			      TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_DisponibilityN(RestF, 0, 0, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, NewFValue,
-				      TrUserData).
-
-skip_varint_DisponibilityN(<<1:1, _:7, Rest/binary>>,
-			   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			   TrUserData) ->
-    skip_varint_DisponibilityN(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, F@_4, F@_5, F@_6, TrUserData);
-skip_varint_DisponibilityN(<<0:1, _:7, Rest/binary>>,
-			   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			   TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_length_delimited_DisponibilityN(<<1:1, X:7,
-				       Rest/binary>>,
-				     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				     TrUserData)
-    when N < 57 ->
-    skip_length_delimited_DisponibilityN(Rest, N + 7,
-					 X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-					 F@_5, F@_6, TrUserData);
-skip_length_delimited_DisponibilityN(<<0:1, X:7,
-				       Rest/binary>>,
-				     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-				     TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_DisponibilityN(Rest2, 0, 0, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_group_DisponibilityN(Bin, FNum, Z2, F@_1, F@_2,
-			  F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_DisponibilityN(Rest, 0, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_32_DisponibilityN(<<_:32, Rest/binary>>, Z1, Z2,
-		       F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-skip_64_DisponibilityN(<<_:64, Rest/binary>>, Z1, Z2,
-		       F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dfp_read_field_def_DisponibilityN(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-decode_msg_OrderS(Bin, TrUserData) ->
-    dfp_read_field_def_OrderS(Bin, 0, 0,
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_OrderS(<<10, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderS_nameM(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderS(<<18, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderS_nameP(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderS(<<24, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderS_quant(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderS(<<37, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderS_value(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderS(<<42, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderS_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			  F@_4, F@_5, _) ->
-    #'OrderS'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4, nameI = F@_5};
-dfp_read_field_def_OrderS(Other, Z1, Z2, F@_1, F@_2,
-			  F@_3, F@_4, F@_5, TrUserData) ->
-    dg_read_field_def_OrderS(Other, Z1, Z2, F@_1, F@_2,
-			     F@_3, F@_4, F@_5, TrUserData).
-
-dg_read_field_def_OrderS(<<1:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_OrderS(Rest, N + 7, X bsl N + Acc,
-			     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
-dg_read_field_def_OrderS(<<0:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_OrderS_nameM(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      18 ->
-	  d_field_OrderS_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      24 ->
-	  d_field_OrderS_quant(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      37 ->
-	  d_field_OrderS_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      42 ->
-	  d_field_OrderS_nameI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				   F@_5, TrUserData);
-	    1 ->
-		skip_64_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			       TrUserData);
-	    2 ->
-		skip_length_delimited_OrderS(Rest, 0, 0, F@_1, F@_2,
-					     F@_3, F@_4, F@_5, TrUserData);
-	    3 ->
-		skip_group_OrderS(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				  F@_4, F@_5, TrUserData);
-	    5 ->
-		skip_32_OrderS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			       TrUserData)
-	  end
-    end;
-dg_read_field_def_OrderS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, _) ->
-    #'OrderS'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4, nameI = F@_5}.
-
-d_field_OrderS_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderS_nameM(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderS_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     _, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderS(RestF, 0, 0, NewFValue, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-d_field_OrderS_nameP(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderS_nameP(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderS_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, _, F@_3, F@_4, F@_5, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderS(RestF, 0, 0, F@_1, NewFValue,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-d_field_OrderS_quant(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderS_quant(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderS_quant(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, _, F@_4, F@_5, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_OrderS(RestF, 0, 0, F@_1, F@_2,
-			      NewFValue, F@_4, F@_5, TrUserData).
-
-d_field_OrderS_value(<<0:16, 128, 127, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(infinity, TrUserData), F@_5, TrUserData);
-d_field_OrderS_value(<<0:16, 128, 255, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id('-infinity', TrUserData), F@_5,
-			      TrUserData);
-d_field_OrderS_value(<<_:16, 1:1, _:7, _:1, 127:7,
-		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(nan, TrUserData), F@_5, TrUserData);
-d_field_OrderS_value(<<Value:32/little-float,
-		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(Value, TrUserData), F@_5, TrUserData).
-
-d_field_OrderS_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderS_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderS_nameI(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, _, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderS(RestF, 0, 0, F@_1, F@_2, F@_3,
-			      F@_4, NewFValue, TrUserData).
-
-skip_varint_OrderS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    skip_varint_OrderS(Rest, Z1, Z2, F@_1, F@_2, F@_3, F@_4,
-		       F@_5, TrUserData);
-skip_varint_OrderS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-skip_length_delimited_OrderS(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_OrderS(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
-skip_length_delimited_OrderS(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-			     TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_OrderS(Rest2, 0, 0, F@_1, F@_2, F@_3,
-			      F@_4, F@_5, TrUserData).
-
-skip_group_OrderS(Bin, FNum, Z2, F@_1, F@_2, F@_3, F@_4,
-		  F@_5, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_OrderS(Rest, 0, Z2, F@_1, F@_2, F@_3,
-			      F@_4, F@_5, TrUserData).
-
-skip_32_OrderS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-skip_64_OrderS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderS(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-decode_msg_OrderN(Bin, TrUserData) ->
-    dfp_read_field_def_OrderN(Bin, 0, 0,
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData),
-			      id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_OrderN(<<10, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderN_nameM(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderN(<<18, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderN_nameP(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderN(<<24, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderN_quant(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderN(<<37, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderN_value(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderN(<<42, Rest/binary>>, Z1, Z2,
-			  F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    d_field_OrderN_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, TrUserData);
-dfp_read_field_def_OrderN(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			  F@_4, F@_5, _) ->
-    #'OrderN'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4, nameI = F@_5};
-dfp_read_field_def_OrderN(Other, Z1, Z2, F@_1, F@_2,
-			  F@_3, F@_4, F@_5, TrUserData) ->
-    dg_read_field_def_OrderN(Other, Z1, Z2, F@_1, F@_2,
-			     F@_3, F@_4, F@_5, TrUserData).
-
-dg_read_field_def_OrderN(<<1:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_OrderN(Rest, N + 7, X bsl N + Acc,
-			     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
-dg_read_field_def_OrderN(<<0:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_OrderN_nameM(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      18 ->
-	  d_field_OrderN_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      24 ->
-	  d_field_OrderN_quant(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      37 ->
-	  d_field_OrderN_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      42 ->
-	  d_field_OrderN_nameI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				   F@_5, TrUserData);
-	    1 ->
-		skip_64_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			       TrUserData);
-	    2 ->
-		skip_length_delimited_OrderN(Rest, 0, 0, F@_1, F@_2,
-					     F@_3, F@_4, F@_5, TrUserData);
-	    3 ->
-		skip_group_OrderN(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				  F@_4, F@_5, TrUserData);
-	    5 ->
-		skip_32_OrderN(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			       TrUserData)
-	  end
-    end;
-dg_read_field_def_OrderN(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, _) ->
-    #'OrderN'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-	      value = F@_4, nameI = F@_5}.
-
-d_field_OrderN_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderN_nameM(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderN_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     _, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderN(RestF, 0, 0, NewFValue, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-d_field_OrderN_nameP(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderN_nameP(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderN_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, _, F@_3, F@_4, F@_5, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderN(RestF, 0, 0, F@_1, NewFValue,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-d_field_OrderN_quant(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderN_quant(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderN_quant(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, _, F@_4, F@_5, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_OrderN(RestF, 0, 0, F@_1, F@_2,
-			      NewFValue, F@_4, F@_5, TrUserData).
-
-d_field_OrderN_value(<<0:16, 128, 127, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(infinity, TrUserData), F@_5, TrUserData);
-d_field_OrderN_value(<<0:16, 128, 255, Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id('-infinity', TrUserData), F@_5,
-			      TrUserData);
-d_field_OrderN_value(<<_:16, 1:1, _:7, _:1, 127:7,
-		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(nan, TrUserData), F@_5, TrUserData);
-d_field_OrderN_value(<<Value:32/little-float,
-		       Rest/binary>>,
-		     Z1, Z2, F@_1, F@_2, F@_3, _, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, id(Value, TrUserData), F@_5, TrUserData).
-
-d_field_OrderN_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    d_field_OrderN_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, TrUserData);
-d_field_OrderN_nameI(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, _, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderN(RestF, 0, 0, F@_1, F@_2, F@_3,
-			      F@_4, NewFValue, TrUserData).
-
-skip_varint_OrderN(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    skip_varint_OrderN(Rest, Z1, Z2, F@_1, F@_2, F@_3, F@_4,
-		       F@_5, TrUserData);
-skip_varint_OrderN(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-skip_length_delimited_OrderN(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_OrderN(Rest, N + 7, X bsl N + Acc,
-				 F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData);
-skip_length_delimited_OrderN(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-			     TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_OrderN(Rest2, 0, 0, F@_1, F@_2, F@_3,
-			      F@_4, F@_5, TrUserData).
-
-skip_group_OrderN(Bin, FNum, Z2, F@_1, F@_2, F@_3, F@_4,
-		  F@_5, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_OrderN(Rest, 0, Z2, F@_1, F@_2, F@_3,
-			      F@_4, F@_5, TrUserData).
-
-skip_32_OrderN(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-skip_64_OrderN(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	       F@_2, F@_3, F@_4, F@_5, TrUserData) ->
-    dfp_read_field_def_OrderN(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, F@_5, TrUserData).
-
-decode_msg_OrderAckS(Bin, TrUserData) ->
-    dfp_read_field_def_OrderAckS(Bin, 0, 0,
-				 id(undefined, TrUserData),
-				 id(undefined, TrUserData),
-				 id(undefined, TrUserData),
-				 id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_OrderAckS(<<8, Rest/binary>>, Z1, Z2,
-			     F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_OrderAckS_ack(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, TrUserData);
-dfp_read_field_def_OrderAckS(<<18, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_OrderAckS_msg(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, TrUserData);
-dfp_read_field_def_OrderAckS(<<26, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_OrderAckS_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			    F@_4, TrUserData);
-dfp_read_field_def_OrderAckS(<<32, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_OrderAckS_outdated(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, F@_4, TrUserData);
-dfp_read_field_def_OrderAckS(<<>>, 0, 0, F@_1, F@_2,
-			     F@_3, F@_4, _) ->
-    #'OrderAckS'{ack = F@_1, msg = F@_2, nameI = F@_3,
-		 outdated = F@_4};
-dfp_read_field_def_OrderAckS(Other, Z1, Z2, F@_1, F@_2,
-			     F@_3, F@_4, TrUserData) ->
-    dg_read_field_def_OrderAckS(Other, Z1, Z2, F@_1, F@_2,
-				F@_3, F@_4, TrUserData).
-
-dg_read_field_def_OrderAckS(<<1:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_OrderAckS(Rest, N + 7, X bsl N + Acc,
-				F@_1, F@_2, F@_3, F@_4, TrUserData);
-dg_read_field_def_OrderAckS(<<0:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      8 ->
-	  d_field_OrderAckS_ack(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, TrUserData);
-      18 ->
-	  d_field_OrderAckS_msg(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, TrUserData);
-      26 ->
-	  d_field_OrderAckS_nameI(Rest, 0, 0, F@_1, F@_2, F@_3,
-				  F@_4, TrUserData);
-      32 ->
-	  d_field_OrderAckS_outdated(Rest, 0, 0, F@_1, F@_2, F@_3,
-				     F@_4, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3,
-				      F@_4, TrUserData);
-	    1 ->
-		skip_64_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				  TrUserData);
-	    2 ->
-		skip_length_delimited_OrderAckS(Rest, 0, 0, F@_1, F@_2,
-						F@_3, F@_4, TrUserData);
-	    3 ->
-		skip_group_OrderAckS(Rest, Key bsr 3, 0, F@_1, F@_2,
-				     F@_3, F@_4, TrUserData);
-	    5 ->
-		skip_32_OrderAckS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				  TrUserData)
-	  end
-    end;
-dg_read_field_def_OrderAckS(<<>>, 0, 0, F@_1, F@_2,
-			    F@_3, F@_4, _) ->
-    #'OrderAckS'{ack = F@_1, msg = F@_2, nameI = F@_3,
-		 outdated = F@_4}.
-
-d_field_OrderAckS_ack(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_OrderAckS_ack(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, TrUserData);
-d_field_OrderAckS_ack(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      _, F@_2, F@_3, F@_4, TrUserData) ->
-    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_OrderAckS(RestF, 0, 0, NewFValue,
-				 F@_2, F@_3, F@_4, TrUserData).
-
-d_field_OrderAckS_msg(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_OrderAckS_msg(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, TrUserData);
-d_field_OrderAckS_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, _, F@_3, F@_4, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderAckS(RestF, 0, 0, F@_1,
-				 NewFValue, F@_3, F@_4, TrUserData).
-
-d_field_OrderAckS_nameI(<<1:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_OrderAckS_nameI(Rest, N + 7, X bsl N + Acc,
-			    F@_1, F@_2, F@_3, F@_4, TrUserData);
-d_field_OrderAckS_nameI(<<0:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, _, F@_4, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderAckS(RestF, 0, 0, F@_1, F@_2,
-				 NewFValue, F@_4, TrUserData).
-
-d_field_OrderAckS_outdated(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_OrderAckS_outdated(Rest, N + 7, X bsl N + Acc,
-			       F@_1, F@_2, F@_3, F@_4, TrUserData);
-d_field_OrderAckS_outdated(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, F@_3, _, TrUserData) ->
-    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_OrderAckS(RestF, 0, 0, F@_1, F@_2,
-				 F@_3, NewFValue, TrUserData).
-
-skip_varint_OrderAckS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    skip_varint_OrderAckS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, TrUserData);
-skip_varint_OrderAckS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_OrderAckS(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, TrUserData).
-
-skip_length_delimited_OrderAckS(<<1:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_OrderAckS(Rest, N + 7,
-				    X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-				    TrUserData);
-skip_length_delimited_OrderAckS(<<0:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_OrderAckS(Rest2, 0, 0, F@_1, F@_2,
-				 F@_3, F@_4, TrUserData).
-
-skip_group_OrderAckS(Bin, FNum, Z2, F@_1, F@_2, F@_3,
-		     F@_4, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_OrderAckS(Rest, 0, Z2, F@_1, F@_2,
-				 F@_3, F@_4, TrUserData).
-
-skip_32_OrderAckS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_OrderAckS(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, TrUserData).
-
-skip_64_OrderAckS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_OrderAckS(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, F@_4, TrUserData).
-
-decode_msg_OrderAckI(Bin, TrUserData) ->
-    dfp_read_field_def_OrderAckI(Bin, 0, 0,
-				 id(undefined, TrUserData),
-				 id(undefined, TrUserData),
-				 id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_OrderAckI(<<8, Rest/binary>>, Z1, Z2,
-			     F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_OrderAckI_ack(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  TrUserData);
-dfp_read_field_def_OrderAckI(<<18, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_OrderAckI_msg(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  TrUserData);
-dfp_read_field_def_OrderAckI(<<24, Rest/binary>>, Z1,
-			     Z2, F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_OrderAckI_outdated(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, TrUserData);
-dfp_read_field_def_OrderAckI(<<>>, 0, 0, F@_1, F@_2,
-			     F@_3, _) ->
-    #'OrderAckI'{ack = F@_1, msg = F@_2, outdated = F@_3};
-dfp_read_field_def_OrderAckI(Other, Z1, Z2, F@_1, F@_2,
-			     F@_3, TrUserData) ->
-    dg_read_field_def_OrderAckI(Other, Z1, Z2, F@_1, F@_2,
-				F@_3, TrUserData).
-
-dg_read_field_def_OrderAckI(<<1:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_OrderAckI(Rest, N + 7, X bsl N + Acc,
-				F@_1, F@_2, F@_3, TrUserData);
-dg_read_field_def_OrderAckI(<<0:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      8 ->
-	  d_field_OrderAckI_ack(Rest, 0, 0, F@_1, F@_2, F@_3,
-				TrUserData);
-      18 ->
-	  d_field_OrderAckI_msg(Rest, 0, 0, F@_1, F@_2, F@_3,
-				TrUserData);
-      24 ->
-	  d_field_OrderAckI_outdated(Rest, 0, 0, F@_1, F@_2, F@_3,
-				     TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_OrderAckI(Rest, 0, 0, F@_1, F@_2, F@_3,
-				      TrUserData);
-	    1 ->
-		skip_64_OrderAckI(Rest, 0, 0, F@_1, F@_2, F@_3,
-				  TrUserData);
-	    2 ->
-		skip_length_delimited_OrderAckI(Rest, 0, 0, F@_1, F@_2,
-						F@_3, TrUserData);
-	    3 ->
-		skip_group_OrderAckI(Rest, Key bsr 3, 0, F@_1, F@_2,
-				     F@_3, TrUserData);
-	    5 ->
-		skip_32_OrderAckI(Rest, 0, 0, F@_1, F@_2, F@_3,
-				  TrUserData)
-	  end
-    end;
-dg_read_field_def_OrderAckI(<<>>, 0, 0, F@_1, F@_2,
-			    F@_3, _) ->
-    #'OrderAckI'{ack = F@_1, msg = F@_2, outdated = F@_3}.
-
-d_field_OrderAckI_ack(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_OrderAckI_ack(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, TrUserData);
-d_field_OrderAckI_ack(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      _, F@_2, F@_3, TrUserData) ->
-    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_OrderAckI(RestF, 0, 0, NewFValue,
-				 F@_2, F@_3, TrUserData).
-
-d_field_OrderAckI_msg(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_OrderAckI_msg(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, TrUserData);
-d_field_OrderAckI_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, _, F@_3, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_OrderAckI(RestF, 0, 0, F@_1,
-				 NewFValue, F@_3, TrUserData).
-
-d_field_OrderAckI_outdated(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_OrderAckI_outdated(Rest, N + 7, X bsl N + Acc,
-			       F@_1, F@_2, F@_3, TrUserData);
-d_field_OrderAckI_outdated(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, _, TrUserData) ->
-    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_OrderAckI(RestF, 0, 0, F@_1, F@_2,
-				 NewFValue, TrUserData).
-
-skip_varint_OrderAckI(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, F@_3, TrUserData) ->
-    skip_varint_OrderAckI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  TrUserData);
-skip_varint_OrderAckI(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		      F@_1, F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_OrderAckI(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
-
-skip_length_delimited_OrderAckI(<<1:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_OrderAckI(Rest, N + 7,
-				    X bsl N + Acc, F@_1, F@_2, F@_3,
-				    TrUserData);
-skip_length_delimited_OrderAckI(<<0:1, X:7,
-				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_OrderAckI(Rest2, 0, 0, F@_1, F@_2,
-				 F@_3, TrUserData).
-
-skip_group_OrderAckI(Bin, FNum, Z2, F@_1, F@_2, F@_3,
-		     TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_OrderAckI(Rest, 0, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
-
-skip_32_OrderAckI(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_OrderAckI(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
-
-skip_64_OrderAckI(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		  F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_OrderAckI(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, TrUserData).
-
-decode_msg_SubS(Bin, TrUserData) ->
-    dfp_read_field_def_SubS(Bin, 0, 0,
-			    id(undefined, TrUserData), id([], TrUserData),
-			    TrUserData).
-
-dfp_read_field_def_SubS(<<10, Rest/binary>>, Z1, Z2,
-			F@_1, F@_2, TrUserData) ->
-    d_field_SubS_nameI(Rest, Z1, Z2, F@_1, F@_2,
-		       TrUserData);
-dfp_read_field_def_SubS(<<18, Rest/binary>>, Z1, Z2,
-			F@_1, F@_2, TrUserData) ->
-    d_field_SubS_subs(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
-dfp_read_field_def_SubS(<<>>, 0, 0, F@_1, R1,
-			TrUserData) ->
-    #'SubS'{nameI = F@_1,
-	    subs = lists_reverse(R1, TrUserData)};
-dfp_read_field_def_SubS(Other, Z1, Z2, F@_1, F@_2,
-			TrUserData) ->
-    dg_read_field_def_SubS(Other, Z1, Z2, F@_1, F@_2,
-			   TrUserData).
-
-dg_read_field_def_SubS(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, F@_2, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_SubS(Rest, N + 7, X bsl N + Acc, F@_1,
-			   F@_2, TrUserData);
-dg_read_field_def_SubS(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, F@_2, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_SubS_nameI(Rest, 0, 0, F@_1, F@_2, TrUserData);
-      18 ->
-	  d_field_SubS_subs(Rest, 0, 0, F@_1, F@_2, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_SubS(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    1 -> skip_64_SubS(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    2 ->
-		skip_length_delimited_SubS(Rest, 0, 0, F@_1, F@_2,
-					   TrUserData);
-	    3 ->
-		skip_group_SubS(Rest, Key bsr 3, 0, F@_1, F@_2,
-				TrUserData);
-	    5 -> skip_32_SubS(Rest, 0, 0, F@_1, F@_2, TrUserData)
-	  end
-    end;
-dg_read_field_def_SubS(<<>>, 0, 0, F@_1, R1,
-		       TrUserData) ->
-    #'SubS'{nameI = F@_1,
-	    subs = lists_reverse(R1, TrUserData)}.
-
-d_field_SubS_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		   F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_SubS_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-		       F@_2, TrUserData);
-d_field_SubS_nameI(<<0:1, X:7, Rest/binary>>, N, Acc, _,
-		   F@_2, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_SubS(RestF, 0, 0, NewFValue, F@_2,
-			    TrUserData).
-
-d_field_SubS_subs(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_SubS_subs(Rest, N + 7, X bsl N + Acc, F@_1,
-		      F@_2, TrUserData);
-d_field_SubS_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_SubS(RestF, 0, 0, F@_1,
-			    cons(NewFValue, Prev, TrUserData), TrUserData).
-
-skip_varint_SubS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, F@_2, TrUserData) ->
-    skip_varint_SubS(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
-skip_varint_SubS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, F@_2, TrUserData) ->
-    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, F@_2,
-			    TrUserData).
-
-skip_length_delimited_SubS(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_SubS(Rest, N + 7, X bsl N + Acc,
-			       F@_1, F@_2, TrUserData);
-skip_length_delimited_SubS(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_SubS(Rest2, 0, 0, F@_1, F@_2,
-			    TrUserData).
-
-skip_group_SubS(Bin, FNum, Z2, F@_1, F@_2,
-		TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_SubS(Rest, 0, Z2, F@_1, F@_2,
-			    TrUserData).
-
-skip_32_SubS(<<_:32, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	     TrUserData) ->
-    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, F@_2,
-			    TrUserData).
-
-skip_64_SubS(<<_:64, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	     TrUserData) ->
-    dfp_read_field_def_SubS(Rest, Z1, Z2, F@_1, F@_2,
-			    TrUserData).
-
-decode_msg_SubN(Bin, TrUserData) ->
-    dfp_read_field_def_SubN(Bin, 0, 0,
-			    id(undefined, TrUserData), id([], TrUserData),
-			    TrUserData).
-
-dfp_read_field_def_SubN(<<10, Rest/binary>>, Z1, Z2,
-			F@_1, F@_2, TrUserData) ->
-    d_field_SubN_nameI(Rest, Z1, Z2, F@_1, F@_2,
-		       TrUserData);
-dfp_read_field_def_SubN(<<18, Rest/binary>>, Z1, Z2,
-			F@_1, F@_2, TrUserData) ->
-    d_field_SubN_subs(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
-dfp_read_field_def_SubN(<<>>, 0, 0, F@_1, R1,
-			TrUserData) ->
-    #'SubN'{nameI = F@_1,
-	    subs = lists_reverse(R1, TrUserData)};
-dfp_read_field_def_SubN(Other, Z1, Z2, F@_1, F@_2,
-			TrUserData) ->
-    dg_read_field_def_SubN(Other, Z1, Z2, F@_1, F@_2,
-			   TrUserData).
-
-dg_read_field_def_SubN(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, F@_2, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_SubN(Rest, N + 7, X bsl N + Acc, F@_1,
-			   F@_2, TrUserData);
-dg_read_field_def_SubN(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, F@_2, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_SubN_nameI(Rest, 0, 0, F@_1, F@_2, TrUserData);
-      18 ->
-	  d_field_SubN_subs(Rest, 0, 0, F@_1, F@_2, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_SubN(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    1 -> skip_64_SubN(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    2 ->
-		skip_length_delimited_SubN(Rest, 0, 0, F@_1, F@_2,
-					   TrUserData);
-	    3 ->
-		skip_group_SubN(Rest, Key bsr 3, 0, F@_1, F@_2,
-				TrUserData);
-	    5 -> skip_32_SubN(Rest, 0, 0, F@_1, F@_2, TrUserData)
-	  end
-    end;
-dg_read_field_def_SubN(<<>>, 0, 0, F@_1, R1,
-		       TrUserData) ->
-    #'SubN'{nameI = F@_1,
-	    subs = lists_reverse(R1, TrUserData)}.
-
-d_field_SubN_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		   F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_SubN_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-		       F@_2, TrUserData);
-d_field_SubN_nameI(<<0:1, X:7, Rest/binary>>, N, Acc, _,
-		   F@_2, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_SubN(RestF, 0, 0, NewFValue, F@_2,
-			    TrUserData).
-
-d_field_SubN_subs(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_SubN_subs(Rest, N + 7, X bsl N + Acc, F@_1,
-		      F@_2, TrUserData);
-d_field_SubN_subs(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_SubN(RestF, 0, 0, F@_1,
-			    cons(NewFValue, Prev, TrUserData), TrUserData).
-
-skip_varint_SubN(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, F@_2, TrUserData) ->
-    skip_varint_SubN(Rest, Z1, Z2, F@_1, F@_2, TrUserData);
-skip_varint_SubN(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		 F@_1, F@_2, TrUserData) ->
-    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, F@_2,
-			    TrUserData).
-
-skip_length_delimited_SubN(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_SubN(Rest, N + 7, X bsl N + Acc,
-			       F@_1, F@_2, TrUserData);
-skip_length_delimited_SubN(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, F@_2, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_SubN(Rest2, 0, 0, F@_1, F@_2,
-			    TrUserData).
-
-skip_group_SubN(Bin, FNum, Z2, F@_1, F@_2,
-		TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_SubN(Rest, 0, Z2, F@_1, F@_2,
-			    TrUserData).
-
-skip_32_SubN(<<_:32, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	     TrUserData) ->
-    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, F@_2,
-			    TrUserData).
-
-skip_64_SubN(<<_:64, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	     TrUserData) ->
-    dfp_read_field_def_SubN(Rest, Z1, Z2, F@_1, F@_2,
-			    TrUserData).
-
-decode_msg_ProductionS(Bin, TrUserData) ->
-    dfp_read_field_def_ProductionS(Bin, 0, 0,
-				   id(undefined, TrUserData),
-				   id(undefined, TrUserData),
-				   id(undefined, TrUserData),
-				   id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_ProductionS(<<10, Rest/binary>>, Z1,
-			       Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_ProductionS_nameM(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData);
-dfp_read_field_def_ProductionS(<<18, Rest/binary>>, Z1,
-			       Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_ProductionS_nameP(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData);
-dfp_read_field_def_ProductionS(<<24, Rest/binary>>, Z1,
-			       Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_ProductionS_quant(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData);
-dfp_read_field_def_ProductionS(<<37, Rest/binary>>, Z1,
-			       Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    d_field_ProductionS_value(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, F@_4, TrUserData);
-dfp_read_field_def_ProductionS(<<>>, 0, 0, F@_1, F@_2,
-			       F@_3, F@_4, _) ->
-    #'ProductionS'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-		   value = F@_4};
-dfp_read_field_def_ProductionS(Other, Z1, Z2, F@_1,
-			       F@_2, F@_3, F@_4, TrUserData) ->
-    dg_read_field_def_ProductionS(Other, Z1, Z2, F@_1, F@_2,
-				  F@_3, F@_4, TrUserData).
-
-dg_read_field_def_ProductionS(<<1:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_ProductionS(Rest, N + 7,
-				  X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-				  TrUserData);
-dg_read_field_def_ProductionS(<<0:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_ProductionS_nameM(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    F@_4, TrUserData);
-      18 ->
-	  d_field_ProductionS_nameP(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    F@_4, TrUserData);
-      24 ->
-	  d_field_ProductionS_quant(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    F@_4, TrUserData);
-      37 ->
-	  d_field_ProductionS_value(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    F@_4, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_ProductionS(Rest, 0, 0, F@_1, F@_2, F@_3,
-					F@_4, TrUserData);
-	    1 ->
-		skip_64_ProductionS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				    TrUserData);
-	    2 ->
-		skip_length_delimited_ProductionS(Rest, 0, 0, F@_1,
-						  F@_2, F@_3, F@_4, TrUserData);
-	    3 ->
-		skip_group_ProductionS(Rest, Key bsr 3, 0, F@_1, F@_2,
-				       F@_3, F@_4, TrUserData);
-	    5 ->
-		skip_32_ProductionS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				    TrUserData)
-	  end
-    end;
-dg_read_field_def_ProductionS(<<>>, 0, 0, F@_1, F@_2,
-			      F@_3, F@_4, _) ->
-    #'ProductionS'{nameM = F@_1, nameP = F@_2, quant = F@_3,
-		   value = F@_4}.
-
-d_field_ProductionS_nameM(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_ProductionS_nameM(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, F@_4, TrUserData);
-d_field_ProductionS_nameM(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, _, F@_2, F@_3, F@_4, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_ProductionS(RestF, 0, 0, NewFValue,
-				   F@_2, F@_3, F@_4, TrUserData).
-
-d_field_ProductionS_nameP(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_ProductionS_nameP(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, F@_4, TrUserData);
-d_field_ProductionS_nameP(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, _, F@_3, F@_4, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_ProductionS(RestF, 0, 0, F@_1,
-				   NewFValue, F@_3, F@_4, TrUserData).
-
-d_field_ProductionS_quant(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    d_field_ProductionS_quant(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, F@_4, TrUserData);
-d_field_ProductionS_quant(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, _, F@_4, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_ProductionS(RestF, 0, 0, F@_1, F@_2,
-				   NewFValue, F@_4, TrUserData).
-
-d_field_ProductionS_value(<<0:16, 128, 127,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
-    dfp_read_field_def_ProductionS(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, id(infinity, TrUserData), TrUserData);
-d_field_ProductionS_value(<<0:16, 128, 255,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
-    dfp_read_field_def_ProductionS(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, id('-infinity', TrUserData),
-				   TrUserData);
-d_field_ProductionS_value(<<_:16, 1:1, _:7, _:1, 127:7,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
-    dfp_read_field_def_ProductionS(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, id(nan, TrUserData), TrUserData);
-d_field_ProductionS_value(<<Value:32/little-float,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
-    dfp_read_field_def_ProductionS(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, id(Value, TrUserData), TrUserData).
-
-skip_varint_ProductionS(<<1:1, _:7, Rest/binary>>, Z1,
-			Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    skip_varint_ProductionS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			    F@_4, TrUserData);
-skip_varint_ProductionS(<<0:1, _:7, Rest/binary>>, Z1,
-			Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_ProductionS(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, F@_4, TrUserData).
-
-skip_length_delimited_ProductionS(<<1:1, X:7,
-				    Rest/binary>>,
-				  N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_ProductionS(Rest, N + 7,
-				      X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
-				      TrUserData);
-skip_length_delimited_ProductionS(<<0:1, X:7,
-				    Rest/binary>>,
-				  N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_ProductionS(Rest2, 0, 0, F@_1, F@_2,
-				   F@_3, F@_4, TrUserData).
-
-skip_group_ProductionS(Bin, FNum, Z2, F@_1, F@_2, F@_3,
-		       F@_4, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_ProductionS(Rest, 0, Z2, F@_1, F@_2,
-				   F@_3, F@_4, TrUserData).
-
-skip_32_ProductionS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		    F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_ProductionS(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, F@_4, TrUserData).
-
-skip_64_ProductionS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		    F@_2, F@_3, F@_4, TrUserData) ->
-    dfp_read_field_def_ProductionS(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, F@_4, TrUserData).
-
-decode_msg_ProductionM(Bin, TrUserData) ->
-    dfp_read_field_def_ProductionM(Bin, 0, 0,
-				   id(undefined, TrUserData),
-				   id(undefined, TrUserData),
-				   id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_ProductionM(<<10, Rest/binary>>, Z1,
-			       Z2, F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_ProductionM_nameP(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, TrUserData);
-dfp_read_field_def_ProductionM(<<16, Rest/binary>>, Z1,
-			       Z2, F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_ProductionM_quant(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, TrUserData);
-dfp_read_field_def_ProductionM(<<29, Rest/binary>>, Z1,
-			       Z2, F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_ProductionM_value(Rest, Z1, Z2, F@_1, F@_2,
-			      F@_3, TrUserData);
-dfp_read_field_def_ProductionM(<<>>, 0, 0, F@_1, F@_2,
-			       F@_3, _) ->
-    #'ProductionM'{nameP = F@_1, quant = F@_2,
-		   value = F@_3};
-dfp_read_field_def_ProductionM(Other, Z1, Z2, F@_1,
-			       F@_2, F@_3, TrUserData) ->
-    dg_read_field_def_ProductionM(Other, Z1, Z2, F@_1, F@_2,
-				  F@_3, TrUserData).
-
-dg_read_field_def_ProductionM(<<1:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_ProductionM(Rest, N + 7,
-				  X bsl N + Acc, F@_1, F@_2, F@_3, TrUserData);
-dg_read_field_def_ProductionM(<<0:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_ProductionM_nameP(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    TrUserData);
-      16 ->
-	  d_field_ProductionM_quant(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    TrUserData);
-      29 ->
-	  d_field_ProductionM_value(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_ProductionM(Rest, 0, 0, F@_1, F@_2, F@_3,
-					TrUserData);
-	    1 ->
-		skip_64_ProductionM(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    TrUserData);
-	    2 ->
-		skip_length_delimited_ProductionM(Rest, 0, 0, F@_1,
-						  F@_2, F@_3, TrUserData);
-	    3 ->
-		skip_group_ProductionM(Rest, Key bsr 3, 0, F@_1, F@_2,
-				       F@_3, TrUserData);
-	    5 ->
-		skip_32_ProductionM(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    TrUserData)
-	  end
-    end;
-dg_read_field_def_ProductionM(<<>>, 0, 0, F@_1, F@_2,
-			      F@_3, _) ->
-    #'ProductionM'{nameP = F@_1, quant = F@_2,
-		   value = F@_3}.
-
-d_field_ProductionM_nameP(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_ProductionM_nameP(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, TrUserData);
-d_field_ProductionM_nameP(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, _, F@_2, F@_3, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_ProductionM(RestF, 0, 0, NewFValue,
-				   F@_2, F@_3, TrUserData).
-
-d_field_ProductionM_quant(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_ProductionM_quant(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, TrUserData);
-d_field_ProductionM_quant(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, _, F@_3, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_ProductionM(RestF, 0, 0, F@_1,
-				   NewFValue, F@_3, TrUserData).
-
-d_field_ProductionM_value(<<0:16, 128, 127,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
-    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
-				   id(infinity, TrUserData), TrUserData);
-d_field_ProductionM_value(<<0:16, 128, 255,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
-    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
-				   id('-infinity', TrUserData), TrUserData);
-d_field_ProductionM_value(<<_:16, 1:1, _:7, _:1, 127:7,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
-    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
-				   id(nan, TrUserData), TrUserData);
-d_field_ProductionM_value(<<Value:32/little-float,
-			    Rest/binary>>,
-			  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
-    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
-				   id(Value, TrUserData), TrUserData).
-
-skip_varint_ProductionM(<<1:1, _:7, Rest/binary>>, Z1,
-			Z2, F@_1, F@_2, F@_3, TrUserData) ->
-    skip_varint_ProductionM(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			    TrUserData);
-skip_varint_ProductionM(<<0:1, _:7, Rest/binary>>, Z1,
-			Z2, F@_1, F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, TrUserData).
-
-skip_length_delimited_ProductionM(<<1:1, X:7,
-				    Rest/binary>>,
-				  N, Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_ProductionM(Rest, N + 7,
-				      X bsl N + Acc, F@_1, F@_2, F@_3,
-				      TrUserData);
-skip_length_delimited_ProductionM(<<0:1, X:7,
-				    Rest/binary>>,
-				  N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_ProductionM(Rest2, 0, 0, F@_1, F@_2,
-				   F@_3, TrUserData).
-
-skip_group_ProductionM(Bin, FNum, Z2, F@_1, F@_2, F@_3,
-		       TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_ProductionM(Rest, 0, Z2, F@_1, F@_2,
-				   F@_3, TrUserData).
-
-skip_32_ProductionM(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		    F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, TrUserData).
-
-skip_64_ProductionM(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		    F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_ProductionM(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, TrUserData).
-
-decode_msg_ResultS(Bin, TrUserData) ->
-    dfp_read_field_def_ResultS(Bin, 0, 0,
-			       id(undefined, TrUserData),
-			       id(undefined, TrUserData),
-			       id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_ResultS(<<8, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_ResultS_result(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			   TrUserData);
-dfp_read_field_def_ResultS(<<18, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_ResultS_msg(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			TrUserData);
-dfp_read_field_def_ResultS(<<26, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, F@_3, TrUserData) ->
-    d_field_ResultS_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  TrUserData);
-dfp_read_field_def_ResultS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			   _) ->
-    #'ResultS'{result = F@_1, msg = F@_2, nameI = F@_3};
-dfp_read_field_def_ResultS(Other, Z1, Z2, F@_1, F@_2,
-			   F@_3, TrUserData) ->
-    dg_read_field_def_ResultS(Other, Z1, Z2, F@_1, F@_2,
-			      F@_3, TrUserData).
-
-dg_read_field_def_ResultS(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_ResultS(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, F@_3, TrUserData);
-dg_read_field_def_ResultS(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, F@_3, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      8 ->
-	  d_field_ResultS_result(Rest, 0, 0, F@_1, F@_2, F@_3,
-				 TrUserData);
-      18 ->
-	  d_field_ResultS_msg(Rest, 0, 0, F@_1, F@_2, F@_3,
-			      TrUserData);
-      26 ->
-	  d_field_ResultS_nameI(Rest, 0, 0, F@_1, F@_2, F@_3,
-				TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_ResultS(Rest, 0, 0, F@_1, F@_2, F@_3,
-				    TrUserData);
-	    1 ->
-		skip_64_ResultS(Rest, 0, 0, F@_1, F@_2, F@_3,
-				TrUserData);
-	    2 ->
-		skip_length_delimited_ResultS(Rest, 0, 0, F@_1, F@_2,
-					      F@_3, TrUserData);
-	    3 ->
-		skip_group_ResultS(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				   TrUserData);
-	    5 ->
-		skip_32_ResultS(Rest, 0, 0, F@_1, F@_2, F@_3,
-				TrUserData)
-	  end
-    end;
-dg_read_field_def_ResultS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			  _) ->
-    #'ResultS'{result = F@_1, msg = F@_2, nameI = F@_3}.
-
-d_field_ResultS_result(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_ResultS_result(Rest, N + 7, X bsl N + Acc, F@_1,
-			   F@_2, F@_3, TrUserData);
-d_field_ResultS_result(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, _, F@_2, F@_3, TrUserData) ->
-    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_ResultS(RestF, 0, 0, NewFValue, F@_2,
-			       F@_3, TrUserData).
-
-d_field_ResultS_msg(<<1:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_ResultS_msg(Rest, N + 7, X bsl N + Acc, F@_1,
-			F@_2, F@_3, TrUserData);
-d_field_ResultS_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, _, F@_3, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_ResultS(RestF, 0, 0, F@_1, NewFValue,
-			       F@_3, TrUserData).
-
-d_field_ResultS_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    d_field_ResultS_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, TrUserData);
-d_field_ResultS_nameI(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, _, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_ResultS(RestF, 0, 0, F@_1, F@_2,
-			       NewFValue, TrUserData).
-
-skip_varint_ResultS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		    F@_1, F@_2, F@_3, TrUserData) ->
-    skip_varint_ResultS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			TrUserData);
-skip_varint_ResultS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		    F@_1, F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_ResultS(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, TrUserData).
-
-skip_length_delimited_ResultS(<<1:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_ResultS(Rest, N + 7,
-				  X bsl N + Acc, F@_1, F@_2, F@_3, TrUserData);
-skip_length_delimited_ResultS(<<0:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_ResultS(Rest2, 0, 0, F@_1, F@_2,
-			       F@_3, TrUserData).
-
-skip_group_ResultS(Bin, FNum, Z2, F@_1, F@_2, F@_3,
-		   TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_ResultS(Rest, 0, Z2, F@_1, F@_2,
-			       F@_3, TrUserData).
-
-skip_32_ResultS(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_ResultS(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, TrUserData).
-
-skip_64_ResultS(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		F@_2, F@_3, TrUserData) ->
-    dfp_read_field_def_ResultS(Rest, Z1, Z2, F@_1, F@_2,
-			       F@_3, TrUserData).
-
-decode_msg_ResultI(Bin, TrUserData) ->
-    dfp_read_field_def_ResultI(Bin, 0, 0,
-			       id(undefined, TrUserData),
-			       id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_ResultI(<<8, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, TrUserData) ->
-    d_field_ResultI_result(Rest, Z1, Z2, F@_1, F@_2,
-			   TrUserData);
-dfp_read_field_def_ResultI(<<18, Rest/binary>>, Z1, Z2,
-			   F@_1, F@_2, TrUserData) ->
-    d_field_ResultI_msg(Rest, Z1, Z2, F@_1, F@_2,
-			TrUserData);
-dfp_read_field_def_ResultI(<<>>, 0, 0, F@_1, F@_2, _) ->
-    #'ResultI'{result = F@_1, msg = F@_2};
-dfp_read_field_def_ResultI(Other, Z1, Z2, F@_1, F@_2,
-			   TrUserData) ->
-    dg_read_field_def_ResultI(Other, Z1, Z2, F@_1, F@_2,
-			      TrUserData).
-
-dg_read_field_def_ResultI(<<1:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_ResultI(Rest, N + 7, X bsl N + Acc,
-			      F@_1, F@_2, TrUserData);
-dg_read_field_def_ResultI(<<0:1, X:7, Rest/binary>>, N,
-			  Acc, F@_1, F@_2, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      8 ->
-	  d_field_ResultI_result(Rest, 0, 0, F@_1, F@_2,
-				 TrUserData);
-      18 ->
-	  d_field_ResultI_msg(Rest, 0, 0, F@_1, F@_2, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_ResultI(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    1 ->
-		skip_64_ResultI(Rest, 0, 0, F@_1, F@_2, TrUserData);
-	    2 ->
-		skip_length_delimited_ResultI(Rest, 0, 0, F@_1, F@_2,
-					      TrUserData);
-	    3 ->
-		skip_group_ResultI(Rest, Key bsr 3, 0, F@_1, F@_2,
-				   TrUserData);
-	    5 -> skip_32_ResultI(Rest, 0, 0, F@_1, F@_2, TrUserData)
-	  end
-    end;
-dg_read_field_def_ResultI(<<>>, 0, 0, F@_1, F@_2, _) ->
-    #'ResultI'{result = F@_1, msg = F@_2}.
-
-d_field_ResultI_result(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_ResultI_result(Rest, N + 7, X bsl N + Acc, F@_1,
-			   F@_2, TrUserData);
-d_field_ResultI_result(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, _, F@_2, TrUserData) ->
-    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
-			     TrUserData),
-			  Rest},
-    dfp_read_field_def_ResultI(RestF, 0, 0, NewFValue, F@_2,
-			       TrUserData).
-
-d_field_ResultI_msg(<<1:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    d_field_ResultI_msg(Rest, N + 7, X bsl N + Acc, F@_1,
-			F@_2, TrUserData);
-d_field_ResultI_msg(<<0:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, _, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_ResultI(RestF, 0, 0, F@_1, NewFValue,
-			       TrUserData).
-
-skip_varint_ResultI(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		    F@_1, F@_2, TrUserData) ->
-    skip_varint_ResultI(Rest, Z1, Z2, F@_1, F@_2,
-			TrUserData);
-skip_varint_ResultI(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		    F@_1, F@_2, TrUserData) ->
-    dfp_read_field_def_ResultI(Rest, Z1, Z2, F@_1, F@_2,
-			       TrUserData).
-
-skip_length_delimited_ResultI(<<1:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_ResultI(Rest, N + 7,
-				  X bsl N + Acc, F@_1, F@_2, TrUserData);
-skip_length_delimited_ResultI(<<0:1, X:7, Rest/binary>>,
-			      N, Acc, F@_1, F@_2, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_ResultI(Rest2, 0, 0, F@_1, F@_2,
-			       TrUserData).
-
-skip_group_ResultI(Bin, FNum, Z2, F@_1, F@_2,
-		   TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_ResultI(Rest, 0, Z2, F@_1, F@_2,
-			       TrUserData).
-
-skip_32_ResultI(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		F@_2, TrUserData) ->
-    dfp_read_field_def_ResultI(Rest, Z1, Z2, F@_1, F@_2,
-			       TrUserData).
-
-skip_64_ResultI(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		F@_2, TrUserData) ->
-    dfp_read_field_def_ResultI(Rest, Z1, Z2, F@_1, F@_2,
-			       TrUserData).
-
-decode_msg_InfoS(Bin, TrUserData) ->
-    dfp_read_field_def_InfoS(Bin, 0, 0,
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_InfoS(<<10, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			 TrUserData) ->
-    d_field_InfoS_nameM(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, F@_7, TrUserData);
-dfp_read_field_def_InfoS(<<18, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			 TrUserData) ->
-    d_field_InfoS_nameP(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, F@_7, TrUserData);
-dfp_read_field_def_InfoS(<<24, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			 TrUserData) ->
-    d_field_InfoS_minimum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, F@_5, F@_6, F@_7, TrUserData);
-dfp_read_field_def_InfoS(<<32, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			 TrUserData) ->
-    d_field_InfoS_maximum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, F@_5, F@_6, F@_7, TrUserData);
-dfp_read_field_def_InfoS(<<45, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			 TrUserData) ->
-    d_field_InfoS_value(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, F@_7, TrUserData);
-dfp_read_field_def_InfoS(<<48, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			 TrUserData) ->
-    d_field_InfoS_period(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, F@_6, F@_7, TrUserData);
-dfp_read_field_def_InfoS(<<58, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			 TrUserData) ->
-    d_field_InfoS_nameI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, F@_7, TrUserData);
-dfp_read_field_def_InfoS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, F@_6, F@_7, _) ->
-    #'InfoS'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
-	     maximum = F@_4, value = F@_5, period = F@_6,
-	     nameI = F@_7};
-dfp_read_field_def_InfoS(Other, Z1, Z2, F@_1, F@_2,
-			 F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    dg_read_field_def_InfoS(Other, Z1, Z2, F@_1, F@_2, F@_3,
-			    F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-dg_read_field_def_InfoS(<<1:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_InfoS(Rest, N + 7, X bsl N + Acc,
-			    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			    TrUserData);
-dg_read_field_def_InfoS(<<0:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_InfoS_nameM(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			      F@_5, F@_6, F@_7, TrUserData);
-      18 ->
-	  d_field_InfoS_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			      F@_5, F@_6, F@_7, TrUserData);
-      24 ->
-	  d_field_InfoS_minimum(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, F@_5, F@_6, F@_7, TrUserData);
-      32 ->
-	  d_field_InfoS_maximum(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, F@_5, F@_6, F@_7, TrUserData);
-      45 ->
-	  d_field_InfoS_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			      F@_5, F@_6, F@_7, TrUserData);
-      48 ->
-	  d_field_InfoS_period(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, F@_6, F@_7, TrUserData);
-      58 ->
-	  d_field_InfoS_nameI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			      F@_5, F@_6, F@_7, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_InfoS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				  F@_5, F@_6, F@_7, TrUserData);
-	    1 ->
-		skip_64_InfoS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			      F@_6, F@_7, TrUserData);
-	    2 ->
-		skip_length_delimited_InfoS(Rest, 0, 0, F@_1, F@_2,
-					    F@_3, F@_4, F@_5, F@_6, F@_7,
-					    TrUserData);
-	    3 ->
-		skip_group_InfoS(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				 F@_4, F@_5, F@_6, F@_7, TrUserData);
-	    5 ->
-		skip_32_InfoS(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			      F@_6, F@_7, TrUserData)
-	  end
-    end;
-dg_read_field_def_InfoS(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, F@_7, _) ->
-    #'InfoS'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
-	     maximum = F@_4, value = F@_5, period = F@_6,
-	     nameI = F@_7}.
-
-d_field_InfoS_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
-    when N < 57 ->
-    d_field_InfoS_nameM(Rest, N + 7, X bsl N + Acc, F@_1,
-			F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
-		    _, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_InfoS(RestF, 0, 0, NewFValue, F@_2,
-			     F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-d_field_InfoS_nameP(<<1:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
-    when N < 57 ->
-    d_field_InfoS_nameP(Rest, N + 7, X bsl N + Acc, F@_1,
-			F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, _, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_InfoS(RestF, 0, 0, F@_1, NewFValue,
-			     F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-d_field_InfoS_minimum(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
-    when N < 57 ->
-    d_field_InfoS_minimum(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_minimum(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, _, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_InfoS(RestF, 0, 0, F@_1, F@_2,
-			     NewFValue, F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-d_field_InfoS_maximum(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
-    when N < 57 ->
-    d_field_InfoS_maximum(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_maximum(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, _, F@_5, F@_6, F@_7, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_InfoS(RestF, 0, 0, F@_1, F@_2, F@_3,
-			     NewFValue, F@_5, F@_6, F@_7, TrUserData).
-
-d_field_InfoS_value(<<0:16, 128, 127, Rest/binary>>, Z1,
-		    Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, F@_7,
-		    TrUserData) ->
-    dfp_read_field_def_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id(infinity, TrUserData), F@_6, F@_7,
-			     TrUserData);
-d_field_InfoS_value(<<0:16, 128, 255, Rest/binary>>, Z1,
-		    Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, F@_7,
-		    TrUserData) ->
-    dfp_read_field_def_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id('-infinity', TrUserData), F@_6, F@_7,
-			     TrUserData);
-d_field_InfoS_value(<<_:16, 1:1, _:7, _:1, 127:7,
-		      Rest/binary>>,
-		    Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, F@_7,
-		    TrUserData) ->
-    dfp_read_field_def_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id(nan, TrUserData), F@_6, F@_7, TrUserData);
-d_field_InfoS_value(<<Value:32/little-float,
-		      Rest/binary>>,
-		    Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, F@_7,
-		    TrUserData) ->
-    dfp_read_field_def_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id(Value, TrUserData), F@_6, F@_7,
-			     TrUserData).
-
-d_field_InfoS_period(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
-    when N < 57 ->
-    d_field_InfoS_period(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_period(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, _, F@_7, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_InfoS(RestF, 0, 0, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, NewFValue, F@_7, TrUserData).
-
-d_field_InfoS_nameI(<<1:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData)
-    when N < 57 ->
-    d_field_InfoS_nameI(Rest, N + 7, X bsl N + Acc, F@_1,
-			F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData);
-d_field_InfoS_nameI(<<0:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, _, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_InfoS(RestF, 0, 0, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, NewFValue, TrUserData).
-
-skip_varint_InfoS(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		  F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    skip_varint_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3, F@_4,
-		      F@_5, F@_6, F@_7, TrUserData);
-skip_varint_InfoS(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		  F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    dfp_read_field_def_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-skip_length_delimited_InfoS(<<1:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			    TrUserData)
-    when N < 57 ->
-    skip_length_delimited_InfoS(Rest, N + 7, X bsl N + Acc,
-				F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-				TrUserData);
-skip_length_delimited_InfoS(<<0:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, F@_7,
-			    TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_InfoS(Rest2, 0, 0, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-skip_group_InfoS(Bin, FNum, Z2, F@_1, F@_2, F@_3, F@_4,
-		 F@_5, F@_6, F@_7, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_InfoS(Rest, 0, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-skip_32_InfoS(<<_:32, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	      F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    dfp_read_field_def_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-skip_64_InfoS(<<_:64, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	      F@_3, F@_4, F@_5, F@_6, F@_7, TrUserData) ->
-    dfp_read_field_def_InfoS(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, F@_7, TrUserData).
-
-decode_msg_InfoI(Bin, TrUserData) ->
-    dfp_read_field_def_InfoI(Bin, 0, 0,
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData),
-			     id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_InfoI(<<10, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_nameM(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_InfoI(<<18, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_nameP(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_InfoI(<<24, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_minimum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_InfoI(<<32, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_maximum(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			  F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_InfoI(<<45, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_value(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_InfoI(<<48, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    d_field_InfoI_period(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, F@_6, TrUserData);
-dfp_read_field_def_InfoI(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			 F@_4, F@_5, F@_6, _) ->
-    #'InfoI'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
-	     maximum = F@_4, value = F@_5, period = F@_6};
-dfp_read_field_def_InfoI(Other, Z1, Z2, F@_1, F@_2,
-			 F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dg_read_field_def_InfoI(Other, Z1, Z2, F@_1, F@_2, F@_3,
-			    F@_4, F@_5, F@_6, TrUserData).
-
-dg_read_field_def_InfoI(<<1:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_InfoI(Rest, N + 7, X bsl N + Acc,
-			    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-dg_read_field_def_InfoI(<<0:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_InfoI_nameM(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			      F@_5, F@_6, TrUserData);
-      18 ->
-	  d_field_InfoI_nameP(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			      F@_5, F@_6, TrUserData);
-      24 ->
-	  d_field_InfoI_minimum(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, F@_5, F@_6, TrUserData);
-      32 ->
-	  d_field_InfoI_maximum(Rest, 0, 0, F@_1, F@_2, F@_3,
-				F@_4, F@_5, F@_6, TrUserData);
-      45 ->
-	  d_field_InfoI_value(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			      F@_5, F@_6, TrUserData);
-      48 ->
-	  d_field_InfoI_period(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-			       F@_5, F@_6, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_InfoI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4,
-				  F@_5, F@_6, TrUserData);
-	    1 ->
-		skip_64_InfoI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			      F@_6, TrUserData);
-	    2 ->
-		skip_length_delimited_InfoI(Rest, 0, 0, F@_1, F@_2,
-					    F@_3, F@_4, F@_5, F@_6, TrUserData);
-	    3 ->
-		skip_group_InfoI(Rest, Key bsr 3, 0, F@_1, F@_2, F@_3,
-				 F@_4, F@_5, F@_6, TrUserData);
-	    5 ->
-		skip_32_InfoI(Rest, 0, 0, F@_1, F@_2, F@_3, F@_4, F@_5,
-			      F@_6, TrUserData)
-	  end
-    end;
-dg_read_field_def_InfoI(<<>>, 0, 0, F@_1, F@_2, F@_3,
-			F@_4, F@_5, F@_6, _) ->
-    #'InfoI'{nameM = F@_1, nameP = F@_2, minimum = F@_3,
-	     maximum = F@_4, value = F@_5, period = F@_6}.
-
-d_field_InfoI_nameM(<<1:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
-    when N < 57 ->
-    d_field_InfoI_nameM(Rest, N + 7, X bsl N + Acc, F@_1,
-			F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-d_field_InfoI_nameM(<<0:1, X:7, Rest/binary>>, N, Acc,
-		    _, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_InfoI(RestF, 0, 0, NewFValue, F@_2,
-			     F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-d_field_InfoI_nameP(<<1:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
-    when N < 57 ->
-    d_field_InfoI_nameP(Rest, N + 7, X bsl N + Acc, F@_1,
-			F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-d_field_InfoI_nameP(<<0:1, X:7, Rest/binary>>, N, Acc,
-		    F@_1, _, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
-			   {id(unicode:characters_to_list(Utf8, unicode),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_InfoI(RestF, 0, 0, F@_1, NewFValue,
-			     F@_3, F@_4, F@_5, F@_6, TrUserData).
-
-d_field_InfoI_minimum(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
-    when N < 57 ->
-    d_field_InfoI_minimum(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-d_field_InfoI_minimum(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, _, F@_4, F@_5, F@_6, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_InfoI(RestF, 0, 0, F@_1, F@_2,
-			     NewFValue, F@_4, F@_5, F@_6, TrUserData).
-
-d_field_InfoI_maximum(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
-    when N < 57 ->
-    d_field_InfoI_maximum(Rest, N + 7, X bsl N + Acc, F@_1,
-			  F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-d_field_InfoI_maximum(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, F@_2, F@_3, _, F@_5, F@_6, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_InfoI(RestF, 0, 0, F@_1, F@_2, F@_3,
-			     NewFValue, F@_5, F@_6, TrUserData).
-
-d_field_InfoI_value(<<0:16, 128, 127, Rest/binary>>, Z1,
-		    Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, TrUserData) ->
-    dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id(infinity, TrUserData), F@_6, TrUserData);
-d_field_InfoI_value(<<0:16, 128, 255, Rest/binary>>, Z1,
-		    Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, TrUserData) ->
-    dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id('-infinity', TrUserData), F@_6,
-			     TrUserData);
-d_field_InfoI_value(<<_:16, 1:1, _:7, _:1, 127:7,
-		      Rest/binary>>,
-		    Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, TrUserData) ->
-    dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id(nan, TrUserData), F@_6, TrUserData);
-d_field_InfoI_value(<<Value:32/little-float,
-		      Rest/binary>>,
-		    Z1, Z2, F@_1, F@_2, F@_3, F@_4, _, F@_6, TrUserData) ->
-    dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, id(Value, TrUserData), F@_6, TrUserData).
-
-d_field_InfoI_period(<<1:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData)
-    when N < 57 ->
-    d_field_InfoI_period(Rest, N + 7, X bsl N + Acc, F@_1,
-			 F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-d_field_InfoI_period(<<0:1, X:7, Rest/binary>>, N, Acc,
-		     F@_1, F@_2, F@_3, F@_4, F@_5, _, TrUserData) ->
-    {NewFValue, RestF} = {begin
-			    <<Res:32/signed-native>> = <<(X bsl N +
-							    Acc):32/unsigned-native>>,
-			    id(Res, TrUserData)
-			  end,
-			  Rest},
-    dfp_read_field_def_InfoI(RestF, 0, 0, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, NewFValue, TrUserData).
-
-skip_varint_InfoI(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		  F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    skip_varint_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3, F@_4,
-		      F@_5, F@_6, TrUserData);
-skip_varint_InfoI(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		  F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, TrUserData).
-
-skip_length_delimited_InfoI(<<1:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			    TrUserData)
-    when N < 57 ->
-    skip_length_delimited_InfoI(Rest, N + 7, X bsl N + Acc,
-				F@_1, F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData);
-skip_length_delimited_InfoI(<<0:1, X:7, Rest/binary>>,
-			    N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-			    TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_InfoI(Rest2, 0, 0, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, TrUserData).
-
-skip_group_InfoI(Bin, FNum, Z2, F@_1, F@_2, F@_3, F@_4,
-		 F@_5, F@_6, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_InfoI(Rest, 0, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, TrUserData).
-
-skip_32_InfoI(<<_:32, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	      F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, TrUserData).
-
-skip_64_InfoI(<<_:64, Rest/binary>>, Z1, Z2, F@_1, F@_2,
-	      F@_3, F@_4, F@_5, F@_6, TrUserData) ->
-    dfp_read_field_def_InfoI(Rest, Z1, Z2, F@_1, F@_2, F@_3,
-			     F@_4, F@_5, F@_6, TrUserData).
-
-decode_msg_Server(Bin, TrUserData) ->
-    dfp_read_field_def_Server(Bin, 0, 0,
-			      id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_Server(<<10, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m1(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<18, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m2(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<26, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m3(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<34, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m4(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<42, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m5(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<50, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m6(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<58, Rest/binary>>, Z1, Z2,
-			  F@_1, TrUserData) ->
-    d_field_Server_m7(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Server(<<>>, 0, 0, F@_1, _) ->
-    #'Server'{msg = F@_1};
-dfp_read_field_def_Server(Other, Z1, Z2, F@_1,
-			  TrUserData) ->
-    dg_read_field_def_Server(Other, Z1, Z2, F@_1,
-			     TrUserData).
-
-dg_read_field_def_Server(<<1:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_Server(Rest, N + 7, X bsl N + Acc,
-			     F@_1, TrUserData);
-dg_read_field_def_Server(<<0:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 -> d_field_Server_m1(Rest, 0, 0, F@_1, TrUserData);
-      18 -> d_field_Server_m2(Rest, 0, 0, F@_1, TrUserData);
-      26 -> d_field_Server_m3(Rest, 0, 0, F@_1, TrUserData);
-      34 -> d_field_Server_m4(Rest, 0, 0, F@_1, TrUserData);
-      42 -> d_field_Server_m5(Rest, 0, 0, F@_1, TrUserData);
-      50 -> d_field_Server_m6(Rest, 0, 0, F@_1, TrUserData);
-      58 -> d_field_Server_m7(Rest, 0, 0, F@_1, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 -> skip_varint_Server(Rest, 0, 0, F@_1, TrUserData);
-	    1 -> skip_64_Server(Rest, 0, 0, F@_1, TrUserData);
-	    2 ->
-		skip_length_delimited_Server(Rest, 0, 0, F@_1,
-					     TrUserData);
-	    3 ->
-		skip_group_Server(Rest, Key bsr 3, 0, F@_1, TrUserData);
-	    5 -> skip_32_Server(Rest, 0, 0, F@_1, TrUserData)
-	  end
-    end;
-dg_read_field_def_Server(<<>>, 0, 0, F@_1, _) ->
-    #'Server'{msg = F@_1}.
-
-d_field_Server_m1(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m1(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m1(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_DisponibilityS(Bs, TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m1, NewFValue}, TrUserData);
-				{m1, MVPrev} ->
-				    id({m1,
-					merge_msg_DisponibilityS(MVPrev,
-								 NewFValue,
-								 TrUserData)},
-				       TrUserData);
-				_ -> id({m1, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m2(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m2(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m2(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_OrderS(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m2, NewFValue}, TrUserData);
-				{m2, MVPrev} ->
-				    id({m2,
-					merge_msg_OrderS(MVPrev, NewFValue,
-							 TrUserData)},
-				       TrUserData);
-				_ -> id({m2, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m3(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m3(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m3(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_SubS(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m3, NewFValue}, TrUserData);
-				{m3, MVPrev} ->
-				    id({m3,
-					merge_msg_SubS(MVPrev, NewFValue,
-						       TrUserData)},
-				       TrUserData);
-				_ -> id({m3, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m4(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m4(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m4(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_ResultS(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m4, NewFValue}, TrUserData);
-				{m4, MVPrev} ->
-				    id({m4,
-					merge_msg_ResultS(MVPrev, NewFValue,
-							  TrUserData)},
-				       TrUserData);
-				_ -> id({m4, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m5(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m5(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m5(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_InfoS(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m5, NewFValue}, TrUserData);
-				{m5, MVPrev} ->
-				    id({m5,
-					merge_msg_InfoS(MVPrev, NewFValue,
-							TrUserData)},
-				       TrUserData);
-				_ -> id({m5, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m6(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m6(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m6(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_ProductionS(Bs, TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m6, NewFValue}, TrUserData);
-				{m6, MVPrev} ->
-				    id({m6,
-					merge_msg_ProductionS(MVPrev, NewFValue,
-							      TrUserData)},
-				       TrUserData);
-				_ -> id({m6, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-d_field_Server_m7(<<1:1, X:7, Rest/binary>>, N, Acc,
-		  F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Server_m7(Rest, N + 7, X bsl N + Acc, F@_1,
-		      TrUserData);
-d_field_Server_m7(<<0:1, X:7, Rest/binary>>, N, Acc,
-		  Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_OrderAckS(Bs, TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Server(RestF, 0, 0,
-			      case Prev of
-				undefined -> id({m7, NewFValue}, TrUserData);
-				{m7, MVPrev} ->
-				    id({m7,
-					merge_msg_OrderAckS(MVPrev, NewFValue,
-							    TrUserData)},
-				       TrUserData);
-				_ -> id({m7, NewFValue}, TrUserData)
-			      end,
-			      TrUserData).
-
-skip_varint_Server(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, TrUserData) ->
-    skip_varint_Server(Rest, Z1, Z2, F@_1, TrUserData);
-skip_varint_Server(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		   F@_1, TrUserData) ->
-    dfp_read_field_def_Server(Rest, Z1, Z2, F@_1,
-			      TrUserData).
-
-skip_length_delimited_Server(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_Server(Rest, N + 7, X bsl N + Acc,
-				 F@_1, TrUserData);
-skip_length_delimited_Server(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_Server(Rest2, 0, 0, F@_1,
-			      TrUserData).
-
-skip_group_Server(Bin, FNum, Z2, F@_1, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_Server(Rest, 0, Z2, F@_1,
-			      TrUserData).
-
-skip_32_Server(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-	       TrUserData) ->
-    dfp_read_field_def_Server(Rest, Z1, Z2, F@_1,
-			      TrUserData).
-
-skip_64_Server(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-	       TrUserData) ->
-    dfp_read_field_def_Server(Rest, Z1, Z2, F@_1,
-			      TrUserData).
-
-decode_msg_Importer(Bin, TrUserData) ->
-    dfp_read_field_def_Importer(Bin, 0, 0,
-				id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_Importer(<<10, Rest/binary>>, Z1, Z2,
-			    F@_1, TrUserData) ->
-    d_field_Importer_ordack(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Importer(<<18, Rest/binary>>, Z1, Z2,
-			    F@_1, TrUserData) ->
-    d_field_Importer_result(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Importer(<<26, Rest/binary>>, Z1, Z2,
-			    F@_1, TrUserData) ->
-    d_field_Importer_info(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Importer(<<>>, 0, 0, F@_1, _) ->
-    #'Importer'{msg = F@_1};
-dfp_read_field_def_Importer(Other, Z1, Z2, F@_1,
-			    TrUserData) ->
-    dg_read_field_def_Importer(Other, Z1, Z2, F@_1,
-			       TrUserData).
-
-dg_read_field_def_Importer(<<1:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_Importer(Rest, N + 7, X bsl N + Acc,
-			       F@_1, TrUserData);
-dg_read_field_def_Importer(<<0:1, X:7, Rest/binary>>, N,
-			   Acc, F@_1, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_Importer_ordack(Rest, 0, 0, F@_1, TrUserData);
-      18 ->
-	  d_field_Importer_result(Rest, 0, 0, F@_1, TrUserData);
-      26 ->
-	  d_field_Importer_info(Rest, 0, 0, F@_1, TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 -> skip_varint_Importer(Rest, 0, 0, F@_1, TrUserData);
-	    1 -> skip_64_Importer(Rest, 0, 0, F@_1, TrUserData);
-	    2 ->
-		skip_length_delimited_Importer(Rest, 0, 0, F@_1,
-					       TrUserData);
-	    3 ->
-		skip_group_Importer(Rest, Key bsr 3, 0, F@_1,
-				    TrUserData);
-	    5 -> skip_32_Importer(Rest, 0, 0, F@_1, TrUserData)
-	  end
-    end;
-dg_read_field_def_Importer(<<>>, 0, 0, F@_1, _) ->
-    #'Importer'{msg = F@_1}.
-
-d_field_Importer_ordack(<<1:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Importer_ordack(Rest, N + 7, X bsl N + Acc,
-			    F@_1, TrUserData);
-d_field_Importer_ordack(<<0:1, X:7, Rest/binary>>, N,
-			Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_OrderAckI(Bs, TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Importer(RestF, 0, 0,
-				case Prev of
-				  undefined ->
-				      id({ordack, NewFValue}, TrUserData);
-				  {ordack, MVPrev} ->
-				      id({ordack,
-					  merge_msg_OrderAckI(MVPrev, NewFValue,
-							      TrUserData)},
-					 TrUserData);
-				  _ -> id({ordack, NewFValue}, TrUserData)
-				end,
-				TrUserData).
-
-d_field_Importer_result(<<1:1, X:7, Rest/binary>>, N,
-			Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Importer_result(Rest, N + 7, X bsl N + Acc,
-			    F@_1, TrUserData);
-d_field_Importer_result(<<0:1, X:7, Rest/binary>>, N,
-			Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_ResultI(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Importer(RestF, 0, 0,
-				case Prev of
-				  undefined ->
-				      id({result, NewFValue}, TrUserData);
-				  {result, MVPrev} ->
-				      id({result,
-					  merge_msg_ResultI(MVPrev, NewFValue,
-							    TrUserData)},
-					 TrUserData);
-				  _ -> id({result, NewFValue}, TrUserData)
-				end,
-				TrUserData).
-
-d_field_Importer_info(<<1:1, X:7, Rest/binary>>, N, Acc,
-		      F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Importer_info(Rest, N + 7, X bsl N + Acc, F@_1,
-			  TrUserData);
-d_field_Importer_info(<<0:1, X:7, Rest/binary>>, N, Acc,
-		      Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_InfoI(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Importer(RestF, 0, 0,
-				case Prev of
-				  undefined ->
-				      id({info, NewFValue}, TrUserData);
-				  {info, MVPrev} ->
-				      id({info,
-					  merge_msg_InfoI(MVPrev, NewFValue,
-							  TrUserData)},
-					 TrUserData);
-				  _ -> id({info, NewFValue}, TrUserData)
-				end,
-				TrUserData).
-
-skip_varint_Importer(<<1:1, _:7, Rest/binary>>, Z1, Z2,
-		     F@_1, TrUserData) ->
-    skip_varint_Importer(Rest, Z1, Z2, F@_1, TrUserData);
-skip_varint_Importer(<<0:1, _:7, Rest/binary>>, Z1, Z2,
-		     F@_1, TrUserData) ->
-    dfp_read_field_def_Importer(Rest, Z1, Z2, F@_1,
-				TrUserData).
-
-skip_length_delimited_Importer(<<1:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_Importer(Rest, N + 7,
-				   X bsl N + Acc, F@_1, TrUserData);
-skip_length_delimited_Importer(<<0:1, X:7,
-				 Rest/binary>>,
-			       N, Acc, F@_1, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_Importer(Rest2, 0, 0, F@_1,
-				TrUserData).
-
-skip_group_Importer(Bin, FNum, Z2, F@_1, TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_Importer(Rest, 0, Z2, F@_1,
-				TrUserData).
-
-skip_32_Importer(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		 TrUserData) ->
-    dfp_read_field_def_Importer(Rest, Z1, Z2, F@_1,
-				TrUserData).
-
-skip_64_Importer(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		 TrUserData) ->
-    dfp_read_field_def_Importer(Rest, Z1, Z2, F@_1,
-				TrUserData).
-
-decode_msg_Negotiator(Bin, TrUserData) ->
-    dfp_read_field_def_Negotiator(Bin, 0, 0,
-				  id(undefined, TrUserData), TrUserData).
-
-dfp_read_field_def_Negotiator(<<10, Rest/binary>>, Z1,
-			      Z2, F@_1, TrUserData) ->
-    d_field_Negotiator_sub(Rest, Z1, Z2, F@_1, TrUserData);
-dfp_read_field_def_Negotiator(<<18, Rest/binary>>, Z1,
-			      Z2, F@_1, TrUserData) ->
-    d_field_Negotiator_order(Rest, Z1, Z2, F@_1,
-			     TrUserData);
-dfp_read_field_def_Negotiator(<<26, Rest/binary>>, Z1,
-			      Z2, F@_1, TrUserData) ->
-    d_field_Negotiator_disponibility(Rest, Z1, Z2, F@_1,
-				     TrUserData);
-dfp_read_field_def_Negotiator(<<>>, 0, 0, F@_1, _) ->
-    #'Negotiator'{msg = F@_1};
-dfp_read_field_def_Negotiator(Other, Z1, Z2, F@_1,
-			      TrUserData) ->
-    dg_read_field_def_Negotiator(Other, Z1, Z2, F@_1,
-				 TrUserData).
-
-dg_read_field_def_Negotiator(<<1:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, TrUserData)
-    when N < 32 - 7 ->
-    dg_read_field_def_Negotiator(Rest, N + 7, X bsl N + Acc,
-				 F@_1, TrUserData);
-dg_read_field_def_Negotiator(<<0:1, X:7, Rest/binary>>,
-			     N, Acc, F@_1, TrUserData) ->
-    Key = X bsl N + Acc,
-    case Key of
-      10 ->
-	  d_field_Negotiator_sub(Rest, 0, 0, F@_1, TrUserData);
-      18 ->
-	  d_field_Negotiator_order(Rest, 0, 0, F@_1, TrUserData);
-      26 ->
-	  d_field_Negotiator_disponibility(Rest, 0, 0, F@_1,
-					   TrUserData);
-      _ ->
-	  case Key band 7 of
-	    0 ->
-		skip_varint_Negotiator(Rest, 0, 0, F@_1, TrUserData);
-	    1 -> skip_64_Negotiator(Rest, 0, 0, F@_1, TrUserData);
-	    2 ->
-		skip_length_delimited_Negotiator(Rest, 0, 0, F@_1,
-						 TrUserData);
-	    3 ->
-		skip_group_Negotiator(Rest, Key bsr 3, 0, F@_1,
-				      TrUserData);
-	    5 -> skip_32_Negotiator(Rest, 0, 0, F@_1, TrUserData)
-	  end
-    end;
-dg_read_field_def_Negotiator(<<>>, 0, 0, F@_1, _) ->
-    #'Negotiator'{msg = F@_1}.
-
-d_field_Negotiator_sub(<<1:1, X:7, Rest/binary>>, N,
-		       Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Negotiator_sub(Rest, N + 7, X bsl N + Acc, F@_1,
-			   TrUserData);
-d_field_Negotiator_sub(<<0:1, X:7, Rest/binary>>, N,
-		       Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_SubN(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Negotiator(RestF, 0, 0,
-				  case Prev of
-				    undefined ->
-					id({sub, NewFValue}, TrUserData);
-				    {sub, MVPrev} ->
-					id({sub,
-					    merge_msg_SubN(MVPrev, NewFValue,
-							   TrUserData)},
-					   TrUserData);
-				    _ -> id({sub, NewFValue}, TrUserData)
-				  end,
-				  TrUserData).
-
-d_field_Negotiator_order(<<1:1, X:7, Rest/binary>>, N,
-			 Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Negotiator_order(Rest, N + 7, X bsl N + Acc,
-			     F@_1, TrUserData);
-d_field_Negotiator_order(<<0:1, X:7, Rest/binary>>, N,
-			 Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_OrderN(Bs, TrUserData), TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Negotiator(RestF, 0, 0,
-				  case Prev of
-				    undefined ->
-					id({order, NewFValue}, TrUserData);
-				    {order, MVPrev} ->
-					id({order,
-					    merge_msg_OrderN(MVPrev, NewFValue,
-							     TrUserData)},
-					   TrUserData);
-				    _ -> id({order, NewFValue}, TrUserData)
-				  end,
-				  TrUserData).
-
-d_field_Negotiator_disponibility(<<1:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, F@_1, TrUserData)
-    when N < 57 ->
-    d_field_Negotiator_disponibility(Rest, N + 7,
-				     X bsl N + Acc, F@_1, TrUserData);
-d_field_Negotiator_disponibility(<<0:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, Prev, TrUserData) ->
-    {NewFValue, RestF} = begin
-			   Len = X bsl N + Acc,
-			   <<Bs:Len/binary, Rest2/binary>> = Rest,
-			   {id(decode_msg_DisponibilityN(Bs, TrUserData),
-			       TrUserData),
-			    Rest2}
-			 end,
-    dfp_read_field_def_Negotiator(RestF, 0, 0,
-				  case Prev of
-				    undefined ->
-					id({disponibility, NewFValue},
-					   TrUserData);
-				    {disponibility, MVPrev} ->
-					id({disponibility,
-					    merge_msg_DisponibilityN(MVPrev,
-								     NewFValue,
-								     TrUserData)},
-					   TrUserData);
-				    _ ->
-					id({disponibility, NewFValue},
-					   TrUserData)
-				  end,
-				  TrUserData).
-
-skip_varint_Negotiator(<<1:1, _:7, Rest/binary>>, Z1,
-		       Z2, F@_1, TrUserData) ->
-    skip_varint_Negotiator(Rest, Z1, Z2, F@_1, TrUserData);
-skip_varint_Negotiator(<<0:1, _:7, Rest/binary>>, Z1,
-		       Z2, F@_1, TrUserData) ->
-    dfp_read_field_def_Negotiator(Rest, Z1, Z2, F@_1,
-				  TrUserData).
-
-skip_length_delimited_Negotiator(<<1:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, F@_1, TrUserData)
-    when N < 57 ->
-    skip_length_delimited_Negotiator(Rest, N + 7,
-				     X bsl N + Acc, F@_1, TrUserData);
-skip_length_delimited_Negotiator(<<0:1, X:7,
-				   Rest/binary>>,
-				 N, Acc, F@_1, TrUserData) ->
-    Length = X bsl N + Acc,
-    <<_:Length/binary, Rest2/binary>> = Rest,
-    dfp_read_field_def_Negotiator(Rest2, 0, 0, F@_1,
-				  TrUserData).
-
-skip_group_Negotiator(Bin, FNum, Z2, F@_1,
-		      TrUserData) ->
-    {_, Rest} = read_group(Bin, FNum),
-    dfp_read_field_def_Negotiator(Rest, 0, Z2, F@_1,
-				  TrUserData).
-
-skip_32_Negotiator(<<_:32, Rest/binary>>, Z1, Z2, F@_1,
-		   TrUserData) ->
-    dfp_read_field_def_Negotiator(Rest, Z1, Z2, F@_1,
-				  TrUserData).
-
-skip_64_Negotiator(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
-		   TrUserData) ->
-    dfp_read_field_def_Negotiator(Rest, Z1, Z2, F@_1,
-				  TrUserData).
 
 decode_msg_ClientToServer(Bin, TrUserData) ->
     dfp_read_field_def_ClientToServer(Bin, 0, 0,
@@ -6808,91 +3187,128 @@ skip_64_ServerToManufacturer(<<_:64, Rest/binary>>, Z1,
 decode_msg_ServerToManufacturerAnnounced(Bin,
 					 TrUserData) ->
     dfp_read_field_def_ServerToManufacturerAnnounced(Bin, 0,
-						     0, TrUserData).
+						     0,
+						     id(undefined, TrUserData),
+						     TrUserData).
 
+dfp_read_field_def_ServerToManufacturerAnnounced(<<10,
+						   Rest/binary>>,
+						 Z1, Z2, F@_1, TrUserData) ->
+    d_field_ServerToManufacturerAnnounced_productName(Rest,
+						      Z1, Z2, F@_1, TrUserData);
 dfp_read_field_def_ServerToManufacturerAnnounced(<<>>,
-						 0, 0, _) ->
-    #'ServerToManufacturerAnnounced'{};
+						 0, 0, F@_1, _) ->
+    #'ServerToManufacturerAnnounced'{productName = F@_1};
 dfp_read_field_def_ServerToManufacturerAnnounced(Other,
-						 Z1, Z2, TrUserData) ->
+						 Z1, Z2, F@_1, TrUserData) ->
     dg_read_field_def_ServerToManufacturerAnnounced(Other,
-						    Z1, Z2, TrUserData).
+						    Z1, Z2, F@_1, TrUserData).
 
 dg_read_field_def_ServerToManufacturerAnnounced(<<1:1,
 						  X:7, Rest/binary>>,
-						N, Acc, TrUserData)
+						N, Acc, F@_1, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_ServerToManufacturerAnnounced(Rest,
-						    N + 7, X bsl N + Acc,
+						    N + 7, X bsl N + Acc, F@_1,
 						    TrUserData);
 dg_read_field_def_ServerToManufacturerAnnounced(<<0:1,
 						  X:7, Rest/binary>>,
-						N, Acc, TrUserData) ->
+						N, Acc, F@_1, TrUserData) ->
     Key = X bsl N + Acc,
-    case Key band 7 of
-      0 ->
-	  skip_varint_ServerToManufacturerAnnounced(Rest, 0, 0,
-						    TrUserData);
-      1 ->
-	  skip_64_ServerToManufacturerAnnounced(Rest, 0, 0,
-						TrUserData);
-      2 ->
-	  skip_length_delimited_ServerToManufacturerAnnounced(Rest,
-							      0, 0, TrUserData);
-      3 ->
-	  skip_group_ServerToManufacturerAnnounced(Rest,
-						   Key bsr 3, 0, TrUserData);
-      5 ->
-	  skip_32_ServerToManufacturerAnnounced(Rest, 0, 0,
-						TrUserData)
+    case Key of
+      10 ->
+	  d_field_ServerToManufacturerAnnounced_productName(Rest,
+							    0, 0, F@_1,
+							    TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ServerToManufacturerAnnounced(Rest, 0, 0,
+							  F@_1, TrUserData);
+	    1 ->
+		skip_64_ServerToManufacturerAnnounced(Rest, 0, 0, F@_1,
+						      TrUserData);
+	    2 ->
+		skip_length_delimited_ServerToManufacturerAnnounced(Rest,
+								    0, 0, F@_1,
+								    TrUserData);
+	    3 ->
+		skip_group_ServerToManufacturerAnnounced(Rest,
+							 Key bsr 3, 0, F@_1,
+							 TrUserData);
+	    5 ->
+		skip_32_ServerToManufacturerAnnounced(Rest, 0, 0, F@_1,
+						      TrUserData)
+	  end
     end;
 dg_read_field_def_ServerToManufacturerAnnounced(<<>>, 0,
-						0, _) ->
-    #'ServerToManufacturerAnnounced'{}.
+						0, F@_1, _) ->
+    #'ServerToManufacturerAnnounced'{productName = F@_1}.
+
+d_field_ServerToManufacturerAnnounced_productName(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ServerToManufacturerAnnounced_productName(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, TrUserData);
+d_field_ServerToManufacturerAnnounced_productName(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToManufacturerAnnounced(RestF,
+						     0, 0, NewFValue,
+						     TrUserData).
 
 skip_varint_ServerToManufacturerAnnounced(<<1:1, _:7,
 					    Rest/binary>>,
-					  Z1, Z2, TrUserData) ->
+					  Z1, Z2, F@_1, TrUserData) ->
     skip_varint_ServerToManufacturerAnnounced(Rest, Z1, Z2,
-					      TrUserData);
+					      F@_1, TrUserData);
 skip_varint_ServerToManufacturerAnnounced(<<0:1, _:7,
 					    Rest/binary>>,
-					  Z1, Z2, TrUserData) ->
+					  Z1, Z2, F@_1, TrUserData) ->
     dfp_read_field_def_ServerToManufacturerAnnounced(Rest,
-						     Z1, Z2, TrUserData).
+						     Z1, Z2, F@_1, TrUserData).
 
 skip_length_delimited_ServerToManufacturerAnnounced(<<1:1,
 						      X:7, Rest/binary>>,
-						    N, Acc, TrUserData)
+						    N, Acc, F@_1, TrUserData)
     when N < 57 ->
     skip_length_delimited_ServerToManufacturerAnnounced(Rest,
 							N + 7, X bsl N + Acc,
-							TrUserData);
+							F@_1, TrUserData);
 skip_length_delimited_ServerToManufacturerAnnounced(<<0:1,
 						      X:7, Rest/binary>>,
-						    N, Acc, TrUserData) ->
+						    N, Acc, F@_1, TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_ServerToManufacturerAnnounced(Rest2,
-						     0, 0, TrUserData).
+						     0, 0, F@_1, TrUserData).
 
 skip_group_ServerToManufacturerAnnounced(Bin, FNum, Z2,
-					 TrUserData) ->
+					 F@_1, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_ServerToManufacturerAnnounced(Rest,
-						     0, Z2, TrUserData).
+						     0, Z2, F@_1, TrUserData).
 
 skip_32_ServerToManufacturerAnnounced(<<_:32,
 					Rest/binary>>,
-				      Z1, Z2, TrUserData) ->
+				      Z1, Z2, F@_1, TrUserData) ->
     dfp_read_field_def_ServerToManufacturerAnnounced(Rest,
-						     Z1, Z2, TrUserData).
+						     Z1, Z2, F@_1, TrUserData).
 
 skip_64_ServerToManufacturerAnnounced(<<_:64,
 					Rest/binary>>,
-				      Z1, Z2, TrUserData) ->
+				      Z1, Z2, F@_1, TrUserData) ->
     dfp_read_field_def_ServerToManufacturerAnnounced(Rest,
-						     Z1, Z2, TrUserData).
+						     Z1, Z2, F@_1, TrUserData).
 
 decode_msg_ServerToManufacturerInvalid(Bin,
 				       TrUserData) ->
@@ -7521,9 +3937,9 @@ decode_msg_ImporterToServerSubscribe(Bin, TrUserData) ->
 dfp_read_field_def_ImporterToServerSubscribe(<<10,
 					       Rest/binary>>,
 					     Z1, Z2, F@_1, F@_2, TrUserData) ->
-    d_field_ImporterToServerSubscribe_manufacturerName(Rest,
-						       Z1, Z2, F@_1, F@_2,
-						       TrUserData);
+    d_field_ImporterToServerSubscribe_manufacturerNames(Rest,
+							Z1, Z2, F@_1, F@_2,
+							TrUserData);
 dfp_read_field_def_ImporterToServerSubscribe(<<18,
 					       Rest/binary>>,
 					     Z1, Z2, F@_1, F@_2, TrUserData) ->
@@ -7531,7 +3947,7 @@ dfp_read_field_def_ImporterToServerSubscribe(<<18,
 						   Z2, F@_1, F@_2, TrUserData);
 dfp_read_field_def_ImporterToServerSubscribe(<<>>, 0, 0,
 					     R1, F@_2, TrUserData) ->
-    #'ImporterToServerSubscribe'{manufacturerName =
+    #'ImporterToServerSubscribe'{manufacturerNames =
 				     lists_reverse(R1, TrUserData),
 				 importerName = F@_2};
 dfp_read_field_def_ImporterToServerSubscribe(Other, Z1,
@@ -7552,9 +3968,9 @@ dg_read_field_def_ImporterToServerSubscribe(<<0:1, X:7,
     Key = X bsl N + Acc,
     case Key of
       10 ->
-	  d_field_ImporterToServerSubscribe_manufacturerName(Rest,
-							     0, 0, F@_1, F@_2,
-							     TrUserData);
+	  d_field_ImporterToServerSubscribe_manufacturerNames(Rest,
+							      0, 0, F@_1, F@_2,
+							      TrUserData);
       18 ->
 	  d_field_ImporterToServerSubscribe_importerName(Rest, 0,
 							 0, F@_1, F@_2,
@@ -7581,22 +3997,22 @@ dg_read_field_def_ImporterToServerSubscribe(<<0:1, X:7,
     end;
 dg_read_field_def_ImporterToServerSubscribe(<<>>, 0, 0,
 					    R1, F@_2, TrUserData) ->
-    #'ImporterToServerSubscribe'{manufacturerName =
+    #'ImporterToServerSubscribe'{manufacturerNames =
 				     lists_reverse(R1, TrUserData),
 				 importerName = F@_2}.
 
-d_field_ImporterToServerSubscribe_manufacturerName(<<1:1,
-						     X:7, Rest/binary>>,
-						   N, Acc, F@_1, F@_2,
-						   TrUserData)
+d_field_ImporterToServerSubscribe_manufacturerNames(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2,
+						    TrUserData)
     when N < 57 ->
-    d_field_ImporterToServerSubscribe_manufacturerName(Rest,
-						       N + 7, X bsl N + Acc,
-						       F@_1, F@_2, TrUserData);
-d_field_ImporterToServerSubscribe_manufacturerName(<<0:1,
-						     X:7, Rest/binary>>,
-						   N, Acc, Prev, F@_2,
-						   TrUserData) ->
+    d_field_ImporterToServerSubscribe_manufacturerNames(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, TrUserData);
+d_field_ImporterToServerSubscribe_manufacturerNames(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, Prev, F@_2,
+						    TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -8261,163 +4677,296 @@ skip_64_ServerToImporter(<<_:64, Rest/binary>>, Z1, Z2,
 decode_msg_ServerToImporterOfferSubmitted(Bin,
 					  TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferSubmitted(Bin,
-						      0, 0, TrUserData).
+						      0, 0,
+						      id(undefined, TrUserData),
+						      id(undefined, TrUserData),
+						      TrUserData).
 
+dfp_read_field_def_ServerToImporterOfferSubmitted(<<10,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2,
+						  TrUserData) ->
+    d_field_ServerToImporterOfferSubmitted_manufacturerName(Rest,
+							    Z1, Z2, F@_1, F@_2,
+							    TrUserData);
+dfp_read_field_def_ServerToImporterOfferSubmitted(<<18,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2,
+						  TrUserData) ->
+    d_field_ServerToImporterOfferSubmitted_productName(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData);
 dfp_read_field_def_ServerToImporterOfferSubmitted(<<>>,
-						  0, 0, _) ->
-    #'ServerToImporterOfferSubmitted'{};
+						  0, 0, F@_1, F@_2, _) ->
+    #'ServerToImporterOfferSubmitted'{manufacturerName =
+					  F@_1,
+				      productName = F@_2};
 dfp_read_field_def_ServerToImporterOfferSubmitted(Other,
-						  Z1, Z2, TrUserData) ->
+						  Z1, Z2, F@_1, F@_2,
+						  TrUserData) ->
     dg_read_field_def_ServerToImporterOfferSubmitted(Other,
-						     Z1, Z2, TrUserData).
+						     Z1, Z2, F@_1, F@_2,
+						     TrUserData).
 
 dg_read_field_def_ServerToImporterOfferSubmitted(<<1:1,
 						   X:7, Rest/binary>>,
-						 N, Acc, TrUserData)
+						 N, Acc, F@_1, F@_2, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_ServerToImporterOfferSubmitted(Rest,
-						     N + 7, X bsl N + Acc,
-						     TrUserData);
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, TrUserData);
 dg_read_field_def_ServerToImporterOfferSubmitted(<<0:1,
 						   X:7, Rest/binary>>,
-						 N, Acc, TrUserData) ->
+						 N, Acc, F@_1, F@_2,
+						 TrUserData) ->
     Key = X bsl N + Acc,
-    case Key band 7 of
-      0 ->
-	  skip_varint_ServerToImporterOfferSubmitted(Rest, 0, 0,
-						     TrUserData);
-      1 ->
-	  skip_64_ServerToImporterOfferSubmitted(Rest, 0, 0,
-						 TrUserData);
-      2 ->
-	  skip_length_delimited_ServerToImporterOfferSubmitted(Rest,
-							       0, 0,
-							       TrUserData);
-      3 ->
-	  skip_group_ServerToImporterOfferSubmitted(Rest,
-						    Key bsr 3, 0, TrUserData);
-      5 ->
-	  skip_32_ServerToImporterOfferSubmitted(Rest, 0, 0,
-						 TrUserData)
+    case Key of
+      10 ->
+	  d_field_ServerToImporterOfferSubmitted_manufacturerName(Rest,
+								  0, 0, F@_1,
+								  F@_2,
+								  TrUserData);
+      18 ->
+	  d_field_ServerToImporterOfferSubmitted_productName(Rest,
+							     0, 0, F@_1, F@_2,
+							     TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ServerToImporterOfferSubmitted(Rest, 0, 0,
+							   F@_1, F@_2,
+							   TrUserData);
+	    1 ->
+		skip_64_ServerToImporterOfferSubmitted(Rest, 0, 0, F@_1,
+						       F@_2, TrUserData);
+	    2 ->
+		skip_length_delimited_ServerToImporterOfferSubmitted(Rest,
+								     0, 0, F@_1,
+								     F@_2,
+								     TrUserData);
+	    3 ->
+		skip_group_ServerToImporterOfferSubmitted(Rest,
+							  Key bsr 3, 0, F@_1,
+							  F@_2, TrUserData);
+	    5 ->
+		skip_32_ServerToImporterOfferSubmitted(Rest, 0, 0, F@_1,
+						       F@_2, TrUserData)
+	  end
     end;
 dg_read_field_def_ServerToImporterOfferSubmitted(<<>>,
-						 0, 0, _) ->
-    #'ServerToImporterOfferSubmitted'{}.
+						 0, 0, F@_1, F@_2, _) ->
+    #'ServerToImporterOfferSubmitted'{manufacturerName =
+					  F@_1,
+				      productName = F@_2}.
+
+d_field_ServerToImporterOfferSubmitted_manufacturerName(<<1:1,
+							  X:7, Rest/binary>>,
+							N, Acc, F@_1, F@_2,
+							TrUserData)
+    when N < 57 ->
+    d_field_ServerToImporterOfferSubmitted_manufacturerName(Rest,
+							    N + 7,
+							    X bsl N + Acc, F@_1,
+							    F@_2, TrUserData);
+d_field_ServerToImporterOfferSubmitted_manufacturerName(<<0:1,
+							  X:7, Rest/binary>>,
+							N, Acc, _, F@_2,
+							TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToImporterOfferSubmitted(RestF,
+						      0, 0, NewFValue, F@_2,
+						      TrUserData).
+
+d_field_ServerToImporterOfferSubmitted_productName(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2,
+						   TrUserData)
+    when N < 57 ->
+    d_field_ServerToImporterOfferSubmitted_productName(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, TrUserData);
+d_field_ServerToImporterOfferSubmitted_productName(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, _,
+						   TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToImporterOfferSubmitted(RestF,
+						      0, 0, F@_1, NewFValue,
+						      TrUserData).
 
 skip_varint_ServerToImporterOfferSubmitted(<<1:1, _:7,
 					     Rest/binary>>,
-					   Z1, Z2, TrUserData) ->
+					   Z1, Z2, F@_1, F@_2, TrUserData) ->
     skip_varint_ServerToImporterOfferSubmitted(Rest, Z1, Z2,
-					       TrUserData);
+					       F@_1, F@_2, TrUserData);
 skip_varint_ServerToImporterOfferSubmitted(<<0:1, _:7,
 					     Rest/binary>>,
-					   Z1, Z2, TrUserData) ->
+					   Z1, Z2, F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferSubmitted(Rest,
-						      Z1, Z2, TrUserData).
+						      Z1, Z2, F@_1, F@_2,
+						      TrUserData).
 
 skip_length_delimited_ServerToImporterOfferSubmitted(<<1:1,
 						       X:7, Rest/binary>>,
-						     N, Acc, TrUserData)
+						     N, Acc, F@_1, F@_2,
+						     TrUserData)
     when N < 57 ->
     skip_length_delimited_ServerToImporterOfferSubmitted(Rest,
 							 N + 7, X bsl N + Acc,
+							 F@_1, F@_2,
 							 TrUserData);
 skip_length_delimited_ServerToImporterOfferSubmitted(<<0:1,
 						       X:7, Rest/binary>>,
-						     N, Acc, TrUserData) ->
+						     N, Acc, F@_1, F@_2,
+						     TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_ServerToImporterOfferSubmitted(Rest2,
-						      0, 0, TrUserData).
+						      0, 0, F@_1, F@_2,
+						      TrUserData).
 
 skip_group_ServerToImporterOfferSubmitted(Bin, FNum, Z2,
-					  TrUserData) ->
+					  F@_1, F@_2, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_ServerToImporterOfferSubmitted(Rest,
-						      0, Z2, TrUserData).
+						      0, Z2, F@_1, F@_2,
+						      TrUserData).
 
 skip_32_ServerToImporterOfferSubmitted(<<_:32,
 					 Rest/binary>>,
-				       Z1, Z2, TrUserData) ->
+				       Z1, Z2, F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferSubmitted(Rest,
-						      Z1, Z2, TrUserData).
+						      Z1, Z2, F@_1, F@_2,
+						      TrUserData).
 
 skip_64_ServerToImporterOfferSubmitted(<<_:64,
 					 Rest/binary>>,
-				       Z1, Z2, TrUserData) ->
+				       Z1, Z2, F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferSubmitted(Rest,
-						      Z1, Z2, TrUserData).
+						      Z1, Z2, F@_1, F@_2,
+						      TrUserData).
 
 decode_msg_ServerToImporterOfferInvalid(Bin,
 					TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferInvalid(Bin, 0,
 						    0,
 						    id(undefined, TrUserData),
+						    id(undefined, TrUserData),
+						    id(undefined, TrUserData),
 						    TrUserData).
 
 dfp_read_field_def_ServerToImporterOfferInvalid(<<10,
 						  Rest/binary>>,
-						Z1, Z2, F@_1, TrUserData) ->
+						Z1, Z2, F@_1, F@_2, F@_3,
+						TrUserData) ->
+    d_field_ServerToImporterOfferInvalid_manufacturerName(Rest,
+							  Z1, Z2, F@_1, F@_2,
+							  F@_3, TrUserData);
+dfp_read_field_def_ServerToImporterOfferInvalid(<<18,
+						  Rest/binary>>,
+						Z1, Z2, F@_1, F@_2, F@_3,
+						TrUserData) ->
+    d_field_ServerToImporterOfferInvalid_productName(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     TrUserData);
+dfp_read_field_def_ServerToImporterOfferInvalid(<<26,
+						  Rest/binary>>,
+						Z1, Z2, F@_1, F@_2, F@_3,
+						TrUserData) ->
     d_field_ServerToImporterOfferInvalid_errorMessage(Rest,
-						      Z1, Z2, F@_1, TrUserData);
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      TrUserData);
 dfp_read_field_def_ServerToImporterOfferInvalid(<<>>, 0,
-						0, F@_1, _) ->
-    #'ServerToImporterOfferInvalid'{errorMessage = F@_1};
+						0, F@_1, F@_2, F@_3, _) ->
+    #'ServerToImporterOfferInvalid'{manufacturerName = F@_1,
+				    productName = F@_2, errorMessage = F@_3};
 dfp_read_field_def_ServerToImporterOfferInvalid(Other,
-						Z1, Z2, F@_1, TrUserData) ->
+						Z1, Z2, F@_1, F@_2, F@_3,
+						TrUserData) ->
     dg_read_field_def_ServerToImporterOfferInvalid(Other,
-						   Z1, Z2, F@_1, TrUserData).
+						   Z1, Z2, F@_1, F@_2, F@_3,
+						   TrUserData).
 
 dg_read_field_def_ServerToImporterOfferInvalid(<<1:1,
 						 X:7, Rest/binary>>,
-					       N, Acc, F@_1, TrUserData)
+					       N, Acc, F@_1, F@_2, F@_3,
+					       TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_ServerToImporterOfferInvalid(Rest,
 						   N + 7, X bsl N + Acc, F@_1,
-						   TrUserData);
+						   F@_2, F@_3, TrUserData);
 dg_read_field_def_ServerToImporterOfferInvalid(<<0:1,
 						 X:7, Rest/binary>>,
-					       N, Acc, F@_1, TrUserData) ->
+					       N, Acc, F@_1, F@_2, F@_3,
+					       TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       10 ->
+	  d_field_ServerToImporterOfferInvalid_manufacturerName(Rest,
+								0, 0, F@_1,
+								F@_2, F@_3,
+								TrUserData);
+      18 ->
+	  d_field_ServerToImporterOfferInvalid_productName(Rest,
+							   0, 0, F@_1, F@_2,
+							   F@_3, TrUserData);
+      26 ->
 	  d_field_ServerToImporterOfferInvalid_errorMessage(Rest,
-							    0, 0, F@_1,
-							    TrUserData);
+							    0, 0, F@_1, F@_2,
+							    F@_3, TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_ServerToImporterOfferInvalid(Rest, 0, 0,
-							 F@_1, TrUserData);
+							 F@_1, F@_2, F@_3,
+							 TrUserData);
 	    1 ->
 		skip_64_ServerToImporterOfferInvalid(Rest, 0, 0, F@_1,
-						     TrUserData);
+						     F@_2, F@_3, TrUserData);
 	    2 ->
 		skip_length_delimited_ServerToImporterOfferInvalid(Rest,
 								   0, 0, F@_1,
+								   F@_2, F@_3,
 								   TrUserData);
 	    3 ->
 		skip_group_ServerToImporterOfferInvalid(Rest, Key bsr 3,
-							0, F@_1, TrUserData);
+							0, F@_1, F@_2, F@_3,
+							TrUserData);
 	    5 ->
 		skip_32_ServerToImporterOfferInvalid(Rest, 0, 0, F@_1,
-						     TrUserData)
+						     F@_2, F@_3, TrUserData)
 	  end
     end;
 dg_read_field_def_ServerToImporterOfferInvalid(<<>>, 0,
-					       0, F@_1, _) ->
-    #'ServerToImporterOfferInvalid'{errorMessage = F@_1}.
+					       0, F@_1, F@_2, F@_3, _) ->
+    #'ServerToImporterOfferInvalid'{manufacturerName = F@_1,
+				    productName = F@_2, errorMessage = F@_3}.
 
-d_field_ServerToImporterOfferInvalid_errorMessage(<<1:1,
-						    X:7, Rest/binary>>,
-						  N, Acc, F@_1, TrUserData)
+d_field_ServerToImporterOfferInvalid_manufacturerName(<<1:1,
+							X:7, Rest/binary>>,
+						      N, Acc, F@_1, F@_2, F@_3,
+						      TrUserData)
     when N < 57 ->
-    d_field_ServerToImporterOfferInvalid_errorMessage(Rest,
-						      N + 7, X bsl N + Acc,
-						      F@_1, TrUserData);
-d_field_ServerToImporterOfferInvalid_errorMessage(<<0:1,
-						    X:7, Rest/binary>>,
-						  N, Acc, _, TrUserData) ->
+    d_field_ServerToImporterOfferInvalid_manufacturerName(Rest,
+							  N + 7, X bsl N + Acc,
+							  F@_1, F@_2, F@_3,
+							  TrUserData);
+d_field_ServerToImporterOfferInvalid_manufacturerName(<<0:1,
+							X:7, Rest/binary>>,
+						      N, Acc, _, F@_2, F@_3,
+						      TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -8426,52 +4975,109 @@ d_field_ServerToImporterOfferInvalid_errorMessage(<<0:1,
 			    Rest2}
 			 end,
     dfp_read_field_def_ServerToImporterOfferInvalid(RestF,
-						    0, 0, NewFValue,
+						    0, 0, NewFValue, F@_2, F@_3,
+						    TrUserData).
+
+d_field_ServerToImporterOfferInvalid_productName(<<1:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3,
+						 TrUserData)
+    when N < 57 ->
+    d_field_ServerToImporterOfferInvalid_productName(Rest,
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, F@_3, TrUserData);
+d_field_ServerToImporterOfferInvalid_productName(<<0:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, _, F@_3,
+						 TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToImporterOfferInvalid(RestF,
+						    0, 0, F@_1, NewFValue, F@_3,
+						    TrUserData).
+
+d_field_ServerToImporterOfferInvalid_errorMessage(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, F@_3,
+						  TrUserData)
+    when N < 57 ->
+    d_field_ServerToImporterOfferInvalid_errorMessage(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, F@_2, F@_3,
+						      TrUserData);
+d_field_ServerToImporterOfferInvalid_errorMessage(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, _,
+						  TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToImporterOfferInvalid(RestF,
+						    0, 0, F@_1, F@_2, NewFValue,
 						    TrUserData).
 
 skip_varint_ServerToImporterOfferInvalid(<<1:1, _:7,
 					   Rest/binary>>,
-					 Z1, Z2, F@_1, TrUserData) ->
+					 Z1, Z2, F@_1, F@_2, F@_3,
+					 TrUserData) ->
     skip_varint_ServerToImporterOfferInvalid(Rest, Z1, Z2,
-					     F@_1, TrUserData);
+					     F@_1, F@_2, F@_3, TrUserData);
 skip_varint_ServerToImporterOfferInvalid(<<0:1, _:7,
 					   Rest/binary>>,
-					 Z1, Z2, F@_1, TrUserData) ->
+					 Z1, Z2, F@_1, F@_2, F@_3,
+					 TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferInvalid(Rest,
-						    Z1, Z2, F@_1, TrUserData).
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    TrUserData).
 
 skip_length_delimited_ServerToImporterOfferInvalid(<<1:1,
 						     X:7, Rest/binary>>,
-						   N, Acc, F@_1, TrUserData)
+						   N, Acc, F@_1, F@_2, F@_3,
+						   TrUserData)
     when N < 57 ->
     skip_length_delimited_ServerToImporterOfferInvalid(Rest,
 						       N + 7, X bsl N + Acc,
-						       F@_1, TrUserData);
+						       F@_1, F@_2, F@_3,
+						       TrUserData);
 skip_length_delimited_ServerToImporterOfferInvalid(<<0:1,
 						     X:7, Rest/binary>>,
-						   N, Acc, F@_1, TrUserData) ->
+						   N, Acc, F@_1, F@_2, F@_3,
+						   TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_ServerToImporterOfferInvalid(Rest2,
-						    0, 0, F@_1, TrUserData).
+						    0, 0, F@_1, F@_2, F@_3,
+						    TrUserData).
 
 skip_group_ServerToImporterOfferInvalid(Bin, FNum, Z2,
-					F@_1, TrUserData) ->
+					F@_1, F@_2, F@_3, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_ServerToImporterOfferInvalid(Rest, 0,
-						    Z2, F@_1, TrUserData).
+						    Z2, F@_1, F@_2, F@_3,
+						    TrUserData).
 
 skip_32_ServerToImporterOfferInvalid(<<_:32,
 				       Rest/binary>>,
-				     Z1, Z2, F@_1, TrUserData) ->
+				     Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferInvalid(Rest,
-						    Z1, Z2, F@_1, TrUserData).
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    TrUserData).
 
 skip_64_ServerToImporterOfferInvalid(<<_:64,
 				       Rest/binary>>,
-				     Z1, Z2, F@_1, TrUserData) ->
+				     Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferInvalid(Rest,
-						    Z1, Z2, F@_1, TrUserData).
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    TrUserData).
 
 decode_msg_ServerToImporterOfferWon(Bin, TrUserData) ->
     dfp_read_field_def_ServerToImporterOfferWon(Bin, 0, 0,
@@ -9251,13 +5857,3662 @@ skip_64_ServerToImporterNewProduct(<<_:64,
 						  Z2, F@_1, F@_2, F@_3, F@_4,
 						  F@_5, F@_6, TrUserData).
 
-'d_enum_MsgAuth.ClientType'(0) -> 'MANUFACTURER';
-'d_enum_MsgAuth.ClientType'(1) -> 'IMPORTER';
-'d_enum_MsgAuth.ClientType'(V) -> V.
+decode_msg_ArbiterToServer(Bin, TrUserData) ->
+    dfp_read_field_def_ArbiterToServer(Bin, 0, 0,
+				       id(undefined, TrUserData), TrUserData).
 
-'d_enum_MsgAuth.MsgType'(0) -> 'LOGIN';
-'d_enum_MsgAuth.MsgType'(1) -> 'REGISTER';
-'d_enum_MsgAuth.MsgType'(V) -> V.
+dfp_read_field_def_ArbiterToServer(<<10, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_accepted(Rest, Z1, Z2, F@_1,
+				     TrUserData);
+dfp_read_field_def_ArbiterToServer(<<18, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_announceInvalid(Rest, Z1, Z2,
+					    F@_1, TrUserData);
+dfp_read_field_def_ArbiterToServer(<<26, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_sold(Rest, Z1, Z2, F@_1,
+				 TrUserData);
+dfp_read_field_def_ArbiterToServer(<<34, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_noOffers(Rest, Z1, Z2, F@_1,
+				     TrUserData);
+dfp_read_field_def_ArbiterToServer(<<42, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_submitted(Rest, Z1, Z2, F@_1,
+				      TrUserData);
+dfp_read_field_def_ArbiterToServer(<<50, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_offerInvalid(Rest, Z1, Z2, F@_1,
+					 TrUserData);
+dfp_read_field_def_ArbiterToServer(<<58, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_won(Rest, Z1, Z2, F@_1,
+				TrUserData);
+dfp_read_field_def_ArbiterToServer(<<66, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_lose(Rest, Z1, Z2, F@_1,
+				 TrUserData);
+dfp_read_field_def_ArbiterToServer(<<74, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ArbiterToServer_product(Rest, Z1, Z2, F@_1,
+				    TrUserData);
+dfp_read_field_def_ArbiterToServer(<<>>, 0, 0, F@_1,
+				   _) ->
+    #'ArbiterToServer'{message = F@_1};
+dfp_read_field_def_ArbiterToServer(Other, Z1, Z2, F@_1,
+				   TrUserData) ->
+    dg_read_field_def_ArbiterToServer(Other, Z1, Z2, F@_1,
+				      TrUserData).
+
+dg_read_field_def_ArbiterToServer(<<1:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServer(Rest, N + 7,
+				      X bsl N + Acc, F@_1, TrUserData);
+dg_read_field_def_ArbiterToServer(<<0:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServer_accepted(Rest, 0, 0, F@_1,
+					   TrUserData);
+      18 ->
+	  d_field_ArbiterToServer_announceInvalid(Rest, 0, 0,
+						  F@_1, TrUserData);
+      26 ->
+	  d_field_ArbiterToServer_sold(Rest, 0, 0, F@_1,
+				       TrUserData);
+      34 ->
+	  d_field_ArbiterToServer_noOffers(Rest, 0, 0, F@_1,
+					   TrUserData);
+      42 ->
+	  d_field_ArbiterToServer_submitted(Rest, 0, 0, F@_1,
+					    TrUserData);
+      50 ->
+	  d_field_ArbiterToServer_offerInvalid(Rest, 0, 0, F@_1,
+					       TrUserData);
+      58 ->
+	  d_field_ArbiterToServer_won(Rest, 0, 0, F@_1,
+				      TrUserData);
+      66 ->
+	  d_field_ArbiterToServer_lose(Rest, 0, 0, F@_1,
+				       TrUserData);
+      74 ->
+	  d_field_ArbiterToServer_product(Rest, 0, 0, F@_1,
+					  TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServer(Rest, 0, 0, F@_1,
+					    TrUserData);
+	    1 ->
+		skip_64_ArbiterToServer(Rest, 0, 0, F@_1, TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServer(Rest, 0, 0, F@_1,
+						      TrUserData);
+	    3 ->
+		skip_group_ArbiterToServer(Rest, Key bsr 3, 0, F@_1,
+					   TrUserData);
+	    5 ->
+		skip_32_ArbiterToServer(Rest, 0, 0, F@_1, TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServer(<<>>, 0, 0, F@_1,
+				  _) ->
+    #'ArbiterToServer'{message = F@_1}.
+
+d_field_ArbiterToServer_accepted(<<1:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_accepted(Rest, N + 7,
+				     X bsl N + Acc, F@_1, TrUserData);
+d_field_ArbiterToServer_accepted(<<0:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerAnnounceAccepted(Bs,
+									  TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({accepted, NewFValue},
+						TrUserData);
+					 {accepted, MVPrev} ->
+					     id({accepted,
+						 merge_msg_ArbiterToServerAnnounceAccepted(MVPrev,
+											   NewFValue,
+											   TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({accepted, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_announceInvalid(<<1:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_announceInvalid(Rest, N + 7,
+					    X bsl N + Acc, F@_1, TrUserData);
+d_field_ArbiterToServer_announceInvalid(<<0:1, X:7,
+					  Rest/binary>>,
+					N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerAnnounceInvalid(Bs,
+									 TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({announceInvalid, NewFValue},
+						TrUserData);
+					 {announceInvalid, MVPrev} ->
+					     id({announceInvalid,
+						 merge_msg_ArbiterToServerAnnounceInvalid(MVPrev,
+											  NewFValue,
+											  TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({announceInvalid, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_sold(<<1:1, X:7, Rest/binary>>,
+			     N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_sold(Rest, N + 7, X bsl N + Acc,
+				 F@_1, TrUserData);
+d_field_ArbiterToServer_sold(<<0:1, X:7, Rest/binary>>,
+			     N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerAnnounceSold(Bs,
+								      TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({sold, NewFValue}, TrUserData);
+					 {sold, MVPrev} ->
+					     id({sold,
+						 merge_msg_ArbiterToServerAnnounceSold(MVPrev,
+										       NewFValue,
+										       TrUserData)},
+						TrUserData);
+					 _ -> id({sold, NewFValue}, TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_noOffers(<<1:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_noOffers(Rest, N + 7,
+				     X bsl N + Acc, F@_1, TrUserData);
+d_field_ArbiterToServer_noOffers(<<0:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerAnnounceNoOffers(Bs,
+									  TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({noOffers, NewFValue},
+						TrUserData);
+					 {noOffers, MVPrev} ->
+					     id({noOffers,
+						 merge_msg_ArbiterToServerAnnounceNoOffers(MVPrev,
+											   NewFValue,
+											   TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({noOffers, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_submitted(<<1:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_submitted(Rest, N + 7,
+				      X bsl N + Acc, F@_1, TrUserData);
+d_field_ArbiterToServer_submitted(<<0:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerOfferSubmitted(Bs,
+									TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({submitted, NewFValue},
+						TrUserData);
+					 {submitted, MVPrev} ->
+					     id({submitted,
+						 merge_msg_ArbiterToServerOfferSubmitted(MVPrev,
+											 NewFValue,
+											 TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({submitted, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_offerInvalid(<<1:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_offerInvalid(Rest, N + 7,
+					 X bsl N + Acc, F@_1, TrUserData);
+d_field_ArbiterToServer_offerInvalid(<<0:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerOfferInvalid(Bs,
+								      TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({offerInvalid, NewFValue},
+						TrUserData);
+					 {offerInvalid, MVPrev} ->
+					     id({offerInvalid,
+						 merge_msg_ArbiterToServerOfferInvalid(MVPrev,
+										       NewFValue,
+										       TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({offerInvalid, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_won(<<1:1, X:7, Rest/binary>>,
+			    N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_won(Rest, N + 7, X bsl N + Acc,
+				F@_1, TrUserData);
+d_field_ArbiterToServer_won(<<0:1, X:7, Rest/binary>>,
+			    N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerOfferWon(Bs,
+								  TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({won, NewFValue}, TrUserData);
+					 {won, MVPrev} ->
+					     id({won,
+						 merge_msg_ArbiterToServerOfferWon(MVPrev,
+										   NewFValue,
+										   TrUserData)},
+						TrUserData);
+					 _ -> id({won, NewFValue}, TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_lose(<<1:1, X:7, Rest/binary>>,
+			     N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_lose(Rest, N + 7, X bsl N + Acc,
+				 F@_1, TrUserData);
+d_field_ArbiterToServer_lose(<<0:1, X:7, Rest/binary>>,
+			     N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerOfferLose(Bs,
+								   TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({lose, NewFValue}, TrUserData);
+					 {lose, MVPrev} ->
+					     id({lose,
+						 merge_msg_ArbiterToServerOfferLose(MVPrev,
+										    NewFValue,
+										    TrUserData)},
+						TrUserData);
+					 _ -> id({lose, NewFValue}, TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ArbiterToServer_product(<<1:1, X:7,
+				  Rest/binary>>,
+				N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServer_product(Rest, N + 7,
+				    X bsl N + Acc, F@_1, TrUserData);
+d_field_ArbiterToServer_product(<<0:1, X:7,
+				  Rest/binary>>,
+				N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ArbiterToServerNewProduct(Bs,
+								    TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServer(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({product, NewFValue},
+						TrUserData);
+					 {product, MVPrev} ->
+					     id({product,
+						 merge_msg_ArbiterToServerNewProduct(MVPrev,
+										     NewFValue,
+										     TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({product, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+skip_varint_ArbiterToServer(<<1:1, _:7, Rest/binary>>,
+			    Z1, Z2, F@_1, TrUserData) ->
+    skip_varint_ArbiterToServer(Rest, Z1, Z2, F@_1,
+				TrUserData);
+skip_varint_ArbiterToServer(<<0:1, _:7, Rest/binary>>,
+			    Z1, Z2, F@_1, TrUserData) ->
+    dfp_read_field_def_ArbiterToServer(Rest, Z1, Z2, F@_1,
+				       TrUserData).
+
+skip_length_delimited_ArbiterToServer(<<1:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServer(Rest, N + 7,
+					  X bsl N + Acc, F@_1, TrUserData);
+skip_length_delimited_ArbiterToServer(<<0:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServer(Rest2, 0, 0, F@_1,
+				       TrUserData).
+
+skip_group_ArbiterToServer(Bin, FNum, Z2, F@_1,
+			   TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServer(Rest, 0, Z2, F@_1,
+				       TrUserData).
+
+skip_32_ArbiterToServer(<<_:32, Rest/binary>>, Z1, Z2,
+			F@_1, TrUserData) ->
+    dfp_read_field_def_ArbiterToServer(Rest, Z1, Z2, F@_1,
+				       TrUserData).
+
+skip_64_ArbiterToServer(<<_:64, Rest/binary>>, Z1, Z2,
+			F@_1, TrUserData) ->
+    dfp_read_field_def_ArbiterToServer(Rest, Z1, Z2, F@_1,
+				       TrUserData).
+
+decode_msg_ArbiterToServerAnnounceAccepted(Bin,
+					   TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Bin,
+						       0, 0,
+						       id(undefined,
+							  TrUserData),
+						       id(undefined,
+							  TrUserData),
+						       TrUserData).
+
+dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<10,
+						     Rest/binary>>,
+						   Z1, Z2, F@_1, F@_2,
+						   TrUserData) ->
+    d_field_ArbiterToServerAnnounceAccepted_manufacturerName(Rest,
+							     Z1, Z2, F@_1, F@_2,
+							     TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<18,
+						     Rest/binary>>,
+						   Z1, Z2, F@_1, F@_2,
+						   TrUserData) ->
+    d_field_ArbiterToServerAnnounceAccepted_productName(Rest,
+							Z1, Z2, F@_1, F@_2,
+							TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceAccepted(<<>>,
+						   0, 0, F@_1, F@_2, _) ->
+    #'ArbiterToServerAnnounceAccepted'{manufacturerName =
+					   F@_1,
+				       productName = F@_2};
+dfp_read_field_def_ArbiterToServerAnnounceAccepted(Other,
+						   Z1, Z2, F@_1, F@_2,
+						   TrUserData) ->
+    dg_read_field_def_ArbiterToServerAnnounceAccepted(Other,
+						      Z1, Z2, F@_1, F@_2,
+						      TrUserData).
+
+dg_read_field_def_ArbiterToServerAnnounceAccepted(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2,
+						  TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, F@_2, TrUserData);
+dg_read_field_def_ArbiterToServerAnnounceAccepted(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2,
+						  TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerAnnounceAccepted_manufacturerName(Rest,
+								   0, 0, F@_1,
+								   F@_2,
+								   TrUserData);
+      18 ->
+	  d_field_ArbiterToServerAnnounceAccepted_productName(Rest,
+							      0, 0, F@_1, F@_2,
+							      TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerAnnounceAccepted(Rest, 0, 0,
+							    F@_1, F@_2,
+							    TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerAnnounceAccepted(Rest, 0, 0,
+							F@_1, F@_2, TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerAnnounceAccepted(Rest,
+								      0, 0,
+								      F@_1,
+								      F@_2,
+								      TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerAnnounceAccepted(Rest,
+							   Key bsr 3, 0, F@_1,
+							   F@_2, TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerAnnounceAccepted(Rest, 0, 0,
+							F@_1, F@_2, TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerAnnounceAccepted(<<>>,
+						  0, 0, F@_1, F@_2, _) ->
+    #'ArbiterToServerAnnounceAccepted'{manufacturerName =
+					   F@_1,
+				       productName = F@_2}.
+
+d_field_ArbiterToServerAnnounceAccepted_manufacturerName(<<1:1,
+							   X:7, Rest/binary>>,
+							 N, Acc, F@_1, F@_2,
+							 TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceAccepted_manufacturerName(Rest,
+							     N + 7,
+							     X bsl N + Acc,
+							     F@_1, F@_2,
+							     TrUserData);
+d_field_ArbiterToServerAnnounceAccepted_manufacturerName(<<0:1,
+							   X:7, Rest/binary>>,
+							 N, Acc, _, F@_2,
+							 TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(RestF,
+						       0, 0, NewFValue, F@_2,
+						       TrUserData).
+
+d_field_ArbiterToServerAnnounceAccepted_productName(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2,
+						    TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceAccepted_productName(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, TrUserData);
+d_field_ArbiterToServerAnnounceAccepted_productName(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, _,
+						    TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(RestF,
+						       0, 0, F@_1, NewFValue,
+						       TrUserData).
+
+skip_varint_ArbiterToServerAnnounceAccepted(<<1:1, _:7,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_ArbiterToServerAnnounceAccepted(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData);
+skip_varint_ArbiterToServerAnnounceAccepted(<<0:1, _:7,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData).
+
+skip_length_delimited_ArbiterToServerAnnounceAccepted(<<1:1,
+							X:7, Rest/binary>>,
+						      N, Acc, F@_1, F@_2,
+						      TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerAnnounceAccepted(Rest,
+							  N + 7, X bsl N + Acc,
+							  F@_1, F@_2,
+							  TrUserData);
+skip_length_delimited_ArbiterToServerAnnounceAccepted(<<0:1,
+							X:7, Rest/binary>>,
+						      N, Acc, F@_1, F@_2,
+						      TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest2,
+						       0, 0, F@_1, F@_2,
+						       TrUserData).
+
+skip_group_ArbiterToServerAnnounceAccepted(Bin, FNum,
+					   Z2, F@_1, F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       0, Z2, F@_1, F@_2,
+						       TrUserData).
+
+skip_32_ArbiterToServerAnnounceAccepted(<<_:32,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData).
+
+skip_64_ArbiterToServerAnnounceAccepted(<<_:64,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceAccepted(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData).
+
+decode_msg_ArbiterToServerAnnounceInvalid(Bin,
+					  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(Bin,
+						      0, 0,
+						      id(undefined, TrUserData),
+						      id(undefined, TrUserData),
+						      id(undefined, TrUserData),
+						      TrUserData).
+
+dfp_read_field_def_ArbiterToServerAnnounceInvalid(<<10,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  TrUserData) ->
+    d_field_ArbiterToServerAnnounceInvalid_manufacturerName(Rest,
+							    Z1, Z2, F@_1, F@_2,
+							    F@_3, TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceInvalid(<<18,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  TrUserData) ->
+    d_field_ArbiterToServerAnnounceInvalid_productName(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceInvalid(<<26,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  TrUserData) ->
+    d_field_ArbiterToServerAnnounceInvalid_errorMessage(Rest,
+							Z1, Z2, F@_1, F@_2,
+							F@_3, TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceInvalid(<<>>,
+						  0, 0, F@_1, F@_2, F@_3, _) ->
+    #'ArbiterToServerAnnounceInvalid'{manufacturerName =
+					  F@_1,
+				      productName = F@_2, errorMessage = F@_3};
+dfp_read_field_def_ArbiterToServerAnnounceInvalid(Other,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  TrUserData) ->
+    dg_read_field_def_ArbiterToServerAnnounceInvalid(Other,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     TrUserData).
+
+dg_read_field_def_ArbiterToServerAnnounceInvalid(<<1:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3,
+						 TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerAnnounceInvalid(Rest,
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, F@_3, TrUserData);
+dg_read_field_def_ArbiterToServerAnnounceInvalid(<<0:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3,
+						 TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerAnnounceInvalid_manufacturerName(Rest,
+								  0, 0, F@_1,
+								  F@_2, F@_3,
+								  TrUserData);
+      18 ->
+	  d_field_ArbiterToServerAnnounceInvalid_productName(Rest,
+							     0, 0, F@_1, F@_2,
+							     F@_3, TrUserData);
+      26 ->
+	  d_field_ArbiterToServerAnnounceInvalid_errorMessage(Rest,
+							      0, 0, F@_1, F@_2,
+							      F@_3, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerAnnounceInvalid(Rest, 0, 0,
+							   F@_1, F@_2, F@_3,
+							   TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerAnnounceInvalid(Rest, 0, 0, F@_1,
+						       F@_2, F@_3, TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerAnnounceInvalid(Rest,
+								     0, 0, F@_1,
+								     F@_2, F@_3,
+								     TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerAnnounceInvalid(Rest,
+							  Key bsr 3, 0, F@_1,
+							  F@_2, F@_3,
+							  TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerAnnounceInvalid(Rest, 0, 0, F@_1,
+						       F@_2, F@_3, TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerAnnounceInvalid(<<>>,
+						 0, 0, F@_1, F@_2, F@_3, _) ->
+    #'ArbiterToServerAnnounceInvalid'{manufacturerName =
+					  F@_1,
+				      productName = F@_2, errorMessage = F@_3}.
+
+d_field_ArbiterToServerAnnounceInvalid_manufacturerName(<<1:1,
+							  X:7, Rest/binary>>,
+							N, Acc, F@_1, F@_2,
+							F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceInvalid_manufacturerName(Rest,
+							    N + 7,
+							    X bsl N + Acc, F@_1,
+							    F@_2, F@_3,
+							    TrUserData);
+d_field_ArbiterToServerAnnounceInvalid_manufacturerName(<<0:1,
+							  X:7, Rest/binary>>,
+							N, Acc, _, F@_2, F@_3,
+							TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(RestF,
+						      0, 0, NewFValue, F@_2,
+						      F@_3, TrUserData).
+
+d_field_ArbiterToServerAnnounceInvalid_productName(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, F@_3,
+						   TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceInvalid_productName(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, F@_3,
+						       TrUserData);
+d_field_ArbiterToServerAnnounceInvalid_productName(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, _, F@_3,
+						   TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(RestF,
+						      0, 0, F@_1, NewFValue,
+						      F@_3, TrUserData).
+
+d_field_ArbiterToServerAnnounceInvalid_errorMessage(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, F@_3,
+						    TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceInvalid_errorMessage(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, F@_3,
+							TrUserData);
+d_field_ArbiterToServerAnnounceInvalid_errorMessage(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, _,
+						    TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(RestF,
+						      0, 0, F@_1, F@_2,
+						      NewFValue, TrUserData).
+
+skip_varint_ArbiterToServerAnnounceInvalid(<<1:1, _:7,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3,
+					   TrUserData) ->
+    skip_varint_ArbiterToServerAnnounceInvalid(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, TrUserData);
+skip_varint_ArbiterToServerAnnounceInvalid(<<0:1, _:7,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3,
+					   TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      TrUserData).
+
+skip_length_delimited_ArbiterToServerAnnounceInvalid(<<1:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, F@_1, F@_2, F@_3,
+						     TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerAnnounceInvalid(Rest,
+							 N + 7, X bsl N + Acc,
+							 F@_1, F@_2, F@_3,
+							 TrUserData);
+skip_length_delimited_ArbiterToServerAnnounceInvalid(<<0:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, F@_1, F@_2, F@_3,
+						     TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(Rest2,
+						      0, 0, F@_1, F@_2, F@_3,
+						      TrUserData).
+
+skip_group_ArbiterToServerAnnounceInvalid(Bin, FNum, Z2,
+					  F@_1, F@_2, F@_3, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(Rest,
+						      0, Z2, F@_1, F@_2, F@_3,
+						      TrUserData).
+
+skip_32_ArbiterToServerAnnounceInvalid(<<_:32,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      TrUserData).
+
+skip_64_ArbiterToServerAnnounceInvalid(<<_:64,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceInvalid(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      TrUserData).
+
+decode_msg_ArbiterToServerAnnounceSold(Bin,
+				       TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Bin, 0,
+						   0, id(undefined, TrUserData),
+						   id(undefined, TrUserData),
+						   id(undefined, TrUserData),
+						   id(undefined, TrUserData),
+						   TrUserData).
+
+dfp_read_field_def_ArbiterToServerAnnounceSold(<<10,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerAnnounceSold_manufacturerName(Rest,
+							 Z1, Z2, F@_1, F@_2,
+							 F@_3, F@_4,
+							 TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceSold(<<18,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerAnnounceSold_productName(Rest,
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    F@_4, TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceSold(<<24,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerAnnounceSold_quantity(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceSold(<<37,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerAnnounceSold_unitPrice(Rest, Z1,
+						  Z2, F@_1, F@_2, F@_3, F@_4,
+						  TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceSold(<<>>, 0,
+					       0, F@_1, F@_2, F@_3, F@_4, _) ->
+    #'ArbiterToServerAnnounceSold'{manufacturerName = F@_1,
+				   productName = F@_2, quantity = F@_3,
+				   unitPrice = F@_4};
+dfp_read_field_def_ArbiterToServerAnnounceSold(Other,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    dg_read_field_def_ArbiterToServerAnnounceSold(Other, Z1,
+						  Z2, F@_1, F@_2, F@_3, F@_4,
+						  TrUserData).
+
+dg_read_field_def_ArbiterToServerAnnounceSold(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerAnnounceSold(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, TrUserData);
+dg_read_field_def_ArbiterToServerAnnounceSold(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerAnnounceSold_manufacturerName(Rest,
+							       0, 0, F@_1, F@_2,
+							       F@_3, F@_4,
+							       TrUserData);
+      18 ->
+	  d_field_ArbiterToServerAnnounceSold_productName(Rest, 0,
+							  0, F@_1, F@_2, F@_3,
+							  F@_4, TrUserData);
+      24 ->
+	  d_field_ArbiterToServerAnnounceSold_quantity(Rest, 0, 0,
+						       F@_1, F@_2, F@_3, F@_4,
+						       TrUserData);
+      37 ->
+	  d_field_ArbiterToServerAnnounceSold_unitPrice(Rest, 0,
+							0, F@_1, F@_2, F@_3,
+							F@_4, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerAnnounceSold(Rest, 0, 0,
+							F@_1, F@_2, F@_3, F@_4,
+							TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerAnnounceSold(Rest, 0, 0, F@_1,
+						    F@_2, F@_3, F@_4,
+						    TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerAnnounceSold(Rest,
+								  0, 0, F@_1,
+								  F@_2, F@_3,
+								  F@_4,
+								  TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerAnnounceSold(Rest, Key bsr 3,
+						       0, F@_1, F@_2, F@_3,
+						       F@_4, TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerAnnounceSold(Rest, 0, 0, F@_1,
+						    F@_2, F@_3, F@_4,
+						    TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerAnnounceSold(<<>>, 0,
+					      0, F@_1, F@_2, F@_3, F@_4, _) ->
+    #'ArbiterToServerAnnounceSold'{manufacturerName = F@_1,
+				   productName = F@_2, quantity = F@_3,
+				   unitPrice = F@_4}.
+
+d_field_ArbiterToServerAnnounceSold_manufacturerName(<<1:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, F@_1, F@_2, F@_3,
+						     F@_4, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceSold_manufacturerName(Rest,
+							 N + 7, X bsl N + Acc,
+							 F@_1, F@_2, F@_3, F@_4,
+							 TrUserData);
+d_field_ArbiterToServerAnnounceSold_manufacturerName(<<0:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, _, F@_2, F@_3,
+						     F@_4, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceSold(RestF, 0,
+						   0, NewFValue, F@_2, F@_3,
+						   F@_4, TrUserData).
+
+d_field_ArbiterToServerAnnounceSold_productName(<<1:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, F@_2, F@_3, F@_4,
+						TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceSold_productName(Rest,
+						    N + 7, X bsl N + Acc, F@_1,
+						    F@_2, F@_3, F@_4,
+						    TrUserData);
+d_field_ArbiterToServerAnnounceSold_productName(<<0:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, _, F@_3, F@_4,
+						TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceSold(RestF, 0,
+						   0, F@_1, NewFValue, F@_3,
+						   F@_4, TrUserData).
+
+d_field_ArbiterToServerAnnounceSold_quantity(<<1:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, F@_3, F@_4,
+					     TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceSold_quantity(Rest,
+						 N + 7, X bsl N + Acc, F@_1,
+						 F@_2, F@_3, F@_4, TrUserData);
+d_field_ArbiterToServerAnnounceSold_quantity(<<0:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, _, F@_4,
+					     TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToServerAnnounceSold(RestF, 0,
+						   0, F@_1, F@_2, NewFValue,
+						   F@_4, TrUserData).
+
+d_field_ArbiterToServerAnnounceSold_unitPrice(<<0:16,
+						128, 127, Rest/binary>>,
+					      Z1, Z2, F@_1, F@_2, F@_3, _,
+					      TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3,
+						   id(infinity, TrUserData),
+						   TrUserData);
+d_field_ArbiterToServerAnnounceSold_unitPrice(<<0:16,
+						128, 255, Rest/binary>>,
+					      Z1, Z2, F@_1, F@_2, F@_3, _,
+					      TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3,
+						   id('-infinity', TrUserData),
+						   TrUserData);
+d_field_ArbiterToServerAnnounceSold_unitPrice(<<_:16,
+						1:1, _:7, _:1, 127:7,
+						Rest/binary>>,
+					      Z1, Z2, F@_1, F@_2, F@_3, _,
+					      TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3,
+						   id(nan, TrUserData),
+						   TrUserData);
+d_field_ArbiterToServerAnnounceSold_unitPrice(<<Value:32/little-float,
+						Rest/binary>>,
+					      Z1, Z2, F@_1, F@_2, F@_3, _,
+					      TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3,
+						   id(Value, TrUserData),
+						   TrUserData).
+
+skip_varint_ArbiterToServerAnnounceSold(<<1:1, _:7,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					TrUserData) ->
+    skip_varint_ArbiterToServerAnnounceSold(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, F@_4, TrUserData);
+skip_varint_ArbiterToServerAnnounceSold(<<0:1, _:7,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_length_delimited_ArbiterToServerAnnounceSold(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, F@_3,
+						  F@_4, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerAnnounceSold(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, F@_2, F@_3, F@_4,
+						      TrUserData);
+skip_length_delimited_ArbiterToServerAnnounceSold(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, F@_3,
+						  F@_4, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest2, 0,
+						   0, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_group_ArbiterToServerAnnounceSold(Bin, FNum, Z2,
+				       F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, 0,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_32_ArbiterToServerAnnounceSold(<<_:32,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_64_ArbiterToServerAnnounceSold(<<_:64,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceSold(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+decode_msg_ArbiterToServerAnnounceNoOffers(Bin,
+					   TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(Bin,
+						       0, 0,
+						       id(undefined,
+							  TrUserData),
+						       id(undefined,
+							  TrUserData),
+						       TrUserData).
+
+dfp_read_field_def_ArbiterToServerAnnounceNoOffers(<<10,
+						     Rest/binary>>,
+						   Z1, Z2, F@_1, F@_2,
+						   TrUserData) ->
+    d_field_ArbiterToServerAnnounceNoOffers_manufacturerName(Rest,
+							     Z1, Z2, F@_1, F@_2,
+							     TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceNoOffers(<<18,
+						     Rest/binary>>,
+						   Z1, Z2, F@_1, F@_2,
+						   TrUserData) ->
+    d_field_ArbiterToServerAnnounceNoOffers_productName(Rest,
+							Z1, Z2, F@_1, F@_2,
+							TrUserData);
+dfp_read_field_def_ArbiterToServerAnnounceNoOffers(<<>>,
+						   0, 0, F@_1, F@_2, _) ->
+    #'ArbiterToServerAnnounceNoOffers'{manufacturerName =
+					   F@_1,
+				       productName = F@_2};
+dfp_read_field_def_ArbiterToServerAnnounceNoOffers(Other,
+						   Z1, Z2, F@_1, F@_2,
+						   TrUserData) ->
+    dg_read_field_def_ArbiterToServerAnnounceNoOffers(Other,
+						      Z1, Z2, F@_1, F@_2,
+						      TrUserData).
+
+dg_read_field_def_ArbiterToServerAnnounceNoOffers(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2,
+						  TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerAnnounceNoOffers(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, F@_2, TrUserData);
+dg_read_field_def_ArbiterToServerAnnounceNoOffers(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2,
+						  TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerAnnounceNoOffers_manufacturerName(Rest,
+								   0, 0, F@_1,
+								   F@_2,
+								   TrUserData);
+      18 ->
+	  d_field_ArbiterToServerAnnounceNoOffers_productName(Rest,
+							      0, 0, F@_1, F@_2,
+							      TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerAnnounceNoOffers(Rest, 0, 0,
+							    F@_1, F@_2,
+							    TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerAnnounceNoOffers(Rest, 0, 0,
+							F@_1, F@_2, TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerAnnounceNoOffers(Rest,
+								      0, 0,
+								      F@_1,
+								      F@_2,
+								      TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerAnnounceNoOffers(Rest,
+							   Key bsr 3, 0, F@_1,
+							   F@_2, TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerAnnounceNoOffers(Rest, 0, 0,
+							F@_1, F@_2, TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerAnnounceNoOffers(<<>>,
+						  0, 0, F@_1, F@_2, _) ->
+    #'ArbiterToServerAnnounceNoOffers'{manufacturerName =
+					   F@_1,
+				       productName = F@_2}.
+
+d_field_ArbiterToServerAnnounceNoOffers_manufacturerName(<<1:1,
+							   X:7, Rest/binary>>,
+							 N, Acc, F@_1, F@_2,
+							 TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceNoOffers_manufacturerName(Rest,
+							     N + 7,
+							     X bsl N + Acc,
+							     F@_1, F@_2,
+							     TrUserData);
+d_field_ArbiterToServerAnnounceNoOffers_manufacturerName(<<0:1,
+							   X:7, Rest/binary>>,
+							 N, Acc, _, F@_2,
+							 TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(RestF,
+						       0, 0, NewFValue, F@_2,
+						       TrUserData).
+
+d_field_ArbiterToServerAnnounceNoOffers_productName(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2,
+						    TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerAnnounceNoOffers_productName(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, TrUserData);
+d_field_ArbiterToServerAnnounceNoOffers_productName(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, _,
+						    TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(RestF,
+						       0, 0, F@_1, NewFValue,
+						       TrUserData).
+
+skip_varint_ArbiterToServerAnnounceNoOffers(<<1:1, _:7,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_ArbiterToServerAnnounceNoOffers(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData);
+skip_varint_ArbiterToServerAnnounceNoOffers(<<0:1, _:7,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData).
+
+skip_length_delimited_ArbiterToServerAnnounceNoOffers(<<1:1,
+							X:7, Rest/binary>>,
+						      N, Acc, F@_1, F@_2,
+						      TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerAnnounceNoOffers(Rest,
+							  N + 7, X bsl N + Acc,
+							  F@_1, F@_2,
+							  TrUserData);
+skip_length_delimited_ArbiterToServerAnnounceNoOffers(<<0:1,
+							X:7, Rest/binary>>,
+						      N, Acc, F@_1, F@_2,
+						      TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(Rest2,
+						       0, 0, F@_1, F@_2,
+						       TrUserData).
+
+skip_group_ArbiterToServerAnnounceNoOffers(Bin, FNum,
+					   Z2, F@_1, F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(Rest,
+						       0, Z2, F@_1, F@_2,
+						       TrUserData).
+
+skip_32_ArbiterToServerAnnounceNoOffers(<<_:32,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData).
+
+skip_64_ArbiterToServerAnnounceNoOffers(<<_:64,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerAnnounceNoOffers(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData).
+
+decode_msg_ArbiterToServerOfferSubmitted(Bin,
+					 TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(Bin, 0,
+						     0,
+						     id(undefined, TrUserData),
+						     id(undefined, TrUserData),
+						     id(undefined, TrUserData),
+						     TrUserData).
+
+dfp_read_field_def_ArbiterToServerOfferSubmitted(<<10,
+						   Rest/binary>>,
+						 Z1, Z2, F@_1, F@_2, F@_3,
+						 TrUserData) ->
+    d_field_ArbiterToServerOfferSubmitted_importerName(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       TrUserData);
+dfp_read_field_def_ArbiterToServerOfferSubmitted(<<18,
+						   Rest/binary>>,
+						 Z1, Z2, F@_1, F@_2, F@_3,
+						 TrUserData) ->
+    d_field_ArbiterToServerOfferSubmitted_productName(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      TrUserData);
+dfp_read_field_def_ArbiterToServerOfferSubmitted(<<26,
+						   Rest/binary>>,
+						 Z1, Z2, F@_1, F@_2, F@_3,
+						 TrUserData) ->
+    d_field_ArbiterToServerOfferSubmitted_manufacturerName(Rest,
+							   Z1, Z2, F@_1, F@_2,
+							   F@_3, TrUserData);
+dfp_read_field_def_ArbiterToServerOfferSubmitted(<<>>,
+						 0, 0, F@_1, F@_2, F@_3, _) ->
+    #'ArbiterToServerOfferSubmitted'{importerName = F@_1,
+				     productName = F@_2,
+				     manufacturerName = F@_3};
+dfp_read_field_def_ArbiterToServerOfferSubmitted(Other,
+						 Z1, Z2, F@_1, F@_2, F@_3,
+						 TrUserData) ->
+    dg_read_field_def_ArbiterToServerOfferSubmitted(Other,
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    TrUserData).
+
+dg_read_field_def_ArbiterToServerOfferSubmitted(<<1:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, F@_2, F@_3,
+						TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerOfferSubmitted(Rest,
+						    N + 7, X bsl N + Acc, F@_1,
+						    F@_2, F@_3, TrUserData);
+dg_read_field_def_ArbiterToServerOfferSubmitted(<<0:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, F@_2, F@_3,
+						TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerOfferSubmitted_importerName(Rest,
+							     0, 0, F@_1, F@_2,
+							     F@_3, TrUserData);
+      18 ->
+	  d_field_ArbiterToServerOfferSubmitted_productName(Rest,
+							    0, 0, F@_1, F@_2,
+							    F@_3, TrUserData);
+      26 ->
+	  d_field_ArbiterToServerOfferSubmitted_manufacturerName(Rest,
+								 0, 0, F@_1,
+								 F@_2, F@_3,
+								 TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerOfferSubmitted(Rest, 0, 0,
+							  F@_1, F@_2, F@_3,
+							  TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerOfferSubmitted(Rest, 0, 0, F@_1,
+						      F@_2, F@_3, TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerOfferSubmitted(Rest,
+								    0, 0, F@_1,
+								    F@_2, F@_3,
+								    TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerOfferSubmitted(Rest,
+							 Key bsr 3, 0, F@_1,
+							 F@_2, F@_3,
+							 TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerOfferSubmitted(Rest, 0, 0, F@_1,
+						      F@_2, F@_3, TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerOfferSubmitted(<<>>, 0,
+						0, F@_1, F@_2, F@_3, _) ->
+    #'ArbiterToServerOfferSubmitted'{importerName = F@_1,
+				     productName = F@_2,
+				     manufacturerName = F@_3}.
+
+d_field_ArbiterToServerOfferSubmitted_importerName(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, F@_3,
+						   TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferSubmitted_importerName(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, F@_3,
+						       TrUserData);
+d_field_ArbiterToServerOfferSubmitted_importerName(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, _, F@_2, F@_3,
+						   TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(RestF,
+						     0, 0, NewFValue, F@_2,
+						     F@_3, TrUserData).
+
+d_field_ArbiterToServerOfferSubmitted_productName(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, F@_3,
+						  TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferSubmitted_productName(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, F@_2, F@_3,
+						      TrUserData);
+d_field_ArbiterToServerOfferSubmitted_productName(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, _, F@_3,
+						  TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(RestF,
+						     0, 0, F@_1, NewFValue,
+						     F@_3, TrUserData).
+
+d_field_ArbiterToServerOfferSubmitted_manufacturerName(<<1:1,
+							 X:7, Rest/binary>>,
+						       N, Acc, F@_1, F@_2, F@_3,
+						       TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferSubmitted_manufacturerName(Rest,
+							   N + 7, X bsl N + Acc,
+							   F@_1, F@_2, F@_3,
+							   TrUserData);
+d_field_ArbiterToServerOfferSubmitted_manufacturerName(<<0:1,
+							 X:7, Rest/binary>>,
+						       N, Acc, F@_1, F@_2, _,
+						       TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(RestF,
+						     0, 0, F@_1, F@_2,
+						     NewFValue, TrUserData).
+
+skip_varint_ArbiterToServerOfferSubmitted(<<1:1, _:7,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
+    skip_varint_ArbiterToServerOfferSubmitted(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, TrUserData);
+skip_varint_ArbiterToServerOfferSubmitted(<<0:1, _:7,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     TrUserData).
+
+skip_length_delimited_ArbiterToServerOfferSubmitted(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, F@_3,
+						    TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerOfferSubmitted(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, F@_3,
+							TrUserData);
+skip_length_delimited_ArbiterToServerOfferSubmitted(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2, F@_3,
+						    TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(Rest2,
+						     0, 0, F@_1, F@_2, F@_3,
+						     TrUserData).
+
+skip_group_ArbiterToServerOfferSubmitted(Bin, FNum, Z2,
+					 F@_1, F@_2, F@_3, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(Rest,
+						     0, Z2, F@_1, F@_2, F@_3,
+						     TrUserData).
+
+skip_32_ArbiterToServerOfferSubmitted(<<_:32,
+					Rest/binary>>,
+				      Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     TrUserData).
+
+skip_64_ArbiterToServerOfferSubmitted(<<_:64,
+					Rest/binary>>,
+				      Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferSubmitted(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     TrUserData).
+
+decode_msg_ArbiterToServerOfferInvalid(Bin,
+				       TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferInvalid(Bin, 0,
+						   0, id(undefined, TrUserData),
+						   id(undefined, TrUserData),
+						   id(undefined, TrUserData),
+						   id(undefined, TrUserData),
+						   TrUserData).
+
+dfp_read_field_def_ArbiterToServerOfferInvalid(<<10,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerOfferInvalid_importerName(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, TrUserData);
+dfp_read_field_def_ArbiterToServerOfferInvalid(<<18,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerOfferInvalid_productName(Rest,
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    F@_4, TrUserData);
+dfp_read_field_def_ArbiterToServerOfferInvalid(<<26,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerOfferInvalid_manufacturerName(Rest,
+							 Z1, Z2, F@_1, F@_2,
+							 F@_3, F@_4,
+							 TrUserData);
+dfp_read_field_def_ArbiterToServerOfferInvalid(<<34,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    d_field_ArbiterToServerOfferInvalid_errorMessage(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, TrUserData);
+dfp_read_field_def_ArbiterToServerOfferInvalid(<<>>, 0,
+					       0, F@_1, F@_2, F@_3, F@_4, _) ->
+    #'ArbiterToServerOfferInvalid'{importerName = F@_1,
+				   productName = F@_2, manufacturerName = F@_3,
+				   errorMessage = F@_4};
+dfp_read_field_def_ArbiterToServerOfferInvalid(Other,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       TrUserData) ->
+    dg_read_field_def_ArbiterToServerOfferInvalid(Other, Z1,
+						  Z2, F@_1, F@_2, F@_3, F@_4,
+						  TrUserData).
+
+dg_read_field_def_ArbiterToServerOfferInvalid(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerOfferInvalid(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, TrUserData);
+dg_read_field_def_ArbiterToServerOfferInvalid(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerOfferInvalid_importerName(Rest,
+							   0, 0, F@_1, F@_2,
+							   F@_3, F@_4,
+							   TrUserData);
+      18 ->
+	  d_field_ArbiterToServerOfferInvalid_productName(Rest, 0,
+							  0, F@_1, F@_2, F@_3,
+							  F@_4, TrUserData);
+      26 ->
+	  d_field_ArbiterToServerOfferInvalid_manufacturerName(Rest,
+							       0, 0, F@_1, F@_2,
+							       F@_3, F@_4,
+							       TrUserData);
+      34 ->
+	  d_field_ArbiterToServerOfferInvalid_errorMessage(Rest,
+							   0, 0, F@_1, F@_2,
+							   F@_3, F@_4,
+							   TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerOfferInvalid(Rest, 0, 0,
+							F@_1, F@_2, F@_3, F@_4,
+							TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerOfferInvalid(Rest, 0, 0, F@_1,
+						    F@_2, F@_3, F@_4,
+						    TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerOfferInvalid(Rest,
+								  0, 0, F@_1,
+								  F@_2, F@_3,
+								  F@_4,
+								  TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerOfferInvalid(Rest, Key bsr 3,
+						       0, F@_1, F@_2, F@_3,
+						       F@_4, TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerOfferInvalid(Rest, 0, 0, F@_1,
+						    F@_2, F@_3, F@_4,
+						    TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerOfferInvalid(<<>>, 0,
+					      0, F@_1, F@_2, F@_3, F@_4, _) ->
+    #'ArbiterToServerOfferInvalid'{importerName = F@_1,
+				   productName = F@_2, manufacturerName = F@_3,
+				   errorMessage = F@_4}.
+
+d_field_ArbiterToServerOfferInvalid_importerName(<<1:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3, F@_4,
+						 TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferInvalid_importerName(Rest,
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, F@_3, F@_4,
+						     TrUserData);
+d_field_ArbiterToServerOfferInvalid_importerName(<<0:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, _, F@_2, F@_3, F@_4,
+						 TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferInvalid(RestF, 0,
+						   0, NewFValue, F@_2, F@_3,
+						   F@_4, TrUserData).
+
+d_field_ArbiterToServerOfferInvalid_productName(<<1:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, F@_2, F@_3, F@_4,
+						TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferInvalid_productName(Rest,
+						    N + 7, X bsl N + Acc, F@_1,
+						    F@_2, F@_3, F@_4,
+						    TrUserData);
+d_field_ArbiterToServerOfferInvalid_productName(<<0:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, _, F@_3, F@_4,
+						TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferInvalid(RestF, 0,
+						   0, F@_1, NewFValue, F@_3,
+						   F@_4, TrUserData).
+
+d_field_ArbiterToServerOfferInvalid_manufacturerName(<<1:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, F@_1, F@_2, F@_3,
+						     F@_4, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferInvalid_manufacturerName(Rest,
+							 N + 7, X bsl N + Acc,
+							 F@_1, F@_2, F@_3, F@_4,
+							 TrUserData);
+d_field_ArbiterToServerOfferInvalid_manufacturerName(<<0:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, F@_1, F@_2, _,
+						     F@_4, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferInvalid(RestF, 0,
+						   0, F@_1, F@_2, NewFValue,
+						   F@_4, TrUserData).
+
+d_field_ArbiterToServerOfferInvalid_errorMessage(<<1:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3, F@_4,
+						 TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferInvalid_errorMessage(Rest,
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, F@_3, F@_4,
+						     TrUserData);
+d_field_ArbiterToServerOfferInvalid_errorMessage(<<0:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3, _,
+						 TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferInvalid(RestF, 0,
+						   0, F@_1, F@_2, F@_3,
+						   NewFValue, TrUserData).
+
+skip_varint_ArbiterToServerOfferInvalid(<<1:1, _:7,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					TrUserData) ->
+    skip_varint_ArbiterToServerOfferInvalid(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, F@_4, TrUserData);
+skip_varint_ArbiterToServerOfferInvalid(<<0:1, _:7,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferInvalid(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_length_delimited_ArbiterToServerOfferInvalid(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, F@_3,
+						  F@_4, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerOfferInvalid(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, F@_2, F@_3, F@_4,
+						      TrUserData);
+skip_length_delimited_ArbiterToServerOfferInvalid(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, F@_3,
+						  F@_4, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerOfferInvalid(Rest2, 0,
+						   0, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_group_ArbiterToServerOfferInvalid(Bin, FNum, Z2,
+				       F@_1, F@_2, F@_3, F@_4, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerOfferInvalid(Rest, 0,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_32_ArbiterToServerOfferInvalid(<<_:32,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferInvalid(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+skip_64_ArbiterToServerOfferInvalid(<<_:64,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferInvalid(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   TrUserData).
+
+decode_msg_ArbiterToServerOfferWon(Bin, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Bin, 0, 0,
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       TrUserData).
+
+dfp_read_field_def_ArbiterToServerOfferWon(<<10,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    d_field_ArbiterToServerOfferWon_importerName(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, TrUserData);
+dfp_read_field_def_ArbiterToServerOfferWon(<<18,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    d_field_ArbiterToServerOfferWon_productName(Rest, Z1,
+						Z2, F@_1, F@_2, F@_3, F@_4,
+						F@_5, TrUserData);
+dfp_read_field_def_ArbiterToServerOfferWon(<<26,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    d_field_ArbiterToServerOfferWon_manufacturerName(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, F@_5, TrUserData);
+dfp_read_field_def_ArbiterToServerOfferWon(<<32,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    d_field_ArbiterToServerOfferWon_quantity(Rest, Z1, Z2,
+					     F@_1, F@_2, F@_3, F@_4, F@_5,
+					     TrUserData);
+dfp_read_field_def_ArbiterToServerOfferWon(<<45,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    d_field_ArbiterToServerOfferWon_unitPrice(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, F@_4, F@_5,
+					      TrUserData);
+dfp_read_field_def_ArbiterToServerOfferWon(<<>>, 0, 0,
+					   F@_1, F@_2, F@_3, F@_4, F@_5, _) ->
+    #'ArbiterToServerOfferWon'{importerName = F@_1,
+			       productName = F@_2, manufacturerName = F@_3,
+			       quantity = F@_4, unitPrice = F@_5};
+dfp_read_field_def_ArbiterToServerOfferWon(Other, Z1,
+					   Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    dg_read_field_def_ArbiterToServerOfferWon(Other, Z1, Z2,
+					      F@_1, F@_2, F@_3, F@_4, F@_5,
+					      TrUserData).
+
+dg_read_field_def_ArbiterToServerOfferWon(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					  TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerOfferWon(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2, F@_3,
+					      F@_4, F@_5, TrUserData);
+dg_read_field_def_ArbiterToServerOfferWon(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					  TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerOfferWon_importerName(Rest, 0, 0,
+						       F@_1, F@_2, F@_3, F@_4,
+						       F@_5, TrUserData);
+      18 ->
+	  d_field_ArbiterToServerOfferWon_productName(Rest, 0, 0,
+						      F@_1, F@_2, F@_3, F@_4,
+						      F@_5, TrUserData);
+      26 ->
+	  d_field_ArbiterToServerOfferWon_manufacturerName(Rest,
+							   0, 0, F@_1, F@_2,
+							   F@_3, F@_4, F@_5,
+							   TrUserData);
+      32 ->
+	  d_field_ArbiterToServerOfferWon_quantity(Rest, 0, 0,
+						   F@_1, F@_2, F@_3, F@_4, F@_5,
+						   TrUserData);
+      45 ->
+	  d_field_ArbiterToServerOfferWon_unitPrice(Rest, 0, 0,
+						    F@_1, F@_2, F@_3, F@_4,
+						    F@_5, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerOfferWon(Rest, 0, 0, F@_1,
+						    F@_2, F@_3, F@_4, F@_5,
+						    TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerOfferWon(Rest, 0, 0, F@_1, F@_2,
+						F@_3, F@_4, F@_5, TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerOfferWon(Rest, 0,
+							      0, F@_1, F@_2,
+							      F@_3, F@_4, F@_5,
+							      TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerOfferWon(Rest, Key bsr 3, 0,
+						   F@_1, F@_2, F@_3, F@_4, F@_5,
+						   TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerOfferWon(Rest, 0, 0, F@_1, F@_2,
+						F@_3, F@_4, F@_5, TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerOfferWon(<<>>, 0, 0,
+					  F@_1, F@_2, F@_3, F@_4, F@_5, _) ->
+    #'ArbiterToServerOfferWon'{importerName = F@_1,
+			       productName = F@_2, manufacturerName = F@_3,
+			       quantity = F@_4, unitPrice = F@_5}.
+
+d_field_ArbiterToServerOfferWon_importerName(<<1:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, F@_3, F@_4,
+					     F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferWon_importerName(Rest,
+						 N + 7, X bsl N + Acc, F@_1,
+						 F@_2, F@_3, F@_4, F@_5,
+						 TrUserData);
+d_field_ArbiterToServerOfferWon_importerName(<<0:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, _, F@_2, F@_3, F@_4, F@_5,
+					     TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferWon(RestF, 0, 0,
+					       NewFValue, F@_2, F@_3, F@_4,
+					       F@_5, TrUserData).
+
+d_field_ArbiterToServerOfferWon_productName(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferWon_productName(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2, F@_3,
+						F@_4, F@_5, TrUserData);
+d_field_ArbiterToServerOfferWon_productName(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, _, F@_3, F@_4, F@_5,
+					    TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferWon(RestF, 0, 0,
+					       F@_1, NewFValue, F@_3, F@_4,
+					       F@_5, TrUserData).
+
+d_field_ArbiterToServerOfferWon_manufacturerName(<<1:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferWon_manufacturerName(Rest,
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, F@_3, F@_4, F@_5,
+						     TrUserData);
+d_field_ArbiterToServerOfferWon_manufacturerName(<<0:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, _, F@_4,
+						 F@_5, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferWon(RestF, 0, 0,
+					       F@_1, F@_2, NewFValue, F@_4,
+					       F@_5, TrUserData).
+
+d_field_ArbiterToServerOfferWon_quantity(<<1:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					 TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferWon_quantity(Rest, N + 7,
+					     X bsl N + Acc, F@_1, F@_2, F@_3,
+					     F@_4, F@_5, TrUserData);
+d_field_ArbiterToServerOfferWon_quantity(<<0:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3, _, F@_5,
+					 TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToServerOfferWon(RestF, 0, 0,
+					       F@_1, F@_2, F@_3, NewFValue,
+					       F@_5, TrUserData).
+
+d_field_ArbiterToServerOfferWon_unitPrice(<<0:16, 128,
+					    127, Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id(infinity, TrUserData),
+					       TrUserData);
+d_field_ArbiterToServerOfferWon_unitPrice(<<0:16, 128,
+					    255, Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id('-infinity', TrUserData),
+					       TrUserData);
+d_field_ArbiterToServerOfferWon_unitPrice(<<_:16, 1:1,
+					    _:7, _:1, 127:7, Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id(nan, TrUserData), TrUserData);
+d_field_ArbiterToServerOfferWon_unitPrice(<<Value:32/little-float,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id(Value, TrUserData),
+					       TrUserData).
+
+skip_varint_ArbiterToServerOfferWon(<<1:1, _:7,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				    TrUserData) ->
+    skip_varint_ArbiterToServerOfferWon(Rest, Z1, Z2, F@_1,
+					F@_2, F@_3, F@_4, F@_5, TrUserData);
+skip_varint_ArbiterToServerOfferWon(<<0:1, _:7,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				    TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       TrUserData).
+
+skip_length_delimited_ArbiterToServerOfferWon(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerOfferWon(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, F@_5,
+						  TrUserData);
+skip_length_delimited_ArbiterToServerOfferWon(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest2, 0, 0,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       TrUserData).
+
+skip_group_ArbiterToServerOfferWon(Bin, FNum, Z2, F@_1,
+				   F@_2, F@_3, F@_4, F@_5, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, 0, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       TrUserData).
+
+skip_32_ArbiterToServerOfferWon(<<_:32, Rest/binary>>,
+				Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       TrUserData).
+
+skip_64_ArbiterToServerOfferWon(<<_:64, Rest/binary>>,
+				Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferWon(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       TrUserData).
+
+decode_msg_ArbiterToServerOfferLose(Bin, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferLose(Bin, 0, 0,
+						id(undefined, TrUserData),
+						id(undefined, TrUserData),
+						id(undefined, TrUserData),
+						TrUserData).
+
+dfp_read_field_def_ArbiterToServerOfferLose(<<10,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, F@_3,
+					    TrUserData) ->
+    d_field_ArbiterToServerOfferLose_importerName(Rest, Z1,
+						  Z2, F@_1, F@_2, F@_3,
+						  TrUserData);
+dfp_read_field_def_ArbiterToServerOfferLose(<<18,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, F@_3,
+					    TrUserData) ->
+    d_field_ArbiterToServerOfferLose_productName(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3,
+						 TrUserData);
+dfp_read_field_def_ArbiterToServerOfferLose(<<26,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, F@_3,
+					    TrUserData) ->
+    d_field_ArbiterToServerOfferLose_manufacturerName(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      TrUserData);
+dfp_read_field_def_ArbiterToServerOfferLose(<<>>, 0, 0,
+					    F@_1, F@_2, F@_3, _) ->
+    #'ArbiterToServerOfferLose'{importerName = F@_1,
+				productName = F@_2, manufacturerName = F@_3};
+dfp_read_field_def_ArbiterToServerOfferLose(Other, Z1,
+					    Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dg_read_field_def_ArbiterToServerOfferLose(Other, Z1,
+					       Z2, F@_1, F@_2, F@_3,
+					       TrUserData).
+
+dg_read_field_def_ArbiterToServerOfferLose(<<1:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerOfferLose(Rest, N + 7,
+					       X bsl N + Acc, F@_1, F@_2, F@_3,
+					       TrUserData);
+dg_read_field_def_ArbiterToServerOfferLose(<<0:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, F@_3,
+					   TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerOfferLose_importerName(Rest, 0,
+							0, F@_1, F@_2, F@_3,
+							TrUserData);
+      18 ->
+	  d_field_ArbiterToServerOfferLose_productName(Rest, 0, 0,
+						       F@_1, F@_2, F@_3,
+						       TrUserData);
+      26 ->
+	  d_field_ArbiterToServerOfferLose_manufacturerName(Rest,
+							    0, 0, F@_1, F@_2,
+							    F@_3, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerOfferLose(Rest, 0, 0, F@_1,
+						     F@_2, F@_3, TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerOfferLose(Rest, 0, 0, F@_1, F@_2,
+						 F@_3, TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerOfferLose(Rest, 0,
+							       0, F@_1, F@_2,
+							       F@_3,
+							       TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerOfferLose(Rest, Key bsr 3, 0,
+						    F@_1, F@_2, F@_3,
+						    TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerOfferLose(Rest, 0, 0, F@_1, F@_2,
+						 F@_3, TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerOfferLose(<<>>, 0, 0,
+					   F@_1, F@_2, F@_3, _) ->
+    #'ArbiterToServerOfferLose'{importerName = F@_1,
+				productName = F@_2, manufacturerName = F@_3}.
+
+d_field_ArbiterToServerOfferLose_importerName(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3,
+					      TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferLose_importerName(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, TrUserData);
+d_field_ArbiterToServerOfferLose_importerName(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, _, F@_2, F@_3,
+					      TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferLose(RestF, 0, 0,
+						NewFValue, F@_2, F@_3,
+						TrUserData).
+
+d_field_ArbiterToServerOfferLose_productName(<<1:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, F@_3,
+					     TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferLose_productName(Rest,
+						 N + 7, X bsl N + Acc, F@_1,
+						 F@_2, F@_3, TrUserData);
+d_field_ArbiterToServerOfferLose_productName(<<0:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, _, F@_3,
+					     TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferLose(RestF, 0, 0,
+						F@_1, NewFValue, F@_3,
+						TrUserData).
+
+d_field_ArbiterToServerOfferLose_manufacturerName(<<1:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, F@_3,
+						  TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerOfferLose_manufacturerName(Rest,
+						      N + 7, X bsl N + Acc,
+						      F@_1, F@_2, F@_3,
+						      TrUserData);
+d_field_ArbiterToServerOfferLose_manufacturerName(<<0:1,
+						    X:7, Rest/binary>>,
+						  N, Acc, F@_1, F@_2, _,
+						  TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerOfferLose(RestF, 0, 0,
+						F@_1, F@_2, NewFValue,
+						TrUserData).
+
+skip_varint_ArbiterToServerOfferLose(<<1:1, _:7,
+				       Rest/binary>>,
+				     Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    skip_varint_ArbiterToServerOfferLose(Rest, Z1, Z2, F@_1,
+					 F@_2, F@_3, TrUserData);
+skip_varint_ArbiterToServerOfferLose(<<0:1, _:7,
+				       Rest/binary>>,
+				     Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferLose(Rest, Z1,
+						Z2, F@_1, F@_2, F@_3,
+						TrUserData).
+
+skip_length_delimited_ArbiterToServerOfferLose(<<1:1,
+						 X:7, Rest/binary>>,
+					       N, Acc, F@_1, F@_2, F@_3,
+					       TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerOfferLose(Rest,
+						   N + 7, X bsl N + Acc, F@_1,
+						   F@_2, F@_3, TrUserData);
+skip_length_delimited_ArbiterToServerOfferLose(<<0:1,
+						 X:7, Rest/binary>>,
+					       N, Acc, F@_1, F@_2, F@_3,
+					       TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerOfferLose(Rest2, 0, 0,
+						F@_1, F@_2, F@_3, TrUserData).
+
+skip_group_ArbiterToServerOfferLose(Bin, FNum, Z2, F@_1,
+				    F@_2, F@_3, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerOfferLose(Rest, 0, Z2,
+						F@_1, F@_2, F@_3, TrUserData).
+
+skip_32_ArbiterToServerOfferLose(<<_:32, Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferLose(Rest, Z1,
+						Z2, F@_1, F@_2, F@_3,
+						TrUserData).
+
+skip_64_ArbiterToServerOfferLose(<<_:64, Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerOfferLose(Rest, Z1,
+						Z2, F@_1, F@_2, F@_3,
+						TrUserData).
+
+decode_msg_ArbiterToServerNewProduct(Bin, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Bin, 0, 0,
+						 id(undefined, TrUserData),
+						 id(undefined, TrUserData),
+						 id(undefined, TrUserData),
+						 id(undefined, TrUserData),
+						 id(undefined, TrUserData),
+						 id(undefined, TrUserData),
+						 TrUserData).
+
+dfp_read_field_def_ArbiterToServerNewProduct(<<10,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					     F@_5, F@_6, TrUserData) ->
+    d_field_ArbiterToServerNewProduct_manufacturerName(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, F@_6,
+						       TrUserData);
+dfp_read_field_def_ArbiterToServerNewProduct(<<18,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					     F@_5, F@_6, TrUserData) ->
+    d_field_ArbiterToServerNewProduct_productName(Rest, Z1,
+						  Z2, F@_1, F@_2, F@_3, F@_4,
+						  F@_5, F@_6, TrUserData);
+dfp_read_field_def_ArbiterToServerNewProduct(<<24,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					     F@_5, F@_6, TrUserData) ->
+    d_field_ArbiterToServerNewProduct_minQuantity(Rest, Z1,
+						  Z2, F@_1, F@_2, F@_3, F@_4,
+						  F@_5, F@_6, TrUserData);
+dfp_read_field_def_ArbiterToServerNewProduct(<<32,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					     F@_5, F@_6, TrUserData) ->
+    d_field_ArbiterToServerNewProduct_maxQuantity(Rest, Z1,
+						  Z2, F@_1, F@_2, F@_3, F@_4,
+						  F@_5, F@_6, TrUserData);
+dfp_read_field_def_ArbiterToServerNewProduct(<<45,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					     F@_5, F@_6, TrUserData) ->
+    d_field_ArbiterToServerNewProduct_minUnitPrice(Rest, Z1,
+						   Z2, F@_1, F@_2, F@_3, F@_4,
+						   F@_5, F@_6, TrUserData);
+dfp_read_field_def_ArbiterToServerNewProduct(<<48,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					     F@_5, F@_6, TrUserData) ->
+    d_field_ArbiterToServerNewProduct_timout(Rest, Z1, Z2,
+					     F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+					     TrUserData);
+dfp_read_field_def_ArbiterToServerNewProduct(<<>>, 0, 0,
+					     F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+					     _) ->
+    #'ArbiterToServerNewProduct'{manufacturerName = F@_1,
+				 productName = F@_2, minQuantity = F@_3,
+				 maxQuantity = F@_4, minUnitPrice = F@_5,
+				 timout = F@_6};
+dfp_read_field_def_ArbiterToServerNewProduct(Other, Z1,
+					     Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					     F@_6, TrUserData) ->
+    dg_read_field_def_ArbiterToServerNewProduct(Other, Z1,
+						Z2, F@_1, F@_2, F@_3, F@_4,
+						F@_5, F@_6, TrUserData).
+
+dg_read_field_def_ArbiterToServerNewProduct(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, F@_6, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToServerNewProduct(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2, F@_3,
+						F@_4, F@_5, F@_6, TrUserData);
+dg_read_field_def_ArbiterToServerNewProduct(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, F@_6, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToServerNewProduct_manufacturerName(Rest,
+							     0, 0, F@_1, F@_2,
+							     F@_3, F@_4, F@_5,
+							     F@_6, TrUserData);
+      18 ->
+	  d_field_ArbiterToServerNewProduct_productName(Rest, 0,
+							0, F@_1, F@_2, F@_3,
+							F@_4, F@_5, F@_6,
+							TrUserData);
+      24 ->
+	  d_field_ArbiterToServerNewProduct_minQuantity(Rest, 0,
+							0, F@_1, F@_2, F@_3,
+							F@_4, F@_5, F@_6,
+							TrUserData);
+      32 ->
+	  d_field_ArbiterToServerNewProduct_maxQuantity(Rest, 0,
+							0, F@_1, F@_2, F@_3,
+							F@_4, F@_5, F@_6,
+							TrUserData);
+      45 ->
+	  d_field_ArbiterToServerNewProduct_minUnitPrice(Rest, 0,
+							 0, F@_1, F@_2, F@_3,
+							 F@_4, F@_5, F@_6,
+							 TrUserData);
+      48 ->
+	  d_field_ArbiterToServerNewProduct_timout(Rest, 0, 0,
+						   F@_1, F@_2, F@_3, F@_4, F@_5,
+						   F@_6, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToServerNewProduct(Rest, 0, 0, F@_1,
+						      F@_2, F@_3, F@_4, F@_5,
+						      F@_6, TrUserData);
+	    1 ->
+		skip_64_ArbiterToServerNewProduct(Rest, 0, 0, F@_1,
+						  F@_2, F@_3, F@_4, F@_5, F@_6,
+						  TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToServerNewProduct(Rest, 0,
+								0, F@_1, F@_2,
+								F@_3, F@_4,
+								F@_5, F@_6,
+								TrUserData);
+	    3 ->
+		skip_group_ArbiterToServerNewProduct(Rest, Key bsr 3, 0,
+						     F@_1, F@_2, F@_3, F@_4,
+						     F@_5, F@_6, TrUserData);
+	    5 ->
+		skip_32_ArbiterToServerNewProduct(Rest, 0, 0, F@_1,
+						  F@_2, F@_3, F@_4, F@_5, F@_6,
+						  TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToServerNewProduct(<<>>, 0, 0,
+					    F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+					    _) ->
+    #'ArbiterToServerNewProduct'{manufacturerName = F@_1,
+				 productName = F@_2, minQuantity = F@_3,
+				 maxQuantity = F@_4, minUnitPrice = F@_5,
+				 timout = F@_6}.
+
+d_field_ArbiterToServerNewProduct_manufacturerName(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerNewProduct_manufacturerName(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, F@_3, F@_4,
+						       F@_5, F@_6, TrUserData);
+d_field_ArbiterToServerNewProduct_manufacturerName(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, _, F@_2, F@_3, F@_4,
+						   F@_5, F@_6, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerNewProduct(RestF, 0,
+						 0, NewFValue, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+d_field_ArbiterToServerNewProduct_productName(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerNewProduct_productName(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, F@_5, F@_6,
+						  TrUserData);
+d_field_ArbiterToServerNewProduct_productName(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, _, F@_3, F@_4, F@_5,
+					      F@_6, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToServerNewProduct(RestF, 0,
+						 0, F@_1, NewFValue, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+d_field_ArbiterToServerNewProduct_minQuantity(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerNewProduct_minQuantity(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, F@_5, F@_6,
+						  TrUserData);
+d_field_ArbiterToServerNewProduct_minQuantity(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, _, F@_4, F@_5,
+					      F@_6, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToServerNewProduct(RestF, 0,
+						 0, F@_1, F@_2, NewFValue, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+d_field_ArbiterToServerNewProduct_maxQuantity(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerNewProduct_maxQuantity(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, F@_5, F@_6,
+						  TrUserData);
+d_field_ArbiterToServerNewProduct_maxQuantity(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, _, F@_5,
+					      F@_6, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToServerNewProduct(RestF, 0,
+						 0, F@_1, F@_2, F@_3, NewFValue,
+						 F@_5, F@_6, TrUserData).
+
+d_field_ArbiterToServerNewProduct_minUnitPrice(<<0:16,
+						 128, 127, Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       _, F@_6, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 id(infinity, TrUserData), F@_6,
+						 TrUserData);
+d_field_ArbiterToServerNewProduct_minUnitPrice(<<0:16,
+						 128, 255, Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       _, F@_6, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 id('-infinity', TrUserData),
+						 F@_6, TrUserData);
+d_field_ArbiterToServerNewProduct_minUnitPrice(<<_:16,
+						 1:1, _:7, _:1, 127:7,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       _, F@_6, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 id(nan, TrUserData), F@_6,
+						 TrUserData);
+d_field_ArbiterToServerNewProduct_minUnitPrice(<<Value:32/little-float,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+					       _, F@_6, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 id(Value, TrUserData), F@_6,
+						 TrUserData).
+
+d_field_ArbiterToServerNewProduct_timout(<<1:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					 F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToServerNewProduct_timout(Rest, N + 7,
+					     X bsl N + Acc, F@_1, F@_2, F@_3,
+					     F@_4, F@_5, F@_6, TrUserData);
+d_field_ArbiterToServerNewProduct_timout(<<0:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					 _, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToServerNewProduct(RestF, 0,
+						 0, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, NewFValue, TrUserData).
+
+skip_varint_ArbiterToServerNewProduct(<<1:1, _:7,
+					Rest/binary>>,
+				      Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				      F@_6, TrUserData) ->
+    skip_varint_ArbiterToServerNewProduct(Rest, Z1, Z2,
+					  F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+					  TrUserData);
+skip_varint_ArbiterToServerNewProduct(<<0:1, _:7,
+					Rest/binary>>,
+				      Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				      F@_6, TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+skip_length_delimited_ArbiterToServerNewProduct(<<1:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, F@_2, F@_3, F@_4,
+						F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToServerNewProduct(Rest,
+						    N + 7, X bsl N + Acc, F@_1,
+						    F@_2, F@_3, F@_4, F@_5,
+						    F@_6, TrUserData);
+skip_length_delimited_ArbiterToServerNewProduct(<<0:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, F@_2, F@_3, F@_4,
+						F@_5, F@_6, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest2, 0,
+						 0, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+skip_group_ArbiterToServerNewProduct(Bin, FNum, Z2,
+				     F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+				     TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, 0,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+skip_32_ArbiterToServerNewProduct(<<_:32, Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+				  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+skip_64_ArbiterToServerNewProduct(<<_:64, Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+				  TrUserData) ->
+    dfp_read_field_def_ArbiterToServerNewProduct(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData).
+
+decode_msg_ServerToArbiter(Bin, TrUserData) ->
+    dfp_read_field_def_ServerToArbiter(Bin, 0, 0,
+				       id(undefined, TrUserData), TrUserData).
+
+dfp_read_field_def_ServerToArbiter(<<10, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ServerToArbiter_offer(Rest, Z1, Z2, F@_1,
+				  TrUserData);
+dfp_read_field_def_ServerToArbiter(<<18, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ServerToArbiter_announce(Rest, Z1, Z2, F@_1,
+				     TrUserData);
+dfp_read_field_def_ServerToArbiter(<<26, Rest/binary>>,
+				   Z1, Z2, F@_1, TrUserData) ->
+    d_field_ServerToArbiter_subscribe(Rest, Z1, Z2, F@_1,
+				      TrUserData);
+dfp_read_field_def_ServerToArbiter(<<>>, 0, 0, F@_1,
+				   _) ->
+    #'ServerToArbiter'{message = F@_1};
+dfp_read_field_def_ServerToArbiter(Other, Z1, Z2, F@_1,
+				   TrUserData) ->
+    dg_read_field_def_ServerToArbiter(Other, Z1, Z2, F@_1,
+				      TrUserData).
+
+dg_read_field_def_ServerToArbiter(<<1:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ServerToArbiter(Rest, N + 7,
+				      X bsl N + Acc, F@_1, TrUserData);
+dg_read_field_def_ServerToArbiter(<<0:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ServerToArbiter_offer(Rest, 0, 0, F@_1,
+					TrUserData);
+      18 ->
+	  d_field_ServerToArbiter_announce(Rest, 0, 0, F@_1,
+					   TrUserData);
+      26 ->
+	  d_field_ServerToArbiter_subscribe(Rest, 0, 0, F@_1,
+					    TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ServerToArbiter(Rest, 0, 0, F@_1,
+					    TrUserData);
+	    1 ->
+		skip_64_ServerToArbiter(Rest, 0, 0, F@_1, TrUserData);
+	    2 ->
+		skip_length_delimited_ServerToArbiter(Rest, 0, 0, F@_1,
+						      TrUserData);
+	    3 ->
+		skip_group_ServerToArbiter(Rest, Key bsr 3, 0, F@_1,
+					   TrUserData);
+	    5 ->
+		skip_32_ServerToArbiter(Rest, 0, 0, F@_1, TrUserData)
+	  end
+    end;
+dg_read_field_def_ServerToArbiter(<<>>, 0, 0, F@_1,
+				  _) ->
+    #'ServerToArbiter'{message = F@_1}.
+
+d_field_ServerToArbiter_offer(<<1:1, X:7, Rest/binary>>,
+			      N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiter_offer(Rest, N + 7,
+				  X bsl N + Acc, F@_1, TrUserData);
+d_field_ServerToArbiter_offer(<<0:1, X:7, Rest/binary>>,
+			      N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ServerToArbiterOffer(Bs, TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiter(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({offer, NewFValue}, TrUserData);
+					 {offer, MVPrev} ->
+					     id({offer,
+						 merge_msg_ServerToArbiterOffer(MVPrev,
+										NewFValue,
+										TrUserData)},
+						TrUserData);
+					 _ -> id({offer, NewFValue}, TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ServerToArbiter_announce(<<1:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiter_announce(Rest, N + 7,
+				     X bsl N + Acc, F@_1, TrUserData);
+d_field_ServerToArbiter_announce(<<0:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ServerToArbiterAnnounce(Bs,
+								  TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiter(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({announce, NewFValue},
+						TrUserData);
+					 {announce, MVPrev} ->
+					     id({announce,
+						 merge_msg_ServerToArbiterAnnounce(MVPrev,
+										   NewFValue,
+										   TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({announce, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+d_field_ServerToArbiter_subscribe(<<1:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiter_subscribe(Rest, N + 7,
+				      X bsl N + Acc, F@_1, TrUserData);
+d_field_ServerToArbiter_subscribe(<<0:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_ServerToArbiterSubscribe(Bs,
+								   TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiter(RestF, 0, 0,
+				       case Prev of
+					 undefined ->
+					     id({subscribe, NewFValue},
+						TrUserData);
+					 {subscribe, MVPrev} ->
+					     id({subscribe,
+						 merge_msg_ServerToArbiterSubscribe(MVPrev,
+										    NewFValue,
+										    TrUserData)},
+						TrUserData);
+					 _ ->
+					     id({subscribe, NewFValue},
+						TrUserData)
+				       end,
+				       TrUserData).
+
+skip_varint_ServerToArbiter(<<1:1, _:7, Rest/binary>>,
+			    Z1, Z2, F@_1, TrUserData) ->
+    skip_varint_ServerToArbiter(Rest, Z1, Z2, F@_1,
+				TrUserData);
+skip_varint_ServerToArbiter(<<0:1, _:7, Rest/binary>>,
+			    Z1, Z2, F@_1, TrUserData) ->
+    dfp_read_field_def_ServerToArbiter(Rest, Z1, Z2, F@_1,
+				       TrUserData).
+
+skip_length_delimited_ServerToArbiter(<<1:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ServerToArbiter(Rest, N + 7,
+					  X bsl N + Acc, F@_1, TrUserData);
+skip_length_delimited_ServerToArbiter(<<0:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ServerToArbiter(Rest2, 0, 0, F@_1,
+				       TrUserData).
+
+skip_group_ServerToArbiter(Bin, FNum, Z2, F@_1,
+			   TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ServerToArbiter(Rest, 0, Z2, F@_1,
+				       TrUserData).
+
+skip_32_ServerToArbiter(<<_:32, Rest/binary>>, Z1, Z2,
+			F@_1, TrUserData) ->
+    dfp_read_field_def_ServerToArbiter(Rest, Z1, Z2, F@_1,
+				       TrUserData).
+
+skip_64_ServerToArbiter(<<_:64, Rest/binary>>, Z1, Z2,
+			F@_1, TrUserData) ->
+    dfp_read_field_def_ServerToArbiter(Rest, Z1, Z2, F@_1,
+				       TrUserData).
+
+decode_msg_ServerToArbiterOffer(Bin, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Bin, 0, 0,
+					    id(undefined, TrUserData),
+					    id(undefined, TrUserData),
+					    id(undefined, TrUserData),
+					    id(undefined, TrUserData),
+					    id(undefined, TrUserData),
+					    TrUserData).
+
+dfp_read_field_def_ServerToArbiterOffer(<<10,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
+    d_field_ServerToArbiterOffer_manufacturerName(Rest, Z1,
+						  Z2, F@_1, F@_2, F@_3, F@_4,
+						  F@_5, TrUserData);
+dfp_read_field_def_ServerToArbiterOffer(<<18,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
+    d_field_ServerToArbiterOffer_productName(Rest, Z1, Z2,
+					     F@_1, F@_2, F@_3, F@_4, F@_5,
+					     TrUserData);
+dfp_read_field_def_ServerToArbiterOffer(<<24,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
+    d_field_ServerToArbiterOffer_quantity(Rest, Z1, Z2,
+					  F@_1, F@_2, F@_3, F@_4, F@_5,
+					  TrUserData);
+dfp_read_field_def_ServerToArbiterOffer(<<37,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
+    d_field_ServerToArbiterOffer_unitPrice(Rest, Z1, Z2,
+					   F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData);
+dfp_read_field_def_ServerToArbiterOffer(<<42,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
+    d_field_ServerToArbiterOffer_importerName(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, F@_4, F@_5,
+					      TrUserData);
+dfp_read_field_def_ServerToArbiterOffer(<<>>, 0, 0,
+					F@_1, F@_2, F@_3, F@_4, F@_5, _) ->
+    #'ServerToArbiterOffer'{manufacturerName = F@_1,
+			    productName = F@_2, quantity = F@_3,
+			    unitPrice = F@_4, importerName = F@_5};
+dfp_read_field_def_ServerToArbiterOffer(Other, Z1, Z2,
+					F@_1, F@_2, F@_3, F@_4, F@_5,
+					TrUserData) ->
+    dg_read_field_def_ServerToArbiterOffer(Other, Z1, Z2,
+					   F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData).
+
+dg_read_field_def_ServerToArbiterOffer(<<1:1, X:7,
+					 Rest/binary>>,
+				       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+				       TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ServerToArbiterOffer(Rest, N + 7,
+					   X bsl N + Acc, F@_1, F@_2, F@_3,
+					   F@_4, F@_5, TrUserData);
+dg_read_field_def_ServerToArbiterOffer(<<0:1, X:7,
+					 Rest/binary>>,
+				       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+				       TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ServerToArbiterOffer_manufacturerName(Rest, 0,
+							0, F@_1, F@_2, F@_3,
+							F@_4, F@_5, TrUserData);
+      18 ->
+	  d_field_ServerToArbiterOffer_productName(Rest, 0, 0,
+						   F@_1, F@_2, F@_3, F@_4, F@_5,
+						   TrUserData);
+      24 ->
+	  d_field_ServerToArbiterOffer_quantity(Rest, 0, 0, F@_1,
+						F@_2, F@_3, F@_4, F@_5,
+						TrUserData);
+      37 ->
+	  d_field_ServerToArbiterOffer_unitPrice(Rest, 0, 0, F@_1,
+						 F@_2, F@_3, F@_4, F@_5,
+						 TrUserData);
+      42 ->
+	  d_field_ServerToArbiterOffer_importerName(Rest, 0, 0,
+						    F@_1, F@_2, F@_3, F@_4,
+						    F@_5, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ServerToArbiterOffer(Rest, 0, 0, F@_1, F@_2,
+						 F@_3, F@_4, F@_5, TrUserData);
+	    1 ->
+		skip_64_ServerToArbiterOffer(Rest, 0, 0, F@_1, F@_2,
+					     F@_3, F@_4, F@_5, TrUserData);
+	    2 ->
+		skip_length_delimited_ServerToArbiterOffer(Rest, 0, 0,
+							   F@_1, F@_2, F@_3,
+							   F@_4, F@_5,
+							   TrUserData);
+	    3 ->
+		skip_group_ServerToArbiterOffer(Rest, Key bsr 3, 0,
+						F@_1, F@_2, F@_3, F@_4, F@_5,
+						TrUserData);
+	    5 ->
+		skip_32_ServerToArbiterOffer(Rest, 0, 0, F@_1, F@_2,
+					     F@_3, F@_4, F@_5, TrUserData)
+	  end
+    end;
+dg_read_field_def_ServerToArbiterOffer(<<>>, 0, 0, F@_1,
+				       F@_2, F@_3, F@_4, F@_5, _) ->
+    #'ServerToArbiterOffer'{manufacturerName = F@_1,
+			    productName = F@_2, quantity = F@_3,
+			    unitPrice = F@_4, importerName = F@_5}.
+
+d_field_ServerToArbiterOffer_manufacturerName(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterOffer_manufacturerName(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, F@_5,
+						  TrUserData);
+d_field_ServerToArbiterOffer_manufacturerName(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, _, F@_2, F@_3, F@_4, F@_5,
+					      TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiterOffer(RestF, 0, 0,
+					    NewFValue, F@_2, F@_3, F@_4, F@_5,
+					    TrUserData).
+
+d_field_ServerToArbiterOffer_productName(<<1:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					 TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterOffer_productName(Rest, N + 7,
+					     X bsl N + Acc, F@_1, F@_2, F@_3,
+					     F@_4, F@_5, TrUserData);
+d_field_ServerToArbiterOffer_productName(<<0:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, _, F@_3, F@_4, F@_5,
+					 TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiterOffer(RestF, 0, 0,
+					    F@_1, NewFValue, F@_3, F@_4, F@_5,
+					    TrUserData).
+
+d_field_ServerToArbiterOffer_quantity(<<1:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+				      TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterOffer_quantity(Rest, N + 7,
+					  X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
+					  F@_5, TrUserData);
+d_field_ServerToArbiterOffer_quantity(<<0:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, F@_2, _, F@_4, F@_5,
+				      TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ServerToArbiterOffer(RestF, 0, 0,
+					    F@_1, F@_2, NewFValue, F@_4, F@_5,
+					    TrUserData).
+
+d_field_ServerToArbiterOffer_unitPrice(<<0:16, 128, 127,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, _, F@_5,
+				       TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3,
+					    id(infinity, TrUserData), F@_5,
+					    TrUserData);
+d_field_ServerToArbiterOffer_unitPrice(<<0:16, 128, 255,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, _, F@_5,
+				       TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3,
+					    id('-infinity', TrUserData), F@_5,
+					    TrUserData);
+d_field_ServerToArbiterOffer_unitPrice(<<_:16, 1:1, _:7,
+					 _:1, 127:7, Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, _, F@_5,
+				       TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3,
+					    id(nan, TrUserData), F@_5,
+					    TrUserData);
+d_field_ServerToArbiterOffer_unitPrice(<<Value:32/little-float,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, _, F@_5,
+				       TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3,
+					    id(Value, TrUserData), F@_5,
+					    TrUserData).
+
+d_field_ServerToArbiterOffer_importerName(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					  TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterOffer_importerName(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2, F@_3,
+					      F@_4, F@_5, TrUserData);
+d_field_ServerToArbiterOffer_importerName(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, _,
+					  TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiterOffer(RestF, 0, 0,
+					    F@_1, F@_2, F@_3, F@_4, NewFValue,
+					    TrUserData).
+
+skip_varint_ServerToArbiterOffer(<<1:1, _:7,
+				   Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				 TrUserData) ->
+    skip_varint_ServerToArbiterOffer(Rest, Z1, Z2, F@_1,
+				     F@_2, F@_3, F@_4, F@_5, TrUserData);
+skip_varint_ServerToArbiterOffer(<<0:1, _:7,
+				   Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				 TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, F@_4, F@_5,
+					    TrUserData).
+
+skip_length_delimited_ServerToArbiterOffer(<<1:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ServerToArbiterOffer(Rest, N + 7,
+					       X bsl N + Acc, F@_1, F@_2, F@_3,
+					       F@_4, F@_5, TrUserData);
+skip_length_delimited_ServerToArbiterOffer(<<0:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ServerToArbiterOffer(Rest2, 0, 0,
+					    F@_1, F@_2, F@_3, F@_4, F@_5,
+					    TrUserData).
+
+skip_group_ServerToArbiterOffer(Bin, FNum, Z2, F@_1,
+				F@_2, F@_3, F@_4, F@_5, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ServerToArbiterOffer(Rest, 0, Z2,
+					    F@_1, F@_2, F@_3, F@_4, F@_5,
+					    TrUserData).
+
+skip_32_ServerToArbiterOffer(<<_:32, Rest/binary>>, Z1,
+			     Z2, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, F@_4, F@_5,
+					    TrUserData).
+
+skip_64_ServerToArbiterOffer(<<_:64, Rest/binary>>, Z1,
+			     Z2, F@_1, F@_2, F@_3, F@_4, F@_5, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterOffer(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, F@_4, F@_5,
+					    TrUserData).
+
+decode_msg_ServerToArbiterAnnounce(Bin, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Bin, 0, 0,
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       id(undefined, TrUserData),
+					       TrUserData).
+
+dfp_read_field_def_ServerToArbiterAnnounce(<<10,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   F@_6, TrUserData) ->
+    d_field_ServerToArbiterAnnounce_manufacturerName(Rest,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, F@_5, F@_6,
+						     TrUserData);
+dfp_read_field_def_ServerToArbiterAnnounce(<<18,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   F@_6, TrUserData) ->
+    d_field_ServerToArbiterAnnounce_productName(Rest, Z1,
+						Z2, F@_1, F@_2, F@_3, F@_4,
+						F@_5, F@_6, TrUserData);
+dfp_read_field_def_ServerToArbiterAnnounce(<<24,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   F@_6, TrUserData) ->
+    d_field_ServerToArbiterAnnounce_minQuantity(Rest, Z1,
+						Z2, F@_1, F@_2, F@_3, F@_4,
+						F@_5, F@_6, TrUserData);
+dfp_read_field_def_ServerToArbiterAnnounce(<<32,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   F@_6, TrUserData) ->
+    d_field_ServerToArbiterAnnounce_maxQuantity(Rest, Z1,
+						Z2, F@_1, F@_2, F@_3, F@_4,
+						F@_5, F@_6, TrUserData);
+dfp_read_field_def_ServerToArbiterAnnounce(<<45,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   F@_6, TrUserData) ->
+    d_field_ServerToArbiterAnnounce_minUnitPrice(Rest, Z1,
+						 Z2, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData);
+dfp_read_field_def_ServerToArbiterAnnounce(<<48,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   F@_6, TrUserData) ->
+    d_field_ServerToArbiterAnnounce_timout(Rest, Z1, Z2,
+					   F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+					   TrUserData);
+dfp_read_field_def_ServerToArbiterAnnounce(<<>>, 0, 0,
+					   F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+					   _) ->
+    #'ServerToArbiterAnnounce'{manufacturerName = F@_1,
+			       productName = F@_2, minQuantity = F@_3,
+			       maxQuantity = F@_4, minUnitPrice = F@_5,
+			       timout = F@_6};
+dfp_read_field_def_ServerToArbiterAnnounce(Other, Z1,
+					   Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   F@_6, TrUserData) ->
+    dg_read_field_def_ServerToArbiterAnnounce(Other, Z1, Z2,
+					      F@_1, F@_2, F@_3, F@_4, F@_5,
+					      F@_6, TrUserData).
+
+dg_read_field_def_ServerToArbiterAnnounce(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					  F@_6, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ServerToArbiterAnnounce(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2, F@_3,
+					      F@_4, F@_5, F@_6, TrUserData);
+dg_read_field_def_ServerToArbiterAnnounce(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					  F@_6, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ServerToArbiterAnnounce_manufacturerName(Rest,
+							   0, 0, F@_1, F@_2,
+							   F@_3, F@_4, F@_5,
+							   F@_6, TrUserData);
+      18 ->
+	  d_field_ServerToArbiterAnnounce_productName(Rest, 0, 0,
+						      F@_1, F@_2, F@_3, F@_4,
+						      F@_5, F@_6, TrUserData);
+      24 ->
+	  d_field_ServerToArbiterAnnounce_minQuantity(Rest, 0, 0,
+						      F@_1, F@_2, F@_3, F@_4,
+						      F@_5, F@_6, TrUserData);
+      32 ->
+	  d_field_ServerToArbiterAnnounce_maxQuantity(Rest, 0, 0,
+						      F@_1, F@_2, F@_3, F@_4,
+						      F@_5, F@_6, TrUserData);
+      45 ->
+	  d_field_ServerToArbiterAnnounce_minUnitPrice(Rest, 0, 0,
+						       F@_1, F@_2, F@_3, F@_4,
+						       F@_5, F@_6, TrUserData);
+      48 ->
+	  d_field_ServerToArbiterAnnounce_timout(Rest, 0, 0, F@_1,
+						 F@_2, F@_3, F@_4, F@_5, F@_6,
+						 TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ServerToArbiterAnnounce(Rest, 0, 0, F@_1,
+						    F@_2, F@_3, F@_4, F@_5,
+						    F@_6, TrUserData);
+	    1 ->
+		skip_64_ServerToArbiterAnnounce(Rest, 0, 0, F@_1, F@_2,
+						F@_3, F@_4, F@_5, F@_6,
+						TrUserData);
+	    2 ->
+		skip_length_delimited_ServerToArbiterAnnounce(Rest, 0,
+							      0, F@_1, F@_2,
+							      F@_3, F@_4, F@_5,
+							      F@_6, TrUserData);
+	    3 ->
+		skip_group_ServerToArbiterAnnounce(Rest, Key bsr 3, 0,
+						   F@_1, F@_2, F@_3, F@_4, F@_5,
+						   F@_6, TrUserData);
+	    5 ->
+		skip_32_ServerToArbiterAnnounce(Rest, 0, 0, F@_1, F@_2,
+						F@_3, F@_4, F@_5, F@_6,
+						TrUserData)
+	  end
+    end;
+dg_read_field_def_ServerToArbiterAnnounce(<<>>, 0, 0,
+					  F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+					  _) ->
+    #'ServerToArbiterAnnounce'{manufacturerName = F@_1,
+			       productName = F@_2, minQuantity = F@_3,
+			       maxQuantity = F@_4, minUnitPrice = F@_5,
+			       timout = F@_6}.
+
+d_field_ServerToArbiterAnnounce_manufacturerName(<<1:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterAnnounce_manufacturerName(Rest,
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, F@_3, F@_4, F@_5,
+						     F@_6, TrUserData);
+d_field_ServerToArbiterAnnounce_manufacturerName(<<0:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, _, F@_2, F@_3, F@_4,
+						 F@_5, F@_6, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiterAnnounce(RestF, 0, 0,
+					       NewFValue, F@_2, F@_3, F@_4,
+					       F@_5, F@_6, TrUserData).
+
+d_field_ServerToArbiterAnnounce_productName(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterAnnounce_productName(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2, F@_3,
+						F@_4, F@_5, F@_6, TrUserData);
+d_field_ServerToArbiterAnnounce_productName(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, _, F@_3, F@_4, F@_5,
+					    F@_6, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiterAnnounce(RestF, 0, 0,
+					       F@_1, NewFValue, F@_3, F@_4,
+					       F@_5, F@_6, TrUserData).
+
+d_field_ServerToArbiterAnnounce_minQuantity(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterAnnounce_minQuantity(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2, F@_3,
+						F@_4, F@_5, F@_6, TrUserData);
+d_field_ServerToArbiterAnnounce_minQuantity(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, _, F@_4, F@_5,
+					    F@_6, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ServerToArbiterAnnounce(RestF, 0, 0,
+					       F@_1, F@_2, NewFValue, F@_4,
+					       F@_5, F@_6, TrUserData).
+
+d_field_ServerToArbiterAnnounce_maxQuantity(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, F@_3, F@_4,
+					    F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterAnnounce_maxQuantity(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2, F@_3,
+						F@_4, F@_5, F@_6, TrUserData);
+d_field_ServerToArbiterAnnounce_maxQuantity(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, F@_3, _, F@_5,
+					    F@_6, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ServerToArbiterAnnounce(RestF, 0, 0,
+					       F@_1, F@_2, F@_3, NewFValue,
+					       F@_5, F@_6, TrUserData).
+
+d_field_ServerToArbiterAnnounce_minUnitPrice(<<0:16,
+					       128, 127, Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					     F@_6, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id(infinity, TrUserData), F@_6,
+					       TrUserData);
+d_field_ServerToArbiterAnnounce_minUnitPrice(<<0:16,
+					       128, 255, Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					     F@_6, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id('-infinity', TrUserData),
+					       F@_6, TrUserData);
+d_field_ServerToArbiterAnnounce_minUnitPrice(<<_:16,
+					       1:1, _:7, _:1, 127:7,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					     F@_6, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id(nan, TrUserData), F@_6,
+					       TrUserData);
+d_field_ServerToArbiterAnnounce_minUnitPrice(<<Value:32/little-float,
+					       Rest/binary>>,
+					     Z1, Z2, F@_1, F@_2, F@_3, F@_4, _,
+					     F@_6, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4,
+					       id(Value, TrUserData), F@_6,
+					       TrUserData).
+
+d_field_ServerToArbiterAnnounce_timout(<<1:1, X:7,
+					 Rest/binary>>,
+				       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+				       F@_6, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterAnnounce_timout(Rest, N + 7,
+					   X bsl N + Acc, F@_1, F@_2, F@_3,
+					   F@_4, F@_5, F@_6, TrUserData);
+d_field_ServerToArbiterAnnounce_timout(<<0:1, X:7,
+					 Rest/binary>>,
+				       N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5, _,
+				       TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ServerToArbiterAnnounce(RestF, 0, 0,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       NewFValue, TrUserData).
+
+skip_varint_ServerToArbiterAnnounce(<<1:1, _:7,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+				    TrUserData) ->
+    skip_varint_ServerToArbiterAnnounce(Rest, Z1, Z2, F@_1,
+					F@_2, F@_3, F@_4, F@_5, F@_6,
+					TrUserData);
+skip_varint_ServerToArbiterAnnounce(<<0:1, _:7,
+				      Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+				    TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       F@_6, TrUserData).
+
+skip_length_delimited_ServerToArbiterAnnounce(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, F@_6, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ServerToArbiterAnnounce(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, F@_3, F@_4, F@_5, F@_6,
+						  TrUserData);
+skip_length_delimited_ServerToArbiterAnnounce(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, F@_3, F@_4,
+					      F@_5, F@_6, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest2, 0, 0,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       F@_6, TrUserData).
+
+skip_group_ServerToArbiterAnnounce(Bin, FNum, Z2, F@_1,
+				   F@_2, F@_3, F@_4, F@_5, F@_6, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, 0, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       F@_6, TrUserData).
+
+skip_32_ServerToArbiterAnnounce(<<_:32, Rest/binary>>,
+				Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+				TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       F@_6, TrUserData).
+
+skip_64_ServerToArbiterAnnounce(<<_:64, Rest/binary>>,
+				Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
+				TrUserData) ->
+    dfp_read_field_def_ServerToArbiterAnnounce(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       F@_6, TrUserData).
+
+decode_msg_ServerToArbiterSubscribe(Bin, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterSubscribe(Bin, 0, 0,
+						id(undefined, TrUserData),
+						id([], TrUserData), TrUserData).
+
+dfp_read_field_def_ServerToArbiterSubscribe(<<10,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_ServerToArbiterSubscribe_importerName(Rest, Z1,
+						  Z2, F@_1, F@_2, TrUserData);
+dfp_read_field_def_ServerToArbiterSubscribe(<<18,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_ServerToArbiterSubscribe_manufacturerNames(Rest,
+						       Z1, Z2, F@_1, F@_2,
+						       TrUserData);
+dfp_read_field_def_ServerToArbiterSubscribe(<<>>, 0, 0,
+					    F@_1, R1, TrUserData) ->
+    #'ServerToArbiterSubscribe'{importerName = F@_1,
+				manufacturerNames =
+				    lists_reverse(R1, TrUserData)};
+dfp_read_field_def_ServerToArbiterSubscribe(Other, Z1,
+					    Z2, F@_1, F@_2, TrUserData) ->
+    dg_read_field_def_ServerToArbiterSubscribe(Other, Z1,
+					       Z2, F@_1, F@_2, TrUserData).
+
+dg_read_field_def_ServerToArbiterSubscribe(<<1:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ServerToArbiterSubscribe(Rest, N + 7,
+					       X bsl N + Acc, F@_1, F@_2,
+					       TrUserData);
+dg_read_field_def_ServerToArbiterSubscribe(<<0:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ServerToArbiterSubscribe_importerName(Rest, 0,
+							0, F@_1, F@_2,
+							TrUserData);
+      18 ->
+	  d_field_ServerToArbiterSubscribe_manufacturerNames(Rest,
+							     0, 0, F@_1, F@_2,
+							     TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ServerToArbiterSubscribe(Rest, 0, 0, F@_1,
+						     F@_2, TrUserData);
+	    1 ->
+		skip_64_ServerToArbiterSubscribe(Rest, 0, 0, F@_1, F@_2,
+						 TrUserData);
+	    2 ->
+		skip_length_delimited_ServerToArbiterSubscribe(Rest, 0,
+							       0, F@_1, F@_2,
+							       TrUserData);
+	    3 ->
+		skip_group_ServerToArbiterSubscribe(Rest, Key bsr 3, 0,
+						    F@_1, F@_2, TrUserData);
+	    5 ->
+		skip_32_ServerToArbiterSubscribe(Rest, 0, 0, F@_1, F@_2,
+						 TrUserData)
+	  end
+    end;
+dg_read_field_def_ServerToArbiterSubscribe(<<>>, 0, 0,
+					   F@_1, R1, TrUserData) ->
+    #'ServerToArbiterSubscribe'{importerName = F@_1,
+				manufacturerNames =
+				    lists_reverse(R1, TrUserData)}.
+
+d_field_ServerToArbiterSubscribe_importerName(<<1:1,
+						X:7, Rest/binary>>,
+					      N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterSubscribe_importerName(Rest,
+						  N + 7, X bsl N + Acc, F@_1,
+						  F@_2, TrUserData);
+d_field_ServerToArbiterSubscribe_importerName(<<0:1,
+						X:7, Rest/binary>>,
+					      N, Acc, _, F@_2, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiterSubscribe(RestF, 0, 0,
+						NewFValue, F@_2, TrUserData).
+
+d_field_ServerToArbiterSubscribe_manufacturerNames(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2,
+						   TrUserData)
+    when N < 57 ->
+    d_field_ServerToArbiterSubscribe_manufacturerNames(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, TrUserData);
+d_field_ServerToArbiterSubscribe_manufacturerNames(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, Prev,
+						   TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToArbiterSubscribe(RestF, 0, 0,
+						F@_1,
+						cons(NewFValue, Prev,
+						     TrUserData),
+						TrUserData).
+
+skip_varint_ServerToArbiterSubscribe(<<1:1, _:7,
+				       Rest/binary>>,
+				     Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_ServerToArbiterSubscribe(Rest, Z1, Z2, F@_1,
+					 F@_2, TrUserData);
+skip_varint_ServerToArbiterSubscribe(<<0:1, _:7,
+				       Rest/binary>>,
+				     Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterSubscribe(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData).
+
+skip_length_delimited_ServerToArbiterSubscribe(<<1:1,
+						 X:7, Rest/binary>>,
+					       N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ServerToArbiterSubscribe(Rest,
+						   N + 7, X bsl N + Acc, F@_1,
+						   F@_2, TrUserData);
+skip_length_delimited_ServerToArbiterSubscribe(<<0:1,
+						 X:7, Rest/binary>>,
+					       N, Acc, F@_1, F@_2,
+					       TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ServerToArbiterSubscribe(Rest2, 0, 0,
+						F@_1, F@_2, TrUserData).
+
+skip_group_ServerToArbiterSubscribe(Bin, FNum, Z2, F@_1,
+				    F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ServerToArbiterSubscribe(Rest, 0, Z2,
+						F@_1, F@_2, TrUserData).
+
+skip_32_ServerToArbiterSubscribe(<<_:32, Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterSubscribe(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData).
+
+skip_64_ServerToArbiterSubscribe(<<_:64, Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ServerToArbiterSubscribe(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData).
 
 d_enum_ClientType(0) -> 'IMPORTER';
 d_enum_ClientType(1) -> 'MANUFACTURER';
@@ -9335,32 +9590,6 @@ merge_msgs(Prev, New, Opts)
 merge_msgs(Prev, New, MsgName, Opts) ->
     TrUserData = proplists:get_value(user_data, Opts),
     case MsgName of
-      'MsgAuth' -> merge_msg_MsgAuth(Prev, New, TrUserData);
-      'MsgAck' -> merge_msg_MsgAck(Prev, New, TrUserData);
-      'DisponibilityS' ->
-	  merge_msg_DisponibilityS(Prev, New, TrUserData);
-      'DisponibilityN' ->
-	  merge_msg_DisponibilityN(Prev, New, TrUserData);
-      'OrderS' -> merge_msg_OrderS(Prev, New, TrUserData);
-      'OrderN' -> merge_msg_OrderN(Prev, New, TrUserData);
-      'OrderAckS' ->
-	  merge_msg_OrderAckS(Prev, New, TrUserData);
-      'OrderAckI' ->
-	  merge_msg_OrderAckI(Prev, New, TrUserData);
-      'SubS' -> merge_msg_SubS(Prev, New, TrUserData);
-      'SubN' -> merge_msg_SubN(Prev, New, TrUserData);
-      'ProductionS' ->
-	  merge_msg_ProductionS(Prev, New, TrUserData);
-      'ProductionM' ->
-	  merge_msg_ProductionM(Prev, New, TrUserData);
-      'ResultS' -> merge_msg_ResultS(Prev, New, TrUserData);
-      'ResultI' -> merge_msg_ResultI(Prev, New, TrUserData);
-      'InfoS' -> merge_msg_InfoS(Prev, New, TrUserData);
-      'InfoI' -> merge_msg_InfoI(Prev, New, TrUserData);
-      'Server' -> merge_msg_Server(Prev, New, TrUserData);
-      'Importer' -> merge_msg_Importer(Prev, New, TrUserData);
-      'Negotiator' ->
-	  merge_msg_Negotiator(Prev, New, TrUserData);
       'ClientToServer' ->
 	  merge_msg_ClientToServer(Prev, New, TrUserData);
       'ClientToServerLogin' ->
@@ -9411,217 +9640,47 @@ merge_msgs(Prev, New, MsgName, Opts) ->
 					      TrUserData);
       'ServerToImporterNewProduct' ->
 	  merge_msg_ServerToImporterNewProduct(Prev, New,
-					       TrUserData)
+					       TrUserData);
+      'ArbiterToServer' ->
+	  merge_msg_ArbiterToServer(Prev, New, TrUserData);
+      'ArbiterToServerAnnounceAccepted' ->
+	  merge_msg_ArbiterToServerAnnounceAccepted(Prev, New,
+						    TrUserData);
+      'ArbiterToServerAnnounceInvalid' ->
+	  merge_msg_ArbiterToServerAnnounceInvalid(Prev, New,
+						   TrUserData);
+      'ArbiterToServerAnnounceSold' ->
+	  merge_msg_ArbiterToServerAnnounceSold(Prev, New,
+						TrUserData);
+      'ArbiterToServerAnnounceNoOffers' ->
+	  merge_msg_ArbiterToServerAnnounceNoOffers(Prev, New,
+						    TrUserData);
+      'ArbiterToServerOfferSubmitted' ->
+	  merge_msg_ArbiterToServerOfferSubmitted(Prev, New,
+						  TrUserData);
+      'ArbiterToServerOfferInvalid' ->
+	  merge_msg_ArbiterToServerOfferInvalid(Prev, New,
+						TrUserData);
+      'ArbiterToServerOfferWon' ->
+	  merge_msg_ArbiterToServerOfferWon(Prev, New,
+					    TrUserData);
+      'ArbiterToServerOfferLose' ->
+	  merge_msg_ArbiterToServerOfferLose(Prev, New,
+					     TrUserData);
+      'ArbiterToServerNewProduct' ->
+	  merge_msg_ArbiterToServerNewProduct(Prev, New,
+					      TrUserData);
+      'ServerToArbiter' ->
+	  merge_msg_ServerToArbiter(Prev, New, TrUserData);
+      'ServerToArbiterOffer' ->
+	  merge_msg_ServerToArbiterOffer(Prev, New, TrUserData);
+      'ServerToArbiterAnnounce' ->
+	  merge_msg_ServerToArbiterAnnounce(Prev, New,
+					    TrUserData);
+      'ServerToArbiterSubscribe' ->
+	  merge_msg_ServerToArbiterSubscribe(Prev, New,
+					     TrUserData)
     end.
-
--compile({nowarn_unused_function,merge_msg_MsgAuth/3}).
-merge_msg_MsgAuth(#'MsgAuth'{},
-		  #'MsgAuth'{name = NFname, pass = NFpass,
-			     ctype = NFctype, mtype = NFmtype},
-		  _) ->
-    #'MsgAuth'{name = NFname, pass = NFpass,
-	       ctype = NFctype, mtype = NFmtype}.
-
--compile({nowarn_unused_function,merge_msg_MsgAck/3}).
-merge_msg_MsgAck(#'MsgAck'{msg = PFmsg},
-		 #'MsgAck'{ok = NFok, msg = NFmsg}, _) ->
-    #'MsgAck'{ok = NFok,
-	      msg =
-		  if NFmsg =:= undefined -> PFmsg;
-		     true -> NFmsg
-		  end}.
-
--compile({nowarn_unused_function,merge_msg_DisponibilityS/3}).
-merge_msg_DisponibilityS(#'DisponibilityS'{},
-			 #'DisponibilityS'{nameM = NFnameM, nameP = NFnameP,
-					   minimum = NFminimum,
-					   maximum = NFmaximum, value = NFvalue,
-					   period = NFperiod},
-			 _) ->
-    #'DisponibilityS'{nameM = NFnameM, nameP = NFnameP,
-		      minimum = NFminimum, maximum = NFmaximum,
-		      value = NFvalue, period = NFperiod}.
-
--compile({nowarn_unused_function,merge_msg_DisponibilityN/3}).
-merge_msg_DisponibilityN(#'DisponibilityN'{},
-			 #'DisponibilityN'{nameM = NFnameM, nameP = NFnameP,
-					   minimum = NFminimum,
-					   maximum = NFmaximum, value = NFvalue,
-					   period = NFperiod},
-			 _) ->
-    #'DisponibilityN'{nameM = NFnameM, nameP = NFnameP,
-		      minimum = NFminimum, maximum = NFmaximum,
-		      value = NFvalue, period = NFperiod}.
-
--compile({nowarn_unused_function,merge_msg_OrderS/3}).
-merge_msg_OrderS(#'OrderS'{},
-		 #'OrderS'{nameM = NFnameM, nameP = NFnameP,
-			   quant = NFquant, value = NFvalue, nameI = NFnameI},
-		 _) ->
-    #'OrderS'{nameM = NFnameM, nameP = NFnameP,
-	      quant = NFquant, value = NFvalue, nameI = NFnameI}.
-
--compile({nowarn_unused_function,merge_msg_OrderN/3}).
-merge_msg_OrderN(#'OrderN'{},
-		 #'OrderN'{nameM = NFnameM, nameP = NFnameP,
-			   quant = NFquant, value = NFvalue, nameI = NFnameI},
-		 _) ->
-    #'OrderN'{nameM = NFnameM, nameP = NFnameP,
-	      quant = NFquant, value = NFvalue, nameI = NFnameI}.
-
--compile({nowarn_unused_function,merge_msg_OrderAckS/3}).
-merge_msg_OrderAckS(#'OrderAckS'{msg = PFmsg},
-		    #'OrderAckS'{ack = NFack, msg = NFmsg, nameI = NFnameI,
-				 outdated = NFoutdated},
-		    _) ->
-    #'OrderAckS'{ack = NFack,
-		 msg =
-		     if NFmsg =:= undefined -> PFmsg;
-			true -> NFmsg
-		     end,
-		 nameI = NFnameI, outdated = NFoutdated}.
-
--compile({nowarn_unused_function,merge_msg_OrderAckI/3}).
-merge_msg_OrderAckI(#'OrderAckI'{msg = PFmsg},
-		    #'OrderAckI'{ack = NFack, msg = NFmsg,
-				 outdated = NFoutdated},
-		    _) ->
-    #'OrderAckI'{ack = NFack,
-		 msg =
-		     if NFmsg =:= undefined -> PFmsg;
-			true -> NFmsg
-		     end,
-		 outdated = NFoutdated}.
-
--compile({nowarn_unused_function,merge_msg_SubS/3}).
-merge_msg_SubS(#'SubS'{subs = PFsubs},
-	       #'SubS'{nameI = NFnameI, subs = NFsubs}, TrUserData) ->
-    #'SubS'{nameI = NFnameI,
-	    subs =
-		if PFsubs /= undefined, NFsubs /= undefined ->
-		       'erlang_++'(PFsubs, NFsubs, TrUserData);
-		   PFsubs == undefined -> NFsubs;
-		   NFsubs == undefined -> PFsubs
-		end}.
-
--compile({nowarn_unused_function,merge_msg_SubN/3}).
-merge_msg_SubN(#'SubN'{subs = PFsubs},
-	       #'SubN'{nameI = NFnameI, subs = NFsubs}, TrUserData) ->
-    #'SubN'{nameI = NFnameI,
-	    subs =
-		if PFsubs /= undefined, NFsubs /= undefined ->
-		       'erlang_++'(PFsubs, NFsubs, TrUserData);
-		   PFsubs == undefined -> NFsubs;
-		   NFsubs == undefined -> PFsubs
-		end}.
-
--compile({nowarn_unused_function,merge_msg_ProductionS/3}).
-merge_msg_ProductionS(#'ProductionS'{},
-		      #'ProductionS'{nameM = NFnameM, nameP = NFnameP,
-				     quant = NFquant, value = NFvalue},
-		      _) ->
-    #'ProductionS'{nameM = NFnameM, nameP = NFnameP,
-		   quant = NFquant, value = NFvalue}.
-
--compile({nowarn_unused_function,merge_msg_ProductionM/3}).
-merge_msg_ProductionM(#'ProductionM'{},
-		      #'ProductionM'{nameP = NFnameP, quant = NFquant,
-				     value = NFvalue},
-		      _) ->
-    #'ProductionM'{nameP = NFnameP, quant = NFquant,
-		   value = NFvalue}.
-
--compile({nowarn_unused_function,merge_msg_ResultS/3}).
-merge_msg_ResultS(#'ResultS'{},
-		  #'ResultS'{result = NFresult, msg = NFmsg,
-			     nameI = NFnameI},
-		  _) ->
-    #'ResultS'{result = NFresult, msg = NFmsg,
-	       nameI = NFnameI}.
-
--compile({nowarn_unused_function,merge_msg_ResultI/3}).
-merge_msg_ResultI(#'ResultI'{},
-		  #'ResultI'{result = NFresult, msg = NFmsg}, _) ->
-    #'ResultI'{result = NFresult, msg = NFmsg}.
-
--compile({nowarn_unused_function,merge_msg_InfoS/3}).
-merge_msg_InfoS(#'InfoS'{},
-		#'InfoS'{nameM = NFnameM, nameP = NFnameP,
-			 minimum = NFminimum, maximum = NFmaximum,
-			 value = NFvalue, period = NFperiod, nameI = NFnameI},
-		_) ->
-    #'InfoS'{nameM = NFnameM, nameP = NFnameP,
-	     minimum = NFminimum, maximum = NFmaximum,
-	     value = NFvalue, period = NFperiod, nameI = NFnameI}.
-
--compile({nowarn_unused_function,merge_msg_InfoI/3}).
-merge_msg_InfoI(#'InfoI'{},
-		#'InfoI'{nameM = NFnameM, nameP = NFnameP,
-			 minimum = NFminimum, maximum = NFmaximum,
-			 value = NFvalue, period = NFperiod},
-		_) ->
-    #'InfoI'{nameM = NFnameM, nameP = NFnameP,
-	     minimum = NFminimum, maximum = NFmaximum,
-	     value = NFvalue, period = NFperiod}.
-
--compile({nowarn_unused_function,merge_msg_Server/3}).
-merge_msg_Server(#'Server'{msg = PFmsg},
-		 #'Server'{msg = NFmsg}, TrUserData) ->
-    #'Server'{msg =
-		  case {PFmsg, NFmsg} of
-		    {{m1, OPFmsg}, {m1, ONFmsg}} ->
-			{m1,
-			 merge_msg_DisponibilityS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m2, OPFmsg}, {m2, ONFmsg}} ->
-			{m2, merge_msg_OrderS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m3, OPFmsg}, {m3, ONFmsg}} ->
-			{m3, merge_msg_SubS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m4, OPFmsg}, {m4, ONFmsg}} ->
-			{m4, merge_msg_ResultS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m5, OPFmsg}, {m5, ONFmsg}} ->
-			{m5, merge_msg_InfoS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m6, OPFmsg}, {m6, ONFmsg}} ->
-			{m6, merge_msg_ProductionS(OPFmsg, ONFmsg, TrUserData)};
-		    {{m7, OPFmsg}, {m7, ONFmsg}} ->
-			{m7, merge_msg_OrderAckS(OPFmsg, ONFmsg, TrUserData)};
-		    {_, undefined} -> PFmsg;
-		    _ -> NFmsg
-		  end}.
-
--compile({nowarn_unused_function,merge_msg_Importer/3}).
-merge_msg_Importer(#'Importer'{msg = PFmsg},
-		   #'Importer'{msg = NFmsg}, TrUserData) ->
-    #'Importer'{msg =
-		    case {PFmsg, NFmsg} of
-		      {{ordack, OPFmsg}, {ordack, ONFmsg}} ->
-			  {ordack,
-			   merge_msg_OrderAckI(OPFmsg, ONFmsg, TrUserData)};
-		      {{result, OPFmsg}, {result, ONFmsg}} ->
-			  {result,
-			   merge_msg_ResultI(OPFmsg, ONFmsg, TrUserData)};
-		      {{info, OPFmsg}, {info, ONFmsg}} ->
-			  {info, merge_msg_InfoI(OPFmsg, ONFmsg, TrUserData)};
-		      {_, undefined} -> PFmsg;
-		      _ -> NFmsg
-		    end}.
-
--compile({nowarn_unused_function,merge_msg_Negotiator/3}).
-merge_msg_Negotiator(#'Negotiator'{msg = PFmsg},
-		     #'Negotiator'{msg = NFmsg}, TrUserData) ->
-    #'Negotiator'{msg =
-		      case {PFmsg, NFmsg} of
-			{{sub, OPFmsg}, {sub, ONFmsg}} ->
-			    {sub, merge_msg_SubN(OPFmsg, ONFmsg, TrUserData)};
-			{{order, OPFmsg}, {order, ONFmsg}} ->
-			    {order,
-			     merge_msg_OrderN(OPFmsg, ONFmsg, TrUserData)};
-			{{disponibility, OPFmsg}, {disponibility, ONFmsg}} ->
-			    {disponibility,
-			     merge_msg_DisponibilityN(OPFmsg, ONFmsg,
-						      TrUserData)};
-			{_, undefined} -> PFmsg;
-			_ -> NFmsg
-		      end}.
 
 -compile({nowarn_unused_function,merge_msg_ClientToServer/3}).
 merge_msg_ClientToServer(#'ClientToServer'{message =
@@ -9762,9 +9821,13 @@ merge_msg_ServerToManufacturer(#'ServerToManufacturer'{message
 				end}.
 
 -compile({nowarn_unused_function,merge_msg_ServerToManufacturerAnnounced/3}).
-merge_msg_ServerToManufacturerAnnounced(_Prev, New,
-					_TrUserData) ->
-    New.
+merge_msg_ServerToManufacturerAnnounced(#'ServerToManufacturerAnnounced'{},
+					#'ServerToManufacturerAnnounced'{productName
+									     =
+									     NFproductName},
+					_) ->
+    #'ServerToManufacturerAnnounced'{productName =
+					 NFproductName}.
 
 -compile({nowarn_unused_function,merge_msg_ServerToManufacturerInvalid/3}).
 merge_msg_ServerToManufacturerInvalid(#'ServerToManufacturerInvalid'{errorMessage
@@ -9824,25 +9887,25 @@ merge_msg_ImporterToServer(#'ImporterToServer'{message =
 			    end}.
 
 -compile({nowarn_unused_function,merge_msg_ImporterToServerSubscribe/3}).
-merge_msg_ImporterToServerSubscribe(#'ImporterToServerSubscribe'{manufacturerName
+merge_msg_ImporterToServerSubscribe(#'ImporterToServerSubscribe'{manufacturerNames
 								     =
-								     PFmanufacturerName},
-				    #'ImporterToServerSubscribe'{manufacturerName
+								     PFmanufacturerNames},
+				    #'ImporterToServerSubscribe'{manufacturerNames
 								     =
-								     NFmanufacturerName,
+								     NFmanufacturerNames,
 								 importerName =
 								     NFimporterName},
 				    TrUserData) ->
-    #'ImporterToServerSubscribe'{manufacturerName =
-				     if PFmanufacturerName /= undefined,
-					NFmanufacturerName /= undefined ->
-					    'erlang_++'(PFmanufacturerName,
-							NFmanufacturerName,
+    #'ImporterToServerSubscribe'{manufacturerNames =
+				     if PFmanufacturerNames /= undefined,
+					NFmanufacturerNames /= undefined ->
+					    'erlang_++'(PFmanufacturerNames,
+							NFmanufacturerNames,
 							TrUserData);
-					PFmanufacturerName == undefined ->
-					    NFmanufacturerName;
-					NFmanufacturerName == undefined ->
-					    PFmanufacturerName
+					PFmanufacturerNames == undefined ->
+					    NFmanufacturerNames;
+					NFmanufacturerNames == undefined ->
+					    PFmanufacturerNames
 				     end,
 				 importerName = NFimporterName}.
 
@@ -9906,18 +9969,34 @@ merge_msg_ServerToImporter(#'ServerToImporter'{message =
 			    end}.
 
 -compile({nowarn_unused_function,merge_msg_ServerToImporterOfferSubmitted/3}).
-merge_msg_ServerToImporterOfferSubmitted(_Prev, New,
-					 _TrUserData) ->
-    New.
+merge_msg_ServerToImporterOfferSubmitted(#'ServerToImporterOfferSubmitted'{},
+					 #'ServerToImporterOfferSubmitted'{manufacturerName
+									       =
+									       NFmanufacturerName,
+									   productName
+									       =
+									       NFproductName},
+					 _) ->
+    #'ServerToImporterOfferSubmitted'{manufacturerName =
+					  NFmanufacturerName,
+				      productName = NFproductName}.
 
 -compile({nowarn_unused_function,merge_msg_ServerToImporterOfferInvalid/3}).
 merge_msg_ServerToImporterOfferInvalid(#'ServerToImporterOfferInvalid'{},
-				       #'ServerToImporterOfferInvalid'{errorMessage
+				       #'ServerToImporterOfferInvalid'{manufacturerName
+									   =
+									   NFmanufacturerName,
+								       productName
+									   =
+									   NFproductName,
+								       errorMessage
 									   =
 									   NFerrorMessage},
 				       _) ->
-    #'ServerToImporterOfferInvalid'{errorMessage =
-					NFerrorMessage}.
+    #'ServerToImporterOfferInvalid'{manufacturerName =
+					NFmanufacturerName,
+				    productName = NFproductName,
+				    errorMessage = NFerrorMessage}.
 
 -compile({nowarn_unused_function,merge_msg_ServerToImporterOfferWon/3}).
 merge_msg_ServerToImporterOfferWon(#'ServerToImporterOfferWon'{},
@@ -9973,6 +10052,313 @@ merge_msg_ServerToImporterNewProduct(#'ServerToImporterNewProduct'{},
 				  timeout = NFtimeout,
 				  manufacturerName = NFmanufacturerName}.
 
+-compile({nowarn_unused_function,merge_msg_ArbiterToServer/3}).
+merge_msg_ArbiterToServer(#'ArbiterToServer'{message =
+						 PFmessage},
+			  #'ArbiterToServer'{message = NFmessage},
+			  TrUserData) ->
+    #'ArbiterToServer'{message =
+			   case {PFmessage, NFmessage} of
+			     {{accepted, OPFmessage}, {accepted, ONFmessage}} ->
+				 {accepted,
+				  merge_msg_ArbiterToServerAnnounceAccepted(OPFmessage,
+									    ONFmessage,
+									    TrUserData)};
+			     {{announceInvalid, OPFmessage},
+			      {announceInvalid, ONFmessage}} ->
+				 {announceInvalid,
+				  merge_msg_ArbiterToServerAnnounceInvalid(OPFmessage,
+									   ONFmessage,
+									   TrUserData)};
+			     {{sold, OPFmessage}, {sold, ONFmessage}} ->
+				 {sold,
+				  merge_msg_ArbiterToServerAnnounceSold(OPFmessage,
+									ONFmessage,
+									TrUserData)};
+			     {{noOffers, OPFmessage}, {noOffers, ONFmessage}} ->
+				 {noOffers,
+				  merge_msg_ArbiterToServerAnnounceNoOffers(OPFmessage,
+									    ONFmessage,
+									    TrUserData)};
+			     {{submitted, OPFmessage},
+			      {submitted, ONFmessage}} ->
+				 {submitted,
+				  merge_msg_ArbiterToServerOfferSubmitted(OPFmessage,
+									  ONFmessage,
+									  TrUserData)};
+			     {{offerInvalid, OPFmessage},
+			      {offerInvalid, ONFmessage}} ->
+				 {offerInvalid,
+				  merge_msg_ArbiterToServerOfferInvalid(OPFmessage,
+									ONFmessage,
+									TrUserData)};
+			     {{won, OPFmessage}, {won, ONFmessage}} ->
+				 {won,
+				  merge_msg_ArbiterToServerOfferWon(OPFmessage,
+								    ONFmessage,
+								    TrUserData)};
+			     {{lose, OPFmessage}, {lose, ONFmessage}} ->
+				 {lose,
+				  merge_msg_ArbiterToServerOfferLose(OPFmessage,
+								     ONFmessage,
+								     TrUserData)};
+			     {{product, OPFmessage}, {product, ONFmessage}} ->
+				 {product,
+				  merge_msg_ArbiterToServerNewProduct(OPFmessage,
+								      ONFmessage,
+								      TrUserData)};
+			     {_, undefined} -> PFmessage;
+			     _ -> NFmessage
+			   end}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerAnnounceAccepted/3}).
+merge_msg_ArbiterToServerAnnounceAccepted(#'ArbiterToServerAnnounceAccepted'{},
+					  #'ArbiterToServerAnnounceAccepted'{manufacturerName
+										 =
+										 NFmanufacturerName,
+									     productName
+										 =
+										 NFproductName},
+					  _) ->
+    #'ArbiterToServerAnnounceAccepted'{manufacturerName =
+					   NFmanufacturerName,
+				       productName = NFproductName}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerAnnounceInvalid/3}).
+merge_msg_ArbiterToServerAnnounceInvalid(#'ArbiterToServerAnnounceInvalid'{},
+					 #'ArbiterToServerAnnounceInvalid'{manufacturerName
+									       =
+									       NFmanufacturerName,
+									   productName
+									       =
+									       NFproductName,
+									   errorMessage
+									       =
+									       NFerrorMessage},
+					 _) ->
+    #'ArbiterToServerAnnounceInvalid'{manufacturerName =
+					  NFmanufacturerName,
+				      productName = NFproductName,
+				      errorMessage = NFerrorMessage}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerAnnounceSold/3}).
+merge_msg_ArbiterToServerAnnounceSold(#'ArbiterToServerAnnounceSold'{},
+				      #'ArbiterToServerAnnounceSold'{manufacturerName
+									 =
+									 NFmanufacturerName,
+								     productName
+									 =
+									 NFproductName,
+								     quantity =
+									 NFquantity,
+								     unitPrice =
+									 NFunitPrice},
+				      _) ->
+    #'ArbiterToServerAnnounceSold'{manufacturerName =
+				       NFmanufacturerName,
+				   productName = NFproductName,
+				   quantity = NFquantity,
+				   unitPrice = NFunitPrice}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerAnnounceNoOffers/3}).
+merge_msg_ArbiterToServerAnnounceNoOffers(#'ArbiterToServerAnnounceNoOffers'{},
+					  #'ArbiterToServerAnnounceNoOffers'{manufacturerName
+										 =
+										 NFmanufacturerName,
+									     productName
+										 =
+										 NFproductName},
+					  _) ->
+    #'ArbiterToServerAnnounceNoOffers'{manufacturerName =
+					   NFmanufacturerName,
+				       productName = NFproductName}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerOfferSubmitted/3}).
+merge_msg_ArbiterToServerOfferSubmitted(#'ArbiterToServerOfferSubmitted'{},
+					#'ArbiterToServerOfferSubmitted'{importerName
+									     =
+									     NFimporterName,
+									 productName
+									     =
+									     NFproductName,
+									 manufacturerName
+									     =
+									     NFmanufacturerName},
+					_) ->
+    #'ArbiterToServerOfferSubmitted'{importerName =
+					 NFimporterName,
+				     productName = NFproductName,
+				     manufacturerName = NFmanufacturerName}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerOfferInvalid/3}).
+merge_msg_ArbiterToServerOfferInvalid(#'ArbiterToServerOfferInvalid'{},
+				      #'ArbiterToServerOfferInvalid'{importerName
+									 =
+									 NFimporterName,
+								     productName
+									 =
+									 NFproductName,
+								     manufacturerName
+									 =
+									 NFmanufacturerName,
+								     errorMessage
+									 =
+									 NFerrorMessage},
+				      _) ->
+    #'ArbiterToServerOfferInvalid'{importerName =
+				       NFimporterName,
+				   productName = NFproductName,
+				   manufacturerName = NFmanufacturerName,
+				   errorMessage = NFerrorMessage}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerOfferWon/3}).
+merge_msg_ArbiterToServerOfferWon(#'ArbiterToServerOfferWon'{},
+				  #'ArbiterToServerOfferWon'{importerName =
+								 NFimporterName,
+							     productName =
+								 NFproductName,
+							     manufacturerName =
+								 NFmanufacturerName,
+							     quantity =
+								 NFquantity,
+							     unitPrice =
+								 NFunitPrice},
+				  _) ->
+    #'ArbiterToServerOfferWon'{importerName =
+				   NFimporterName,
+			       productName = NFproductName,
+			       manufacturerName = NFmanufacturerName,
+			       quantity = NFquantity, unitPrice = NFunitPrice}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerOfferLose/3}).
+merge_msg_ArbiterToServerOfferLose(#'ArbiterToServerOfferLose'{},
+				   #'ArbiterToServerOfferLose'{importerName =
+								   NFimporterName,
+							       productName =
+								   NFproductName,
+							       manufacturerName
+								   =
+								   NFmanufacturerName},
+				   _) ->
+    #'ArbiterToServerOfferLose'{importerName =
+				    NFimporterName,
+				productName = NFproductName,
+				manufacturerName = NFmanufacturerName}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToServerNewProduct/3}).
+merge_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{},
+				    #'ArbiterToServerNewProduct'{manufacturerName
+								     =
+								     NFmanufacturerName,
+								 productName =
+								     NFproductName,
+								 minQuantity =
+								     NFminQuantity,
+								 maxQuantity =
+								     NFmaxQuantity,
+								 minUnitPrice =
+								     NFminUnitPrice,
+								 timout =
+								     NFtimout},
+				    _) ->
+    #'ArbiterToServerNewProduct'{manufacturerName =
+				     NFmanufacturerName,
+				 productName = NFproductName,
+				 minQuantity = NFminQuantity,
+				 maxQuantity = NFmaxQuantity,
+				 minUnitPrice = NFminUnitPrice,
+				 timout = NFtimout}.
+
+-compile({nowarn_unused_function,merge_msg_ServerToArbiter/3}).
+merge_msg_ServerToArbiter(#'ServerToArbiter'{message =
+						 PFmessage},
+			  #'ServerToArbiter'{message = NFmessage},
+			  TrUserData) ->
+    #'ServerToArbiter'{message =
+			   case {PFmessage, NFmessage} of
+			     {{offer, OPFmessage}, {offer, ONFmessage}} ->
+				 {offer,
+				  merge_msg_ServerToArbiterOffer(OPFmessage,
+								 ONFmessage,
+								 TrUserData)};
+			     {{announce, OPFmessage}, {announce, ONFmessage}} ->
+				 {announce,
+				  merge_msg_ServerToArbiterAnnounce(OPFmessage,
+								    ONFmessage,
+								    TrUserData)};
+			     {{subscribe, OPFmessage},
+			      {subscribe, ONFmessage}} ->
+				 {subscribe,
+				  merge_msg_ServerToArbiterSubscribe(OPFmessage,
+								     ONFmessage,
+								     TrUserData)};
+			     {_, undefined} -> PFmessage;
+			     _ -> NFmessage
+			   end}.
+
+-compile({nowarn_unused_function,merge_msg_ServerToArbiterOffer/3}).
+merge_msg_ServerToArbiterOffer(#'ServerToArbiterOffer'{},
+			       #'ServerToArbiterOffer'{manufacturerName =
+							   NFmanufacturerName,
+						       productName =
+							   NFproductName,
+						       quantity = NFquantity,
+						       unitPrice = NFunitPrice,
+						       importerName =
+							   NFimporterName},
+			       _) ->
+    #'ServerToArbiterOffer'{manufacturerName =
+				NFmanufacturerName,
+			    productName = NFproductName, quantity = NFquantity,
+			    unitPrice = NFunitPrice,
+			    importerName = NFimporterName}.
+
+-compile({nowarn_unused_function,merge_msg_ServerToArbiterAnnounce/3}).
+merge_msg_ServerToArbiterAnnounce(#'ServerToArbiterAnnounce'{},
+				  #'ServerToArbiterAnnounce'{manufacturerName =
+								 NFmanufacturerName,
+							     productName =
+								 NFproductName,
+							     minQuantity =
+								 NFminQuantity,
+							     maxQuantity =
+								 NFmaxQuantity,
+							     minUnitPrice =
+								 NFminUnitPrice,
+							     timout = NFtimout},
+				  _) ->
+    #'ServerToArbiterAnnounce'{manufacturerName =
+				   NFmanufacturerName,
+			       productName = NFproductName,
+			       minQuantity = NFminQuantity,
+			       maxQuantity = NFmaxQuantity,
+			       minUnitPrice = NFminUnitPrice,
+			       timout = NFtimout}.
+
+-compile({nowarn_unused_function,merge_msg_ServerToArbiterSubscribe/3}).
+merge_msg_ServerToArbiterSubscribe(#'ServerToArbiterSubscribe'{manufacturerNames
+								   =
+								   PFmanufacturerNames},
+				   #'ServerToArbiterSubscribe'{importerName =
+								   NFimporterName,
+							       manufacturerNames
+								   =
+								   NFmanufacturerNames},
+				   TrUserData) ->
+    #'ServerToArbiterSubscribe'{importerName =
+				    NFimporterName,
+				manufacturerNames =
+				    if PFmanufacturerNames /= undefined,
+				       NFmanufacturerNames /= undefined ->
+					   'erlang_++'(PFmanufacturerNames,
+						       NFmanufacturerNames,
+						       TrUserData);
+				       PFmanufacturerNames == undefined ->
+					   NFmanufacturerNames;
+				       NFmanufacturerNames == undefined ->
+					   PFmanufacturerNames
+				    end}.
+
 
 verify_msg(Msg) when tuple_size(Msg) >= 1 ->
     verify_msg(Msg, element(1, Msg), []);
@@ -9989,33 +10375,6 @@ verify_msg(X, _Opts) ->
 verify_msg(Msg, MsgName, Opts) ->
     TrUserData = proplists:get_value(user_data, Opts),
     case MsgName of
-      'MsgAuth' -> v_msg_MsgAuth(Msg, [MsgName], TrUserData);
-      'MsgAck' -> v_msg_MsgAck(Msg, [MsgName], TrUserData);
-      'DisponibilityS' ->
-	  v_msg_DisponibilityS(Msg, [MsgName], TrUserData);
-      'DisponibilityN' ->
-	  v_msg_DisponibilityN(Msg, [MsgName], TrUserData);
-      'OrderS' -> v_msg_OrderS(Msg, [MsgName], TrUserData);
-      'OrderN' -> v_msg_OrderN(Msg, [MsgName], TrUserData);
-      'OrderAckS' ->
-	  v_msg_OrderAckS(Msg, [MsgName], TrUserData);
-      'OrderAckI' ->
-	  v_msg_OrderAckI(Msg, [MsgName], TrUserData);
-      'SubS' -> v_msg_SubS(Msg, [MsgName], TrUserData);
-      'SubN' -> v_msg_SubN(Msg, [MsgName], TrUserData);
-      'ProductionS' ->
-	  v_msg_ProductionS(Msg, [MsgName], TrUserData);
-      'ProductionM' ->
-	  v_msg_ProductionM(Msg, [MsgName], TrUserData);
-      'ResultS' -> v_msg_ResultS(Msg, [MsgName], TrUserData);
-      'ResultI' -> v_msg_ResultI(Msg, [MsgName], TrUserData);
-      'InfoS' -> v_msg_InfoS(Msg, [MsgName], TrUserData);
-      'InfoI' -> v_msg_InfoI(Msg, [MsgName], TrUserData);
-      'Server' -> v_msg_Server(Msg, [MsgName], TrUserData);
-      'Importer' ->
-	  v_msg_Importer(Msg, [MsgName], TrUserData);
-      'Negotiator' ->
-	  v_msg_Negotiator(Msg, [MsgName], TrUserData);
       'ClientToServer' ->
 	  v_msg_ClientToServer(Msg, [MsgName], TrUserData);
       'ClientToServerLogin' ->
@@ -10068,302 +10427,48 @@ verify_msg(Msg, MsgName, Opts) ->
       'ServerToImporterNewProduct' ->
 	  v_msg_ServerToImporterNewProduct(Msg, [MsgName],
 					   TrUserData);
+      'ArbiterToServer' ->
+	  v_msg_ArbiterToServer(Msg, [MsgName], TrUserData);
+      'ArbiterToServerAnnounceAccepted' ->
+	  v_msg_ArbiterToServerAnnounceAccepted(Msg, [MsgName],
+						TrUserData);
+      'ArbiterToServerAnnounceInvalid' ->
+	  v_msg_ArbiterToServerAnnounceInvalid(Msg, [MsgName],
+					       TrUserData);
+      'ArbiterToServerAnnounceSold' ->
+	  v_msg_ArbiterToServerAnnounceSold(Msg, [MsgName],
+					    TrUserData);
+      'ArbiterToServerAnnounceNoOffers' ->
+	  v_msg_ArbiterToServerAnnounceNoOffers(Msg, [MsgName],
+						TrUserData);
+      'ArbiterToServerOfferSubmitted' ->
+	  v_msg_ArbiterToServerOfferSubmitted(Msg, [MsgName],
+					      TrUserData);
+      'ArbiterToServerOfferInvalid' ->
+	  v_msg_ArbiterToServerOfferInvalid(Msg, [MsgName],
+					    TrUserData);
+      'ArbiterToServerOfferWon' ->
+	  v_msg_ArbiterToServerOfferWon(Msg, [MsgName],
+					TrUserData);
+      'ArbiterToServerOfferLose' ->
+	  v_msg_ArbiterToServerOfferLose(Msg, [MsgName],
+					 TrUserData);
+      'ArbiterToServerNewProduct' ->
+	  v_msg_ArbiterToServerNewProduct(Msg, [MsgName],
+					  TrUserData);
+      'ServerToArbiter' ->
+	  v_msg_ServerToArbiter(Msg, [MsgName], TrUserData);
+      'ServerToArbiterOffer' ->
+	  v_msg_ServerToArbiterOffer(Msg, [MsgName], TrUserData);
+      'ServerToArbiterAnnounce' ->
+	  v_msg_ServerToArbiterAnnounce(Msg, [MsgName],
+					TrUserData);
+      'ServerToArbiterSubscribe' ->
+	  v_msg_ServerToArbiterSubscribe(Msg, [MsgName],
+					 TrUserData);
       _ -> mk_type_error(not_a_known_message, Msg, [])
     end.
 
-
--compile({nowarn_unused_function,v_msg_MsgAuth/3}).
--dialyzer({nowarn_function,v_msg_MsgAuth/3}).
-v_msg_MsgAuth(#'MsgAuth'{name = F1, pass = F2,
-			 ctype = F3, mtype = F4},
-	      Path, TrUserData) ->
-    v_type_string(F1, [name | Path], TrUserData),
-    v_type_string(F2, [pass | Path], TrUserData),
-    'v_enum_MsgAuth.ClientType'(F3, [ctype | Path],
-				TrUserData),
-    'v_enum_MsgAuth.MsgType'(F4, [mtype | Path],
-			     TrUserData),
-    ok;
-v_msg_MsgAuth(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'MsgAuth'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_MsgAck/3}).
--dialyzer({nowarn_function,v_msg_MsgAck/3}).
-v_msg_MsgAck(#'MsgAck'{ok = F1, msg = F2}, Path,
-	     TrUserData) ->
-    v_type_bool(F1, [ok | Path], TrUserData),
-    if F2 == undefined -> ok;
-       true -> v_type_string(F2, [msg | Path], TrUserData)
-    end,
-    ok;
-v_msg_MsgAck(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'MsgAck'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_DisponibilityS/3}).
--dialyzer({nowarn_function,v_msg_DisponibilityS/3}).
-v_msg_DisponibilityS(#'DisponibilityS'{nameM = F1,
-				       nameP = F2, minimum = F3, maximum = F4,
-				       value = F5, period = F6},
-		     Path, TrUserData) ->
-    v_type_string(F1, [nameM | Path], TrUserData),
-    v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimum | Path], TrUserData),
-    v_type_int32(F4, [maximum | Path], TrUserData),
-    v_type_float(F5, [value | Path], TrUserData),
-    v_type_int32(F6, [period | Path], TrUserData),
-    ok;
-v_msg_DisponibilityS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'DisponibilityS'}, X,
-		  Path).
-
--compile({nowarn_unused_function,v_msg_DisponibilityN/3}).
--dialyzer({nowarn_function,v_msg_DisponibilityN/3}).
-v_msg_DisponibilityN(#'DisponibilityN'{nameM = F1,
-				       nameP = F2, minimum = F3, maximum = F4,
-				       value = F5, period = F6},
-		     Path, TrUserData) ->
-    v_type_string(F1, [nameM | Path], TrUserData),
-    v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimum | Path], TrUserData),
-    v_type_int32(F4, [maximum | Path], TrUserData),
-    v_type_float(F5, [value | Path], TrUserData),
-    v_type_int32(F6, [period | Path], TrUserData),
-    ok;
-v_msg_DisponibilityN(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'DisponibilityN'}, X,
-		  Path).
-
--compile({nowarn_unused_function,v_msg_OrderS/3}).
--dialyzer({nowarn_function,v_msg_OrderS/3}).
-v_msg_OrderS(#'OrderS'{nameM = F1, nameP = F2,
-		       quant = F3, value = F4, nameI = F5},
-	     Path, TrUserData) ->
-    v_type_string(F1, [nameM | Path], TrUserData),
-    v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [quant | Path], TrUserData),
-    v_type_float(F4, [value | Path], TrUserData),
-    v_type_string(F5, [nameI | Path], TrUserData),
-    ok;
-v_msg_OrderS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'OrderS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_OrderN/3}).
--dialyzer({nowarn_function,v_msg_OrderN/3}).
-v_msg_OrderN(#'OrderN'{nameM = F1, nameP = F2,
-		       quant = F3, value = F4, nameI = F5},
-	     Path, TrUserData) ->
-    v_type_string(F1, [nameM | Path], TrUserData),
-    v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [quant | Path], TrUserData),
-    v_type_float(F4, [value | Path], TrUserData),
-    v_type_string(F5, [nameI | Path], TrUserData),
-    ok;
-v_msg_OrderN(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'OrderN'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_OrderAckS/3}).
--dialyzer({nowarn_function,v_msg_OrderAckS/3}).
-v_msg_OrderAckS(#'OrderAckS'{ack = F1, msg = F2,
-			     nameI = F3, outdated = F4},
-		Path, TrUserData) ->
-    v_type_bool(F1, [ack | Path], TrUserData),
-    if F2 == undefined -> ok;
-       true -> v_type_string(F2, [msg | Path], TrUserData)
-    end,
-    v_type_string(F3, [nameI | Path], TrUserData),
-    v_type_bool(F4, [outdated | Path], TrUserData),
-    ok;
-v_msg_OrderAckS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'OrderAckS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_OrderAckI/3}).
--dialyzer({nowarn_function,v_msg_OrderAckI/3}).
-v_msg_OrderAckI(#'OrderAckI'{ack = F1, msg = F2,
-			     outdated = F3},
-		Path, TrUserData) ->
-    v_type_bool(F1, [ack | Path], TrUserData),
-    if F2 == undefined -> ok;
-       true -> v_type_string(F2, [msg | Path], TrUserData)
-    end,
-    v_type_bool(F3, [outdated | Path], TrUserData),
-    ok;
-v_msg_OrderAckI(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'OrderAckI'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_SubS/3}).
--dialyzer({nowarn_function,v_msg_SubS/3}).
-v_msg_SubS(#'SubS'{nameI = F1, subs = F2}, Path,
-	   TrUserData) ->
-    v_type_string(F1, [nameI | Path], TrUserData),
-    if is_list(F2) ->
-	   _ = [v_type_string(Elem, [subs | Path], TrUserData)
-		|| Elem <- F2],
-	   ok;
-       true ->
-	   mk_type_error({invalid_list_of, string}, F2,
-			 [subs | Path])
-    end,
-    ok;
-v_msg_SubS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'SubS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_SubN/3}).
--dialyzer({nowarn_function,v_msg_SubN/3}).
-v_msg_SubN(#'SubN'{nameI = F1, subs = F2}, Path,
-	   TrUserData) ->
-    v_type_string(F1, [nameI | Path], TrUserData),
-    if is_list(F2) ->
-	   _ = [v_type_string(Elem, [subs | Path], TrUserData)
-		|| Elem <- F2],
-	   ok;
-       true ->
-	   mk_type_error({invalid_list_of, string}, F2,
-			 [subs | Path])
-    end,
-    ok;
-v_msg_SubN(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'SubN'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_ProductionS/3}).
--dialyzer({nowarn_function,v_msg_ProductionS/3}).
-v_msg_ProductionS(#'ProductionS'{nameM = F1, nameP = F2,
-				 quant = F3, value = F4},
-		  Path, TrUserData) ->
-    v_type_string(F1, [nameM | Path], TrUserData),
-    v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [quant | Path], TrUserData),
-    v_type_float(F4, [value | Path], TrUserData),
-    ok;
-v_msg_ProductionS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'ProductionS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_ProductionM/3}).
--dialyzer({nowarn_function,v_msg_ProductionM/3}).
-v_msg_ProductionM(#'ProductionM'{nameP = F1, quant = F2,
-				 value = F3},
-		  Path, TrUserData) ->
-    v_type_string(F1, [nameP | Path], TrUserData),
-    v_type_int32(F2, [quant | Path], TrUserData),
-    v_type_float(F3, [value | Path], TrUserData),
-    ok;
-v_msg_ProductionM(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'ProductionM'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_ResultS/3}).
--dialyzer({nowarn_function,v_msg_ResultS/3}).
-v_msg_ResultS(#'ResultS'{result = F1, msg = F2,
-			 nameI = F3},
-	      Path, TrUserData) ->
-    v_type_bool(F1, [result | Path], TrUserData),
-    v_type_string(F2, [msg | Path], TrUserData),
-    v_type_string(F3, [nameI | Path], TrUserData),
-    ok;
-v_msg_ResultS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'ResultS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_ResultI/3}).
--dialyzer({nowarn_function,v_msg_ResultI/3}).
-v_msg_ResultI(#'ResultI'{result = F1, msg = F2}, Path,
-	      TrUserData) ->
-    v_type_bool(F1, [result | Path], TrUserData),
-    v_type_string(F2, [msg | Path], TrUserData),
-    ok;
-v_msg_ResultI(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'ResultI'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_InfoS/3}).
--dialyzer({nowarn_function,v_msg_InfoS/3}).
-v_msg_InfoS(#'InfoS'{nameM = F1, nameP = F2,
-		     minimum = F3, maximum = F4, value = F5, period = F6,
-		     nameI = F7},
-	    Path, TrUserData) ->
-    v_type_string(F1, [nameM | Path], TrUserData),
-    v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimum | Path], TrUserData),
-    v_type_int32(F4, [maximum | Path], TrUserData),
-    v_type_float(F5, [value | Path], TrUserData),
-    v_type_int32(F6, [period | Path], TrUserData),
-    v_type_string(F7, [nameI | Path], TrUserData),
-    ok;
-v_msg_InfoS(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'InfoS'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_InfoI/3}).
--dialyzer({nowarn_function,v_msg_InfoI/3}).
-v_msg_InfoI(#'InfoI'{nameM = F1, nameP = F2,
-		     minimum = F3, maximum = F4, value = F5, period = F6},
-	    Path, TrUserData) ->
-    v_type_string(F1, [nameM | Path], TrUserData),
-    v_type_string(F2, [nameP | Path], TrUserData),
-    v_type_int32(F3, [minimum | Path], TrUserData),
-    v_type_int32(F4, [maximum | Path], TrUserData),
-    v_type_float(F5, [value | Path], TrUserData),
-    v_type_int32(F6, [period | Path], TrUserData),
-    ok;
-v_msg_InfoI(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'InfoI'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_Server/3}).
--dialyzer({nowarn_function,v_msg_Server/3}).
-v_msg_Server(#'Server'{msg = F1}, Path, TrUserData) ->
-    case F1 of
-      undefined -> ok;
-      {m1, OF1} ->
-	  v_msg_DisponibilityS(OF1, [m1, msg | Path], TrUserData);
-      {m2, OF1} ->
-	  v_msg_OrderS(OF1, [m2, msg | Path], TrUserData);
-      {m3, OF1} ->
-	  v_msg_SubS(OF1, [m3, msg | Path], TrUserData);
-      {m4, OF1} ->
-	  v_msg_ResultS(OF1, [m4, msg | Path], TrUserData);
-      {m5, OF1} ->
-	  v_msg_InfoS(OF1, [m5, msg | Path], TrUserData);
-      {m6, OF1} ->
-	  v_msg_ProductionS(OF1, [m6, msg | Path], TrUserData);
-      {m7, OF1} ->
-	  v_msg_OrderAckS(OF1, [m7, msg | Path], TrUserData);
-      _ -> mk_type_error(invalid_oneof, F1, [msg | Path])
-    end,
-    ok;
-v_msg_Server(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'Server'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_Importer/3}).
--dialyzer({nowarn_function,v_msg_Importer/3}).
-v_msg_Importer(#'Importer'{msg = F1}, Path,
-	       TrUserData) ->
-    case F1 of
-      undefined -> ok;
-      {ordack, OF1} ->
-	  v_msg_OrderAckI(OF1, [ordack, msg | Path], TrUserData);
-      {result, OF1} ->
-	  v_msg_ResultI(OF1, [result, msg | Path], TrUserData);
-      {info, OF1} ->
-	  v_msg_InfoI(OF1, [info, msg | Path], TrUserData);
-      _ -> mk_type_error(invalid_oneof, F1, [msg | Path])
-    end,
-    ok;
-v_msg_Importer(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'Importer'}, X, Path).
-
--compile({nowarn_unused_function,v_msg_Negotiator/3}).
--dialyzer({nowarn_function,v_msg_Negotiator/3}).
-v_msg_Negotiator(#'Negotiator'{msg = F1}, Path,
-		 TrUserData) ->
-    case F1 of
-      undefined -> ok;
-      {sub, OF1} ->
-	  v_msg_SubN(OF1, [sub, msg | Path], TrUserData);
-      {order, OF1} ->
-	  v_msg_OrderN(OF1, [order, msg | Path], TrUserData);
-      {disponibility, OF1} ->
-	  v_msg_DisponibilityN(OF1, [disponibility, msg | Path],
-			       TrUserData);
-      _ -> mk_type_error(invalid_oneof, F1, [msg | Path])
-    end,
-    ok;
-v_msg_Negotiator(X, Path, _TrUserData) ->
-    mk_type_error({expected_msg, 'Negotiator'}, X, Path).
 
 -compile({nowarn_unused_function,v_msg_ClientToServer/3}).
 -dialyzer({nowarn_function,v_msg_ClientToServer/3}).
@@ -10509,9 +10614,10 @@ v_msg_ServerToManufacturer(X, Path, _TrUserData) ->
 
 -compile({nowarn_unused_function,v_msg_ServerToManufacturerAnnounced/3}).
 -dialyzer({nowarn_function,v_msg_ServerToManufacturerAnnounced/3}).
-v_msg_ServerToManufacturerAnnounced(#'ServerToManufacturerAnnounced'{},
-				    _Path, _) ->
-    ok;
+v_msg_ServerToManufacturerAnnounced(#'ServerToManufacturerAnnounced'{productName
+									 = F1},
+				    Path, TrUserData) ->
+    v_type_string(F1, [productName | Path], TrUserData), ok;
 v_msg_ServerToManufacturerAnnounced(X, Path,
 				    _TrUserData) ->
     mk_type_error({expected_msg,
@@ -10585,18 +10691,18 @@ v_msg_ImporterToServer(X, Path, _TrUserData) ->
 
 -compile({nowarn_unused_function,v_msg_ImporterToServerSubscribe/3}).
 -dialyzer({nowarn_function,v_msg_ImporterToServerSubscribe/3}).
-v_msg_ImporterToServerSubscribe(#'ImporterToServerSubscribe'{manufacturerName
+v_msg_ImporterToServerSubscribe(#'ImporterToServerSubscribe'{manufacturerNames
 								 = F1,
 							     importerName = F2},
 				Path, TrUserData) ->
     if is_list(F1) ->
-	   _ = [v_type_string(Elem, [manufacturerName | Path],
+	   _ = [v_type_string(Elem, [manufacturerNames | Path],
 			      TrUserData)
 		|| Elem <- F1],
 	   ok;
        true ->
 	   mk_type_error({invalid_list_of, string}, F1,
-			 [manufacturerName | Path])
+			 [manufacturerNames | Path])
     end,
     v_type_string(F2, [importerName | Path], TrUserData),
     ok;
@@ -10661,8 +10767,15 @@ v_msg_ServerToImporter(X, Path, _TrUserData) ->
 
 -compile({nowarn_unused_function,v_msg_ServerToImporterOfferSubmitted/3}).
 -dialyzer({nowarn_function,v_msg_ServerToImporterOfferSubmitted/3}).
-v_msg_ServerToImporterOfferSubmitted(#'ServerToImporterOfferSubmitted'{},
-				     _Path, _) ->
+v_msg_ServerToImporterOfferSubmitted(#'ServerToImporterOfferSubmitted'{manufacturerName
+									   = F1,
+								       productName
+									   =
+									   F2},
+				     Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
     ok;
 v_msg_ServerToImporterOfferSubmitted(X, Path,
 				     _TrUserData) ->
@@ -10672,10 +10785,17 @@ v_msg_ServerToImporterOfferSubmitted(X, Path,
 
 -compile({nowarn_unused_function,v_msg_ServerToImporterOfferInvalid/3}).
 -dialyzer({nowarn_function,v_msg_ServerToImporterOfferInvalid/3}).
-v_msg_ServerToImporterOfferInvalid(#'ServerToImporterOfferInvalid'{errorMessage
-								       = F1},
+v_msg_ServerToImporterOfferInvalid(#'ServerToImporterOfferInvalid'{manufacturerName
+								       = F1,
+								   productName =
+								       F2,
+								   errorMessage
+								       = F3},
 				   Path, TrUserData) ->
-    v_type_string(F1, [errorMessage | Path], TrUserData),
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_string(F3, [errorMessage | Path], TrUserData),
     ok;
 v_msg_ServerToImporterOfferInvalid(X, Path,
 				   _TrUserData) ->
@@ -10743,34 +10863,325 @@ v_msg_ServerToImporterNewProduct(X, Path,
 		   'ServerToImporterNewProduct'},
 		  X, Path).
 
--compile({nowarn_unused_function,'v_enum_MsgAuth.ClientType'/3}).
--dialyzer({nowarn_function,'v_enum_MsgAuth.ClientType'/3}).
-'v_enum_MsgAuth.ClientType'('MANUFACTURER', _Path,
-			    _TrUserData) ->
+-compile({nowarn_unused_function,v_msg_ArbiterToServer/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServer/3}).
+v_msg_ArbiterToServer(#'ArbiterToServer'{message = F1},
+		      Path, TrUserData) ->
+    case F1 of
+      undefined -> ok;
+      {accepted, OF1} ->
+	  v_msg_ArbiterToServerAnnounceAccepted(OF1,
+						[accepted, message | Path],
+						TrUserData);
+      {announceInvalid, OF1} ->
+	  v_msg_ArbiterToServerAnnounceInvalid(OF1,
+					       [announceInvalid, message
+						| Path],
+					       TrUserData);
+      {sold, OF1} ->
+	  v_msg_ArbiterToServerAnnounceSold(OF1,
+					    [sold, message | Path], TrUserData);
+      {noOffers, OF1} ->
+	  v_msg_ArbiterToServerAnnounceNoOffers(OF1,
+						[noOffers, message | Path],
+						TrUserData);
+      {submitted, OF1} ->
+	  v_msg_ArbiterToServerOfferSubmitted(OF1,
+					      [submitted, message | Path],
+					      TrUserData);
+      {offerInvalid, OF1} ->
+	  v_msg_ArbiterToServerOfferInvalid(OF1,
+					    [offerInvalid, message | Path],
+					    TrUserData);
+      {won, OF1} ->
+	  v_msg_ArbiterToServerOfferWon(OF1,
+					[won, message | Path], TrUserData);
+      {lose, OF1} ->
+	  v_msg_ArbiterToServerOfferLose(OF1,
+					 [lose, message | Path], TrUserData);
+      {product, OF1} ->
+	  v_msg_ArbiterToServerNewProduct(OF1,
+					  [product, message | Path],
+					  TrUserData);
+      _ -> mk_type_error(invalid_oneof, F1, [message | Path])
+    end,
     ok;
-'v_enum_MsgAuth.ClientType'('IMPORTER', _Path,
-			    _TrUserData) ->
-    ok;
-'v_enum_MsgAuth.ClientType'(V, Path, TrUserData)
-    when is_integer(V) ->
-    v_type_sint32(V, Path, TrUserData);
-'v_enum_MsgAuth.ClientType'(X, Path, _TrUserData) ->
-    mk_type_error({invalid_enum, 'MsgAuth.ClientType'}, X,
+v_msg_ArbiterToServer(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ArbiterToServer'}, X,
 		  Path).
 
--compile({nowarn_unused_function,'v_enum_MsgAuth.MsgType'/3}).
--dialyzer({nowarn_function,'v_enum_MsgAuth.MsgType'/3}).
-'v_enum_MsgAuth.MsgType'('LOGIN', _Path, _TrUserData) ->
+-compile({nowarn_unused_function,v_msg_ArbiterToServerAnnounceAccepted/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerAnnounceAccepted/3}).
+v_msg_ArbiterToServerAnnounceAccepted(#'ArbiterToServerAnnounceAccepted'{manufacturerName
+									     =
+									     F1,
+									 productName
+									     =
+									     F2},
+				      Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
     ok;
-'v_enum_MsgAuth.MsgType'('REGISTER', _Path,
-			 _TrUserData) ->
+v_msg_ArbiterToServerAnnounceAccepted(X, Path,
+				      _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerAnnounceAccepted'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerAnnounceInvalid/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerAnnounceInvalid/3}).
+v_msg_ArbiterToServerAnnounceInvalid(#'ArbiterToServerAnnounceInvalid'{manufacturerName
+									   = F1,
+								       productName
+									   = F2,
+								       errorMessage
+									   =
+									   F3},
+				     Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_string(F3, [errorMessage | Path], TrUserData),
     ok;
-'v_enum_MsgAuth.MsgType'(V, Path, TrUserData)
-    when is_integer(V) ->
-    v_type_sint32(V, Path, TrUserData);
-'v_enum_MsgAuth.MsgType'(X, Path, _TrUserData) ->
-    mk_type_error({invalid_enum, 'MsgAuth.MsgType'}, X,
+v_msg_ArbiterToServerAnnounceInvalid(X, Path,
+				     _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerAnnounceInvalid'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerAnnounceSold/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerAnnounceSold/3}).
+v_msg_ArbiterToServerAnnounceSold(#'ArbiterToServerAnnounceSold'{manufacturerName
+								     = F1,
+								 productName =
+								     F2,
+								 quantity = F3,
+								 unitPrice =
+								     F4},
+				  Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_int32(F3, [quantity | Path], TrUserData),
+    v_type_float(F4, [unitPrice | Path], TrUserData),
+    ok;
+v_msg_ArbiterToServerAnnounceSold(X, Path,
+				  _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerAnnounceSold'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerAnnounceNoOffers/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerAnnounceNoOffers/3}).
+v_msg_ArbiterToServerAnnounceNoOffers(#'ArbiterToServerAnnounceNoOffers'{manufacturerName
+									     =
+									     F1,
+									 productName
+									     =
+									     F2},
+				      Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    ok;
+v_msg_ArbiterToServerAnnounceNoOffers(X, Path,
+				      _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerAnnounceNoOffers'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerOfferSubmitted/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerOfferSubmitted/3}).
+v_msg_ArbiterToServerOfferSubmitted(#'ArbiterToServerOfferSubmitted'{importerName
+									 = F1,
+								     productName
+									 = F2,
+								     manufacturerName
+									 = F3},
+				    Path, TrUserData) ->
+    v_type_string(F1, [importerName | Path], TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_string(F3, [manufacturerName | Path],
+		  TrUserData),
+    ok;
+v_msg_ArbiterToServerOfferSubmitted(X, Path,
+				    _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerOfferSubmitted'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerOfferInvalid/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerOfferInvalid/3}).
+v_msg_ArbiterToServerOfferInvalid(#'ArbiterToServerOfferInvalid'{importerName
+								     = F1,
+								 productName =
+								     F2,
+								 manufacturerName
+								     = F3,
+								 errorMessage =
+								     F4},
+				  Path, TrUserData) ->
+    v_type_string(F1, [importerName | Path], TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_string(F3, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F4, [errorMessage | Path], TrUserData),
+    ok;
+v_msg_ArbiterToServerOfferInvalid(X, Path,
+				  _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerOfferInvalid'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerOfferWon/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerOfferWon/3}).
+v_msg_ArbiterToServerOfferWon(#'ArbiterToServerOfferWon'{importerName
+							     = F1,
+							 productName = F2,
+							 manufacturerName = F3,
+							 quantity = F4,
+							 unitPrice = F5},
+			      Path, TrUserData) ->
+    v_type_string(F1, [importerName | Path], TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_string(F3, [manufacturerName | Path],
+		  TrUserData),
+    v_type_int32(F4, [quantity | Path], TrUserData),
+    v_type_float(F5, [unitPrice | Path], TrUserData),
+    ok;
+v_msg_ArbiterToServerOfferWon(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ArbiterToServerOfferWon'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerOfferLose/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerOfferLose/3}).
+v_msg_ArbiterToServerOfferLose(#'ArbiterToServerOfferLose'{importerName
+							       = F1,
+							   productName = F2,
+							   manufacturerName =
+							       F3},
+			       Path, TrUserData) ->
+    v_type_string(F1, [importerName | Path], TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_string(F3, [manufacturerName | Path],
+		  TrUserData),
+    ok;
+v_msg_ArbiterToServerOfferLose(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerOfferLose'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToServerNewProduct/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToServerNewProduct/3}).
+v_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{manufacturerName
+								 = F1,
+							     productName = F2,
+							     minQuantity = F3,
+							     maxQuantity = F4,
+							     minUnitPrice = F5,
+							     timout = F6},
+				Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_int32(F3, [minQuantity | Path], TrUserData),
+    v_type_int32(F4, [maxQuantity | Path], TrUserData),
+    v_type_float(F5, [minUnitPrice | Path], TrUserData),
+    v_type_int32(F6, [timout | Path], TrUserData),
+    ok;
+v_msg_ArbiterToServerNewProduct(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToServerNewProduct'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ServerToArbiter/3}).
+-dialyzer({nowarn_function,v_msg_ServerToArbiter/3}).
+v_msg_ServerToArbiter(#'ServerToArbiter'{message = F1},
+		      Path, TrUserData) ->
+    case F1 of
+      undefined -> ok;
+      {offer, OF1} ->
+	  v_msg_ServerToArbiterOffer(OF1, [offer, message | Path],
+				     TrUserData);
+      {announce, OF1} ->
+	  v_msg_ServerToArbiterAnnounce(OF1,
+					[announce, message | Path], TrUserData);
+      {subscribe, OF1} ->
+	  v_msg_ServerToArbiterSubscribe(OF1,
+					 [subscribe, message | Path],
+					 TrUserData);
+      _ -> mk_type_error(invalid_oneof, F1, [message | Path])
+    end,
+    ok;
+v_msg_ServerToArbiter(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ServerToArbiter'}, X,
 		  Path).
+
+-compile({nowarn_unused_function,v_msg_ServerToArbiterOffer/3}).
+-dialyzer({nowarn_function,v_msg_ServerToArbiterOffer/3}).
+v_msg_ServerToArbiterOffer(#'ServerToArbiterOffer'{manufacturerName
+						       = F1,
+						   productName = F2,
+						   quantity = F3,
+						   unitPrice = F4,
+						   importerName = F5},
+			   Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_int32(F3, [quantity | Path], TrUserData),
+    v_type_float(F4, [unitPrice | Path], TrUserData),
+    v_type_string(F5, [importerName | Path], TrUserData),
+    ok;
+v_msg_ServerToArbiterOffer(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ServerToArbiterOffer'}, X,
+		  Path).
+
+-compile({nowarn_unused_function,v_msg_ServerToArbiterAnnounce/3}).
+-dialyzer({nowarn_function,v_msg_ServerToArbiterAnnounce/3}).
+v_msg_ServerToArbiterAnnounce(#'ServerToArbiterAnnounce'{manufacturerName
+							     = F1,
+							 productName = F2,
+							 minQuantity = F3,
+							 maxQuantity = F4,
+							 minUnitPrice = F5,
+							 timout = F6},
+			      Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_int32(F3, [minQuantity | Path], TrUserData),
+    v_type_int32(F4, [maxQuantity | Path], TrUserData),
+    v_type_float(F5, [minUnitPrice | Path], TrUserData),
+    v_type_int32(F6, [timout | Path], TrUserData),
+    ok;
+v_msg_ServerToArbiterAnnounce(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ServerToArbiterAnnounce'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ServerToArbiterSubscribe/3}).
+-dialyzer({nowarn_function,v_msg_ServerToArbiterSubscribe/3}).
+v_msg_ServerToArbiterSubscribe(#'ServerToArbiterSubscribe'{importerName
+							       = F1,
+							   manufacturerNames =
+							       F2},
+			       Path, TrUserData) ->
+    v_type_string(F1, [importerName | Path], TrUserData),
+    if is_list(F2) ->
+	   _ = [v_type_string(Elem, [manufacturerNames | Path],
+			      TrUserData)
+		|| Elem <- F2],
+	   ok;
+       true ->
+	   mk_type_error({invalid_list_of, string}, F2,
+			 [manufacturerNames | Path])
+    end,
+    ok;
+v_msg_ServerToArbiterSubscribe(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ServerToArbiterSubscribe'},
+		  X, Path).
 
 -compile({nowarn_unused_function,v_enum_ClientType/3}).
 -dialyzer({nowarn_function,v_enum_ClientType/3}).
@@ -10886,206 +11297,8 @@ cons(Elem, Acc, _TrUserData) -> [Elem | Acc].
 'erlang_++'(A, B, _TrUserData) -> A ++ B.
 
 get_msg_defs() ->
-    [{{enum, 'MsgAuth.ClientType'},
-      [{'MANUFACTURER', 0}, {'IMPORTER', 1}]},
-     {{enum, 'MsgAuth.MsgType'},
-      [{'LOGIN', 0}, {'REGISTER', 1}]},
-     {{enum, 'ClientType'},
+    [{{enum, 'ClientType'},
       [{'IMPORTER', 0}, {'MANUFACTURER', 1}]},
-     {{msg, 'MsgAuth'},
-      [#field{name = name, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = pass, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = ctype, fnum = 3, rnum = 4,
-	      type = {enum, 'MsgAuth.ClientType'},
-	      occurrence = required, opts = []},
-       #field{name = mtype, fnum = 4, rnum = 5,
-	      type = {enum, 'MsgAuth.MsgType'}, occurrence = required,
-	      opts = [{default, 'LOGIN'}]}]},
-     {{msg, 'MsgAck'},
-      [#field{name = ok, fnum = 1, rnum = 2, type = bool,
-	      occurrence = required, opts = []},
-       #field{name = msg, fnum = 2, rnum = 3, type = string,
-	      occurrence = optional, opts = []}]},
-     {{msg, 'DisponibilityS'},
-      [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 5, rnum = 6, type = float,
-	      occurrence = required, opts = []},
-       #field{name = period, fnum = 6, rnum = 7, type = int32,
-	      occurrence = required, opts = []}]},
-     {{msg, 'DisponibilityN'},
-      [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 5, rnum = 6, type = float,
-	      occurrence = required, opts = []},
-       #field{name = period, fnum = 6, rnum = 7, type = int32,
-	      occurrence = required, opts = []}]},
-     {{msg, 'OrderS'},
-      [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = quant, fnum = 3, rnum = 4, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 4, rnum = 5, type = float,
-	      occurrence = required, opts = []},
-       #field{name = nameI, fnum = 5, rnum = 6, type = string,
-	      occurrence = required, opts = []}]},
-     {{msg, 'OrderN'},
-      [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = quant, fnum = 3, rnum = 4, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 4, rnum = 5, type = float,
-	      occurrence = required, opts = []},
-       #field{name = nameI, fnum = 5, rnum = 6, type = string,
-	      occurrence = required, opts = []}]},
-     {{msg, 'OrderAckS'},
-      [#field{name = ack, fnum = 1, rnum = 2, type = bool,
-	      occurrence = required, opts = []},
-       #field{name = msg, fnum = 2, rnum = 3, type = string,
-	      occurrence = optional, opts = []},
-       #field{name = nameI, fnum = 3, rnum = 4, type = string,
-	      occurrence = required, opts = []},
-       #field{name = outdated, fnum = 4, rnum = 5, type = bool,
-	      occurrence = required, opts = []}]},
-     {{msg, 'OrderAckI'},
-      [#field{name = ack, fnum = 1, rnum = 2, type = bool,
-	      occurrence = required, opts = []},
-       #field{name = msg, fnum = 2, rnum = 3, type = string,
-	      occurrence = optional, opts = []},
-       #field{name = outdated, fnum = 3, rnum = 4, type = bool,
-	      occurrence = required, opts = []}]},
-     {{msg, 'SubS'},
-      [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = subs, fnum = 2, rnum = 3, type = string,
-	      occurrence = repeated, opts = []}]},
-     {{msg, 'SubN'},
-      [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = subs, fnum = 2, rnum = 3, type = string,
-	      occurrence = repeated, opts = []}]},
-     {{msg, 'ProductionS'},
-      [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = quant, fnum = 3, rnum = 4, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 4, rnum = 5, type = float,
-	      occurrence = required, opts = []}]},
-     {{msg, 'ProductionM'},
-      [#field{name = nameP, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = quant, fnum = 2, rnum = 3, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 3, rnum = 4, type = float,
-	      occurrence = required, opts = []}]},
-     {{msg, 'ResultS'},
-      [#field{name = result, fnum = 1, rnum = 2, type = bool,
-	      occurrence = required, opts = []},
-       #field{name = msg, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameI, fnum = 3, rnum = 4, type = string,
-	      occurrence = required, opts = []}]},
-     {{msg, 'ResultI'},
-      [#field{name = result, fnum = 1, rnum = 2, type = bool,
-	      occurrence = required, opts = []},
-       #field{name = msg, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []}]},
-     {{msg, 'InfoS'},
-      [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 5, rnum = 6, type = float,
-	      occurrence = required, opts = []},
-       #field{name = period, fnum = 6, rnum = 7, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = nameI, fnum = 7, rnum = 8, type = string,
-	      occurrence = required, opts = []}]},
-     {{msg, 'InfoI'},
-      [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	      occurrence = required, opts = []},
-       #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	      occurrence = required, opts = []},
-       #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	      occurrence = required, opts = []},
-       #field{name = value, fnum = 5, rnum = 6, type = float,
-	      occurrence = required, opts = []},
-       #field{name = period, fnum = 6, rnum = 7, type = int32,
-	      occurrence = required, opts = []}]},
-     {{msg, 'Server'},
-      [#gpb_oneof{name = msg, rnum = 2,
-		  fields =
-		      [#field{name = m1, fnum = 1, rnum = 2,
-			      type = {msg, 'DisponibilityS'},
-			      occurrence = optional, opts = []},
-		       #field{name = m2, fnum = 2, rnum = 2,
-			      type = {msg, 'OrderS'}, occurrence = optional,
-			      opts = []},
-		       #field{name = m3, fnum = 3, rnum = 2,
-			      type = {msg, 'SubS'}, occurrence = optional,
-			      opts = []},
-		       #field{name = m4, fnum = 4, rnum = 2,
-			      type = {msg, 'ResultS'}, occurrence = optional,
-			      opts = []},
-		       #field{name = m5, fnum = 5, rnum = 2,
-			      type = {msg, 'InfoS'}, occurrence = optional,
-			      opts = []},
-		       #field{name = m6, fnum = 6, rnum = 2,
-			      type = {msg, 'ProductionS'},
-			      occurrence = optional, opts = []},
-		       #field{name = m7, fnum = 7, rnum = 2,
-			      type = {msg, 'OrderAckS'}, occurrence = optional,
-			      opts = []}]}]},
-     {{msg, 'Importer'},
-      [#gpb_oneof{name = msg, rnum = 2,
-		  fields =
-		      [#field{name = ordack, fnum = 1, rnum = 2,
-			      type = {msg, 'OrderAckI'}, occurrence = optional,
-			      opts = []},
-		       #field{name = result, fnum = 2, rnum = 2,
-			      type = {msg, 'ResultI'}, occurrence = optional,
-			      opts = []},
-		       #field{name = info, fnum = 3, rnum = 2,
-			      type = {msg, 'InfoI'}, occurrence = optional,
-			      opts = []}]}]},
-     {{msg, 'Negotiator'},
-      [#gpb_oneof{name = msg, rnum = 2,
-		  fields =
-		      [#field{name = sub, fnum = 1, rnum = 2,
-			      type = {msg, 'SubN'}, occurrence = optional,
-			      opts = []},
-		       #field{name = order, fnum = 2, rnum = 2,
-			      type = {msg, 'OrderN'}, occurrence = optional,
-			      opts = []},
-		       #field{name = disponibility, fnum = 3, rnum = 2,
-			      type = {msg, 'DisponibilityN'},
-			      occurrence = optional, opts = []}]}]},
      {{msg, 'ClientToServer'},
       [#gpb_oneof{name = message, rnum = 2,
 		  fields =
@@ -11150,7 +11363,9 @@ get_msg_defs() ->
 		       #field{name = sold, fnum = 4, rnum = 2,
 			      type = {msg, 'ServerToManufacturerSold'},
 			      occurrence = optional, opts = []}]}]},
-     {{msg, 'ServerToManufacturerAnnounced'}, []},
+     {{msg, 'ServerToManufacturerAnnounced'},
+      [#field{name = productName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []}]},
      {{msg, 'ServerToManufacturerInvalid'},
       [#field{name = errorMessage, fnum = 1, rnum = 2,
 	      type = string, occurrence = optional, opts = []}]},
@@ -11174,7 +11389,7 @@ get_msg_defs() ->
 			      type = {msg, 'ImporterToServerOffer'},
 			      occurrence = optional, opts = []}]}]},
      {{msg, 'ImporterToServerSubscribe'},
-      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+      [#field{name = manufacturerNames, fnum = 1, rnum = 2,
 	      type = string, occurrence = repeated, opts = []},
        #field{name = importerName, fnum = 2, rnum = 3,
 	      type = string, occurrence = required, opts = []}]},
@@ -11207,9 +11422,17 @@ get_msg_defs() ->
 		       #field{name = newProduct, fnum = 5, rnum = 2,
 			      type = {msg, 'ServerToImporterNewProduct'},
 			      occurrence = optional, opts = []}]}]},
-     {{msg, 'ServerToImporterOfferSubmitted'}, []},
+     {{msg, 'ServerToImporterOfferSubmitted'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []}]},
      {{msg, 'ServerToImporterOfferInvalid'},
-      [#field{name = errorMessage, fnum = 1, rnum = 2,
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = errorMessage, fnum = 3, rnum = 4,
 	      type = string, occurrence = required, opts = []}]},
      {{msg, 'ServerToImporterOfferWon'},
       [#field{name = manufacturerName, fnum = 1, rnum = 2,
@@ -11237,19 +11460,158 @@ get_msg_defs() ->
        #field{name = timeout, fnum = 5, rnum = 6, type = int32,
 	      occurrence = required, opts = []},
        #field{name = manufacturerName, fnum = 6, rnum = 7,
-	      type = string, occurrence = required, opts = []}]}].
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServer'},
+      [#gpb_oneof{name = message, rnum = 2,
+		  fields =
+		      [#field{name = accepted, fnum = 1, rnum = 2,
+			      type = {msg, 'ArbiterToServerAnnounceAccepted'},
+			      occurrence = optional, opts = []},
+		       #field{name = announceInvalid, fnum = 2, rnum = 2,
+			      type = {msg, 'ArbiterToServerAnnounceInvalid'},
+			      occurrence = optional, opts = []},
+		       #field{name = sold, fnum = 3, rnum = 2,
+			      type = {msg, 'ArbiterToServerAnnounceSold'},
+			      occurrence = optional, opts = []},
+		       #field{name = noOffers, fnum = 4, rnum = 2,
+			      type = {msg, 'ArbiterToServerAnnounceNoOffers'},
+			      occurrence = optional, opts = []},
+		       #field{name = submitted, fnum = 5, rnum = 2,
+			      type = {msg, 'ArbiterToServerOfferSubmitted'},
+			      occurrence = optional, opts = []},
+		       #field{name = offerInvalid, fnum = 6, rnum = 2,
+			      type = {msg, 'ArbiterToServerOfferInvalid'},
+			      occurrence = optional, opts = []},
+		       #field{name = won, fnum = 7, rnum = 2,
+			      type = {msg, 'ArbiterToServerOfferWon'},
+			      occurrence = optional, opts = []},
+		       #field{name = lose, fnum = 8, rnum = 2,
+			      type = {msg, 'ArbiterToServerOfferLose'},
+			      occurrence = optional, opts = []},
+		       #field{name = product, fnum = 9, rnum = 2,
+			      type = {msg, 'ArbiterToServerNewProduct'},
+			      occurrence = optional, opts = []}]}]},
+     {{msg, 'ArbiterToServerAnnounceAccepted'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerAnnounceInvalid'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = errorMessage, fnum = 3, rnum = 4,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerAnnounceSold'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = quantity, fnum = 3, rnum = 4,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = unitPrice, fnum = 4, rnum = 5,
+	      type = float, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerAnnounceNoOffers'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerOfferSubmitted'},
+      [#field{name = importerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = manufacturerName, fnum = 3, rnum = 4,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerOfferInvalid'},
+      [#field{name = importerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = manufacturerName, fnum = 3, rnum = 4,
+	      type = string, occurrence = required, opts = []},
+       #field{name = errorMessage, fnum = 4, rnum = 5,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerOfferWon'},
+      [#field{name = importerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = manufacturerName, fnum = 3, rnum = 4,
+	      type = string, occurrence = required, opts = []},
+       #field{name = quantity, fnum = 4, rnum = 5,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = unitPrice, fnum = 5, rnum = 6,
+	      type = float, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerOfferLose'},
+      [#field{name = importerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = manufacturerName, fnum = 3, rnum = 4,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToServerNewProduct'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = minQuantity, fnum = 3, rnum = 4,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = maxQuantity, fnum = 4, rnum = 5,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	      type = float, occurrence = required, opts = []},
+       #field{name = timout, fnum = 6, rnum = 7, type = int32,
+	      occurrence = required, opts = []}]},
+     {{msg, 'ServerToArbiter'},
+      [#gpb_oneof{name = message, rnum = 2,
+		  fields =
+		      [#field{name = offer, fnum = 1, rnum = 2,
+			      type = {msg, 'ServerToArbiterOffer'},
+			      occurrence = optional, opts = []},
+		       #field{name = announce, fnum = 2, rnum = 2,
+			      type = {msg, 'ServerToArbiterAnnounce'},
+			      occurrence = optional, opts = []},
+		       #field{name = subscribe, fnum = 3, rnum = 2,
+			      type = {msg, 'ServerToArbiterSubscribe'},
+			      occurrence = optional, opts = []}]}]},
+     {{msg, 'ServerToArbiterOffer'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = quantity, fnum = 3, rnum = 4,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = unitPrice, fnum = 4, rnum = 5,
+	      type = float, occurrence = required, opts = []},
+       #field{name = importerName, fnum = 5, rnum = 6,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ServerToArbiterAnnounce'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = minQuantity, fnum = 3, rnum = 4,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = maxQuantity, fnum = 4, rnum = 5,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	      type = float, occurrence = required, opts = []},
+       #field{name = timout, fnum = 6, rnum = 7, type = int32,
+	      occurrence = required, opts = []}]},
+     {{msg, 'ServerToArbiterSubscribe'},
+      [#field{name = importerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = manufacturerNames, fnum = 2, rnum = 3,
+	      type = string, occurrence = repeated, opts = []}]}].
 
 
 get_msg_names() ->
-    ['MsgAuth', 'MsgAck', 'DisponibilityS',
-     'DisponibilityN', 'OrderS', 'OrderN', 'OrderAckS',
-     'OrderAckI', 'SubS', 'SubN', 'ProductionS',
-     'ProductionM', 'ResultS', 'ResultI', 'InfoS', 'InfoI',
-     'Server', 'Importer', 'Negotiator', 'ClientToServer',
-     'ClientToServerLogin', 'ClientToServerRegister',
-     'ServerToClientAuth', 'ManufacturerToServer',
-     'ManufacturerToServerAnnounce', 'ServerToManufacturer',
-     'ServerToManufacturerAnnounced',
+    ['ClientToServer', 'ClientToServerLogin',
+     'ClientToServerRegister', 'ServerToClientAuth',
+     'ManufacturerToServer', 'ManufacturerToServerAnnounce',
+     'ServerToManufacturer', 'ServerToManufacturerAnnounced',
      'ServerToManufacturerInvalid',
      'ServerToManufacturerNoOffers',
      'ServerToManufacturerSold', 'ImporterToServer',
@@ -11257,22 +11619,27 @@ get_msg_names() ->
      'ServerToImporter', 'ServerToImporterOfferSubmitted',
      'ServerToImporterOfferInvalid',
      'ServerToImporterOfferWon', 'ServerToImporterOfferLose',
-     'ServerToImporterNewProduct'].
+     'ServerToImporterNewProduct', 'ArbiterToServer',
+     'ArbiterToServerAnnounceAccepted',
+     'ArbiterToServerAnnounceInvalid',
+     'ArbiterToServerAnnounceSold',
+     'ArbiterToServerAnnounceNoOffers',
+     'ArbiterToServerOfferSubmitted',
+     'ArbiterToServerOfferInvalid',
+     'ArbiterToServerOfferWon', 'ArbiterToServerOfferLose',
+     'ArbiterToServerNewProduct', 'ServerToArbiter',
+     'ServerToArbiterOffer', 'ServerToArbiterAnnounce',
+     'ServerToArbiterSubscribe'].
 
 
 get_group_names() -> [].
 
 
 get_msg_or_group_names() ->
-    ['MsgAuth', 'MsgAck', 'DisponibilityS',
-     'DisponibilityN', 'OrderS', 'OrderN', 'OrderAckS',
-     'OrderAckI', 'SubS', 'SubN', 'ProductionS',
-     'ProductionM', 'ResultS', 'ResultI', 'InfoS', 'InfoI',
-     'Server', 'Importer', 'Negotiator', 'ClientToServer',
-     'ClientToServerLogin', 'ClientToServerRegister',
-     'ServerToClientAuth', 'ManufacturerToServer',
-     'ManufacturerToServerAnnounce', 'ServerToManufacturer',
-     'ServerToManufacturerAnnounced',
+    ['ClientToServer', 'ClientToServerLogin',
+     'ClientToServerRegister', 'ServerToClientAuth',
+     'ManufacturerToServer', 'ManufacturerToServerAnnounce',
+     'ServerToManufacturer', 'ServerToManufacturerAnnounced',
      'ServerToManufacturerInvalid',
      'ServerToManufacturerNoOffers',
      'ServerToManufacturerSold', 'ImporterToServer',
@@ -11280,11 +11647,20 @@ get_msg_or_group_names() ->
      'ServerToImporter', 'ServerToImporterOfferSubmitted',
      'ServerToImporterOfferInvalid',
      'ServerToImporterOfferWon', 'ServerToImporterOfferLose',
-     'ServerToImporterNewProduct'].
+     'ServerToImporterNewProduct', 'ArbiterToServer',
+     'ArbiterToServerAnnounceAccepted',
+     'ArbiterToServerAnnounceInvalid',
+     'ArbiterToServerAnnounceSold',
+     'ArbiterToServerAnnounceNoOffers',
+     'ArbiterToServerOfferSubmitted',
+     'ArbiterToServerOfferInvalid',
+     'ArbiterToServerOfferWon', 'ArbiterToServerOfferLose',
+     'ArbiterToServerNewProduct', 'ServerToArbiter',
+     'ServerToArbiterOffer', 'ServerToArbiterAnnounce',
+     'ServerToArbiterSubscribe'].
 
 
-get_enum_names() ->
-    ['MsgAuth.ClientType', 'MsgAuth.MsgType', 'ClientType'].
+get_enum_names() -> ['ClientType'].
 
 
 fetch_msg_def(MsgName) ->
@@ -11301,200 +11677,6 @@ fetch_enum_def(EnumName) ->
     end.
 
 
-find_msg_def('MsgAuth') ->
-    [#field{name = name, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = pass, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = ctype, fnum = 3, rnum = 4,
-	    type = {enum, 'MsgAuth.ClientType'},
-	    occurrence = required, opts = []},
-     #field{name = mtype, fnum = 4, rnum = 5,
-	    type = {enum, 'MsgAuth.MsgType'}, occurrence = required,
-	    opts = [{default, 'LOGIN'}]}];
-find_msg_def('MsgAck') ->
-    [#field{name = ok, fnum = 1, rnum = 2, type = bool,
-	    occurrence = required, opts = []},
-     #field{name = msg, fnum = 2, rnum = 3, type = string,
-	    occurrence = optional, opts = []}];
-find_msg_def('DisponibilityS') ->
-    [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 5, rnum = 6, type = float,
-	    occurrence = required, opts = []},
-     #field{name = period, fnum = 6, rnum = 7, type = int32,
-	    occurrence = required, opts = []}];
-find_msg_def('DisponibilityN') ->
-    [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 5, rnum = 6, type = float,
-	    occurrence = required, opts = []},
-     #field{name = period, fnum = 6, rnum = 7, type = int32,
-	    occurrence = required, opts = []}];
-find_msg_def('OrderS') ->
-    [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = quant, fnum = 3, rnum = 4, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 4, rnum = 5, type = float,
-	    occurrence = required, opts = []},
-     #field{name = nameI, fnum = 5, rnum = 6, type = string,
-	    occurrence = required, opts = []}];
-find_msg_def('OrderN') ->
-    [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = quant, fnum = 3, rnum = 4, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 4, rnum = 5, type = float,
-	    occurrence = required, opts = []},
-     #field{name = nameI, fnum = 5, rnum = 6, type = string,
-	    occurrence = required, opts = []}];
-find_msg_def('OrderAckS') ->
-    [#field{name = ack, fnum = 1, rnum = 2, type = bool,
-	    occurrence = required, opts = []},
-     #field{name = msg, fnum = 2, rnum = 3, type = string,
-	    occurrence = optional, opts = []},
-     #field{name = nameI, fnum = 3, rnum = 4, type = string,
-	    occurrence = required, opts = []},
-     #field{name = outdated, fnum = 4, rnum = 5, type = bool,
-	    occurrence = required, opts = []}];
-find_msg_def('OrderAckI') ->
-    [#field{name = ack, fnum = 1, rnum = 2, type = bool,
-	    occurrence = required, opts = []},
-     #field{name = msg, fnum = 2, rnum = 3, type = string,
-	    occurrence = optional, opts = []},
-     #field{name = outdated, fnum = 3, rnum = 4, type = bool,
-	    occurrence = required, opts = []}];
-find_msg_def('SubS') ->
-    [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = subs, fnum = 2, rnum = 3, type = string,
-	    occurrence = repeated, opts = []}];
-find_msg_def('SubN') ->
-    [#field{name = nameI, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = subs, fnum = 2, rnum = 3, type = string,
-	    occurrence = repeated, opts = []}];
-find_msg_def('ProductionS') ->
-    [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = quant, fnum = 3, rnum = 4, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 4, rnum = 5, type = float,
-	    occurrence = required, opts = []}];
-find_msg_def('ProductionM') ->
-    [#field{name = nameP, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = quant, fnum = 2, rnum = 3, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 3, rnum = 4, type = float,
-	    occurrence = required, opts = []}];
-find_msg_def('ResultS') ->
-    [#field{name = result, fnum = 1, rnum = 2, type = bool,
-	    occurrence = required, opts = []},
-     #field{name = msg, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameI, fnum = 3, rnum = 4, type = string,
-	    occurrence = required, opts = []}];
-find_msg_def('ResultI') ->
-    [#field{name = result, fnum = 1, rnum = 2, type = bool,
-	    occurrence = required, opts = []},
-     #field{name = msg, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []}];
-find_msg_def('InfoS') ->
-    [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 5, rnum = 6, type = float,
-	    occurrence = required, opts = []},
-     #field{name = period, fnum = 6, rnum = 7, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = nameI, fnum = 7, rnum = 8, type = string,
-	    occurrence = required, opts = []}];
-find_msg_def('InfoI') ->
-    [#field{name = nameM, fnum = 1, rnum = 2, type = string,
-	    occurrence = required, opts = []},
-     #field{name = nameP, fnum = 2, rnum = 3, type = string,
-	    occurrence = required, opts = []},
-     #field{name = minimum, fnum = 3, rnum = 4, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = maximum, fnum = 4, rnum = 5, type = int32,
-	    occurrence = required, opts = []},
-     #field{name = value, fnum = 5, rnum = 6, type = float,
-	    occurrence = required, opts = []},
-     #field{name = period, fnum = 6, rnum = 7, type = int32,
-	    occurrence = required, opts = []}];
-find_msg_def('Server') ->
-    [#gpb_oneof{name = msg, rnum = 2,
-		fields =
-		    [#field{name = m1, fnum = 1, rnum = 2,
-			    type = {msg, 'DisponibilityS'},
-			    occurrence = optional, opts = []},
-		     #field{name = m2, fnum = 2, rnum = 2,
-			    type = {msg, 'OrderS'}, occurrence = optional,
-			    opts = []},
-		     #field{name = m3, fnum = 3, rnum = 2,
-			    type = {msg, 'SubS'}, occurrence = optional,
-			    opts = []},
-		     #field{name = m4, fnum = 4, rnum = 2,
-			    type = {msg, 'ResultS'}, occurrence = optional,
-			    opts = []},
-		     #field{name = m5, fnum = 5, rnum = 2,
-			    type = {msg, 'InfoS'}, occurrence = optional,
-			    opts = []},
-		     #field{name = m6, fnum = 6, rnum = 2,
-			    type = {msg, 'ProductionS'}, occurrence = optional,
-			    opts = []},
-		     #field{name = m7, fnum = 7, rnum = 2,
-			    type = {msg, 'OrderAckS'}, occurrence = optional,
-			    opts = []}]}];
-find_msg_def('Importer') ->
-    [#gpb_oneof{name = msg, rnum = 2,
-		fields =
-		    [#field{name = ordack, fnum = 1, rnum = 2,
-			    type = {msg, 'OrderAckI'}, occurrence = optional,
-			    opts = []},
-		     #field{name = result, fnum = 2, rnum = 2,
-			    type = {msg, 'ResultI'}, occurrence = optional,
-			    opts = []},
-		     #field{name = info, fnum = 3, rnum = 2,
-			    type = {msg, 'InfoI'}, occurrence = optional,
-			    opts = []}]}];
-find_msg_def('Negotiator') ->
-    [#gpb_oneof{name = msg, rnum = 2,
-		fields =
-		    [#field{name = sub, fnum = 1, rnum = 2,
-			    type = {msg, 'SubN'}, occurrence = optional,
-			    opts = []},
-		     #field{name = order, fnum = 2, rnum = 2,
-			    type = {msg, 'OrderN'}, occurrence = optional,
-			    opts = []},
-		     #field{name = disponibility, fnum = 3, rnum = 2,
-			    type = {msg, 'DisponibilityN'},
-			    occurrence = optional, opts = []}]}];
 find_msg_def('ClientToServer') ->
     [#gpb_oneof{name = message, rnum = 2,
 		fields =
@@ -11559,7 +11741,9 @@ find_msg_def('ServerToManufacturer') ->
 		     #field{name = sold, fnum = 4, rnum = 2,
 			    type = {msg, 'ServerToManufacturerSold'},
 			    occurrence = optional, opts = []}]}];
-find_msg_def('ServerToManufacturerAnnounced') -> [];
+find_msg_def('ServerToManufacturerAnnounced') ->
+    [#field{name = productName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []}];
 find_msg_def('ServerToManufacturerInvalid') ->
     [#field{name = errorMessage, fnum = 1, rnum = 2,
 	    type = string, occurrence = optional, opts = []}];
@@ -11583,7 +11767,7 @@ find_msg_def('ImporterToServer') ->
 			    type = {msg, 'ImporterToServerOffer'},
 			    occurrence = optional, opts = []}]}];
 find_msg_def('ImporterToServerSubscribe') ->
-    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+    [#field{name = manufacturerNames, fnum = 1, rnum = 2,
 	    type = string, occurrence = repeated, opts = []},
      #field{name = importerName, fnum = 2, rnum = 3,
 	    type = string, occurrence = required, opts = []}];
@@ -11616,9 +11800,17 @@ find_msg_def('ServerToImporter') ->
 		     #field{name = newProduct, fnum = 5, rnum = 2,
 			    type = {msg, 'ServerToImporterNewProduct'},
 			    occurrence = optional, opts = []}]}];
-find_msg_def('ServerToImporterOfferSubmitted') -> [];
+find_msg_def('ServerToImporterOfferSubmitted') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []}];
 find_msg_def('ServerToImporterOfferInvalid') ->
-    [#field{name = errorMessage, fnum = 1, rnum = 2,
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = errorMessage, fnum = 3, rnum = 4,
 	    type = string, occurrence = required, opts = []}];
 find_msg_def('ServerToImporterOfferWon') ->
     [#field{name = manufacturerName, fnum = 1, rnum = 2,
@@ -11647,51 +11839,165 @@ find_msg_def('ServerToImporterNewProduct') ->
 	    occurrence = required, opts = []},
      #field{name = manufacturerName, fnum = 6, rnum = 7,
 	    type = string, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServer') ->
+    [#gpb_oneof{name = message, rnum = 2,
+		fields =
+		    [#field{name = accepted, fnum = 1, rnum = 2,
+			    type = {msg, 'ArbiterToServerAnnounceAccepted'},
+			    occurrence = optional, opts = []},
+		     #field{name = announceInvalid, fnum = 2, rnum = 2,
+			    type = {msg, 'ArbiterToServerAnnounceInvalid'},
+			    occurrence = optional, opts = []},
+		     #field{name = sold, fnum = 3, rnum = 2,
+			    type = {msg, 'ArbiterToServerAnnounceSold'},
+			    occurrence = optional, opts = []},
+		     #field{name = noOffers, fnum = 4, rnum = 2,
+			    type = {msg, 'ArbiterToServerAnnounceNoOffers'},
+			    occurrence = optional, opts = []},
+		     #field{name = submitted, fnum = 5, rnum = 2,
+			    type = {msg, 'ArbiterToServerOfferSubmitted'},
+			    occurrence = optional, opts = []},
+		     #field{name = offerInvalid, fnum = 6, rnum = 2,
+			    type = {msg, 'ArbiterToServerOfferInvalid'},
+			    occurrence = optional, opts = []},
+		     #field{name = won, fnum = 7, rnum = 2,
+			    type = {msg, 'ArbiterToServerOfferWon'},
+			    occurrence = optional, opts = []},
+		     #field{name = lose, fnum = 8, rnum = 2,
+			    type = {msg, 'ArbiterToServerOfferLose'},
+			    occurrence = optional, opts = []},
+		     #field{name = product, fnum = 9, rnum = 2,
+			    type = {msg, 'ArbiterToServerNewProduct'},
+			    occurrence = optional, opts = []}]}];
+find_msg_def('ArbiterToServerAnnounceAccepted') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerAnnounceInvalid') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = errorMessage, fnum = 3, rnum = 4,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerAnnounceSold') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = quantity, fnum = 3, rnum = 4,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = unitPrice, fnum = 4, rnum = 5,
+	    type = float, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerAnnounceNoOffers') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerOfferSubmitted') ->
+    [#field{name = importerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = manufacturerName, fnum = 3, rnum = 4,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerOfferInvalid') ->
+    [#field{name = importerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = manufacturerName, fnum = 3, rnum = 4,
+	    type = string, occurrence = required, opts = []},
+     #field{name = errorMessage, fnum = 4, rnum = 5,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerOfferWon') ->
+    [#field{name = importerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = manufacturerName, fnum = 3, rnum = 4,
+	    type = string, occurrence = required, opts = []},
+     #field{name = quantity, fnum = 4, rnum = 5,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = unitPrice, fnum = 5, rnum = 6,
+	    type = float, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerOfferLose') ->
+    [#field{name = importerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = manufacturerName, fnum = 3, rnum = 4,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ArbiterToServerNewProduct') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = minQuantity, fnum = 3, rnum = 4,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = maxQuantity, fnum = 4, rnum = 5,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	    type = float, occurrence = required, opts = []},
+     #field{name = timout, fnum = 6, rnum = 7, type = int32,
+	    occurrence = required, opts = []}];
+find_msg_def('ServerToArbiter') ->
+    [#gpb_oneof{name = message, rnum = 2,
+		fields =
+		    [#field{name = offer, fnum = 1, rnum = 2,
+			    type = {msg, 'ServerToArbiterOffer'},
+			    occurrence = optional, opts = []},
+		     #field{name = announce, fnum = 2, rnum = 2,
+			    type = {msg, 'ServerToArbiterAnnounce'},
+			    occurrence = optional, opts = []},
+		     #field{name = subscribe, fnum = 3, rnum = 2,
+			    type = {msg, 'ServerToArbiterSubscribe'},
+			    occurrence = optional, opts = []}]}];
+find_msg_def('ServerToArbiterOffer') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = quantity, fnum = 3, rnum = 4,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = unitPrice, fnum = 4, rnum = 5,
+	    type = float, occurrence = required, opts = []},
+     #field{name = importerName, fnum = 5, rnum = 6,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ServerToArbiterAnnounce') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = minQuantity, fnum = 3, rnum = 4,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = maxQuantity, fnum = 4, rnum = 5,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	    type = float, occurrence = required, opts = []},
+     #field{name = timout, fnum = 6, rnum = 7, type = int32,
+	    occurrence = required, opts = []}];
+find_msg_def('ServerToArbiterSubscribe') ->
+    [#field{name = importerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = manufacturerNames, fnum = 2, rnum = 3,
+	    type = string, occurrence = repeated, opts = []}];
 find_msg_def(_) -> error.
 
 
-find_enum_def('MsgAuth.ClientType') ->
-    [{'MANUFACTURER', 0}, {'IMPORTER', 1}];
-find_enum_def('MsgAuth.MsgType') ->
-    [{'LOGIN', 0}, {'REGISTER', 1}];
 find_enum_def('ClientType') ->
     [{'IMPORTER', 0}, {'MANUFACTURER', 1}];
 find_enum_def(_) -> error.
 
 
-enum_symbol_by_value('MsgAuth.ClientType', Value) ->
-    'enum_symbol_by_value_MsgAuth.ClientType'(Value);
-enum_symbol_by_value('MsgAuth.MsgType', Value) ->
-    'enum_symbol_by_value_MsgAuth.MsgType'(Value);
 enum_symbol_by_value('ClientType', Value) ->
     enum_symbol_by_value_ClientType(Value).
 
 
-enum_value_by_symbol('MsgAuth.ClientType', Sym) ->
-    'enum_value_by_symbol_MsgAuth.ClientType'(Sym);
-enum_value_by_symbol('MsgAuth.MsgType', Sym) ->
-    'enum_value_by_symbol_MsgAuth.MsgType'(Sym);
 enum_value_by_symbol('ClientType', Sym) ->
     enum_value_by_symbol_ClientType(Sym).
 
-
-'enum_symbol_by_value_MsgAuth.ClientType'(0) ->
-    'MANUFACTURER';
-'enum_symbol_by_value_MsgAuth.ClientType'(1) ->
-    'IMPORTER'.
-
-
-'enum_value_by_symbol_MsgAuth.ClientType'('MANUFACTURER') ->
-    0;
-'enum_value_by_symbol_MsgAuth.ClientType'('IMPORTER') ->
-    1.
-
-'enum_symbol_by_value_MsgAuth.MsgType'(0) -> 'LOGIN';
-'enum_symbol_by_value_MsgAuth.MsgType'(1) -> 'REGISTER'.
-
-
-'enum_value_by_symbol_MsgAuth.MsgType'('LOGIN') -> 0;
-'enum_value_by_symbol_MsgAuth.MsgType'('REGISTER') -> 1.
 
 enum_symbol_by_value_ClientType(0) -> 'IMPORTER';
 enum_symbol_by_value_ClientType(1) -> 'MANUFACTURER'.
@@ -11749,25 +12055,6 @@ service_and_rpc_name_to_fqbins(S, R) ->
     error({gpb_error, {badservice_or_rpc, {S, R}}}).
 
 
-fqbin_to_msg_name(<<"nefit.MsgAuth">>) -> 'MsgAuth';
-fqbin_to_msg_name(<<"nefit.MsgAck">>) -> 'MsgAck';
-fqbin_to_msg_name(<<"nefit.DisponibilityS">>) -> 'DisponibilityS';
-fqbin_to_msg_name(<<"nefit.DisponibilityN">>) -> 'DisponibilityN';
-fqbin_to_msg_name(<<"nefit.OrderS">>) -> 'OrderS';
-fqbin_to_msg_name(<<"nefit.OrderN">>) -> 'OrderN';
-fqbin_to_msg_name(<<"nefit.OrderAckS">>) -> 'OrderAckS';
-fqbin_to_msg_name(<<"nefit.OrderAckI">>) -> 'OrderAckI';
-fqbin_to_msg_name(<<"nefit.SubS">>) -> 'SubS';
-fqbin_to_msg_name(<<"nefit.SubN">>) -> 'SubN';
-fqbin_to_msg_name(<<"nefit.ProductionS">>) -> 'ProductionS';
-fqbin_to_msg_name(<<"nefit.ProductionM">>) -> 'ProductionM';
-fqbin_to_msg_name(<<"nefit.ResultS">>) -> 'ResultS';
-fqbin_to_msg_name(<<"nefit.ResultI">>) -> 'ResultI';
-fqbin_to_msg_name(<<"nefit.InfoS">>) -> 'InfoS';
-fqbin_to_msg_name(<<"nefit.InfoI">>) -> 'InfoI';
-fqbin_to_msg_name(<<"nefit.Server">>) -> 'Server';
-fqbin_to_msg_name(<<"nefit.Importer">>) -> 'Importer';
-fqbin_to_msg_name(<<"nefit.Negotiator">>) -> 'Negotiator';
 fqbin_to_msg_name(<<"nefit.ClientToServer">>) -> 'ClientToServer';
 fqbin_to_msg_name(<<"nefit.ClientToServerLogin">>) -> 'ClientToServerLogin';
 fqbin_to_msg_name(<<"nefit.ClientToServerRegister">>) -> 'ClientToServerRegister';
@@ -11799,28 +12086,32 @@ fqbin_to_msg_name(<<"nefit.ServerToImporterOfferLose">>) ->
     'ServerToImporterOfferLose';
 fqbin_to_msg_name(<<"nefit.ServerToImporterNewProduct">>) ->
     'ServerToImporterNewProduct';
+fqbin_to_msg_name(<<"nefit.ArbiterToServer">>) -> 'ArbiterToServer';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerAnnounceAccepted">>) ->
+    'ArbiterToServerAnnounceAccepted';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerAnnounceInvalid">>) ->
+    'ArbiterToServerAnnounceInvalid';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerAnnounceSold">>) ->
+    'ArbiterToServerAnnounceSold';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerAnnounceNoOffers">>) ->
+    'ArbiterToServerAnnounceNoOffers';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerOfferSubmitted">>) ->
+    'ArbiterToServerOfferSubmitted';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerOfferInvalid">>) ->
+    'ArbiterToServerOfferInvalid';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerOfferWon">>) -> 'ArbiterToServerOfferWon';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerOfferLose">>) ->
+    'ArbiterToServerOfferLose';
+fqbin_to_msg_name(<<"nefit.ArbiterToServerNewProduct">>) ->
+    'ArbiterToServerNewProduct';
+fqbin_to_msg_name(<<"nefit.ServerToArbiter">>) -> 'ServerToArbiter';
+fqbin_to_msg_name(<<"nefit.ServerToArbiterOffer">>) -> 'ServerToArbiterOffer';
+fqbin_to_msg_name(<<"nefit.ServerToArbiterAnnounce">>) -> 'ServerToArbiterAnnounce';
+fqbin_to_msg_name(<<"nefit.ServerToArbiterSubscribe">>) ->
+    'ServerToArbiterSubscribe';
 fqbin_to_msg_name(E) -> error({gpb_error, {badmsg, E}}).
 
 
-msg_name_to_fqbin('MsgAuth') -> <<"nefit.MsgAuth">>;
-msg_name_to_fqbin('MsgAck') -> <<"nefit.MsgAck">>;
-msg_name_to_fqbin('DisponibilityS') -> <<"nefit.DisponibilityS">>;
-msg_name_to_fqbin('DisponibilityN') -> <<"nefit.DisponibilityN">>;
-msg_name_to_fqbin('OrderS') -> <<"nefit.OrderS">>;
-msg_name_to_fqbin('OrderN') -> <<"nefit.OrderN">>;
-msg_name_to_fqbin('OrderAckS') -> <<"nefit.OrderAckS">>;
-msg_name_to_fqbin('OrderAckI') -> <<"nefit.OrderAckI">>;
-msg_name_to_fqbin('SubS') -> <<"nefit.SubS">>;
-msg_name_to_fqbin('SubN') -> <<"nefit.SubN">>;
-msg_name_to_fqbin('ProductionS') -> <<"nefit.ProductionS">>;
-msg_name_to_fqbin('ProductionM') -> <<"nefit.ProductionM">>;
-msg_name_to_fqbin('ResultS') -> <<"nefit.ResultS">>;
-msg_name_to_fqbin('ResultI') -> <<"nefit.ResultI">>;
-msg_name_to_fqbin('InfoS') -> <<"nefit.InfoS">>;
-msg_name_to_fqbin('InfoI') -> <<"nefit.InfoI">>;
-msg_name_to_fqbin('Server') -> <<"nefit.Server">>;
-msg_name_to_fqbin('Importer') -> <<"nefit.Importer">>;
-msg_name_to_fqbin('Negotiator') -> <<"nefit.Negotiator">>;
 msg_name_to_fqbin('ClientToServer') -> <<"nefit.ClientToServer">>;
 msg_name_to_fqbin('ClientToServerLogin') -> <<"nefit.ClientToServerLogin">>;
 msg_name_to_fqbin('ClientToServerRegister') -> <<"nefit.ClientToServerRegister">>;
@@ -11852,18 +12143,37 @@ msg_name_to_fqbin('ServerToImporterOfferLose') ->
     <<"nefit.ServerToImporterOfferLose">>;
 msg_name_to_fqbin('ServerToImporterNewProduct') ->
     <<"nefit.ServerToImporterNewProduct">>;
+msg_name_to_fqbin('ArbiterToServer') -> <<"nefit.ArbiterToServer">>;
+msg_name_to_fqbin('ArbiterToServerAnnounceAccepted') ->
+    <<"nefit.ArbiterToServerAnnounceAccepted">>;
+msg_name_to_fqbin('ArbiterToServerAnnounceInvalid') ->
+    <<"nefit.ArbiterToServerAnnounceInvalid">>;
+msg_name_to_fqbin('ArbiterToServerAnnounceSold') ->
+    <<"nefit.ArbiterToServerAnnounceSold">>;
+msg_name_to_fqbin('ArbiterToServerAnnounceNoOffers') ->
+    <<"nefit.ArbiterToServerAnnounceNoOffers">>;
+msg_name_to_fqbin('ArbiterToServerOfferSubmitted') ->
+    <<"nefit.ArbiterToServerOfferSubmitted">>;
+msg_name_to_fqbin('ArbiterToServerOfferInvalid') ->
+    <<"nefit.ArbiterToServerOfferInvalid">>;
+msg_name_to_fqbin('ArbiterToServerOfferWon') -> <<"nefit.ArbiterToServerOfferWon">>;
+msg_name_to_fqbin('ArbiterToServerOfferLose') ->
+    <<"nefit.ArbiterToServerOfferLose">>;
+msg_name_to_fqbin('ArbiterToServerNewProduct') ->
+    <<"nefit.ArbiterToServerNewProduct">>;
+msg_name_to_fqbin('ServerToArbiter') -> <<"nefit.ServerToArbiter">>;
+msg_name_to_fqbin('ServerToArbiterOffer') -> <<"nefit.ServerToArbiterOffer">>;
+msg_name_to_fqbin('ServerToArbiterAnnounce') -> <<"nefit.ServerToArbiterAnnounce">>;
+msg_name_to_fqbin('ServerToArbiterSubscribe') ->
+    <<"nefit.ServerToArbiterSubscribe">>;
 msg_name_to_fqbin(E) -> error({gpb_error, {badmsg, E}}).
 
 
-fqbin_to_enum_name(<<"nefit.MsgAuth.ClientType">>) -> 'MsgAuth.ClientType';
-fqbin_to_enum_name(<<"nefit.MsgAuth.MsgType">>) -> 'MsgAuth.MsgType';
 fqbin_to_enum_name(<<"nefit.ClientType">>) -> 'ClientType';
 fqbin_to_enum_name(E) ->
     error({gpb_error, {badenum, E}}).
 
 
-enum_name_to_fqbin('MsgAuth.ClientType') -> <<"nefit.MsgAuth.ClientType">>;
-enum_name_to_fqbin('MsgAuth.MsgType') -> <<"nefit.MsgAuth.MsgType">>;
 enum_name_to_fqbin('ClientType') -> <<"nefit.ClientType">>;
 enum_name_to_fqbin(E) ->
     error({gpb_error, {badenum, E}}).
@@ -11897,15 +12207,21 @@ get_all_proto_names() -> ["nefit"].
 
 
 get_msg_containment("nefit") ->
-    ['ClientToServer', 'ClientToServerLogin',
-     'ClientToServerRegister', 'DisponibilityN',
-     'DisponibilityS', 'Importer', 'ImporterToServer',
-     'ImporterToServerOffer', 'ImporterToServerSubscribe',
-     'InfoI', 'InfoS', 'ManufacturerToServer',
-     'ManufacturerToServerAnnounce', 'MsgAck', 'MsgAuth',
-     'Negotiator', 'OrderAckI', 'OrderAckS', 'OrderN',
-     'OrderS', 'ProductionM', 'ProductionS', 'ResultI',
-     'ResultS', 'Server', 'ServerToClientAuth',
+    ['ArbiterToServer', 'ArbiterToServerAnnounceAccepted',
+     'ArbiterToServerAnnounceInvalid',
+     'ArbiterToServerAnnounceNoOffers',
+     'ArbiterToServerAnnounceSold',
+     'ArbiterToServerNewProduct',
+     'ArbiterToServerOfferInvalid',
+     'ArbiterToServerOfferLose',
+     'ArbiterToServerOfferSubmitted',
+     'ArbiterToServerOfferWon', 'ClientToServer',
+     'ClientToServerLogin', 'ClientToServerRegister',
+     'ImporterToServer', 'ImporterToServerOffer',
+     'ImporterToServerSubscribe', 'ManufacturerToServer',
+     'ManufacturerToServerAnnounce', 'ServerToArbiter',
+     'ServerToArbiterAnnounce', 'ServerToArbiterOffer',
+     'ServerToArbiterSubscribe', 'ServerToClientAuth',
      'ServerToImporter', 'ServerToImporterNewProduct',
      'ServerToImporterOfferInvalid',
      'ServerToImporterOfferLose',
@@ -11914,7 +12230,7 @@ get_msg_containment("nefit") ->
      'ServerToManufacturerAnnounced',
      'ServerToManufacturerInvalid',
      'ServerToManufacturerNoOffers',
-     'ServerToManufacturerSold', 'SubN', 'SubS'];
+     'ServerToManufacturerSold'];
 get_msg_containment(P) ->
     error({gpb_error, {badproto, P}}).
 
@@ -11934,51 +12250,45 @@ get_rpc_containment(P) ->
     error({gpb_error, {badproto, P}}).
 
 
-get_enum_containment("nefit") ->
-    ['ClientType', 'MsgAuth.ClientType', 'MsgAuth.MsgType'];
+get_enum_containment("nefit") -> ['ClientType'];
 get_enum_containment(P) ->
     error({gpb_error, {badproto, P}}).
 
 
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporter">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.Server">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.Negotiator">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToArbiterOffer">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToArbiter">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ManufacturerToServer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ImporterToServerOffer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ImporterToServer">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.Importer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServerRegister">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServer">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.SubS">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturerNoOffers">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.ResultS">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.ProductionS">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.OrderS">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.OrderAckS">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.InfoS">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.DisponibilityS">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerAnnounceNoOffers">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturerSold">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturerInvalid">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToManufacturerAnnounced">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferSubmitted">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferInvalid">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterNewProduct">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerOfferSubmitted">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerOfferInvalid">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerNewProduct">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerAnnounceSold">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerAnnounceInvalid">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerAnnounceAccepted">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferLose">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToArbiterSubscribe">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToArbiterAnnounce">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ManufacturerToServerAnnounce">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ImporterToServerSubscribe">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerOfferLose">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToClientAuth">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.MsgAuth">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.ResultI">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.OrderAckI">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.InfoI">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.MsgAck">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.ProductionM">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.SubN">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferWon">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.OrderN">>) -> "nefit";
-get_proto_by_msg_name_as_fqbin(<<"nefit.DisponibilityN">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServerLogin">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerOfferWon">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(E) ->
     error({gpb_error, {badmsg, E}}).
 
@@ -11988,8 +12298,6 @@ get_proto_by_service_name_as_fqbin(E) ->
     error({gpb_error, {badservice, E}}).
 
 
-get_proto_by_enum_name_as_fqbin(<<"nefit.MsgAuth.MsgType">>) -> "nefit";
-get_proto_by_enum_name_as_fqbin(<<"nefit.MsgAuth.ClientType">>) -> "nefit";
 get_proto_by_enum_name_as_fqbin(<<"nefit.ClientType">>) -> "nefit";
 get_proto_by_enum_name_as_fqbin(E) ->
     error({gpb_error, {badenum, E}}).

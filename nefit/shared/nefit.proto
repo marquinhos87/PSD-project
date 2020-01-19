@@ -7,158 +7,6 @@ option java_package = "nefit.shared";
 option java_outer_classname = "NefitProto";
 
 /* -------------------------------------------------------------------------- */
-
-message MsgAuth {
-    required string name = 1;
-    required string pass = 2;
-
-    enum ClientType {
-        MANUFACTURER = 0;
-        IMPORTER = 1;
-    }
-    required ClientType ctype = 3;
-
-    enum MsgType {
-        LOGIN = 0;
-        REGISTER = 1;
-    }
-    required MsgType mtype = 4 [default = LOGIN];
-}
-
-message MsgAck {
-    required bool ok = 1;
-    optional string msg = 2;
-}
-
-message DisponibilityS {
-    required string nameM = 1;
-    required string nameP = 2;
-    required int32 minimum = 3;
-    required int32 maximum = 4;
-    required float value = 5;
-    required int32 period = 6;
-}
-
-message DisponibilityN {
-    required string nameM = 1;
-    required string nameP = 2;
-    required int32 minimum = 3;
-    required int32 maximum = 4;
-    required float value = 5;
-    required int32 period = 6;
-}
-
-message OrderS {
-    required string nameM = 1;
-    required string nameP = 2;
-    required int32 quant = 3;
-    required float value = 4;
-    required string nameI = 5;
-}
-
-message OrderN {
-    required string nameM = 1;
-    required string nameP = 2;
-    required int32 quant = 3;
-    required float value = 4;
-    required string nameI = 5;
-}
-
-message OrderAckS {
-    required bool ack = 1;
-    optional string msg = 2;
-    required string nameI = 3;
-    required bool outdated = 4;
-}
-
-message OrderAckI {
-    required bool ack = 1;
-    optional string msg = 2;
-    required bool outdated = 3;
-}
-
-message SubS {
-    required string nameI = 1;
-    repeated string subs = 2;
-}
-
-message SubN {
-    required string nameI = 1;
-    repeated string subs = 2;
-}
-
-message ProductionS {
-    required string nameM = 1;
-    required string nameP = 2;
-    required int32 quant = 3;
-    required float value = 4;
-}
-
-message ProductionM {
-    required string nameP = 1;
-    required int32 quant = 2;
-    required float value = 3;
-}
-
-message ResultS {
-    required bool result = 1;
-    required string msg = 2;
-    required string nameI = 3;
-}
-
-message ResultI {
-    required bool result = 1;
-    required string msg = 2;
-}
-
-message InfoS {
-    required string nameM = 1;
-    required string nameP = 2;
-    required int32 minimum = 3;
-    required int32 maximum = 4;
-    required float value = 5;
-    required int32 period = 6;
-    required string nameI = 7;
-}
-
-message InfoI {
-    required string nameM = 1;
-    required string nameP = 2;
-    required int32 minimum = 3;
-    required int32 maximum = 4;
-    required float value = 5;
-    required int32 period = 6;
-}
-
-message Server {
-    oneof msg {
-        DisponibilityS m1 = 1;
-        OrderS m2 = 2;
-        SubS m3 = 3;
-        ResultS m4 = 4;
-        InfoS m5 = 5;
-        ProductionS m6 = 6;
-        OrderAckS m7 = 7;
-    }
-}
-
-message Importer {
-    oneof msg {
-        OrderAckI ordack = 1;
-        ResultI result = 2;
-        InfoI info = 3;
-    }
-}
-
-message Negotiator {
-    oneof msg {
-        SubN sub = 1;
-        OrderN order = 2;
-        DisponibilityN disponibility = 3;
-    }
-}
-
-/* -------------------------------------------------------------------------- */
 /* generic client <--> server */
 
 enum ClientType {
@@ -225,6 +73,7 @@ message ServerToManufacturer {
 }
 
 message ServerToManufacturerAnnounced {
+    required string productName = 1;
 }
 
 message ServerToManufacturerInvalid {
@@ -252,7 +101,7 @@ message ImporterToServer {
 }
 
 message ImporterToServerSubscribe {
-    repeated string manufacturerName = 1;
+    repeated string manufacturerNames = 1;
     required string importerName = 2;
 }
 
@@ -275,28 +124,29 @@ message ServerToImporter {
 }
 
 message ServerToImporterOfferSubmitted {
+    required string manufacturerName = 1;
+    required string productName = 2;
 }
 
 message ServerToImporterOfferInvalid {
-    required string errorMessage = 1;
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required string errorMessage = 3;
 }
 
-message ServerToImporterOfferWon
-{
+message ServerToImporterOfferWon {
     required string manufacturerName = 1;
     required string productName = 2;
     required int32 quantity = 3;
     required float unitPrice = 4;
 }
 
-message ServerToImporterOfferLose
-{
+message ServerToImporterOfferLose {
     required string manufacturerName = 1;
     required string productName = 2;
 }
 
-message ServerToImporterNewProduct
-{
+message ServerToImporterNewProduct {
     required string productName = 1;
     required int32 minQuantity = 2;
     required int32 maxQuantity = 3;
@@ -306,3 +156,107 @@ message ServerToImporterNewProduct
 }
 
 /* -------------------------------------------------------------------------- */
+/* arbiter <--> server */
+
+message ArbiterToServer {
+    oneof message {
+        ArbiterToServerAnnounceAccepted accepted = 1;
+        ArbiterToServerAnnounceInvalid announceInvalid = 2;
+        ArbiterToServerAnnounceSold sold = 3;
+        ArbiterToServerAnnounceNoOffers noOffers = 4;
+        ArbiterToServerOfferSubmitted submitted = 5;
+        ArbiterToServerOfferInvalid offerInvalid = 6;
+        ArbiterToServerOfferWon won = 7;
+        ArbiterToServerOfferLose lose = 8;
+        ArbiterToServerNewProduct product = 9;
+    }
+}
+
+message ArbiterToServerAnnounceAccepted {
+    required string manufacturerName = 1;
+    required string productName = 2;
+}
+
+message ArbiterToServerAnnounceInvalid {
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required string errorMessage = 3;
+}
+
+message ArbiterToServerAnnounceSold {
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required int32 quantity = 3;
+    required float unitPrice = 4;
+}
+
+message ArbiterToServerAnnounceNoOffers {
+    required string manufacturerName = 1;
+    required string productName = 2;
+}
+
+message ArbiterToServerOfferSubmitted {
+    required string importerName = 1;
+    required string productName = 2;
+    required string manufacturerName = 3;
+}
+
+message ArbiterToServerOfferInvalid {
+    required string importerName = 1;
+    required string productName = 2;
+    required string manufacturerName = 3;
+    required string errorMessage = 4;
+}
+
+message ArbiterToServerOfferWon {
+    required string importerName = 1;
+    required string productName = 2;
+    required string manufacturerName = 3;
+    required int32 quantity = 4;
+    required float unitPrice = 5;
+}
+
+message ArbiterToServerOfferLose {
+    required string importerName = 1;
+    required string productName = 2;
+    required string manufacturerName = 3;
+}
+
+message ArbiterToServerNewProduct {
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required int32 minQuantity = 3;
+    required int32 maxQuantity = 4;
+    required float minUnitPrice = 5;
+    required int32 timout = 6;
+}
+
+message ServerToArbiter {
+    oneof message {
+        ServerToArbiterOffer offer = 1;
+        ServerToArbiterAnnounce announce = 2;
+        ServerToArbiterSubscribe subscribe = 3;
+    }
+}
+
+message ServerToArbiterOffer {
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required int32 quantity = 3;
+    required float unitPrice = 4;
+    required string importerName = 5;
+}
+
+message ServerToArbiterAnnounce {
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required int32 minQuantity = 3;
+    required int32 maxQuantity = 4;
+    required float minUnitPrice = 5;
+    required int32 timout = 6;
+}
+
+message ServerToArbiterSubscribe {
+    required string importerName = 1;
+    repeated string manufacturerNames = 2;
+}

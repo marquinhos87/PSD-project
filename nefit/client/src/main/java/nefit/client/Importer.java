@@ -62,7 +62,7 @@ public class Importer extends Client< NefitProto.ServerToImporter >
             NefitProto.ImporterToServerSubscribe
                 .newBuilder()
                 .setImporterName(this.getUsername())
-                .addAllManufacturerName(Arrays.asList(manufacturers))
+                .addAllManufacturerNames(Arrays.asList(manufacturers))
                 .build();
 
         final var messageServer =

@@ -190,10 +190,10 @@ public class Main
 
         connection.send(NefitProto.ClientToServer.newBuilder().setRegister(registerMessage).build());
 
-        final var ackRegister = connection.receive(NefitProto.MsgAck.parser());
+        final var ackRegister = connection.receive(NefitProto.ServerToClientAuth.parser());
 
         if (!ackRegister.getOk())
-            prompt.fail(ackRegister.getMsg());
+            prompt.fail(ackRegister.getErrorMessage());
 
         final var loginMessage = NefitProto.ClientToServerLogin
             .newBuilder()

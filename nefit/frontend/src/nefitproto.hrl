@@ -7,187 +7,6 @@
 
 -define(nefitproto_gpb_version, "4.8.0").
 
--ifndef('MSGAUTH_PB_H').
--define('MSGAUTH_PB_H', true).
--record('MsgAuth',
-        {name                   :: iodata(),        % = 1
-         pass                   :: iodata(),        % = 2
-         ctype                  :: 'MANUFACTURER' | 'IMPORTER' | integer(), % = 3, enum MsgAuth.ClientType
-         mtype = 'LOGIN'        :: 'LOGIN' | 'REGISTER' | integer() % = 4, enum MsgAuth.MsgType
-        }).
--endif.
-
--ifndef('MSGACK_PB_H').
--define('MSGACK_PB_H', true).
--record('MsgAck',
-        {ok                     :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata() | undefined % = 2
-        }).
--endif.
-
--ifndef('DISPONIBILITYS_PB_H').
--define('DISPONIBILITYS_PB_H', true).
--record('DisponibilityS',
-        {nameM                  :: iodata(),        % = 1
-         nameP                  :: iodata(),        % = 2
-         minimum                :: integer(),       % = 3, 32 bits
-         maximum                :: integer(),       % = 4, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
-         period                 :: integer()        % = 6, 32 bits
-        }).
--endif.
-
--ifndef('DISPONIBILITYN_PB_H').
--define('DISPONIBILITYN_PB_H', true).
--record('DisponibilityN',
-        {nameM                  :: iodata(),        % = 1
-         nameP                  :: iodata(),        % = 2
-         minimum                :: integer(),       % = 3, 32 bits
-         maximum                :: integer(),       % = 4, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
-         period                 :: integer()        % = 6, 32 bits
-        }).
--endif.
-
--ifndef('ORDERS_PB_H').
--define('ORDERS_PB_H', true).
--record('OrderS',
-        {nameM                  :: iodata(),        % = 1
-         nameP                  :: iodata(),        % = 2
-         quant                  :: integer(),       % = 3, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 4
-         nameI                  :: iodata()         % = 5
-        }).
--endif.
-
--ifndef('ORDERN_PB_H').
--define('ORDERN_PB_H', true).
--record('OrderN',
-        {nameM                  :: iodata(),        % = 1
-         nameP                  :: iodata(),        % = 2
-         quant                  :: integer(),       % = 3, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 4
-         nameI                  :: iodata()         % = 5
-        }).
--endif.
-
--ifndef('ORDERACKS_PB_H').
--define('ORDERACKS_PB_H', true).
--record('OrderAckS',
-        {ack                    :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata() | undefined, % = 2
-         nameI                  :: iodata(),        % = 3
-         outdated               :: boolean() | 0 | 1 % = 4
-        }).
--endif.
-
--ifndef('ORDERACKI_PB_H').
--define('ORDERACKI_PB_H', true).
--record('OrderAckI',
-        {ack                    :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata() | undefined, % = 2
-         outdated               :: boolean() | 0 | 1 % = 3
-        }).
--endif.
-
--ifndef('SUBS_PB_H').
--define('SUBS_PB_H', true).
--record('SubS',
-        {nameI                  :: iodata(),        % = 1
-         subs = []              :: [iodata()] | undefined % = 2
-        }).
--endif.
-
--ifndef('SUBN_PB_H').
--define('SUBN_PB_H', true).
--record('SubN',
-        {nameI                  :: iodata(),        % = 1
-         subs = []              :: [iodata()] | undefined % = 2
-        }).
--endif.
-
--ifndef('PRODUCTIONS_PB_H').
--define('PRODUCTIONS_PB_H', true).
--record('ProductionS',
-        {nameM                  :: iodata(),        % = 1
-         nameP                  :: iodata(),        % = 2
-         quant                  :: integer(),       % = 3, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan % = 4
-        }).
--endif.
-
--ifndef('PRODUCTIONM_PB_H').
--define('PRODUCTIONM_PB_H', true).
--record('ProductionM',
-        {nameP                  :: iodata(),        % = 1
-         quant                  :: integer(),       % = 2, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan % = 3
-        }).
--endif.
-
--ifndef('RESULTS_PB_H').
--define('RESULTS_PB_H', true).
--record('ResultS',
-        {result                 :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata(),        % = 2
-         nameI                  :: iodata()         % = 3
-        }).
--endif.
-
--ifndef('RESULTI_PB_H').
--define('RESULTI_PB_H', true).
--record('ResultI',
-        {result                 :: boolean() | 0 | 1, % = 1
-         msg                    :: iodata()         % = 2
-        }).
--endif.
-
--ifndef('INFOS_PB_H').
--define('INFOS_PB_H', true).
--record('InfoS',
-        {nameM                  :: iodata(),        % = 1
-         nameP                  :: iodata(),        % = 2
-         minimum                :: integer(),       % = 3, 32 bits
-         maximum                :: integer(),       % = 4, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
-         period                 :: integer(),       % = 6, 32 bits
-         nameI                  :: iodata()         % = 7
-        }).
--endif.
-
--ifndef('INFOI_PB_H').
--define('INFOI_PB_H', true).
--record('InfoI',
-        {nameM                  :: iodata(),        % = 1
-         nameP                  :: iodata(),        % = 2
-         minimum                :: integer(),       % = 3, 32 bits
-         maximum                :: integer(),       % = 4, 32 bits
-         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
-         period                 :: integer()        % = 6, 32 bits
-        }).
--endif.
-
--ifndef('SERVER_PB_H').
--define('SERVER_PB_H', true).
--record('Server',
-        {msg                    :: {m1, nefitproto:'DisponibilityS'()} | {m2, nefitproto:'OrderS'()} | {m3, nefitproto:'SubS'()} | {m4, nefitproto:'ResultS'()} | {m5, nefitproto:'InfoS'()} | {m6, nefitproto:'ProductionS'()} | {m7, nefitproto:'OrderAckS'()} | undefined % oneof
-        }).
--endif.
-
--ifndef('IMPORTER_PB_H').
--define('IMPORTER_PB_H', true).
--record('Importer',
-        {msg                    :: {ordack, nefitproto:'OrderAckI'()} | {result, nefitproto:'ResultI'()} | {info, nefitproto:'InfoI'()} | undefined % oneof
-        }).
--endif.
-
--ifndef('NEGOTIATOR_PB_H').
--define('NEGOTIATOR_PB_H', true).
--record('Negotiator',
-        {msg                    :: {sub, nefitproto:'SubN'()} | {order, nefitproto:'OrderN'()} | {disponibility, nefitproto:'DisponibilityN'()} | undefined % oneof
-        }).
--endif.
-
 -ifndef('CLIENTTOSERVER_PB_H').
 -define('CLIENTTOSERVER_PB_H', true).
 -record('ClientToServer',
@@ -250,7 +69,7 @@
 -ifndef('SERVERTOMANUFACTURERANNOUNCED_PB_H').
 -define('SERVERTOMANUFACTURERANNOUNCED_PB_H', true).
 -record('ServerToManufacturerAnnounced',
-        {
+        {productName            :: iodata()         % = 1
         }).
 -endif.
 
@@ -287,7 +106,7 @@
 -ifndef('IMPORTERTOSERVERSUBSCRIBE_PB_H').
 -define('IMPORTERTOSERVERSUBSCRIBE_PB_H', true).
 -record('ImporterToServerSubscribe',
-        {manufacturerName = []  :: [iodata()] | undefined, % = 1
+        {manufacturerNames = [] :: [iodata()] | undefined, % = 1
          importerName           :: iodata()         % = 2
         }).
 -endif.
@@ -313,14 +132,17 @@
 -ifndef('SERVERTOIMPORTEROFFERSUBMITTED_PB_H').
 -define('SERVERTOIMPORTEROFFERSUBMITTED_PB_H', true).
 -record('ServerToImporterOfferSubmitted',
-        {
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata()         % = 2
         }).
 -endif.
 
 -ifndef('SERVERTOIMPORTEROFFERINVALID_PB_H').
 -define('SERVERTOIMPORTEROFFERINVALID_PB_H', true).
 -record('ServerToImporterOfferInvalid',
-        {errorMessage           :: iodata()         % = 1
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         errorMessage           :: iodata()         % = 3
         }).
 -endif.
 
@@ -351,6 +173,137 @@
          minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 4
          timeout                :: integer(),       % = 5, 32 bits
          manufacturerName       :: iodata()         % = 6
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVER_PB_H').
+-define('ARBITERTOSERVER_PB_H', true).
+-record('ArbiterToServer',
+        {message                :: {accepted, nefitproto:'ArbiterToServerAnnounceAccepted'()} | {announceInvalid, nefitproto:'ArbiterToServerAnnounceInvalid'()} | {sold, nefitproto:'ArbiterToServerAnnounceSold'()} | {noOffers, nefitproto:'ArbiterToServerAnnounceNoOffers'()} | {submitted, nefitproto:'ArbiterToServerOfferSubmitted'()} | {offerInvalid, nefitproto:'ArbiterToServerOfferInvalid'()} | {won, nefitproto:'ArbiterToServerOfferWon'()} | {lose, nefitproto:'ArbiterToServerOfferLose'()} | {product, nefitproto:'ArbiterToServerNewProduct'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVERANNOUNCEACCEPTED_PB_H').
+-define('ARBITERTOSERVERANNOUNCEACCEPTED_PB_H', true).
+-record('ArbiterToServerAnnounceAccepted',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata()         % = 2
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVERANNOUNCEINVALID_PB_H').
+-define('ARBITERTOSERVERANNOUNCEINVALID_PB_H', true).
+-record('ArbiterToServerAnnounceInvalid',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         errorMessage           :: iodata()         % = 3
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVERANNOUNCESOLD_PB_H').
+-define('ARBITERTOSERVERANNOUNCESOLD_PB_H', true).
+-record('ArbiterToServerAnnounceSold',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         quantity               :: integer(),       % = 3, 32 bits
+         unitPrice              :: float() | integer() | infinity | '-infinity' | nan % = 4
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVERANNOUNCENOOFFERS_PB_H').
+-define('ARBITERTOSERVERANNOUNCENOOFFERS_PB_H', true).
+-record('ArbiterToServerAnnounceNoOffers',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata()         % = 2
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVEROFFERSUBMITTED_PB_H').
+-define('ARBITERTOSERVEROFFERSUBMITTED_PB_H', true).
+-record('ArbiterToServerOfferSubmitted',
+        {importerName           :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         manufacturerName       :: iodata()         % = 3
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVEROFFERINVALID_PB_H').
+-define('ARBITERTOSERVEROFFERINVALID_PB_H', true).
+-record('ArbiterToServerOfferInvalid',
+        {importerName           :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         manufacturerName       :: iodata(),        % = 3
+         errorMessage           :: iodata()         % = 4
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVEROFFERWON_PB_H').
+-define('ARBITERTOSERVEROFFERWON_PB_H', true).
+-record('ArbiterToServerOfferWon',
+        {importerName           :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         manufacturerName       :: iodata(),        % = 3
+         quantity               :: integer(),       % = 4, 32 bits
+         unitPrice              :: float() | integer() | infinity | '-infinity' | nan % = 5
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVEROFFERLOSE_PB_H').
+-define('ARBITERTOSERVEROFFERLOSE_PB_H', true).
+-record('ArbiterToServerOfferLose',
+        {importerName           :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         manufacturerName       :: iodata()         % = 3
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVERNEWPRODUCT_PB_H').
+-define('ARBITERTOSERVERNEWPRODUCT_PB_H', true).
+-record('ArbiterToServerNewProduct',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         minQuantity            :: integer(),       % = 3, 32 bits
+         maxQuantity            :: integer(),       % = 4, 32 bits
+         minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 5
+         timout                 :: integer()        % = 6, 32 bits
+        }).
+-endif.
+
+-ifndef('SERVERTOARBITER_PB_H').
+-define('SERVERTOARBITER_PB_H', true).
+-record('ServerToArbiter',
+        {message                :: {offer, nefitproto:'ServerToArbiterOffer'()} | {announce, nefitproto:'ServerToArbiterAnnounce'()} | {subscribe, nefitproto:'ServerToArbiterSubscribe'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('SERVERTOARBITEROFFER_PB_H').
+-define('SERVERTOARBITEROFFER_PB_H', true).
+-record('ServerToArbiterOffer',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         quantity               :: integer(),       % = 3, 32 bits
+         unitPrice              :: float() | integer() | infinity | '-infinity' | nan, % = 4
+         importerName           :: iodata()         % = 5
+        }).
+-endif.
+
+-ifndef('SERVERTOARBITERANNOUNCE_PB_H').
+-define('SERVERTOARBITERANNOUNCE_PB_H', true).
+-record('ServerToArbiterAnnounce',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         minQuantity            :: integer(),       % = 3, 32 bits
+         maxQuantity            :: integer(),       % = 4, 32 bits
+         minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 5
+         timout                 :: integer()        % = 6, 32 bits
+        }).
+-endif.
+
+-ifndef('SERVERTOARBITERSUBSCRIBE_PB_H').
+-define('SERVERTOARBITERSUBSCRIBE_PB_H', true).
+-record('ServerToArbiterSubscribe',
+        {importerName           :: iodata(),        % = 1
+         manufacturerNames = [] :: [iodata()] | undefined % = 2
         }).
 -endif.
 
