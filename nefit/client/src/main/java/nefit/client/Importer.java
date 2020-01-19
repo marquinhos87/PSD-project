@@ -76,8 +76,8 @@ public class Importer implements Runnable
             List<String> topics = new ArrayList<>();
             for(int i = 1 ; i < fields.length ; i++)
                 topics.add(fields[i]);
-            NefitProtos.SubS sub = this.messages.createSubS(topics);
-            Client.writeDelimited(this.os, sub);
+            NefitProtos.SubS sub = this.messages.createSubS(this.name,topics);
+            Client.writeDelimited(this.os, NefitProtos.Server.newBuilder().setM3(sub).build());
         }
     }
 
@@ -92,9 +92,9 @@ public class Importer implements Runnable
             try
             {
                 NefitProtos.OrderS order = this.messages.createOrderS(
-                    fields[1], fields[2], Integer.parseInt(fields[3]), Float.parseFloat(fields[4])
+                    this.name,fields[1], fields[2], Integer.parseInt(fields[3]), Float.parseFloat(fields[4])
                 );
-                Client.writeDelimited(this.os, order);
+                Client.writeDelimited(this.os, NefitProtos.Server.newBuilder().setM2(order).build());
             }
             catch (NumberFormatException e)
             {

@@ -97,7 +97,7 @@ message ProductionS {
 message ProductionM {
     required string nameP = 1;
     required int32 quant = 2;
-    required int32 value = 3;
+    required float value = 3;
 }
 
 message ResultS {

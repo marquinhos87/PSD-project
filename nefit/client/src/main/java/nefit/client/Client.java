@@ -124,7 +124,6 @@ public class Client
 
     private static Boolean Register(String type, Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException {
         NefitProtos.MsgAuth msgl;
-        System.out.println(type);
         if (type.equals("m"))
             msgl = messages.createMsgAuth(false,true,arg.getKey(),arg.getValue());
         else

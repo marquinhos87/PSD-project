@@ -71,9 +71,10 @@ public class Messages
      * @param value Price per unit
      * @return Message with the order to a product
      */
-    public NefitProtos.OrderS createOrderS(String nameM, String nameP, int quantity, float value)
+    public NefitProtos.OrderS createOrderS(String nameI, String nameM, String nameP, int quantity, float value)
     {
         return NefitProtos.OrderS.newBuilder()
+            .setNameI(nameI)
             .setNameM(nameM)
             .setNameP(nameP)
             .setQuant(quantity)
@@ -86,9 +87,9 @@ public class Messages
      * @param subs List of the Names of Manufacturers that Importer want to subscribe
      * @return Message with the Names of Manufacturers
      */
-    public NefitProtos.SubS createSubS(List<String> subs)
+    public NefitProtos.SubS createSubS(String nameI, List<String> subs)
     {
-        NefitProtos.SubS.Builder sub = NefitProtos.SubS.newBuilder();
+        NefitProtos.SubS.Builder sub = NefitProtos.SubS.newBuilder().setNameI(nameI);
         for(String aux: subs)
             sub.addSubs(aux);
         return sub.build();

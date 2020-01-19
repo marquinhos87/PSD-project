@@ -69,7 +69,8 @@ public class Manufacturer implements Runnable
                         NefitProtos.DisponibilityS disp = this.messages.createDisponibilityS(
                             this.name, fields[0], Integer.parseInt(fields[1]), Integer.parseInt(fields[2]), Float.parseFloat(fields[3]), Integer.parseInt(fields[4])
                         );
-                        Client.writeDelimited(this.os, disp);
+                        NefitProtos.Server server = NefitProtos.Server.newBuilder().setM1(disp).build();
+                        Client.writeDelimited(this.os, server);
                     }
                 }
             }

@@ -3,7 +3,6 @@
     <option name="MAIN_CLASS_NAME" value="nefit.arbiter.Arbiter" />
     <module name="arbiter" />
     <method v="2">
-      <option name="Sh.BeforeRunTask" RUN_CONFIG_NAME="protoc (Java)" RUN_CONFIG_TYPE="ShConfigurationType" />
       <option name="Make" enabled="true" />
     </method>
   </configuration>
