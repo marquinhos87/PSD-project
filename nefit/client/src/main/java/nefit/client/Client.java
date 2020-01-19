@@ -63,7 +63,7 @@ public abstract class Client< MessageType >
         return this.username;
     }
 
-    public void run(Prompt prompt) throws IOException, InterruptedException
+    public void run() throws IOException, InterruptedException
     {
         // start message receiving thread
 
@@ -73,7 +73,7 @@ public abstract class Client< MessageType >
 
         while (true)
         {
-            final var commandName = prompt.input("> ");
+            final var commandName = this.prompt.input("> ");
 
             if (commandName == null)
                 break; // no more input
@@ -82,7 +82,7 @@ public abstract class Client< MessageType >
 
             if (command == null)
             {
-                prompt.printError(
+                this.prompt.printError(
                     "Unknown command \"%s\". Try %s.",
                     commandName,
                     this.knownCommandsMessage
@@ -102,7 +102,7 @@ public abstract class Client< MessageType >
             }
             catch (Exception e)
             {
-                prompt.printError(e.getMessage());
+                this.prompt.printError(e.getMessage());
             }
         }
 

@@ -62,7 +62,7 @@ public class Main
                 break;
 
             case "m":
-
+                username = register(connection, prompt);
                 break;
 
             default:
