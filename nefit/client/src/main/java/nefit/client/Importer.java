@@ -117,12 +117,20 @@ public class Importer extends Client< NefitProtos.Importer >
 
     @Override
     protected void handleMessage(NefitProtos.Importer message)
-        throws IOException
     {
         if (message.hasInfo())
         {
-            this.getPrompt().print("New Product available:");
-            this.getPrompt().print(printInfo(message.getInfo()));
+            final var info = message.getInfo();
+
+            this.getPrompt().printNotice(
+                "Product \"%s\" now available from manufacturer \"%s\"."
+                    + "\n   Min. quantity: %d"
+                    + "\n   Max. quantity: %d"
+                    + "\n   Min. unit price: %.2f"
+                    + "\n   Available for %d seconds.",
+                info.getNameP(), info.getNameM(), info.getMinimum(),
+                info.getMaximum(), info.getValue(), info.getPeriod()
+            );
         }
         else if (message.hasResult())
         {
@@ -150,21 +158,5 @@ public class Importer extends Client< NefitProtos.Importer >
 
             this.getPrompt().printNotice(text);
         }
-    }
-
-    private String printInfo(NefitProtos.InfoI info)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\tManufacturer: " + info.getNameM());
-        sb.append("\n\tProduct: " + info.getNameP());
-        sb.append("\n\tMin quantity: " + info.getMinimum());
-        sb.append("\n\tMax quantity: " + info.getMaximum());
-        sb.append("\n\tMin unit price: " + info.getValue());
-        sb.append("\n\tTime Available: " + info.getPeriod() + " seconds");
-        return sb.toString();
-    }
-
-    private void printOrderAck(NefitProtos.OrderAckI ack)
-    {
     }
 }
