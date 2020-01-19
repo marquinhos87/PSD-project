@@ -6,8 +6,8 @@ import com.google.protobuf.Parser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public abstract class Client< MessageType >
@@ -63,7 +63,7 @@ public abstract class Client< MessageType >
 
     }
 
-    abstract protected void handleCommand(String command, String[] args)
+    abstract protected void handleCommand(String command, List< String > args)
         throws IOException;
 
     abstract protected void handleMessage(MessageType message)
@@ -79,22 +79,12 @@ public abstract class Client< MessageType >
 
         while (true)
         {
-            final var line = prompt.input("> ");
+            final var commandName = prompt.input("> ");
 
-            if (line == null)
+            if (commandName == null)
                 break;
 
-            final var args =
-                Pattern
-                    .compile("\\s+")
-                    .splitAsStream(line);
-
-            final var parts = line.split("\\s+", 2);
-
-            if (parts[0].equals("exit"))
-                break;
-
-            final var command = this.commands.get(parts[0]);
+            final var command = this.commands.get(commandName);
 
             if (command == null)
             {
@@ -102,9 +92,19 @@ public abstract class Client< MessageType >
                 continue;
             }
 
-            final var args = new ArrayList< String >();
+            final var arguments = new ArrayList< String >();
 
-            if ()
+            for (final var argumentName : command.getArgumentNames())
+                arguments.add(prompt.input(argumentName + ": "));
+
+            try
+            {
+                this.handleCommand(commandName, arguments);
+            }
+            catch (Exception e)
+            {
+                prompt.printError(e.getMessage());
+            }
         }
 
         // close connection

@@ -4,6 +4,7 @@ import nefit.proto.NefitProtos;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Manufacturer
@@ -30,12 +31,13 @@ public class Manufacturer
         this.activeProductNames = new HashSet<>();
     }
 
-    private void handleCommand(String command, String[] arguments)
+    @Override
+    private void handleCommand(String command, List< String > arguments)
         throws IOException
     {
         // validate and parse arguments (we know command is "announce")
 
-        final var productName = arguments[0];
+        final var productName = arguments.get(0)
 
         Util.ensure(!productName.isBlank(), "Invalid product name.");
 
@@ -44,8 +46,8 @@ public class Manufacturer
             "A product with this name is currently available from you."
         );
 
-        final var minQuantity = Integer.parseInt(arguments[1]);
-        final var maxQuantity = Integer.parseInt(arguments[2]);
+        final var minQuantity = Integer.parseInt(arguments.get(1));
+        final var maxQuantity = Integer.parseInt(arguments.get(2));
 
         Util.ensure(
             minQuantity > 0 && maxQuantity > 0,
@@ -57,11 +59,11 @@ public class Manufacturer
             "Maximum quantity must not be lower than minimum."
         );
 
-        final var minUnitPrice = Float.parseFloat(arguments[3]);
+        final var minUnitPrice = Float.parseFloat(arguments.get(3));
 
         Util.ensure(minUnitPrice > 0, "Minimum unit price must be positive.");
 
-        final var timeout = Integer.parseInt(arguments[4]);
+        final var timeout = Integer.parseInt(arguments.get(4));
 
         Util.ensure(timeout > 0, "Timeout must be positive.");
 
