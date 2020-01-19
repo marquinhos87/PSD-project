@@ -16,9 +16,6 @@ public class Importer extends Client< NefitProtos.Importer >
             username,
             NefitProtos.Importer.parser(),
             new Command(
-                "get"
-            ),
-            new Command(
                 "subscribe",
                 "Manufacturers"
             ),
@@ -34,10 +31,6 @@ public class Importer extends Client< NefitProtos.Importer >
     {
         switch (command)
         {
-            case "get":
-                this.handleCommandGet(arguments);
-                break;
-
             case "subscribe":
                 this.handleCommandSubscribe(arguments);
                 break;
@@ -46,15 +39,6 @@ public class Importer extends Client< NefitProtos.Importer >
                 this.handleCommandOffer(arguments);
                 break;
         }
-    }
-
-    private void handleCommandGet(List< String > arguments)
-    {
-        // send request to server
-
-        final var messageGet =
-            NefitProtos.GetS
-            .
     }
 
     private void handleCommandSubscribe(List< String > arguments)
@@ -118,30 +102,25 @@ public class Importer extends Client< NefitProtos.Importer >
     protected void handleMessage(NefitProtos.Importer message)
         throws IOException
     {
-        while (true)
+        if (message.hasInfo())
         {
-            try
-            {
-                final var importer = Client
-                    .parseDelimited(this.is, NefitProtos.Importer.parser());
+            this.getPrompt().printMessages("New Product available:");
+            this.prompt.printMessages(printInfo(message.getInfo()));
+        }
+        else if (message.hasResult())
+        {
+            final var result = message.getResult();
 
-                if (importer.hasInfo())
-                {
-                    this.prompt.printMessages("New Product available:");
-                    this.prompt.printMessages(printInfo(importer.getInfo()));
-                }
+            this.getPrompt().printNotice(
+                "Your offer for \"%s\" was %s.",
+                result.getMsg(),
+                result.getResult() ? "accepted" : "rejected"
+            );
+        }
 
-                if (importer.hasResult())
-                    printResult(importer.getResult());
-
-                if (importer.hasOrdack())
-                    printOrderAck(importer.getOrdack());
-
-            }
-            catch (IOException e)
-            {
-                this.prompt.printError("Something went wrong");
-            }
+        else if (message.hasOrdack())
+        {
+            printOrderAck(message.getOrdack());
         }
     }
 
@@ -159,14 +138,6 @@ public class Importer extends Client< NefitProtos.Importer >
 
     private void printResult(NefitProtos.ResultI result)
     {
-        if (result.getResult())
-        {
-            this.prompt.printMessages("You win the order " + result.getMsg());
-        }
-        else
-        {
-            this.prompt.printMessages("You lose the order " + result.getMsg());
-        }
     }
 
     private void printOrderAck(NefitProtos.OrderAckI ack)
