@@ -257,10 +257,6 @@ public class Arbiter implements Runnable
                 this.importerManu.put(str,aux);
             }
         }
-        NefitProto.ArbiterToServerSubscribeAccepted ack = NefitProto.ArbiterToServerSubscribeAccepted.newBuilder()
-            .setImporterName(sub.getImporterName())
-            .build();
-        connection.send(NefitProto.ArbiterToServer.newBuilder().setSubsAccepted(ack).build());
     }
 
     private synchronized void executeResult() {

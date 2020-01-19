@@ -122,7 +122,6 @@ message ServerToImporter {
         ServerToImporterOfferLose offerLose = 4;
         ServerToImporterOfferOutdated offerOutdated = 5;
         ServerToImporterNewProduct newProduct = 6;
-        ServerToImporterSubscribeAccepted subsAccepted = 7;
     }
 }
 
@@ -161,9 +160,6 @@ message ServerToImporterNewProduct {
     required float minUnitPrice = 4;
     required int32 timeout = 5;
     required string manufacturerName = 6;
-}
-
-message ServerToImporterSubscribeAccepted {
 }
 
 /* -------------------------------------------------------------------------- */
