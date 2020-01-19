@@ -3,6 +3,8 @@ package nefit.client;
 import nefit.proto.NefitProtos;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 
 public class Main
 {
@@ -10,6 +12,26 @@ public class Main
     {
         try (final var prompt = new Prompt())
         {
+            // parse arguments
+
+            final InetSocketAddress endpoint;
+
+            try
+            {
+                Util.ensure(args.length == 2, "");
+
+                endpoint = new InetSocketAddress(
+                    args[0], Integer.parseInt(args[1])
+                );
+            }
+            catch (Exception e)
+            {
+                prompt.print("Usage: chirper <server_host> <server_port>");
+                System.exit(2);
+            }
+
+            // connect to server
+
             final Connection connection;
 
             try
@@ -39,6 +61,12 @@ public class Main
                     break;
             }
         }
+    }
+
+    private static InetSocketAddress parseArgs(String[] args)
+    {
+        // check number of arguments
+
     }
 
     private static NefitProtos.ClientType authenticate(
