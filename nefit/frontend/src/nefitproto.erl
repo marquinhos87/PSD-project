@@ -127,20 +127,26 @@
 
 -type 'ServerToArbiterSubscribe'() :: #'ServerToArbiterSubscribe'{}.
 
--export_type(['ClientToServer'/0, 'ClientToServerLogin'/0, 'ClientToServerRegister'/0, 'ServerToClientAuth'/0, 'ManufacturerToServer'/0, 'ManufacturerToServerAnnounce'/0, 'ServerToManufacturer'/0, 'ServerToManufacturerAnnounced'/0, 'ServerToManufacturerInvalid'/0, 'ServerToManufacturerNoOffers'/0, 'ServerToManufacturerSold'/0, 'ImporterToServer'/0, 'ImporterToServerSubscribe'/0, 'ImporterToServerOffer'/0, 'ServerToImporter'/0, 'ServerToImporterOfferSubmitted'/0, 'ServerToImporterOfferInvalid'/0, 'ServerToImporterOfferWon'/0, 'ServerToImporterOfferLose'/0, 'ServerToImporterOfferOutdated'/0, 'ServerToImporterNewProduct'/0, 'ArbiterToServer'/0, 'ArbiterToServerAnnounceAccepted'/0, 'ArbiterToServerAnnounceInvalid'/0, 'ArbiterToServerAnnounceSold'/0, 'ArbiterToServerAnnounceNoOffers'/0, 'ArbiterToServerOfferSubmitted'/0, 'ArbiterToServerOfferInvalid'/0, 'ArbiterToServerOfferWon'/0, 'ArbiterToServerOfferLose'/0, 'ArbiterToServerOfferOutdated'/0, 'ArbiterToServerNewProduct'/0, 'ArbiterToServerSubscribeAccepted'/0, 'ServerToArbiter'/0, 'ServerToArbiterOffer'/0, 'ServerToArbiterAnnounce'/0, 'ServerToArbiterSubscribe'/0]).
+-type 'FrontendToCatalogAddUser'() :: #'FrontendToCatalogAddUser'{}.
 
--spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}) -> binary().
+-type 'ArbiterToCatalogAddNegotiation'() :: #'ArbiterToCatalogAddNegotiation'{}.
+
+-type 'ArbiterToCatalogRemoveNegotiation'() :: #'ArbiterToCatalogRemoveNegotiation'{}.
+
+-export_type(['ClientToServer'/0, 'ClientToServerLogin'/0, 'ClientToServerRegister'/0, 'ServerToClientAuth'/0, 'ManufacturerToServer'/0, 'ManufacturerToServerAnnounce'/0, 'ServerToManufacturer'/0, 'ServerToManufacturerAnnounced'/0, 'ServerToManufacturerInvalid'/0, 'ServerToManufacturerNoOffers'/0, 'ServerToManufacturerSold'/0, 'ImporterToServer'/0, 'ImporterToServerSubscribe'/0, 'ImporterToServerOffer'/0, 'ServerToImporter'/0, 'ServerToImporterOfferSubmitted'/0, 'ServerToImporterOfferInvalid'/0, 'ServerToImporterOfferWon'/0, 'ServerToImporterOfferLose'/0, 'ServerToImporterOfferOutdated'/0, 'ServerToImporterNewProduct'/0, 'ArbiterToServer'/0, 'ArbiterToServerAnnounceAccepted'/0, 'ArbiterToServerAnnounceInvalid'/0, 'ArbiterToServerAnnounceSold'/0, 'ArbiterToServerAnnounceNoOffers'/0, 'ArbiterToServerOfferSubmitted'/0, 'ArbiterToServerOfferInvalid'/0, 'ArbiterToServerOfferWon'/0, 'ArbiterToServerOfferLose'/0, 'ArbiterToServerOfferOutdated'/0, 'ArbiterToServerNewProduct'/0, 'ArbiterToServerSubscribeAccepted'/0, 'ServerToArbiter'/0, 'ServerToArbiterOffer'/0, 'ServerToArbiterAnnounce'/0, 'ServerToArbiterSubscribe'/0, 'FrontendToCatalogAddUser'/0, 'ArbiterToCatalogAddNegotiation'/0, 'ArbiterToCatalogRemoveNegotiation'/0]).
+
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{} | #'FrontendToCatalogAddUser'{} | #'ArbiterToCatalogAddNegotiation'{} | #'ArbiterToCatalogRemoveNegotiation'{}) -> binary().
 encode_msg(Msg) when tuple_size(Msg) >= 1 ->
     encode_msg(Msg, element(1, Msg), []).
 
--spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom() | list()) -> binary().
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{} | #'FrontendToCatalogAddUser'{} | #'ArbiterToCatalogAddNegotiation'{} | #'ArbiterToCatalogRemoveNegotiation'{}, atom() | list()) -> binary().
 encode_msg(Msg, MsgName) when is_atom(MsgName) ->
     encode_msg(Msg, MsgName, []);
 encode_msg(Msg, Opts)
     when tuple_size(Msg) >= 1, is_list(Opts) ->
     encode_msg(Msg, element(1, Msg), Opts).
 
--spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{}, atom(), list()) -> binary().
+-spec encode_msg(#'ClientToServer'{} | #'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'ManufacturerToServer'{} | #'ManufacturerToServerAnnounce'{} | #'ServerToManufacturer'{} | #'ServerToManufacturerAnnounced'{} | #'ServerToManufacturerInvalid'{} | #'ServerToManufacturerNoOffers'{} | #'ServerToManufacturerSold'{} | #'ImporterToServer'{} | #'ImporterToServerSubscribe'{} | #'ImporterToServerOffer'{} | #'ServerToImporter'{} | #'ServerToImporterOfferSubmitted'{} | #'ServerToImporterOfferInvalid'{} | #'ServerToImporterOfferWon'{} | #'ServerToImporterOfferLose'{} | #'ServerToImporterOfferOutdated'{} | #'ServerToImporterNewProduct'{} | #'ArbiterToServer'{} | #'ArbiterToServerAnnounceAccepted'{} | #'ArbiterToServerAnnounceInvalid'{} | #'ArbiterToServerAnnounceSold'{} | #'ArbiterToServerAnnounceNoOffers'{} | #'ArbiterToServerOfferSubmitted'{} | #'ArbiterToServerOfferInvalid'{} | #'ArbiterToServerOfferWon'{} | #'ArbiterToServerOfferLose'{} | #'ArbiterToServerOfferOutdated'{} | #'ArbiterToServerNewProduct'{} | #'ArbiterToServerSubscribeAccepted'{} | #'ServerToArbiter'{} | #'ServerToArbiterOffer'{} | #'ServerToArbiterAnnounce'{} | #'ServerToArbiterSubscribe'{} | #'FrontendToCatalogAddUser'{} | #'ArbiterToCatalogAddNegotiation'{} | #'ArbiterToCatalogRemoveNegotiation'{}, atom(), list()) -> binary().
 encode_msg(Msg, MsgName, Opts) ->
     case proplists:get_bool(verify, Opts) of
       true -> verify_msg(Msg, MsgName, Opts);
@@ -277,7 +283,18 @@ encode_msg(Msg, MsgName, Opts) ->
 					     TrUserData);
       'ServerToArbiterSubscribe' ->
 	  encode_msg_ServerToArbiterSubscribe(id(Msg, TrUserData),
-					      TrUserData)
+					      TrUserData);
+      'FrontendToCatalogAddUser' ->
+	  encode_msg_FrontendToCatalogAddUser(id(Msg, TrUserData),
+					      TrUserData);
+      'ArbiterToCatalogAddNegotiation' ->
+	  encode_msg_ArbiterToCatalogAddNegotiation(id(Msg,
+						       TrUserData),
+						    TrUserData);
+      'ArbiterToCatalogRemoveNegotiation' ->
+	  encode_msg_ArbiterToCatalogRemoveNegotiation(id(Msg,
+							  TrUserData),
+						       TrUserData)
     end.
 
 
@@ -1396,6 +1413,89 @@ encode_msg_ServerToArbiterSubscribe(#'ServerToArbiterSubscribe'{importerName
       end
     end.
 
+encode_msg_FrontendToCatalogAddUser(Msg, TrUserData) ->
+    encode_msg_FrontendToCatalogAddUser(Msg, <<>>,
+					TrUserData).
+
+
+encode_msg_FrontendToCatalogAddUser(#'FrontendToCatalogAddUser'{username
+								    = F1,
+								type = F2},
+				    Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_enum_ClientType(TrF2, <<B1/binary, 16>>, TrUserData)
+    end.
+
+encode_msg_ArbiterToCatalogAddNegotiation(Msg,
+					  TrUserData) ->
+    encode_msg_ArbiterToCatalogAddNegotiation(Msg, <<>>,
+					      TrUserData).
+
+
+encode_msg_ArbiterToCatalogAddNegotiation(#'ArbiterToCatalogAddNegotiation'{manufacturerName
+										=
+										F1,
+									    productName
+										=
+										F2,
+									    minQuantity
+										=
+										F3,
+									    maxQuantity
+										=
+										F4,
+									    minUnitPrice
+										=
+										F5},
+					  Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_int32(TrF3, <<B2/binary, 24>>, TrUserData)
+	 end,
+    B4 = begin
+	   TrF4 = id(F4, TrUserData),
+	   e_type_int32(TrF4, <<B3/binary, 32>>, TrUserData)
+	 end,
+    begin
+      TrF5 = id(F5, TrUserData),
+      e_type_float(TrF5, <<B4/binary, 45>>, TrUserData)
+    end.
+
+encode_msg_ArbiterToCatalogRemoveNegotiation(Msg,
+					     TrUserData) ->
+    encode_msg_ArbiterToCatalogRemoveNegotiation(Msg, <<>>,
+						 TrUserData).
+
+
+encode_msg_ArbiterToCatalogRemoveNegotiation(#'ArbiterToCatalogRemoveNegotiation'{manufacturerName
+										      =
+										      F1,
+										  productName
+										      =
+										      F2},
+					     Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+    end.
+
 e_mfield_ClientToServer_login(Msg, Bin, TrUserData) ->
     SubBin = encode_msg_ClientToServerLogin(Msg, <<>>,
 					    TrUserData),
@@ -1902,6 +2002,20 @@ decode_msg_2_doit('ServerToArbiterAnnounce', Bin,
 decode_msg_2_doit('ServerToArbiterSubscribe', Bin,
 		  TrUserData) ->
     id(decode_msg_ServerToArbiterSubscribe(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('FrontendToCatalogAddUser', Bin,
+		  TrUserData) ->
+    id(decode_msg_FrontendToCatalogAddUser(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToCatalogAddNegotiation', Bin,
+		  TrUserData) ->
+    id(decode_msg_ArbiterToCatalogAddNegotiation(Bin,
+						 TrUserData),
+       TrUserData);
+decode_msg_2_doit('ArbiterToCatalogRemoveNegotiation',
+		  Bin, TrUserData) ->
+    id(decode_msg_ArbiterToCatalogRemoveNegotiation(Bin,
+						    TrUserData),
        TrUserData).
 
 
@@ -10425,6 +10539,690 @@ skip_64_ServerToArbiterSubscribe(<<_:64, Rest/binary>>,
     dfp_read_field_def_ServerToArbiterSubscribe(Rest, Z1,
 						Z2, F@_1, F@_2, TrUserData).
 
+decode_msg_FrontendToCatalogAddUser(Bin, TrUserData) ->
+    dfp_read_field_def_FrontendToCatalogAddUser(Bin, 0, 0,
+						id(undefined, TrUserData),
+						id(undefined, TrUserData),
+						TrUserData).
+
+dfp_read_field_def_FrontendToCatalogAddUser(<<10,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_FrontendToCatalogAddUser_username(Rest, Z1, Z2,
+					      F@_1, F@_2, TrUserData);
+dfp_read_field_def_FrontendToCatalogAddUser(<<16,
+					      Rest/binary>>,
+					    Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_FrontendToCatalogAddUser_type(Rest, Z1, Z2,
+					  F@_1, F@_2, TrUserData);
+dfp_read_field_def_FrontendToCatalogAddUser(<<>>, 0, 0,
+					    F@_1, F@_2, _) ->
+    #'FrontendToCatalogAddUser'{username = F@_1,
+				type = F@_2};
+dfp_read_field_def_FrontendToCatalogAddUser(Other, Z1,
+					    Z2, F@_1, F@_2, TrUserData) ->
+    dg_read_field_def_FrontendToCatalogAddUser(Other, Z1,
+					       Z2, F@_1, F@_2, TrUserData).
+
+dg_read_field_def_FrontendToCatalogAddUser(<<1:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_FrontendToCatalogAddUser(Rest, N + 7,
+					       X bsl N + Acc, F@_1, F@_2,
+					       TrUserData);
+dg_read_field_def_FrontendToCatalogAddUser(<<0:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, F@_2, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_FrontendToCatalogAddUser_username(Rest, 0, 0,
+						    F@_1, F@_2, TrUserData);
+      16 ->
+	  d_field_FrontendToCatalogAddUser_type(Rest, 0, 0, F@_1,
+						F@_2, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_FrontendToCatalogAddUser(Rest, 0, 0, F@_1,
+						     F@_2, TrUserData);
+	    1 ->
+		skip_64_FrontendToCatalogAddUser(Rest, 0, 0, F@_1, F@_2,
+						 TrUserData);
+	    2 ->
+		skip_length_delimited_FrontendToCatalogAddUser(Rest, 0,
+							       0, F@_1, F@_2,
+							       TrUserData);
+	    3 ->
+		skip_group_FrontendToCatalogAddUser(Rest, Key bsr 3, 0,
+						    F@_1, F@_2, TrUserData);
+	    5 ->
+		skip_32_FrontendToCatalogAddUser(Rest, 0, 0, F@_1, F@_2,
+						 TrUserData)
+	  end
+    end;
+dg_read_field_def_FrontendToCatalogAddUser(<<>>, 0, 0,
+					   F@_1, F@_2, _) ->
+    #'FrontendToCatalogAddUser'{username = F@_1,
+				type = F@_2}.
+
+d_field_FrontendToCatalogAddUser_username(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_FrontendToCatalogAddUser_username(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2,
+					      TrUserData);
+d_field_FrontendToCatalogAddUser_username(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, _, F@_2, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_FrontendToCatalogAddUser(RestF, 0, 0,
+						NewFValue, F@_2, TrUserData).
+
+d_field_FrontendToCatalogAddUser_type(<<1:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_FrontendToCatalogAddUser_type(Rest, N + 7,
+					  X bsl N + Acc, F@_1, F@_2,
+					  TrUserData);
+d_field_FrontendToCatalogAddUser_type(<<0:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, _, TrUserData) ->
+    {NewFValue, RestF} = {id(d_enum_ClientType(begin
+						 <<Res:32/signed-native>> = <<(X
+										 bsl
+										 N
+										 +
+										 Acc):32/unsigned-native>>,
+						 id(Res, TrUserData)
+					       end),
+			     TrUserData),
+			  Rest},
+    dfp_read_field_def_FrontendToCatalogAddUser(RestF, 0, 0,
+						F@_1, NewFValue, TrUserData).
+
+skip_varint_FrontendToCatalogAddUser(<<1:1, _:7,
+				       Rest/binary>>,
+				     Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_FrontendToCatalogAddUser(Rest, Z1, Z2, F@_1,
+					 F@_2, TrUserData);
+skip_varint_FrontendToCatalogAddUser(<<0:1, _:7,
+				       Rest/binary>>,
+				     Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_FrontendToCatalogAddUser(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData).
+
+skip_length_delimited_FrontendToCatalogAddUser(<<1:1,
+						 X:7, Rest/binary>>,
+					       N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_FrontendToCatalogAddUser(Rest,
+						   N + 7, X bsl N + Acc, F@_1,
+						   F@_2, TrUserData);
+skip_length_delimited_FrontendToCatalogAddUser(<<0:1,
+						 X:7, Rest/binary>>,
+					       N, Acc, F@_1, F@_2,
+					       TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_FrontendToCatalogAddUser(Rest2, 0, 0,
+						F@_1, F@_2, TrUserData).
+
+skip_group_FrontendToCatalogAddUser(Bin, FNum, Z2, F@_1,
+				    F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_FrontendToCatalogAddUser(Rest, 0, Z2,
+						F@_1, F@_2, TrUserData).
+
+skip_32_FrontendToCatalogAddUser(<<_:32, Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_FrontendToCatalogAddUser(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData).
+
+skip_64_FrontendToCatalogAddUser(<<_:64, Rest/binary>>,
+				 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_FrontendToCatalogAddUser(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData).
+
+decode_msg_ArbiterToCatalogAddNegotiation(Bin,
+					  TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Bin,
+						      0, 0,
+						      id(undefined, TrUserData),
+						      id(undefined, TrUserData),
+						      id(undefined, TrUserData),
+						      id(undefined, TrUserData),
+						      id(undefined, TrUserData),
+						      TrUserData).
+
+dfp_read_field_def_ArbiterToCatalogAddNegotiation(<<10,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToCatalogAddNegotiation_manufacturerName(Rest,
+							    Z1, Z2, F@_1, F@_2,
+							    F@_3, F@_4, F@_5,
+							    TrUserData);
+dfp_read_field_def_ArbiterToCatalogAddNegotiation(<<18,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToCatalogAddNegotiation_productName(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData);
+dfp_read_field_def_ArbiterToCatalogAddNegotiation(<<24,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToCatalogAddNegotiation_minQuantity(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData);
+dfp_read_field_def_ArbiterToCatalogAddNegotiation(<<32,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToCatalogAddNegotiation_maxQuantity(Rest,
+						       Z1, Z2, F@_1, F@_2, F@_3,
+						       F@_4, F@_5, TrUserData);
+dfp_read_field_def_ArbiterToCatalogAddNegotiation(<<45,
+						    Rest/binary>>,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData) ->
+    d_field_ArbiterToCatalogAddNegotiation_minUnitPrice(Rest,
+							Z1, Z2, F@_1, F@_2,
+							F@_3, F@_4, F@_5,
+							TrUserData);
+dfp_read_field_def_ArbiterToCatalogAddNegotiation(<<>>,
+						  0, 0, F@_1, F@_2, F@_3, F@_4,
+						  F@_5, _) ->
+    #'ArbiterToCatalogAddNegotiation'{manufacturerName =
+					  F@_1,
+				      productName = F@_2, minQuantity = F@_3,
+				      maxQuantity = F@_4, minUnitPrice = F@_5};
+dfp_read_field_def_ArbiterToCatalogAddNegotiation(Other,
+						  Z1, Z2, F@_1, F@_2, F@_3,
+						  F@_4, F@_5, TrUserData) ->
+    dg_read_field_def_ArbiterToCatalogAddNegotiation(Other,
+						     Z1, Z2, F@_1, F@_2, F@_3,
+						     F@_4, F@_5, TrUserData).
+
+dg_read_field_def_ArbiterToCatalogAddNegotiation(<<1:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						     N + 7, X bsl N + Acc, F@_1,
+						     F@_2, F@_3, F@_4, F@_5,
+						     TrUserData);
+dg_read_field_def_ArbiterToCatalogAddNegotiation(<<0:1,
+						   X:7, Rest/binary>>,
+						 N, Acc, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToCatalogAddNegotiation_manufacturerName(Rest,
+								  0, 0, F@_1,
+								  F@_2, F@_3,
+								  F@_4, F@_5,
+								  TrUserData);
+      18 ->
+	  d_field_ArbiterToCatalogAddNegotiation_productName(Rest,
+							     0, 0, F@_1, F@_2,
+							     F@_3, F@_4, F@_5,
+							     TrUserData);
+      24 ->
+	  d_field_ArbiterToCatalogAddNegotiation_minQuantity(Rest,
+							     0, 0, F@_1, F@_2,
+							     F@_3, F@_4, F@_5,
+							     TrUserData);
+      32 ->
+	  d_field_ArbiterToCatalogAddNegotiation_maxQuantity(Rest,
+							     0, 0, F@_1, F@_2,
+							     F@_3, F@_4, F@_5,
+							     TrUserData);
+      45 ->
+	  d_field_ArbiterToCatalogAddNegotiation_minUnitPrice(Rest,
+							      0, 0, F@_1, F@_2,
+							      F@_3, F@_4, F@_5,
+							      TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToCatalogAddNegotiation(Rest, 0, 0,
+							   F@_1, F@_2, F@_3,
+							   F@_4, F@_5,
+							   TrUserData);
+	    1 ->
+		skip_64_ArbiterToCatalogAddNegotiation(Rest, 0, 0, F@_1,
+						       F@_2, F@_3, F@_4, F@_5,
+						       TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToCatalogAddNegotiation(Rest,
+								     0, 0, F@_1,
+								     F@_2, F@_3,
+								     F@_4, F@_5,
+								     TrUserData);
+	    3 ->
+		skip_group_ArbiterToCatalogAddNegotiation(Rest,
+							  Key bsr 3, 0, F@_1,
+							  F@_2, F@_3, F@_4,
+							  F@_5, TrUserData);
+	    5 ->
+		skip_32_ArbiterToCatalogAddNegotiation(Rest, 0, 0, F@_1,
+						       F@_2, F@_3, F@_4, F@_5,
+						       TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToCatalogAddNegotiation(<<>>,
+						 0, 0, F@_1, F@_2, F@_3, F@_4,
+						 F@_5, _) ->
+    #'ArbiterToCatalogAddNegotiation'{manufacturerName =
+					  F@_1,
+				      productName = F@_2, minQuantity = F@_3,
+				      maxQuantity = F@_4, minUnitPrice = F@_5}.
+
+d_field_ArbiterToCatalogAddNegotiation_manufacturerName(<<1:1,
+							  X:7, Rest/binary>>,
+							N, Acc, F@_1, F@_2,
+							F@_3, F@_4, F@_5,
+							TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToCatalogAddNegotiation_manufacturerName(Rest,
+							    N + 7,
+							    X bsl N + Acc, F@_1,
+							    F@_2, F@_3, F@_4,
+							    F@_5, TrUserData);
+d_field_ArbiterToCatalogAddNegotiation_manufacturerName(<<0:1,
+							  X:7, Rest/binary>>,
+							N, Acc, _, F@_2, F@_3,
+							F@_4, F@_5,
+							TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(RestF,
+						      0, 0, NewFValue, F@_2,
+						      F@_3, F@_4, F@_5,
+						      TrUserData).
+
+d_field_ArbiterToCatalogAddNegotiation_productName(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToCatalogAddNegotiation_productName(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, F@_3, F@_4,
+						       F@_5, TrUserData);
+d_field_ArbiterToCatalogAddNegotiation_productName(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, _, F@_3, F@_4,
+						   F@_5, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(RestF,
+						      0, 0, F@_1, NewFValue,
+						      F@_3, F@_4, F@_5,
+						      TrUserData).
+
+d_field_ArbiterToCatalogAddNegotiation_minQuantity(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToCatalogAddNegotiation_minQuantity(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, F@_3, F@_4,
+						       F@_5, TrUserData);
+d_field_ArbiterToCatalogAddNegotiation_minQuantity(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, _, F@_4,
+						   F@_5, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(RestF,
+						      0, 0, F@_1, F@_2,
+						      NewFValue, F@_4, F@_5,
+						      TrUserData).
+
+d_field_ArbiterToCatalogAddNegotiation_maxQuantity(<<1:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, F@_3,
+						   F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToCatalogAddNegotiation_maxQuantity(Rest,
+						       N + 7, X bsl N + Acc,
+						       F@_1, F@_2, F@_3, F@_4,
+						       F@_5, TrUserData);
+d_field_ArbiterToCatalogAddNegotiation_maxQuantity(<<0:1,
+						     X:7, Rest/binary>>,
+						   N, Acc, F@_1, F@_2, F@_3, _,
+						   F@_5, TrUserData) ->
+    {NewFValue, RestF} = {begin
+			    <<Res:32/signed-native>> = <<(X bsl N +
+							    Acc):32/unsigned-native>>,
+			    id(Res, TrUserData)
+			  end,
+			  Rest},
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(RestF,
+						      0, 0, F@_1, F@_2, F@_3,
+						      NewFValue, F@_5,
+						      TrUserData).
+
+d_field_ArbiterToCatalogAddNegotiation_minUnitPrice(<<0:16,
+						      128, 127, Rest/binary>>,
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4,
+						      id(infinity, TrUserData),
+						      TrUserData);
+d_field_ArbiterToCatalogAddNegotiation_minUnitPrice(<<0:16,
+						      128, 255, Rest/binary>>,
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4,
+						      id('-infinity',
+							 TrUserData),
+						      TrUserData);
+d_field_ArbiterToCatalogAddNegotiation_minUnitPrice(<<_:16,
+						      1:1, _:7, _:1, 127:7,
+						      Rest/binary>>,
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4, id(nan, TrUserData),
+						      TrUserData);
+d_field_ArbiterToCatalogAddNegotiation_minUnitPrice(<<Value:32/little-float,
+						      Rest/binary>>,
+						    Z1, Z2, F@_1, F@_2, F@_3,
+						    F@_4, _, TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4,
+						      id(Value, TrUserData),
+						      TrUserData).
+
+skip_varint_ArbiterToCatalogAddNegotiation(<<1:1, _:7,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    skip_varint_ArbiterToCatalogAddNegotiation(Rest, Z1, Z2,
+					       F@_1, F@_2, F@_3, F@_4, F@_5,
+					       TrUserData);
+skip_varint_ArbiterToCatalogAddNegotiation(<<0:1, _:7,
+					     Rest/binary>>,
+					   Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+					   TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData).
+
+skip_length_delimited_ArbiterToCatalogAddNegotiation(<<1:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, F@_1, F@_2, F@_3,
+						     F@_4, F@_5, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToCatalogAddNegotiation(Rest,
+							 N + 7, X bsl N + Acc,
+							 F@_1, F@_2, F@_3, F@_4,
+							 F@_5, TrUserData);
+skip_length_delimited_ArbiterToCatalogAddNegotiation(<<0:1,
+						       X:7, Rest/binary>>,
+						     N, Acc, F@_1, F@_2, F@_3,
+						     F@_4, F@_5, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest2,
+						      0, 0, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData).
+
+skip_group_ArbiterToCatalogAddNegotiation(Bin, FNum, Z2,
+					  F@_1, F@_2, F@_3, F@_4, F@_5,
+					  TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      0, Z2, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData).
+
+skip_32_ArbiterToCatalogAddNegotiation(<<_:32,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				       TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData).
+
+skip_64_ArbiterToCatalogAddNegotiation(<<_:64,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
+				       TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogAddNegotiation(Rest,
+						      Z1, Z2, F@_1, F@_2, F@_3,
+						      F@_4, F@_5, TrUserData).
+
+decode_msg_ArbiterToCatalogRemoveNegotiation(Bin,
+					     TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(Bin,
+							 0, 0,
+							 id(undefined,
+							    TrUserData),
+							 id(undefined,
+							    TrUserData),
+							 TrUserData).
+
+dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(<<10,
+						       Rest/binary>>,
+						     Z1, Z2, F@_1, F@_2,
+						     TrUserData) ->
+    d_field_ArbiterToCatalogRemoveNegotiation_manufacturerName(Rest,
+							       Z1, Z2, F@_1,
+							       F@_2,
+							       TrUserData);
+dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(<<18,
+						       Rest/binary>>,
+						     Z1, Z2, F@_1, F@_2,
+						     TrUserData) ->
+    d_field_ArbiterToCatalogRemoveNegotiation_productName(Rest,
+							  Z1, Z2, F@_1, F@_2,
+							  TrUserData);
+dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(<<>>,
+						     0, 0, F@_1, F@_2, _) ->
+    #'ArbiterToCatalogRemoveNegotiation'{manufacturerName =
+					     F@_1,
+					 productName = F@_2};
+dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(Other,
+						     Z1, Z2, F@_1, F@_2,
+						     TrUserData) ->
+    dg_read_field_def_ArbiterToCatalogRemoveNegotiation(Other,
+							Z1, Z2, F@_1, F@_2,
+							TrUserData).
+
+dg_read_field_def_ArbiterToCatalogRemoveNegotiation(<<1:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2,
+						    TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ArbiterToCatalogRemoveNegotiation(Rest,
+							N + 7, X bsl N + Acc,
+							F@_1, F@_2, TrUserData);
+dg_read_field_def_ArbiterToCatalogRemoveNegotiation(<<0:1,
+						      X:7, Rest/binary>>,
+						    N, Acc, F@_1, F@_2,
+						    TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ArbiterToCatalogRemoveNegotiation_manufacturerName(Rest,
+								     0, 0, F@_1,
+								     F@_2,
+								     TrUserData);
+      18 ->
+	  d_field_ArbiterToCatalogRemoveNegotiation_productName(Rest,
+								0, 0, F@_1,
+								F@_2,
+								TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ArbiterToCatalogRemoveNegotiation(Rest, 0,
+							      0, F@_1, F@_2,
+							      TrUserData);
+	    1 ->
+		skip_64_ArbiterToCatalogRemoveNegotiation(Rest, 0, 0,
+							  F@_1, F@_2,
+							  TrUserData);
+	    2 ->
+		skip_length_delimited_ArbiterToCatalogRemoveNegotiation(Rest,
+									0, 0,
+									F@_1,
+									F@_2,
+									TrUserData);
+	    3 ->
+		skip_group_ArbiterToCatalogRemoveNegotiation(Rest,
+							     Key bsr 3, 0, F@_1,
+							     F@_2, TrUserData);
+	    5 ->
+		skip_32_ArbiterToCatalogRemoveNegotiation(Rest, 0, 0,
+							  F@_1, F@_2,
+							  TrUserData)
+	  end
+    end;
+dg_read_field_def_ArbiterToCatalogRemoveNegotiation(<<>>,
+						    0, 0, F@_1, F@_2, _) ->
+    #'ArbiterToCatalogRemoveNegotiation'{manufacturerName =
+					     F@_1,
+					 productName = F@_2}.
+
+d_field_ArbiterToCatalogRemoveNegotiation_manufacturerName(<<1:1,
+							     X:7, Rest/binary>>,
+							   N, Acc, F@_1, F@_2,
+							   TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToCatalogRemoveNegotiation_manufacturerName(Rest,
+							       N + 7,
+							       X bsl N + Acc,
+							       F@_1, F@_2,
+							       TrUserData);
+d_field_ArbiterToCatalogRemoveNegotiation_manufacturerName(<<0:1,
+							     X:7, Rest/binary>>,
+							   N, Acc, _, F@_2,
+							   TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(RestF,
+							 0, 0, NewFValue, F@_2,
+							 TrUserData).
+
+d_field_ArbiterToCatalogRemoveNegotiation_productName(<<1:1,
+							X:7, Rest/binary>>,
+						      N, Acc, F@_1, F@_2,
+						      TrUserData)
+    when N < 57 ->
+    d_field_ArbiterToCatalogRemoveNegotiation_productName(Rest,
+							  N + 7, X bsl N + Acc,
+							  F@_1, F@_2,
+							  TrUserData);
+d_field_ArbiterToCatalogRemoveNegotiation_productName(<<0:1,
+							X:7, Rest/binary>>,
+						      N, Acc, F@_1, _,
+						      TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(RestF,
+							 0, 0, F@_1, NewFValue,
+							 TrUserData).
+
+skip_varint_ArbiterToCatalogRemoveNegotiation(<<1:1,
+						_:7, Rest/binary>>,
+					      Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_ArbiterToCatalogRemoveNegotiation(Rest, Z1,
+						  Z2, F@_1, F@_2, TrUserData);
+skip_varint_ArbiterToCatalogRemoveNegotiation(<<0:1,
+						_:7, Rest/binary>>,
+					      Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(Rest,
+							 Z1, Z2, F@_1, F@_2,
+							 TrUserData).
+
+skip_length_delimited_ArbiterToCatalogRemoveNegotiation(<<1:1,
+							  X:7, Rest/binary>>,
+							N, Acc, F@_1, F@_2,
+							TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ArbiterToCatalogRemoveNegotiation(Rest,
+							    N + 7,
+							    X bsl N + Acc, F@_1,
+							    F@_2, TrUserData);
+skip_length_delimited_ArbiterToCatalogRemoveNegotiation(<<0:1,
+							  X:7, Rest/binary>>,
+							N, Acc, F@_1, F@_2,
+							TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(Rest2,
+							 0, 0, F@_1, F@_2,
+							 TrUserData).
+
+skip_group_ArbiterToCatalogRemoveNegotiation(Bin, FNum,
+					     Z2, F@_1, F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(Rest,
+							 0, Z2, F@_1, F@_2,
+							 TrUserData).
+
+skip_32_ArbiterToCatalogRemoveNegotiation(<<_:32,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(Rest,
+							 Z1, Z2, F@_1, F@_2,
+							 TrUserData).
+
+skip_64_ArbiterToCatalogRemoveNegotiation(<<_:64,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ArbiterToCatalogRemoveNegotiation(Rest,
+							 Z1, Z2, F@_1, F@_2,
+							 TrUserData).
+
 d_enum_ClientType(0) -> 'IMPORTER';
 d_enum_ClientType(1) -> 'MANUFACTURER';
 d_enum_ClientType(V) -> V.
@@ -10599,7 +11397,16 @@ merge_msgs(Prev, New, MsgName, Opts) ->
 					    TrUserData);
       'ServerToArbiterSubscribe' ->
 	  merge_msg_ServerToArbiterSubscribe(Prev, New,
-					     TrUserData)
+					     TrUserData);
+      'FrontendToCatalogAddUser' ->
+	  merge_msg_FrontendToCatalogAddUser(Prev, New,
+					     TrUserData);
+      'ArbiterToCatalogAddNegotiation' ->
+	  merge_msg_ArbiterToCatalogAddNegotiation(Prev, New,
+						   TrUserData);
+      'ArbiterToCatalogRemoveNegotiation' ->
+	  merge_msg_ArbiterToCatalogRemoveNegotiation(Prev, New,
+						      TrUserData)
     end.
 
 -compile({nowarn_unused_function,merge_msg_ClientToServer/3}).
@@ -11343,6 +12150,53 @@ merge_msg_ServerToArbiterSubscribe(#'ServerToArbiterSubscribe'{manufacturerNames
 					   PFmanufacturerNames
 				    end}.
 
+-compile({nowarn_unused_function,merge_msg_FrontendToCatalogAddUser/3}).
+merge_msg_FrontendToCatalogAddUser(#'FrontendToCatalogAddUser'{},
+				   #'FrontendToCatalogAddUser'{username =
+								   NFusername,
+							       type = NFtype},
+				   _) ->
+    #'FrontendToCatalogAddUser'{username = NFusername,
+				type = NFtype}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToCatalogAddNegotiation/3}).
+merge_msg_ArbiterToCatalogAddNegotiation(#'ArbiterToCatalogAddNegotiation'{},
+					 #'ArbiterToCatalogAddNegotiation'{manufacturerName
+									       =
+									       NFmanufacturerName,
+									   productName
+									       =
+									       NFproductName,
+									   minQuantity
+									       =
+									       NFminQuantity,
+									   maxQuantity
+									       =
+									       NFmaxQuantity,
+									   minUnitPrice
+									       =
+									       NFminUnitPrice},
+					 _) ->
+    #'ArbiterToCatalogAddNegotiation'{manufacturerName =
+					  NFmanufacturerName,
+				      productName = NFproductName,
+				      minQuantity = NFminQuantity,
+				      maxQuantity = NFmaxQuantity,
+				      minUnitPrice = NFminUnitPrice}.
+
+-compile({nowarn_unused_function,merge_msg_ArbiterToCatalogRemoveNegotiation/3}).
+merge_msg_ArbiterToCatalogRemoveNegotiation(#'ArbiterToCatalogRemoveNegotiation'{},
+					    #'ArbiterToCatalogRemoveNegotiation'{manufacturerName
+										     =
+										     NFmanufacturerName,
+										 productName
+										     =
+										     NFproductName},
+					    _) ->
+    #'ArbiterToCatalogRemoveNegotiation'{manufacturerName =
+					     NFmanufacturerName,
+					 productName = NFproductName}.
+
 
 verify_msg(Msg) when tuple_size(Msg) >= 1 ->
     verify_msg(Msg, element(1, Msg), []);
@@ -11459,6 +12313,15 @@ verify_msg(Msg, MsgName, Opts) ->
       'ServerToArbiterSubscribe' ->
 	  v_msg_ServerToArbiterSubscribe(Msg, [MsgName],
 					 TrUserData);
+      'FrontendToCatalogAddUser' ->
+	  v_msg_FrontendToCatalogAddUser(Msg, [MsgName],
+					 TrUserData);
+      'ArbiterToCatalogAddNegotiation' ->
+	  v_msg_ArbiterToCatalogAddNegotiation(Msg, [MsgName],
+					       TrUserData);
+      'ArbiterToCatalogRemoveNegotiation' ->
+	  v_msg_ArbiterToCatalogRemoveNegotiation(Msg, [MsgName],
+						  TrUserData);
       _ -> mk_type_error(not_a_known_message, Msg, [])
     end.
 
@@ -12244,6 +13107,66 @@ v_msg_ServerToArbiterSubscribe(X, Path, _TrUserData) ->
 		   'ServerToArbiterSubscribe'},
 		  X, Path).
 
+-compile({nowarn_unused_function,v_msg_FrontendToCatalogAddUser/3}).
+-dialyzer({nowarn_function,v_msg_FrontendToCatalogAddUser/3}).
+v_msg_FrontendToCatalogAddUser(#'FrontendToCatalogAddUser'{username
+							       = F1,
+							   type = F2},
+			       Path, TrUserData) ->
+    v_type_string(F1, [username | Path], TrUserData),
+    v_enum_ClientType(F2, [type | Path], TrUserData),
+    ok;
+v_msg_FrontendToCatalogAddUser(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'FrontendToCatalogAddUser'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToCatalogAddNegotiation/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToCatalogAddNegotiation/3}).
+v_msg_ArbiterToCatalogAddNegotiation(#'ArbiterToCatalogAddNegotiation'{manufacturerName
+									   = F1,
+								       productName
+									   = F2,
+								       minQuantity
+									   = F3,
+								       maxQuantity
+									   = F4,
+								       minUnitPrice
+									   =
+									   F5},
+				     Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    v_type_int32(F3, [minQuantity | Path], TrUserData),
+    v_type_int32(F4, [maxQuantity | Path], TrUserData),
+    v_type_float(F5, [minUnitPrice | Path], TrUserData),
+    ok;
+v_msg_ArbiterToCatalogAddNegotiation(X, Path,
+				     _TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToCatalogAddNegotiation'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ArbiterToCatalogRemoveNegotiation/3}).
+-dialyzer({nowarn_function,v_msg_ArbiterToCatalogRemoveNegotiation/3}).
+v_msg_ArbiterToCatalogRemoveNegotiation(#'ArbiterToCatalogRemoveNegotiation'{manufacturerName
+										 =
+										 F1,
+									     productName
+										 =
+										 F2},
+					Path, TrUserData) ->
+    v_type_string(F1, [manufacturerName | Path],
+		  TrUserData),
+    v_type_string(F2, [productName | Path], TrUserData),
+    ok;
+v_msg_ArbiterToCatalogRemoveNegotiation(X, Path,
+					_TrUserData) ->
+    mk_type_error({expected_msg,
+		   'ArbiterToCatalogRemoveNegotiation'},
+		  X, Path).
+
 -compile({nowarn_unused_function,v_enum_ClientType/3}).
 -dialyzer({nowarn_function,v_enum_ClientType/3}).
 v_enum_ClientType('IMPORTER', _Path, _TrUserData) -> ok;
@@ -12693,7 +13616,29 @@ get_msg_defs() ->
       [#field{name = importerName, fnum = 1, rnum = 2,
 	      type = string, occurrence = required, opts = []},
        #field{name = manufacturerNames, fnum = 2, rnum = 3,
-	      type = string, occurrence = repeated, opts = []}]}].
+	      type = string, occurrence = repeated, opts = []}]},
+     {{msg, 'FrontendToCatalogAddUser'},
+      [#field{name = username, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = type, fnum = 2, rnum = 3,
+	      type = {enum, 'ClientType'}, occurrence = required,
+	      opts = []}]},
+     {{msg, 'ArbiterToCatalogAddNegotiation'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = minQuantity, fnum = 3, rnum = 4,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = maxQuantity, fnum = 4, rnum = 5,
+	      type = int32, occurrence = required, opts = []},
+       #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	      type = float, occurrence = required, opts = []}]},
+     {{msg, 'ArbiterToCatalogRemoveNegotiation'},
+      [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []}]}].
 
 
 get_msg_names() ->
@@ -12721,7 +13666,9 @@ get_msg_names() ->
      'ArbiterToServerNewProduct',
      'ArbiterToServerSubscribeAccepted', 'ServerToArbiter',
      'ServerToArbiterOffer', 'ServerToArbiterAnnounce',
-     'ServerToArbiterSubscribe'].
+     'ServerToArbiterSubscribe', 'FrontendToCatalogAddUser',
+     'ArbiterToCatalogAddNegotiation',
+     'ArbiterToCatalogRemoveNegotiation'].
 
 
 get_group_names() -> [].
@@ -12752,7 +13699,9 @@ get_msg_or_group_names() ->
      'ArbiterToServerNewProduct',
      'ArbiterToServerSubscribeAccepted', 'ServerToArbiter',
      'ServerToArbiterOffer', 'ServerToArbiterAnnounce',
-     'ServerToArbiterSubscribe'].
+     'ServerToArbiterSubscribe', 'FrontendToCatalogAddUser',
+     'ArbiterToCatalogAddNegotiation',
+     'ArbiterToCatalogRemoveNegotiation'].
 
 
 get_enum_names() -> ['ClientType'].
@@ -13106,6 +14055,28 @@ find_msg_def('ServerToArbiterSubscribe') ->
 	    type = string, occurrence = required, opts = []},
      #field{name = manufacturerNames, fnum = 2, rnum = 3,
 	    type = string, occurrence = repeated, opts = []}];
+find_msg_def('FrontendToCatalogAddUser') ->
+    [#field{name = username, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = type, fnum = 2, rnum = 3,
+	    type = {enum, 'ClientType'}, occurrence = required,
+	    opts = []}];
+find_msg_def('ArbiterToCatalogAddNegotiation') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = minQuantity, fnum = 3, rnum = 4,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = maxQuantity, fnum = 4, rnum = 5,
+	    type = int32, occurrence = required, opts = []},
+     #field{name = minUnitPrice, fnum = 5, rnum = 6,
+	    type = float, occurrence = required, opts = []}];
+find_msg_def('ArbiterToCatalogRemoveNegotiation') ->
+    [#field{name = manufacturerName, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []}];
 find_msg_def(_) -> error.
 
 
@@ -13238,6 +14209,12 @@ fqbin_to_msg_name(<<"nefit.ServerToArbiterOffer">>) -> 'ServerToArbiterOffer';
 fqbin_to_msg_name(<<"nefit.ServerToArbiterAnnounce">>) -> 'ServerToArbiterAnnounce';
 fqbin_to_msg_name(<<"nefit.ServerToArbiterSubscribe">>) ->
     'ServerToArbiterSubscribe';
+fqbin_to_msg_name(<<"nefit.FrontendToCatalogAddUser">>) ->
+    'FrontendToCatalogAddUser';
+fqbin_to_msg_name(<<"nefit.ArbiterToCatalogAddNegotiation">>) ->
+    'ArbiterToCatalogAddNegotiation';
+fqbin_to_msg_name(<<"nefit.ArbiterToCatalogRemoveNegotiation">>) ->
+    'ArbiterToCatalogRemoveNegotiation';
 fqbin_to_msg_name(E) -> error({gpb_error, {badmsg, E}}).
 
 
@@ -13301,6 +14278,12 @@ msg_name_to_fqbin('ServerToArbiterOffer') -> <<"nefit.ServerToArbiterOffer">>;
 msg_name_to_fqbin('ServerToArbiterAnnounce') -> <<"nefit.ServerToArbiterAnnounce">>;
 msg_name_to_fqbin('ServerToArbiterSubscribe') ->
     <<"nefit.ServerToArbiterSubscribe">>;
+msg_name_to_fqbin('FrontendToCatalogAddUser') ->
+    <<"nefit.FrontendToCatalogAddUser">>;
+msg_name_to_fqbin('ArbiterToCatalogAddNegotiation') ->
+    <<"nefit.ArbiterToCatalogAddNegotiation">>;
+msg_name_to_fqbin('ArbiterToCatalogRemoveNegotiation') ->
+    <<"nefit.ArbiterToCatalogRemoveNegotiation">>;
 msg_name_to_fqbin(E) -> error({gpb_error, {badmsg, E}}).
 
 
@@ -13342,7 +14325,9 @@ get_all_proto_names() -> ["nefit"].
 
 
 get_msg_containment("nefit") ->
-    ['ArbiterToServer', 'ArbiterToServerAnnounceAccepted',
+    ['ArbiterToCatalogAddNegotiation',
+     'ArbiterToCatalogRemoveNegotiation', 'ArbiterToServer',
+     'ArbiterToServerAnnounceAccepted',
      'ArbiterToServerAnnounceInvalid',
      'ArbiterToServerAnnounceNoOffers',
      'ArbiterToServerAnnounceSold',
@@ -13354,12 +14339,13 @@ get_msg_containment("nefit") ->
      'ArbiterToServerOfferWon',
      'ArbiterToServerSubscribeAccepted', 'ClientToServer',
      'ClientToServerLogin', 'ClientToServerRegister',
-     'ImporterToServer', 'ImporterToServerOffer',
-     'ImporterToServerSubscribe', 'ManufacturerToServer',
-     'ManufacturerToServerAnnounce', 'ServerToArbiter',
-     'ServerToArbiterAnnounce', 'ServerToArbiterOffer',
-     'ServerToArbiterSubscribe', 'ServerToClientAuth',
-     'ServerToImporter', 'ServerToImporterNewProduct',
+     'FrontendToCatalogAddUser', 'ImporterToServer',
+     'ImporterToServerOffer', 'ImporterToServerSubscribe',
+     'ManufacturerToServer', 'ManufacturerToServerAnnounce',
+     'ServerToArbiter', 'ServerToArbiterAnnounce',
+     'ServerToArbiterOffer', 'ServerToArbiterSubscribe',
+     'ServerToClientAuth', 'ServerToImporter',
+     'ServerToImporterNewProduct',
      'ServerToImporterOfferInvalid',
      'ServerToImporterOfferLose',
      'ServerToImporterOfferOutdated',
@@ -13400,6 +14386,7 @@ get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToArbiter">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ManufacturerToServer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ImporterToServerOffer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ImporterToServer">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.FrontendToCatalogAddUser">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServerRegister">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServer">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServer">>) -> "nefit";
@@ -13430,6 +14417,8 @@ get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToClientAuth">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToImporterOfferWon">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServerLogin">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToServerOfferWon">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToCatalogRemoveNegotiation">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ArbiterToCatalogAddNegotiation">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(E) ->
     error({gpb_error, {badmsg, E}}).
 

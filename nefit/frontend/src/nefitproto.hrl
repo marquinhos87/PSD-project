@@ -333,4 +333,31 @@
         }).
 -endif.
 
+-ifndef('FRONTENDTOCATALOGADDUSER_PB_H').
+-define('FRONTENDTOCATALOGADDUSER_PB_H', true).
+-record('FrontendToCatalogAddUser',
+        {username               :: iodata(),        % = 1
+         type                   :: 'IMPORTER' | 'MANUFACTURER' | integer() % = 2, enum ClientType
+        }).
+-endif.
+
+-ifndef('ARBITERTOCATALOGADDNEGOTIATION_PB_H').
+-define('ARBITERTOCATALOGADDNEGOTIATION_PB_H', true).
+-record('ArbiterToCatalogAddNegotiation',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         minQuantity            :: integer(),       % = 3, 32 bits
+         maxQuantity            :: integer(),       % = 4, 32 bits
+         minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan % = 5
+        }).
+-endif.
+
+-ifndef('ARBITERTOCATALOGREMOVENEGOTIATION_PB_H').
+-define('ARBITERTOCATALOGREMOVENEGOTIATION_PB_H', true).
+-record('ArbiterToCatalogRemoveNegotiation',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata()         % = 2
+        }).
+-endif.
+
 -endif.

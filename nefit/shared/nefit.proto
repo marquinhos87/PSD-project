@@ -282,15 +282,7 @@ message ServerToArbiterSubscribe {
 }
 
 /* -------------------------------------------------------------------------- */
-/* frontend / arbiter <--> catalog */
-
-message ToCatalog {
-    oneof message {
-        FrontendToCatalogAddUser addUser = 1;
-        ArbiterToCatalogAddNegotiation addNegotiation = 2;
-        ArbiterToCatalogRemoveNegotiation removeNegotiation = 3;
-    }
-}
+/* frontend / arbiter --> catalog */
 
 message FrontendToCatalogAddUser
 {
