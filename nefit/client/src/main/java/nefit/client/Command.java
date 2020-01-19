@@ -1,23 +1,38 @@
 package nefit.client;
 
+import java.util.function.Consumer;
+
 public class Command
 {
-    private final String name;
-    private final int numArgs;
+    private final Consumer< String[] > action;
 
-    public Command(String name, int numArgs)
+    private final String commandName;
+    private final String[] argumentNames;
+
+    public Command(
+        Consumer< String[] > action,
+        String commandName,
+        String... argumentNames
+    )
     {
-        this.name = name;
-        this.numArgs = numArgs;
+        this.action = action;
+
+        this.commandName = commandName;
+        this.argumentNames = argumentNames;
     }
 
-    public String getName()
+    public String getCommandName()
     {
-        return this.name;
+        return this.commandName;
     }
 
-    public int getNumArgs()
+    public String[] getArgumentNames()
     {
-        return this.numArgs;
+        return this.argumentNames;
+    }
+
+    public void runAction(String[] arguments)
+    {
+        this.action.accept(arguments);
     }
 }

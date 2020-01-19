@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public abstract class Client< MessageType >
 {
@@ -16,7 +17,7 @@ public abstract class Client< MessageType >
     private final Connection connection;
     private final Thread receiveThread;
 
-    public Client(Connection connection, Parser< MessageType > messageParser)
+    public Client(Connection connection, Parser< MessageType > messageParser, Command[] commands)
     {
         this.commands = new HashMap<>();
         this.messageParser = messageParser;
@@ -45,6 +46,11 @@ public abstract class Client< MessageType >
             if (line == null)
                 break;
 
+            final var args =
+                Pattern
+                    .compile("\\s+")
+                    .splitAsStream(line);
+
             final var parts = line.split("\\s+", 2);
 
             if (parts[0].equals("exit"))
@@ -59,6 +65,8 @@ public abstract class Client< MessageType >
             }
 
             final var args = new ArrayList< String >();
+
+            if ()
         }
 
         // close connection
