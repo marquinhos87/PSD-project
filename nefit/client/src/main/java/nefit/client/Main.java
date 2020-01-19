@@ -12,7 +12,8 @@ public class Main
         {
             final Connection connection;
 
-            try {
+            try
+            {
                 connection = new Connection(args[0], Integer.parseInt(args[1]));
             }
             catch (Exception e)
@@ -31,14 +32,18 @@ public class Main
                     break;
 
                 case MANUFACTURER:
-                    prompt.print("You are now authenticated as an Manufacturer.");
+                    prompt
+                        .print("You are now authenticated as an Manufacturer.");
                     new Manufacturer(connection, prompt).run();
                     break;
             }
         }
     }
 
-    private static NefitProtos.ClientType authenticate(Connection connection, Prompt prompt) throws IOException {
+    private static NefitProtos.ClientType authenticate(
+        Connection connection, Prompt prompt
+    ) throws IOException
+    {
 
         switch (prompt.input("Login or Register [l/r]: "))
         {
@@ -51,11 +56,17 @@ public class Main
                 switch (prompt.input("Importer or Manufacturer [i/m]: "))
                 {
                     case "i":
-                        register(connection, prompt, NefitProtos.ClientType.IMPORTER);
+                        register(
+                            connection, prompt,
+                            NefitProtos.ClientType.IMPORTER
+                        );
                         break;
 
                     case "m":
-                        register(connection, prompt, NefitProtos.ClientType.MANUFACTURER);
+                        register(
+                            connection, prompt,
+                            NefitProtos.ClientType.MANUFACTURER
+                        );
                         break;
 
                     default:
@@ -68,15 +79,20 @@ public class Main
                 prompt.fail("Invalid choice.");
         }
 
-        final var authMsg = connection.receive(NefitProtos.ServerToClientAuth.parser());
+        final var authMsg = connection
+            .receive(NefitProtos.ServerToClientAuth.parser());
 
         if (!authMsg.getOk())
+        {
             prompt.fail(authMsg.getErrorMessage());
+        }
 
         return authMsg.getClientType();
     }
 
-    private static void login(Connection connection, Prompt prompt) throws IOException {
+    private static void login(Connection connection, Prompt prompt)
+        throws IOException
+    {
         final var username = prompt.input("Username: ");
         final var password = prompt.input("Password: ");
 
@@ -89,7 +105,10 @@ public class Main
         connection.send(loginMsg);
     }
 
-    private static void register(Connection connection, Prompt prompt, NefitProtos.ClientType clientType) throws IOException {
+    private static void register(
+        Connection connection, Prompt prompt, NefitProtos.ClientType clientType
+    ) throws IOException
+    {
         final var username = prompt.input("Username: ");
         final var password = prompt.input("Password: ");
 
