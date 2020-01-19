@@ -2,8 +2,12 @@
 -export([run/1]).
 
 -include("nefitproto.hrl").
+-include("../_build/default/lib/chumak/include/chumak.hrl").
 
 run(Port) ->
+    application:start(chumak),
+    {ok, Socket} = chumak:socket(pub),
+    chumak:bind(Socket, tcp, "localhost", 12346),
     {ok, LSock} = gen_tcp:listen(Port, [binary, {packet, 4}, {reuseaddr, true}]),
     State = spawn(fun()-> globalState(
         maps:new(),
@@ -63,8 +67,13 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters) ->
         % Send Message to all Arbiter Actors with a new Order from an Importer
         {order, Manuf, Product, Quant, Value} ->
             Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value},
+            %Substituir as proximas duas linhas pelas proximas tres
             List = maps:to_list(Arbiters),
             [Arbiter ! {sub, Msg} || {Arbiter,_} <- List],
+            %MsgN = #'Negotiator'{msg = Msg},
+            %M = nefitproto:encode_msg(MsgN),
+            %chumak:send(Socket,<<Manuf+Product , , MsgN),
+            %Aqui acrescentar dois parametros, e nas outras chamadas todas tambem
             globalState(RegisteredUsers, ConnectedUsers, Arbiters);
 
         % Send Message to all Arbiter Actors with the Manufacturers subscribed by an Importer
