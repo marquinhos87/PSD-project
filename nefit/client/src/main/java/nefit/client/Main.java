@@ -7,20 +7,34 @@ import java.net.InetSocketAddress;
 
 public class Main
 {
-    private static InetSocketAddress parseArguments(String[] args)
+    private static InetSocketAddress parseArgs(Prompt prompt, String[] args)
     {
         try
         {
             Util.ensure(args.length == 2);
 
-            endpoint = new InetSocketAddress(
+            return new InetSocketAddress(
                 args[0], Integer.parseInt(args[1])
             );
         }
         catch (Exception e)
         {
-            prompt.print("Usage: chirper <server_host> <server_port>");
+            prompt.print("Usage: nefit-client <server_host> <server_port>");
             System.exit(2);
+        }
+    }
+
+    private static Connection connectToServer(
+        Prompt prompt, InetSocketAddress serverEndpoint
+    )
+    {
+        try
+        {
+            return new Connection(serverEndpoint);
+        }
+        catch (Exception e)
+        {
+            prompt.fail(e.getMessage());
         }
     }
 
@@ -28,26 +42,10 @@ public class Main
     {
         try (final var prompt = new Prompt())
         {
-            // parse arguments
+            final var serverEndpoint = parseArgs(prompt, args);
+            final var connection = connectToServer(prompt, serverEndpoint);
 
-            final InetSocketAddress endpoint;
-
-
-            // connect to server
-
-            final Connection connection;
-
-            try
-            {
-                connection = new Connection(endpoint);
-            }
-            catch (Exception e)
-            {
-                prompt.fail(e.getMessage());
-                return;
-            }
-
-            final var clientType = authenticate(connection, prompt);
+            final var clientType = authenticate(prompt, connection);
 
             switch (clientType)
             {
@@ -73,7 +71,7 @@ public class Main
     }
 
     private static NefitProtos.ClientType authenticate(
-        Connection connection, Prompt prompt
+        Prompt prompt, Connection connection
     ) throws IOException
     {
 
