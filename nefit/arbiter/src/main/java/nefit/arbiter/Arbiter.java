@@ -120,7 +120,7 @@ public class Arbiter implements Runnable
         this.importerNego = new HashMap<>();
         this.importerManu = new HashMap<>();
 
-        new Thread(this::receivedZMQ).start();
+        //new Thread(this::receivedZMQ).start();
 
         while(true)
         {
@@ -134,6 +134,9 @@ public class Arbiter implements Runnable
 
                 if(negotiator.hasSubscribe())
                     executeSub(negotiator.getSubscribe());
+
+                if(negotiator.hasOffer())
+                    executeOrder(negotiator.getOffer());
             }
             catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
@@ -144,14 +147,16 @@ public class Arbiter implements Runnable
         }
     }
 
-    private void receivedZMQ(){
+    /*private void receivedZMQ(){
         while (true){
             try {
+                //this.socketZ.recv(0);
+
                 byte[] reply = this.socketZ.recv(0);
 
                 String[] aux = new String(reply).split("!",2);
 
-                byte[] a = Arrays.copyOfRange(reply,aux[0].length(),reply.length);
+                byte[] a = Arrays.copyOfRange(reply,aux[0].length(),reply.length-aux[0].length());
 
                 NefitProto.ServerToArbiter negotiator = NefitProto.ServerToArbiter.parseFrom(a);
 
@@ -164,7 +169,7 @@ public class Arbiter implements Runnable
                 e.printStackTrace();
             }
         }
-    }
+    }*/
 
     private synchronized void executeDisponibility(NefitProto.ServerToArbiterAnnounce disponibility) throws IOException {
         this.negotiations.put(new Pair<>(disponibility.getManufacturerName(),disponibility.getProductName()),new Pair<>(disponibility, null));
@@ -174,7 +179,7 @@ public class Arbiter implements Runnable
         //Thread that leads to
         new Thread(this::executeResult).start();
 
-        this.socketZ.subscribe(disponibility.getManufacturerName()+disponibility.getProductName());
+        //this.socketZ.subscribe(disponibility.getManufacturerName()+disponibility.getProductName());
 
         if(!this.importerManu.containsKey(disponibility.getManufacturerName()))
             this.importerManu.put(disponibility.getManufacturerName(),new ArrayList<>());
@@ -204,37 +209,73 @@ public class Arbiter implements Runnable
     }
 
     private synchronized void executeOrder(NefitProto.ServerToArbiterOffer order) throws IOException {
-        if(this.negotiations.containsKey(new Pair<>(order.getManufacturerName(),order.getProductName())))
+        if(this.negotiations.containsKey(new Pair<>(order.getManufacturerName(),order.getProductName()).hashCode()))
         {
-            Pair< NefitProto.ServerToArbiterAnnounce, NefitProto.ServerToArbiterOffer> aux = this.negotiations.get(new Pair<>(order.getManufacturerName(),order.getProductName()));
+            Pair< NefitProto.ServerToArbiterAnnounce, NefitProto.ServerToArbiterOffer> aux = this.negotiations.get(new Pair<>(order.getManufacturerName(),order.getProductName()).hashCode());
             if (aux.getKey().getMaxQuantity() >= order.getQuantity() && aux.getKey().getMinQuantity() <= order.getQuantity() && aux.getKey().getMinUnitPrice() <= order.getUnitPrice())
             {
-                float old_v = aux.getValue().getUnitPrice() * aux.getValue().getQuantity();
-                float new_v = order.getUnitPrice() * order.getQuantity();
-                if (new_v > old_v) {
-                    //Send ack to old importer
-                    NefitProto.ArbiterToServerOfferOutdated orderAckS = NefitProto.ArbiterToServerOfferOutdated.newBuilder()
-                        .setImporterName(aux.getValue().getImporterName())
-                        .setManufacturerName(order.getManufacturerName())
-                        .setProductName(order.getProductName()).build();
-                    connection.send(NefitProto.ArbiterToServer.newBuilder().setOfferOutdated(orderAckS).build());
+                if(aux.getValue() == null){
                     //Send ack to new importer
-                    NefitProto.ArbiterToServerOfferSubmitted ack = NefitProto.ArbiterToServerOfferSubmitted.newBuilder()
+                    NefitProto.ArbiterToServerOfferSubmitted ack = NefitProto.ArbiterToServerOfferSubmitted
+                        .newBuilder()
                         .setManufacturerName(order.getManufacturerName())
                         .setProductName(order.getProductName())
                         .setImporterName(order.getImporterName())
                         .build();
-                    connection.send(NefitProto.ArbiterToServer.newBuilder().setSubmitted(ack).build());
+                    connection.send(NefitProto.ArbiterToServer.newBuilder()
+                        .setSubmitted(ack).build());
                     //Replace Order
-                    this.negotiations.put(new Pair<>(order.getManufacturerName(),order.getProductName()),new Pair<>(aux.getKey(),order));
+                    this.negotiations.put(
+                        new Pair<>(
+                            order.getManufacturerName(),
+                            order.getProductName()
+                        ),
+                        new Pair<>(aux.getKey(), order)
+                    );
                 }
                 else
                 {
-                    NefitProto.ArbiterToServerOfferInvalid ack = NefitProto.ArbiterToServerOfferInvalid.newBuilder()
-                        .setImporterName(order.getImporterName())
-                        .setErrorMessage("Exists a better order")
-                        .build();
-                    connection.send(NefitProto.ArbiterToServer.newBuilder().setOfferInvalid(ack).build());
+                    float old_v = aux.getValue().getUnitPrice() * aux.getValue()
+                        .getQuantity();
+                    float new_v = order.getUnitPrice() * order.getQuantity();
+                    if (new_v > old_v)
+                    {
+                        //Send ack to old importer
+                        NefitProto.ArbiterToServerOfferOutdated orderAckS = NefitProto.ArbiterToServerOfferOutdated
+                            .newBuilder()
+                            .setImporterName(aux.getValue().getImporterName())
+                            .setManufacturerName(order.getManufacturerName())
+                            .setProductName(order.getProductName()).build();
+                        connection.send(NefitProto.ArbiterToServer.newBuilder()
+                            .setOfferOutdated(orderAckS).build());
+                        //Send ack to new importer
+                        NefitProto.ArbiterToServerOfferSubmitted ack = NefitProto.ArbiterToServerOfferSubmitted
+                            .newBuilder()
+                            .setManufacturerName(order.getManufacturerName())
+                            .setProductName(order.getProductName())
+                            .setImporterName(order.getImporterName())
+                            .build();
+                        connection.send(NefitProto.ArbiterToServer.newBuilder()
+                            .setSubmitted(ack).build());
+                        //Replace Order
+                        this.negotiations.put(
+                            new Pair<>(
+                                order.getManufacturerName(),
+                                order.getProductName()
+                            ),
+                            new Pair<>(aux.getKey(), order)
+                        );
+                    }
+                    else
+                    {
+                        NefitProto.ArbiterToServerOfferInvalid ack = NefitProto.ArbiterToServerOfferInvalid
+                            .newBuilder()
+                            .setImporterName(order.getImporterName())
+                            .setErrorMessage("Exists a better order")
+                            .build();
+                        connection.send(NefitProto.ArbiterToServer.newBuilder()
+                            .setOfferInvalid(ack).build());
+                    }
                 }
             } else {
                 NefitProto.ArbiterToServerOfferInvalid ack = NefitProto.ArbiterToServerOfferInvalid.newBuilder()
@@ -243,9 +284,10 @@ public class Arbiter implements Runnable
                     .build();
                 connection.send(NefitProto.ArbiterToServer.newBuilder().setOfferInvalid(ack).build());
             }
-            if(!this.importerNego.get(new Pair<>(order.getManufacturerName(),order.getProductName())).contains(order.getImporterName()))
-                this.importerNego.get(new Pair<>(order.getManufacturerName(),order.getProductName())).add(order.getImporterName());
+            if(!this.importerNego.get(new Pair<>(order.getManufacturerName(),order.getProductName()).hashCode()).contains(order.getImporterName()))
+                this.importerNego.get(new Pair<>(order.getManufacturerName(),order.getProductName()).hashCode()).add(order.getImporterName());
         }
+        else System.out.println("Sem produto");
     }
 
     private synchronized void executeSub(NefitProto.ServerToArbiterSubscribe sub) throws IOException
@@ -269,9 +311,9 @@ public class Arbiter implements Runnable
         try {
             Thread.sleep(disp.getTimout()*1000L);
             Pair<String,String> prod = new Pair<>(disp.getManufacturerName(),disp.getProductName());
-            if(!(this.negotiations.get(prod).getValue() == null))
+            if(!(this.negotiations.get(prod.hashCode()).getValue() == null))
             {
-                NefitProto.ServerToArbiterOffer order = this.negotiations.get(prod).getValue();
+                NefitProto.ServerToArbiterOffer order = this.negotiations.get(prod.hashCode()).getValue();
                 NefitProto.ArbiterToServerOfferWon resultS = NefitProto.ArbiterToServerOfferWon.newBuilder()
                     .setImporterName(order.getImporterName())
                     .setManufacturerName(order.getManufacturerName())
@@ -279,7 +321,7 @@ public class Arbiter implements Runnable
                     .setProductName(order.getProductName())
                     .build();
                 connection.send(NefitProto.ArbiterToServer.newBuilder().setWon(resultS).build());
-                for(String str: this.importerNego.get(prod)) {
+                for(String str: this.importerNego.get(prod.hashCode())) {
                     if (!str.equals(order.getImporterName())) {
                         NefitProto.ArbiterToServerOfferLose result = NefitProto.ArbiterToServerOfferLose.newBuilder()
                             .setImporterName(order.getImporterName())
@@ -304,7 +346,7 @@ public class Arbiter implements Runnable
                     .build();
                 connection.send(NefitProto.ArbiterToServer.newBuilder().setNoOffers(production).build());
             }
-            this.socketZ.unsubscribe(prod.getKey()+prod.getValue());
+            //this.socketZ.unsubscribe(prod.getKey()+prod.getValue());
             this.negotiations.remove(prod);
             this.importerNego.remove(prod);
         } catch (InterruptedException e) {

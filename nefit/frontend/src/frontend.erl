@@ -77,13 +77,15 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
                 quantity = Quant,
                 unitPrice = Value,
                 importerName = Imp},
-            MsgN = #'ServerToArbiter'{message = {offer,Msg}},
-            Aux = string:concat(string:concat(Manuf, Product),"!"),
-            Str = binary:list_to_bin(Aux),
+            %MsgN = #'ServerToArbiter'{message = {offer,Msg}},
+            %Aux = string:concat(string:concat(Manuf, Product),"!"),
+            %Str = binary:list_to_bin(Aux),
             %Neste momento rebenta por causa do Tam
-            M = nefitproto:encode_msg(MsgN),
-            Mensagem = [Str ,M],
-            chumak:send(Socket, Mensagem),
+            %M = nefitproto:encode_msg(MsgN),
+            %chumak:send_multipart(Socket, Str),
+            %chumak:send(Socket,[Str,M]),
+            List = maps:to_list(Arbiters),
+            [Arbiter ! {order, Msg} || {Arbiter, _} <- List],
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos + 1);
 
     % Send Message to all Arbiter Actors with the Manufacturers subscribed by an Importer
@@ -500,6 +502,7 @@ connectedClient(Sock, State) ->
             Msg = #'ServerToClientAuth'{ok = true},
             M = nefitproto:encode_msg(Msg),
             gen_tcp:send(Sock, M),
+            %Send Message to Catalog
             case Type of
                 'IMPORTER' -> importer(Sock, State);
                 'MANUFACTURER' -> manufacturer(Sock, State)
