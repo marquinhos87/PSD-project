@@ -12,9 +12,10 @@ public class Manufacturer
 {
     private final Set< String > activeProductNames;
 
-    public Manufacturer(Connection connection, String username)
+    public Manufacturer(Prompt prompt, Connection connection, String username)
     {
         super(
+            prompt,
             connection,
             username,
             NefitProtos.ProductionM.parser(),
@@ -37,7 +38,7 @@ public class Manufacturer
     {
         // validate and parse arguments (we know command is "announce")
 
-        final var productName = arguments.get(0)
+        final var productName = arguments.get(0);
 
         Util.ensure(!productName.isBlank(), "Invalid product name.");
 
@@ -87,6 +88,8 @@ public class Manufacturer
                 .build();
 
         this.sendMessage(messageServer);
+
+        // TODO: must wait for acknowledgment from server
     }
 
     @Override
