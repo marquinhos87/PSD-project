@@ -87,11 +87,9 @@ public class CatalogApplication
         {
             try
             {
-                System.out.println("Chega aqui?");
                 final var topic = this.zmqSocket.recv();
-                System.out.println("Chega aqui?");
                 final var messageBytes = this.zmqSocket.recv();
-                System.out.println("Chega aqui?");
+
                 switch (new String(topic))
                 {
                     case "addUser":
