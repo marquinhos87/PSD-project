@@ -27,12 +27,12 @@ public class Connection implements AutoCloseable
 
     public < T > T receive(Parser< T > msgParser) throws IOException
     {
-        return Util.read(this.in, msgParser);
+        return Util.readProto(this.in, msgParser);
     }
 
     public void send(MessageLite msg) throws IOException
     {
-        Util.write(this.out, msg);
+        Util.writeProto(this.out, msg);
     }
 
     @Override

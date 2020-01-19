@@ -16,7 +16,9 @@ public class Util
     {
     }
 
-    public static < T > T read(InputStream input, Parser< T > messageParser)
+    public static < T > T readProto(
+        InputStream input, Parser< T > messageParser
+    )
         throws IOException
     {
         // read message size
@@ -39,7 +41,7 @@ public class Util
         return messageParser.parseFrom(bytes);
     }
 
-    public static void write(OutputStream output, MessageLite message)
+    public static void writeProto(OutputStream output, MessageLite message)
         throws IOException
     {
         // encode message size

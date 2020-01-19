@@ -134,7 +134,7 @@ public class Main
                 .setName(username)
                 .setPass(password)
                 .setCtype(clientType)
-                .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER)
+                .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN)
                 .build();
 
         connection.send(loginMessage);
