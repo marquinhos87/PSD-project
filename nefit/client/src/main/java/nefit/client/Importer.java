@@ -16,11 +16,11 @@ public class Importer extends Client< NefitProtos.Importer >
             username,
             NefitProtos.Importer.parser(),
             new Command(
-                "subscribe",
-                "Manufacturers"
+                "get"
             ),
             new Command(
-                "get"
+                "subscribe",
+                "Manufacturers"
             ),
             new Command(
                 "offer"
@@ -34,13 +34,27 @@ public class Importer extends Client< NefitProtos.Importer >
     {
         switch (command)
         {
+            case "get":
+                this.handleCommandGet(arguments);
+                break;
+
             case "subscribe":
                 this.handleCommandSubscribe(arguments);
+                break;
+
+            case "offer":
+                this.handleCommandOffer(arguments);
                 break;
         }
     }
 
+    private void handleCommandGet(List< String > arguments)
+    {
+
+    }
+
     private void handleCommandSubscribe(List< String > arguments)
+        throws IOException
     {
         // validate and parse arguments (we know command is "announce")
 
@@ -64,11 +78,6 @@ public class Importer extends Client< NefitProtos.Importer >
     }
 
     private void handleCommandOffer(List< String > arguments)
-    {
-
-    }
-
-    private void sendOrder(String[] fields) throws IOException
     {
         if (fields.length != 5)
         {
@@ -95,7 +104,9 @@ public class Importer extends Client< NefitProtos.Importer >
         }
     }
 
-    private void receive()
+    @Override
+    protected void handleMessage(NefitProtos.Importer message)
+        throws IOException
     {
         while (true)
         {
