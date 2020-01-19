@@ -26,7 +26,10 @@ public class Main
             try (final var app = new CatalogApplication(zmqPort))
             {
                 app.run(new String[] { "server" });
+                prompt.input("Press ENTER to exit.");
             }
+
+            System.exit(0);
         }
     }
 }
