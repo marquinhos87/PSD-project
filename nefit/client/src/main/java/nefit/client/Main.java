@@ -149,9 +149,7 @@ public class Main
                 break;
 
             case MANUFACTURER:
-                prompt.print(
-                    "You are now authenticated as an Manufacturer."
-                );
+                prompt.print("You are now authenticated as an Manufacturer.");
                 new Manufacturer(prompt, connection, username).run();
                 break;
         }
@@ -219,9 +217,7 @@ public class Main
                 break;
 
             case MANUFACTURER:
-                prompt.print(
-                    "You are now authenticated as an Manufacturer."
-                );
+                prompt.print("You are now authenticated as an Manufacturer.");
                 new Manufacturer(prompt, connection, username).run();
                 break;
         }
