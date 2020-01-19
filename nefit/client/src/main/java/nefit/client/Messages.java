@@ -27,12 +27,12 @@ public class Messages
             return msg.setCtype(NefitProtos.MsgAuth.ClientType.MANUFACTURER)
                 .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN).build();
         }
-        if(typeAuth)
+        if(typeAuth && !client)
         {
             return msg.setCtype(NefitProtos.MsgAuth.ClientType.IMPORTER)
                 .setMtype(NefitProtos.MsgAuth.MsgType.LOGIN).build();
         }
-        if(client)
+        if(!typeAuth && client)
         {
             return msg.setCtype(NefitProtos.MsgAuth.ClientType.MANUFACTURER)
                 .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER).build();
@@ -56,8 +56,8 @@ public class Messages
         return NefitProtos.DisponibilityS.newBuilder()
             .setNameM(nameM)
             .setNameP(nameP)
-            .setMinimun(minimum)
-            .setMaximun(maximum)
+            .setMinimum(minimum)
+            .setMaximum(maximum)
             .setValue(value)
             .setPeriod(period)
             .build();
@@ -92,15 +92,5 @@ public class Messages
         for(String aux: subs)
             sub.addSubs(aux);
         return sub.build();
-    }
-
-    /**
-     *
-     * @param name Name of the Importer
-     * @return Message with the name of the Importer
-     */
-    public NefitProtos.GetS createGetS(String name)
-    {
-        return NefitProtos.GetS.newBuilder().setNameI(name).build();
     }
 }

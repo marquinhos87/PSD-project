@@ -60,6 +60,7 @@ public class Arbiter implements Runnable
     public static void main(String[] args)
     {
         new Arbiter().run();
+        new Arbiter().run();
     }
 
     @Override
@@ -83,24 +84,13 @@ public class Arbiter implements Runnable
                 NefitProtos.Negotiator negotiator = NefitProtos.Negotiator.parseFrom(reply);
 
                 if(negotiator.hasDisponibility())
-                {
                     executeDisponibility(negotiator.getDisponibility());
-                }
 
                 if(negotiator.hasOrder())
-                {
                     executeOrder(negotiator.getOrder());
-                }
-
-                if(negotiator.hasGet())
-                {
-                    executeGet(negotiator.getGet());
-                }
 
                 if(negotiator.hasSub())
-                {
                     executeSub(negotiator.getSub());
-                }
             }
             catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
@@ -125,8 +115,8 @@ public class Arbiter implements Runnable
                     this.messages.createInfoS(
                         disponibility.getNameM(),
                         disponibility.getNameP(),
-                        disponibility.getMaximun(),
-                        disponibility.getMinimun(),
+                        disponibility.getMaximum(),
+                        disponibility.getMinimum(),
                         disponibility.getValue(),
                         disponibility.getPeriod(),
                         str)
@@ -138,7 +128,7 @@ public class Arbiter implements Runnable
         if(this.negotiations.containsKey(new Pair<>(order.getNameM(),order.getNameP())))
         {
             Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN> aux = this.negotiations.get(new Pair<>(order.getNameM(),order.getNameP()));
-            if (aux.getKey().getMaximun() >= order.getQuant() && aux.getKey().getMinimun() <= order.getQuant() && aux.getKey().getValue() <= order.getValue())
+            if (aux.getKey().getMaximum() >= order.getQuant() && aux.getKey().getMinimum() <= order.getQuant() && aux.getKey().getValue() <= order.getValue())
             {
                 float old_v = aux.getValue().getValue() * aux.getValue().getQuant();
                 float new_v = order.getValue() * order.getQuant();
@@ -163,29 +153,6 @@ public class Arbiter implements Runnable
                 this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).add(order.getNameI());
             this.socket.send(ack.toByteArray(),0);
         }
-        else
-            this.socket.send(this.messages.createOrderAckS(false,"The Manufacturer doesn't exist or doesn't has this product",order.getNameI(),false).toByteArray(),0);
-    }
-
-    private void executeGet(NefitProtos.GetN get)
-    {
-        List<NefitProtos.InfoS> res = new ArrayList<>();
-        for(Map.Entry<Pair<String,String>,Pair<NefitProtos.DisponibilityN,NefitProtos.OrderN>> entry: this.negotiations.entrySet()) {
-            for (String str : this.subscribers.get(get.getNameI()))
-                if (str.equals(entry.getKey().getKey()))
-                    res.add(
-                        this.messages.createInfoS(
-                            str,
-                            entry.getKey().getValue(),
-                            entry.getValue().getKey().getMaximun(),
-                            entry.getValue().getKey().getMinimun(),
-                            entry.getValue().getKey().getValue(),
-                            entry.getValue().getKey().getPeriod(),
-                            get.getNameI()
-                        )
-                    );
-        }
-        this.socket.send(this.messages.createNegotiationsS(get.getNameI(),res).toByteArray(),0);
     }
 
     private void executeSub(NefitProtos.SubN sub)

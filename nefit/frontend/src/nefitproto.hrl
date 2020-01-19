@@ -30,8 +30,8 @@
 -record('DisponibilityS',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).
@@ -42,8 +42,8 @@
 -record('DisponibilityN',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
         }).
@@ -147,8 +147,8 @@
 -record('InfoS',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer(),       % = 6, 32 bits
          nameI                  :: iodata()         % = 7
@@ -160,60 +160,31 @@
 -record('InfoI',
         {nameM                  :: iodata(),        % = 1
          nameP                  :: iodata(),        % = 2
-         minimun                :: integer(),       % = 3, 32 bits
-         maximun                :: integer(),       % = 4, 32 bits
+         minimum                :: integer(),       % = 3, 32 bits
+         maximum                :: integer(),       % = 4, 32 bits
          value                  :: float() | integer() | infinity | '-infinity' | nan, % = 5
          period                 :: integer()        % = 6, 32 bits
-        }).
--endif.
-
--ifndef('GETS_PB_H').
--define('GETS_PB_H', true).
--record('GetS',
-        {nameI                  :: iodata()         % = 1
-        }).
--endif.
-
--ifndef('GETN_PB_H').
--define('GETN_PB_H', true).
--record('GetN',
-        {nameI                  :: iodata()         % = 1
-        }).
--endif.
-
--ifndef('NEGOTIATIONSS_PB_H').
--define('NEGOTIATIONSS_PB_H', true).
--record('NegotiationsS',
-        {nameI                  :: iodata(),        % = 1
-         negotiations = []      :: [nefitproto:'InfoS'()] | undefined % = 2
-        }).
--endif.
-
--ifndef('NEGOTIATIONSI_PB_H').
--define('NEGOTIATIONSI_PB_H', true).
--record('NegotiationsI',
-        {negotiations = []      :: [nefitproto:'InfoI'()] | undefined % = 1
         }).
 -endif.
 
 -ifndef('SERVER_PB_H').
 -define('SERVER_PB_H', true).
 -record('Server',
-        {msg                    :: {m1, nefitproto:'DisponibilityS'()} | {m2, nefitproto:'OrderS'()} | {m3, nefitproto:'SubS'()} | {m4, nefitproto:'ResultS'()} | {m5, nefitproto:'InfoS'()} | {m6, nefitproto:'ProductionS'()} | {m7, nefitproto:'OrderAckS'()} | {m8, nefitproto:'GetS'()} | {m9, nefitproto:'NegotiationsS'()} | {m10, nefitproto:'MsgAuth'()} | undefined % oneof
+        {msg                    :: {m1, nefitproto:'DisponibilityS'()} | {m2, nefitproto:'OrderS'()} | {m3, nefitproto:'SubS'()} | {m4, nefitproto:'ResultS'()} | {m5, nefitproto:'InfoS'()} | {m6, nefitproto:'ProductionS'()} | {m7, nefitproto:'OrderAckS'()} | undefined % oneof
         }).
 -endif.
 
 -ifndef('IMPORTER_PB_H').
 -define('IMPORTER_PB_H', true).
 -record('Importer',
-        {msg                    :: {ordack, nefitproto:'OrderAckI'()} | {nego, nefitproto:'NegotiationsI'()} | {result, nefitproto:'ResultI'()} | {info, nefitproto:'InfoI'()} | undefined % oneof
+        {msg                    :: {ordack, nefitproto:'OrderAckI'()} | {result, nefitproto:'ResultI'()} | {info, nefitproto:'InfoI'()} | undefined % oneof
         }).
 -endif.
 
 -ifndef('NEGOTIATOR_PB_H').
 -define('NEGOTIATOR_PB_H', true).
 -record('Negotiator',
-        {msg                    :: {get, nefitproto:'GetN'()} | {sub, nefitproto:'SubN'()} | {order, nefitproto:'OrderN'()} | {disponibility, nefitproto:'DisponibilityN'()} | undefined % oneof
+        {msg                    :: {sub, nefitproto:'SubN'()} | {order, nefitproto:'OrderN'()} | {disponibility, nefitproto:'DisponibilityN'()} | undefined % oneof
         }).
 -endif.
 
