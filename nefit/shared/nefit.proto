@@ -119,7 +119,9 @@ message ServerToImporter {
         ServerToImporterOfferInvalid offerInvalid = 2;
         ServerToImporterOfferWon offerWon = 3;
         ServerToImporterOfferLose offerLose = 4;
-        ServerToImporterNewProduct newProduct = 5;
+        ServerToImporterOfferOutdated offerOutdated = 5;
+        ServerToImporterNewProduct newProduct = 6;
+        ServerToImporterSubscribeAccepted subAcccepted = 7;
     }
 }
 
@@ -146,6 +148,11 @@ message ServerToImporterOfferLose {
     required string productName = 2;
 }
 
+message ServerToImporterOfferOutdated {
+    required string manufacturerName = 1;
+    required string productName = 2;
+}
+
 message ServerToImporterNewProduct {
     required string productName = 1;
     required int32 minQuantity = 2;
@@ -153,6 +160,9 @@ message ServerToImporterNewProduct {
     required float minUnitPrice = 4;
     required int32 timeout = 5;
     required string manufacturerName = 6;
+}
+
+message ServerToImporterSubscribeAccepted {
 }
 
 /* -------------------------------------------------------------------------- */
@@ -168,7 +178,9 @@ message ArbiterToServer {
         ArbiterToServerOfferInvalid offerInvalid = 6;
         ArbiterToServerOfferWon won = 7;
         ArbiterToServerOfferLose lose = 8;
-        ArbiterToServerNewProduct product = 9;
+        ArbiterToServerOfferOutdated offerOutdated = 9;
+        ArbiterToServerNewProduct product = 10;
+        ArbiterToServerSubscribeAccepted subsAccepted = 11;
     }
 }
 
@@ -222,6 +234,12 @@ message ArbiterToServerOfferLose {
     required string manufacturerName = 3;
 }
 
+message ArbiterToServerOfferOutdated {
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required string importerName = 3;
+}
+
 message ArbiterToServerNewProduct {
     required string manufacturerName = 1;
     required string productName = 2;
@@ -229,6 +247,11 @@ message ArbiterToServerNewProduct {
     required int32 maxQuantity = 4;
     required float minUnitPrice = 5;
     required int32 timout = 6;
+    required string importerName = 7;
+}
+
+message ArbiterToServerSubscribeAccepted {
+    required string importerName = 1;
 }
 
 message ServerToArbiter {

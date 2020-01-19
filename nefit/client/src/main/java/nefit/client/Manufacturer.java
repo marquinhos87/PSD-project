@@ -99,11 +99,11 @@ public class Manufacturer extends Client< NefitProto.ServerToManufacturer >
         this.getPrompt().print();
 
         if(message.hasAnnounced()){
-            this.getPrompt().printNotice("\nYour product as been released");
+            this.getPrompt().printNotice("\nYour product  \"%s\"as been released",message.getAnnounced().getProductName());
         }
 
         if(message.hasInvalid()){
-            this.getPrompt().printNotice("\nYour product as an error");
+            this.getPrompt().printNotice("\nYour product as an error: \"%s\"",message.getInvalid().getErrorMessage());
         }
 
         if(message.hasNoOffers()){

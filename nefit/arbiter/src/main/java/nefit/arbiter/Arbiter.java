@@ -24,7 +24,7 @@ public class Arbiter implements Runnable
     private Connection connection;
     private Prompt prompt;
 
-    private NefitProto.DisponibilityN disp;
+    private NefitProto.ServerToArbiterAnnounce disp;
 
     /**
      * Map where the Key is a Pair with the name of the Manufacturer and name of the Product
@@ -32,7 +32,7 @@ public class Arbiter implements Runnable
      * The best order to the product can be 'null' if doesn't exist a order that satisfies the requirements of the product
      * Map<NameManufacturer,Pair<Product,Best Order>>
      */
-    private Map<Pair<String,String>,Pair< NefitProto.DisponibilityN, NefitProto.OrderN>> negotiations;
+    private Map<Pair<String,String>,Pair< NefitProto.ServerToArbiterAnnounce, NefitProto.ServerToArbiterOffer>> negotiations;
 
     /**
      * Map where the Key is a Pair with the name of the Manufacturer and name of the Product
@@ -162,111 +162,146 @@ public class Arbiter implements Runnable
     }
 
     private synchronized void executeDisponibility(NefitProto.ServerToArbiterAnnounce disponibility) throws IOException {
-        this.negotiations.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new Pair<>(disponibility, null));
-        this.importerNego.put(new Pair<>(disponibility.getNameM(),disponibility.getNameP()),new ArrayList<>());
+        this.negotiations.put(new Pair<>(disponibility.getManufacturerName(),disponibility.getProductName()),new Pair<>(disponibility, null));
+        this.importerNego.put(new Pair<>(disponibility.getManufacturerName(),disponibility.getProductName()),new ArrayList<>());
         this.disp = disponibility;
 
         //Thread that leads to
         new Thread(this::executeResult).start();
 
-        this.socketZ.subscribe(disponibility.getNameM()+disponibility.getNameP());
+        this.socketZ.subscribe(disponibility.getManufacturerName()+disponibility.getProductName());
 
-        if(!this.importerManu.containsKey(disponibility.getNameM()))
-            this.importerManu.put(disponibility.getNameM(),new ArrayList<>());
+        if(!this.importerManu.containsKey(disponibility.getManufacturerName()))
+            this.importerManu.put(disponibility.getManufacturerName(),new ArrayList<>());
         else
-            for(String str: this.importerManu.get(disponibility.getNameM())) {
-                NefitProto.InfoS infoS = this.messages.createInfoS(
-                                            disponibility.getNameM(),
-                                            disponibility.getNameP(),
-                                            disponibility.getMaximum(),
-                                            disponibility.getMinimum(),
-                                            disponibility.getValue(),
-                                            disponibility.getPeriod(),
-                                            str);
-                //Client.writeDelimited(os,NefitProto.Server.newBuilder().setM5(infoS).build());
-                NefitProto.Server.newBuilder().setM5(infoS).build().writeDelimitedTo(os);
+        {
+            for (String str : this.importerManu
+                .get(disponibility.getManufacturerName()))
+            {
+                NefitProto.ArbiterToServerNewProduct infoS = NefitProto.ArbiterToServerNewProduct
+                    .newBuilder()
+                    .setManufacturerName(disponibility.getManufacturerName())
+                    .setProductName(disponibility.getProductName())
+                    .setMaxQuantity(disponibility.getMaxQuantity())
+                    .setMinQuantity(disponibility.getMinQuantity())
+                    .setMinUnitPrice(disponibility.getMinUnitPrice())
+                    .setTimout(disponibility.getTimout())
+                    .setImporterName(str).build();
+                connection.send(
+                    NefitProto.ArbiterToServer.newBuilder().setProduct(infoS)
+                        .build());
             }
+        }
+        NefitProto.ArbiterToServerAnnounceAccepted accepted = NefitProto.ArbiterToServerAnnounceAccepted.newBuilder()
+            .setManufacturerName(disponibility.getManufacturerName())
+            .setProductName(disponibility.getProductName()).build();
+        connection.send(NefitProto.ArbiterToServer.newBuilder().setAccepted(accepted).build());
     }
 
     private synchronized void executeOrder(NefitProto.ServerToArbiterOffer order) throws IOException {
-        NefitProto.OrderAckS ack;
-        if(this.negotiations.containsKey(new Pair<>(order.getNameM(),order.getNameP())))
+        if(this.negotiations.containsKey(new Pair<>(order.getManufacturerName(),order.getProductName())))
         {
-            Pair< NefitProto.DisponibilityN, NefitProto.OrderN> aux = this.negotiations.get(new Pair<>(order.getNameM(),order.getNameP()));
-            if (aux.getKey().getMaximum() >= order.getQuant() && aux.getKey().getMinimum() <= order.getQuant() && aux.getKey().getValue() <= order.getValue())
+            Pair< NefitProto.ServerToArbiterAnnounce, NefitProto.ServerToArbiterOffer> aux = this.negotiations.get(new Pair<>(order.getManufacturerName(),order.getProductName()));
+            if (aux.getKey().getMaxQuantity() >= order.getQuantity() && aux.getKey().getMinQuantity() <= order.getQuantity() && aux.getKey().getMinUnitPrice() <= order.getUnitPrice())
             {
-                float old_v = aux.getValue().getValue() * aux.getValue().getQuant();
-                float new_v = order.getValue() * order.getQuant();
+                float old_v = aux.getValue().getUnitPrice() * aux.getValue().getQuantity();
+                float new_v = order.getUnitPrice() * order.getQuantity();
                 if (new_v > old_v) {
                     //Send ack to old importer
-                    NefitProto.OrderAckS orderAckS = this.messages.createOrderAckS(false, "Your order to " + order.getNameM() + ":" + order.getNameP() + "is outdated", aux.getValue().getNameI(), true);
-                    //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM7(orderAckS).build());
-                    NefitProto.Server.newBuilder().setM7(orderAckS).build().writeDelimitedTo(os);
-                    ack = this.messages.createOrderAckS(true, null, order.getNameI(), false);
+                    NefitProto.ArbiterToServerOfferOutdated orderAckS = NefitProto.ArbiterToServerOfferOutdated.newBuilder()
+                        .setImporterName(aux.getValue().getImporterName())
+                        .setManufacturerName(order.getManufacturerName())
+                        .setProductName(order.getProductName()).build();
+                    connection.send(NefitProto.ArbiterToServer.newBuilder().setOfferOutdated(orderAckS).build());
+                    //Send ack to new importer
+                    NefitProto.ArbiterToServerOfferSubmitted ack = NefitProto.ArbiterToServerOfferSubmitted.newBuilder()
+                        .setManufacturerName(order.getManufacturerName())
+                        .setProductName(order.getProductName())
+                        .setImporterName(order.getImporterName())
+                        .build();
+                    connection.send(NefitProto.ArbiterToServer.newBuilder().setSubmitted(ack).build());
                     //Replace Order
-                    this.negotiations.put(new Pair<>(order.getNameM(),order.getNameP()),new Pair<>(aux.getKey(),order));
+                    this.negotiations.put(new Pair<>(order.getManufacturerName(),order.getProductName()),new Pair<>(aux.getKey(),order));
                 }
                 else
                 {
-                    ack = this.messages.createOrderAckS(false,"Exists a better order",order.getNameI(),false);
+                    NefitProto.ArbiterToServerOfferInvalid ack = NefitProto.ArbiterToServerOfferInvalid.newBuilder()
+                        .setImporterName(order.getImporterName())
+                        .setErrorMessage("Exists a better order")
+                        .build();
+                    connection.send(NefitProto.ArbiterToServer.newBuilder().setOfferInvalid(ack).build());
                 }
             } else {
-                ack = this.messages.createOrderAckS(false, "Don't have the minimums required or the quantity is very high", order.getNameI(), false);
+                NefitProto.ArbiterToServerOfferInvalid ack = NefitProto.ArbiterToServerOfferInvalid.newBuilder()
+                    .setImporterName(order.getImporterName())
+                    .setErrorMessage("Don't have the minimums required or the quantity is very high")
+                    .build();
+                connection.send(NefitProto.ArbiterToServer.newBuilder().setOfferInvalid(ack).build());
             }
-            if(!this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).contains(order.getNameI()))
-                this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).add(order.getNameI());
-            //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM7(ack).build());
-            NefitProto.Server.newBuilder().setM7(ack).build().writeDelimitedTo(os);
+            if(!this.importerNego.get(new Pair<>(order.getManufacturerName(),order.getProductName())).contains(order.getImporterName()))
+                this.importerNego.get(new Pair<>(order.getManufacturerName(),order.getProductName())).add(order.getImporterName());
         }
     }
 
-    private synchronized void executeSub(NefitProto.ServerToArbiterSubscribe sub)
+    private synchronized void executeSub(NefitProto.ServerToArbiterSubscribe sub) throws IOException
     {
-        this.subscribers.put(sub.getNameI(),sub.getSubsList().subList(0,sub.getSubsCount()));
-        for(String str: sub.getSubsList().subList(0,sub.getSubsCount())) {
+        this.subscribers.put(sub.getImporterName(),sub.getManufacturerNamesList().subList(0,sub.getManufacturerNamesCount()));
+        for(String str: sub.getManufacturerNamesList().subList(0,sub.getManufacturerNamesCount())) {
             if (this.importerManu.containsKey(str)) {
-                if (!this.importerManu.get(str).contains(sub.getNameI()))
-                    this.importerManu.get(str).add(sub.getNameI());
+                if (!this.importerManu.get(str).contains(sub.getImporterName()))
+                    this.importerManu.get(str).add(sub.getImporterName());
             }
             else {
                 List<String> aux = new ArrayList<>();
-                aux.add(sub.getNameI());
+                aux.add(sub.getImporterName());
                 this.importerManu.put(str,aux);
             }
         }
+        NefitProto.ArbiterToServerSubscribeAccepted ack = NefitProto.ArbiterToServerSubscribeAccepted.newBuilder()
+            .setImporterName(sub.getImporterName())
+            .build();
+        connection.send(NefitProto.ArbiterToServer.newBuilder().setSubsAccepted(ack).build());
     }
 
     private synchronized void executeResult() {
-        NefitProto.DisponibilityN disp = NefitProto.DisponibilityN.newBuilder(this.disp).build();
+        NefitProto.ServerToArbiterAnnounce disp = NefitProto.ServerToArbiterAnnounce.newBuilder(this.disp).build();
         try {
-            Thread.sleep(disp.getPeriod()*1000L);
-            Pair<String,String> prod = new Pair<>(disp.getNameM(),disp.getNameP());
+            Thread.sleep(disp.getTimout()*1000L);
+            Pair<String,String> prod = new Pair<>(disp.getManufacturerName(),disp.getProductName());
             if(!(this.negotiations.get(prod).getValue() == null))
             {
-                NefitProto.OrderN order = this.negotiations.get(prod).getValue();
-                NefitProto.ResultS resultS = this.messages.createResultS(true,order.getNameM() + ":" + order.getNameP(),order.getNameI());
-                //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM4(resultS).build());
-                NefitProto.Server.newBuilder().setM4(resultS).build().writeDelimitedTo(os);
+                NefitProto.ServerToArbiterOffer order = this.negotiations.get(prod).getValue();
+                NefitProto.ArbiterToServerOfferWon resultS = NefitProto.ArbiterToServerOfferWon.newBuilder()
+                    .setImporterName(order.getImporterName())
+                    .setManufacturerName(order.getManufacturerName())
+                    .setQuantity(order.getQuantity())
+                    .setProductName(order.getProductName())
+                    .build();
+                connection.send(NefitProto.ArbiterToServer.newBuilder().setWon(resultS).build());
                 for(String str: this.importerNego.get(prod)) {
-                    if (!str.equals(order.getNameI())) {
-                        resultS =  this.messages.createResultS(false, order.getNameM() + ":" + order.getNameP(), str);
-                        //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM4(resultS).build());
-                        NefitProto.Server.newBuilder().setM4(resultS).build().writeDelimitedTo(os);
+                    if (!str.equals(order.getImporterName())) {
+                        NefitProto.ArbiterToServerOfferLose result = NefitProto.ArbiterToServerOfferLose.newBuilder()
+                            .setImporterName(order.getImporterName())
+                            .setManufacturerName(order.getManufacturerName())
+                            .setProductName(order.getProductName())
+                            .build();
+                        connection.send(NefitProto.ArbiterToServer.newBuilder().setLose(result).build());
                     }
                 }
-                NefitProto.ProductionS productionS = this.messages.createProductionS(
-                    prod.getKey(),prod.getValue(),order.getQuant(),order.getValue()
-                );
-                //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM6(productionS).build());
-                NefitProto.Server.newBuilder().setM6(productionS).build().writeDelimitedTo(os);
+                NefitProto.ArbiterToServerAnnounceSold productionS = NefitProto.ArbiterToServerAnnounceSold.newBuilder()
+                    .setProductName(prod.getValue())
+                    .setManufacturerName(prod.getKey())
+                    .setQuantity(order.getQuantity())
+                    .setUnitPrice(order.getUnitPrice())
+                    .build();
+                connection.send(NefitProto.ArbiterToServer.newBuilder().setSold(productionS).build());
             }
-            else
-            {
-                NefitProto.ProductionS productionS = this.messages.createProductionS(
-                    prod.getKey(),prod.getValue(),0,0
-                );
-                //Client.writeDelimited(os,NefitProto.Server.newBuilder().setM6(productionS).build());
-                NefitProto.Server.newBuilder().setM6(productionS).build().writeDelimitedTo(os);
+            else {
+                NefitProto.ArbiterToServerAnnounceNoOffers production = NefitProto.ArbiterToServerAnnounceNoOffers.newBuilder()
+                    .setManufacturerName(prod.getKey())
+                    .setProductName(prod.getValue())
+                    .build();
+                connection.send(NefitProto.ArbiterToServer.newBuilder().setNoOffers(production).build());
             }
             this.socketZ.unsubscribe(prod.getKey()+prod.getValue());
             this.negotiations.remove(prod);

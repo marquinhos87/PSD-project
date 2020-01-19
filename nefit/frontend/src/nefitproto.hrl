@@ -125,7 +125,7 @@
 -ifndef('SERVERTOIMPORTER_PB_H').
 -define('SERVERTOIMPORTER_PB_H', true).
 -record('ServerToImporter',
-        {message                :: {offerSubmitted, nefitproto:'ServerToImporterOfferSubmitted'()} | {offerInvalid, nefitproto:'ServerToImporterOfferInvalid'()} | {offerWon, nefitproto:'ServerToImporterOfferWon'()} | {offerLose, nefitproto:'ServerToImporterOfferLose'()} | {newProduct, nefitproto:'ServerToImporterNewProduct'()} | undefined % oneof
+        {message                :: {offerSubmitted, nefitproto:'ServerToImporterOfferSubmitted'()} | {offerInvalid, nefitproto:'ServerToImporterOfferInvalid'()} | {offerWon, nefitproto:'ServerToImporterOfferWon'()} | {offerLose, nefitproto:'ServerToImporterOfferLose'()} | {offerOutdated, nefitproto:'ServerToImporterOfferOutdated'()} | {newProduct, nefitproto:'ServerToImporterNewProduct'()} | {subAcccepted, nefitproto:'ServerToImporterSubscribeAccepted'()} | undefined % oneof
         }).
 -endif.
 
@@ -164,6 +164,14 @@
         }).
 -endif.
 
+-ifndef('SERVERTOIMPORTEROFFEROUTDATED_PB_H').
+-define('SERVERTOIMPORTEROFFEROUTDATED_PB_H', true).
+-record('ServerToImporterOfferOutdated',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata()         % = 2
+        }).
+-endif.
+
 -ifndef('SERVERTOIMPORTERNEWPRODUCT_PB_H').
 -define('SERVERTOIMPORTERNEWPRODUCT_PB_H', true).
 -record('ServerToImporterNewProduct',
@@ -176,10 +184,17 @@
         }).
 -endif.
 
+-ifndef('SERVERTOIMPORTERSUBSCRIBEACCEPTED_PB_H').
+-define('SERVERTOIMPORTERSUBSCRIBEACCEPTED_PB_H', true).
+-record('ServerToImporterSubscribeAccepted',
+        {
+        }).
+-endif.
+
 -ifndef('ARBITERTOSERVER_PB_H').
 -define('ARBITERTOSERVER_PB_H', true).
 -record('ArbiterToServer',
-        {message                :: {accepted, nefitproto:'ArbiterToServerAnnounceAccepted'()} | {announceInvalid, nefitproto:'ArbiterToServerAnnounceInvalid'()} | {sold, nefitproto:'ArbiterToServerAnnounceSold'()} | {noOffers, nefitproto:'ArbiterToServerAnnounceNoOffers'()} | {submitted, nefitproto:'ArbiterToServerOfferSubmitted'()} | {offerInvalid, nefitproto:'ArbiterToServerOfferInvalid'()} | {won, nefitproto:'ArbiterToServerOfferWon'()} | {lose, nefitproto:'ArbiterToServerOfferLose'()} | {product, nefitproto:'ArbiterToServerNewProduct'()} | undefined % oneof
+        {message                :: {accepted, nefitproto:'ArbiterToServerAnnounceAccepted'()} | {announceInvalid, nefitproto:'ArbiterToServerAnnounceInvalid'()} | {sold, nefitproto:'ArbiterToServerAnnounceSold'()} | {noOffers, nefitproto:'ArbiterToServerAnnounceNoOffers'()} | {submitted, nefitproto:'ArbiterToServerOfferSubmitted'()} | {offerInvalid, nefitproto:'ArbiterToServerOfferInvalid'()} | {won, nefitproto:'ArbiterToServerOfferWon'()} | {lose, nefitproto:'ArbiterToServerOfferLose'()} | {offerOutdated, nefitproto:'ArbiterToServerOfferOutdated'()} | {product, nefitproto:'ArbiterToServerNewProduct'()} | {subsAccepted, nefitproto:'ArbiterToServerSubscribeAccepted'()} | undefined % oneof
         }).
 -endif.
 
@@ -257,6 +272,15 @@
         }).
 -endif.
 
+-ifndef('ARBITERTOSERVEROFFEROUTDATED_PB_H').
+-define('ARBITERTOSERVEROFFEROUTDATED_PB_H', true).
+-record('ArbiterToServerOfferOutdated',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         importerName           :: iodata()         % = 3
+        }).
+-endif.
+
 -ifndef('ARBITERTOSERVERNEWPRODUCT_PB_H').
 -define('ARBITERTOSERVERNEWPRODUCT_PB_H', true).
 -record('ArbiterToServerNewProduct',
@@ -265,7 +289,15 @@
          minQuantity            :: integer(),       % = 3, 32 bits
          maxQuantity            :: integer(),       % = 4, 32 bits
          minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 5
-         timout                 :: integer()        % = 6, 32 bits
+         timout                 :: integer(),       % = 6, 32 bits
+         importerName           :: iodata()         % = 7
+        }).
+-endif.
+
+-ifndef('ARBITERTOSERVERSUBSCRIBEACCEPTED_PB_H').
+-define('ARBITERTOSERVERSUBSCRIBEACCEPTED_PB_H', true).
+-record('ArbiterToServerSubscribeAccepted',
+        {importerName           :: iodata()         % = 1
         }).
 -endif.
 
