@@ -57,17 +57,17 @@ message ManufacturerToServerAnnounce {
 
 message ServerToManufacturer {
     oneof message {
-        ServerToManufacturerAnnounceSucceeded announceSucceeded = 1;
-        ServerToManufacturerAnnounceFailed announceFailed = 2;
+        ServerToManufacturerAnnounced announced = 1;
+        ServerToManufacturerInvalid invalid = 2;
         ServerToManufacturerNoOffers noOffers = 3;
         ServerToManufacturerSold sold = 4;
     }
 }
 
-message ServerToManufacturerAnnounceSucceeded {
+message ServerToManufacturerAnnounced {
 }
 
-message ServerToManufacturerAnnounceFailed {
+message ServerToManufacturerInvalid {
     optional string errorMessage = 1;
 }
 
