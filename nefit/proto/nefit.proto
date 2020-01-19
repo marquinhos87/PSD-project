@@ -14,12 +14,15 @@ enum ClientType
     MANUFACTURER = 1;
 }
 
+// request to login using existing account
+// (each username is either an importer or a manufacturer)
 message ClientToServerLogin
 {
     required string username = 1;
     required string password = 2;
 }
 
+// request to register a new account with the given type
 message ClientToServerRegister
 {
     required string username = 1;
@@ -28,12 +31,16 @@ message ClientToServerRegister
     required ClientType clientType = 3;
 }
 
+// if ok is true, then clientType is present and errorMessage is not
+// if ok is false, then errorMessage is present and clientType is not
 message ServerToClientAuth
 {
     required bool ok = 1;
     optional ClientType clientType = 2;
     optional string errorMessage = 3;
 }
+
+/* -------------------------------------------------------------------------- */
 
 message MsgAuth {
 	required string name = 1;
