@@ -1,5 +1,6 @@
-package nefit.client;
+package nefit.client.prev;
 
+import nefit.client.Messages;
 import nefit.proto.NefitProtos;
 
 import java.io.*;

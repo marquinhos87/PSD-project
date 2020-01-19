@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Importer1" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="nefit.client.Client" />
+  <configuration default="false" name="Client - i r tone pass" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="nefit.client.Main" />
     <module name="client" />
-    <option name="PROGRAM_PARAMETERS" value="i r tone pass" />
+    <option name="PROGRAM_PARAMETERS" value="localhost 12345 i r tone pass" />
     <method v="2">
       <option name="Sh.BeforeRunTask" RUN_CONFIG_NAME="protoc (Java)" RUN_CONFIG_TYPE="ShConfigurationType" />
       <option name="Make" enabled="true" />
