@@ -17,10 +17,14 @@ public class Importer extends Client< NefitProtos.Importer >
             NefitProtos.Importer.parser(),
             new Command(
                 "subscribe",
-                "Manufacturers"
+                "Manufacturer names"
             ),
             new Command(
-                "offer"
+                "offer",
+                "Manufacturer name",
+                "Product name",
+                "Quantity",
+                "Unit price"
             )
         );
     }
@@ -134,10 +138,6 @@ public class Importer extends Client< NefitProtos.Importer >
         sb.append("\n\tMin unit price: " + info.getValue());
         sb.append("\n\tTime Available: " + info.getPeriod() + " seconds");
         return sb.toString();
-    }
-
-    private void printResult(NefitProtos.ResultI result)
-    {
     }
 
     private void printOrderAck(NefitProtos.OrderAckI ack)
