@@ -87,7 +87,7 @@ public class Manufacturer
                 .setM1(messageAnnounce)
                 .build();
 
-        this.sendMessage(messageServer);
+        this.getConnection().send(messageServer);
 
         // TODO: must wait for acknowledgment from server
     }
