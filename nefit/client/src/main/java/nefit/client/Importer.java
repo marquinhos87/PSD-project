@@ -121,8 +121,8 @@ public class Importer extends Client< NefitProtos.Importer >
     {
         if (message.hasInfo())
         {
-            this.getPrompt().printMessages("New Product available:");
-            this.prompt.printMessages(printInfo(message.getInfo()));
+            this.getPrompt().print("New Product available:");
+            this.getPrompt().print(printInfo(message.getInfo()));
         }
         else if (message.hasResult())
         {
@@ -137,7 +137,18 @@ public class Importer extends Client< NefitProtos.Importer >
 
         else if (message.hasOrdack())
         {
-            printOrderAck(message.getOrdack());
+            final var ack = message.getOrdack();
+
+            final String text;
+
+            if (ack.getOutdated())
+                text = ack.getMsg();
+            else if (ack.getAck())
+                text = "Offer registered.";
+            else
+                text = "Invalid offer: " + ack.getMsg();
+
+            this.getPrompt().printNotice(text);
         }
     }
 
@@ -155,29 +166,5 @@ public class Importer extends Client< NefitProtos.Importer >
 
     private void printOrderAck(NefitProtos.OrderAckI ack)
     {
-        if (ack.getOutdated())
-        {
-            this.prompt.printMessages(ack.getMsg());
-        }
-        if (ack.getAck())
-        {
-            this.prompt.printMessages("Order accepted");
-        }
-        else
-        {
-            this.prompt
-                .printMessages("Order decline, because: " + ack.getMsg());
-        }
-    }
-
-    private String printCommands()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append("You can use some commands like 'sub' 'order'\n");
-        sb.append(
-            "Command sub: <sub> <Name Manufacturer> [<Name Manufacturer>] ...\n");
-        sb.append(
-            "Command order: <order> <Name Manufacturer> <Name Product> <Quantity> <Unit Price>");
-        return sb.toString();
     }
 }
