@@ -29,8 +29,4 @@ public class Main
             }
         }
     }
-
-    private static int parseArgs(Prompt prompt, String[] args)
-    {
-    }
 }

@@ -1,6 +1,8 @@
 package nefit.catalog;
 
+import com.codahale.metrics.health.HealthCheck;
 import io.dropwizard.Application;
+import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import nefit.catalog.representations.Negotiation;
@@ -11,7 +13,7 @@ import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
 public class CatalogApplication
-    extends Application< CatalogConfiguration >
+    extends Application< Configuration >
     implements AutoCloseable
 {
     private final State state;
@@ -40,16 +42,22 @@ public class CatalogApplication
     }
 
     @Override
-    public void initialize(Bootstrap< CatalogConfiguration > bootstrap)
+    public void initialize(Bootstrap< Configuration > bootstrap)
     {
     }
 
     @Override
-    public void run(
-        CatalogConfiguration catalogConfiguration, Environment environment
-    )
+    public void run(Configuration configuration, Environment environment)
     {
-        environment.healthChecks().register("check", new CatalogHealthCheck());
+        environment.healthChecks().register("check", new HealthCheck()
+        {
+            @Override
+            protected Result check()
+            {
+                return Result.healthy();
+            }
+        });
+
         environment.jersey().register(new UsersResource(state));
         environment.jersey().register(new NegotiationsResource(state));
     }
