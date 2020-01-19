@@ -63,27 +63,6 @@ public class Main
 
             case "m":
 
-                switch (prompt.input("Importer or Manufacturer [i/m]: "))
-                {
-                    case "i":
-                        username = register(
-                            connection, prompt,
-                            NefitProtos.ClientType.IMPORTER
-                        );
-                        break;
-
-                    case "m":
-                        username = register(
-                            connection, prompt,
-                            NefitProtos.ClientType.MANUFACTURER
-                        );
-                        break;
-
-                    default:
-                        prompt.fail("Invalid choice.");
-                        return;
-                }
-
                 break;
 
             default:
@@ -117,27 +96,72 @@ public class Main
     private static String login(Connection connection, Prompt prompt)
         throws IOException
     {
+        final NefitProtos.MsgAuth.ClientType clientType;
+
+        switch (prompt.input("Importer or Manufacturer [i/m]: "))
+        {
+            case "i":
+                clientType = NefitProtos.MsgAuth.ClientType.IMPORTER;
+                break;
+
+            case "m":
+                clientType = NefitProtos.MsgAuth.ClientType.MANUFACTURER;
+                break;
+
+            default:
+                prompt.fail("Invalid choice.");
+                return null;
+        }
+
         final var username = prompt.input("Username: ");
         final var password = prompt.input("Password: ");
 
-        final var loginMsg = NefitProtos.ClientToServerLogin
-            .newBuilder()
-            .setUsername(username)
-            .setPassword(password)
-            .build();
+        // TODO: use newer messages and don't require user to enter client type
 
-        connection.send(loginMsg);
+//        final var loginMessage = NefitProtos.ClientToServerLogin
+//            .newBuilder()
+//            .setUsername(username)
+//            .setPassword(password)
+//            .build();
+
+        final var loginMessage =
+            NefitProtos.MsgAuth
+                .newBuilder()
+                .setName(username)
+                .setPass(password)
+                .setCtype(clientType)
+                .setMtype(NefitProtos.MsgAuth.MsgType.REGISTER)
+                .build();
+
+        connection.send(loginMessage);
 
         return username;
     }
 
-    private static String register(
-        Connection connection, Prompt prompt,
-        NefitProtos.MsgAuth.ClientType clientType
-    ) throws IOException
+    private static String register(Connection connection, Prompt prompt)
+        throws IOException
     {
+        final NefitProtos.MsgAuth.ClientType clientType;
+
+        switch (prompt.input("Importer or Manufacturer [i/m]: "))
+        {
+            case "i":
+                clientType = NefitProtos.MsgAuth.ClientType.IMPORTER;
+                break;
+
+            case "m":
+                clientType = NefitProtos.MsgAuth.ClientType.MANUFACTURER;
+                break;
+
+            default:
+                prompt.fail("Invalid choice.");
+                return null;
+        }
+
         final var username = prompt.input("Username: ");
         final var password = prompt.input("Password: ");
+
+        // TODO: use newer messages
 
 //        final var registerMessage = NefitProtos.ClientToServerRegister
 //            .newBuilder()
