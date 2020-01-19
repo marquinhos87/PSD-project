@@ -4,6 +4,9 @@ public class Main
 {
     public static void main(String[] args) throws Exception
     {
-        new CatalogApplication().run(args);
+        try (final var app = new CatalogApplication())
+        {
+            app.run(new String[] { "server" });
+        }
     }
 }
