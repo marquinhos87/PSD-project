@@ -75,7 +75,7 @@ public class Importer extends Client< NefitProtos.Importer >
         // TODO: should maybe wait for acknowledgment from server
     }
 
-    private void handleCommandOffer(List< String > arguments)
+    private void handleCommandOffer(List< String > arguments) throws IOException
     {
         // validate and parse arguments (we know command is "announce")
 
@@ -93,7 +93,7 @@ public class Importer extends Client< NefitProtos.Importer >
 
         // send message to server
 
-        final var messageOrder =
+        final var messageOffer =
             NefitProtos.OrderS
                 .newBuilder()
                 .setNameI(this.getUsername())
@@ -103,30 +103,15 @@ public class Importer extends Client< NefitProtos.Importer >
                 .setValue(unitPrice)
                 .build();
 
+        final var messageServer =
+            NefitProtos.Server
+                .newBuilder()
+                .setM2(messageOffer)
+                .build();
 
-        if (fields.length != 5)
-        {
-            this.prompt.printWarning("Maybe forgot something");
-        }
-        else
-        {
-            try
-            {
-                NefitProtos.OrderS order = this.messages.createOrderS(
-                    this.name, fields[1], fields[2],
-                    Integer.parseInt(fields[3]), Float.parseFloat(fields[4])
-                );
-                Client.writeDelimited(
-                    this.os,
-                    NefitProtos.Server.newBuilder().setM2(order).build()
-                );
-            }
-            catch (NumberFormatException e)
-            {
-                this.prompt
-                    .printError("Quantity and Price have to be a number");
-            }
-        }
+        this.getConnection().send(messageServer);
+
+        // TODO: must wait for acknowledgment from server
     }
 
     @Override
