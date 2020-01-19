@@ -7,81 +7,6 @@ option java_package = "nefit.shared";
 option java_outer_classname = "NefitProto";
 
 /* -------------------------------------------------------------------------- */
-/* generic client <--> server */
-
-enum ClientType {
-    IMPORTER = 0;
-    MANUFACTURER = 1;
-}
-
-// request to login using existing account
-// (each username is either an importer or a manufacturer)
-message ClientToServerLogin {
-    required string username = 1;
-    required string password = 2;
-}
-
-// request to register a new account with the given type
-message ClientToServerRegister {
-    required string username = 1;
-    required string password = 2;
-
-    required ClientType clientType = 3;
-}
-
-// response to a login or register request
-// (if ok is true, then clientType is present and errorMessage is not)
-// (if ok is false, then errorMessage is present and clientType is not)
-message ServerToClientAuth {
-    required bool ok = 1;
-    optional ClientType clientType = 2;
-    optional string errorMessage = 3;
-}
-
-/* -------------------------------------------------------------------------- */
-/* manufacturer client <--> server */
-
-message ManufacturerToServer {
-    oneof message {
-        ManufacturerToServerAnnounce announce = 1;
-    }
-}
-
-message ManufacturerToServerAnnounce {
-    required string productName = 1;
-    required int32 minQuantity = 2;
-    required int32 maxQuantity = 3;
-    required float minUnitPrice = 4;
-    required int32 timeout = 5;
-}
-
-message ServerToManufacturer {
-    oneof message {
-        ServerToManufacturerAnnounced announced = 1;
-        ServerToManufacturerInvalid invalid = 2;
-        ServerToManufacturerNoOffers noOffers = 3;
-        ServerToManufacturerSold sold = 4;
-    }
-}
-
-message ServerToManufacturerAnnounced {
-}
-
-message ServerToManufacturerInvalid {
-    optional string errorMessage = 1;
-}
-
-message ServerToManufacturerNoOffers {
-    required string productName = 1;
-}
-
-message ServerToManufacturerSold {
-    required string productName = 1;
-    required int32 quantity = 2;
-    required float unitPrice = 3;
-}
-
-/* -------------------------------------------------------------------------- */
 
 message MsgAuth {
     required string name = 1;
@@ -231,6 +156,125 @@ message Negotiator {
         OrderN order = 2;
         DisponibilityN disponibility = 3;
     }
+}
+
+/* -------------------------------------------------------------------------- */
+/* generic client <--> server */
+
+enum ClientType {
+    IMPORTER = 0;
+    MANUFACTURER = 1;
+}
+
+// request to login using existing account
+// (each username is either an importer or a manufacturer)
+message ClientToServerLogin {
+    required string username = 1;
+    required string password = 2;
+}
+
+// request to register a new account with the given type
+message ClientToServerRegister {
+    required string username = 1;
+    required string password = 2;
+
+    required ClientType clientType = 3;
+}
+
+// response to a login or register request
+// (if ok is true, then clientType is present and errorMessage is not)
+// (if ok is false, then errorMessage is present and clientType is not)
+message ServerToClientAuth {
+    required bool ok = 1;
+    optional ClientType clientType = 2;
+    optional string errorMessage = 3;
+}
+
+/* -------------------------------------------------------------------------- */
+/* manufacturer client <--> server */
+
+message ManufacturerToServer {
+    oneof message {
+        ManufacturerToServerAnnounce announce = 1;
+    }
+}
+
+message ManufacturerToServerAnnounce {
+    required string productName = 1;
+    required int32 minQuantity = 2;
+    required int32 maxQuantity = 3;
+    required float minUnitPrice = 4;
+    required int32 timeout = 5;
+}
+
+message ServerToManufacturer {
+    oneof message {
+        ServerToManufacturerAnnounced announced = 1;
+        ServerToManufacturerInvalid invalid = 2;
+        ServerToManufacturerNoOffers noOffers = 3;
+        ServerToManufacturerSold sold = 4;
+    }
+}
+
+message ServerToManufacturerAnnounced {
+}
+
+message ServerToManufacturerInvalid {
+    optional string errorMessage = 1;
+}
+
+message ServerToManufacturerNoOffers {
+    required string productName = 1;
+}
+
+message ServerToManufacturerSold {
+    required string productName = 1;
+    required int32 quantity = 2;
+    required float unitPrice = 3;
+}
+
+/* -------------------------------------------------------------------------- */
+/* importer client <--> server */
+
+message ImporterToServer {
+    oneof message {
+        ImporterToServerSubscribe subscribe = 1;
+        ImporterToServerOffer offer = 2;
+    }
+}
+
+message ImporterToServerSubscribe {
+    required string manufacturerName = 1;
+}
+
+message ImporterToServerOffer {
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required int32 quantity = 3;
+    required float unitPrice = 4;
+}
+
+message ServerToImporter {
+    oneof message {
+        ServerToImporterOfferSubmitted offerSubmitted = 1;
+        ServerToImporterOfferInvalid offerInvalid = 2;
+        ServerToImporterOfferWon offerWon = 3;
+    }
+}
+
+message ServerToImporterOfferSubmitted {
+}
+
+message ServerToImporterOfferInvalid {
+    required string errorMessage = 1;
+}
+
+message ServerToImporterOfferWon
+{
+    required string manufacturerName = 1;
+    required string productName = 2;
+    required int32 quantity = 3;
+    required float unitPrice = 4;
 }
 
 /* -------------------------------------------------------------------------- */
