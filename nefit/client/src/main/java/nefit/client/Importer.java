@@ -161,5 +161,12 @@ public class Importer extends Client< NefitProto.ServerToImporter >
                 info.getMaxQuantity(), info.getMinUnitPrice(), info.getTimeout()
             );
         }
+
+        if(message.hasOfferOutdated())
+            this.getPrompt().printNotice(
+                "\nYour offer to the product \"%s\" from manufacturer has outdated",
+                message.getOfferOutdated().getProductName(),
+                message.getOfferOutdated().getManufacturerName()
+            );
     }
 }

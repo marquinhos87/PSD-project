@@ -77,15 +77,15 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
                 quantity = Quant,
                 unitPrice = Value,
                 importerName = Imp},
-            %MsgN = #'ServerToArbiter'{message = {offer,Msg}},
-            %Aux = string:concat(string:concat(Manuf, Product),"!"),
-            %Str = binary:list_to_bin(Aux),
+            MsgN = #'ServerToArbiter'{message = {offer,Msg}},
+            Aux = string:concat(string:concat(Manuf, Product),"!"),
+            Str = binary:list_to_bin(Aux),
             %Neste momento rebenta por causa do Tam
-            %M = nefitproto:encode_msg(MsgN),
+            M = nefitproto:encode_msg(MsgN),
             %chumak:send_multipart(Socket, Str),
-            %chumak:send(Socket,[Str,M]),
-            List = maps:to_list(Arbiters),
-            [Arbiter ! {order, Msg} || {Arbiter, _} <- List],
+            chumak:send_multipart(Socket,[Str,M]),
+            %List = maps:to_list(Arbiters),
+            %[Arbiter ! {order, Msg} || {Arbiter, _} <- List],
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos + 1);
 
     % Send Message to all Arbiter Actors with the Manufacturers subscribed by an Importer
