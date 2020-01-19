@@ -5,31 +5,64 @@ import com.google.protobuf.Parser;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public abstract class Client< MessageType >
 {
-    private final Map< String, Command > commands;
-    private final Parser< MessageType > messageParser;
-
     private final Connection connection;
+    private final String username;
+
+    private final Parser< MessageType > messageParser;
+    private final Map< String, Command > commands;
+
     private final Thread receiveThread;
 
-    public Client(Connection connection, Parser< MessageType > messageParser, Command[] commands)
+    public Client(
+        Connection connection,
+        String username,
+        Parser< MessageType > messageParser,
+        Command[] commands
+    )
     {
-        this.commands = new HashMap<>();
-        this.messageParser = messageParser;
-
         this.connection = connection;
+        this.username = username;
+
+        this.messageParser = messageParser;
+        this.commands = Arrays.stream(commands).collect(
+            Collectors.toUnmodifiableMap(Command::getCommandName, c -> c)
+        );
+
         this.receiveThread = new Thread(this::receiveLoop);
     }
 
-    abstract protected void handleCommand(String command, String[] args)
-        throws Exception;
+//    private static Boolean Register(
+//        String type, Pair< String, String > arg, Messages messages,
+//        InputStream is, OutputStream os
+//    ) throws IOException
+//    {
+//        NefitProtos.MsgAuth msgl;
+//        if (type.equals("m"))
+//            msgl = messages
+//                .createMsgAuth(false, true, arg.getKey(), arg.getValue());
+//        else
+//            msgl = messages
+//                .createMsgAuth(false, false, arg.getKey(), arg.getValue());
+//        writeDelimited(os, msgl);
+//    }
 
-    abstract protected void handleMessage(MessageType message) throws Exception;
+    public String getUsername()
+    {
+
+    }
+
+    abstract protected void handleCommand(String command, String[] args)
+        throws IOException;
+
+    abstract protected void handleMessage(MessageType message)
+        throws IOException;
 
     public void run(Prompt prompt) throws IOException, InterruptedException
     {
@@ -82,18 +115,6 @@ public abstract class Client< MessageType >
     protected void sendMessage(MessageLite message) throws IOException
     {
         this.connection.send(message);
-    }
-
-    private static Boolean Register(String type, Pair<String,String> arg, Messages messages, InputStream is, OutputStream os) throws IOException
-    {
-        NefitProtos.MsgAuth msgl;
-        if (type.equals("m"))
-            msgl = messages
-                .createMsgAuth(false, true, arg.getKey(), arg.getValue());
-        else
-            msgl = messages
-                .createMsgAuth(false, false, arg.getKey(), arg.getValue());
-        writeDelimited(os, msgl);
     }
 
     private void receiveLoop()
