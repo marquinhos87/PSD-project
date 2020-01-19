@@ -93,7 +93,7 @@ public class Manufacturer
     }
 
     @Override
-    public void handleMessage(NefitProtos.ProductionM message)
+    protected void handleMessage(NefitProtos.ProductionM message)
     {
         this.getPrompt().print();
 
