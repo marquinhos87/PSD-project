@@ -33,6 +33,13 @@
         }).
 -endif.
 
+-ifndef('SERVERTOCLIENTMANUFACTURER_PB_H').
+-define('SERVERTOCLIENTMANUFACTURER_PB_H', true).
+-record('ServerToClientManufacturer',
+        {
+        }).
+-endif.
+
 -ifndef('MSGAUTH_PB_H').
 -define('MSGAUTH_PB_H', true).
 -record('MsgAuth',
