@@ -1,12 +1,36 @@
 package nefit.catalog;
 
+import nefit.shared.Prompt;
+import nefit.shared.Util;
+
 public class Main
 {
     public static void main(String[] args) throws Exception
     {
-        try (final var app = new CatalogApplication())
+        try (final var prompt = new Prompt())
         {
-            app.run(new String[] { "server" });
+            final int zmqPort;
+
+            try
+            {
+                Util.ensure(args.length == 1);
+                zmqPort = Integer.parseInt(args[0]);
+            }
+            catch (Exception e)
+            {
+                prompt.print("Usage: nefit-catalog <zmq_port>");
+                System.exit(2);
+                return;
+            }
+
+            try (final var app = new CatalogApplication(zmqPort))
+            {
+                app.run(new String[] { "server" });
+            }
         }
+    }
+
+    private static int parseArgs(Prompt prompt, String[] args)
+    {
     }
 }
