@@ -123,7 +123,7 @@ public class Importer extends Client< NefitProtos.Importer >
             final var info = message.getInfo();
 
             this.getPrompt().printNotice(
-                "Product \"%s\" now available from manufacturer \"%s\"."
+                "\nProduct \"%s\" now available from manufacturer \"%s\"."
                     + "\n   Min. quantity: %d"
                     + "\n   Max. quantity: %d"
                     + "\n   Min. unit price: %.2f"
@@ -137,7 +137,7 @@ public class Importer extends Client< NefitProtos.Importer >
             final var result = message.getResult();
 
             this.getPrompt().printNotice(
-                "Your offer for \"%s\" was %s.",
+                "\nYour offer for \"%s\" was %s.",
                 result.getMsg(),
                 result.getResult() ? "accepted" : "rejected"
             );
@@ -155,7 +155,7 @@ public class Importer extends Client< NefitProtos.Importer >
             else
                 text = "Invalid offer: " + ack.getMsg();
 
-            this.getPrompt().printNotice(text);
+            this.getPrompt().printNotice("\n%s", text);
         }
     }
 }

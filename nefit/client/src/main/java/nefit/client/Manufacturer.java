@@ -100,14 +100,15 @@ public class Manufacturer extends Client< NefitProtos.ProductionM >
         if (message.getQuant() == 0)
         {
             this.getPrompt().printNotice(
-                "No offers received for product \"%s\". Announcement removed.",
+                "\nNo offers received for product \"%s\". Announcement" +
+                    " removed.",
                 message.getNameP()
             );
         }
         else
         {
             this.getPrompt().printNotice(
-                "Sold %d units of product \"%s\" at a unit price of %.2f," +
+                "\nSold %d units of product \"%s\" at a unit price of %.2f," +
                     " totalling a price of %.2f. Announcement removed.",
                 message.getQuant(),
                 message.getNameP(),
