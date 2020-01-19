@@ -78,7 +78,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
                 unitPrice = Value,
                 importerName = Imp},
             MsgN = #'ServerToArbiter'{message = {offer,Msg}},
-            Aux = string:concat(string:concat(Manuf, Product),"\n"),
+            Aux = string:concat(string:concat(Manuf, Product),"!"),
             Str = binary:list_to_bin(Aux),
             %Neste momento rebenta por causa do Tam
             M = nefitproto:encode_msg(MsgN),
