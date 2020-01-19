@@ -8,7 +8,6 @@ import nefit.proto.NefitProtos;
 import java.io.*;
 import java.net.Socket;
 import java.nio.ByteBuffer;
-import java.util.function.Function;
 
 public class Client
 {
@@ -115,7 +114,6 @@ public class Client
             msgl = messages.createMsgAuth(true,true,arg.getKey(),arg.getValue());
         else
             msgl = messages.createMsgAuth(true,false,arg.getKey(),arg.getValue());
-
         writeDelimited(os, msgl);
 
         //Wait for MsgAck
@@ -131,7 +129,6 @@ public class Client
             msgl = messages.createMsgAuth(false,true,arg.getKey(),arg.getValue());
         else
             msgl = messages.createMsgAuth(false,false,arg.getKey(),arg.getValue());
-        System.out.println(msgl.getCtype());
         writeDelimited(os, msgl);
 
         //Wait for MsgAck

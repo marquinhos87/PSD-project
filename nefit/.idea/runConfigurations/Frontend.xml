@@ -10,7 +10,7 @@
         </option>
       </ErlangDebugOptions>
     </option>
-    <option name="erlFlags" value="-pa $PROJECT_DIR$/frontend/_build/default/lib/frontend/ebin" />
+    <option name="erlFlags" value="-pa $PROJECT_DIR$/frontend/_build/default/lib/frontend/ebin -pa $PROJECT_DIR$/frontend/_build/default/lib/chumak/ebin" />
     <option name="moduleAndFunction" value="frontend run" />
     <option name="params" value="12345" />
     <option name="useTestCodePath" value="false" />
