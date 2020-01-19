@@ -309,9 +309,9 @@ public class Arbiter implements Runnable
     private synchronized void executeResult() {
         NefitProto.ServerToArbiterAnnounce disp = NefitProto.ServerToArbiterAnnounce.newBuilder(this.disp).build();
         try {
-            Thread.sleep(disp.getTimout()*1000L);
             Pair<String,String> prod = new Pair<>(disp.getManufacturerName(),disp.getProductName());
-            if(!(this.negotiations.get(prod.hashCode()).getValue() == null))
+            Thread.sleep(disp.getTimout()*1000L);
+            if(!(this.negotiations.get(prod).getValue() == null))
             {
                 NefitProto.ServerToArbiterOffer order = this.negotiations.get(prod.hashCode()).getValue();
                 NefitProto.ArbiterToServerOfferWon resultS = NefitProto.ArbiterToServerOfferWon.newBuilder()

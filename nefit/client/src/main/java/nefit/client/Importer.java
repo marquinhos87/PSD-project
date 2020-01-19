@@ -120,7 +120,7 @@ public class Importer extends Client< NefitProto.ServerToImporter >
     protected void handleMessage(NefitProto.ServerToImporter message)
     {
         if(message.hasOfferSubmitted()){
-            this.getPrompt().printNotice("\nYour offer has been accepted");
+            this.getPrompt().printNotice("\nYour offer to product \"%s\" from manufacturer \"%s\" has been accepted",message.getOfferSubmitted().getProductName(),message.getOfferSubmitted().getManufacturerName());
         }
 
         if(message.hasOfferInvalid()){
