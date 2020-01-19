@@ -131,7 +131,10 @@ public abstract class Client< MessageType >
             try
             {
                 final var message = this.connection.receive(this.messageParser);
+
+                this.prompt.print();
                 this.handleMessage(message);
+                this.prompt.printNoNewline("> ");
             }
             catch (Throwable t)
             {

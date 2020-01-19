@@ -2,7 +2,7 @@
   <configuration default="false" name="Catalog" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="nefit.catalog.Main" />
     <module name="catalog" />
-    <option name="PROGRAM_PARAMETERS" value="server" />
+    <option name="PROGRAM_PARAMETERS" value="localhost:7000 localhost:7001 localhost:7002" />
     <method v="2">
       <option name="Sh.BeforeRunTask" RUN_CONFIG_NAME="protoc (Java)" RUN_CONFIG_TYPE="ShConfigurationType" />
       <option name="Make" enabled="true" />

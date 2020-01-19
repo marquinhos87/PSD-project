@@ -34,6 +34,12 @@ public class Prompt implements AutoCloseable
         return this.in.readLine();
     }
 
+    public void printNoNewline(String format, Object... args)
+    {
+        this.out.format(format, args);
+        this.out.flush();
+    }
+
     public void print()
     {
         this.out.println();

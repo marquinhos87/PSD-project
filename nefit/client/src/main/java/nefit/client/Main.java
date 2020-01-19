@@ -24,13 +24,16 @@ public class Main
     {
         try
         {
-            Util.ensure(args.length == 2);
+            Util.ensure(args.length == 1);
 
-            return new InetSocketAddress(args[0], Integer.parseInt(args[1]));
+            final var parts = args[0].split(":", 2);
+            Util.ensure(parts.length == 2);
+
+            return new InetSocketAddress(parts[0], Integer.parseInt(parts[1]));
         }
         catch (Exception e)
         {
-            prompt.print("Usage: nefit-client <server_host> <server_port>");
+            prompt.print("Usage: nefit-client <server_host>:<server_port>");
             System.exit(2);
             return null;
         }

@@ -2,6 +2,7 @@
   <configuration default="false" name="Arbiter" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="nefit.arbiter.Arbiter" />
     <module name="arbiter" />
+    <option name="PROGRAM_PARAMETERS" value="localhost:7000" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
