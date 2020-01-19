@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Client - (no args)" type="Application" factoryName="Application">
+  <configuration default="false" name="Client" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="nefit.client.Main" />
     <module name="client" />
     <option name="PROGRAM_PARAMETERS" value="localhost 12345" />
