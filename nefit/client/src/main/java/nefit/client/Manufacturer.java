@@ -32,7 +32,7 @@ public class Manufacturer
     }
 
     @Override
-    private void handleCommand(String command, List< String > arguments)
+    protected void handleCommand(String command, List< String > arguments)
         throws IOException
     {
         // validate and parse arguments (we know command is "announce")
@@ -92,16 +92,18 @@ public class Manufacturer
     @Override
     public void handleMessage(NefitProtos.ProductionM message)
     {
+        this.getPrompt().print();
+
         if (message.getQuant() == 0)
         {
-            this.printNotice(
+            this.getPrompt().printNotice(
                 "No offers received for product \"%s\". Announcement removed.",
                 message.getNameP()
             );
         }
         else
         {
-            this.printNotice(
+            this.getPrompt().printNotice(
                 "Sold %d units of product \"%s\" at a unit price of %.2f," +
                     " totalling a price of %.2f. Announcement removed.",
                 message.getQuant(),

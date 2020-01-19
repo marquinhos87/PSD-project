@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public abstract class Client< MessageType >
 {
+    private final Prompt prompt;
     private final Connection connection;
     private final String username;
 
@@ -21,12 +22,14 @@ public abstract class Client< MessageType >
     private final Thread receiveThread;
 
     public Client(
+        Prompt prompt,
         Connection connection,
         String username,
         Parser< MessageType > messageParser,
         Command... commands
     )
     {
+        this.prompt = prompt;
         this.connection = connection;
         this.username = username;
 
@@ -38,29 +41,19 @@ public abstract class Client< MessageType >
         this.receiveThread = new Thread(this::receiveLoop);
     }
 
-//    private static Boolean Register(
-//        String type, Pair< String, String > arg, Messages messages,
-//        InputStream is, OutputStream os
-//    ) throws IOException
-//    {
-//        NefitProtos.MsgAuth msgl;
-//        if (type.equals("m"))
-//            msgl = messages
-//                .createMsgAuth(false, true, arg.getKey(), arg.getValue());
-//        else
-//            msgl = messages
-//                .createMsgAuth(false, false, arg.getKey(), arg.getValue());
-//        writeDelimited(os, msgl);
-//    }
+    public Prompt getPrompt()
+    {
+        return this.prompt;
+    }
+
+    public Connection getConnection()
+    {
+        return this.connection;
+    }
 
     public String getUsername()
     {
-
-    }
-
-    public Prompt getPrompt()
-    {
-
+        return this.username;
     }
 
     abstract protected void handleCommand(String command, List< String > args)
@@ -142,4 +135,20 @@ public abstract class Client< MessageType >
             }
         }
     }
+
+//    private static Boolean Register(
+//        String type, Pair< String, String > arg, Messages messages,
+//        InputStream is, OutputStream os
+//    ) throws IOException
+//    {
+//        NefitProtos.MsgAuth msgl;
+//        if (type.equals("m"))
+//            msgl = messages
+//                .createMsgAuth(false, true, arg.getKey(), arg.getValue());
+//        else
+//            msgl = messages
+//                .createMsgAuth(false, false, arg.getKey(), arg.getValue());
+//        writeDelimited(os, msgl);
+//    }
+
 }

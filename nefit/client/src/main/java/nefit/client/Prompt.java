@@ -5,15 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-public class Prompt implements AutoCloseable {
+public class Prompt implements AutoCloseable
+{
 
     private final BufferedReader in;
     private final PrintWriter out;
 
-    public Prompt() throws IOException {
+    public Prompt() throws IOException
+    {
         this.in = new BufferedReader(new InputStreamReader(System.in));
 
-        try {
+        try
+        {
             this.out = new PrintWriter(System.out);
         }
         catch (Throwable t)
@@ -23,34 +26,48 @@ public class Prompt implements AutoCloseable {
         }
     }
 
-    public String input(String prompt) throws IOException {
+    public String input(String prompt) throws IOException
+    {
         this.out.print(prompt);
         this.out.flush();
 
         return this.in.readLine();
     }
 
-    public void print(String line)
+    public void print()
     {
-        this.out.println(line);
+        this.out.println();
         this.out.flush();
     }
 
-    public void printSuccess(String error)
+    public void print(String format, Object... args)
     {
-        this.out.format("\033[32m%s\033[0m\n", error);
-        this.out.flush();
+        this.printColored(null, format, args);
     }
 
-    public void printNotice(String error)
+    public void printSuccess(String format, Object... args)
     {
-        this.out.format("\033[33m%s\033[0m\n", error);
-        this.out.flush();
+        this.printColored("32", format, args);
     }
 
-    public void printError(String error)
+    public void printNotice(String format, Object... args)
     {
-        this.out.format("\033[31m%s\033[0m\n", error);
+        this.printColored("33", format, args);
+    }
+
+    public void printError(String format, Object... args)
+    {
+        this.printColored("31", format, args);
+    }
+
+    private void printColored(String colorCode, String format, Object... args)
+    {
+        final var coloredFormat =
+            colorCode == null
+                ? format + "\n"
+                : "\033[" + colorCode + "m" + format + "\033[0m\n";
+
+        this.out.format(coloredFormat, args);
         this.out.flush();
     }
 
@@ -61,7 +78,8 @@ public class Prompt implements AutoCloseable {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close() throws IOException
+    {
         this.in.close();
         this.out.close();
     }
