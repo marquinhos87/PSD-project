@@ -17,9 +17,6 @@ run(Port) ->
         0)
                   end),
     acceptorA(0,LSock,State).
-    %spawn(fun() -> acceptorA(LSock,State) end),
-    %spawn(fun() -> acceptorA(LSock,State) end),
-    %acceptor(LSock, State).
 
 % accepts arbiters connections
 acceptorA(N,LSock,State) ->
@@ -79,8 +76,9 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value, nameI = Imp},
             MsgN = #'Negotiator'{msg = {order,Msg}},
             M = nefitproto:encode_msg(MsgN),
-            Str = string:concat(Manuf,Product),
-            chumak:send(Socket,<<Str , M>>),
+            Str = binary:list_to_bin(string:concat(Manuf,Product)),
+            Mensagem = [Str,M],
+            chumak:send(Socket,Mensagem),
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos +1);
 
         % Send Message to all Arbiter Actors with the Manufacturers subscribed by an Importer
