@@ -13,6 +13,7 @@ import org.zeromq.ZMQ;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -148,13 +149,11 @@ public class Arbiter implements Runnable
             try {
                 byte[] reply = this.socketZ.recv(0);
 
-                //System.out.println(reply);
+                String[] aux = new String(reply).split("!",2);
 
-                //System.out.println(reply.toString());
+                byte[] a = Arrays.copyOfRange(reply,aux[0].length(),reply.length);
 
-                String[] aux = reply.toString().split("\n",2);
-
-                NefitProto.ServerToArbiter negotiator = NefitProto.ServerToArbiter.parseFrom(aux[1].getBytes());
+                NefitProto.ServerToArbiter negotiator = NefitProto.ServerToArbiter.parseFrom(a);
 
                 if(negotiator.hasOffer())
                     executeOrder(negotiator.getOffer());
