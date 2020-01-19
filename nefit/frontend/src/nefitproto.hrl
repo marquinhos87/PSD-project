@@ -7,39 +7,6 @@
 
 -define(nefitproto_gpb_version, "4.8.0").
 
--ifndef('CLIENTTOSERVERLOGIN_PB_H').
--define('CLIENTTOSERVERLOGIN_PB_H', true).
--record('ClientToServerLogin',
-        {username               :: iodata(),        % = 1
-         password               :: iodata()         % = 2
-        }).
--endif.
-
--ifndef('CLIENTTOSERVERREGISTER_PB_H').
--define('CLIENTTOSERVERREGISTER_PB_H', true).
--record('ClientToServerRegister',
-        {username               :: iodata(),        % = 1
-         password               :: iodata(),        % = 2
-         clientType             :: 'IMPORTER' | 'MANUFACTURER' | integer() % = 3, enum ClientType
-        }).
--endif.
-
--ifndef('SERVERTOCLIENTAUTH_PB_H').
--define('SERVERTOCLIENTAUTH_PB_H', true).
--record('ServerToClientAuth',
-        {ok                     :: boolean() | 0 | 1, % = 1
-         clientType             :: 'IMPORTER' | 'MANUFACTURER' | integer() | undefined, % = 2, enum ClientType
-         errorMessage           :: iodata() | undefined % = 3
-        }).
--endif.
-
--ifndef('SERVERTOCLIENTMANUFACTURER_PB_H').
--define('SERVERTOCLIENTMANUFACTURER_PB_H', true).
--record('ServerToClientManufacturer',
-        {
-        }).
--endif.
-
 -ifndef('MSGAUTH_PB_H').
 -define('MSGAUTH_PB_H', true).
 -record('MsgAuth',
@@ -218,6 +185,172 @@
 -define('NEGOTIATOR_PB_H', true).
 -record('Negotiator',
         {msg                    :: {sub, nefitproto:'SubN'()} | {order, nefitproto:'OrderN'()} | {disponibility, nefitproto:'DisponibilityN'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('CLIENTTOSERVER_PB_H').
+-define('CLIENTTOSERVER_PB_H', true).
+-record('ClientToServer',
+        {message                :: {login, nefitproto:'ClientToServerLogin'()} | {register, nefitproto:'ClientToServerRegister'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('CLIENTTOSERVERLOGIN_PB_H').
+-define('CLIENTTOSERVERLOGIN_PB_H', true).
+-record('ClientToServerLogin',
+        {username               :: iodata(),        % = 1
+         password               :: iodata(),        % = 2
+         clientType             :: 'IMPORTER' | 'MANUFACTURER' | integer() % = 3, enum ClientType
+        }).
+-endif.
+
+-ifndef('CLIENTTOSERVERREGISTER_PB_H').
+-define('CLIENTTOSERVERREGISTER_PB_H', true).
+-record('ClientToServerRegister',
+        {username               :: iodata(),        % = 1
+         password               :: iodata()         % = 2
+        }).
+-endif.
+
+-ifndef('SERVERTOCLIENTAUTH_PB_H').
+-define('SERVERTOCLIENTAUTH_PB_H', true).
+-record('ServerToClientAuth',
+        {ok                     :: boolean() | 0 | 1, % = 1
+         clientType             :: 'IMPORTER' | 'MANUFACTURER' | integer() | undefined, % = 2, enum ClientType
+         errorMessage           :: iodata() | undefined % = 3
+        }).
+-endif.
+
+-ifndef('MANUFACTURERTOSERVER_PB_H').
+-define('MANUFACTURERTOSERVER_PB_H', true).
+-record('ManufacturerToServer',
+        {message                :: {announce, nefitproto:'ManufacturerToServerAnnounce'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('MANUFACTURERTOSERVERANNOUNCE_PB_H').
+-define('MANUFACTURERTOSERVERANNOUNCE_PB_H', true).
+-record('ManufacturerToServerAnnounce',
+        {productName            :: iodata(),        % = 1
+         minQuantity            :: integer(),       % = 2, 32 bits
+         maxQuantity            :: integer(),       % = 3, 32 bits
+         minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 4
+         timeout                :: integer(),       % = 5, 32 bits
+         manufacturerName       :: iodata()         % = 6
+        }).
+-endif.
+
+-ifndef('SERVERTOMANUFACTURER_PB_H').
+-define('SERVERTOMANUFACTURER_PB_H', true).
+-record('ServerToManufacturer',
+        {message                :: {announced, nefitproto:'ServerToManufacturerAnnounced'()} | {invalid, nefitproto:'ServerToManufacturerInvalid'()} | {noOffers, nefitproto:'ServerToManufacturerNoOffers'()} | {sold, nefitproto:'ServerToManufacturerSold'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('SERVERTOMANUFACTURERANNOUNCED_PB_H').
+-define('SERVERTOMANUFACTURERANNOUNCED_PB_H', true).
+-record('ServerToManufacturerAnnounced',
+        {
+        }).
+-endif.
+
+-ifndef('SERVERTOMANUFACTURERINVALID_PB_H').
+-define('SERVERTOMANUFACTURERINVALID_PB_H', true).
+-record('ServerToManufacturerInvalid',
+        {errorMessage           :: iodata() | undefined % = 1
+        }).
+-endif.
+
+-ifndef('SERVERTOMANUFACTURERNOOFFERS_PB_H').
+-define('SERVERTOMANUFACTURERNOOFFERS_PB_H', true).
+-record('ServerToManufacturerNoOffers',
+        {productName            :: iodata()         % = 1
+        }).
+-endif.
+
+-ifndef('SERVERTOMANUFACTURERSOLD_PB_H').
+-define('SERVERTOMANUFACTURERSOLD_PB_H', true).
+-record('ServerToManufacturerSold',
+        {productName            :: iodata(),        % = 1
+         quantity               :: integer(),       % = 2, 32 bits
+         unitPrice              :: float() | integer() | infinity | '-infinity' | nan % = 3
+        }).
+-endif.
+
+-ifndef('IMPORTERTOSERVER_PB_H').
+-define('IMPORTERTOSERVER_PB_H', true).
+-record('ImporterToServer',
+        {message                :: {subscribe, nefitproto:'ImporterToServerSubscribe'()} | {offer, nefitproto:'ImporterToServerOffer'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('IMPORTERTOSERVERSUBSCRIBE_PB_H').
+-define('IMPORTERTOSERVERSUBSCRIBE_PB_H', true).
+-record('ImporterToServerSubscribe',
+        {manufacturerName = []  :: [iodata()] | undefined, % = 1
+         importerName           :: iodata()         % = 2
+        }).
+-endif.
+
+-ifndef('IMPORTERTOSERVEROFFER_PB_H').
+-define('IMPORTERTOSERVEROFFER_PB_H', true).
+-record('ImporterToServerOffer',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         quantity               :: integer(),       % = 3, 32 bits
+         unitPrice              :: float() | integer() | infinity | '-infinity' | nan, % = 4
+         importerName           :: iodata()         % = 5
+        }).
+-endif.
+
+-ifndef('SERVERTOIMPORTER_PB_H').
+-define('SERVERTOIMPORTER_PB_H', true).
+-record('ServerToImporter',
+        {message                :: {offerSubmitted, nefitproto:'ServerToImporterOfferSubmitted'()} | {offerInvalid, nefitproto:'ServerToImporterOfferInvalid'()} | {offerWon, nefitproto:'ServerToImporterOfferWon'()} | {offerLose, nefitproto:'ServerToImporterOfferLose'()} | {newProduct, nefitproto:'ServerToImporterNewProduct'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('SERVERTOIMPORTEROFFERSUBMITTED_PB_H').
+-define('SERVERTOIMPORTEROFFERSUBMITTED_PB_H', true).
+-record('ServerToImporterOfferSubmitted',
+        {
+        }).
+-endif.
+
+-ifndef('SERVERTOIMPORTEROFFERINVALID_PB_H').
+-define('SERVERTOIMPORTEROFFERINVALID_PB_H', true).
+-record('ServerToImporterOfferInvalid',
+        {errorMessage           :: iodata()         % = 1
+        }).
+-endif.
+
+-ifndef('SERVERTOIMPORTEROFFERWON_PB_H').
+-define('SERVERTOIMPORTEROFFERWON_PB_H', true).
+-record('ServerToImporterOfferWon',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata(),        % = 2
+         quantity               :: integer(),       % = 3, 32 bits
+         unitPrice              :: float() | integer() | infinity | '-infinity' | nan % = 4
+        }).
+-endif.
+
+-ifndef('SERVERTOIMPORTEROFFERLOSE_PB_H').
+-define('SERVERTOIMPORTEROFFERLOSE_PB_H', true).
+-record('ServerToImporterOfferLose',
+        {manufacturerName       :: iodata(),        % = 1
+         productName            :: iodata()         % = 2
+        }).
+-endif.
+
+-ifndef('SERVERTOIMPORTERNEWPRODUCT_PB_H').
+-define('SERVERTOIMPORTERNEWPRODUCT_PB_H', true).
+-record('ServerToImporterNewProduct',
+        {productName            :: iodata(),        % = 1
+         minQuantity            :: integer(),       % = 2, 32 bits
+         maxQuantity            :: integer(),       % = 3, 32 bits
+         minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 4
+         timeout                :: integer(),       % = 5, 32 bits
+         manufacturerName       :: iodata()         % = 6
         }).
 -endif.
 

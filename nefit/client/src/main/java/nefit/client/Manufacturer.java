@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Manufacturer extends Client< NefitProto.ProductionM >
+public class Manufacturer extends Client< NefitProto.ServerToManufacturer >
 {
     private final Set< String > activeProductNames;
 
@@ -18,7 +18,7 @@ public class Manufacturer extends Client< NefitProto.ProductionM >
             prompt,
             connection,
             username,
-            NefitProto.ProductionM.parser(),
+            NefitProto.ServerToManufacturer.parser(),
             new Command(
                 "announce",
                 "Product name",
@@ -71,52 +71,57 @@ public class Manufacturer extends Client< NefitProto.ProductionM >
         // send announcement request to server
 
         final var messageAnnounce =
-            NefitProto.DisponibilityS
+            NefitProto.ManufacturerToServerAnnounce
                 .newBuilder()
-                .setNameM(this.getUsername())
-                .setNameP(productName)
-                .setMinimum(minQuantity)
-                .setMaximum(maxQuantity)
-                .setValue(minUnitPrice)
-                .setPeriod(timeout)
+                .setManufacturerName(this.getUsername())
+                .setProductName(productName)
+                .setMinQuantity(minQuantity)
+                .setMaxQuantity(maxQuantity)
+                .setMinUnitPrice(minUnitPrice)
+                .setTimeout(timeout)
                 .build();
 
         final var messageServer =
-            NefitProto.Server
+            NefitProto.ManufacturerToServer
                 .newBuilder()
-                .setM1(messageAnnounce)
+                .setAnnounce(messageAnnounce)
                 .build();
 
         this.getConnection().send(messageServer);
-
-        // TODO: must wait for acknowledgment from server
     }
 
     @Override
-    protected void handleMessage(NefitProto.ProductionM message)
+    protected void handleMessage(NefitProto.ServerToManufacturer message)
     {
         this.getPrompt().print();
 
-        if (message.getQuant() == 0)
-        {
-            this.getPrompt().printNotice(
-                "\nNo offers received for product \"%s\". Announcement" +
-                    " removed.",
-                message.getNameP()
-            );
+        if(message.hasAnnounced()){
+            this.getPrompt().printNotice("\nYour product as been released");
         }
-        else
-        {
+
+        if(message.hasInvalid()){
+            this.getPrompt().printNotice("\nYour product as an error");
+        }
+
+        if(message.hasNoOffers()){
+            this.getPrompt().printNotice("\nYour product \"%s\" has no offers",message.getNoOffers().getProductName());
+        }
+
+        if(message.hasSold()){
+
+            NefitProto.ServerToManufacturerSold sold = message.getSold();
+
             this.getPrompt().printNotice(
                 "\nSold %d units of product \"%s\" at unit price %.2f, for a" +
                     " total price of %.2f. Announcement removed.",
-                message.getQuant(),
-                message.getNameP(),
-                message.getValue(),
-                message.getQuant() * message.getValue()
+                sold.getQuantity(),
+                sold.getProductName(),
+                sold.getUnitPrice(),
+                sold.getQuantity() * sold.getUnitPrice()
             );
-        }
 
-        this.activeProductNames.remove(message.getNameP());
+
+            this.activeProductNames.remove(sold.getProductName());
+        }
     }
 }

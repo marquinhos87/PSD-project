@@ -166,19 +166,26 @@ enum ClientType {
     MANUFACTURER = 1;
 }
 
+message ClientToServer {
+    oneof message {
+        ClientToServerLogin login = 1;
+        ClientToServerRegister register = 2;
+    }
+}
+
 // request to login using existing account
 // (each username is either an importer or a manufacturer)
 message ClientToServerLogin {
     required string username = 1;
     required string password = 2;
+
+    required ClientType clientType = 3;
 }
 
 // request to register a new account with the given type
 message ClientToServerRegister {
     required string username = 1;
     required string password = 2;
-
-    required ClientType clientType = 3;
 }
 
 // response to a login or register request
@@ -205,6 +212,7 @@ message ManufacturerToServerAnnounce {
     required int32 maxQuantity = 3;
     required float minUnitPrice = 4;
     required int32 timeout = 5;
+    required string manufacturerName = 6;
 }
 
 message ServerToManufacturer {
@@ -244,7 +252,8 @@ message ImporterToServer {
 }
 
 message ImporterToServerSubscribe {
-    required string manufacturerName = 1;
+    repeated string manufacturerName = 1;
+    required string importerName = 2;
 }
 
 message ImporterToServerOffer {
@@ -252,6 +261,7 @@ message ImporterToServerOffer {
     required string productName = 2;
     required int32 quantity = 3;
     required float unitPrice = 4;
+    required string importerName = 5;
 }
 
 message ServerToImporter {
@@ -259,6 +269,8 @@ message ServerToImporter {
         ServerToImporterOfferSubmitted offerSubmitted = 1;
         ServerToImporterOfferInvalid offerInvalid = 2;
         ServerToImporterOfferWon offerWon = 3;
+        ServerToImporterOfferLose offerLose = 4;
+        ServerToImporterNewProduct newProduct = 5;
     }
 }
 
@@ -275,6 +287,22 @@ message ServerToImporterOfferWon
     required string productName = 2;
     required int32 quantity = 3;
     required float unitPrice = 4;
+}
+
+message ServerToImporterOfferLose
+{
+    required string manufacturerName = 1;
+    required string productName = 2;
+}
+
+message ServerToImporterNewProduct
+{
+    required string productName = 1;
+    required int32 minQuantity = 2;
+    required int32 maxQuantity = 3;
+    required float minUnitPrice = 4;
+    required int32 timeout = 5;
+    required string manufacturerName = 6;
 }
 
 /* -------------------------------------------------------------------------- */

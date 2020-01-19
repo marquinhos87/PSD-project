@@ -20835,71 +20835,62 @@ public final class NefitProto {
 
   }
 
-  public interface ClientToServerLoginOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.ClientToServerLogin)
+  public interface ClientToServerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.ClientToServer)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string username = 1;</code>
-     * @return Whether the username field is set.
+     * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+     * @return Whether the login field is set.
      */
-    boolean hasUsername();
+    boolean hasLogin();
     /**
-     * <code>required string username = 1;</code>
-     * @return The username.
+     * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+     * @return The login.
      */
-    java.lang.String getUsername();
+    nefit.shared.NefitProto.ClientToServerLogin getLogin();
     /**
-     * <code>required string username = 1;</code>
-     * @return The bytes for username.
+     * <code>optional .nefit.ClientToServerLogin login = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getUsernameBytes();
+    nefit.shared.NefitProto.ClientToServerLoginOrBuilder getLoginOrBuilder();
 
     /**
-     * <code>required string password = 2;</code>
-     * @return Whether the password field is set.
+     * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+     * @return Whether the register field is set.
      */
-    boolean hasPassword();
+    boolean hasRegister();
     /**
-     * <code>required string password = 2;</code>
-     * @return The password.
+     * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+     * @return The register.
      */
-    java.lang.String getPassword();
+    nefit.shared.NefitProto.ClientToServerRegister getRegister();
     /**
-     * <code>required string password = 2;</code>
-     * @return The bytes for password.
+     * <code>optional .nefit.ClientToServerRegister register = 2;</code>
      */
-    com.google.protobuf.ByteString
-        getPasswordBytes();
+    nefit.shared.NefitProto.ClientToServerRegisterOrBuilder getRegisterOrBuilder();
+
+    public nefit.shared.NefitProto.ClientToServer.MessageCase getMessageCase();
   }
   /**
-   * <pre>
-   * request to login using existing account
-   * (each username is either an importer or a manufacturer)
-   * </pre>
-   *
-   * Protobuf type {@code nefit.ClientToServerLogin}
+   * Protobuf type {@code nefit.ClientToServer}
    */
-  public  static final class ClientToServerLogin extends
+  public  static final class ClientToServer extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.ClientToServerLogin)
-      ClientToServerLoginOrBuilder {
+      // @@protoc_insertion_point(message_implements:nefit.ClientToServer)
+      ClientToServerOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientToServerLogin.newBuilder() to construct.
-    private ClientToServerLogin(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientToServer.newBuilder() to construct.
+    private ClientToServer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientToServerLogin() {
-      username_ = "";
-      password_ = "";
+    private ClientToServer() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientToServerLogin();
+      return new ClientToServer();
     }
 
     @java.lang.Override
@@ -20907,7 +20898,7 @@ public final class NefitProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientToServerLogin(
+    private ClientToServer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20927,15 +20918,31 @@ public final class NefitProto {
               done = true;
               break;
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              username_ = bs;
+              nefit.shared.NefitProto.ClientToServerLogin.Builder subBuilder = null;
+              if (messageCase_ == 1) {
+                subBuilder = ((nefit.shared.NefitProto.ClientToServerLogin) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(nefit.shared.NefitProto.ClientToServerLogin.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.shared.NefitProto.ClientToServerLogin) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 1;
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              password_ = bs;
+              nefit.shared.NefitProto.ClientToServerRegister.Builder subBuilder = null;
+              if (messageCase_ == 2) {
+                subBuilder = ((nefit.shared.NefitProto.ClientToServerRegister) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(nefit.shared.NefitProto.ClientToServerRegister.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.shared.NefitProto.ClientToServerRegister) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 2;
               break;
             }
             default: {
@@ -20959,106 +20966,113 @@ public final class NefitProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServer_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProto.ClientToServerLogin.class, nefit.shared.NefitProto.ClientToServerLogin.Builder.class);
+              nefit.shared.NefitProto.ClientToServer.class, nefit.shared.NefitProto.ClientToServer.Builder.class);
     }
 
     private int bitField0_;
-    public static final int USERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object username_;
-    /**
-     * <code>required string username = 1;</code>
-     * @return Whether the username field is set.
-     */
-    public boolean hasUsername() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required string username = 1;</code>
-     * @return The username.
-     */
-    public java.lang.String getUsername() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          username_ = s;
+    private int messageCase_ = 0;
+    private java.lang.Object message_;
+    public enum MessageCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      LOGIN(1),
+      REGISTER(2),
+      MESSAGE_NOT_SET(0);
+      private final int value;
+      private MessageCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static MessageCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static MessageCase forNumber(int value) {
+        switch (value) {
+          case 1: return LOGIN;
+          case 2: return REGISTER;
+          case 0: return MESSAGE_NOT_SET;
+          default: return null;
         }
-        return s;
       }
-    }
-    /**
-     * <code>required string username = 1;</code>
-     * @return The bytes for username.
-     */
-    public com.google.protobuf.ByteString
-        getUsernameBytes() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        username_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+      public int getNumber() {
+        return this.value;
       }
+    };
+
+    public MessageCase
+    getMessageCase() {
+      return MessageCase.forNumber(
+          messageCase_);
     }
 
-    public static final int PASSWORD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object password_;
+    public static final int LOGIN_FIELD_NUMBER = 1;
     /**
-     * <code>required string password = 2;</code>
-     * @return Whether the password field is set.
+     * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+     * @return Whether the login field is set.
      */
-    public boolean hasPassword() {
-      return ((bitField0_ & 0x00000002) != 0);
+    public boolean hasLogin() {
+      return messageCase_ == 1;
     }
     /**
-     * <code>required string password = 2;</code>
-     * @return The password.
+     * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+     * @return The login.
      */
-    public java.lang.String getPassword() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          password_ = s;
-        }
-        return s;
+    public nefit.shared.NefitProto.ClientToServerLogin getLogin() {
+      if (messageCase_ == 1) {
+         return (nefit.shared.NefitProto.ClientToServerLogin) message_;
       }
+      return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
     }
     /**
-     * <code>required string password = 2;</code>
-     * @return The bytes for password.
+     * <code>optional .nefit.ClientToServerLogin login = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getPasswordBytes() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        password_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    public nefit.shared.NefitProto.ClientToServerLoginOrBuilder getLoginOrBuilder() {
+      if (messageCase_ == 1) {
+         return (nefit.shared.NefitProto.ClientToServerLogin) message_;
       }
+      return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
+    }
+
+    public static final int REGISTER_FIELD_NUMBER = 2;
+    /**
+     * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+     * @return Whether the register field is set.
+     */
+    public boolean hasRegister() {
+      return messageCase_ == 2;
+    }
+    /**
+     * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+     * @return The register.
+     */
+    public nefit.shared.NefitProto.ClientToServerRegister getRegister() {
+      if (messageCase_ == 2) {
+         return (nefit.shared.NefitProto.ClientToServerRegister) message_;
+      }
+      return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+     */
+    public nefit.shared.NefitProto.ClientToServerRegisterOrBuilder getRegisterOrBuilder() {
+      if (messageCase_ == 2) {
+         return (nefit.shared.NefitProto.ClientToServerRegister) message_;
+      }
+      return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -21068,13 +21082,17 @@ public final class NefitProto {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasUsername()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasLogin()) {
+        if (!getLogin().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
-      if (!hasPassword()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasRegister()) {
+        if (!getRegister().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -21083,11 +21101,11 @@ public final class NefitProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
+      if (messageCase_ == 1) {
+        output.writeMessage(1, (nefit.shared.NefitProto.ClientToServerLogin) message_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+      if (messageCase_ == 2) {
+        output.writeMessage(2, (nefit.shared.NefitProto.ClientToServerRegister) message_);
       }
       unknownFields.writeTo(output);
     }
@@ -21098,11 +21116,13 @@ public final class NefitProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
+      if (messageCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, (nefit.shared.NefitProto.ClientToServerLogin) message_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      if (messageCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (nefit.shared.NefitProto.ClientToServerRegister) message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -21114,20 +21134,23 @@ public final class NefitProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProto.ClientToServerLogin)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ClientToServer)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProto.ClientToServerLogin other = (nefit.shared.NefitProto.ClientToServerLogin) obj;
+      nefit.shared.NefitProto.ClientToServer other = (nefit.shared.NefitProto.ClientToServer) obj;
 
-      if (hasUsername() != other.hasUsername()) return false;
-      if (hasUsername()) {
-        if (!getUsername()
-            .equals(other.getUsername())) return false;
-      }
-      if (hasPassword() != other.hasPassword()) return false;
-      if (hasPassword()) {
-        if (!getPassword()
-            .equals(other.getPassword())) return false;
+      if (!getMessageCase().equals(other.getMessageCase())) return false;
+      switch (messageCase_) {
+        case 1:
+          if (!getLogin()
+              .equals(other.getLogin())) return false;
+          break;
+        case 2:
+          if (!getRegister()
+              .equals(other.getRegister())) return false;
+          break;
+        case 0:
+        default:
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -21140,82 +21163,86 @@ public final class NefitProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasUsername()) {
-        hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getUsername().hashCode();
-      }
-      if (hasPassword()) {
-        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
-        hash = (53 * hash) + getPassword().hashCode();
+      switch (messageCase_) {
+        case 1:
+          hash = (37 * hash) + LOGIN_FIELD_NUMBER;
+          hash = (53 * hash) + getLogin().hashCode();
+          break;
+        case 2:
+          hash = (37 * hash) + REGISTER_FIELD_NUMBER;
+          hash = (53 * hash) + getRegister().hashCode();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
+    public static nefit.shared.NefitProto.ClientToServer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -21228,7 +21255,7 @@ public final class NefitProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProto.ClientToServerLogin prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ClientToServer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -21244,31 +21271,26 @@ public final class NefitProto {
       return builder;
     }
     /**
-     * <pre>
-     * request to login using existing account
-     * (each username is either an importer or a manufacturer)
-     * </pre>
-     *
-     * Protobuf type {@code nefit.ClientToServerLogin}
+     * Protobuf type {@code nefit.ClientToServer}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.ClientToServerLogin)
-        nefit.shared.NefitProto.ClientToServerLoginOrBuilder {
+        // @@protoc_insertion_point(builder_implements:nefit.ClientToServer)
+        nefit.shared.NefitProto.ClientToServerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServer_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProto.ClientToServerLogin.class, nefit.shared.NefitProto.ClientToServerLogin.Builder.class);
+                nefit.shared.NefitProto.ClientToServer.class, nefit.shared.NefitProto.ClientToServer.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProto.ClientToServerLogin.newBuilder()
+      // Construct using nefit.shared.NefitProto.ClientToServer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -21286,27 +21308,25 @@ public final class NefitProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        username_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        password_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+        messageCase_ = 0;
+        message_ = null;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServer_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProto.ClientToServerLogin getDefaultInstanceForType() {
-        return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
+      public nefit.shared.NefitProto.ClientToServer getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ClientToServer.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProto.ClientToServerLogin build() {
-        nefit.shared.NefitProto.ClientToServerLogin result = buildPartial();
+      public nefit.shared.NefitProto.ClientToServer build() {
+        nefit.shared.NefitProto.ClientToServer result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -21314,19 +21334,26 @@ public final class NefitProto {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProto.ClientToServerLogin buildPartial() {
-        nefit.shared.NefitProto.ClientToServerLogin result = new nefit.shared.NefitProto.ClientToServerLogin(this);
+      public nefit.shared.NefitProto.ClientToServer buildPartial() {
+        nefit.shared.NefitProto.ClientToServer result = new nefit.shared.NefitProto.ClientToServer(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
+        if (messageCase_ == 1) {
+          if (loginBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = loginBuilder_.build();
+          }
         }
-        result.username_ = username_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
+        if (messageCase_ == 2) {
+          if (registerBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = registerBuilder_.build();
+          }
         }
-        result.password_ = password_;
         result.bitField0_ = to_bitField0_;
+        result.messageCase_ = messageCase_;
         onBuilt();
         return result;
       }
@@ -21365,25 +21392,28 @@ public final class NefitProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProto.ClientToServerLogin) {
-          return mergeFrom((nefit.shared.NefitProto.ClientToServerLogin)other);
+        if (other instanceof nefit.shared.NefitProto.ClientToServer) {
+          return mergeFrom((nefit.shared.NefitProto.ClientToServer)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProto.ClientToServerLogin other) {
-        if (other == nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance()) return this;
-        if (other.hasUsername()) {
-          bitField0_ |= 0x00000001;
-          username_ = other.username_;
-          onChanged();
-        }
-        if (other.hasPassword()) {
-          bitField0_ |= 0x00000002;
-          password_ = other.password_;
-          onChanged();
+      public Builder mergeFrom(nefit.shared.NefitProto.ClientToServer other) {
+        if (other == nefit.shared.NefitProto.ClientToServer.getDefaultInstance()) return this;
+        switch (other.getMessageCase()) {
+          case LOGIN: {
+            mergeLogin(other.getLogin());
+            break;
+          }
+          case REGISTER: {
+            mergeRegister(other.getRegister());
+            break;
+          }
+          case MESSAGE_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -21392,11 +21422,15 @@ public final class NefitProto {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasUsername()) {
-          return false;
+        if (hasLogin()) {
+          if (!getLogin().isInitialized()) {
+            return false;
+          }
         }
-        if (!hasPassword()) {
-          return false;
+        if (hasRegister()) {
+          if (!getRegister().isInitialized()) {
+            return false;
+          }
         }
         return true;
       }
@@ -21406,11 +21440,11 @@ public final class NefitProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProto.ClientToServerLogin parsedMessage = null;
+        nefit.shared.NefitProto.ClientToServer parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProto.ClientToServerLogin) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ClientToServer) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -21419,174 +21453,297 @@ public final class NefitProto {
         }
         return this;
       }
+      private int messageCase_ = 0;
+      private java.lang.Object message_;
+      public MessageCase
+          getMessageCase() {
+        return MessageCase.forNumber(
+            messageCase_);
+      }
+
+      public Builder clearMessage() {
+        messageCase_ = 0;
+        message_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
-      private java.lang.Object username_ = "";
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ClientToServerLogin, nefit.shared.NefitProto.ClientToServerLogin.Builder, nefit.shared.NefitProto.ClientToServerLoginOrBuilder> loginBuilder_;
       /**
-       * <code>required string username = 1;</code>
-       * @return Whether the username field is set.
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+       * @return Whether the login field is set.
        */
-      public boolean hasUsername() {
-        return ((bitField0_ & 0x00000001) != 0);
+      public boolean hasLogin() {
+        return messageCase_ == 1;
       }
       /**
-       * <code>required string username = 1;</code>
-       * @return The username.
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+       * @return The login.
        */
-      public java.lang.String getUsername() {
-        java.lang.Object ref = username_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            username_ = s;
+      public nefit.shared.NefitProto.ClientToServerLogin getLogin() {
+        if (loginBuilder_ == null) {
+          if (messageCase_ == 1) {
+            return (nefit.shared.NefitProto.ClientToServerLogin) message_;
           }
-          return s;
+          return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
         } else {
-          return (java.lang.String) ref;
+          if (messageCase_ == 1) {
+            return loginBuilder_.getMessage();
+          }
+          return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
         }
       }
       /**
-       * <code>required string username = 1;</code>
-       * @return The bytes for username.
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getUsernameBytes() {
-        java.lang.Object ref = username_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          username_ = b;
-          return b;
+      public Builder setLogin(nefit.shared.NefitProto.ClientToServerLogin value) {
+        if (loginBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          loginBuilder_.setMessage(value);
+        }
+        messageCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+       */
+      public Builder setLogin(
+          nefit.shared.NefitProto.ClientToServerLogin.Builder builderForValue) {
+        if (loginBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          loginBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+       */
+      public Builder mergeLogin(nefit.shared.NefitProto.ClientToServerLogin value) {
+        if (loginBuilder_ == null) {
+          if (messageCase_ == 1 &&
+              message_ != nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance()) {
+            message_ = nefit.shared.NefitProto.ClientToServerLogin.newBuilder((nefit.shared.NefitProto.ClientToServerLogin) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 1) {
+            loginBuilder_.mergeFrom(value);
+          }
+          loginBuilder_.setMessage(value);
+        }
+        messageCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+       */
+      public Builder clearLogin() {
+        if (loginBuilder_ == null) {
+          if (messageCase_ == 1) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 1) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          loginBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+       */
+      public nefit.shared.NefitProto.ClientToServerLogin.Builder getLoginBuilder() {
+        return getLoginFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
+       */
+      public nefit.shared.NefitProto.ClientToServerLoginOrBuilder getLoginOrBuilder() {
+        if ((messageCase_ == 1) && (loginBuilder_ != null)) {
+          return loginBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 1) {
+            return (nefit.shared.NefitProto.ClientToServerLogin) message_;
+          }
+          return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
         }
       }
       /**
-       * <code>required string username = 1;</code>
-       * @param value The username to set.
-       * @return This builder for chaining.
+       * <code>optional .nefit.ClientToServerLogin login = 1;</code>
        */
-      public Builder setUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        username_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string username = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearUsername() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        username_ = getDefaultInstance().getUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string username = 1;</code>
-       * @param value The bytes for username to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        username_ = value;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ClientToServerLogin, nefit.shared.NefitProto.ClientToServerLogin.Builder, nefit.shared.NefitProto.ClientToServerLoginOrBuilder> 
+          getLoginFieldBuilder() {
+        if (loginBuilder_ == null) {
+          if (!(messageCase_ == 1)) {
+            message_ = nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
+          }
+          loginBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.shared.NefitProto.ClientToServerLogin, nefit.shared.NefitProto.ClientToServerLogin.Builder, nefit.shared.NefitProto.ClientToServerLoginOrBuilder>(
+                  (nefit.shared.NefitProto.ClientToServerLogin) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 1;
+        onChanged();;
+        return loginBuilder_;
       }
 
-      private java.lang.Object password_ = "";
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ClientToServerRegister, nefit.shared.NefitProto.ClientToServerRegister.Builder, nefit.shared.NefitProto.ClientToServerRegisterOrBuilder> registerBuilder_;
       /**
-       * <code>required string password = 2;</code>
-       * @return Whether the password field is set.
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+       * @return Whether the register field is set.
        */
-      public boolean hasPassword() {
-        return ((bitField0_ & 0x00000002) != 0);
+      public boolean hasRegister() {
+        return messageCase_ == 2;
       }
       /**
-       * <code>required string password = 2;</code>
-       * @return The password.
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+       * @return The register.
        */
-      public java.lang.String getPassword() {
-        java.lang.Object ref = password_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            password_ = s;
+      public nefit.shared.NefitProto.ClientToServerRegister getRegister() {
+        if (registerBuilder_ == null) {
+          if (messageCase_ == 2) {
+            return (nefit.shared.NefitProto.ClientToServerRegister) message_;
           }
-          return s;
+          return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
         } else {
-          return (java.lang.String) ref;
+          if (messageCase_ == 2) {
+            return registerBuilder_.getMessage();
+          }
+          return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
         }
       }
       /**
-       * <code>required string password = 2;</code>
-       * @return The bytes for password.
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getPasswordBytes() {
-        java.lang.Object ref = password_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          password_ = b;
-          return b;
+      public Builder setRegister(nefit.shared.NefitProto.ClientToServerRegister value) {
+        if (registerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          registerBuilder_.setMessage(value);
+        }
+        messageCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+       */
+      public Builder setRegister(
+          nefit.shared.NefitProto.ClientToServerRegister.Builder builderForValue) {
+        if (registerBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          registerBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+       */
+      public Builder mergeRegister(nefit.shared.NefitProto.ClientToServerRegister value) {
+        if (registerBuilder_ == null) {
+          if (messageCase_ == 2 &&
+              message_ != nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance()) {
+            message_ = nefit.shared.NefitProto.ClientToServerRegister.newBuilder((nefit.shared.NefitProto.ClientToServerRegister) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 2) {
+            registerBuilder_.mergeFrom(value);
+          }
+          registerBuilder_.setMessage(value);
+        }
+        messageCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+       */
+      public Builder clearRegister() {
+        if (registerBuilder_ == null) {
+          if (messageCase_ == 2) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 2) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          registerBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+       */
+      public nefit.shared.NefitProto.ClientToServerRegister.Builder getRegisterBuilder() {
+        return getRegisterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
+       */
+      public nefit.shared.NefitProto.ClientToServerRegisterOrBuilder getRegisterOrBuilder() {
+        if ((messageCase_ == 2) && (registerBuilder_ != null)) {
+          return registerBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 2) {
+            return (nefit.shared.NefitProto.ClientToServerRegister) message_;
+          }
+          return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
         }
       }
       /**
-       * <code>required string password = 2;</code>
-       * @param value The password to set.
-       * @return This builder for chaining.
+       * <code>optional .nefit.ClientToServerRegister register = 2;</code>
        */
-      public Builder setPassword(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        password_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string password = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPassword() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        password_ = getDefaultInstance().getPassword();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string password = 2;</code>
-       * @param value The bytes for password to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPasswordBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        password_ = value;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ClientToServerRegister, nefit.shared.NefitProto.ClientToServerRegister.Builder, nefit.shared.NefitProto.ClientToServerRegisterOrBuilder> 
+          getRegisterFieldBuilder() {
+        if (registerBuilder_ == null) {
+          if (!(messageCase_ == 2)) {
+            message_ = nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
+          }
+          registerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.shared.NefitProto.ClientToServerRegister, nefit.shared.NefitProto.ClientToServerRegister.Builder, nefit.shared.NefitProto.ClientToServerRegisterOrBuilder>(
+                  (nefit.shared.NefitProto.ClientToServerRegister) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 2;
+        onChanged();;
+        return registerBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -21601,48 +21758,48 @@ public final class NefitProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:nefit.ClientToServerLogin)
+      // @@protoc_insertion_point(builder_scope:nefit.ClientToServer)
     }
 
-    // @@protoc_insertion_point(class_scope:nefit.ClientToServerLogin)
-    private static final nefit.shared.NefitProto.ClientToServerLogin DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:nefit.ClientToServer)
+    private static final nefit.shared.NefitProto.ClientToServer DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ClientToServerLogin();
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ClientToServer();
     }
 
-    public static nefit.shared.NefitProto.ClientToServerLogin getDefaultInstance() {
+    public static nefit.shared.NefitProto.ClientToServer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientToServerLogin>
-        PARSER = new com.google.protobuf.AbstractParser<ClientToServerLogin>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientToServer>
+        PARSER = new com.google.protobuf.AbstractParser<ClientToServer>() {
       @java.lang.Override
-      public ClientToServerLogin parsePartialFrom(
+      public ClientToServer parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ClientToServerLogin(input, extensionRegistry);
+        return new ClientToServer(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ClientToServerLogin> parser() {
+    public static com.google.protobuf.Parser<ClientToServer> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ClientToServerLogin> getParserForType() {
+    public com.google.protobuf.Parser<ClientToServer> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public nefit.shared.NefitProto.ClientToServerLogin getDefaultInstanceForType() {
+    public nefit.shared.NefitProto.ClientToServer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClientToServerRegisterOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:nefit.ClientToServerRegister)
+  public interface ClientToServerLoginOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.ClientToServerLogin)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -21692,21 +21849,22 @@ public final class NefitProto {
   }
   /**
    * <pre>
-   * request to register a new account with the given type
+   * request to login using existing account
+   * (each username is either an importer or a manufacturer)
    * </pre>
    *
-   * Protobuf type {@code nefit.ClientToServerRegister}
+   * Protobuf type {@code nefit.ClientToServerLogin}
    */
-  public  static final class ClientToServerRegister extends
+  public  static final class ClientToServerLogin extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:nefit.ClientToServerRegister)
-      ClientToServerRegisterOrBuilder {
+      // @@protoc_insertion_point(message_implements:nefit.ClientToServerLogin)
+      ClientToServerLoginOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ClientToServerRegister.newBuilder() to construct.
-    private ClientToServerRegister(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ClientToServerLogin.newBuilder() to construct.
+    private ClientToServerLogin(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ClientToServerRegister() {
+    private ClientToServerLogin() {
       username_ = "";
       password_ = "";
       clientType_ = 0;
@@ -21716,7 +21874,7 @@ public final class NefitProto {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ClientToServerRegister();
+      return new ClientToServerLogin();
     }
 
     @java.lang.Override
@@ -21724,7 +21882,7 @@ public final class NefitProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ClientToServerRegister(
+    private ClientToServerLogin(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21788,15 +21946,15 @@ public final class NefitProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              nefit.shared.NefitProto.ClientToServerRegister.class, nefit.shared.NefitProto.ClientToServerRegister.Builder.class);
+              nefit.shared.NefitProto.ClientToServerLogin.class, nefit.shared.NefitProto.ClientToServerLogin.Builder.class);
     }
 
     private int bitField0_;
@@ -21973,10 +22131,10 @@ public final class NefitProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof nefit.shared.NefitProto.ClientToServerRegister)) {
+      if (!(obj instanceof nefit.shared.NefitProto.ClientToServerLogin)) {
         return super.equals(obj);
       }
-      nefit.shared.NefitProto.ClientToServerRegister other = (nefit.shared.NefitProto.ClientToServerRegister) obj;
+      nefit.shared.NefitProto.ClientToServerLogin other = (nefit.shared.NefitProto.ClientToServerLogin) obj;
 
       if (hasUsername() != other.hasUsername()) return false;
       if (hasUsername()) {
@@ -22020,69 +22178,69 @@ public final class NefitProto {
       return hash;
     }
 
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(byte[] data)
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseDelimitedFrom(java.io.InputStream input)
+    public static nefit.shared.NefitProto.ClientToServerLogin parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseDelimitedFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+    public static nefit.shared.NefitProto.ClientToServerLogin parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -22095,7 +22253,7 @@ public final class NefitProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(nefit.shared.NefitProto.ClientToServerRegister prototype) {
+    public static Builder newBuilder(nefit.shared.NefitProto.ClientToServerLogin prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -22112,29 +22270,30 @@ public final class NefitProto {
     }
     /**
      * <pre>
-     * request to register a new account with the given type
+     * request to login using existing account
+     * (each username is either an importer or a manufacturer)
      * </pre>
      *
-     * Protobuf type {@code nefit.ClientToServerRegister}
+     * Protobuf type {@code nefit.ClientToServerLogin}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:nefit.ClientToServerRegister)
-        nefit.shared.NefitProto.ClientToServerRegisterOrBuilder {
+        // @@protoc_insertion_point(builder_implements:nefit.ClientToServerLogin)
+        nefit.shared.NefitProto.ClientToServerLoginOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                nefit.shared.NefitProto.ClientToServerRegister.class, nefit.shared.NefitProto.ClientToServerRegister.Builder.class);
+                nefit.shared.NefitProto.ClientToServerLogin.class, nefit.shared.NefitProto.ClientToServerLogin.Builder.class);
       }
 
-      // Construct using nefit.shared.NefitProto.ClientToServerRegister.newBuilder()
+      // Construct using nefit.shared.NefitProto.ClientToServerLogin.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -22164,17 +22323,17 @@ public final class NefitProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerLogin_descriptor;
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProto.ClientToServerRegister getDefaultInstanceForType() {
-        return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
+      public nefit.shared.NefitProto.ClientToServerLogin getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance();
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProto.ClientToServerRegister build() {
-        nefit.shared.NefitProto.ClientToServerRegister result = buildPartial();
+      public nefit.shared.NefitProto.ClientToServerLogin build() {
+        nefit.shared.NefitProto.ClientToServerLogin result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -22182,8 +22341,8 @@ public final class NefitProto {
       }
 
       @java.lang.Override
-      public nefit.shared.NefitProto.ClientToServerRegister buildPartial() {
-        nefit.shared.NefitProto.ClientToServerRegister result = new nefit.shared.NefitProto.ClientToServerRegister(this);
+      public nefit.shared.NefitProto.ClientToServerLogin buildPartial() {
+        nefit.shared.NefitProto.ClientToServerLogin result = new nefit.shared.NefitProto.ClientToServerLogin(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -22237,16 +22396,16 @@ public final class NefitProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof nefit.shared.NefitProto.ClientToServerRegister) {
-          return mergeFrom((nefit.shared.NefitProto.ClientToServerRegister)other);
+        if (other instanceof nefit.shared.NefitProto.ClientToServerLogin) {
+          return mergeFrom((nefit.shared.NefitProto.ClientToServerLogin)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(nefit.shared.NefitProto.ClientToServerRegister other) {
-        if (other == nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance()) return this;
+      public Builder mergeFrom(nefit.shared.NefitProto.ClientToServerLogin other) {
+        if (other == nefit.shared.NefitProto.ClientToServerLogin.getDefaultInstance()) return this;
         if (other.hasUsername()) {
           bitField0_ |= 0x00000001;
           username_ = other.username_;
@@ -22284,11 +22443,11 @@ public final class NefitProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        nefit.shared.NefitProto.ClientToServerRegister parsedMessage = null;
+        nefit.shared.NefitProto.ClientToServerLogin parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (nefit.shared.NefitProto.ClientToServerRegister) e.getUnfinishedMessage();
+          parsedMessage = (nefit.shared.NefitProto.ClientToServerLogin) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -22505,6 +22664,810 @@ public final class NefitProto {
       public Builder clearClientType() {
         bitField0_ = (bitField0_ & ~0x00000004);
         clientType_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:nefit.ClientToServerLogin)
+    }
+
+    // @@protoc_insertion_point(class_scope:nefit.ClientToServerLogin)
+    private static final nefit.shared.NefitProto.ClientToServerLogin DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ClientToServerLogin();
+    }
+
+    public static nefit.shared.NefitProto.ClientToServerLogin getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ClientToServerLogin>
+        PARSER = new com.google.protobuf.AbstractParser<ClientToServerLogin>() {
+      @java.lang.Override
+      public ClientToServerLogin parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClientToServerLogin(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ClientToServerLogin> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClientToServerLogin> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public nefit.shared.NefitProto.ClientToServerLogin getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ClientToServerRegisterOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.ClientToServerRegister)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string username = 1;</code>
+     * @return Whether the username field is set.
+     */
+    boolean hasUsername();
+    /**
+     * <code>required string username = 1;</code>
+     * @return The username.
+     */
+    java.lang.String getUsername();
+    /**
+     * <code>required string username = 1;</code>
+     * @return The bytes for username.
+     */
+    com.google.protobuf.ByteString
+        getUsernameBytes();
+
+    /**
+     * <code>required string password = 2;</code>
+     * @return Whether the password field is set.
+     */
+    boolean hasPassword();
+    /**
+     * <code>required string password = 2;</code>
+     * @return The password.
+     */
+    java.lang.String getPassword();
+    /**
+     * <code>required string password = 2;</code>
+     * @return The bytes for password.
+     */
+    com.google.protobuf.ByteString
+        getPasswordBytes();
+  }
+  /**
+   * <pre>
+   * request to register a new account with the given type
+   * </pre>
+   *
+   * Protobuf type {@code nefit.ClientToServerRegister}
+   */
+  public  static final class ClientToServerRegister extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:nefit.ClientToServerRegister)
+      ClientToServerRegisterOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ClientToServerRegister.newBuilder() to construct.
+    private ClientToServerRegister(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ClientToServerRegister() {
+      username_ = "";
+      password_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ClientToServerRegister();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClientToServerRegister(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              username_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              password_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              nefit.shared.NefitProto.ClientToServerRegister.class, nefit.shared.NefitProto.ClientToServerRegister.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object username_;
+    /**
+     * <code>required string username = 1;</code>
+     * @return Whether the username field is set.
+     */
+    public boolean hasUsername() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string username = 1;</code>
+     * @return The username.
+     */
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          username_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string username = 1;</code>
+     * @return The bytes for username.
+     */
+    public com.google.protobuf.ByteString
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PASSWORD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object password_;
+    /**
+     * <code>required string password = 2;</code>
+     * @return Whether the password field is set.
+     */
+    public boolean hasPassword() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required string password = 2;</code>
+     * @return The password.
+     */
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          password_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string password = 2;</code>
+     * @return The bytes for password.
+     */
+    public com.google.protobuf.ByteString
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        password_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasUsername()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPassword()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof nefit.shared.NefitProto.ClientToServerRegister)) {
+        return super.equals(obj);
+      }
+      nefit.shared.NefitProto.ClientToServerRegister other = (nefit.shared.NefitProto.ClientToServerRegister) obj;
+
+      if (hasUsername() != other.hasUsername()) return false;
+      if (hasUsername()) {
+        if (!getUsername()
+            .equals(other.getUsername())) return false;
+      }
+      if (hasPassword() != other.hasPassword()) return false;
+      if (hasPassword()) {
+        if (!getPassword()
+            .equals(other.getPassword())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasUsername()) {
+        hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getUsername().hashCode();
+      }
+      if (hasPassword()) {
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ClientToServerRegister parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(nefit.shared.NefitProto.ClientToServerRegister prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * request to register a new account with the given type
+     * </pre>
+     *
+     * Protobuf type {@code nefit.ClientToServerRegister}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:nefit.ClientToServerRegister)
+        nefit.shared.NefitProto.ClientToServerRegisterOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                nefit.shared.NefitProto.ClientToServerRegister.class, nefit.shared.NefitProto.ClientToServerRegister.Builder.class);
+      }
+
+      // Construct using nefit.shared.NefitProto.ClientToServerRegister.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        username_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        password_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return nefit.shared.NefitProto.internal_static_nefit_ClientToServerRegister_descriptor;
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ClientToServerRegister getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ClientToServerRegister build() {
+        nefit.shared.NefitProto.ClientToServerRegister result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ClientToServerRegister buildPartial() {
+        nefit.shared.NefitProto.ClientToServerRegister result = new nefit.shared.NefitProto.ClientToServerRegister(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.username_ = username_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.password_ = password_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof nefit.shared.NefitProto.ClientToServerRegister) {
+          return mergeFrom((nefit.shared.NefitProto.ClientToServerRegister)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(nefit.shared.NefitProto.ClientToServerRegister other) {
+        if (other == nefit.shared.NefitProto.ClientToServerRegister.getDefaultInstance()) return this;
+        if (other.hasUsername()) {
+          bitField0_ |= 0x00000001;
+          username_ = other.username_;
+          onChanged();
+        }
+        if (other.hasPassword()) {
+          bitField0_ |= 0x00000002;
+          password_ = other.password_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasUsername()) {
+          return false;
+        }
+        if (!hasPassword()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        nefit.shared.NefitProto.ClientToServerRegister parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (nefit.shared.NefitProto.ClientToServerRegister) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object username_ = "";
+      /**
+       * <code>required string username = 1;</code>
+       * @return Whether the username field is set.
+       */
+      public boolean hasUsername() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string username = 1;</code>
+       * @return The username.
+       */
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            username_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string username = 1;</code>
+       * @return The bytes for username.
+       */
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string username = 1;</code>
+       * @param value The username to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        username_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string username = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUsername() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        username_ = getDefaultInstance().getUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string username = 1;</code>
+       * @param value The bytes for username to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        username_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object password_ = "";
+      /**
+       * <code>required string password = 2;</code>
+       * @return Whether the password field is set.
+       */
+      public boolean hasPassword() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required string password = 2;</code>
+       * @return The password.
+       */
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            password_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string password = 2;</code>
+       * @return The bytes for password.
+       */
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string password = 2;</code>
+       * @param value The password to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPassword(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        password_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string password = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPassword() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        password_ = getDefaultInstance().getPassword();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string password = 2;</code>
+       * @param value The bytes for password to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        password_ = value;
         onChanged();
         return this;
       }
@@ -24181,6 +25144,23 @@ public final class NefitProto {
      * @return The timeout.
      */
     int getTimeout();
+
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return Whether the manufacturerName field is set.
+     */
+    boolean hasManufacturerName();
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The manufacturerName.
+     */
+    java.lang.String getManufacturerName();
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The bytes for manufacturerName.
+     */
+    com.google.protobuf.ByteString
+        getManufacturerNameBytes();
   }
   /**
    * Protobuf type {@code nefit.ManufacturerToServerAnnounce}
@@ -24196,6 +25176,7 @@ public final class NefitProto {
     }
     private ManufacturerToServerAnnounce() {
       productName_ = "";
+      manufacturerName_ = "";
     }
 
     @java.lang.Override
@@ -24253,6 +25234,12 @@ public final class NefitProto {
             case 40: {
               bitField0_ |= 0x00000010;
               timeout_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              manufacturerName_ = bs;
               break;
             }
             default: {
@@ -24401,6 +25388,51 @@ public final class NefitProto {
       return timeout_;
     }
 
+    public static final int MANUFACTURERNAME_FIELD_NUMBER = 6;
+    private volatile java.lang.Object manufacturerName_;
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return Whether the manufacturerName field is set.
+     */
+    public boolean hasManufacturerName() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The manufacturerName.
+     */
+    public java.lang.String getManufacturerName() {
+      java.lang.Object ref = manufacturerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          manufacturerName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The bytes for manufacturerName.
+     */
+    public com.google.protobuf.ByteString
+        getManufacturerNameBytes() {
+      java.lang.Object ref = manufacturerName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        manufacturerName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -24428,6 +25460,10 @@ public final class NefitProto {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasManufacturerName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -24449,6 +25485,9 @@ public final class NefitProto {
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         output.writeInt32(5, timeout_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, manufacturerName_);
       }
       unknownFields.writeTo(output);
     }
@@ -24477,6 +25516,9 @@ public final class NefitProto {
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, timeout_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, manufacturerName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -24519,6 +25561,11 @@ public final class NefitProto {
         if (getTimeout()
             != other.getTimeout()) return false;
       }
+      if (hasManufacturerName() != other.hasManufacturerName()) return false;
+      if (hasManufacturerName()) {
+        if (!getManufacturerName()
+            .equals(other.getManufacturerName())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -24550,6 +25597,10 @@ public final class NefitProto {
       if (hasTimeout()) {
         hash = (37 * hash) + TIMEOUT_FIELD_NUMBER;
         hash = (53 * hash) + getTimeout();
+      }
+      if (hasManufacturerName()) {
+        hash = (37 * hash) + MANUFACTURERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getManufacturerName().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -24694,6 +25745,8 @@ public final class NefitProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         timeout_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        manufacturerName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -24742,6 +25795,10 @@ public final class NefitProto {
           result.timeout_ = timeout_;
           to_bitField0_ |= 0x00000010;
         }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.manufacturerName_ = manufacturerName_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -24808,6 +25865,11 @@ public final class NefitProto {
         if (other.hasTimeout()) {
           setTimeout(other.getTimeout());
         }
+        if (other.hasManufacturerName()) {
+          bitField0_ |= 0x00000020;
+          manufacturerName_ = other.manufacturerName_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -24828,6 +25890,9 @@ public final class NefitProto {
           return false;
         }
         if (!hasTimeout()) {
+          return false;
+        }
+        if (!hasManufacturerName()) {
           return false;
         }
         return true;
@@ -25081,6 +26146,90 @@ public final class NefitProto {
       public Builder clearTimeout() {
         bitField0_ = (bitField0_ & ~0x00000010);
         timeout_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object manufacturerName_ = "";
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return Whether the manufacturerName field is set.
+       */
+      public boolean hasManufacturerName() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return The manufacturerName.
+       */
+      public java.lang.String getManufacturerName() {
+        java.lang.Object ref = manufacturerName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            manufacturerName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return The bytes for manufacturerName.
+       */
+      public com.google.protobuf.ByteString
+          getManufacturerNameBytes() {
+        java.lang.Object ref = manufacturerName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          manufacturerName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @param value The manufacturerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        manufacturerName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearManufacturerName() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        manufacturerName_ = getDefaultInstance().getManufacturerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @param value The bytes for manufacturerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        manufacturerName_ = value;
         onChanged();
         return this;
       }
@@ -29961,21 +31110,46 @@ public final class NefitProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string manufacturerName = 1;</code>
-     * @return Whether the manufacturerName field is set.
+     * <code>repeated string manufacturerName = 1;</code>
+     * @return A list containing the manufacturerName.
      */
-    boolean hasManufacturerName();
+    java.util.List<java.lang.String>
+        getManufacturerNameList();
     /**
-     * <code>required string manufacturerName = 1;</code>
-     * @return The manufacturerName.
+     * <code>repeated string manufacturerName = 1;</code>
+     * @return The count of manufacturerName.
      */
-    java.lang.String getManufacturerName();
+    int getManufacturerNameCount();
     /**
-     * <code>required string manufacturerName = 1;</code>
-     * @return The bytes for manufacturerName.
+     * <code>repeated string manufacturerName = 1;</code>
+     * @param index The index of the element to return.
+     * @return The manufacturerName at the given index.
+     */
+    java.lang.String getManufacturerName(int index);
+    /**
+     * <code>repeated string manufacturerName = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the manufacturerName at the given index.
      */
     com.google.protobuf.ByteString
-        getManufacturerNameBytes();
+        getManufacturerNameBytes(int index);
+
+    /**
+     * <code>required string importerName = 2;</code>
+     * @return Whether the importerName field is set.
+     */
+    boolean hasImporterName();
+    /**
+     * <code>required string importerName = 2;</code>
+     * @return The importerName.
+     */
+    java.lang.String getImporterName();
+    /**
+     * <code>required string importerName = 2;</code>
+     * @return The bytes for importerName.
+     */
+    com.google.protobuf.ByteString
+        getImporterNameBytes();
   }
   /**
    * Protobuf type {@code nefit.ImporterToServerSubscribe}
@@ -29990,7 +31164,8 @@ public final class NefitProto {
       super(builder);
     }
     private ImporterToServerSubscribe() {
-      manufacturerName_ = "";
+      manufacturerName_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      importerName_ = "";
     }
 
     @java.lang.Override
@@ -30026,8 +31201,17 @@ public final class NefitProto {
               break;
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                manufacturerName_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              manufacturerName_.add(bs);
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              manufacturerName_ = bs;
+              importerName_ = bs;
               break;
             }
             default: {
@@ -30045,6 +31229,9 @@ public final class NefitProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          manufacturerName_ = manufacturerName_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -30064,20 +31251,55 @@ public final class NefitProto {
 
     private int bitField0_;
     public static final int MANUFACTURERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object manufacturerName_;
+    private com.google.protobuf.LazyStringList manufacturerName_;
     /**
-     * <code>required string manufacturerName = 1;</code>
-     * @return Whether the manufacturerName field is set.
+     * <code>repeated string manufacturerName = 1;</code>
+     * @return A list containing the manufacturerName.
      */
-    public boolean hasManufacturerName() {
+    public com.google.protobuf.ProtocolStringList
+        getManufacturerNameList() {
+      return manufacturerName_;
+    }
+    /**
+     * <code>repeated string manufacturerName = 1;</code>
+     * @return The count of manufacturerName.
+     */
+    public int getManufacturerNameCount() {
+      return manufacturerName_.size();
+    }
+    /**
+     * <code>repeated string manufacturerName = 1;</code>
+     * @param index The index of the element to return.
+     * @return The manufacturerName at the given index.
+     */
+    public java.lang.String getManufacturerName(int index) {
+      return manufacturerName_.get(index);
+    }
+    /**
+     * <code>repeated string manufacturerName = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the manufacturerName at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getManufacturerNameBytes(int index) {
+      return manufacturerName_.getByteString(index);
+    }
+
+    public static final int IMPORTERNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object importerName_;
+    /**
+     * <code>required string importerName = 2;</code>
+     * @return Whether the importerName field is set.
+     */
+    public boolean hasImporterName() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>required string manufacturerName = 1;</code>
-     * @return The manufacturerName.
+     * <code>required string importerName = 2;</code>
+     * @return The importerName.
      */
-    public java.lang.String getManufacturerName() {
-      java.lang.Object ref = manufacturerName_;
+    public java.lang.String getImporterName() {
+      java.lang.Object ref = importerName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -30085,23 +31307,23 @@ public final class NefitProto {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          manufacturerName_ = s;
+          importerName_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string manufacturerName = 1;</code>
-     * @return The bytes for manufacturerName.
+     * <code>required string importerName = 2;</code>
+     * @return The bytes for importerName.
      */
     public com.google.protobuf.ByteString
-        getManufacturerNameBytes() {
-      java.lang.Object ref = manufacturerName_;
+        getImporterNameBytes() {
+      java.lang.Object ref = importerName_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        manufacturerName_ = b;
+        importerName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -30115,7 +31337,7 @@ public final class NefitProto {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasManufacturerName()) {
+      if (!hasImporterName()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -30126,8 +31348,11 @@ public final class NefitProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      for (int i = 0; i < manufacturerName_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, manufacturerName_.getRaw(i));
+      }
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, manufacturerName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, importerName_);
       }
       unknownFields.writeTo(output);
     }
@@ -30138,8 +31363,16 @@ public final class NefitProto {
       if (size != -1) return size;
 
       size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < manufacturerName_.size(); i++) {
+          dataSize += computeStringSizeNoTag(manufacturerName_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getManufacturerNameList().size();
+      }
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, manufacturerName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, importerName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -30156,10 +31389,12 @@ public final class NefitProto {
       }
       nefit.shared.NefitProto.ImporterToServerSubscribe other = (nefit.shared.NefitProto.ImporterToServerSubscribe) obj;
 
-      if (hasManufacturerName() != other.hasManufacturerName()) return false;
-      if (hasManufacturerName()) {
-        if (!getManufacturerName()
-            .equals(other.getManufacturerName())) return false;
+      if (!getManufacturerNameList()
+          .equals(other.getManufacturerNameList())) return false;
+      if (hasImporterName() != other.hasImporterName()) return false;
+      if (hasImporterName()) {
+        if (!getImporterName()
+            .equals(other.getImporterName())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -30172,9 +31407,13 @@ public final class NefitProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasManufacturerName()) {
+      if (getManufacturerNameCount() > 0) {
         hash = (37 * hash) + MANUFACTURERNAME_FIELD_NUMBER;
-        hash = (53 * hash) + getManufacturerName().hashCode();
+        hash = (53 * hash) + getManufacturerNameList().hashCode();
+      }
+      if (hasImporterName()) {
+        hash = (37 * hash) + IMPORTERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getImporterName().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -30309,8 +31548,10 @@ public final class NefitProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        manufacturerName_ = "";
+        manufacturerName_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
+        importerName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -30339,10 +31580,15 @@ public final class NefitProto {
         nefit.shared.NefitProto.ImporterToServerSubscribe result = new nefit.shared.NefitProto.ImporterToServerSubscribe(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          manufacturerName_ = manufacturerName_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.manufacturerName_ = manufacturerName_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.importerName_ = importerName_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -30392,9 +31638,19 @@ public final class NefitProto {
 
       public Builder mergeFrom(nefit.shared.NefitProto.ImporterToServerSubscribe other) {
         if (other == nefit.shared.NefitProto.ImporterToServerSubscribe.getDefaultInstance()) return this;
-        if (other.hasManufacturerName()) {
-          bitField0_ |= 0x00000001;
-          manufacturerName_ = other.manufacturerName_;
+        if (!other.manufacturerName_.isEmpty()) {
+          if (manufacturerName_.isEmpty()) {
+            manufacturerName_ = other.manufacturerName_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureManufacturerNameIsMutable();
+            manufacturerName_.addAll(other.manufacturerName_);
+          }
+          onChanged();
+        }
+        if (other.hasImporterName()) {
+          bitField0_ |= 0x00000002;
+          importerName_ = other.importerName_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -30404,7 +31660,7 @@ public final class NefitProto {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasManufacturerName()) {
+        if (!hasImporterName()) {
           return false;
         }
         return true;
@@ -30430,26 +31686,135 @@ public final class NefitProto {
       }
       private int bitField0_;
 
-      private java.lang.Object manufacturerName_ = "";
-      /**
-       * <code>required string manufacturerName = 1;</code>
-       * @return Whether the manufacturerName field is set.
-       */
-      public boolean hasManufacturerName() {
-        return ((bitField0_ & 0x00000001) != 0);
+      private com.google.protobuf.LazyStringList manufacturerName_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureManufacturerNameIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          manufacturerName_ = new com.google.protobuf.LazyStringArrayList(manufacturerName_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
-       * <code>required string manufacturerName = 1;</code>
-       * @return The manufacturerName.
+       * <code>repeated string manufacturerName = 1;</code>
+       * @return A list containing the manufacturerName.
        */
-      public java.lang.String getManufacturerName() {
-        java.lang.Object ref = manufacturerName_;
+      public com.google.protobuf.ProtocolStringList
+          getManufacturerNameList() {
+        return manufacturerName_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @return The count of manufacturerName.
+       */
+      public int getManufacturerNameCount() {
+        return manufacturerName_.size();
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @param index The index of the element to return.
+       * @return The manufacturerName at the given index.
+       */
+      public java.lang.String getManufacturerName(int index) {
+        return manufacturerName_.get(index);
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the manufacturerName at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getManufacturerNameBytes(int index) {
+        return manufacturerName_.getByteString(index);
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The manufacturerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturerName(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureManufacturerNameIsMutable();
+        manufacturerName_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @param value The manufacturerName to add.
+       * @return This builder for chaining.
+       */
+      public Builder addManufacturerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureManufacturerNameIsMutable();
+        manufacturerName_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @param values The manufacturerName to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllManufacturerName(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureManufacturerNameIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, manufacturerName_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearManufacturerName() {
+        manufacturerName_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string manufacturerName = 1;</code>
+       * @param value The bytes of the manufacturerName to add.
+       * @return This builder for chaining.
+       */
+      public Builder addManufacturerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureManufacturerNameIsMutable();
+        manufacturerName_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object importerName_ = "";
+      /**
+       * <code>required string importerName = 2;</code>
+       * @return Whether the importerName field is set.
+       */
+      public boolean hasImporterName() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required string importerName = 2;</code>
+       * @return The importerName.
+       */
+      public java.lang.String getImporterName() {
+        java.lang.Object ref = importerName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            manufacturerName_ = s;
+            importerName_ = s;
           }
           return s;
         } else {
@@ -30457,59 +31822,59 @@ public final class NefitProto {
         }
       }
       /**
-       * <code>required string manufacturerName = 1;</code>
-       * @return The bytes for manufacturerName.
+       * <code>required string importerName = 2;</code>
+       * @return The bytes for importerName.
        */
       public com.google.protobuf.ByteString
-          getManufacturerNameBytes() {
-        java.lang.Object ref = manufacturerName_;
+          getImporterNameBytes() {
+        java.lang.Object ref = importerName_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          manufacturerName_ = b;
+          importerName_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string manufacturerName = 1;</code>
-       * @param value The manufacturerName to set.
+       * <code>required string importerName = 2;</code>
+       * @param value The importerName to set.
        * @return This builder for chaining.
        */
-      public Builder setManufacturerName(
+      public Builder setImporterName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        manufacturerName_ = value;
+  bitField0_ |= 0x00000002;
+        importerName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string manufacturerName = 1;</code>
+       * <code>required string importerName = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearManufacturerName() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        manufacturerName_ = getDefaultInstance().getManufacturerName();
+      public Builder clearImporterName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        importerName_ = getDefaultInstance().getImporterName();
         onChanged();
         return this;
       }
       /**
-       * <code>required string manufacturerName = 1;</code>
-       * @param value The bytes for manufacturerName to set.
+       * <code>required string importerName = 2;</code>
+       * @param value The bytes for importerName to set.
        * @return This builder for chaining.
        */
-      public Builder setManufacturerNameBytes(
+      public Builder setImporterNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-        manufacturerName_ = value;
+  bitField0_ |= 0x00000002;
+        importerName_ = value;
         onChanged();
         return this;
       }
@@ -30625,6 +31990,23 @@ public final class NefitProto {
      * @return The unitPrice.
      */
     float getUnitPrice();
+
+    /**
+     * <code>required string importerName = 5;</code>
+     * @return Whether the importerName field is set.
+     */
+    boolean hasImporterName();
+    /**
+     * <code>required string importerName = 5;</code>
+     * @return The importerName.
+     */
+    java.lang.String getImporterName();
+    /**
+     * <code>required string importerName = 5;</code>
+     * @return The bytes for importerName.
+     */
+    com.google.protobuf.ByteString
+        getImporterNameBytes();
   }
   /**
    * Protobuf type {@code nefit.ImporterToServerOffer}
@@ -30641,6 +32023,7 @@ public final class NefitProto {
     private ImporterToServerOffer() {
       manufacturerName_ = "";
       productName_ = "";
+      importerName_ = "";
     }
 
     @java.lang.Override
@@ -30694,6 +32077,12 @@ public final class NefitProto {
             case 37: {
               bitField0_ |= 0x00000008;
               unitPrice_ = input.readFloat();
+              break;
+            }
+            case 42: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              importerName_ = bs;
               break;
             }
             default: {
@@ -30853,6 +32242,51 @@ public final class NefitProto {
       return unitPrice_;
     }
 
+    public static final int IMPORTERNAME_FIELD_NUMBER = 5;
+    private volatile java.lang.Object importerName_;
+    /**
+     * <code>required string importerName = 5;</code>
+     * @return Whether the importerName field is set.
+     */
+    public boolean hasImporterName() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required string importerName = 5;</code>
+     * @return The importerName.
+     */
+    public java.lang.String getImporterName() {
+      java.lang.Object ref = importerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          importerName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string importerName = 5;</code>
+     * @return The bytes for importerName.
+     */
+    public com.google.protobuf.ByteString
+        getImporterNameBytes() {
+      java.lang.Object ref = importerName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        importerName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -30876,6 +32310,10 @@ public final class NefitProto {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasImporterName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -30894,6 +32332,9 @@ public final class NefitProto {
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeFloat(4, unitPrice_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, importerName_);
       }
       unknownFields.writeTo(output);
     }
@@ -30917,6 +32358,9 @@ public final class NefitProto {
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(4, unitPrice_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, importerName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -30954,6 +32398,11 @@ public final class NefitProto {
             != java.lang.Float.floatToIntBits(
                 other.getUnitPrice())) return false;
       }
+      if (hasImporterName() != other.hasImporterName()) return false;
+      if (hasImporterName()) {
+        if (!getImporterName()
+            .equals(other.getImporterName())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -30981,6 +32430,10 @@ public final class NefitProto {
         hash = (37 * hash) + UNITPRICE_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getUnitPrice());
+      }
+      if (hasImporterName()) {
+        hash = (37 * hash) + IMPORTERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getImporterName().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -31123,6 +32576,8 @@ public final class NefitProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         unitPrice_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
+        importerName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -31167,6 +32622,10 @@ public final class NefitProto {
           result.unitPrice_ = unitPrice_;
           to_bitField0_ |= 0x00000008;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.importerName_ = importerName_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -31232,6 +32691,11 @@ public final class NefitProto {
         if (other.hasUnitPrice()) {
           setUnitPrice(other.getUnitPrice());
         }
+        if (other.hasImporterName()) {
+          bitField0_ |= 0x00000010;
+          importerName_ = other.importerName_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -31249,6 +32713,9 @@ public final class NefitProto {
           return false;
         }
         if (!hasUnitPrice()) {
+          return false;
+        }
+        if (!hasImporterName()) {
           return false;
         }
         return true;
@@ -31515,6 +32982,90 @@ public final class NefitProto {
         onChanged();
         return this;
       }
+
+      private java.lang.Object importerName_ = "";
+      /**
+       * <code>required string importerName = 5;</code>
+       * @return Whether the importerName field is set.
+       */
+      public boolean hasImporterName() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>required string importerName = 5;</code>
+       * @return The importerName.
+       */
+      public java.lang.String getImporterName() {
+        java.lang.Object ref = importerName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            importerName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string importerName = 5;</code>
+       * @return The bytes for importerName.
+       */
+      public com.google.protobuf.ByteString
+          getImporterNameBytes() {
+        java.lang.Object ref = importerName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          importerName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string importerName = 5;</code>
+       * @param value The importerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImporterName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        importerName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string importerName = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearImporterName() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        importerName_ = getDefaultInstance().getImporterName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string importerName = 5;</code>
+       * @param value The bytes for importerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImporterNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        importerName_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -31617,6 +33168,36 @@ public final class NefitProto {
      */
     nefit.shared.NefitProto.ServerToImporterOfferWonOrBuilder getOfferWonOrBuilder();
 
+    /**
+     * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+     * @return Whether the offerLose field is set.
+     */
+    boolean hasOfferLose();
+    /**
+     * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+     * @return The offerLose.
+     */
+    nefit.shared.NefitProto.ServerToImporterOfferLose getOfferLose();
+    /**
+     * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+     */
+    nefit.shared.NefitProto.ServerToImporterOfferLoseOrBuilder getOfferLoseOrBuilder();
+
+    /**
+     * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+     * @return Whether the newProduct field is set.
+     */
+    boolean hasNewProduct();
+    /**
+     * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+     * @return The newProduct.
+     */
+    nefit.shared.NefitProto.ServerToImporterNewProduct getNewProduct();
+    /**
+     * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+     */
+    nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder getNewProductOrBuilder();
+
     public nefit.shared.NefitProto.ServerToImporter.MessageCase getMessageCase();
   }
   /**
@@ -31707,6 +33288,34 @@ public final class NefitProto {
               messageCase_ = 3;
               break;
             }
+            case 34: {
+              nefit.shared.NefitProto.ServerToImporterOfferLose.Builder subBuilder = null;
+              if (messageCase_ == 4) {
+                subBuilder = ((nefit.shared.NefitProto.ServerToImporterOfferLose) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(nefit.shared.NefitProto.ServerToImporterOfferLose.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.shared.NefitProto.ServerToImporterOfferLose) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 4;
+              break;
+            }
+            case 42: {
+              nefit.shared.NefitProto.ServerToImporterNewProduct.Builder subBuilder = null;
+              if (messageCase_ == 5) {
+                subBuilder = ((nefit.shared.NefitProto.ServerToImporterNewProduct) message_).toBuilder();
+              }
+              message_ =
+                  input.readMessage(nefit.shared.NefitProto.ServerToImporterNewProduct.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((nefit.shared.NefitProto.ServerToImporterNewProduct) message_);
+                message_ = subBuilder.buildPartial();
+              }
+              messageCase_ = 5;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -31748,6 +33357,8 @@ public final class NefitProto {
       OFFERSUBMITTED(1),
       OFFERINVALID(2),
       OFFERWON(3),
+      OFFERLOSE(4),
+      NEWPRODUCT(5),
       MESSAGE_NOT_SET(0);
       private final int value;
       private MessageCase(int value) {
@@ -31768,6 +33379,8 @@ public final class NefitProto {
           case 1: return OFFERSUBMITTED;
           case 2: return OFFERINVALID;
           case 3: return OFFERWON;
+          case 4: return OFFERLOSE;
+          case 5: return NEWPRODUCT;
           case 0: return MESSAGE_NOT_SET;
           default: return null;
         }
@@ -31867,6 +33480,62 @@ public final class NefitProto {
       return nefit.shared.NefitProto.ServerToImporterOfferWon.getDefaultInstance();
     }
 
+    public static final int OFFERLOSE_FIELD_NUMBER = 4;
+    /**
+     * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+     * @return Whether the offerLose field is set.
+     */
+    public boolean hasOfferLose() {
+      return messageCase_ == 4;
+    }
+    /**
+     * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+     * @return The offerLose.
+     */
+    public nefit.shared.NefitProto.ServerToImporterOfferLose getOfferLose() {
+      if (messageCase_ == 4) {
+         return (nefit.shared.NefitProto.ServerToImporterOfferLose) message_;
+      }
+      return nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+     */
+    public nefit.shared.NefitProto.ServerToImporterOfferLoseOrBuilder getOfferLoseOrBuilder() {
+      if (messageCase_ == 4) {
+         return (nefit.shared.NefitProto.ServerToImporterOfferLose) message_;
+      }
+      return nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance();
+    }
+
+    public static final int NEWPRODUCT_FIELD_NUMBER = 5;
+    /**
+     * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+     * @return Whether the newProduct field is set.
+     */
+    public boolean hasNewProduct() {
+      return messageCase_ == 5;
+    }
+    /**
+     * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+     * @return The newProduct.
+     */
+    public nefit.shared.NefitProto.ServerToImporterNewProduct getNewProduct() {
+      if (messageCase_ == 5) {
+         return (nefit.shared.NefitProto.ServerToImporterNewProduct) message_;
+      }
+      return nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
+    }
+    /**
+     * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+     */
+    public nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder getNewProductOrBuilder() {
+      if (messageCase_ == 5) {
+         return (nefit.shared.NefitProto.ServerToImporterNewProduct) message_;
+      }
+      return nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -31886,6 +33555,18 @@ public final class NefitProto {
           return false;
         }
       }
+      if (hasOfferLose()) {
+        if (!getOfferLose().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasNewProduct()) {
+        if (!getNewProduct().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -31901,6 +33582,12 @@ public final class NefitProto {
       }
       if (messageCase_ == 3) {
         output.writeMessage(3, (nefit.shared.NefitProto.ServerToImporterOfferWon) message_);
+      }
+      if (messageCase_ == 4) {
+        output.writeMessage(4, (nefit.shared.NefitProto.ServerToImporterOfferLose) message_);
+      }
+      if (messageCase_ == 5) {
+        output.writeMessage(5, (nefit.shared.NefitProto.ServerToImporterNewProduct) message_);
       }
       unknownFields.writeTo(output);
     }
@@ -31922,6 +33609,14 @@ public final class NefitProto {
       if (messageCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, (nefit.shared.NefitProto.ServerToImporterOfferWon) message_);
+      }
+      if (messageCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (nefit.shared.NefitProto.ServerToImporterOfferLose) message_);
+      }
+      if (messageCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, (nefit.shared.NefitProto.ServerToImporterNewProduct) message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -31952,6 +33647,14 @@ public final class NefitProto {
           if (!getOfferWon()
               .equals(other.getOfferWon())) return false;
           break;
+        case 4:
+          if (!getOfferLose()
+              .equals(other.getOfferLose())) return false;
+          break;
+        case 5:
+          if (!getNewProduct()
+              .equals(other.getNewProduct())) return false;
+          break;
         case 0:
         default:
       }
@@ -31978,6 +33681,14 @@ public final class NefitProto {
         case 3:
           hash = (37 * hash) + OFFERWON_FIELD_NUMBER;
           hash = (53 * hash) + getOfferWon().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + OFFERLOSE_FIELD_NUMBER;
+          hash = (53 * hash) + getOfferLose().hashCode();
+          break;
+        case 5:
+          hash = (37 * hash) + NEWPRODUCT_FIELD_NUMBER;
+          hash = (53 * hash) + getNewProduct().hashCode();
           break;
         case 0:
         default:
@@ -32166,6 +33877,20 @@ public final class NefitProto {
             result.message_ = offerWonBuilder_.build();
           }
         }
+        if (messageCase_ == 4) {
+          if (offerLoseBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = offerLoseBuilder_.build();
+          }
+        }
+        if (messageCase_ == 5) {
+          if (newProductBuilder_ == null) {
+            result.message_ = message_;
+          } else {
+            result.message_ = newProductBuilder_.build();
+          }
+        }
         result.bitField0_ = to_bitField0_;
         result.messageCase_ = messageCase_;
         onBuilt();
@@ -32229,6 +33954,14 @@ public final class NefitProto {
             mergeOfferWon(other.getOfferWon());
             break;
           }
+          case OFFERLOSE: {
+            mergeOfferLose(other.getOfferLose());
+            break;
+          }
+          case NEWPRODUCT: {
+            mergeNewProduct(other.getNewProduct());
+            break;
+          }
           case MESSAGE_NOT_SET: {
             break;
           }
@@ -32247,6 +33980,16 @@ public final class NefitProto {
         }
         if (hasOfferWon()) {
           if (!getOfferWon().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasOfferLose()) {
+          if (!getOfferLose().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasNewProduct()) {
+          if (!getNewProduct().isInitialized()) {
             return false;
           }
         }
@@ -32700,6 +34443,282 @@ public final class NefitProto {
         messageCase_ = 3;
         onChanged();;
         return offerWonBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ServerToImporterOfferLose, nefit.shared.NefitProto.ServerToImporterOfferLose.Builder, nefit.shared.NefitProto.ServerToImporterOfferLoseOrBuilder> offerLoseBuilder_;
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       * @return Whether the offerLose field is set.
+       */
+      public boolean hasOfferLose() {
+        return messageCase_ == 4;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       * @return The offerLose.
+       */
+      public nefit.shared.NefitProto.ServerToImporterOfferLose getOfferLose() {
+        if (offerLoseBuilder_ == null) {
+          if (messageCase_ == 4) {
+            return (nefit.shared.NefitProto.ServerToImporterOfferLose) message_;
+          }
+          return nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance();
+        } else {
+          if (messageCase_ == 4) {
+            return offerLoseBuilder_.getMessage();
+          }
+          return nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       */
+      public Builder setOfferLose(nefit.shared.NefitProto.ServerToImporterOfferLose value) {
+        if (offerLoseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          offerLoseBuilder_.setMessage(value);
+        }
+        messageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       */
+      public Builder setOfferLose(
+          nefit.shared.NefitProto.ServerToImporterOfferLose.Builder builderForValue) {
+        if (offerLoseBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          offerLoseBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       */
+      public Builder mergeOfferLose(nefit.shared.NefitProto.ServerToImporterOfferLose value) {
+        if (offerLoseBuilder_ == null) {
+          if (messageCase_ == 4 &&
+              message_ != nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance()) {
+            message_ = nefit.shared.NefitProto.ServerToImporterOfferLose.newBuilder((nefit.shared.NefitProto.ServerToImporterOfferLose) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 4) {
+            offerLoseBuilder_.mergeFrom(value);
+          }
+          offerLoseBuilder_.setMessage(value);
+        }
+        messageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       */
+      public Builder clearOfferLose() {
+        if (offerLoseBuilder_ == null) {
+          if (messageCase_ == 4) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 4) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          offerLoseBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       */
+      public nefit.shared.NefitProto.ServerToImporterOfferLose.Builder getOfferLoseBuilder() {
+        return getOfferLoseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       */
+      public nefit.shared.NefitProto.ServerToImporterOfferLoseOrBuilder getOfferLoseOrBuilder() {
+        if ((messageCase_ == 4) && (offerLoseBuilder_ != null)) {
+          return offerLoseBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 4) {
+            return (nefit.shared.NefitProto.ServerToImporterOfferLose) message_;
+          }
+          return nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterOfferLose offerLose = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ServerToImporterOfferLose, nefit.shared.NefitProto.ServerToImporterOfferLose.Builder, nefit.shared.NefitProto.ServerToImporterOfferLoseOrBuilder> 
+          getOfferLoseFieldBuilder() {
+        if (offerLoseBuilder_ == null) {
+          if (!(messageCase_ == 4)) {
+            message_ = nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance();
+          }
+          offerLoseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.shared.NefitProto.ServerToImporterOfferLose, nefit.shared.NefitProto.ServerToImporterOfferLose.Builder, nefit.shared.NefitProto.ServerToImporterOfferLoseOrBuilder>(
+                  (nefit.shared.NefitProto.ServerToImporterOfferLose) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 4;
+        onChanged();;
+        return offerLoseBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ServerToImporterNewProduct, nefit.shared.NefitProto.ServerToImporterNewProduct.Builder, nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder> newProductBuilder_;
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       * @return Whether the newProduct field is set.
+       */
+      public boolean hasNewProduct() {
+        return messageCase_ == 5;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       * @return The newProduct.
+       */
+      public nefit.shared.NefitProto.ServerToImporterNewProduct getNewProduct() {
+        if (newProductBuilder_ == null) {
+          if (messageCase_ == 5) {
+            return (nefit.shared.NefitProto.ServerToImporterNewProduct) message_;
+          }
+          return nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
+        } else {
+          if (messageCase_ == 5) {
+            return newProductBuilder_.getMessage();
+          }
+          return nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       */
+      public Builder setNewProduct(nefit.shared.NefitProto.ServerToImporterNewProduct value) {
+        if (newProductBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          message_ = value;
+          onChanged();
+        } else {
+          newProductBuilder_.setMessage(value);
+        }
+        messageCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       */
+      public Builder setNewProduct(
+          nefit.shared.NefitProto.ServerToImporterNewProduct.Builder builderForValue) {
+        if (newProductBuilder_ == null) {
+          message_ = builderForValue.build();
+          onChanged();
+        } else {
+          newProductBuilder_.setMessage(builderForValue.build());
+        }
+        messageCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       */
+      public Builder mergeNewProduct(nefit.shared.NefitProto.ServerToImporterNewProduct value) {
+        if (newProductBuilder_ == null) {
+          if (messageCase_ == 5 &&
+              message_ != nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance()) {
+            message_ = nefit.shared.NefitProto.ServerToImporterNewProduct.newBuilder((nefit.shared.NefitProto.ServerToImporterNewProduct) message_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            message_ = value;
+          }
+          onChanged();
+        } else {
+          if (messageCase_ == 5) {
+            newProductBuilder_.mergeFrom(value);
+          }
+          newProductBuilder_.setMessage(value);
+        }
+        messageCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       */
+      public Builder clearNewProduct() {
+        if (newProductBuilder_ == null) {
+          if (messageCase_ == 5) {
+            messageCase_ = 0;
+            message_ = null;
+            onChanged();
+          }
+        } else {
+          if (messageCase_ == 5) {
+            messageCase_ = 0;
+            message_ = null;
+          }
+          newProductBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       */
+      public nefit.shared.NefitProto.ServerToImporterNewProduct.Builder getNewProductBuilder() {
+        return getNewProductFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       */
+      public nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder getNewProductOrBuilder() {
+        if ((messageCase_ == 5) && (newProductBuilder_ != null)) {
+          return newProductBuilder_.getMessageOrBuilder();
+        } else {
+          if (messageCase_ == 5) {
+            return (nefit.shared.NefitProto.ServerToImporterNewProduct) message_;
+          }
+          return nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .nefit.ServerToImporterNewProduct newProduct = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          nefit.shared.NefitProto.ServerToImporterNewProduct, nefit.shared.NefitProto.ServerToImporterNewProduct.Builder, nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder> 
+          getNewProductFieldBuilder() {
+        if (newProductBuilder_ == null) {
+          if (!(messageCase_ == 5)) {
+            message_ = nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
+          }
+          newProductBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              nefit.shared.NefitProto.ServerToImporterNewProduct, nefit.shared.NefitProto.ServerToImporterNewProduct.Builder, nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder>(
+                  (nefit.shared.NefitProto.ServerToImporterNewProduct) message_,
+                  getParentForChildren(),
+                  isClean());
+          message_ = null;
+        }
+        messageCase_ = 5;
+        onChanged();;
+        return newProductBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -34784,6 +36803,2008 @@ public final class NefitProto {
 
   }
 
+  public interface ServerToImporterOfferLoseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.ServerToImporterOfferLose)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string manufacturerName = 1;</code>
+     * @return Whether the manufacturerName field is set.
+     */
+    boolean hasManufacturerName();
+    /**
+     * <code>required string manufacturerName = 1;</code>
+     * @return The manufacturerName.
+     */
+    java.lang.String getManufacturerName();
+    /**
+     * <code>required string manufacturerName = 1;</code>
+     * @return The bytes for manufacturerName.
+     */
+    com.google.protobuf.ByteString
+        getManufacturerNameBytes();
+
+    /**
+     * <code>required string productName = 2;</code>
+     * @return Whether the productName field is set.
+     */
+    boolean hasProductName();
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The productName.
+     */
+    java.lang.String getProductName();
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The bytes for productName.
+     */
+    com.google.protobuf.ByteString
+        getProductNameBytes();
+  }
+  /**
+   * Protobuf type {@code nefit.ServerToImporterOfferLose}
+   */
+  public  static final class ServerToImporterOfferLose extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:nefit.ServerToImporterOfferLose)
+      ServerToImporterOfferLoseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ServerToImporterOfferLose.newBuilder() to construct.
+    private ServerToImporterOfferLose(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ServerToImporterOfferLose() {
+      manufacturerName_ = "";
+      productName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ServerToImporterOfferLose();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ServerToImporterOfferLose(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              manufacturerName_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              productName_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterOfferLose_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterOfferLose_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              nefit.shared.NefitProto.ServerToImporterOfferLose.class, nefit.shared.NefitProto.ServerToImporterOfferLose.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MANUFACTURERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object manufacturerName_;
+    /**
+     * <code>required string manufacturerName = 1;</code>
+     * @return Whether the manufacturerName field is set.
+     */
+    public boolean hasManufacturerName() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string manufacturerName = 1;</code>
+     * @return The manufacturerName.
+     */
+    public java.lang.String getManufacturerName() {
+      java.lang.Object ref = manufacturerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          manufacturerName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string manufacturerName = 1;</code>
+     * @return The bytes for manufacturerName.
+     */
+    public com.google.protobuf.ByteString
+        getManufacturerNameBytes() {
+      java.lang.Object ref = manufacturerName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        manufacturerName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PRODUCTNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object productName_;
+    /**
+     * <code>required string productName = 2;</code>
+     * @return Whether the productName field is set.
+     */
+    public boolean hasProductName() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The productName.
+     */
+    public java.lang.String getProductName() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          productName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string productName = 2;</code>
+     * @return The bytes for productName.
+     */
+    public com.google.protobuf.ByteString
+        getProductNameBytes() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        productName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasManufacturerName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasProductName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, manufacturerName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, productName_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, manufacturerName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, productName_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof nefit.shared.NefitProto.ServerToImporterOfferLose)) {
+        return super.equals(obj);
+      }
+      nefit.shared.NefitProto.ServerToImporterOfferLose other = (nefit.shared.NefitProto.ServerToImporterOfferLose) obj;
+
+      if (hasManufacturerName() != other.hasManufacturerName()) return false;
+      if (hasManufacturerName()) {
+        if (!getManufacturerName()
+            .equals(other.getManufacturerName())) return false;
+      }
+      if (hasProductName() != other.hasProductName()) return false;
+      if (hasProductName()) {
+        if (!getProductName()
+            .equals(other.getProductName())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasManufacturerName()) {
+        hash = (37 * hash) + MANUFACTURERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getManufacturerName().hashCode();
+      }
+      if (hasProductName()) {
+        hash = (37 * hash) + PRODUCTNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getProductName().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(nefit.shared.NefitProto.ServerToImporterOfferLose prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code nefit.ServerToImporterOfferLose}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:nefit.ServerToImporterOfferLose)
+        nefit.shared.NefitProto.ServerToImporterOfferLoseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterOfferLose_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterOfferLose_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                nefit.shared.NefitProto.ServerToImporterOfferLose.class, nefit.shared.NefitProto.ServerToImporterOfferLose.Builder.class);
+      }
+
+      // Construct using nefit.shared.NefitProto.ServerToImporterOfferLose.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        manufacturerName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        productName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterOfferLose_descriptor;
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ServerToImporterOfferLose getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ServerToImporterOfferLose build() {
+        nefit.shared.NefitProto.ServerToImporterOfferLose result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ServerToImporterOfferLose buildPartial() {
+        nefit.shared.NefitProto.ServerToImporterOfferLose result = new nefit.shared.NefitProto.ServerToImporterOfferLose(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.manufacturerName_ = manufacturerName_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.productName_ = productName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof nefit.shared.NefitProto.ServerToImporterOfferLose) {
+          return mergeFrom((nefit.shared.NefitProto.ServerToImporterOfferLose)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(nefit.shared.NefitProto.ServerToImporterOfferLose other) {
+        if (other == nefit.shared.NefitProto.ServerToImporterOfferLose.getDefaultInstance()) return this;
+        if (other.hasManufacturerName()) {
+          bitField0_ |= 0x00000001;
+          manufacturerName_ = other.manufacturerName_;
+          onChanged();
+        }
+        if (other.hasProductName()) {
+          bitField0_ |= 0x00000002;
+          productName_ = other.productName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasManufacturerName()) {
+          return false;
+        }
+        if (!hasProductName()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        nefit.shared.NefitProto.ServerToImporterOfferLose parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (nefit.shared.NefitProto.ServerToImporterOfferLose) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object manufacturerName_ = "";
+      /**
+       * <code>required string manufacturerName = 1;</code>
+       * @return Whether the manufacturerName field is set.
+       */
+      public boolean hasManufacturerName() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string manufacturerName = 1;</code>
+       * @return The manufacturerName.
+       */
+      public java.lang.String getManufacturerName() {
+        java.lang.Object ref = manufacturerName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            manufacturerName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string manufacturerName = 1;</code>
+       * @return The bytes for manufacturerName.
+       */
+      public com.google.protobuf.ByteString
+          getManufacturerNameBytes() {
+        java.lang.Object ref = manufacturerName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          manufacturerName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string manufacturerName = 1;</code>
+       * @param value The manufacturerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        manufacturerName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string manufacturerName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearManufacturerName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        manufacturerName_ = getDefaultInstance().getManufacturerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string manufacturerName = 1;</code>
+       * @param value The bytes for manufacturerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        manufacturerName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object productName_ = "";
+      /**
+       * <code>required string productName = 2;</code>
+       * @return Whether the productName field is set.
+       */
+      public boolean hasProductName() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @return The productName.
+       */
+      public java.lang.String getProductName() {
+        java.lang.Object ref = productName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            productName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @return The bytes for productName.
+       */
+      public com.google.protobuf.ByteString
+          getProductNameBytes() {
+        java.lang.Object ref = productName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          productName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @param value The productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        productName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProductName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        productName_ = getDefaultInstance().getProductName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productName = 2;</code>
+       * @param value The bytes for productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        productName_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:nefit.ServerToImporterOfferLose)
+    }
+
+    // @@protoc_insertion_point(class_scope:nefit.ServerToImporterOfferLose)
+    private static final nefit.shared.NefitProto.ServerToImporterOfferLose DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ServerToImporterOfferLose();
+    }
+
+    public static nefit.shared.NefitProto.ServerToImporterOfferLose getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ServerToImporterOfferLose>
+        PARSER = new com.google.protobuf.AbstractParser<ServerToImporterOfferLose>() {
+      @java.lang.Override
+      public ServerToImporterOfferLose parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ServerToImporterOfferLose(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ServerToImporterOfferLose> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ServerToImporterOfferLose> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public nefit.shared.NefitProto.ServerToImporterOfferLose getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ServerToImporterNewProductOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:nefit.ServerToImporterNewProduct)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string productName = 1;</code>
+     * @return Whether the productName field is set.
+     */
+    boolean hasProductName();
+    /**
+     * <code>required string productName = 1;</code>
+     * @return The productName.
+     */
+    java.lang.String getProductName();
+    /**
+     * <code>required string productName = 1;</code>
+     * @return The bytes for productName.
+     */
+    com.google.protobuf.ByteString
+        getProductNameBytes();
+
+    /**
+     * <code>required int32 minQuantity = 2;</code>
+     * @return Whether the minQuantity field is set.
+     */
+    boolean hasMinQuantity();
+    /**
+     * <code>required int32 minQuantity = 2;</code>
+     * @return The minQuantity.
+     */
+    int getMinQuantity();
+
+    /**
+     * <code>required int32 maxQuantity = 3;</code>
+     * @return Whether the maxQuantity field is set.
+     */
+    boolean hasMaxQuantity();
+    /**
+     * <code>required int32 maxQuantity = 3;</code>
+     * @return The maxQuantity.
+     */
+    int getMaxQuantity();
+
+    /**
+     * <code>required float minUnitPrice = 4;</code>
+     * @return Whether the minUnitPrice field is set.
+     */
+    boolean hasMinUnitPrice();
+    /**
+     * <code>required float minUnitPrice = 4;</code>
+     * @return The minUnitPrice.
+     */
+    float getMinUnitPrice();
+
+    /**
+     * <code>required int32 timeout = 5;</code>
+     * @return Whether the timeout field is set.
+     */
+    boolean hasTimeout();
+    /**
+     * <code>required int32 timeout = 5;</code>
+     * @return The timeout.
+     */
+    int getTimeout();
+
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return Whether the manufacturerName field is set.
+     */
+    boolean hasManufacturerName();
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The manufacturerName.
+     */
+    java.lang.String getManufacturerName();
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The bytes for manufacturerName.
+     */
+    com.google.protobuf.ByteString
+        getManufacturerNameBytes();
+  }
+  /**
+   * Protobuf type {@code nefit.ServerToImporterNewProduct}
+   */
+  public  static final class ServerToImporterNewProduct extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:nefit.ServerToImporterNewProduct)
+      ServerToImporterNewProductOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ServerToImporterNewProduct.newBuilder() to construct.
+    private ServerToImporterNewProduct(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ServerToImporterNewProduct() {
+      productName_ = "";
+      manufacturerName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ServerToImporterNewProduct();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ServerToImporterNewProduct(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              productName_ = bs;
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              minQuantity_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              maxQuantity_ = input.readInt32();
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              minUnitPrice_ = input.readFloat();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              timeout_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              manufacturerName_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterNewProduct_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterNewProduct_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              nefit.shared.NefitProto.ServerToImporterNewProduct.class, nefit.shared.NefitProto.ServerToImporterNewProduct.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int PRODUCTNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object productName_;
+    /**
+     * <code>required string productName = 1;</code>
+     * @return Whether the productName field is set.
+     */
+    public boolean hasProductName() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string productName = 1;</code>
+     * @return The productName.
+     */
+    public java.lang.String getProductName() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          productName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string productName = 1;</code>
+     * @return The bytes for productName.
+     */
+    public com.google.protobuf.ByteString
+        getProductNameBytes() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        productName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MINQUANTITY_FIELD_NUMBER = 2;
+    private int minQuantity_;
+    /**
+     * <code>required int32 minQuantity = 2;</code>
+     * @return Whether the minQuantity field is set.
+     */
+    public boolean hasMinQuantity() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required int32 minQuantity = 2;</code>
+     * @return The minQuantity.
+     */
+    public int getMinQuantity() {
+      return minQuantity_;
+    }
+
+    public static final int MAXQUANTITY_FIELD_NUMBER = 3;
+    private int maxQuantity_;
+    /**
+     * <code>required int32 maxQuantity = 3;</code>
+     * @return Whether the maxQuantity field is set.
+     */
+    public boolean hasMaxQuantity() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required int32 maxQuantity = 3;</code>
+     * @return The maxQuantity.
+     */
+    public int getMaxQuantity() {
+      return maxQuantity_;
+    }
+
+    public static final int MINUNITPRICE_FIELD_NUMBER = 4;
+    private float minUnitPrice_;
+    /**
+     * <code>required float minUnitPrice = 4;</code>
+     * @return Whether the minUnitPrice field is set.
+     */
+    public boolean hasMinUnitPrice() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>required float minUnitPrice = 4;</code>
+     * @return The minUnitPrice.
+     */
+    public float getMinUnitPrice() {
+      return minUnitPrice_;
+    }
+
+    public static final int TIMEOUT_FIELD_NUMBER = 5;
+    private int timeout_;
+    /**
+     * <code>required int32 timeout = 5;</code>
+     * @return Whether the timeout field is set.
+     */
+    public boolean hasTimeout() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required int32 timeout = 5;</code>
+     * @return The timeout.
+     */
+    public int getTimeout() {
+      return timeout_;
+    }
+
+    public static final int MANUFACTURERNAME_FIELD_NUMBER = 6;
+    private volatile java.lang.Object manufacturerName_;
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return Whether the manufacturerName field is set.
+     */
+    public boolean hasManufacturerName() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The manufacturerName.
+     */
+    public java.lang.String getManufacturerName() {
+      java.lang.Object ref = manufacturerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          manufacturerName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string manufacturerName = 6;</code>
+     * @return The bytes for manufacturerName.
+     */
+    public com.google.protobuf.ByteString
+        getManufacturerNameBytes() {
+      java.lang.Object ref = manufacturerName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        manufacturerName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasProductName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMinQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMaxQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMinUnitPrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTimeout()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasManufacturerName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, productName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeInt32(2, minQuantity_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt32(3, maxQuantity_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeFloat(4, minUnitPrice_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeInt32(5, timeout_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, manufacturerName_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, productName_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, minQuantity_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, maxQuantity_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, minUnitPrice_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, timeout_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, manufacturerName_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof nefit.shared.NefitProto.ServerToImporterNewProduct)) {
+        return super.equals(obj);
+      }
+      nefit.shared.NefitProto.ServerToImporterNewProduct other = (nefit.shared.NefitProto.ServerToImporterNewProduct) obj;
+
+      if (hasProductName() != other.hasProductName()) return false;
+      if (hasProductName()) {
+        if (!getProductName()
+            .equals(other.getProductName())) return false;
+      }
+      if (hasMinQuantity() != other.hasMinQuantity()) return false;
+      if (hasMinQuantity()) {
+        if (getMinQuantity()
+            != other.getMinQuantity()) return false;
+      }
+      if (hasMaxQuantity() != other.hasMaxQuantity()) return false;
+      if (hasMaxQuantity()) {
+        if (getMaxQuantity()
+            != other.getMaxQuantity()) return false;
+      }
+      if (hasMinUnitPrice() != other.hasMinUnitPrice()) return false;
+      if (hasMinUnitPrice()) {
+        if (java.lang.Float.floatToIntBits(getMinUnitPrice())
+            != java.lang.Float.floatToIntBits(
+                other.getMinUnitPrice())) return false;
+      }
+      if (hasTimeout() != other.hasTimeout()) return false;
+      if (hasTimeout()) {
+        if (getTimeout()
+            != other.getTimeout()) return false;
+      }
+      if (hasManufacturerName() != other.hasManufacturerName()) return false;
+      if (hasManufacturerName()) {
+        if (!getManufacturerName()
+            .equals(other.getManufacturerName())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasProductName()) {
+        hash = (37 * hash) + PRODUCTNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getProductName().hashCode();
+      }
+      if (hasMinQuantity()) {
+        hash = (37 * hash) + MINQUANTITY_FIELD_NUMBER;
+        hash = (53 * hash) + getMinQuantity();
+      }
+      if (hasMaxQuantity()) {
+        hash = (37 * hash) + MAXQUANTITY_FIELD_NUMBER;
+        hash = (53 * hash) + getMaxQuantity();
+      }
+      if (hasMinUnitPrice()) {
+        hash = (37 * hash) + MINUNITPRICE_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getMinUnitPrice());
+      }
+      if (hasTimeout()) {
+        hash = (37 * hash) + TIMEOUT_FIELD_NUMBER;
+        hash = (53 * hash) + getTimeout();
+      }
+      if (hasManufacturerName()) {
+        hash = (37 * hash) + MANUFACTURERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getManufacturerName().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(nefit.shared.NefitProto.ServerToImporterNewProduct prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code nefit.ServerToImporterNewProduct}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:nefit.ServerToImporterNewProduct)
+        nefit.shared.NefitProto.ServerToImporterNewProductOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterNewProduct_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterNewProduct_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                nefit.shared.NefitProto.ServerToImporterNewProduct.class, nefit.shared.NefitProto.ServerToImporterNewProduct.Builder.class);
+      }
+
+      // Construct using nefit.shared.NefitProto.ServerToImporterNewProduct.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        productName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        minQuantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        maxQuantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        minUnitPrice_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        timeout_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        manufacturerName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return nefit.shared.NefitProto.internal_static_nefit_ServerToImporterNewProduct_descriptor;
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ServerToImporterNewProduct getDefaultInstanceForType() {
+        return nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ServerToImporterNewProduct build() {
+        nefit.shared.NefitProto.ServerToImporterNewProduct result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public nefit.shared.NefitProto.ServerToImporterNewProduct buildPartial() {
+        nefit.shared.NefitProto.ServerToImporterNewProduct result = new nefit.shared.NefitProto.ServerToImporterNewProduct(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.productName_ = productName_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.minQuantity_ = minQuantity_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.maxQuantity_ = maxQuantity_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.minUnitPrice_ = minUnitPrice_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.timeout_ = timeout_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.manufacturerName_ = manufacturerName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof nefit.shared.NefitProto.ServerToImporterNewProduct) {
+          return mergeFrom((nefit.shared.NefitProto.ServerToImporterNewProduct)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(nefit.shared.NefitProto.ServerToImporterNewProduct other) {
+        if (other == nefit.shared.NefitProto.ServerToImporterNewProduct.getDefaultInstance()) return this;
+        if (other.hasProductName()) {
+          bitField0_ |= 0x00000001;
+          productName_ = other.productName_;
+          onChanged();
+        }
+        if (other.hasMinQuantity()) {
+          setMinQuantity(other.getMinQuantity());
+        }
+        if (other.hasMaxQuantity()) {
+          setMaxQuantity(other.getMaxQuantity());
+        }
+        if (other.hasMinUnitPrice()) {
+          setMinUnitPrice(other.getMinUnitPrice());
+        }
+        if (other.hasTimeout()) {
+          setTimeout(other.getTimeout());
+        }
+        if (other.hasManufacturerName()) {
+          bitField0_ |= 0x00000020;
+          manufacturerName_ = other.manufacturerName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasProductName()) {
+          return false;
+        }
+        if (!hasMinQuantity()) {
+          return false;
+        }
+        if (!hasMaxQuantity()) {
+          return false;
+        }
+        if (!hasMinUnitPrice()) {
+          return false;
+        }
+        if (!hasTimeout()) {
+          return false;
+        }
+        if (!hasManufacturerName()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        nefit.shared.NefitProto.ServerToImporterNewProduct parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (nefit.shared.NefitProto.ServerToImporterNewProduct) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object productName_ = "";
+      /**
+       * <code>required string productName = 1;</code>
+       * @return Whether the productName field is set.
+       */
+      public boolean hasProductName() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required string productName = 1;</code>
+       * @return The productName.
+       */
+      public java.lang.String getProductName() {
+        java.lang.Object ref = productName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            productName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string productName = 1;</code>
+       * @return The bytes for productName.
+       */
+      public com.google.protobuf.ByteString
+          getProductNameBytes() {
+        java.lang.Object ref = productName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          productName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string productName = 1;</code>
+       * @param value The productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        productName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProductName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        productName_ = getDefaultInstance().getProductName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string productName = 1;</code>
+       * @param value The bytes for productName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        productName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int minQuantity_ ;
+      /**
+       * <code>required int32 minQuantity = 2;</code>
+       * @return Whether the minQuantity field is set.
+       */
+      public boolean hasMinQuantity() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required int32 minQuantity = 2;</code>
+       * @return The minQuantity.
+       */
+      public int getMinQuantity() {
+        return minQuantity_;
+      }
+      /**
+       * <code>required int32 minQuantity = 2;</code>
+       * @param value The minQuantity to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinQuantity(int value) {
+        bitField0_ |= 0x00000002;
+        minQuantity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 minQuantity = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinQuantity() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        minQuantity_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int maxQuantity_ ;
+      /**
+       * <code>required int32 maxQuantity = 3;</code>
+       * @return Whether the maxQuantity field is set.
+       */
+      public boolean hasMaxQuantity() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>required int32 maxQuantity = 3;</code>
+       * @return The maxQuantity.
+       */
+      public int getMaxQuantity() {
+        return maxQuantity_;
+      }
+      /**
+       * <code>required int32 maxQuantity = 3;</code>
+       * @param value The maxQuantity to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxQuantity(int value) {
+        bitField0_ |= 0x00000004;
+        maxQuantity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 maxQuantity = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxQuantity() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        maxQuantity_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private float minUnitPrice_ ;
+      /**
+       * <code>required float minUnitPrice = 4;</code>
+       * @return Whether the minUnitPrice field is set.
+       */
+      public boolean hasMinUnitPrice() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>required float minUnitPrice = 4;</code>
+       * @return The minUnitPrice.
+       */
+      public float getMinUnitPrice() {
+        return minUnitPrice_;
+      }
+      /**
+       * <code>required float minUnitPrice = 4;</code>
+       * @param value The minUnitPrice to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinUnitPrice(float value) {
+        bitField0_ |= 0x00000008;
+        minUnitPrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float minUnitPrice = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinUnitPrice() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        minUnitPrice_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private int timeout_ ;
+      /**
+       * <code>required int32 timeout = 5;</code>
+       * @return Whether the timeout field is set.
+       */
+      public boolean hasTimeout() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>required int32 timeout = 5;</code>
+       * @return The timeout.
+       */
+      public int getTimeout() {
+        return timeout_;
+      }
+      /**
+       * <code>required int32 timeout = 5;</code>
+       * @param value The timeout to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeout(int value) {
+        bitField0_ |= 0x00000010;
+        timeout_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 timeout = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeout() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        timeout_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object manufacturerName_ = "";
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return Whether the manufacturerName field is set.
+       */
+      public boolean hasManufacturerName() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return The manufacturerName.
+       */
+      public java.lang.String getManufacturerName() {
+        java.lang.Object ref = manufacturerName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            manufacturerName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return The bytes for manufacturerName.
+       */
+      public com.google.protobuf.ByteString
+          getManufacturerNameBytes() {
+        java.lang.Object ref = manufacturerName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          manufacturerName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @param value The manufacturerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        manufacturerName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearManufacturerName() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        manufacturerName_ = getDefaultInstance().getManufacturerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string manufacturerName = 6;</code>
+       * @param value The bytes for manufacturerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setManufacturerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        manufacturerName_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:nefit.ServerToImporterNewProduct)
+    }
+
+    // @@protoc_insertion_point(class_scope:nefit.ServerToImporterNewProduct)
+    private static final nefit.shared.NefitProto.ServerToImporterNewProduct DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new nefit.shared.NefitProto.ServerToImporterNewProduct();
+    }
+
+    public static nefit.shared.NefitProto.ServerToImporterNewProduct getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ServerToImporterNewProduct>
+        PARSER = new com.google.protobuf.AbstractParser<ServerToImporterNewProduct>() {
+      @java.lang.Override
+      public ServerToImporterNewProduct parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ServerToImporterNewProduct(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ServerToImporterNewProduct> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ServerToImporterNewProduct> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public nefit.shared.NefitProto.ServerToImporterNewProduct getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_MsgAuth_descriptor;
   private static final 
@@ -34880,6 +38901,11 @@ public final class NefitProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_Negotiator_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nefit_ClientToServer_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nefit_ClientToServer_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ClientToServerLogin_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -34964,6 +38990,16 @@ public final class NefitProto {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ServerToImporterOfferWon_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nefit_ServerToImporterOfferLose_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nefit_ServerToImporterOfferLose_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nefit_ServerToImporterNewProduct_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nefit_ServerToImporterNewProduct_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -35018,50 +39054,64 @@ public final class NefitProto {
       "iator\022\032\n\003sub\030\001 \001(\0132\013.nefit.SubNH\000\022\036\n\005ord" +
       "er\030\002 \001(\0132\r.nefit.OrderNH\000\022.\n\rdisponibili" +
       "ty\030\003 \001(\0132\025.nefit.DisponibilityNH\000B\005\n\003msg" +
-      "\"9\n\023ClientToServerLogin\022\020\n\010username\030\001 \002(" +
-      "\t\022\020\n\010password\030\002 \002(\t\"c\n\026ClientToServerReg" +
-      "ister\022\020\n\010username\030\001 \002(\t\022\020\n\010password\030\002 \002(" +
-      "\t\022%\n\nclientType\030\003 \002(\0162\021.nefit.ClientType" +
-      "\"]\n\022ServerToClientAuth\022\n\n\002ok\030\001 \002(\010\022%\n\ncl" +
-      "ientType\030\002 \001(\0162\021.nefit.ClientType\022\024\n\014err" +
-      "orMessage\030\003 \001(\t\"Z\n\024ManufacturerToServer\022" +
-      "7\n\010announce\030\001 \001(\0132#.nefit.ManufacturerTo" +
-      "ServerAnnounceH\000B\t\n\007message\"\204\001\n\034Manufact" +
-      "urerToServerAnnounce\022\023\n\013productName\030\001 \002(" +
-      "\t\022\023\n\013minQuantity\030\002 \002(\005\022\023\n\013maxQuantity\030\003 " +
-      "\002(\005\022\024\n\014minUnitPrice\030\004 \002(\002\022\017\n\007timeout\030\005 \002" +
-      "(\005\"\375\001\n\024ServerToManufacturer\0229\n\tannounced" +
-      "\030\001 \001(\0132$.nefit.ServerToManufacturerAnnou" +
-      "ncedH\000\0225\n\007invalid\030\002 \001(\0132\".nefit.ServerTo" +
-      "ManufacturerInvalidH\000\0227\n\010noOffers\030\003 \001(\0132" +
-      "#.nefit.ServerToManufacturerNoOffersH\000\022/" +
-      "\n\004sold\030\004 \001(\0132\037.nefit.ServerToManufacture" +
-      "rSoldH\000B\t\n\007message\"\037\n\035ServerToManufactur" +
-      "erAnnounced\"3\n\033ServerToManufacturerInval" +
-      "id\022\024\n\014errorMessage\030\001 \001(\t\"3\n\034ServerToManu" +
-      "facturerNoOffers\022\023\n\013productName\030\001 \002(\t\"T\n" +
-      "\030ServerToManufacturerSold\022\023\n\013productName" +
-      "\030\001 \002(\t\022\020\n\010quantity\030\002 \002(\005\022\021\n\tunitPrice\030\003 " +
-      "\002(\002\"\203\001\n\020ImporterToServer\0225\n\tsubscribe\030\001 " +
-      "\001(\0132 .nefit.ImporterToServerSubscribeH\000\022" +
-      "-\n\005offer\030\002 \001(\0132\034.nefit.ImporterToServerO" +
-      "fferH\000B\t\n\007message\"5\n\031ImporterToServerSub" +
-      "scribe\022\030\n\020manufacturerName\030\001 \002(\t\"k\n\025Impo" +
-      "rterToServerOffer\022\030\n\020manufacturerName\030\001 " +
-      "\002(\t\022\023\n\013productName\030\002 \002(\t\022\020\n\010quantity\030\003 \002" +
-      "(\005\022\021\n\tunitPrice\030\004 \002(\002\"\320\001\n\020ServerToImport" +
-      "er\022?\n\016offerSubmitted\030\001 \001(\0132%.nefit.Serve" +
-      "rToImporterOfferSubmittedH\000\022;\n\014offerInva" +
-      "lid\030\002 \001(\0132#.nefit.ServerToImporterOfferI" +
-      "nvalidH\000\0223\n\010offerWon\030\003 \001(\0132\037.nefit.Serve" +
-      "rToImporterOfferWonH\000B\t\n\007message\" \n\036Serv" +
-      "erToImporterOfferSubmitted\"4\n\034ServerToIm" +
-      "porterOfferInvalid\022\024\n\014errorMessage\030\001 \002(\t" +
-      "\"n\n\030ServerToImporterOfferWon\022\030\n\020manufact" +
-      "urerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\020\n\010q" +
-      "uantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002*,\n\nClie" +
-      "ntType\022\014\n\010IMPORTER\020\000\022\020\n\014MANUFACTURER\020\001B\032" +
-      "\n\014nefit.sharedB\nNefitProto"
+      "\"{\n\016ClientToServer\022+\n\005login\030\001 \001(\0132\032.nefi" +
+      "t.ClientToServerLoginH\000\0221\n\010register\030\002 \001(" +
+      "\0132\035.nefit.ClientToServerRegisterH\000B\t\n\007me" +
+      "ssage\"`\n\023ClientToServerLogin\022\020\n\010username" +
+      "\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022%\n\nclientType\030\003" +
+      " \002(\0162\021.nefit.ClientType\"<\n\026ClientToServe" +
+      "rRegister\022\020\n\010username\030\001 \002(\t\022\020\n\010password\030" +
+      "\002 \002(\t\"]\n\022ServerToClientAuth\022\n\n\002ok\030\001 \002(\010\022" +
+      "%\n\nclientType\030\002 \001(\0162\021.nefit.ClientType\022\024" +
+      "\n\014errorMessage\030\003 \001(\t\"Z\n\024ManufacturerToSe" +
+      "rver\0227\n\010announce\030\001 \001(\0132#.nefit.Manufactu" +
+      "rerToServerAnnounceH\000B\t\n\007message\"\236\001\n\034Man" +
+      "ufacturerToServerAnnounce\022\023\n\013productName" +
+      "\030\001 \002(\t\022\023\n\013minQuantity\030\002 \002(\005\022\023\n\013maxQuanti" +
+      "ty\030\003 \002(\005\022\024\n\014minUnitPrice\030\004 \002(\002\022\017\n\007timeou" +
+      "t\030\005 \002(\005\022\030\n\020manufacturerName\030\006 \002(\t\"\375\001\n\024Se" +
+      "rverToManufacturer\0229\n\tannounced\030\001 \001(\0132$." +
+      "nefit.ServerToManufacturerAnnouncedH\000\0225\n" +
+      "\007invalid\030\002 \001(\0132\".nefit.ServerToManufactu" +
+      "rerInvalidH\000\0227\n\010noOffers\030\003 \001(\0132#.nefit.S" +
+      "erverToManufacturerNoOffersH\000\022/\n\004sold\030\004 " +
+      "\001(\0132\037.nefit.ServerToManufacturerSoldH\000B\t" +
+      "\n\007message\"\037\n\035ServerToManufacturerAnnounc" +
+      "ed\"3\n\033ServerToManufacturerInvalid\022\024\n\014err" +
+      "orMessage\030\001 \001(\t\"3\n\034ServerToManufacturerN" +
+      "oOffers\022\023\n\013productName\030\001 \002(\t\"T\n\030ServerTo" +
+      "ManufacturerSold\022\023\n\013productName\030\001 \002(\t\022\020\n" +
+      "\010quantity\030\002 \002(\005\022\021\n\tunitPrice\030\003 \002(\002\"\203\001\n\020I" +
+      "mporterToServer\0225\n\tsubscribe\030\001 \001(\0132 .nef" +
+      "it.ImporterToServerSubscribeH\000\022-\n\005offer\030" +
+      "\002 \001(\0132\034.nefit.ImporterToServerOfferH\000B\t\n" +
+      "\007message\"K\n\031ImporterToServerSubscribe\022\030\n" +
+      "\020manufacturerName\030\001 \003(\t\022\024\n\014importerName\030" +
+      "\002 \002(\t\"\201\001\n\025ImporterToServerOffer\022\030\n\020manuf" +
+      "acturerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\020" +
+      "\n\010quantity\030\003 \002(\005\022\021\n\tunitPrice\030\004 \002(\002\022\024\n\014i" +
+      "mporterName\030\005 \002(\t\"\300\002\n\020ServerToImporter\022?" +
+      "\n\016offerSubmitted\030\001 \001(\0132%.nefit.ServerToI" +
+      "mporterOfferSubmittedH\000\022;\n\014offerInvalid\030" +
+      "\002 \001(\0132#.nefit.ServerToImporterOfferInval" +
+      "idH\000\0223\n\010offerWon\030\003 \001(\0132\037.nefit.ServerToI" +
+      "mporterOfferWonH\000\0225\n\tofferLose\030\004 \001(\0132 .n" +
+      "efit.ServerToImporterOfferLoseH\000\0227\n\nnewP" +
+      "roduct\030\005 \001(\0132!.nefit.ServerToImporterNew" +
+      "ProductH\000B\t\n\007message\" \n\036ServerToImporter" +
+      "OfferSubmitted\"4\n\034ServerToImporterOfferI" +
+      "nvalid\022\024\n\014errorMessage\030\001 \002(\t\"n\n\030ServerTo" +
+      "ImporterOfferWon\022\030\n\020manufacturerName\030\001 \002" +
+      "(\t\022\023\n\013productName\030\002 \002(\t\022\020\n\010quantity\030\003 \002(" +
+      "\005\022\021\n\tunitPrice\030\004 \002(\002\"J\n\031ServerToImporter" +
+      "OfferLose\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013p" +
+      "roductName\030\002 \002(\t\"\234\001\n\032ServerToImporterNew" +
+      "Product\022\023\n\013productName\030\001 \002(\t\022\023\n\013minQuant" +
+      "ity\030\002 \002(\005\022\023\n\013maxQuantity\030\003 \002(\005\022\024\n\014minUni" +
+      "tPrice\030\004 \002(\002\022\017\n\007timeout\030\005 \002(\005\022\030\n\020manufac" +
+      "turerName\030\006 \002(\t*,\n\nClientType\022\014\n\010IMPORTE" +
+      "R\020\000\022\020\n\014MANUFACTURER\020\001B\032\n\014nefit.sharedB\nN" +
+      "efitProto"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -35181,108 +39231,126 @@ public final class NefitProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_Negotiator_descriptor,
         new java.lang.String[] { "Sub", "Order", "Disponibility", "Msg", });
-    internal_static_nefit_ClientToServerLogin_descriptor =
+    internal_static_nefit_ClientToServer_descriptor =
       getDescriptor().getMessageTypes().get(19);
+    internal_static_nefit_ClientToServer_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nefit_ClientToServer_descriptor,
+        new java.lang.String[] { "Login", "Register", "Message", });
+    internal_static_nefit_ClientToServerLogin_descriptor =
+      getDescriptor().getMessageTypes().get(20);
     internal_static_nefit_ClientToServerLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ClientToServerLogin_descriptor,
-        new java.lang.String[] { "Username", "Password", });
+        new java.lang.String[] { "Username", "Password", "ClientType", });
     internal_static_nefit_ClientToServerRegister_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_nefit_ClientToServerRegister_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ClientToServerRegister_descriptor,
-        new java.lang.String[] { "Username", "Password", "ClientType", });
+        new java.lang.String[] { "Username", "Password", });
     internal_static_nefit_ServerToClientAuth_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_nefit_ServerToClientAuth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToClientAuth_descriptor,
         new java.lang.String[] { "Ok", "ClientType", "ErrorMessage", });
     internal_static_nefit_ManufacturerToServer_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_nefit_ManufacturerToServer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ManufacturerToServer_descriptor,
         new java.lang.String[] { "Announce", "Message", });
     internal_static_nefit_ManufacturerToServerAnnounce_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_nefit_ManufacturerToServerAnnounce_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ManufacturerToServerAnnounce_descriptor,
-        new java.lang.String[] { "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timeout", });
+        new java.lang.String[] { "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timeout", "ManufacturerName", });
     internal_static_nefit_ServerToManufacturer_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_nefit_ServerToManufacturer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToManufacturer_descriptor,
         new java.lang.String[] { "Announced", "Invalid", "NoOffers", "Sold", "Message", });
     internal_static_nefit_ServerToManufacturerAnnounced_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_nefit_ServerToManufacturerAnnounced_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToManufacturerAnnounced_descriptor,
         new java.lang.String[] { });
     internal_static_nefit_ServerToManufacturerInvalid_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_nefit_ServerToManufacturerInvalid_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToManufacturerInvalid_descriptor,
         new java.lang.String[] { "ErrorMessage", });
     internal_static_nefit_ServerToManufacturerNoOffers_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_nefit_ServerToManufacturerNoOffers_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToManufacturerNoOffers_descriptor,
         new java.lang.String[] { "ProductName", });
     internal_static_nefit_ServerToManufacturerSold_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_nefit_ServerToManufacturerSold_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToManufacturerSold_descriptor,
         new java.lang.String[] { "ProductName", "Quantity", "UnitPrice", });
     internal_static_nefit_ImporterToServer_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_nefit_ImporterToServer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ImporterToServer_descriptor,
         new java.lang.String[] { "Subscribe", "Offer", "Message", });
     internal_static_nefit_ImporterToServerSubscribe_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_nefit_ImporterToServerSubscribe_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ImporterToServerSubscribe_descriptor,
-        new java.lang.String[] { "ManufacturerName", });
+        new java.lang.String[] { "ManufacturerName", "ImporterName", });
     internal_static_nefit_ImporterToServerOffer_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_nefit_ImporterToServerOffer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ImporterToServerOffer_descriptor,
-        new java.lang.String[] { "ManufacturerName", "ProductName", "Quantity", "UnitPrice", });
+        new java.lang.String[] { "ManufacturerName", "ProductName", "Quantity", "UnitPrice", "ImporterName", });
     internal_static_nefit_ServerToImporter_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_nefit_ServerToImporter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToImporter_descriptor,
-        new java.lang.String[] { "OfferSubmitted", "OfferInvalid", "OfferWon", "Message", });
+        new java.lang.String[] { "OfferSubmitted", "OfferInvalid", "OfferWon", "OfferLose", "NewProduct", "Message", });
     internal_static_nefit_ServerToImporterOfferSubmitted_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_nefit_ServerToImporterOfferSubmitted_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToImporterOfferSubmitted_descriptor,
         new java.lang.String[] { });
     internal_static_nefit_ServerToImporterOfferInvalid_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_nefit_ServerToImporterOfferInvalid_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToImporterOfferInvalid_descriptor,
         new java.lang.String[] { "ErrorMessage", });
     internal_static_nefit_ServerToImporterOfferWon_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_nefit_ServerToImporterOfferWon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ServerToImporterOfferWon_descriptor,
         new java.lang.String[] { "ManufacturerName", "ProductName", "Quantity", "UnitPrice", });
+    internal_static_nefit_ServerToImporterOfferLose_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_nefit_ServerToImporterOfferLose_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nefit_ServerToImporterOfferLose_descriptor,
+        new java.lang.String[] { "ManufacturerName", "ProductName", });
+    internal_static_nefit_ServerToImporterNewProduct_descriptor =
+      getDescriptor().getMessageTypes().get(38);
+    internal_static_nefit_ServerToImporterNewProduct_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nefit_ServerToImporterNewProduct_descriptor,
+        new java.lang.String[] { "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timeout", "ManufacturerName", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

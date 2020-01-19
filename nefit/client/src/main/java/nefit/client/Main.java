@@ -103,16 +103,16 @@ public class Main
     private static String login(Connection connection, Prompt prompt)
         throws IOException, InterruptedException
     {
-        final NefitProto.MsgAuth.ClientType clientType;
+        final NefitProto.ClientType clientType;
 
         switch (prompt.input("Importer or Manufacturer [i/m]: "))
         {
             case "i":
-                clientType = NefitProto.MsgAuth.ClientType.IMPORTER;
+                clientType = NefitProto.ClientType.IMPORTER;
                 break;
 
             case "m":
-                clientType = NefitProto.MsgAuth.ClientType.MANUFACTURER;
+                clientType = NefitProto.ClientType.MANUFACTURER;
                 break;
 
             default:
@@ -125,27 +125,19 @@ public class Main
 
         // TODO: use newer messages and don't require user to enter client type
 
-//        final var loginMessage = NefitProtos.ClientToServerLogin
-//            .newBuilder()
-//            .setUsername(username)
-//            .setPassword(password)
-//            .build();
+        final var loginMessage = NefitProto.ClientToServerLogin
+            .newBuilder()
+            .setUsername(username)
+            .setPassword(password)
+            .setClientType(clientType)
+            .build();
 
-        final var loginMessage =
-            NefitProto.MsgAuth
-                .newBuilder()
-                .setName(username)
-                .setPass(password)
-                .setCtype(clientType)
-                .setMtype(NefitProto.MsgAuth.MsgType.LOGIN)
-                .build();
+        connection.send(NefitProto.ClientToServer.newBuilder().setLogin(loginMessage).build());
 
-        connection.send(loginMessage);
-
-        final var ackMessage = connection.receive(NefitProto.MsgAck.parser());
+        final var ackMessage = connection.receive(NefitProto.ServerToClientAuth.parser());
 
         if (!ackMessage.getOk())
-            prompt.fail(ackMessage.getMsg());
+            prompt.fail(ackMessage.getErrorMessage());
 
         switch (clientType)
         {
@@ -168,16 +160,16 @@ public class Main
     private static String register(Connection connection, Prompt prompt)
         throws IOException, InterruptedException
     {
-        final NefitProto.MsgAuth.ClientType clientType;
+        final NefitProto.ClientType clientType;
 
         switch (prompt.input("Importer or Manufacturer [i/m]: "))
         {
             case "i":
-                clientType = NefitProto.MsgAuth.ClientType.IMPORTER;
+                clientType = NefitProto.ClientType.IMPORTER;
                 break;
 
             case "m":
-                clientType = NefitProto.MsgAuth.ClientType.MANUFACTURER;
+                clientType = NefitProto.ClientType.MANUFACTURER;
                 break;
 
             default:
@@ -190,28 +182,32 @@ public class Main
 
         // TODO: use newer messages
 
-//        final var registerMessage = NefitProtos.ClientToServerRegister
-//            .newBuilder()
-//            .setUsername(username)
-//            .setPassword(password)
-//            .setClientType(clientType)
-//            .build();
+        final var registerMessage = NefitProto.ClientToServerRegister
+            .newBuilder()
+            .setUsername(username)
+            .setPassword(password)
+            .build();
 
-        final var registerMessage =
-            NefitProto.MsgAuth
-                .newBuilder()
-                .setName(username)
-                .setPass(password)
-                .setCtype(clientType)
-                .setMtype(NefitProto.MsgAuth.MsgType.REGISTER)
-                .build();
+        connection.send(NefitProto.ClientToServer.newBuilder().setRegister(registerMessage).build());
 
-        connection.send(registerMessage);
+        final var ackRegister = connection.receive(NefitProto.MsgAck.parser());
 
-        final var ackMessage = connection.receive(NefitProto.MsgAck.parser());
+        if (!ackRegister.getOk())
+            prompt.fail(ackRegister.getMsg());
 
-        if (!ackMessage.getOk())
-            prompt.fail(ackMessage.getMsg());
+        final var loginMessage = NefitProto.ClientToServerLogin
+            .newBuilder()
+            .setUsername(username)
+            .setPassword(password)
+            .setClientType(clientType)
+            .build();
+
+        connection.send(NefitProto.ClientToServer.newBuilder().setLogin(loginMessage).build());
+
+        final var ackLogin = connection.receive(NefitProto.ServerToClientAuth.parser());
+
+        if (!ackLogin.getOk())
+            prompt.fail(ackLogin.getErrorMessage());
 
         switch (clientType)
         {

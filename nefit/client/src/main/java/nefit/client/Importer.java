@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class Importer extends Client< NefitProto.Importer >
+public class Importer extends Client< NefitProto.ServerToImporter >
 {
     public Importer(Prompt prompt, Connection connection, String username)
     {
@@ -15,7 +15,7 @@ public class Importer extends Client< NefitProto.Importer >
             prompt,
             connection,
             username,
-            NefitProto.Importer.parser(),
+            NefitProto.ServerToImporter.parser(),
             new Command(
                 "subscribe",
                 "Manufacturer names"
@@ -59,21 +59,19 @@ public class Importer extends Client< NefitProto.Importer >
         // send subscription request to server
 
         final var messageSubscribe =
-            NefitProto.SubS
+            NefitProto.ImporterToServerSubscribe
                 .newBuilder()
-                .setNameI(this.getUsername())
-                .addAllSubs(Arrays.asList(manufacturers))
+                .setImporterName(this.getUsername())
+                .addAllManufacturerName(Arrays.asList(manufacturers))
                 .build();
 
         final var messageServer =
-            NefitProto.Server
+            NefitProto.ImporterToServer
                 .newBuilder()
-                .setM3(messageSubscribe)
+                .setSubscribe(messageSubscribe)
                 .build();
 
         this.getConnection().send(messageServer);
-
-        // TODO: should maybe wait for acknowledgment from server
     }
 
     private void handleCommandOffer(List< String > arguments) throws IOException
@@ -95,19 +93,19 @@ public class Importer extends Client< NefitProto.Importer >
         // send message to server
 
         final var messageOffer =
-            NefitProto.OrderS
+            NefitProto.ImporterToServerOffer
                 .newBuilder()
-                .setNameI(this.getUsername())
-                .setNameM(manufacturerName)
-                .setNameP(productName)
-                .setQuant(quantity)
-                .setValue(unitPrice)
+                .setImporterName(this.getUsername())
+                .setManufacturerName(manufacturerName)
+                .setProductName(productName)
+                .setQuantity(quantity)
+                .setUnitPrice(unitPrice)
                 .build();
 
         final var messageServer =
-            NefitProto.Server
+            NefitProto.ImporterToServer
                 .newBuilder()
-                .setM2(messageOffer)
+                .setOffer(messageOffer)
                 .build();
 
         this.getConnection().send(messageServer);
@@ -116,11 +114,39 @@ public class Importer extends Client< NefitProto.Importer >
     }
 
     @Override
-    protected void handleMessage(NefitProto.Importer message)
+    protected void handleMessage(NefitProto.ServerToImporter message)
     {
-        if (message.hasInfo())
-        {
-            final var info = message.getInfo();
+        if(message.hasOfferSubmitted()){
+            this.getPrompt().printNotice("\nYour offer has been accepted");
+        }
+
+        if(message.hasOfferInvalid()){
+            this.getPrompt().printNotice("\nYour offer has rejected, because: \"%s\"",message.getOfferInvalid().getErrorMessage());
+        }
+
+        if(message.hasOfferWon()){
+            final var result = message.getOfferWon();
+
+            this.getPrompt().printNotice("\nYou won the product \"%s\" from \"%s\"."
+                    + "\nYou purchase %d products with a unit price of %.2f"
+                    + "\nTotal = %.2f"
+                    ,result.getProductName()
+                    ,result.getManufacturerName()
+                    ,result.getQuantity()
+                    ,result.getUnitPrice()
+                    ,result.getUnitPrice() * result.getQuantity());
+        }
+
+        if(message.hasOfferLose()){
+            final var result = message.getOfferLose();
+
+            this.getPrompt().printNotice("\nYou lose the product \"%s\" from \"%s\"",
+                result.getProductName(),
+                result.getManufacturerName());
+        }
+
+        if(message.hasNewProduct()){
+            final var info = message.getNewProduct();
 
             this.getPrompt().printNotice(
                 "\nProduct \"%s\" now available from manufacturer \"%s\"."
@@ -128,34 +154,9 @@ public class Importer extends Client< NefitProto.Importer >
                     + "\n   Max. quantity: %d"
                     + "\n   Min. unit price: %.2f"
                     + "\n   Available for %d seconds.",
-                info.getNameP(), info.getNameM(), info.getMinimum(),
-                info.getMaximum(), info.getValue(), info.getPeriod()
+                info.getProductName(), info.getManufacturerName(), info.getMinQuantity(),
+                info.getMaxQuantity(), info.getMinUnitPrice(), info.getTimeout()
             );
-        }
-        else if (message.hasResult())
-        {
-            final var result = message.getResult();
-
-            this.getPrompt().printNotice(
-                "\nYour offer for \"%s\" was %s.",
-                result.getMsg(),
-                result.getResult() ? "accepted" : "rejected"
-            );
-        }
-        else if (message.hasOrdack())
-        {
-            final var ack = message.getOrdack();
-
-            final String text;
-
-            if (ack.getOutdated())
-                text = ack.getMsg();
-            else if (ack.getAck())
-                text = "Offer registered.";
-            else
-                text = "Invalid offer: " + ack.getMsg();
-
-            this.getPrompt().printNotice("\n%s", text);
         }
     }
 }

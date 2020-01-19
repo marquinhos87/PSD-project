@@ -54,7 +54,7 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             end;
 
     % Send Message to a Client with info about his register
-        {Pid, register, Name, Pass, _} ->
+        {Pid, register, Name, Pass} ->
             Status = maps:find(Name, RegisteredUsers),
             case Status of
                 {ok, _} ->
@@ -71,8 +71,11 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             Msg = #'OrderN'{nameM = Manuf, nameP = Product, quant = Quant, value = Value, nameI = Imp},
             MsgN = #'Negotiator'{msg = {order, Msg}},
             M = nefitproto:encode_msg(MsgN),
-            Str = binary:list_to_bin(string:concat(Manuf, Product)),
-            Mensagem = [Str, M],
+            Aux = string:concat(Manuf, Product),
+            Str = binary:list_to_bin(Aux),
+            Tam = string:length(Aux),
+            %Neste momento rebenta por causa do Tam
+            Mensagem = [Tam,Str, M],
             chumak:send(Socket, Mensagem),
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos + 1);
 
@@ -93,12 +96,26 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
 
     % Send Message to a Manufacturer Actor with the Result about one of its products
         {production, PidA, M, P, Q, V} ->
-            Msg = #'ProductionM'{nameP = P, quant = Q, value = V},
+            Msg = #'ServerToManufacturerSold'{productName = P, quantity = Q, unitPrice = V},
             PidU = maps:get(M, ConnectedUsers),
             PidU ! {production, Msg},
             I = maps:get(PidA, Arbiters),
             Map = maps:put(PidA, I - 1, Arbiters),
             globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
+
+        {noproduction, PidA, M, P} ->
+            Msg = #'ServerToManufacturerNoOffers'{productName = P},
+            PidU = maps:get(M, ConnectedUsers),
+            PidU ! {noproduction, Msg},
+            I = maps:get(PidA, Arbiters),
+            Map = maps:put(PidA, I - 1, Arbiters),
+            globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
+
+        {announced, M} ->
+            Msg = #'ServerToManufacturerAnnounced'{},
+            PidU = maps:get(M, ConnectedUsers),
+            PidU ! {announced, Msg},
+            globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
 
     % Send Message to an Importer Actor with an Result about one Product that his puts at least one Order
         {result, R, M, I} ->
@@ -218,25 +235,38 @@ arbiter(Sock, State) ->
 manufacturer(Sock, State) ->
     receive
         {tcp, _, Data} ->
-            Msg = nefitproto:decode_msg(Data, 'Server'),
-            Field = Msg#'Server'.msg,
+            Msg = nefitproto:decode_msg(Data, 'ManufacturerToServer'),
+            Field = Msg#'ManufacturerToServer'.message,
             case Field of
 
                 % Send Message to GlobalState Actor with a new Product from this Manufacturer
                 {m1, ProductionOffer} ->
                     State ! {disponibility,
-                        ProductionOffer#'DisponibilityS'.nameM,
-                        ProductionOffer#'DisponibilityS'.nameP,
-                        ProductionOffer#'DisponibilityS'.value,
-                        ProductionOffer#'DisponibilityS'.minimum,
-                        ProductionOffer#'DisponibilityS'.maximum,
-                        ProductionOffer#'DisponibilityS'.period}
+                        ProductionOffer#'ManufacturerToServerAnnounce'.manufacturerName,
+                        ProductionOffer#'ManufacturerToServerAnnounce'.productName,
+                        ProductionOffer#'ManufacturerToServerAnnounce'.minUnitPrice,
+                        ProductionOffer#'ManufacturerToServerAnnounce'.minQuantity,
+                        ProductionOffer#'ManufacturerToServerAnnounce'.maxQuantity,
+                        ProductionOffer#'ManufacturerToServerAnnounce'.timeout}
             end,
             manufacturer(Sock, State);
 
     % Send Message to Manufacturer Process with a Production
         {production, Msg} ->
-            M = nefitproto:encode_msg(Msg),
+            MsgM = #'ServerToManufacturer'{message = {sold, Msg}},
+            M = nefitproto:encode_msg(MsgM),
+            gen_tcp:send(Sock, M),
+            manufacturer(Sock, State);
+
+        {noproduction, Msg} ->
+            MsgM = #'ServerToManufacturer'{message = {noOffers, Msg}},
+            M = nefitproto:encode_msg(MsgM),
+            gen_tcp:send(Sock, M),
+            manufacturer(Sock, State);
+
+        {announced, Msg} ->
+            MsgM = #'ServerToManufacturer'{message = {announced, Msg}},
+            M = nefitproto:encode_msg(MsgM),
             gen_tcp:send(Sock, M),
             manufacturer(Sock, State);
 
@@ -255,43 +285,43 @@ manufacturer(Sock, State) ->
 importer(Sock, State) ->
     receive
         {tcp, _, Data} ->
-            Msg = nefitproto:decode_msg(Data, 'Server'),
-            Field = Msg#'Server'.msg,
+            Msg = nefitproto:decode_msg(Data, 'ImporterToServer'),
+            Field = Msg#'ImporterToServer'.message,
             case Field of
 
                 % Send Message to GlobalState Actor with a new Order from this Importer
-                {m2, Order} ->
+                {offer, Order} ->
                     State ! {order,
-                        Order#'OrderS'.nameM,
-                        Order#'OrderS'.nameP,
-                        Order#'OrderS'.quant,
-                        Order#'OrderS'.value,
-                        Order#'OrderS'.nameI},
+                        Order#'ImporterToServerOffer'.manufacturerName,
+                        Order#'ImporterToServerOffer'.productName,
+                        Order#'ImporterToServerOffer'.quantity,
+                        Order#'ImporterToServerOffer'.unitPrice,
+                        Order#'ImporterToServerOffer'.importerName},
                     importer(Sock, State);
 
                 % Send Message to GlobalState Actor with Subscribers from this Importer
-                {m3, Sub} ->
-                    State ! {sub, Sub#'SubS'.nameI, Sub#'SubS'.subs},
+                {subscribe, Sub} ->
+                    State ! {sub, Sub#'ImporterToServerSubscribe'.importerName, Sub#'ImporterToServerSubscribe'.manufacturerName},
                     importer(Sock, State)
             end;
 
     % Send Message to Importer Process with an Ack about an Order that he make
         {ack, Msg} ->
-            MsgI = #'Importer'{msg = {ordack, Msg}},
+            MsgI = #'ServerToImporter'{message = {ordack, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
 
     % Send Message to Importer Process with Result about one Product that his puts at least one Order
         {result, Msg} ->
-            MsgI = #'Importer'{msg = {result, Msg}},
+            MsgI = #'ServerToImporter'{message = {result, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
 
     % Send Message to Importer Process with Info about a new Product
         {info, Msg} ->
-            MsgI = #'Importer'{msg = {info, Msg}},
+            MsgI = #'ServerToImporter'{message = {info, Msg}},
             M = nefitproto:encode_msg(MsgI),
             gen_tcp:send(Sock, M),
             importer(Sock, State);
@@ -311,30 +341,29 @@ importer(Sock, State) ->
 connectedClient(Sock, State) ->
     receive
         {tcp, _, Data} ->
-            Msg = nefitproto:decode_msg(Data, 'MsgAuth'),
-            case Msg#'MsgAuth'.mtype of
+            Msg = nefitproto:decode_msg(Data, 'ClientToServer'),
+            case Msg#'ClientToServer'.message of
 
                 % Send Message to GlobalState Actor to Client make register
-                'REGISTER' ->
+                {'ClientToServerRegister', M} ->
                     State ! {self(),
                         register,
-                        Msg#'MsgAuth'.name,
-                        Msg#'MsgAuth'.pass,
-                        Msg#'MsgAuth'.ctype};
+                        M#'ClientToServerRegister'.username,
+                        M#'ClientToServerRegister'.password};
 
                 % Send Message to GlobalState Actor to Client make login
-                'LOGIN' ->
+                {'ClientToServerLogin',M} ->
                     State ! {self(),
                         login,
-                        Msg#'MsgAuth'.name,
-                        Msg#'MsgAuth'.pass,
-                        Msg#'MsgAuth'.ctype}
+                        M#'ClientToServerLogin'.username,
+                        M#'ClientToServerLogin'.password,
+                        M#'ClientToServerLogin'.clientType}
             end,
             connectedClient(Sock, State);
 
     % Send Message to Client Process with an Ack that login is OK
         {success, Type} ->
-            Msg = #'MsgAck'{ok = true},
+            Msg = #'ServerToClientAuth'{ok = true},
             M = nefitproto:encode_msg(Msg),
             gen_tcp:send(Sock, M),
             case Type of
@@ -344,14 +373,14 @@ connectedClient(Sock, State) ->
 
     % Send Message to Client Process with an Ack that register is OK
         {successR} ->
-            Msg = #'MsgAck'{ok = true},
+            Msg = #'ServerToClientAuth'{ok = true},
             M = nefitproto:encode_msg(Msg),
             gen_tcp:send(Sock, M),
             connectedClient(Sock, State);
 
     % Send Message to Client Process to be shutdown
         {failure} ->
-            Msg = #'MsgAck'{ok = false},
+            Msg = #'ServerToClientAuth'{ok = false},
             M = nefitproto:encode_msg(Msg),
             gen_tcp:send(Sock, M);
 

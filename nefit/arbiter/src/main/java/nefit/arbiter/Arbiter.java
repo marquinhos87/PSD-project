@@ -2,7 +2,6 @@ package nefit.arbiter;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import javafx.util.Pair;
-import nefit.client.Client;
 import nefit.shared.NefitProto;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
@@ -91,7 +90,10 @@ public class Arbiter implements Runnable
             {
                 try
                 {
-                    final var negotiator = Client.parseDelimited(is, NefitProto.Negotiator.parser());
+                    final var negotiator = NefitProto.Negotiator.parseDelimitedFrom(is);
+                    //final var negotiator = connection.receive(is, NefitProto.Negotiator.parser());
+                    System.out.println("Chegou uma mensagem");
+                    System.out.println(negotiator.getDisponibility().getNameM());
 
                     if(negotiator.hasDisponibility())
                         executeDisponibility(negotiator.getDisponibility());
@@ -115,6 +117,7 @@ public class Arbiter implements Runnable
         while (true){
             try {
                 byte[] reply = this.socketZ.recv(0);
+                //Não funciona neste momento
                 NefitProto.Negotiator negotiator = NefitProto.Negotiator.parseFrom(reply);
 
                 if(negotiator.hasOrder())
@@ -150,8 +153,8 @@ public class Arbiter implements Runnable
                                             disponibility.getValue(),
                                             disponibility.getPeriod(),
                                             str);
-                Client.writeDelimited(os,
-                        NefitProto.Server.newBuilder().setM5(infoS).build());
+                //Client.writeDelimited(os,NefitProto.Server.newBuilder().setM5(infoS).build());
+                NefitProto.Server.newBuilder().setM5(infoS).build().writeDelimitedTo(os);
             }
     }
 
@@ -167,8 +170,8 @@ public class Arbiter implements Runnable
                 if (new_v > old_v) {
                     //Send ack to old importer
                     NefitProto.OrderAckS orderAckS = this.messages.createOrderAckS(false, "Your order to " + order.getNameM() + ":" + order.getNameP() + "is outdated", aux.getValue().getNameI(), true);
-                    Client.writeDelimited(os,
-                            NefitProto.Server.newBuilder().setM7(orderAckS).build());
+                    //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM7(orderAckS).build());
+                    NefitProto.Server.newBuilder().setM7(orderAckS).build().writeDelimitedTo(os);
                     ack = this.messages.createOrderAckS(true, null, order.getNameI(), false);
                     //Replace Order
                     this.negotiations.put(new Pair<>(order.getNameM(),order.getNameP()),new Pair<>(aux.getKey(),order));
@@ -182,7 +185,8 @@ public class Arbiter implements Runnable
             }
             if(!this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).contains(order.getNameI()))
                 this.importerNego.get(new Pair<>(order.getNameM(),order.getNameP())).add(order.getNameI());
-            Client.writeDelimited(os, NefitProto.Server.newBuilder().setM7(ack).build());
+            //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM7(ack).build());
+            NefitProto.Server.newBuilder().setM7(ack).build().writeDelimitedTo(os);
         }
     }
 
@@ -211,28 +215,28 @@ public class Arbiter implements Runnable
             {
                 NefitProto.OrderN order = this.negotiations.get(prod).getValue();
                 NefitProto.ResultS resultS = this.messages.createResultS(true,order.getNameM() + ":" + order.getNameP(),order.getNameI());
-                Client.writeDelimited(os,
-                        NefitProto.Server.newBuilder().setM4(resultS).build());
+                //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM4(resultS).build());
+                NefitProto.Server.newBuilder().setM4(resultS).build().writeDelimitedTo(os);
                 for(String str: this.importerNego.get(prod)) {
                     if (!str.equals(order.getNameI())) {
                         resultS =  this.messages.createResultS(false, order.getNameM() + ":" + order.getNameP(), str);
-                        Client.writeDelimited(os,
-                                NefitProto.Server.newBuilder().setM4(resultS).build());
+                        //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM4(resultS).build());
+                        NefitProto.Server.newBuilder().setM4(resultS).build().writeDelimitedTo(os);
                     }
                 }
                 NefitProto.ProductionS productionS = this.messages.createProductionS(
                     prod.getKey(),prod.getValue(),order.getQuant(),order.getValue()
                 );
-                Client.writeDelimited(os,
-                        NefitProto.Server.newBuilder().setM6(productionS).build());
+                //Client.writeDelimited(os, NefitProto.Server.newBuilder().setM6(productionS).build());
+                NefitProto.Server.newBuilder().setM6(productionS).build().writeDelimitedTo(os);
             }
             else
             {
                 NefitProto.ProductionS productionS = this.messages.createProductionS(
                     prod.getKey(),prod.getValue(),0,0
                 );
-                Client.writeDelimited(os,
-                        NefitProto.Server.newBuilder().setM6(productionS).build());
+                //Client.writeDelimited(os,NefitProto.Server.newBuilder().setM6(productionS).build());
+                NefitProto.Server.newBuilder().setM6(productionS).build().writeDelimitedTo(os);
             }
             this.socketZ.unsubscribe(prod.getKey()+prod.getValue());
             this.negotiations.remove(prod);
