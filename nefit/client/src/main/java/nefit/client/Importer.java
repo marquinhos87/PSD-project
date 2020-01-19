@@ -3,6 +3,7 @@ package nefit.client;
 import nefit.proto.NefitProtos;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class Importer extends Client< NefitProtos.Importer >
@@ -31,6 +32,12 @@ public class Importer extends Client< NefitProtos.Importer >
     protected void handleCommand(String command, List< String > arguments)
         throws IOException
     {
+        switch (command)
+        {
+            case "subscribe":
+                this.handleCommandSubscribe(arguments);
+                break;
+        }
     }
 
     private void handleCommandSubscribe(List< String > arguments)
@@ -44,87 +51,16 @@ public class Importer extends Client< NefitProtos.Importer >
 
         // send subscription request to server
 
-        final var messageAnnounce =
-            NefitProtos.DisponibilityS
+        final var messageSubscribe =
+            NefitProtos.SubS
                 .newBuilder()
-                .setNameM(this.getUsername())
-                .setNameP(productName)
-                .setMinimum(minQuantity)
-                .setMaximum(maxQuantity)
-                .setValue(minUnitPrice)
-                .setPeriod(timeout)
+                .setNameI(this.getUsername())
+                .addAllSubs(Arrays.asList(manufacturers))
                 .build();
 
-        final var messageServer =
-            NefitProtos.Server
-                .newBuilder()
-                .setM1(messageAnnounce)
-                .build();
+        this.getConnection().send(messageSubscribe);
 
-        this.getConnection().send(messageServer);
-
-        // TODO: must wait for acknowledgment from server
-    }
-
-
-    public void run()
-    {
-        this.prompt.printOthers(printCommands());
-        new Thread(this::receive).start();
-        while (true)
-        {
-            try
-            {
-                String command = this.in.readLine();
-                String[] fields = command.split(" ");
-                if (fields.length < 1)
-                {
-                    this.prompt.printWarning("You don't write anything");
-                }
-                else
-                {
-                    switch (fields[0])
-                    {
-                        case "sub":
-                            sendSub(fields);
-                            break;
-
-                        case "order":
-                            sendOrder(fields);
-                            break;
-
-                        default:
-                            this.prompt.printWarning(
-                                "Wrong command, try one of this:");
-                            this.prompt.printOthers(printCommands());
-                            break;
-                    }
-                }
-            }
-            catch (IOException e)
-            {
-                this.prompt.printError("Something went wrong");
-            }
-        }
-    }
-
-    private void sendSub(String[] fields) throws IOException
-    {
-        if (fields.length == 1)
-        {
-            this.prompt.printWarning("Forgot Names of Manufacturers");
-        }
-        else
-        {
-            List< String > topics = new ArrayList<>();
-            for (int i = 1; i < fields.length; i++)
-                topics.add(fields[i]);
-            NefitProtos.SubS sub = this.messages.createSubS(this.name, topics);
-            Client.writeDelimited(
-                this.os,
-                NefitProtos.Server.newBuilder().setM3(sub).build()
-            );
-        }
+        // TODO: should maybe wait for acknowledgment from server
     }
 
     private void sendOrder(String[] fields) throws IOException
