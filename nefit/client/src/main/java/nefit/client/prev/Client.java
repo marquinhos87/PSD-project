@@ -12,26 +12,6 @@ import java.nio.ByteBuffer;
 
 public class Client
 {
-    public static <T> T parseDelimited(InputStream in, Parser<T> msgParser) throws IOException {
-        final var header = in.readNBytes(4);
-        assert header.length == 4;
-
-        final var msgSize = ByteBuffer.wrap(header).getInt();
-
-        final var bytes = in.readNBytes(msgSize);
-        assert bytes.length == msgSize;
-
-        return msgParser.parseFrom(bytes);
-    }
-
-    public static void writeDelimited(OutputStream out, MessageLite msg) throws IOException {
-        final var msgSize = msg.getSerializedSize();
-        final var header = ByteBuffer.allocate(4).putInt(msgSize).array();
-
-        out.write(header);
-        msg.writeTo(out);
-    }
-
     public static void main(String[] args)
     {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
