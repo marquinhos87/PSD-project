@@ -12,7 +12,7 @@ public class CatalogApplication
 {
     private final State state;
 
-    public CatalogApplication()
+    public CatalogApplication(int zeromqPort)
     {
         this.state = new State();
     }
