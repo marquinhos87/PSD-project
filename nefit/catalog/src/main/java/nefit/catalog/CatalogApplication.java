@@ -82,10 +82,10 @@ public class CatalogApplication
         {
             try
             {
-                final var topic = this.zmqSocket.recvStr();
+                final var topic = this.zmqSocket.recv();
                 final var messageBytes = this.zmqSocket.recv();
 
-                switch (topic)
+                switch (topic.toString())
                 {
                     case "addUser":
                         handleMessage(
