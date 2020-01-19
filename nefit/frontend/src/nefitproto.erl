@@ -514,14 +514,20 @@ encode_msg_ServerToManufacturerInvalid(Msg,
 
 
 encode_msg_ServerToManufacturerInvalid(#'ServerToManufacturerInvalid'{errorMessage
-									  = F1},
+									  = F1,
+								      productName
+									  = F2},
 				       Bin, TrUserData) ->
-    if F1 == undefined -> Bin;
-       true ->
-	   begin
-	     TrF1 = id(F1, TrUserData),
-	     e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
-	   end
+    B1 = if F1 == undefined -> Bin;
+	    true ->
+		begin
+		  TrF1 = id(F1, TrUserData),
+		  e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+		end
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
     end.
 
 encode_msg_ServerToManufacturerNoOffers(Msg,
@@ -697,10 +703,10 @@ encode_msg_ServerToImporter(#'ServerToImporter'{message
 							<<Bin/binary, 50>>,
 							TrUserData)
 		 end;
-	     {subAcccepted, TF1} ->
+	     {subsAccepted, TF1} ->
 		 begin
 		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_ServerToImporter_subAcccepted(TrTF1,
+		   e_mfield_ServerToImporter_subsAccepted(TrTF1,
 							  <<Bin/binary, 58>>,
 							  TrUserData)
 		 end
@@ -1232,7 +1238,7 @@ encode_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{manufacturerNa
 								      F4,
 								  minUnitPrice =
 								      F5,
-								  timout = F6,
+								  timeout = F6,
 								  importerName =
 								      F7},
 				     Bin, TrUserData) ->
@@ -1522,7 +1528,7 @@ e_mfield_ServerToImporter_newProduct(Msg, Bin,
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
-e_mfield_ServerToImporter_subAcccepted(_Msg, Bin,
+e_mfield_ServerToImporter_subsAccepted(_Msg, Bin,
 				       _TrUserData) ->
     <<Bin/binary, 0>>.
 
@@ -3488,71 +3494,90 @@ decode_msg_ServerToManufacturerInvalid(Bin,
 				       TrUserData) ->
     dfp_read_field_def_ServerToManufacturerInvalid(Bin, 0,
 						   0, id(undefined, TrUserData),
+						   id(undefined, TrUserData),
 						   TrUserData).
 
 dfp_read_field_def_ServerToManufacturerInvalid(<<10,
 						 Rest/binary>>,
-					       Z1, Z2, F@_1, TrUserData) ->
+					       Z1, Z2, F@_1, F@_2,
+					       TrUserData) ->
     d_field_ServerToManufacturerInvalid_errorMessage(Rest,
-						     Z1, Z2, F@_1, TrUserData);
+						     Z1, Z2, F@_1, F@_2,
+						     TrUserData);
+dfp_read_field_def_ServerToManufacturerInvalid(<<18,
+						 Rest/binary>>,
+					       Z1, Z2, F@_1, F@_2,
+					       TrUserData) ->
+    d_field_ServerToManufacturerInvalid_productName(Rest,
+						    Z1, Z2, F@_1, F@_2,
+						    TrUserData);
 dfp_read_field_def_ServerToManufacturerInvalid(<<>>, 0,
-					       0, F@_1, _) ->
-    #'ServerToManufacturerInvalid'{errorMessage = F@_1};
+					       0, F@_1, F@_2, _) ->
+    #'ServerToManufacturerInvalid'{errorMessage = F@_1,
+				   productName = F@_2};
 dfp_read_field_def_ServerToManufacturerInvalid(Other,
-					       Z1, Z2, F@_1, TrUserData) ->
+					       Z1, Z2, F@_1, F@_2,
+					       TrUserData) ->
     dg_read_field_def_ServerToManufacturerInvalid(Other, Z1,
-						  Z2, F@_1, TrUserData).
+						  Z2, F@_1, F@_2, TrUserData).
 
 dg_read_field_def_ServerToManufacturerInvalid(<<1:1,
 						X:7, Rest/binary>>,
-					      N, Acc, F@_1, TrUserData)
+					      N, Acc, F@_1, F@_2, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_ServerToManufacturerInvalid(Rest,
 						  N + 7, X bsl N + Acc, F@_1,
-						  TrUserData);
+						  F@_2, TrUserData);
 dg_read_field_def_ServerToManufacturerInvalid(<<0:1,
 						X:7, Rest/binary>>,
-					      N, Acc, F@_1, TrUserData) ->
+					      N, Acc, F@_1, F@_2, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       10 ->
 	  d_field_ServerToManufacturerInvalid_errorMessage(Rest,
-							   0, 0, F@_1,
+							   0, 0, F@_1, F@_2,
 							   TrUserData);
+      18 ->
+	  d_field_ServerToManufacturerInvalid_productName(Rest, 0,
+							  0, F@_1, F@_2,
+							  TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_ServerToManufacturerInvalid(Rest, 0, 0,
-							F@_1, TrUserData);
+							F@_1, F@_2, TrUserData);
 	    1 ->
 		skip_64_ServerToManufacturerInvalid(Rest, 0, 0, F@_1,
-						    TrUserData);
+						    F@_2, TrUserData);
 	    2 ->
 		skip_length_delimited_ServerToManufacturerInvalid(Rest,
 								  0, 0, F@_1,
+								  F@_2,
 								  TrUserData);
 	    3 ->
 		skip_group_ServerToManufacturerInvalid(Rest, Key bsr 3,
-						       0, F@_1, TrUserData);
+						       0, F@_1, F@_2,
+						       TrUserData);
 	    5 ->
 		skip_32_ServerToManufacturerInvalid(Rest, 0, 0, F@_1,
-						    TrUserData)
+						    F@_2, TrUserData)
 	  end
     end;
 dg_read_field_def_ServerToManufacturerInvalid(<<>>, 0,
-					      0, F@_1, _) ->
-    #'ServerToManufacturerInvalid'{errorMessage = F@_1}.
+					      0, F@_1, F@_2, _) ->
+    #'ServerToManufacturerInvalid'{errorMessage = F@_1,
+				   productName = F@_2}.
 
 d_field_ServerToManufacturerInvalid_errorMessage(<<1:1,
 						   X:7, Rest/binary>>,
-						 N, Acc, F@_1, TrUserData)
+						 N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_ServerToManufacturerInvalid_errorMessage(Rest,
 						     N + 7, X bsl N + Acc, F@_1,
-						     TrUserData);
+						     F@_2, TrUserData);
 d_field_ServerToManufacturerInvalid_errorMessage(<<0:1,
 						   X:7, Rest/binary>>,
-						 N, Acc, _, TrUserData) ->
+						 N, Acc, _, F@_2, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
@@ -3561,51 +3586,75 @@ d_field_ServerToManufacturerInvalid_errorMessage(<<0:1,
 			    Rest2}
 			 end,
     dfp_read_field_def_ServerToManufacturerInvalid(RestF, 0,
-						   0, NewFValue, TrUserData).
+						   0, NewFValue, F@_2,
+						   TrUserData).
+
+d_field_ServerToManufacturerInvalid_productName(<<1:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_ServerToManufacturerInvalid_productName(Rest,
+						    N + 7, X bsl N + Acc, F@_1,
+						    F@_2, TrUserData);
+d_field_ServerToManufacturerInvalid_productName(<<0:1,
+						  X:7, Rest/binary>>,
+						N, Acc, F@_1, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToManufacturerInvalid(RestF, 0,
+						   0, F@_1, NewFValue,
+						   TrUserData).
 
 skip_varint_ServerToManufacturerInvalid(<<1:1, _:7,
 					  Rest/binary>>,
-					Z1, Z2, F@_1, TrUserData) ->
+					Z1, Z2, F@_1, F@_2, TrUserData) ->
     skip_varint_ServerToManufacturerInvalid(Rest, Z1, Z2,
-					    F@_1, TrUserData);
+					    F@_1, F@_2, TrUserData);
 skip_varint_ServerToManufacturerInvalid(<<0:1, _:7,
 					  Rest/binary>>,
-					Z1, Z2, F@_1, TrUserData) ->
+					Z1, Z2, F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_ServerToManufacturerInvalid(Rest, Z1,
-						   Z2, F@_1, TrUserData).
+						   Z2, F@_1, F@_2, TrUserData).
 
 skip_length_delimited_ServerToManufacturerInvalid(<<1:1,
 						    X:7, Rest/binary>>,
-						  N, Acc, F@_1, TrUserData)
+						  N, Acc, F@_1, F@_2,
+						  TrUserData)
     when N < 57 ->
     skip_length_delimited_ServerToManufacturerInvalid(Rest,
 						      N + 7, X bsl N + Acc,
-						      F@_1, TrUserData);
+						      F@_1, F@_2, TrUserData);
 skip_length_delimited_ServerToManufacturerInvalid(<<0:1,
 						    X:7, Rest/binary>>,
-						  N, Acc, F@_1, TrUserData) ->
+						  N, Acc, F@_1, F@_2,
+						  TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_ServerToManufacturerInvalid(Rest2, 0,
-						   0, F@_1, TrUserData).
+						   0, F@_1, F@_2, TrUserData).
 
 skip_group_ServerToManufacturerInvalid(Bin, FNum, Z2,
-				       F@_1, TrUserData) ->
+				       F@_1, F@_2, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_ServerToManufacturerInvalid(Rest, 0,
-						   Z2, F@_1, TrUserData).
+						   Z2, F@_1, F@_2, TrUserData).
 
 skip_32_ServerToManufacturerInvalid(<<_:32,
 				      Rest/binary>>,
-				    Z1, Z2, F@_1, TrUserData) ->
+				    Z1, Z2, F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_ServerToManufacturerInvalid(Rest, Z1,
-						   Z2, F@_1, TrUserData).
+						   Z2, F@_1, F@_2, TrUserData).
 
 skip_64_ServerToManufacturerInvalid(<<_:64,
 				      Rest/binary>>,
-				    Z1, Z2, F@_1, TrUserData) ->
+				    Z1, Z2, F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_ServerToManufacturerInvalid(Rest, Z1,
-						   Z2, F@_1, TrUserData).
+						   Z2, F@_1, F@_2, TrUserData).
 
 decode_msg_ServerToManufacturerNoOffers(Bin,
 					TrUserData) ->
@@ -4590,7 +4639,7 @@ dfp_read_field_def_ServerToImporter(<<50, Rest/binary>>,
 					TrUserData);
 dfp_read_field_def_ServerToImporter(<<58, Rest/binary>>,
 				    Z1, Z2, F@_1, TrUserData) ->
-    d_field_ServerToImporter_subAcccepted(Rest, Z1, Z2,
+    d_field_ServerToImporter_subsAccepted(Rest, Z1, Z2,
 					  F@_1, TrUserData);
 dfp_read_field_def_ServerToImporter(<<>>, 0, 0, F@_1,
 				    _) ->
@@ -4630,7 +4679,7 @@ dg_read_field_def_ServerToImporter(<<0:1, X:7,
 	  d_field_ServerToImporter_newProduct(Rest, 0, 0, F@_1,
 					      TrUserData);
       58 ->
-	  d_field_ServerToImporter_subAcccepted(Rest, 0, 0, F@_1,
+	  d_field_ServerToImporter_subsAccepted(Rest, 0, 0, F@_1,
 						TrUserData);
       _ ->
 	  case Key band 7 of
@@ -4857,13 +4906,13 @@ d_field_ServerToImporter_newProduct(<<0:1, X:7,
 					end,
 					TrUserData).
 
-d_field_ServerToImporter_subAcccepted(<<1:1, X:7,
+d_field_ServerToImporter_subsAccepted(<<1:1, X:7,
 					Rest/binary>>,
 				      N, Acc, F@_1, TrUserData)
     when N < 57 ->
-    d_field_ServerToImporter_subAcccepted(Rest, N + 7,
+    d_field_ServerToImporter_subsAccepted(Rest, N + 7,
 					  X bsl N + Acc, F@_1, TrUserData);
-d_field_ServerToImporter_subAcccepted(<<0:1, X:7,
+d_field_ServerToImporter_subsAccepted(<<0:1, X:7,
 					Rest/binary>>,
 				      N, Acc, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
@@ -4877,16 +4926,16 @@ d_field_ServerToImporter_subAcccepted(<<0:1, X:7,
     dfp_read_field_def_ServerToImporter(RestF, 0, 0,
 					case Prev of
 					  undefined ->
-					      id({subAcccepted, NewFValue},
+					      id({subsAccepted, NewFValue},
 						 TrUserData);
-					  {subAcccepted, MVPrev} ->
-					      id({subAcccepted,
+					  {subsAccepted, MVPrev} ->
+					      id({subsAccepted,
 						  merge_msg_ServerToImporterSubscribeAccepted(MVPrev,
 											      NewFValue,
 											      TrUserData)},
 						 TrUserData);
 					  _ ->
-					      id({subAcccepted, NewFValue},
+					      id({subsAccepted, NewFValue},
 						 TrUserData)
 					end,
 					TrUserData).
@@ -9055,9 +9104,9 @@ dfp_read_field_def_ArbiterToServerNewProduct(<<48,
 					       Rest/binary>>,
 					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
 					     F@_5, F@_6, F@_7, TrUserData) ->
-    d_field_ArbiterToServerNewProduct_timout(Rest, Z1, Z2,
-					     F@_1, F@_2, F@_3, F@_4, F@_5, F@_6,
-					     F@_7, TrUserData);
+    d_field_ArbiterToServerNewProduct_timeout(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, F@_4, F@_5,
+					      F@_6, F@_7, TrUserData);
 dfp_read_field_def_ArbiterToServerNewProduct(<<58,
 					       Rest/binary>>,
 					     Z1, Z2, F@_1, F@_2, F@_3, F@_4,
@@ -9072,7 +9121,7 @@ dfp_read_field_def_ArbiterToServerNewProduct(<<>>, 0, 0,
     #'ArbiterToServerNewProduct'{manufacturerName = F@_1,
 				 productName = F@_2, minQuantity = F@_3,
 				 maxQuantity = F@_4, minUnitPrice = F@_5,
-				 timout = F@_6, importerName = F@_7};
+				 timeout = F@_6, importerName = F@_7};
 dfp_read_field_def_ArbiterToServerNewProduct(Other, Z1,
 					     Z2, F@_1, F@_2, F@_3, F@_4, F@_5,
 					     F@_6, F@_7, TrUserData) ->
@@ -9122,9 +9171,10 @@ dg_read_field_def_ArbiterToServerNewProduct(<<0:1, X:7,
 							 F@_4, F@_5, F@_6, F@_7,
 							 TrUserData);
       48 ->
-	  d_field_ArbiterToServerNewProduct_timout(Rest, 0, 0,
-						   F@_1, F@_2, F@_3, F@_4, F@_5,
-						   F@_6, F@_7, TrUserData);
+	  d_field_ArbiterToServerNewProduct_timeout(Rest, 0, 0,
+						    F@_1, F@_2, F@_3, F@_4,
+						    F@_5, F@_6, F@_7,
+						    TrUserData);
       58 ->
 	  d_field_ArbiterToServerNewProduct_importerName(Rest, 0,
 							 0, F@_1, F@_2, F@_3,
@@ -9164,7 +9214,7 @@ dg_read_field_def_ArbiterToServerNewProduct(<<>>, 0, 0,
     #'ArbiterToServerNewProduct'{manufacturerName = F@_1,
 				 productName = F@_2, minQuantity = F@_3,
 				 maxQuantity = F@_4, minUnitPrice = F@_5,
-				 timout = F@_6, importerName = F@_7}.
+				 timeout = F@_6, importerName = F@_7}.
 
 d_field_ArbiterToServerNewProduct_manufacturerName(<<1:1,
 						     X:7, Rest/binary>>,
@@ -9297,19 +9347,19 @@ d_field_ArbiterToServerNewProduct_minUnitPrice(<<Value:32/little-float,
 						 id(Value, TrUserData), F@_6,
 						 F@_7, TrUserData).
 
-d_field_ArbiterToServerNewProduct_timout(<<1:1, X:7,
-					   Rest/binary>>,
-					 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-					 F@_6, F@_7, TrUserData)
+d_field_ArbiterToServerNewProduct_timeout(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					  F@_6, F@_7, TrUserData)
     when N < 57 ->
-    d_field_ArbiterToServerNewProduct_timout(Rest, N + 7,
-					     X bsl N + Acc, F@_1, F@_2, F@_3,
-					     F@_4, F@_5, F@_6, F@_7,
-					     TrUserData);
-d_field_ArbiterToServerNewProduct_timout(<<0:1, X:7,
-					   Rest/binary>>,
-					 N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
-					 _, F@_7, TrUserData) ->
+    d_field_ArbiterToServerNewProduct_timeout(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2, F@_3,
+					      F@_4, F@_5, F@_6, F@_7,
+					      TrUserData);
+d_field_ArbiterToServerNewProduct_timeout(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, F@_4, F@_5,
+					  _, F@_7, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:32/signed-native>> = <<(X bsl N +
 							    Acc):32/unsigned-native>>,
@@ -10867,13 +10917,17 @@ merge_msg_ServerToManufacturerInvalid(#'ServerToManufacturerInvalid'{errorMessag
 									 PFerrorMessage},
 				      #'ServerToManufacturerInvalid'{errorMessage
 									 =
-									 NFerrorMessage},
+									 NFerrorMessage,
+								     productName
+									 =
+									 NFproductName},
 				      _) ->
     #'ServerToManufacturerInvalid'{errorMessage =
 				       if NFerrorMessage =:= undefined ->
 					      PFerrorMessage;
 					  true -> NFerrorMessage
-				       end}.
+				       end,
+				   productName = NFproductName}.
 
 -compile({nowarn_unused_function,merge_msg_ServerToManufacturerNoOffers/3}).
 merge_msg_ServerToManufacturerNoOffers(#'ServerToManufacturerNoOffers'{},
@@ -11002,9 +11056,9 @@ merge_msg_ServerToImporter(#'ServerToImporter'{message =
 				   merge_msg_ServerToImporterNewProduct(OPFmessage,
 									ONFmessage,
 									TrUserData)};
-			      {{subAcccepted, OPFmessage},
-			       {subAcccepted, ONFmessage}} ->
-				  {subAcccepted,
+			      {{subsAccepted, OPFmessage},
+			       {subsAccepted, ONFmessage}} ->
+				  {subsAccepted,
 				   merge_msg_ServerToImporterSubscribeAccepted(OPFmessage,
 									       ONFmessage,
 									       TrUserData)};
@@ -11349,8 +11403,8 @@ merge_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{},
 								     NFmaxQuantity,
 								 minUnitPrice =
 								     NFminUnitPrice,
-								 timout =
-								     NFtimout,
+								 timeout =
+								     NFtimeout,
 								 importerName =
 								     NFimporterName},
 				    _) ->
@@ -11360,7 +11414,7 @@ merge_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{},
 				 minQuantity = NFminQuantity,
 				 maxQuantity = NFmaxQuantity,
 				 minUnitPrice = NFminUnitPrice,
-				 timout = NFtimout,
+				 timeout = NFtimeout,
 				 importerName = NFimporterName}.
 
 -compile({nowarn_unused_function,merge_msg_ArbiterToServerSubscribeAccepted/3}).
@@ -11742,12 +11796,15 @@ v_msg_ServerToManufacturerAnnounced(X, Path,
 -compile({nowarn_unused_function,v_msg_ServerToManufacturerInvalid/3}).
 -dialyzer({nowarn_function,v_msg_ServerToManufacturerInvalid/3}).
 v_msg_ServerToManufacturerInvalid(#'ServerToManufacturerInvalid'{errorMessage
-								     = F1},
+								     = F1,
+								 productName =
+								     F2},
 				  Path, TrUserData) ->
     if F1 == undefined -> ok;
        true ->
 	   v_type_string(F1, [errorMessage | Path], TrUserData)
     end,
+    v_type_string(F2, [productName | Path], TrUserData),
     ok;
 v_msg_ServerToManufacturerInvalid(X, Path,
 				  _TrUserData) ->
@@ -11877,9 +11934,9 @@ v_msg_ServerToImporter(#'ServerToImporter'{message =
 	  v_msg_ServerToImporterNewProduct(OF1,
 					   [newProduct, message | Path],
 					   TrUserData);
-      {subAcccepted, OF1} ->
+      {subsAccepted, OF1} ->
 	  v_msg_ServerToImporterSubscribeAccepted(OF1,
-						  [subAcccepted, message
+						  [subsAccepted, message
 						   | Path],
 						  TrUserData);
       _ -> mk_type_error(invalid_oneof, F1, [message | Path])
@@ -12260,7 +12317,7 @@ v_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{manufacturerName
 							     minQuantity = F3,
 							     maxQuantity = F4,
 							     minUnitPrice = F5,
-							     timout = F6,
+							     timeout = F6,
 							     importerName = F7},
 				Path, TrUserData) ->
     v_type_string(F1, [manufacturerName | Path],
@@ -12269,7 +12326,7 @@ v_msg_ArbiterToServerNewProduct(#'ArbiterToServerNewProduct'{manufacturerName
     v_type_int32(F3, [minQuantity | Path], TrUserData),
     v_type_int32(F4, [maxQuantity | Path], TrUserData),
     v_type_float(F5, [minUnitPrice | Path], TrUserData),
-    v_type_int32(F6, [timout | Path], TrUserData),
+    v_type_int32(F6, [timeout | Path], TrUserData),
     v_type_string(F7, [importerName | Path], TrUserData),
     ok;
 v_msg_ArbiterToServerNewProduct(X, Path, _TrUserData) ->
@@ -12564,7 +12621,9 @@ get_msg_defs() ->
 	      type = string, occurrence = required, opts = []}]},
      {{msg, 'ServerToManufacturerInvalid'},
       [#field{name = errorMessage, fnum = 1, rnum = 2,
-	      type = string, occurrence = optional, opts = []}]},
+	      type = string, occurrence = optional, opts = []},
+       #field{name = productName, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []}]},
      {{msg, 'ServerToManufacturerNoOffers'},
       [#field{name = productName, fnum = 1, rnum = 2,
 	      type = string, occurrence = required, opts = []}]},
@@ -12621,7 +12680,7 @@ get_msg_defs() ->
 		       #field{name = newProduct, fnum = 6, rnum = 2,
 			      type = {msg, 'ServerToImporterNewProduct'},
 			      occurrence = optional, opts = []},
-		       #field{name = subAcccepted, fnum = 7, rnum = 2,
+		       #field{name = subsAccepted, fnum = 7, rnum = 2,
 			      type = {msg, 'ServerToImporterSubscribeAccepted'},
 			      occurrence = optional, opts = []}]}]},
      {{msg, 'ServerToImporterOfferSubmitted'},
@@ -12783,7 +12842,7 @@ get_msg_defs() ->
 	      type = int32, occurrence = required, opts = []},
        #field{name = minUnitPrice, fnum = 5, rnum = 6,
 	      type = float, occurrence = required, opts = []},
-       #field{name = timout, fnum = 6, rnum = 7, type = int32,
+       #field{name = timeout, fnum = 6, rnum = 7, type = int32,
 	      occurrence = required, opts = []},
        #field{name = importerName, fnum = 7, rnum = 8,
 	      type = string, occurrence = required, opts = []}]},
@@ -12980,7 +13039,9 @@ find_msg_def('ServerToManufacturerAnnounced') ->
 	    type = string, occurrence = required, opts = []}];
 find_msg_def('ServerToManufacturerInvalid') ->
     [#field{name = errorMessage, fnum = 1, rnum = 2,
-	    type = string, occurrence = optional, opts = []}];
+	    type = string, occurrence = optional, opts = []},
+     #field{name = productName, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []}];
 find_msg_def('ServerToManufacturerNoOffers') ->
     [#field{name = productName, fnum = 1, rnum = 2,
 	    type = string, occurrence = required, opts = []}];
@@ -13037,7 +13098,7 @@ find_msg_def('ServerToImporter') ->
 		     #field{name = newProduct, fnum = 6, rnum = 2,
 			    type = {msg, 'ServerToImporterNewProduct'},
 			    occurrence = optional, opts = []},
-		     #field{name = subAcccepted, fnum = 7, rnum = 2,
+		     #field{name = subsAccepted, fnum = 7, rnum = 2,
 			    type = {msg, 'ServerToImporterSubscribeAccepted'},
 			    occurrence = optional, opts = []}]}];
 find_msg_def('ServerToImporterOfferSubmitted') ->
@@ -13199,7 +13260,7 @@ find_msg_def('ArbiterToServerNewProduct') ->
 	    type = int32, occurrence = required, opts = []},
      #field{name = minUnitPrice, fnum = 5, rnum = 6,
 	    type = float, occurrence = required, opts = []},
-     #field{name = timout, fnum = 6, rnum = 7, type = int32,
+     #field{name = timeout, fnum = 6, rnum = 7, type = int32,
 	    occurrence = required, opts = []},
      #field{name = importerName, fnum = 7, rnum = 8,
 	    type = string, occurrence = required, opts = []}];

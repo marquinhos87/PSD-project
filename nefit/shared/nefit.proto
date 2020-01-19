@@ -78,6 +78,7 @@ message ServerToManufacturerAnnounced {
 
 message ServerToManufacturerInvalid {
     optional string errorMessage = 1;
+    required string productName = 2;
 }
 
 message ServerToManufacturerNoOffers {
@@ -121,7 +122,7 @@ message ServerToImporter {
         ServerToImporterOfferLose offerLose = 4;
         ServerToImporterOfferOutdated offerOutdated = 5;
         ServerToImporterNewProduct newProduct = 6;
-        ServerToImporterSubscribeAccepted subAcccepted = 7;
+        ServerToImporterSubscribeAccepted subsAccepted = 7;
     }
 }
 
@@ -246,7 +247,7 @@ message ArbiterToServerNewProduct {
     required int32 minQuantity = 3;
     required int32 maxQuantity = 4;
     required float minUnitPrice = 5;
-    required int32 timout = 6;
+    required int32 timeout = 6;
     required string importerName = 7;
 }
 

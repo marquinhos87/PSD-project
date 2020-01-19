@@ -32734,15 +32734,15 @@ public final class NefitProto {
     float getMinUnitPrice();
 
     /**
-     * <code>required int32 timout = 6;</code>
-     * @return Whether the timout field is set.
+     * <code>required int32 timeout = 6;</code>
+     * @return Whether the timeout field is set.
      */
-    boolean hasTimout();
+    boolean hasTimeout();
     /**
-     * <code>required int32 timout = 6;</code>
-     * @return The timout.
+     * <code>required int32 timeout = 6;</code>
+     * @return The timeout.
      */
-    int getTimout();
+    int getTimeout();
 
     /**
      * <code>required string importerName = 7;</code>
@@ -32839,7 +32839,7 @@ public final class NefitProto {
             }
             case 48: {
               bitField0_ |= 0x00000020;
-              timout_ = input.readInt32();
+              timeout_ = input.readInt32();
               break;
             }
             case 58: {
@@ -33022,21 +33022,21 @@ public final class NefitProto {
       return minUnitPrice_;
     }
 
-    public static final int TIMOUT_FIELD_NUMBER = 6;
-    private int timout_;
+    public static final int TIMEOUT_FIELD_NUMBER = 6;
+    private int timeout_;
     /**
-     * <code>required int32 timout = 6;</code>
-     * @return Whether the timout field is set.
+     * <code>required int32 timeout = 6;</code>
+     * @return Whether the timeout field is set.
      */
-    public boolean hasTimout() {
+    public boolean hasTimeout() {
       return ((bitField0_ & 0x00000020) != 0);
     }
     /**
-     * <code>required int32 timout = 6;</code>
-     * @return The timout.
+     * <code>required int32 timeout = 6;</code>
+     * @return The timeout.
      */
-    public int getTimout() {
-      return timout_;
+    public int getTimeout() {
+      return timeout_;
     }
 
     public static final int IMPORTERNAME_FIELD_NUMBER = 7;
@@ -33111,7 +33111,7 @@ public final class NefitProto {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasTimout()) {
+      if (!hasTimeout()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -33142,7 +33142,7 @@ public final class NefitProto {
         output.writeFloat(5, minUnitPrice_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
-        output.writeInt32(6, timout_);
+        output.writeInt32(6, timeout_);
       }
       if (((bitField0_ & 0x00000040) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, importerName_);
@@ -33176,7 +33176,7 @@ public final class NefitProto {
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, timout_);
+          .computeInt32Size(6, timeout_);
       }
       if (((bitField0_ & 0x00000040) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, importerName_);
@@ -33222,10 +33222,10 @@ public final class NefitProto {
             != java.lang.Float.floatToIntBits(
                 other.getMinUnitPrice())) return false;
       }
-      if (hasTimout() != other.hasTimout()) return false;
-      if (hasTimout()) {
-        if (getTimout()
-            != other.getTimout()) return false;
+      if (hasTimeout() != other.hasTimeout()) return false;
+      if (hasTimeout()) {
+        if (getTimeout()
+            != other.getTimeout()) return false;
       }
       if (hasImporterName() != other.hasImporterName()) return false;
       if (hasImporterName()) {
@@ -33264,9 +33264,9 @@ public final class NefitProto {
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getMinUnitPrice());
       }
-      if (hasTimout()) {
-        hash = (37 * hash) + TIMOUT_FIELD_NUMBER;
-        hash = (53 * hash) + getTimout();
+      if (hasTimeout()) {
+        hash = (37 * hash) + TIMEOUT_FIELD_NUMBER;
+        hash = (53 * hash) + getTimeout();
       }
       if (hasImporterName()) {
         hash = (37 * hash) + IMPORTERNAME_FIELD_NUMBER;
@@ -33415,7 +33415,7 @@ public final class NefitProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         minUnitPrice_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
-        timout_ = 0;
+        timeout_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
         importerName_ = "";
         bitField0_ = (bitField0_ & ~0x00000040);
@@ -33468,7 +33468,7 @@ public final class NefitProto {
           to_bitField0_ |= 0x00000010;
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.timout_ = timout_;
+          result.timeout_ = timeout_;
           to_bitField0_ |= 0x00000020;
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
@@ -33543,8 +33543,8 @@ public final class NefitProto {
         if (other.hasMinUnitPrice()) {
           setMinUnitPrice(other.getMinUnitPrice());
         }
-        if (other.hasTimout()) {
-          setTimout(other.getTimout());
+        if (other.hasTimeout()) {
+          setTimeout(other.getTimeout());
         }
         if (other.hasImporterName()) {
           bitField0_ |= 0x00000040;
@@ -33573,7 +33573,7 @@ public final class NefitProto {
         if (!hasMinUnitPrice()) {
           return false;
         }
-        if (!hasTimout()) {
+        if (!hasTimeout()) {
           return false;
         }
         if (!hasImporterName()) {
@@ -33881,39 +33881,39 @@ public final class NefitProto {
         return this;
       }
 
-      private int timout_ ;
+      private int timeout_ ;
       /**
-       * <code>required int32 timout = 6;</code>
-       * @return Whether the timout field is set.
+       * <code>required int32 timeout = 6;</code>
+       * @return Whether the timeout field is set.
        */
-      public boolean hasTimout() {
+      public boolean hasTimeout() {
         return ((bitField0_ & 0x00000020) != 0);
       }
       /**
-       * <code>required int32 timout = 6;</code>
-       * @return The timout.
+       * <code>required int32 timeout = 6;</code>
+       * @return The timeout.
        */
-      public int getTimout() {
-        return timout_;
+      public int getTimeout() {
+        return timeout_;
       }
       /**
-       * <code>required int32 timout = 6;</code>
-       * @param value The timout to set.
+       * <code>required int32 timeout = 6;</code>
+       * @param value The timeout to set.
        * @return This builder for chaining.
        */
-      public Builder setTimout(int value) {
+      public Builder setTimeout(int value) {
         bitField0_ |= 0x00000020;
-        timout_ = value;
+        timeout_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 timout = 6;</code>
+       * <code>required int32 timeout = 6;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTimout() {
+      public Builder clearTimeout() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        timout_ = 0;
+        timeout_ = 0;
         onChanged();
         return this;
       }
@@ -39385,28 +39385,28 @@ public final class NefitProto {
       "facturerName\030\003 \002(\t\"c\n\034ArbiterToServerOff" +
       "erOutdated\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013" +
       "productName\030\002 \002(\t\022\024\n\014importerName\030\003 \002(\t\"" +
-      "\260\001\n\031ArbiterToServerNewProduct\022\030\n\020manufac" +
+      "\261\001\n\031ArbiterToServerNewProduct\022\030\n\020manufac" +
       "turerName\030\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013" +
       "minQuantity\030\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024" +
-      "\n\014minUnitPrice\030\005 \002(\002\022\016\n\006timout\030\006 \002(\005\022\024\n\014" +
-      "importerName\030\007 \002(\t\"8\n ArbiterToServerSub" +
-      "scribeAccepted\022\024\n\014importerName\030\001 \002(\t\"\264\001\n" +
-      "\017ServerToArbiter\022,\n\005offer\030\001 \001(\0132\033.nefit." +
-      "ServerToArbiterOfferH\000\0222\n\010announce\030\002 \001(\013" +
-      "2\036.nefit.ServerToArbiterAnnounceH\000\0224\n\tsu" +
-      "bscribe\030\003 \001(\0132\037.nefit.ServerToArbiterSub" +
-      "scribeH\000B\t\n\007message\"\200\001\n\024ServerToArbiterO" +
-      "ffer\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013produc" +
-      "tName\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPri" +
-      "ce\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t\"\230\001\n\027Serve" +
-      "rToArbiterAnnounce\022\030\n\020manufacturerName\030\001" +
-      " \002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013minQuantity" +
-      "\030\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitPr" +
-      "ice\030\005 \002(\002\022\016\n\006timout\030\006 \002(\005\"K\n\030ServerToArb" +
-      "iterSubscribe\022\024\n\014importerName\030\001 \002(\t\022\031\n\021m" +
-      "anufacturerNames\030\002 \003(\t*,\n\nClientType\022\014\n\010" +
-      "IMPORTER\020\000\022\020\n\014MANUFACTURER\020\001B\032\n\014nefit.sh" +
-      "aredB\nNefitProto"
+      "\n\014minUnitPrice\030\005 \002(\002\022\017\n\007timeout\030\006 \002(\005\022\024\n" +
+      "\014importerName\030\007 \002(\t\"8\n ArbiterToServerSu" +
+      "bscribeAccepted\022\024\n\014importerName\030\001 \002(\t\"\264\001" +
+      "\n\017ServerToArbiter\022,\n\005offer\030\001 \001(\0132\033.nefit" +
+      ".ServerToArbiterOfferH\000\0222\n\010announce\030\002 \001(" +
+      "\0132\036.nefit.ServerToArbiterAnnounceH\000\0224\n\ts" +
+      "ubscribe\030\003 \001(\0132\037.nefit.ServerToArbiterSu" +
+      "bscribeH\000B\t\n\007message\"\200\001\n\024ServerToArbiter" +
+      "Offer\022\030\n\020manufacturerName\030\001 \002(\t\022\023\n\013produ" +
+      "ctName\030\002 \002(\t\022\020\n\010quantity\030\003 \002(\005\022\021\n\tunitPr" +
+      "ice\030\004 \002(\002\022\024\n\014importerName\030\005 \002(\t\"\230\001\n\027Serv" +
+      "erToArbiterAnnounce\022\030\n\020manufacturerName\030" +
+      "\001 \002(\t\022\023\n\013productName\030\002 \002(\t\022\023\n\013minQuantit" +
+      "y\030\003 \002(\005\022\023\n\013maxQuantity\030\004 \002(\005\022\024\n\014minUnitP" +
+      "rice\030\005 \002(\002\022\016\n\006timout\030\006 \002(\005\"K\n\030ServerToAr" +
+      "biterSubscribe\022\024\n\014importerName\030\001 \002(\t\022\031\n\021" +
+      "manufacturerNames\030\002 \003(\t*,\n\nClientType\022\014\n" +
+      "\010IMPORTER\020\000\022\020\n\014MANUFACTURER\020\001B\032\n\014nefit.s" +
+      "haredB\nNefitProto"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -39609,7 +39609,7 @@ public final class NefitProto {
     internal_static_nefit_ArbiterToServerNewProduct_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nefit_ArbiterToServerNewProduct_descriptor,
-        new java.lang.String[] { "ManufacturerName", "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timout", "ImporterName", });
+        new java.lang.String[] { "ManufacturerName", "ProductName", "MinQuantity", "MaxQuantity", "MinUnitPrice", "Timeout", "ImporterName", });
     internal_static_nefit_ArbiterToServerSubscribeAccepted_descriptor =
       getDescriptor().getMessageTypes().get(33);
     internal_static_nefit_ArbiterToServerSubscribeAccepted_fieldAccessorTable = new

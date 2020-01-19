@@ -76,7 +76,8 @@
 -ifndef('SERVERTOMANUFACTURERINVALID_PB_H').
 -define('SERVERTOMANUFACTURERINVALID_PB_H', true).
 -record('ServerToManufacturerInvalid',
-        {errorMessage           :: iodata() | undefined % = 1
+        {errorMessage           :: iodata() | undefined, % = 1
+         productName            :: iodata()         % = 2
         }).
 -endif.
 
@@ -125,7 +126,7 @@
 -ifndef('SERVERTOIMPORTER_PB_H').
 -define('SERVERTOIMPORTER_PB_H', true).
 -record('ServerToImporter',
-        {message                :: {offerSubmitted, nefitproto:'ServerToImporterOfferSubmitted'()} | {offerInvalid, nefitproto:'ServerToImporterOfferInvalid'()} | {offerWon, nefitproto:'ServerToImporterOfferWon'()} | {offerLose, nefitproto:'ServerToImporterOfferLose'()} | {offerOutdated, nefitproto:'ServerToImporterOfferOutdated'()} | {newProduct, nefitproto:'ServerToImporterNewProduct'()} | {subAcccepted, nefitproto:'ServerToImporterSubscribeAccepted'()} | undefined % oneof
+        {message                :: {offerSubmitted, nefitproto:'ServerToImporterOfferSubmitted'()} | {offerInvalid, nefitproto:'ServerToImporterOfferInvalid'()} | {offerWon, nefitproto:'ServerToImporterOfferWon'()} | {offerLose, nefitproto:'ServerToImporterOfferLose'()} | {offerOutdated, nefitproto:'ServerToImporterOfferOutdated'()} | {newProduct, nefitproto:'ServerToImporterNewProduct'()} | {subsAccepted, nefitproto:'ServerToImporterSubscribeAccepted'()} | undefined % oneof
         }).
 -endif.
 
@@ -289,7 +290,7 @@
          minQuantity            :: integer(),       % = 3, 32 bits
          maxQuantity            :: integer(),       % = 4, 32 bits
          minUnitPrice           :: float() | integer() | infinity | '-infinity' | nan, % = 5
-         timout                 :: integer(),       % = 6, 32 bits
+         timeout                :: integer(),       % = 6, 32 bits
          importerName           :: iodata()         % = 7
         }).
 -endif.

@@ -185,7 +185,7 @@ public class Arbiter implements Runnable
                     .setMaxQuantity(disponibility.getMaxQuantity())
                     .setMinQuantity(disponibility.getMinQuantity())
                     .setMinUnitPrice(disponibility.getMinUnitPrice())
-                    .setTimout(disponibility.getTimout())
+                    .setTimeout(disponibility.getTimout())
                     .setImporterName(str).build();
                 connection.send(
                     NefitProto.ArbiterToServer.newBuilder().setProduct(infoS)
