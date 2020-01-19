@@ -264,7 +264,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -281,7 +281,7 @@ public final class NefitProtos {
         getUsernameBytes() {
       java.lang.Object ref = username_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         username_ = b;
@@ -309,7 +309,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -326,7 +326,7 @@ public final class NefitProtos {
         getPasswordBytes() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         password_ = b;
@@ -543,7 +543,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ClientToServerLogin.class, nefit.shared.NefitProtos.ClientToServerLogin.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ClientToServerLogin.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ClientToServerLogin.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -730,7 +730,7 @@ public final class NefitProtos {
           getUsernameBytes() {
         java.lang.Object ref = username_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           username_ = b;
@@ -814,7 +814,7 @@ public final class NefitProtos {
           getPasswordBytes() {
         java.lang.Object ref = password_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           password_ = b;
@@ -1093,7 +1093,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1110,7 +1110,7 @@ public final class NefitProtos {
         getUsernameBytes() {
       java.lang.Object ref = username_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         username_ = b;
@@ -1138,7 +1138,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -1155,7 +1155,7 @@ public final class NefitProtos {
         getPasswordBytes() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         password_ = b;
@@ -1409,7 +1409,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ClientToServerRegister.class, nefit.shared.NefitProtos.ClientToServerRegister.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ClientToServerRegister.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ClientToServerRegister.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1608,7 +1608,7 @@ public final class NefitProtos {
           getUsernameBytes() {
         java.lang.Object ref = username_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           username_ = b;
@@ -1692,7 +1692,7 @@ public final class NefitProtos {
           getPasswordBytes() {
         java.lang.Object ref = password_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           password_ = b;
@@ -2043,7 +2043,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -2060,7 +2060,7 @@ public final class NefitProtos {
         getErrorMessageBytes() {
       java.lang.Object ref = errorMessage_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         errorMessage_ = b;
@@ -2291,7 +2291,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ServerToClientAuth.class, nefit.shared.NefitProtos.ServerToClientAuth.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ServerToClientAuth.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ServerToClientAuth.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2561,7 +2561,7 @@ public final class NefitProtos {
           getErrorMessageBytes() {
         java.lang.Object ref = errorMessage_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           errorMessage_ = b;
@@ -2908,7 +2908,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ServerToClientManufacturer.class, nefit.shared.NefitProtos.ServerToClientManufacturer.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ServerToClientManufacturer.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ServerToClientManufacturer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3470,7 +3470,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -3487,7 +3487,7 @@ public final class NefitProtos {
         getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         name_ = b;
@@ -3515,7 +3515,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -3532,7 +3532,7 @@ public final class NefitProtos {
         getPassBytes() {
       java.lang.Object ref = pass_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         pass_ = b;
@@ -3820,7 +3820,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.MsgAuth.class, nefit.shared.NefitProtos.MsgAuth.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.MsgAuth.newBuilder()
+      // Construct using nefit.shared.NefitProtos.MsgAuth.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4031,7 +4031,7 @@ public final class NefitProtos {
           getNameBytes() {
         java.lang.Object ref = name_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           name_ = b;
@@ -4115,7 +4115,7 @@ public final class NefitProtos {
           getPassBytes() {
         java.lang.Object ref = pass_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           pass_ = b;
@@ -4459,7 +4459,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -4476,7 +4476,7 @@ public final class NefitProtos {
         getMsgBytes() {
       java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         msg_ = b;
@@ -4686,7 +4686,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.MsgAck.class, nefit.shared.NefitProtos.MsgAck.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.MsgAck.newBuilder()
+      // Construct using nefit.shared.NefitProtos.MsgAck.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4905,7 +4905,7 @@ public final class NefitProtos {
           getMsgBytes() {
         java.lang.Object ref = msg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           msg_ = b;
@@ -5220,7 +5220,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -5237,7 +5237,7 @@ public final class NefitProtos {
         getNameMBytes() {
       java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameM_ = b;
@@ -5265,7 +5265,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -5282,7 +5282,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -5644,7 +5644,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.DisponibilityS.class, nefit.shared.NefitProtos.DisponibilityS.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.DisponibilityS.newBuilder()
+      // Construct using nefit.shared.NefitProtos.DisponibilityS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5879,7 +5879,7 @@ public final class NefitProtos {
           getNameMBytes() {
         java.lang.Object ref = nameM_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameM_ = b;
@@ -5963,7 +5963,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -6426,7 +6426,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -6443,7 +6443,7 @@ public final class NefitProtos {
         getNameMBytes() {
       java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameM_ = b;
@@ -6471,7 +6471,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -6488,7 +6488,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -6850,7 +6850,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.DisponibilityN.class, nefit.shared.NefitProtos.DisponibilityN.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.DisponibilityN.newBuilder()
+      // Construct using nefit.shared.NefitProtos.DisponibilityN.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7085,7 +7085,7 @@ public final class NefitProtos {
           getNameMBytes() {
         java.lang.Object ref = nameM_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameM_ = b;
@@ -7169,7 +7169,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -7624,7 +7624,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -7641,7 +7641,7 @@ public final class NefitProtos {
         getNameMBytes() {
       java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameM_ = b;
@@ -7669,7 +7669,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -7686,7 +7686,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -7748,7 +7748,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -7765,7 +7765,7 @@ public final class NefitProtos {
         getNameIBytes() {
       java.lang.Object ref = nameI_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameI_ = b;
@@ -8038,7 +8038,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.OrderS.class, nefit.shared.NefitProtos.OrderS.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.OrderS.newBuilder()
+      // Construct using nefit.shared.NefitProtos.OrderS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8263,7 +8263,7 @@ public final class NefitProtos {
           getNameMBytes() {
         java.lang.Object ref = nameM_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameM_ = b;
@@ -8347,7 +8347,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -8505,7 +8505,7 @@ public final class NefitProtos {
           getNameIBytes() {
         java.lang.Object ref = nameI_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameI_ = b;
@@ -8812,7 +8812,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -8829,7 +8829,7 @@ public final class NefitProtos {
         getNameMBytes() {
       java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameM_ = b;
@@ -8857,7 +8857,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -8874,7 +8874,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -8936,7 +8936,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -8953,7 +8953,7 @@ public final class NefitProtos {
         getNameIBytes() {
       java.lang.Object ref = nameI_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameI_ = b;
@@ -9226,7 +9226,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.OrderN.class, nefit.shared.NefitProtos.OrderN.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.OrderN.newBuilder()
+      // Construct using nefit.shared.NefitProtos.OrderN.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9451,7 +9451,7 @@ public final class NefitProtos {
           getNameMBytes() {
         java.lang.Object ref = nameM_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameM_ = b;
@@ -9535,7 +9535,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -9693,7 +9693,7 @@ public final class NefitProtos {
           getNameIBytes() {
         java.lang.Object ref = nameI_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameI_ = b;
@@ -9993,7 +9993,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -10010,7 +10010,7 @@ public final class NefitProtos {
         getMsgBytes() {
       java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         msg_ = b;
@@ -10038,7 +10038,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -10055,7 +10055,7 @@ public final class NefitProtos {
         getNameIBytes() {
       java.lang.Object ref = nameI_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameI_ = b;
@@ -10322,7 +10322,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.OrderAckS.class, nefit.shared.NefitProtos.OrderAckS.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.OrderAckS.newBuilder()
+      // Construct using nefit.shared.NefitProtos.OrderAckS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10567,7 +10567,7 @@ public final class NefitProtos {
           getMsgBytes() {
         java.lang.Object ref = msg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           msg_ = b;
@@ -10651,7 +10651,7 @@ public final class NefitProtos {
           getNameIBytes() {
         java.lang.Object ref = nameI_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameI_ = b;
@@ -10964,7 +10964,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -10981,7 +10981,7 @@ public final class NefitProtos {
         getMsgBytes() {
       java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         msg_ = b;
@@ -11229,7 +11229,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.OrderAckI.class, nefit.shared.NefitProtos.OrderAckI.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.OrderAckI.newBuilder()
+      // Construct using nefit.shared.NefitProtos.OrderAckI.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11460,7 +11460,7 @@ public final class NefitProtos {
           getMsgBytes() {
         java.lang.Object ref = msg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           msg_ = b;
@@ -11762,7 +11762,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -11779,7 +11779,7 @@ public final class NefitProtos {
         getNameIBytes() {
       java.lang.Object ref = nameI_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameI_ = b;
@@ -12024,7 +12024,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.SubS.class, nefit.shared.NefitProtos.SubS.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.SubS.newBuilder()
+      // Construct using nefit.shared.NefitProtos.SubS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12214,7 +12214,7 @@ public final class NefitProtos {
           getNameIBytes() {
         java.lang.Object ref = nameI_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameI_ = b;
@@ -12588,7 +12588,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -12605,7 +12605,7 @@ public final class NefitProtos {
         getNameIBytes() {
       java.lang.Object ref = nameI_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameI_ = b;
@@ -12850,7 +12850,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.SubN.class, nefit.shared.NefitProtos.SubN.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.SubN.newBuilder()
+      // Construct using nefit.shared.NefitProtos.SubN.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -13040,7 +13040,7 @@ public final class NefitProtos {
           getNameIBytes() {
         java.lang.Object ref = nameI_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameI_ = b;
@@ -13432,7 +13432,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -13449,7 +13449,7 @@ public final class NefitProtos {
         getNameMBytes() {
       java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameM_ = b;
@@ -13477,7 +13477,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -13494,7 +13494,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -13782,7 +13782,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ProductionS.class, nefit.shared.NefitProtos.ProductionS.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ProductionS.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ProductionS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -13993,7 +13993,7 @@ public final class NefitProtos {
           getNameMBytes() {
         java.lang.Object ref = nameM_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameM_ = b;
@@ -14077,7 +14077,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -14410,7 +14410,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -14427,7 +14427,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -14696,7 +14696,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ProductionM.class, nefit.shared.NefitProtos.ProductionM.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ProductionM.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ProductionM.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -14893,7 +14893,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -15251,7 +15251,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -15268,7 +15268,7 @@ public final class NefitProtos {
         getMsgBytes() {
       java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         msg_ = b;
@@ -15296,7 +15296,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -15313,7 +15313,7 @@ public final class NefitProtos {
         getNameIBytes() {
       java.lang.Object ref = nameI_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameI_ = b;
@@ -15546,7 +15546,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ResultS.class, nefit.shared.NefitProtos.ResultS.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ResultS.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ResultS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -15782,7 +15782,7 @@ public final class NefitProtos {
           getMsgBytes() {
         java.lang.Object ref = msg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           msg_ = b;
@@ -15866,7 +15866,7 @@ public final class NefitProtos {
           getNameIBytes() {
         java.lang.Object ref = nameI_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameI_ = b;
@@ -16126,7 +16126,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -16143,7 +16143,7 @@ public final class NefitProtos {
         getMsgBytes() {
       java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         msg_ = b;
@@ -16357,7 +16357,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.ResultI.class, nefit.shared.NefitProtos.ResultI.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.ResultI.newBuilder()
+      // Construct using nefit.shared.NefitProtos.ResultI.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -16579,7 +16579,7 @@ public final class NefitProtos {
           getMsgBytes() {
         java.lang.Object ref = msg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           msg_ = b;
@@ -16918,7 +16918,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -16935,7 +16935,7 @@ public final class NefitProtos {
         getNameMBytes() {
       java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameM_ = b;
@@ -16963,7 +16963,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -16980,7 +16980,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -17076,7 +17076,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -17093,7 +17093,7 @@ public final class NefitProtos {
         getNameIBytes() {
       java.lang.Object ref = nameI_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameI_ = b;
@@ -17406,7 +17406,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.InfoS.class, nefit.shared.NefitProtos.InfoS.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.InfoS.newBuilder()
+      // Construct using nefit.shared.NefitProtos.InfoS.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -17655,7 +17655,7 @@ public final class NefitProtos {
           getNameMBytes() {
         java.lang.Object ref = nameM_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameM_ = b;
@@ -17739,7 +17739,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -17971,7 +17971,7 @@ public final class NefitProtos {
           getNameIBytes() {
         java.lang.Object ref = nameI_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameI_ = b;
@@ -18286,7 +18286,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -18303,7 +18303,7 @@ public final class NefitProtos {
         getNameMBytes() {
       java.lang.Object ref = nameM_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameM_ = b;
@@ -18331,7 +18331,7 @@ public final class NefitProtos {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -18348,7 +18348,7 @@ public final class NefitProtos {
         getNamePBytes() {
       java.lang.Object ref = nameP_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         nameP_ = b;
@@ -18710,7 +18710,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.InfoI.class, nefit.shared.NefitProtos.InfoI.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.InfoI.newBuilder()
+      // Construct using nefit.shared.NefitProtos.InfoI.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -18945,7 +18945,7 @@ public final class NefitProtos {
           getNameMBytes() {
         java.lang.Object ref = nameM_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameM_ = b;
@@ -19029,7 +19029,7 @@ public final class NefitProtos {
           getNamePBytes() {
         java.lang.Object ref = nameP_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           nameP_ = b;
@@ -20134,7 +20134,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.Server.class, nefit.shared.NefitProtos.Server.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.Server.newBuilder()
+      // Construct using nefit.shared.NefitProtos.Server.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -20514,7 +20514,7 @@ public final class NefitProtos {
        * <code>optional .nefit.DisponibilityS m1 = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.DisponibilityS, nefit.shared.NefitProtos.DisponibilityS.Builder, nefit.shared.NefitProtos.DisponibilitySOrBuilder>
+          nefit.shared.NefitProtos.DisponibilityS, nefit.shared.NefitProtos.DisponibilityS.Builder, nefit.shared.NefitProtos.DisponibilitySOrBuilder> 
           getM1FieldBuilder() {
         if (m1Builder_ == null) {
           if (!(msgCase_ == 1)) {
@@ -20652,7 +20652,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderS m2 = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderS, nefit.shared.NefitProtos.OrderS.Builder, nefit.shared.NefitProtos.OrderSOrBuilder>
+          nefit.shared.NefitProtos.OrderS, nefit.shared.NefitProtos.OrderS.Builder, nefit.shared.NefitProtos.OrderSOrBuilder> 
           getM2FieldBuilder() {
         if (m2Builder_ == null) {
           if (!(msgCase_ == 2)) {
@@ -20790,7 +20790,7 @@ public final class NefitProtos {
        * <code>optional .nefit.SubS m3 = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.SubS, nefit.shared.NefitProtos.SubS.Builder, nefit.shared.NefitProtos.SubSOrBuilder>
+          nefit.shared.NefitProtos.SubS, nefit.shared.NefitProtos.SubS.Builder, nefit.shared.NefitProtos.SubSOrBuilder> 
           getM3FieldBuilder() {
         if (m3Builder_ == null) {
           if (!(msgCase_ == 3)) {
@@ -20928,7 +20928,7 @@ public final class NefitProtos {
        * <code>optional .nefit.ResultS m4 = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ResultS, nefit.shared.NefitProtos.ResultS.Builder, nefit.shared.NefitProtos.ResultSOrBuilder>
+          nefit.shared.NefitProtos.ResultS, nefit.shared.NefitProtos.ResultS.Builder, nefit.shared.NefitProtos.ResultSOrBuilder> 
           getM4FieldBuilder() {
         if (m4Builder_ == null) {
           if (!(msgCase_ == 4)) {
@@ -21066,7 +21066,7 @@ public final class NefitProtos {
        * <code>optional .nefit.InfoS m5 = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.InfoS, nefit.shared.NefitProtos.InfoS.Builder, nefit.shared.NefitProtos.InfoSOrBuilder>
+          nefit.shared.NefitProtos.InfoS, nefit.shared.NefitProtos.InfoS.Builder, nefit.shared.NefitProtos.InfoSOrBuilder> 
           getM5FieldBuilder() {
         if (m5Builder_ == null) {
           if (!(msgCase_ == 5)) {
@@ -21204,7 +21204,7 @@ public final class NefitProtos {
        * <code>optional .nefit.ProductionS m6 = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ProductionS, nefit.shared.NefitProtos.ProductionS.Builder, nefit.shared.NefitProtos.ProductionSOrBuilder>
+          nefit.shared.NefitProtos.ProductionS, nefit.shared.NefitProtos.ProductionS.Builder, nefit.shared.NefitProtos.ProductionSOrBuilder> 
           getM6FieldBuilder() {
         if (m6Builder_ == null) {
           if (!(msgCase_ == 6)) {
@@ -21342,7 +21342,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderAckS m7 = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderAckS, nefit.shared.NefitProtos.OrderAckS.Builder, nefit.shared.NefitProtos.OrderAckSOrBuilder>
+          nefit.shared.NefitProtos.OrderAckS, nefit.shared.NefitProtos.OrderAckS.Builder, nefit.shared.NefitProtos.OrderAckSOrBuilder> 
           getM7FieldBuilder() {
         if (m7Builder_ == null) {
           if (!(msgCase_ == 7)) {
@@ -21947,7 +21947,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.Importer.class, nefit.shared.NefitProtos.Importer.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.Importer.newBuilder()
+      // Construct using nefit.shared.NefitProtos.Importer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -22263,7 +22263,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderAckI ordack = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderAckI, nefit.shared.NefitProtos.OrderAckI.Builder, nefit.shared.NefitProtos.OrderAckIOrBuilder>
+          nefit.shared.NefitProtos.OrderAckI, nefit.shared.NefitProtos.OrderAckI.Builder, nefit.shared.NefitProtos.OrderAckIOrBuilder> 
           getOrdackFieldBuilder() {
         if (ordackBuilder_ == null) {
           if (!(msgCase_ == 1)) {
@@ -22401,7 +22401,7 @@ public final class NefitProtos {
        * <code>optional .nefit.ResultI result = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.ResultI, nefit.shared.NefitProtos.ResultI.Builder, nefit.shared.NefitProtos.ResultIOrBuilder>
+          nefit.shared.NefitProtos.ResultI, nefit.shared.NefitProtos.ResultI.Builder, nefit.shared.NefitProtos.ResultIOrBuilder> 
           getResultFieldBuilder() {
         if (resultBuilder_ == null) {
           if (!(msgCase_ == 2)) {
@@ -22539,7 +22539,7 @@ public final class NefitProtos {
        * <code>optional .nefit.InfoI info = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.InfoI, nefit.shared.NefitProtos.InfoI.Builder, nefit.shared.NefitProtos.InfoIOrBuilder>
+          nefit.shared.NefitProtos.InfoI, nefit.shared.NefitProtos.InfoI.Builder, nefit.shared.NefitProtos.InfoIOrBuilder> 
           getInfoFieldBuilder() {
         if (infoBuilder_ == null) {
           if (!(msgCase_ == 3)) {
@@ -23144,7 +23144,7 @@ public final class NefitProtos {
                 nefit.shared.NefitProtos.Negotiator.class, nefit.shared.NefitProtos.Negotiator.Builder.class);
       }
 
-      // Construct using nefit.proto.NefitProtos.Negotiator.newBuilder()
+      // Construct using nefit.shared.NefitProtos.Negotiator.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -23460,7 +23460,7 @@ public final class NefitProtos {
        * <code>optional .nefit.SubN sub = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.SubN, nefit.shared.NefitProtos.SubN.Builder, nefit.shared.NefitProtos.SubNOrBuilder>
+          nefit.shared.NefitProtos.SubN, nefit.shared.NefitProtos.SubN.Builder, nefit.shared.NefitProtos.SubNOrBuilder> 
           getSubFieldBuilder() {
         if (subBuilder_ == null) {
           if (!(msgCase_ == 1)) {
@@ -23598,7 +23598,7 @@ public final class NefitProtos {
        * <code>optional .nefit.OrderN order = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.OrderN, nefit.shared.NefitProtos.OrderN.Builder, nefit.shared.NefitProtos.OrderNOrBuilder>
+          nefit.shared.NefitProtos.OrderN, nefit.shared.NefitProtos.OrderN.Builder, nefit.shared.NefitProtos.OrderNOrBuilder> 
           getOrderFieldBuilder() {
         if (orderBuilder_ == null) {
           if (!(msgCase_ == 2)) {
@@ -23736,7 +23736,7 @@ public final class NefitProtos {
        * <code>optional .nefit.DisponibilityN disponibility = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          nefit.shared.NefitProtos.DisponibilityN, nefit.shared.NefitProtos.DisponibilityN.Builder, nefit.shared.NefitProtos.DisponibilityNOrBuilder>
+          nefit.shared.NefitProtos.DisponibilityN, nefit.shared.NefitProtos.DisponibilityN.Builder, nefit.shared.NefitProtos.DisponibilityNOrBuilder> 
           getDisponibilityFieldBuilder() {
         if (disponibilityBuilder_ == null) {
           if (!(msgCase_ == 3)) {
@@ -23808,117 +23808,117 @@ public final class NefitProtos {
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ClientToServerLogin_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ClientToServerLogin_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ClientToServerRegister_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ClientToServerRegister_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ServerToClientAuth_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ServerToClientAuth_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ServerToClientManufacturer_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ServerToClientManufacturer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_MsgAuth_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_MsgAuth_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_MsgAck_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_MsgAck_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_DisponibilityS_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_DisponibilityS_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_DisponibilityN_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_DisponibilityN_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_OrderS_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_OrderS_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_OrderN_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_OrderN_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_OrderAckS_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_OrderAckS_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_OrderAckI_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_OrderAckI_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_SubS_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_SubS_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_SubN_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_SubN_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ProductionS_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ProductionS_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ProductionM_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ProductionM_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ResultS_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ResultS_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_ResultI_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_ResultI_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_InfoS_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_InfoS_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_InfoI_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_InfoI_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_Server_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_Server_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_Importer_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_Importer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nefit_Negotiator_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_nefit_Negotiator_fieldAccessorTable;
 
@@ -23983,7 +23983,7 @@ public final class NefitProtos {
       "\n\005order\030\002 \001(\0132\r.nefit.OrderNH\000\022.\n\rdispon" +
       "ibility\030\003 \001(\0132\025.nefit.DisponibilityNH\000B\005" +
       "\n\003msg*,\n\nClientType\022\014\n\010IMPORTER\020\000\022\020\n\014MAN" +
-      "UFACTURER\020\001B\032\n\013nefit.protoB\013NefitProtos"
+      "UFACTURER\020\001B\033\n\014nefit.sharedB\013NefitProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
