@@ -1,6 +1,6 @@
 package nefit.client;
 
-import nefit.proto.NefitProtos;
+import nefit.shared.NefitProtos;
 
 import java.io.IOException;
 import java.util.HashSet;

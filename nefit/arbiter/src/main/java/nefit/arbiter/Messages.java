@@ -1,8 +1,6 @@
 package nefit.arbiter;
 
-import nefit.proto.NefitProtos;
-
-import java.util.List;
+import nefit.shared.NefitProtos;
 
 public class Messages {
 

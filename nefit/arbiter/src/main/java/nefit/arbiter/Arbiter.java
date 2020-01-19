@@ -3,7 +3,7 @@ package nefit.arbiter;
 import com.google.protobuf.InvalidProtocolBufferException;
 import javafx.util.Pair;
 import nefit.client.Client;
-import nefit.proto.NefitProtos;
+import nefit.shared.NefitProtos;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;

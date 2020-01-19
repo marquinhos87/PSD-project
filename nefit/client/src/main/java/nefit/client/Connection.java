@@ -2,7 +2,7 @@ package nefit.client;
 
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.Parser;
-import nefit.proto.ProtoUtil;
+import nefit.shared.Util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,12 +27,12 @@ public class Connection implements AutoCloseable
 
     public < T > T receive(Parser< T > msgParser) throws IOException
     {
-        return ProtoUtil.read(this.in, msgParser);
+        return Util.read(this.in, msgParser);
     }
 
     public void send(MessageLite msg) throws IOException
     {
-        ProtoUtil.write(this.out, msg);
+        Util.write(this.out, msg);
     }
 
     @Override

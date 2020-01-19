@@ -3,7 +3,7 @@
 syntax = "proto2";
 
 package nefit;
-option java_package = "nefit.proto";
+option java_package = "nefit.shared";
 option java_outer_classname = "NefitProtos";
 
 /* -------------------------------------------------------------------------- */

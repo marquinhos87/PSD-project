@@ -1,6 +1,7 @@
 package nefit.client;
 
-import nefit.proto.NefitProtos;
+import nefit.shared.NefitProtos;
+import nefit.shared.Util;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -38,7 +39,8 @@ public class Main
         }
     }
 
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
+        throws IOException, InterruptedException
     {
         try (final var prompt = new Prompt())
         {
@@ -51,7 +53,7 @@ public class Main
 
     private static void authenticateClient(
         Prompt prompt, Connection connection
-    ) throws IOException
+    ) throws IOException, InterruptedException
     {
         final String username;
 
