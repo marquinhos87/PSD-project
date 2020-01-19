@@ -4,10 +4,26 @@ import nefit.proto.NefitProtos;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
 
 public class Main
 {
+    private static InetSocketAddress parseArguments(String[] args)
+    {
+        try
+        {
+            Util.ensure(args.length == 2);
+
+            endpoint = new InetSocketAddress(
+                args[0], Integer.parseInt(args[1])
+            );
+        }
+        catch (Exception e)
+        {
+            prompt.print("Usage: chirper <server_host> <server_port>");
+            System.exit(2);
+        }
+    }
+
     public static void main(String[] args) throws IOException
     {
         try (final var prompt = new Prompt())
@@ -16,19 +32,6 @@ public class Main
 
             final InetSocketAddress endpoint;
 
-            try
-            {
-                Util.ensure(args.length == 2, "");
-
-                endpoint = new InetSocketAddress(
-                    args[0], Integer.parseInt(args[1])
-                );
-            }
-            catch (Exception e)
-            {
-                prompt.print("Usage: chirper <server_host> <server_port>");
-                System.exit(2);
-            }
 
             // connect to server
 
@@ -36,7 +39,7 @@ public class Main
 
             try
             {
-                connection = new Connection(args[0], Integer.parseInt(args[1]));
+                connection = new Connection(endpoint);
             }
             catch (Exception e)
             {
