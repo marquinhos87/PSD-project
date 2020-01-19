@@ -17,6 +17,7 @@ public abstract class Client< MessageType >
 
     private final Parser< MessageType > messageParser;
     private final Map< String, Command > commands;
+    private final String knownCommandsMessage;
 
     private final Thread receiveThread;
 
@@ -33,9 +34,16 @@ public abstract class Client< MessageType >
         this.username = username;
 
         this.messageParser = messageParser;
+
         this.commands = Arrays.stream(commands).collect(
             Collectors.toUnmodifiableMap(Command::getCommandName, c -> c)
         );
+
+        this.knownCommandsMessage =
+            Arrays
+                .stream(commands)
+                .map(c -> '"' + c.getCommandName() + '"')
+                .collect(Collectors.joining(", "));
 
         this.receiveThread = new Thread(this::receiveLoop);
     }
@@ -68,13 +76,18 @@ public abstract class Client< MessageType >
             final var commandName = prompt.input("> ");
 
             if (commandName == null)
-                break;
+                break; // no more input
 
             final var command = this.commands.get(commandName);
 
             if (command == null)
             {
-                prompt.printError("Unknown command.");
+                prompt.printError(
+                    "Unknown command \"%s\". Try %s.",
+                    commandName,
+                    this.knownCommandsMessage
+                );
+
                 continue;
             }
 
