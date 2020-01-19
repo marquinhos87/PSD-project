@@ -32,8 +32,9 @@ public class Main
                     break;
 
                 case MANUFACTURER:
-                    prompt
-                        .print("You are now authenticated as an Manufacturer.");
+                    prompt.print(
+                        "You are now authenticated as an Manufacturer."
+                    );
                     new Manufacturer(connection, prompt).run();
                     break;
             }
