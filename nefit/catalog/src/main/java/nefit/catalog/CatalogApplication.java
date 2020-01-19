@@ -29,10 +29,15 @@ public class CatalogApplication
 
         this.zmqContext = ZMQ.context(1);
         this.zmqSocket = this.zmqContext.socket(SocketType.SUB);
-        this.zmqSocket.connect(String.format("tcp://*:%d", zmqPort));
+        this.zmqSocket.connect(String.format("tcp://localhost:%d", zmqPort));
         this.zmqSocket.subscribe("".getBytes(ZMQ.CHARSET));
+        this.zmqSocket.subscribe("addUser".getBytes(ZMQ.CHARSET));
+        this.zmqSocket.subscribe("addNegotiation".getBytes(ZMQ.CHARSET));
+        this.zmqSocket.subscribe("removeNegotiation".getBytes(ZMQ.CHARSET));
 
         this.receiveThread = new Thread(this::receiveLoop);
+
+        this.receiveThread.start();
     }
 
     @Override
@@ -85,7 +90,7 @@ public class CatalogApplication
                 final var topic = this.zmqSocket.recv();
                 final var messageBytes = this.zmqSocket.recv();
 
-                switch (topic.toString())
+                switch (new String(topic))
                 {
                     case "addUser":
                         handleMessage(
