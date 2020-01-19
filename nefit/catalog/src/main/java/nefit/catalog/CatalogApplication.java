@@ -29,7 +29,7 @@ public class CatalogApplication
 
         this.zmqContext = ZMQ.context(1);
         this.zmqSocket = this.zmqContext.socket(SocketType.SUB);
-        this.zmqSocket.bind(String.format("tcp://*:%d", zmqPort));
+        this.zmqSocket.connect(String.format("tcp://*:%d", zmqPort));
         this.zmqSocket.subscribe("".getBytes(ZMQ.CHARSET));
 
         this.receiveThread = new Thread(this::receiveLoop);
