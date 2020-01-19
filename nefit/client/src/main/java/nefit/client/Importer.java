@@ -63,6 +63,11 @@ public class Importer extends Client< NefitProtos.Importer >
         // TODO: should maybe wait for acknowledgment from server
     }
 
+    private void handleCommandOffer(List< String > arguments)
+    {
+
+    }
+
     private void sendOrder(String[] fields) throws IOException
     {
         if (fields.length != 5)
