@@ -3,80 +3,71 @@ package nefit.client;
 import nefit.proto.NefitProtos;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Manufacturer
     extends Client< NefitProtos.ServerToClientManufacturer >
 {
+    private final Set< String > activeProductNames;
+
     public Manufacturer(Connection connection, String username)
     {
         super(
             connection,
             username,
             NefitProtos.ServerToClientManufacturer.parser(),
-            new Command[] {
-                new Command(
-                    "announce",
-                    "Product name",
-                    "Min. quantity",
-                    "Max. quantity",
-                    "Min. unit price",
-                    "Timeout (seconds)"
-                )
-            }
+            new Command(
+                "announce",
+                "Product name",
+                "Min. quantity",
+                "Max. quantity",
+                "Min. unit price",
+                "Timeout (seconds)"
+            )
         );
+
+        this.activeProductNames = new HashSet<>();
     }
 
-    @Override
-    protected void handleCommand(String command, String[] arguments)
+    private void handleCommand(String command, String[] arguments)
         throws IOException
     {
-        switch (command)
-        {
-            case "announce":
-                this.handleCommandAnnounce(arguments);
-                break;
-        }
-    }
-
-    private void handleCommandAnnounce(String[] arguments) throws IOException
-    {
-        // validate and parse arguments
+        // validate and parse arguments (we know command is "announce")
 
         final var productName = arguments[0];
 
-        if (productName.isBlank())
-            throw new IllegalArgumentException("Invalid product name.");
+        Util.ensure(!productName.isBlank(), "Invalid product name.");
+
+        Util.ensure(
+            !this.activeProductNames.contains(productName),
+            "A product with this name is currently available from you."
+        );
 
         final var minQuantity = Integer.parseInt(arguments[1]);
         final var maxQuantity = Integer.parseInt(arguments[2]);
 
-        if (minQuantity <= 0 || maxQuantity <= 0)
-            throw new IllegalArgumentException("Quantities must be positive.");
+        Util.ensure(
+            minQuantity > 0 && maxQuantity > 0,
+            "Quantities must be positive."
+        );
 
-        if (maxQuantity < minQuantity)
-        {
-            throw new IllegalArgumentException(
-                "Maximum quantity must not be lower than minimum."
-            );
-        }
+        Util.ensure(
+            maxQuantity >= minQuantity,
+            "Maximum quantity must not be lower than minimum."
+        );
 
         final var minUnitPrice = Float.parseFloat(arguments[3]);
 
-        if (minUnitPrice <= 0)
-        {
-            throw new IllegalArgumentException(
-                "Minimum unit price must be positive."
-            );
-        }
+        Util.ensure(minUnitPrice > 0, "Minimum unit price must be positive.");
 
         final var timeout = Integer.parseInt(arguments[4]);
 
-        if (minUnitPrice <= 0)
-            throw new IllegalArgumentException("Timeout must be positive.");
+        Util.ensure(timeout > 0, "Timeout must be positive.");
 
         // send announcement request to server
 
-        final var message =
+        final var messageAnnounce =
             NefitProtos.DisponibilityS
                 .newBuilder()
                 .setNameM(this.getUsername())
@@ -87,12 +78,33 @@ public class Manufacturer
                 .setPeriod(timeout)
                 .build();
 
-        this.sendMessage(message);
+        final var messageServer =
+            NefitProtos.Server
+                .newBuilder()
+                .setM1(messageAnnounce)
+                .build();
+
+        this.sendMessage(messageServer);
     }
 
     @Override
     public void handleMessage(NefitProtos.ServerToClientManufacturer message)
     {
+        final var prod = nefit.client.prev.Client
+            .parseDelimited(this.is, NefitProtos.ProductionM.parser());
+        if (prod.getQuant() == 0)
+            this.prompt.printMessages(
+                "No good offers to your product " + prod.getNameP());
+        else
+            this.prompt.printMessages(
+                "Your product " + prod.getNameP() + " gives you " + (prod
+                    .getValue() * prod.getQuant()) + " M.U.");
+        for (NefitProtos.DisponibilityN aux : this.itemsAvailable)
+            if (aux.getNameP().equals(prod.getNameP()))
+            {
+                this.itemsAvailable.remove(aux);
+                break;
+            }
 
     }
 

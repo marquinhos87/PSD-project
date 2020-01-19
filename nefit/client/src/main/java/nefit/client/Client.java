@@ -24,7 +24,7 @@ public abstract class Client< MessageType >
         Connection connection,
         String username,
         Parser< MessageType > messageParser,
-        Command[] commands
+        Command... commands
     )
     {
         this.connection = connection;
