@@ -284,14 +284,12 @@ message ServerToArbiterSubscribe {
 /* -------------------------------------------------------------------------- */
 /* frontend / arbiter --> catalog */
 
-message FrontendToCatalogAddUser
-{
+message FrontendToCatalogAddUser {
     required string username = 1;
     required ClientType type = 2;
 }
 
-message ArbiterToCatalogAddNegotiation
-{
+message ArbiterToCatalogAddNegotiation {
     required string manufacturerName = 1;
     required string productName = 2;
     required int32 minQuantity = 3;
@@ -299,8 +297,7 @@ message ArbiterToCatalogAddNegotiation
     required float minUnitPrice = 5;
 }
 
-message ArbiterToCatalogRemoveNegotiation
-{
+message ArbiterToCatalogRemoveNegotiation {
     required string manufacturerName = 1;
     required string productName = 2;
 }
