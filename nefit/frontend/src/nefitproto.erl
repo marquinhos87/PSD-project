@@ -16,6 +16,7 @@
 -export([find_msg_def/1, fetch_msg_def/1]).
 -export([find_enum_def/1, fetch_enum_def/1]).
 -export([enum_symbol_by_value/2, enum_value_by_symbol/2]).
+-export([enum_symbol_by_value_ClientType/1, enum_value_by_symbol_ClientType/1]).
 -export(['enum_symbol_by_value_MsgAuth.ClientType'/1, 'enum_value_by_symbol_MsgAuth.ClientType'/1]).
 -export(['enum_symbol_by_value_MsgAuth.MsgType'/1, 'enum_value_by_symbol_MsgAuth.MsgType'/1]).
 -export([get_service_names/0]).
@@ -50,11 +51,18 @@
 -include("gpb.hrl").
 
 %% enumerated types
+-type 'ClientType'() :: 'IMPORTER' | 'MANUFACTURER'.
 -type 'MsgAuth.ClientType'() :: 'MANUFACTURER' | 'IMPORTER'.
 -type 'MsgAuth.MsgType'() :: 'LOGIN' | 'REGISTER'.
--export_type(['MsgAuth.ClientType'/0, 'MsgAuth.MsgType'/0]).
+-export_type(['ClientType'/0, 'MsgAuth.ClientType'/0, 'MsgAuth.MsgType'/0]).
 
 %% message types
+-type 'ClientToServerLogin'() :: #'ClientToServerLogin'{}.
+
+-type 'ClientToServerRegister'() :: #'ClientToServerRegister'{}.
+
+-type 'ServerToClientAuth'() :: #'ServerToClientAuth'{}.
+
 -type 'MsgAuth'() :: #'MsgAuth'{}.
 
 -type 'MsgAck'() :: #'MsgAck'{}.
@@ -93,20 +101,20 @@
 
 -type 'Negotiator'() :: #'Negotiator'{}.
 
--export_type(['MsgAuth'/0, 'MsgAck'/0, 'DisponibilityS'/0, 'DisponibilityN'/0, 'OrderS'/0, 'OrderN'/0, 'OrderAckS'/0, 'OrderAckI'/0, 'SubS'/0, 'SubN'/0, 'ProductionS'/0, 'ProductionM'/0, 'ResultS'/0, 'ResultI'/0, 'InfoS'/0, 'InfoI'/0, 'Server'/0, 'Importer'/0, 'Negotiator'/0]).
+-export_type(['ClientToServerLogin'/0, 'ClientToServerRegister'/0, 'ServerToClientAuth'/0, 'MsgAuth'/0, 'MsgAck'/0, 'DisponibilityS'/0, 'DisponibilityN'/0, 'OrderS'/0, 'OrderN'/0, 'OrderAckS'/0, 'OrderAckI'/0, 'SubS'/0, 'SubN'/0, 'ProductionS'/0, 'ProductionM'/0, 'ResultS'/0, 'ResultI'/0, 'InfoS'/0, 'InfoI'/0, 'Server'/0, 'Importer'/0, 'Negotiator'/0]).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}) -> binary().
+-spec encode_msg(#'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}) -> binary().
 encode_msg(Msg) when tuple_size(Msg) >= 1 ->
     encode_msg(Msg, element(1, Msg), []).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom() | list()) -> binary().
+-spec encode_msg(#'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom() | list()) -> binary().
 encode_msg(Msg, MsgName) when is_atom(MsgName) ->
     encode_msg(Msg, MsgName, []);
 encode_msg(Msg, Opts)
     when tuple_size(Msg) >= 1, is_list(Opts) ->
     encode_msg(Msg, element(1, Msg), Opts).
 
--spec encode_msg(#'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom(), list()) -> binary().
+-spec encode_msg(#'ClientToServerLogin'{} | #'ClientToServerRegister'{} | #'ServerToClientAuth'{} | #'MsgAuth'{} | #'MsgAck'{} | #'DisponibilityS'{} | #'DisponibilityN'{} | #'OrderS'{} | #'OrderN'{} | #'OrderAckS'{} | #'OrderAckI'{} | #'SubS'{} | #'SubN'{} | #'ProductionS'{} | #'ProductionM'{} | #'ResultS'{} | #'ResultI'{} | #'InfoS'{} | #'InfoI'{} | #'Server'{} | #'Importer'{} | #'Negotiator'{}, atom(), list()) -> binary().
 encode_msg(Msg, MsgName, Opts) ->
     case proplists:get_bool(verify, Opts) of
       true -> verify_msg(Msg, MsgName, Opts);
@@ -114,6 +122,15 @@ encode_msg(Msg, MsgName, Opts) ->
     end,
     TrUserData = proplists:get_value(user_data, Opts),
     case MsgName of
+      'ClientToServerLogin' ->
+	  encode_msg_ClientToServerLogin(id(Msg, TrUserData),
+					 TrUserData);
+      'ClientToServerRegister' ->
+	  encode_msg_ClientToServerRegister(id(Msg, TrUserData),
+					    TrUserData);
+      'ServerToClientAuth' ->
+	  encode_msg_ServerToClientAuth(id(Msg, TrUserData),
+					TrUserData);
       'MsgAuth' ->
 	  encode_msg_MsgAuth(id(Msg, TrUserData), TrUserData);
       'MsgAck' ->
@@ -156,6 +173,74 @@ encode_msg(Msg, MsgName, Opts) ->
 	  encode_msg_Negotiator(id(Msg, TrUserData), TrUserData)
     end.
 
+
+encode_msg_ClientToServerLogin(Msg, TrUserData) ->
+    encode_msg_ClientToServerLogin(Msg, <<>>, TrUserData).
+
+
+encode_msg_ClientToServerLogin(#'ClientToServerLogin'{username
+							  = F1,
+						      password = F2},
+			       Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+    end.
+
+encode_msg_ClientToServerRegister(Msg, TrUserData) ->
+    encode_msg_ClientToServerRegister(Msg, <<>>,
+				      TrUserData).
+
+
+encode_msg_ClientToServerRegister(#'ClientToServerRegister'{username
+								= F1,
+							    password = F2,
+							    clientType = F3},
+				  Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    B2 = begin
+	   TrF2 = id(F2, TrUserData),
+	   e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
+	 end,
+    begin
+      TrF3 = id(F3, TrUserData),
+      e_enum_ClientType(TrF3, <<B2/binary, 24>>, TrUserData)
+    end.
+
+encode_msg_ServerToClientAuth(Msg, TrUserData) ->
+    encode_msg_ServerToClientAuth(Msg, <<>>, TrUserData).
+
+
+encode_msg_ServerToClientAuth(#'ServerToClientAuth'{ok =
+							F1,
+						    clientType = F2,
+						    errorMessage = F3},
+			      Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_bool(TrF1, <<Bin/binary, 8>>, TrUserData)
+	 end,
+    B2 = if F2 == undefined -> B1;
+	    true ->
+		begin
+		  TrF2 = id(F2, TrUserData),
+		  e_enum_ClientType(TrF2, <<B1/binary, 16>>, TrUserData)
+		end
+	 end,
+    if F3 == undefined -> B2;
+       true ->
+	   begin
+	     TrF3 = id(F3, TrUserData),
+	     e_type_string(TrF3, <<B2/binary, 26>>, TrUserData)
+	   end
+    end.
 
 encode_msg_MsgAuth(Msg, TrUserData) ->
     encode_msg_MsgAuth(Msg, <<>>, TrUserData).
@@ -754,6 +839,13 @@ e_mfield_Negotiator_disponibility(Msg, Bin,
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
+e_enum_ClientType('IMPORTER', Bin, _TrUserData) ->
+    <<Bin/binary, 0>>;
+e_enum_ClientType('MANUFACTURER', Bin, _TrUserData) ->
+    <<Bin/binary, 1>>;
+e_enum_ClientType(V, Bin, _TrUserData) ->
+    e_varint(V, Bin).
+
 'e_enum_MsgAuth.ClientType'('MANUFACTURER', Bin,
 			    _TrUserData) ->
     <<Bin/binary, 0>>;
@@ -885,6 +977,18 @@ decode_msg_1_catch(Bin, MsgName, TrUserData) ->
     end.
 -endif.
 
+decode_msg_2_doit('ClientToServerLogin', Bin,
+		  TrUserData) ->
+    id(decode_msg_ClientToServerLogin(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ClientToServerRegister', Bin,
+		  TrUserData) ->
+    id(decode_msg_ClientToServerRegister(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('ServerToClientAuth', Bin,
+		  TrUserData) ->
+    id(decode_msg_ServerToClientAuth(Bin, TrUserData),
+       TrUserData);
 decode_msg_2_doit('MsgAuth', Bin, TrUserData) ->
     id(decode_msg_MsgAuth(Bin, TrUserData), TrUserData);
 decode_msg_2_doit('MsgAck', Bin, TrUserData) ->
@@ -927,6 +1031,522 @@ decode_msg_2_doit('Negotiator', Bin, TrUserData) ->
     id(decode_msg_Negotiator(Bin, TrUserData), TrUserData).
 
 
+
+decode_msg_ClientToServerLogin(Bin, TrUserData) ->
+    dfp_read_field_def_ClientToServerLogin(Bin, 0, 0,
+					   id(undefined, TrUserData),
+					   id(undefined, TrUserData),
+					   TrUserData).
+
+dfp_read_field_def_ClientToServerLogin(<<10,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_ClientToServerLogin_username(Rest, Z1, Z2, F@_1,
+					 F@_2, TrUserData);
+dfp_read_field_def_ClientToServerLogin(<<18,
+					 Rest/binary>>,
+				       Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_ClientToServerLogin_password(Rest, Z1, Z2, F@_1,
+					 F@_2, TrUserData);
+dfp_read_field_def_ClientToServerLogin(<<>>, 0, 0, F@_1,
+				       F@_2, _) ->
+    #'ClientToServerLogin'{username = F@_1,
+			   password = F@_2};
+dfp_read_field_def_ClientToServerLogin(Other, Z1, Z2,
+				       F@_1, F@_2, TrUserData) ->
+    dg_read_field_def_ClientToServerLogin(Other, Z1, Z2,
+					  F@_1, F@_2, TrUserData).
+
+dg_read_field_def_ClientToServerLogin(<<1:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, F@_2, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ClientToServerLogin(Rest, N + 7,
+					  X bsl N + Acc, F@_1, F@_2,
+					  TrUserData);
+dg_read_field_def_ClientToServerLogin(<<0:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, F@_2, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ClientToServerLogin_username(Rest, 0, 0, F@_1,
+					       F@_2, TrUserData);
+      18 ->
+	  d_field_ClientToServerLogin_password(Rest, 0, 0, F@_1,
+					       F@_2, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ClientToServerLogin(Rest, 0, 0, F@_1, F@_2,
+						TrUserData);
+	    1 ->
+		skip_64_ClientToServerLogin(Rest, 0, 0, F@_1, F@_2,
+					    TrUserData);
+	    2 ->
+		skip_length_delimited_ClientToServerLogin(Rest, 0, 0,
+							  F@_1, F@_2,
+							  TrUserData);
+	    3 ->
+		skip_group_ClientToServerLogin(Rest, Key bsr 3, 0, F@_1,
+					       F@_2, TrUserData);
+	    5 ->
+		skip_32_ClientToServerLogin(Rest, 0, 0, F@_1, F@_2,
+					    TrUserData)
+	  end
+    end;
+dg_read_field_def_ClientToServerLogin(<<>>, 0, 0, F@_1,
+				      F@_2, _) ->
+    #'ClientToServerLogin'{username = F@_1,
+			   password = F@_2}.
+
+d_field_ClientToServerLogin_username(<<1:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_ClientToServerLogin_username(Rest, N + 7,
+					 X bsl N + Acc, F@_1, F@_2, TrUserData);
+d_field_ClientToServerLogin_username(<<0:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, _, F@_2, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ClientToServerLogin(RestF, 0, 0,
+					   NewFValue, F@_2, TrUserData).
+
+d_field_ClientToServerLogin_password(<<1:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_ClientToServerLogin_password(Rest, N + 7,
+					 X bsl N + Acc, F@_1, F@_2, TrUserData);
+d_field_ClientToServerLogin_password(<<0:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ClientToServerLogin(RestF, 0, 0,
+					   F@_1, NewFValue, TrUserData).
+
+skip_varint_ClientToServerLogin(<<1:1, _:7,
+				  Rest/binary>>,
+				Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_ClientToServerLogin(Rest, Z1, Z2, F@_1,
+				    F@_2, TrUserData);
+skip_varint_ClientToServerLogin(<<0:1, _:7,
+				  Rest/binary>>,
+				Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ClientToServerLogin(Rest, Z1, Z2,
+					   F@_1, F@_2, TrUserData).
+
+skip_length_delimited_ClientToServerLogin(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ClientToServerLogin(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2,
+					      TrUserData);
+skip_length_delimited_ClientToServerLogin(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ClientToServerLogin(Rest2, 0, 0,
+					   F@_1, F@_2, TrUserData).
+
+skip_group_ClientToServerLogin(Bin, FNum, Z2, F@_1,
+			       F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ClientToServerLogin(Rest, 0, Z2,
+					   F@_1, F@_2, TrUserData).
+
+skip_32_ClientToServerLogin(<<_:32, Rest/binary>>, Z1,
+			    Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ClientToServerLogin(Rest, Z1, Z2,
+					   F@_1, F@_2, TrUserData).
+
+skip_64_ClientToServerLogin(<<_:64, Rest/binary>>, Z1,
+			    Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_ClientToServerLogin(Rest, Z1, Z2,
+					   F@_1, F@_2, TrUserData).
+
+decode_msg_ClientToServerRegister(Bin, TrUserData) ->
+    dfp_read_field_def_ClientToServerRegister(Bin, 0, 0,
+					      id(undefined, TrUserData),
+					      id(undefined, TrUserData),
+					      id(undefined, TrUserData),
+					      TrUserData).
+
+dfp_read_field_def_ClientToServerRegister(<<10,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
+    d_field_ClientToServerRegister_username(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, TrUserData);
+dfp_read_field_def_ClientToServerRegister(<<18,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
+    d_field_ClientToServerRegister_password(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, TrUserData);
+dfp_read_field_def_ClientToServerRegister(<<24,
+					    Rest/binary>>,
+					  Z1, Z2, F@_1, F@_2, F@_3,
+					  TrUserData) ->
+    d_field_ClientToServerRegister_clientType(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, TrUserData);
+dfp_read_field_def_ClientToServerRegister(<<>>, 0, 0,
+					  F@_1, F@_2, F@_3, _) ->
+    #'ClientToServerRegister'{username = F@_1,
+			      password = F@_2, clientType = F@_3};
+dfp_read_field_def_ClientToServerRegister(Other, Z1, Z2,
+					  F@_1, F@_2, F@_3, TrUserData) ->
+    dg_read_field_def_ClientToServerRegister(Other, Z1, Z2,
+					     F@_1, F@_2, F@_3, TrUserData).
+
+dg_read_field_def_ClientToServerRegister(<<1:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ClientToServerRegister(Rest, N + 7,
+					     X bsl N + Acc, F@_1, F@_2, F@_3,
+					     TrUserData);
+dg_read_field_def_ClientToServerRegister(<<0:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3,
+					 TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_ClientToServerRegister_username(Rest, 0, 0,
+						  F@_1, F@_2, F@_3, TrUserData);
+      18 ->
+	  d_field_ClientToServerRegister_password(Rest, 0, 0,
+						  F@_1, F@_2, F@_3, TrUserData);
+      24 ->
+	  d_field_ClientToServerRegister_clientType(Rest, 0, 0,
+						    F@_1, F@_2, F@_3,
+						    TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ClientToServerRegister(Rest, 0, 0, F@_1,
+						   F@_2, F@_3, TrUserData);
+	    1 ->
+		skip_64_ClientToServerRegister(Rest, 0, 0, F@_1, F@_2,
+					       F@_3, TrUserData);
+	    2 ->
+		skip_length_delimited_ClientToServerRegister(Rest, 0, 0,
+							     F@_1, F@_2, F@_3,
+							     TrUserData);
+	    3 ->
+		skip_group_ClientToServerRegister(Rest, Key bsr 3, 0,
+						  F@_1, F@_2, F@_3, TrUserData);
+	    5 ->
+		skip_32_ClientToServerRegister(Rest, 0, 0, F@_1, F@_2,
+					       F@_3, TrUserData)
+	  end
+    end;
+dg_read_field_def_ClientToServerRegister(<<>>, 0, 0,
+					 F@_1, F@_2, F@_3, _) ->
+    #'ClientToServerRegister'{username = F@_1,
+			      password = F@_2, clientType = F@_3}.
+
+d_field_ClientToServerRegister_username(<<1:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ClientToServerRegister_username(Rest, N + 7,
+					    X bsl N + Acc, F@_1, F@_2, F@_3,
+					    TrUserData);
+d_field_ClientToServerRegister_username(<<0:1, X:7,
+					  Rest/binary>>,
+					N, Acc, _, F@_2, F@_3, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ClientToServerRegister(RestF, 0, 0,
+					      NewFValue, F@_2, F@_3,
+					      TrUserData).
+
+d_field_ClientToServerRegister_password(<<1:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ClientToServerRegister_password(Rest, N + 7,
+					    X bsl N + Acc, F@_1, F@_2, F@_3,
+					    TrUserData);
+d_field_ClientToServerRegister_password(<<0:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, _, F@_3, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ClientToServerRegister(RestF, 0, 0,
+					      F@_1, NewFValue, F@_3,
+					      TrUserData).
+
+d_field_ClientToServerRegister_clientType(<<1:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ClientToServerRegister_clientType(Rest, N + 7,
+					      X bsl N + Acc, F@_1, F@_2, F@_3,
+					      TrUserData);
+d_field_ClientToServerRegister_clientType(<<0:1, X:7,
+					    Rest/binary>>,
+					  N, Acc, F@_1, F@_2, _, TrUserData) ->
+    {NewFValue, RestF} = {id(d_enum_ClientType(begin
+						 <<Res:32/signed-native>> = <<(X
+										 bsl
+										 N
+										 +
+										 Acc):32/unsigned-native>>,
+						 id(Res, TrUserData)
+					       end),
+			     TrUserData),
+			  Rest},
+    dfp_read_field_def_ClientToServerRegister(RestF, 0, 0,
+					      F@_1, F@_2, NewFValue,
+					      TrUserData).
+
+skip_varint_ClientToServerRegister(<<1:1, _:7,
+				     Rest/binary>>,
+				   Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    skip_varint_ClientToServerRegister(Rest, Z1, Z2, F@_1,
+				       F@_2, F@_3, TrUserData);
+skip_varint_ClientToServerRegister(<<0:1, _:7,
+				     Rest/binary>>,
+				   Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ClientToServerRegister(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, TrUserData).
+
+skip_length_delimited_ClientToServerRegister(<<1:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, F@_3,
+					     TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ClientToServerRegister(Rest,
+						 N + 7, X bsl N + Acc, F@_1,
+						 F@_2, F@_3, TrUserData);
+skip_length_delimited_ClientToServerRegister(<<0:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, F@_3,
+					     TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ClientToServerRegister(Rest2, 0, 0,
+					      F@_1, F@_2, F@_3, TrUserData).
+
+skip_group_ClientToServerRegister(Bin, FNum, Z2, F@_1,
+				  F@_2, F@_3, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ClientToServerRegister(Rest, 0, Z2,
+					      F@_1, F@_2, F@_3, TrUserData).
+
+skip_32_ClientToServerRegister(<<_:32, Rest/binary>>,
+			       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ClientToServerRegister(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, TrUserData).
+
+skip_64_ClientToServerRegister(<<_:64, Rest/binary>>,
+			       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ClientToServerRegister(Rest, Z1, Z2,
+					      F@_1, F@_2, F@_3, TrUserData).
+
+decode_msg_ServerToClientAuth(Bin, TrUserData) ->
+    dfp_read_field_def_ServerToClientAuth(Bin, 0, 0,
+					  id(undefined, TrUserData),
+					  id(undefined, TrUserData),
+					  id(undefined, TrUserData),
+					  TrUserData).
+
+dfp_read_field_def_ServerToClientAuth(<<8,
+					Rest/binary>>,
+				      Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    d_field_ServerToClientAuth_ok(Rest, Z1, Z2, F@_1, F@_2,
+				  F@_3, TrUserData);
+dfp_read_field_def_ServerToClientAuth(<<16,
+					Rest/binary>>,
+				      Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    d_field_ServerToClientAuth_clientType(Rest, Z1, Z2,
+					  F@_1, F@_2, F@_3, TrUserData);
+dfp_read_field_def_ServerToClientAuth(<<26,
+					Rest/binary>>,
+				      Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    d_field_ServerToClientAuth_errorMessage(Rest, Z1, Z2,
+					    F@_1, F@_2, F@_3, TrUserData);
+dfp_read_field_def_ServerToClientAuth(<<>>, 0, 0, F@_1,
+				      F@_2, F@_3, _) ->
+    #'ServerToClientAuth'{ok = F@_1, clientType = F@_2,
+			  errorMessage = F@_3};
+dfp_read_field_def_ServerToClientAuth(Other, Z1, Z2,
+				      F@_1, F@_2, F@_3, TrUserData) ->
+    dg_read_field_def_ServerToClientAuth(Other, Z1, Z2,
+					 F@_1, F@_2, F@_3, TrUserData).
+
+dg_read_field_def_ServerToClientAuth(<<1:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_ServerToClientAuth(Rest, N + 7,
+					 X bsl N + Acc, F@_1, F@_2, F@_3,
+					 TrUserData);
+dg_read_field_def_ServerToClientAuth(<<0:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      8 ->
+	  d_field_ServerToClientAuth_ok(Rest, 0, 0, F@_1, F@_2,
+					F@_3, TrUserData);
+      16 ->
+	  d_field_ServerToClientAuth_clientType(Rest, 0, 0, F@_1,
+						F@_2, F@_3, TrUserData);
+      26 ->
+	  d_field_ServerToClientAuth_errorMessage(Rest, 0, 0,
+						  F@_1, F@_2, F@_3, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_ServerToClientAuth(Rest, 0, 0, F@_1, F@_2,
+					       F@_3, TrUserData);
+	    1 ->
+		skip_64_ServerToClientAuth(Rest, 0, 0, F@_1, F@_2, F@_3,
+					   TrUserData);
+	    2 ->
+		skip_length_delimited_ServerToClientAuth(Rest, 0, 0,
+							 F@_1, F@_2, F@_3,
+							 TrUserData);
+	    3 ->
+		skip_group_ServerToClientAuth(Rest, Key bsr 3, 0, F@_1,
+					      F@_2, F@_3, TrUserData);
+	    5 ->
+		skip_32_ServerToClientAuth(Rest, 0, 0, F@_1, F@_2, F@_3,
+					   TrUserData)
+	  end
+    end;
+dg_read_field_def_ServerToClientAuth(<<>>, 0, 0, F@_1,
+				     F@_2, F@_3, _) ->
+    #'ServerToClientAuth'{ok = F@_1, clientType = F@_2,
+			  errorMessage = F@_3}.
+
+d_field_ServerToClientAuth_ok(<<1:1, X:7, Rest/binary>>,
+			      N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ServerToClientAuth_ok(Rest, N + 7,
+				  X bsl N + Acc, F@_1, F@_2, F@_3, TrUserData);
+d_field_ServerToClientAuth_ok(<<0:1, X:7, Rest/binary>>,
+			      N, Acc, _, F@_2, F@_3, TrUserData) ->
+    {NewFValue, RestF} = {id(X bsl N + Acc =/= 0,
+			     TrUserData),
+			  Rest},
+    dfp_read_field_def_ServerToClientAuth(RestF, 0, 0,
+					  NewFValue, F@_2, F@_3, TrUserData).
+
+d_field_ServerToClientAuth_clientType(<<1:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ServerToClientAuth_clientType(Rest, N + 7,
+					  X bsl N + Acc, F@_1, F@_2, F@_3,
+					  TrUserData);
+d_field_ServerToClientAuth_clientType(<<0:1, X:7,
+					Rest/binary>>,
+				      N, Acc, F@_1, _, F@_3, TrUserData) ->
+    {NewFValue, RestF} = {id(d_enum_ClientType(begin
+						 <<Res:32/signed-native>> = <<(X
+										 bsl
+										 N
+										 +
+										 Acc):32/unsigned-native>>,
+						 id(Res, TrUserData)
+					       end),
+			     TrUserData),
+			  Rest},
+    dfp_read_field_def_ServerToClientAuth(RestF, 0, 0, F@_1,
+					  NewFValue, F@_3, TrUserData).
+
+d_field_ServerToClientAuth_errorMessage(<<1:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    d_field_ServerToClientAuth_errorMessage(Rest, N + 7,
+					    X bsl N + Acc, F@_1, F@_2, F@_3,
+					    TrUserData);
+d_field_ServerToClientAuth_errorMessage(<<0:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Utf8:Len/binary, Rest2/binary>> = Rest,
+			   {id(unicode:characters_to_list(Utf8, unicode),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_ServerToClientAuth(RestF, 0, 0, F@_1,
+					  F@_2, NewFValue, TrUserData).
+
+skip_varint_ServerToClientAuth(<<1:1, _:7,
+				 Rest/binary>>,
+			       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    skip_varint_ServerToClientAuth(Rest, Z1, Z2, F@_1, F@_2,
+				   F@_3, TrUserData);
+skip_varint_ServerToClientAuth(<<0:1, _:7,
+				 Rest/binary>>,
+			       Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ServerToClientAuth(Rest, Z1, Z2,
+					  F@_1, F@_2, F@_3, TrUserData).
+
+skip_length_delimited_ServerToClientAuth(<<1:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_ServerToClientAuth(Rest, N + 7,
+					     X bsl N + Acc, F@_1, F@_2, F@_3,
+					     TrUserData);
+skip_length_delimited_ServerToClientAuth(<<0:1, X:7,
+					   Rest/binary>>,
+					 N, Acc, F@_1, F@_2, F@_3,
+					 TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_ServerToClientAuth(Rest2, 0, 0, F@_1,
+					  F@_2, F@_3, TrUserData).
+
+skip_group_ServerToClientAuth(Bin, FNum, Z2, F@_1, F@_2,
+			      F@_3, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_ServerToClientAuth(Rest, 0, Z2, F@_1,
+					  F@_2, F@_3, TrUserData).
+
+skip_32_ServerToClientAuth(<<_:32, Rest/binary>>, Z1,
+			   Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ServerToClientAuth(Rest, Z1, Z2,
+					  F@_1, F@_2, F@_3, TrUserData).
+
+skip_64_ServerToClientAuth(<<_:64, Rest/binary>>, Z1,
+			   Z2, F@_1, F@_2, F@_3, TrUserData) ->
+    dfp_read_field_def_ServerToClientAuth(Rest, Z1, Z2,
+					  F@_1, F@_2, F@_3, TrUserData).
 
 decode_msg_MsgAuth(Bin, TrUserData) ->
     dfp_read_field_def_MsgAuth(Bin, 0, 0,
@@ -4554,6 +5174,10 @@ skip_64_Negotiator(<<_:64, Rest/binary>>, Z1, Z2, F@_1,
     dfp_read_field_def_Negotiator(Rest, Z1, Z2, F@_1,
 				  TrUserData).
 
+d_enum_ClientType(0) -> 'IMPORTER';
+d_enum_ClientType(1) -> 'MANUFACTURER';
+d_enum_ClientType(V) -> V.
+
 'd_enum_MsgAuth.ClientType'(0) -> 'MANUFACTURER';
 'd_enum_MsgAuth.ClientType'(1) -> 'IMPORTER';
 'd_enum_MsgAuth.ClientType'(V) -> V.
@@ -4634,6 +5258,12 @@ merge_msgs(Prev, New, Opts)
 merge_msgs(Prev, New, MsgName, Opts) ->
     TrUserData = proplists:get_value(user_data, Opts),
     case MsgName of
+      'ClientToServerLogin' ->
+	  merge_msg_ClientToServerLogin(Prev, New, TrUserData);
+      'ClientToServerRegister' ->
+	  merge_msg_ClientToServerRegister(Prev, New, TrUserData);
+      'ServerToClientAuth' ->
+	  merge_msg_ServerToClientAuth(Prev, New, TrUserData);
       'MsgAuth' -> merge_msg_MsgAuth(Prev, New, TrUserData);
       'MsgAck' -> merge_msg_MsgAck(Prev, New, TrUserData);
       'DisponibilityS' ->
@@ -4661,6 +5291,46 @@ merge_msgs(Prev, New, MsgName, Opts) ->
       'Negotiator' ->
 	  merge_msg_Negotiator(Prev, New, TrUserData)
     end.
+
+-compile({nowarn_unused_function,merge_msg_ClientToServerLogin/3}).
+merge_msg_ClientToServerLogin(#'ClientToServerLogin'{},
+			      #'ClientToServerLogin'{username = NFusername,
+						     password = NFpassword},
+			      _) ->
+    #'ClientToServerLogin'{username = NFusername,
+			   password = NFpassword}.
+
+-compile({nowarn_unused_function,merge_msg_ClientToServerRegister/3}).
+merge_msg_ClientToServerRegister(#'ClientToServerRegister'{},
+				 #'ClientToServerRegister'{username =
+							       NFusername,
+							   password =
+							       NFpassword,
+							   clientType =
+							       NFclientType},
+				 _) ->
+    #'ClientToServerRegister'{username = NFusername,
+			      password = NFpassword, clientType = NFclientType}.
+
+-compile({nowarn_unused_function,merge_msg_ServerToClientAuth/3}).
+merge_msg_ServerToClientAuth(#'ServerToClientAuth'{clientType
+						       = PFclientType,
+						   errorMessage =
+						       PFerrorMessage},
+			     #'ServerToClientAuth'{ok = NFok,
+						   clientType = NFclientType,
+						   errorMessage =
+						       NFerrorMessage},
+			     _) ->
+    #'ServerToClientAuth'{ok = NFok,
+			  clientType =
+			      if NFclientType =:= undefined -> PFclientType;
+				 true -> NFclientType
+			      end,
+			  errorMessage =
+			      if NFerrorMessage =:= undefined -> PFerrorMessage;
+				 true -> NFerrorMessage
+			      end}.
 
 -compile({nowarn_unused_function,merge_msg_MsgAuth/3}).
 merge_msg_MsgAuth(#'MsgAuth'{},
@@ -4887,6 +5557,13 @@ verify_msg(X, _Opts) ->
 verify_msg(Msg, MsgName, Opts) ->
     TrUserData = proplists:get_value(user_data, Opts),
     case MsgName of
+      'ClientToServerLogin' ->
+	  v_msg_ClientToServerLogin(Msg, [MsgName], TrUserData);
+      'ClientToServerRegister' ->
+	  v_msg_ClientToServerRegister(Msg, [MsgName],
+				       TrUserData);
+      'ServerToClientAuth' ->
+	  v_msg_ServerToClientAuth(Msg, [MsgName], TrUserData);
       'MsgAuth' -> v_msg_MsgAuth(Msg, [MsgName], TrUserData);
       'MsgAck' -> v_msg_MsgAck(Msg, [MsgName], TrUserData);
       'DisponibilityS' ->
@@ -4917,6 +5594,54 @@ verify_msg(Msg, MsgName, Opts) ->
       _ -> mk_type_error(not_a_known_message, Msg, [])
     end.
 
+
+-compile({nowarn_unused_function,v_msg_ClientToServerLogin/3}).
+-dialyzer({nowarn_function,v_msg_ClientToServerLogin/3}).
+v_msg_ClientToServerLogin(#'ClientToServerLogin'{username
+						     = F1,
+						 password = F2},
+			  Path, TrUserData) ->
+    v_type_string(F1, [username | Path], TrUserData),
+    v_type_string(F2, [password | Path], TrUserData),
+    ok;
+v_msg_ClientToServerLogin(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ClientToServerLogin'}, X,
+		  Path).
+
+-compile({nowarn_unused_function,v_msg_ClientToServerRegister/3}).
+-dialyzer({nowarn_function,v_msg_ClientToServerRegister/3}).
+v_msg_ClientToServerRegister(#'ClientToServerRegister'{username
+							   = F1,
+						       password = F2,
+						       clientType = F3},
+			     Path, TrUserData) ->
+    v_type_string(F1, [username | Path], TrUserData),
+    v_type_string(F2, [password | Path], TrUserData),
+    v_enum_ClientType(F3, [clientType | Path], TrUserData),
+    ok;
+v_msg_ClientToServerRegister(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ClientToServerRegister'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_ServerToClientAuth/3}).
+-dialyzer({nowarn_function,v_msg_ServerToClientAuth/3}).
+v_msg_ServerToClientAuth(#'ServerToClientAuth'{ok = F1,
+					       clientType = F2,
+					       errorMessage = F3},
+			 Path, TrUserData) ->
+    v_type_bool(F1, [ok | Path], TrUserData),
+    if F2 == undefined -> ok;
+       true ->
+	   v_enum_ClientType(F2, [clientType | Path], TrUserData)
+    end,
+    if F3 == undefined -> ok;
+       true ->
+	   v_type_string(F3, [errorMessage | Path], TrUserData)
+    end,
+    ok;
+v_msg_ServerToClientAuth(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'ServerToClientAuth'}, X,
+		  Path).
 
 -compile({nowarn_unused_function,v_msg_MsgAuth/3}).
 -dialyzer({nowarn_function,v_msg_MsgAuth/3}).
@@ -5211,6 +5936,17 @@ v_msg_Negotiator(#'Negotiator'{msg = F1}, Path,
 v_msg_Negotiator(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'Negotiator'}, X, Path).
 
+-compile({nowarn_unused_function,v_enum_ClientType/3}).
+-dialyzer({nowarn_function,v_enum_ClientType/3}).
+v_enum_ClientType('IMPORTER', _Path, _TrUserData) -> ok;
+v_enum_ClientType('MANUFACTURER', _Path, _TrUserData) ->
+    ok;
+v_enum_ClientType(V, Path, TrUserData)
+    when is_integer(V) ->
+    v_type_sint32(V, Path, TrUserData);
+v_enum_ClientType(X, Path, _TrUserData) ->
+    mk_type_error({invalid_enum, 'ClientType'}, X, Path).
+
 -compile({nowarn_unused_function,'v_enum_MsgAuth.ClientType'/3}).
 -dialyzer({nowarn_function,'v_enum_MsgAuth.ClientType'/3}).
 'v_enum_MsgAuth.ClientType'('MANUFACTURER', _Path,
@@ -5343,10 +6079,33 @@ cons(Elem, Acc, _TrUserData) -> [Elem | Acc].
 'erlang_++'(A, B, _TrUserData) -> A ++ B.
 
 get_msg_defs() ->
-    [{{enum, 'MsgAuth.ClientType'},
+    [{{enum, 'ClientType'},
+      [{'IMPORTER', 0}, {'MANUFACTURER', 1}]},
+     {{enum, 'MsgAuth.ClientType'},
       [{'MANUFACTURER', 0}, {'IMPORTER', 1}]},
      {{enum, 'MsgAuth.MsgType'},
       [{'LOGIN', 0}, {'REGISTER', 1}]},
+     {{msg, 'ClientToServerLogin'},
+      [#field{name = username, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = password, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'ClientToServerRegister'},
+      [#field{name = username, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = password, fnum = 2, rnum = 3,
+	      type = string, occurrence = required, opts = []},
+       #field{name = clientType, fnum = 3, rnum = 4,
+	      type = {enum, 'ClientType'}, occurrence = required,
+	      opts = []}]},
+     {{msg, 'ServerToClientAuth'},
+      [#field{name = ok, fnum = 1, rnum = 2, type = bool,
+	      occurrence = required, opts = []},
+       #field{name = clientType, fnum = 2, rnum = 3,
+	      type = {enum, 'ClientType'}, occurrence = optional,
+	      opts = []},
+       #field{name = errorMessage, fnum = 3, rnum = 4,
+	      type = string, occurrence = optional, opts = []}]},
      {{msg, 'MsgAuth'},
       [#field{name = name, fnum = 1, rnum = 2, type = string,
 	      occurrence = required, opts = []},
@@ -5544,9 +6303,10 @@ get_msg_defs() ->
 
 
 get_msg_names() ->
-    ['MsgAuth', 'MsgAck', 'DisponibilityS',
-     'DisponibilityN', 'OrderS', 'OrderN', 'OrderAckS',
-     'OrderAckI', 'SubS', 'SubN', 'ProductionS',
+    ['ClientToServerLogin', 'ClientToServerRegister',
+     'ServerToClientAuth', 'MsgAuth', 'MsgAck',
+     'DisponibilityS', 'DisponibilityN', 'OrderS', 'OrderN',
+     'OrderAckS', 'OrderAckI', 'SubS', 'SubN', 'ProductionS',
      'ProductionM', 'ResultS', 'ResultI', 'InfoS', 'InfoI',
      'Server', 'Importer', 'Negotiator'].
 
@@ -5555,15 +6315,16 @@ get_group_names() -> [].
 
 
 get_msg_or_group_names() ->
-    ['MsgAuth', 'MsgAck', 'DisponibilityS',
-     'DisponibilityN', 'OrderS', 'OrderN', 'OrderAckS',
-     'OrderAckI', 'SubS', 'SubN', 'ProductionS',
+    ['ClientToServerLogin', 'ClientToServerRegister',
+     'ServerToClientAuth', 'MsgAuth', 'MsgAck',
+     'DisponibilityS', 'DisponibilityN', 'OrderS', 'OrderN',
+     'OrderAckS', 'OrderAckI', 'SubS', 'SubN', 'ProductionS',
      'ProductionM', 'ResultS', 'ResultI', 'InfoS', 'InfoI',
      'Server', 'Importer', 'Negotiator'].
 
 
 get_enum_names() ->
-    ['MsgAuth.ClientType', 'MsgAuth.MsgType'].
+    ['ClientType', 'MsgAuth.ClientType', 'MsgAuth.MsgType'].
 
 
 fetch_msg_def(MsgName) ->
@@ -5580,6 +6341,27 @@ fetch_enum_def(EnumName) ->
     end.
 
 
+find_msg_def('ClientToServerLogin') ->
+    [#field{name = username, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = password, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('ClientToServerRegister') ->
+    [#field{name = username, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = password, fnum = 2, rnum = 3,
+	    type = string, occurrence = required, opts = []},
+     #field{name = clientType, fnum = 3, rnum = 4,
+	    type = {enum, 'ClientType'}, occurrence = required,
+	    opts = []}];
+find_msg_def('ServerToClientAuth') ->
+    [#field{name = ok, fnum = 1, rnum = 2, type = bool,
+	    occurrence = required, opts = []},
+     #field{name = clientType, fnum = 2, rnum = 3,
+	    type = {enum, 'ClientType'}, occurrence = optional,
+	    opts = []},
+     #field{name = errorMessage, fnum = 3, rnum = 4,
+	    type = string, occurrence = optional, opts = []}];
 find_msg_def('MsgAuth') ->
     [#field{name = name, fnum = 1, rnum = 2, type = string,
 	    occurrence = required, opts = []},
@@ -5777,6 +6559,8 @@ find_msg_def('Negotiator') ->
 find_msg_def(_) -> error.
 
 
+find_enum_def('ClientType') ->
+    [{'IMPORTER', 0}, {'MANUFACTURER', 1}];
 find_enum_def('MsgAuth.ClientType') ->
     [{'MANUFACTURER', 0}, {'IMPORTER', 1}];
 find_enum_def('MsgAuth.MsgType') ->
@@ -5784,17 +6568,28 @@ find_enum_def('MsgAuth.MsgType') ->
 find_enum_def(_) -> error.
 
 
+enum_symbol_by_value('ClientType', Value) ->
+    enum_symbol_by_value_ClientType(Value);
 enum_symbol_by_value('MsgAuth.ClientType', Value) ->
     'enum_symbol_by_value_MsgAuth.ClientType'(Value);
 enum_symbol_by_value('MsgAuth.MsgType', Value) ->
     'enum_symbol_by_value_MsgAuth.MsgType'(Value).
 
 
+enum_value_by_symbol('ClientType', Sym) ->
+    enum_value_by_symbol_ClientType(Sym);
 enum_value_by_symbol('MsgAuth.ClientType', Sym) ->
     'enum_value_by_symbol_MsgAuth.ClientType'(Sym);
 enum_value_by_symbol('MsgAuth.MsgType', Sym) ->
     'enum_value_by_symbol_MsgAuth.MsgType'(Sym).
 
+
+enum_symbol_by_value_ClientType(0) -> 'IMPORTER';
+enum_symbol_by_value_ClientType(1) -> 'MANUFACTURER'.
+
+
+enum_value_by_symbol_ClientType('IMPORTER') -> 0;
+enum_value_by_symbol_ClientType('MANUFACTURER') -> 1.
 
 'enum_symbol_by_value_MsgAuth.ClientType'(0) ->
     'MANUFACTURER';
@@ -5863,6 +6658,9 @@ service_and_rpc_name_to_fqbins(S, R) ->
     error({gpb_error, {badservice_or_rpc, {S, R}}}).
 
 
+fqbin_to_msg_name(<<"nefit.ClientToServerLogin">>) -> 'ClientToServerLogin';
+fqbin_to_msg_name(<<"nefit.ClientToServerRegister">>) -> 'ClientToServerRegister';
+fqbin_to_msg_name(<<"nefit.ServerToClientAuth">>) -> 'ServerToClientAuth';
 fqbin_to_msg_name(<<"nefit.MsgAuth">>) -> 'MsgAuth';
 fqbin_to_msg_name(<<"nefit.MsgAck">>) -> 'MsgAck';
 fqbin_to_msg_name(<<"nefit.DisponibilityS">>) -> 'DisponibilityS';
@@ -5885,6 +6683,9 @@ fqbin_to_msg_name(<<"nefit.Negotiator">>) -> 'Negotiator';
 fqbin_to_msg_name(E) -> error({gpb_error, {badmsg, E}}).
 
 
+msg_name_to_fqbin('ClientToServerLogin') -> <<"nefit.ClientToServerLogin">>;
+msg_name_to_fqbin('ClientToServerRegister') -> <<"nefit.ClientToServerRegister">>;
+msg_name_to_fqbin('ServerToClientAuth') -> <<"nefit.ServerToClientAuth">>;
 msg_name_to_fqbin('MsgAuth') -> <<"nefit.MsgAuth">>;
 msg_name_to_fqbin('MsgAck') -> <<"nefit.MsgAck">>;
 msg_name_to_fqbin('DisponibilityS') -> <<"nefit.DisponibilityS">>;
@@ -5907,12 +6708,14 @@ msg_name_to_fqbin('Negotiator') -> <<"nefit.Negotiator">>;
 msg_name_to_fqbin(E) -> error({gpb_error, {badmsg, E}}).
 
 
+fqbin_to_enum_name(<<"nefit.ClientType">>) -> 'ClientType';
 fqbin_to_enum_name(<<"nefit.MsgAuth.ClientType">>) -> 'MsgAuth.ClientType';
 fqbin_to_enum_name(<<"nefit.MsgAuth.MsgType">>) -> 'MsgAuth.MsgType';
 fqbin_to_enum_name(E) ->
     error({gpb_error, {badenum, E}}).
 
 
+enum_name_to_fqbin('ClientType') -> <<"nefit.ClientType">>;
 enum_name_to_fqbin('MsgAuth.ClientType') -> <<"nefit.MsgAuth.ClientType">>;
 enum_name_to_fqbin('MsgAuth.MsgType') -> <<"nefit.MsgAuth.MsgType">>;
 enum_name_to_fqbin(E) ->
@@ -5947,11 +6750,12 @@ get_all_proto_names() -> ["nefit"].
 
 
 get_msg_containment("nefit") ->
-    ['DisponibilityN', 'DisponibilityS', 'Importer',
-     'InfoI', 'InfoS', 'MsgAck', 'MsgAuth', 'Negotiator',
-     'OrderAckI', 'OrderAckS', 'OrderN', 'OrderS',
-     'ProductionM', 'ProductionS', 'ResultI', 'ResultS',
-     'Server', 'SubN', 'SubS'];
+    ['ClientToServerLogin', 'ClientToServerRegister',
+     'DisponibilityN', 'DisponibilityS', 'Importer', 'InfoI',
+     'InfoS', 'MsgAck', 'MsgAuth', 'Negotiator', 'OrderAckI',
+     'OrderAckS', 'OrderN', 'OrderS', 'ProductionM',
+     'ProductionS', 'ResultI', 'ResultS', 'Server',
+     'ServerToClientAuth', 'SubN', 'SubS'];
 get_msg_containment(P) ->
     error({gpb_error, {badproto, P}}).
 
@@ -5972,7 +6776,7 @@ get_rpc_containment(P) ->
 
 
 get_enum_containment("nefit") ->
-    ['MsgAuth.ClientType', 'MsgAuth.MsgType'];
+    ['ClientType', 'MsgAuth.ClientType', 'MsgAuth.MsgType'];
 get_enum_containment(P) ->
     error({gpb_error, {badproto, P}}).
 
@@ -5980,6 +6784,7 @@ get_enum_containment(P) ->
 get_proto_by_msg_name_as_fqbin(<<"nefit.Server">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.Negotiator">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.Importer">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServerRegister">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.SubS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ResultS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ProductionS">>) -> "nefit";
@@ -5987,6 +6792,7 @@ get_proto_by_msg_name_as_fqbin(<<"nefit.OrderS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.OrderAckS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.InfoS">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.DisponibilityS">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ServerToClientAuth">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.MsgAuth">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.ResultI">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.OrderAckI">>) -> "nefit";
@@ -5996,6 +6802,7 @@ get_proto_by_msg_name_as_fqbin(<<"nefit.ProductionM">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.SubN">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.OrderN">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(<<"nefit.DisponibilityN">>) -> "nefit";
+get_proto_by_msg_name_as_fqbin(<<"nefit.ClientToServerLogin">>) -> "nefit";
 get_proto_by_msg_name_as_fqbin(E) ->
     error({gpb_error, {badmsg, E}}).
 
@@ -6007,6 +6814,7 @@ get_proto_by_service_name_as_fqbin(E) ->
 
 get_proto_by_enum_name_as_fqbin(<<"nefit.MsgAuth.MsgType">>) -> "nefit";
 get_proto_by_enum_name_as_fqbin(<<"nefit.MsgAuth.ClientType">>) -> "nefit";
+get_proto_by_enum_name_as_fqbin(<<"nefit.ClientType">>) -> "nefit";
 get_proto_by_enum_name_as_fqbin(E) ->
     error({gpb_error, {badenum, E}}).
 

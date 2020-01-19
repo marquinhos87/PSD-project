@@ -7,6 +7,32 @@
 
 -define(nefitproto_gpb_version, "4.8.0").
 
+-ifndef('CLIENTTOSERVERLOGIN_PB_H').
+-define('CLIENTTOSERVERLOGIN_PB_H', true).
+-record('ClientToServerLogin',
+        {username               :: iodata(),        % = 1
+         password               :: iodata()         % = 2
+        }).
+-endif.
+
+-ifndef('CLIENTTOSERVERREGISTER_PB_H').
+-define('CLIENTTOSERVERREGISTER_PB_H', true).
+-record('ClientToServerRegister',
+        {username               :: iodata(),        % = 1
+         password               :: iodata(),        % = 2
+         clientType             :: 'IMPORTER' | 'MANUFACTURER' | integer() % = 3, enum ClientType
+        }).
+-endif.
+
+-ifndef('SERVERTOCLIENTAUTH_PB_H').
+-define('SERVERTOCLIENTAUTH_PB_H', true).
+-record('ServerToClientAuth',
+        {ok                     :: boolean() | 0 | 1, % = 1
+         clientType             :: 'IMPORTER' | 'MANUFACTURER' | integer() | undefined, % = 2, enum ClientType
+         errorMessage           :: iodata() | undefined % = 3
+        }).
+-endif.
+
 -ifndef('MSGAUTH_PB_H').
 -define('MSGAUTH_PB_H', true).
 -record('MsgAuth',
