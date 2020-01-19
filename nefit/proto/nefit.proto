@@ -31,13 +31,19 @@ message ClientToServerRegister
     required ClientType clientType = 3;
 }
 
-// if ok is true, then clientType is present and errorMessage is not
-// if ok is false, then errorMessage is present and clientType is not
+// response to a login or register request
+// (if ok is true, then clientType is present and errorMessage is not)
+// (if ok is false, then errorMessage is present and clientType is not)
 message ServerToClientAuth
 {
     required bool ok = 1;
     optional ClientType clientType = 2;
     optional string errorMessage = 3;
+}
+
+message ServerToClientManufacturer
+{
+
 }
 
 /* -------------------------------------------------------------------------- */
