@@ -262,6 +262,8 @@ public class Arbiter implements Runnable
                         NefitProto.ArbiterToServerOfferInvalid ack = NefitProto.ArbiterToServerOfferInvalid
                             .newBuilder()
                             .setImporterName(order.getImporterName())
+                            .setManufacturerName(order.getManufacturerName())
+                            .setProductName(order.getProductName())
                             .setErrorMessage("Exists a better order")
                             .build();
                         connection.send(NefitProto.ArbiterToServer.newBuilder()
@@ -271,6 +273,8 @@ public class Arbiter implements Runnable
             } else {
                 NefitProto.ArbiterToServerOfferInvalid ack = NefitProto.ArbiterToServerOfferInvalid.newBuilder()
                     .setImporterName(order.getImporterName())
+                    .setManufacturerName(order.getManufacturerName())
+                    .setProductName(order.getProductName())
                     .setErrorMessage("Don't have the minimums required or the quantity is very high")
                     .build();
                 connection.send(NefitProto.ArbiterToServer.newBuilder().setOfferInvalid(ack).build());

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Arbiter" type="Application" factoryName="Application">
+  <configuration default="false" name="Arbiter" type="Application" factoryName="Application" singleton="false">
     <option name="MAIN_CLASS_NAME" value="nefit.arbiter.Arbiter" />
     <module name="arbiter" />
     <option name="PROGRAM_PARAMETERS" value="localhost:12345" />

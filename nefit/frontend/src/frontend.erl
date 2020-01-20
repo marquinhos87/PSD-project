@@ -119,9 +119,9 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             I = maps:get(PidA, Arbiters),
             Map = maps:put(PidA, I - 1, Arbiters),
             MsgN = #'ArbiterToCatalogRemoveNegotiation'{manufacturerName = M, productName = P},
-            M = nefitproto:encode_msg(MsgN),
+            Ms = nefitproto:encode_msg(MsgN),
             Str = binary:list_to_bin("removeNegotiation"),
-            chumak:send_multipart(Socket,[Str,M]),
+            chumak:send_multipart(Socket,[Str,Ms]),
             globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
 
         {noOffers, PidA, M, P} ->
@@ -131,9 +131,9 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
             I = maps:get(PidA, Arbiters),
             Map = maps:put(PidA, I - 1, Arbiters),
             MsgN = #'ArbiterToCatalogRemoveNegotiation'{manufacturerName = M, productName = P},
-            M = nefitproto:encode_msg(MsgN),
+            Ms = nefitproto:encode_msg(MsgN),
             Str = binary:list_to_bin("removeNegotiation"),
-            chumak:send_multipart(Socket,[Str,M]),
+            chumak:send_multipart(Socket,[Str,Ms]),
             globalState(RegisteredUsers, ConnectedUsers, Map, Socket, Pos);
 
         {accepted, M, P, Min, Max, V} ->
@@ -147,9 +147,9 @@ globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos) ->
                 maxQuantity = Max,
                 minUnitPrice = V
             },
-            M = nefitproto:encode_msg(MsgN),
+            Ms = nefitproto:encode_msg(MsgN),
             Str = binary:list_to_bin("addNegotiation"),
-            chumak:send_multipart(Socket,[Str,M]),
+            chumak:send_multipart(Socket,[Str,Ms]),
             globalState(RegisteredUsers, ConnectedUsers, Arbiters, Socket, Pos);
 
         {announceInvalid, M,P, Message} ->
