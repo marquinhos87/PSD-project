@@ -99,15 +99,15 @@ public class Manufacturer extends Client< NefitProto.ServerToManufacturer >
         this.getPrompt().print();
 
         if(message.hasAnnounced()){
-            this.getPrompt().printNotice("\nYour product \"%s\" as been published",message.getAnnounced().getProductName());
+            this.getPrompt().printNotice("Your product \"%s\" as been published",message.getAnnounced().getProductName());
         }
 
         if(message.hasInvalid()){
-            this.getPrompt().printNotice("\nYour product as an error: \"%s\"",message.getInvalid().getErrorMessage());
+            this.getPrompt().printNotice("Your product as an error: \"%s\"",message.getInvalid().getErrorMessage());
         }
 
         if(message.hasNoOffers()){
-            this.getPrompt().printNotice("\nYour product \"%s\" has no offers",message.getNoOffers().getProductName());
+            this.getPrompt().printNotice("Your product \"%s\" has no offers",message.getNoOffers().getProductName());
         }
 
         if(message.hasSold()){
@@ -115,7 +115,7 @@ public class Manufacturer extends Client< NefitProto.ServerToManufacturer >
             NefitProto.ServerToManufacturerSold sold = message.getSold();
 
             this.getPrompt().printNotice(
-                "\nSold %d units of product \"%s\" at unit price %.2f, for a" +
+                "Sold %d units of product \"%s\" at unit price %.2f, for a" +
                     " total price of %.2f. Announcement removed.",
                 sold.getQuantity(),
                 sold.getProductName(),

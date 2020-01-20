@@ -120,17 +120,17 @@ public class Importer extends Client< NefitProto.ServerToImporter >
     protected void handleMessage(NefitProto.ServerToImporter message)
     {
         if(message.hasOfferSubmitted()){
-            this.getPrompt().printNotice("\nYour offer to product \"%s\" from manufacturer \"%s\" has been accepted",message.getOfferSubmitted().getProductName(),message.getOfferSubmitted().getManufacturerName());
+            this.getPrompt().printNotice("Your offer to product \"%s\" from manufacturer \"%s\" has been accepted",message.getOfferSubmitted().getProductName(),message.getOfferSubmitted().getManufacturerName());
         }
 
         if(message.hasOfferInvalid()){
-            this.getPrompt().printNotice("\nYour offer has rejected, because: \"%s\"",message.getOfferInvalid().getErrorMessage());
+            this.getPrompt().printNotice("Your offer has rejected, because: \"%s\"",message.getOfferInvalid().getErrorMessage());
         }
 
         if(message.hasOfferWon()){
             final var result = message.getOfferWon();
 
-            this.getPrompt().printNotice("\nYou won the product \"%s\" from \"%s\"."
+            this.getPrompt().printNotice("You won the product \"%s\" from \"%s\"."
                     + "\nYou purchase %d products with a unit price of %.2f"
                     + "\nTotal = %.2f"
                     ,result.getProductName()
@@ -143,7 +143,7 @@ public class Importer extends Client< NefitProto.ServerToImporter >
         if(message.hasOfferLose()){
             final var result = message.getOfferLose();
 
-            this.getPrompt().printNotice("\nYou lose the product \"%s\" from \"%s\"",
+            this.getPrompt().printNotice("You lose the product \"%s\" from \"%s\"",
                 result.getProductName(),
                 result.getManufacturerName());
         }
@@ -152,7 +152,7 @@ public class Importer extends Client< NefitProto.ServerToImporter >
             final var info = message.getNewProduct();
 
             this.getPrompt().printNotice(
-                "\nProduct \"%s\" now available from manufacturer \"%s\"."
+                "Product \"%s\" now available from manufacturer \"%s\"."
                     + "\n   Min. quantity: %d"
                     + "\n   Max. quantity: %d"
                     + "\n   Min. unit price: %.2f"
@@ -164,7 +164,7 @@ public class Importer extends Client< NefitProto.ServerToImporter >
 
         if(message.hasOfferOutdated())
             this.getPrompt().printNotice(
-                "\nYour offer to the product \"%s\" from manufacturer has outdated",
+                "Your offer to the product \"%s\" from manufacturer has outdated",
                 message.getOfferOutdated().getProductName(),
                 message.getOfferOutdated().getManufacturerName()
             );

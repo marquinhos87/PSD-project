@@ -13,7 +13,6 @@ import org.zeromq.ZMQ;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,7 +101,7 @@ public class Arbiter implements Runnable
         }
         catch (Exception e)
         {
-            prompt.print("Usage: nefit-client <server_host>:<server_port>");
+            prompt.print("Usage: nefit-arbiter <server_host>:<server_port>");
             System.exit(2);
             return null;
         }
