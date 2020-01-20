@@ -28,7 +28,7 @@ public class State
             if(o == null) return false;
             if(o.getClass() != this.getClass()) return false;
             NegotiationKey other = (NegotiationKey) o;
-            return other.manufacturerName == this.manufacturerName && other.productName == this.productName;
+            return other.manufacturerName.equals(this.manufacturerName) && other.productName.equals(this.productName);
         }
 
         @Override
