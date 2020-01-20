@@ -16,7 +16,6 @@
     <option name="useTestCodePath" value="false" />
     <option name="workDirectory" value="$PROJECT_DIR$" />
     <method v="2">
-      <option name="Sh.BeforeRunTask" RUN_CONFIG_NAME="protoc (Erlang)" RUN_CONFIG_TYPE="ShConfigurationType" />
       <option name="Sh.BeforeRunTask" RUN_CONFIG_NAME="Compile Frontend" RUN_CONFIG_TYPE="ShConfigurationType" />
     </method>
   </configuration>

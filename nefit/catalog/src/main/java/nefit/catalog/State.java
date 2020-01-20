@@ -1,16 +1,18 @@
 package nefit.catalog;
 
 import nefit.catalog.representations.Negotiation;
+import nefit.shared.NefitProto;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class State
 {
-    private static class NegotiationKey
+    private static class NegotiationKey implements Comparable<NegotiationKey>
     {
         public final String manufacturerName;
         public final String productName;
@@ -19,6 +21,30 @@ public class State
         {
             this.manufacturerName = manufacturerName;
             this.productName = productName;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if(o == null) return false;
+            if(o.getClass() != this.getClass()) return false;
+            NegotiationKey other = (NegotiationKey) o;
+            return other.manufacturerName == this.manufacturerName && other.productName == this.productName;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(manufacturerName,productName);
+        }
+
+        @Override
+        public int compareTo(NegotiationKey other)
+        {
+            final var i = this.manufacturerName.compareTo(other.manufacturerName);
+
+            if (i != 0)
+                return i;
+            else
+                return this.productName.compareTo(other.productName);
         }
     }
 
